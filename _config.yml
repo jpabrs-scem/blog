@@ -3,18 +3,27 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Title (display)
-title: Japan CSS Support Example Blog
+title: Japan CSS ABRS & SCEM Support Blog
 # Sub Title (display)
-subtitle: Japan CSS Support Example Blog
+subtitle: Azure Backup、Azure Site Recovery 、Azure Migrate および System Center 製品(Operations Manager、Virtual Machine Manager、Orchestrator、Service Manager)に関するサポート情報を発信します。
 # Description
-description: Japan CSS Support Example Blog
+description: Japan CSS ABRS & SCEM Support Blog
 
 # Keywords
 keywords:
-  - Information
-  - Example
+  - Azure Backup 
+  - Azure VM Backup
+  - Azure VM バックアップ
+  - Azure SQL バックアップ
+  - Azure SAP HANA バックアップ
+  - Azure Site Recovery 
+  - Azure Migrate
+  - DPM
+  - MABS
+  - SCOM
+  - SCEM
 
-author: CSS Japan
+author: Japan CSS ABRS & SCEM Support Team
 
 # Tag (hexo helper)
 root_tag_generator:
@@ -24,9 +33,9 @@ root_tag_generator:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://cssjpn.github.io/blog/
+url: https://jpabrs-scem.github.io/blog/
 github:
-  url: https://github.com/cssjpn/blog-example/
+  url: https://jpabrs-scem.github.io/blog/
   posts_dir: articles
   default_branch: main
 
@@ -41,7 +50,7 @@ skip_render:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:cssjpn/blog-example.git
+  repo: git@github.com:jpabrs-scem/blog.git
   branch: gh-pages
   message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }} [skip ci]"
 
