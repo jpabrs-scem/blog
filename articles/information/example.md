@@ -1,16 +1,16 @@
 ---
 title: サンプル記事 - タイトル
-date: 2021-01-01 12:00:00
+date: 2222-01-01 12:00:00
 tags:
   - Information
   - Example
 disableDisclaimer: false
 ---
 
-記事概要
+## 現在このブログは作成途中です。
 
 <!-- more -->
-
+## 現在このブログは作成途中です。
 記事本文
 
 <!-- 文字修飾 -->
