@@ -1,6 +1,6 @@
 ---
 title: 【作成中】ABRS & SCEM チームについて
-date: 2221-09-16 12:00:00
+date: 2021-09-16 12:00:00
 tags:
   - Information
 disableDisclaimer: false
