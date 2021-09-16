@@ -29,12 +29,12 @@ Azure Backup はデータをバックアップし、それをMicrosoft Azureク�
 例えば、Azure VM, Azure Files, Azure Managed Disks, Azure BLOB などのバックアップを行うことが出来ます。
 Azure VM のバックアップでは、ディスクのスナップショットを取得し、取得したスナップショットを Recovery Services コンテナーにデータ転送することで実現しています。
 また、取得したスナップショットから復元を行うこともできます。
-![](./img/team-introduction/azure_backup.png)
+![azure_backup](https://user-images.githubusercontent.com/71251920/133543826-a5d8ab99-b617-47be-aff9-3db6ff30e445.png)
 
 #### SCOM ってどんな製品？
 Microsoft System Center の 1 つのコンポーネントである Operations Manager は、1 つのコンソールから多数のコンピューターのサービス、デバイス、および操作を監視できるソフトウェアです。
 Windows Server や Linux コンピューターなどのエージェント側の死活監視からログ情報/イベント情報の監視、アラート発砲まで一元的に機能をご提供します。
-![](./img/team-introduction/SCOM.png)
+![SCOM](https://user-images.githubusercontent.com/71251920/133543828-aa1bc2cc-ae05-4b80-b53f-1a87b1ddce2f.png)
 
 -----------------------------------------------------------
 <!-- 文字修飾 -->
