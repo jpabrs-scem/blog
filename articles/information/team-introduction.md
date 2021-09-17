@@ -29,7 +29,17 @@ Azure Backup はデータをバックアップし、それを Microsoft Azure �
 例えば、Azure VM, Azure Files, Azure Managed Disks, Azure BLOB などのバックアップを行うことが出来ます。
 Azure VM のバックアップでは、ディスクのスナップショットを取得し、取得したスナップショットを Recovery Services コンテナーにデータ転送することで実現しています。
 また、取得したスナップショットから復元を行うこともできます。
-![azure_backup](https://user-images.githubusercontent.com/71251920/133543826-a5d8ab99-b617-47be-aff9-3db6ff30e445.png)
+![azure_backup](https://user-images.githubusercontent.com/71251920/133728140-8c4f95d7-e3dc-4439-8356-056e0590aebf.png)
+
+#### DPM/MABS ってどんな製品？
+DPM (System Center Data Protection Manager)とMABS（Microsoft Azure Backup Server）は、多様な保護対象をバックアップと回復するための製品です。
+バックアップされたデータはローカル・ディスクだけではなく、Microsoft Azure クラウドにも保存できます。
+主に下記のワークロードを保護する機能を提供しています。
+・Microsoft ワークロードのアプリケーション（SQL Server、Exchange、SharePoint など）
+・Windows オペレーティング システムを実行するコンピューターのファイル、フォルダー、ボリューム
+・Windows オペレーティング システムを実行するコンピューターのシステム状態のバックアップまたは完全なベア メタル バックアップ
+・Windows または Linux を実行する Hyper-V 仮想マシンとVMWare仮想マシン
+![DPM](https://user-images.githubusercontent.com/71251920/133728130-f8ca4a41-0a0b-42da-ad6f-108a80fe2908.png)
 
 #### Azure Site Recovery ってどんな製品？
 Azure Site Recovery (ASR)　は、データの保護を行うことで、メンテナンスや災害などによるシステム停止の際に、お客様のビジネス継続性の確保とディザスター リカバリー (BCDR) を可能とするための製品です。システム停止時には、プライマリ サイトからセカンダリ サイト へフェール オーバーすることで、ビジネス継続性を確保することができます。
@@ -50,12 +60,3 @@ Microsoft System Center の 1 つのコンポーネントである Operations Ma
 Windows Server や Linux コンピューターなどのエージェント側の死活監視からログ情報/イベント情報の監視、アラート発砲まで一元的に機能をご提供します。
 ![SCOM](https://user-images.githubusercontent.com/71251920/133543828-aa1bc2cc-ae05-4b80-b53f-1a87b1ddce2f.png)
 
-#### DPM/MABS ってどんな製品？
-DPM (System Center Data Protection Manager)とMABS（Microsoft Azure Backup Server）は、多様な保護対象をバックアップと回復するための製品です。
-バックアップされたデータはローカル・ディスクだけではなく、Microsoft Azure クラウドにも保存できます。
-主に下記のワークロードを保護する機能を提供しています。
-・Microsoft ワークロードのアプリケーション（SQL Server、Exchange、SharePoint など）
-・Windows オペレーティング システムを実行するコンピューターのファイル、フォルダー、ボリューム
-・Windows オペレーティング システムを実行するコンピューターのシステム状態のバックアップまたは完全なベア メタル バックアップ
-・Windows または Linux を実行する Hyper-V 仮想マシンとVMWare仮想マシン
-![DPM](https://user-images.githubusercontent.com/71251920/133694113-89f8a5a1-0261-48aa-8005-7b5dd33f4eca.png)
