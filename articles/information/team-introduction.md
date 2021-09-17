@@ -8,9 +8,12 @@ disableDisclaimer: false
 
 <!-- more -->
 #### ABRS & SCEM チームについて
-ABRS (Azure Backup and Recovery Service) として Azure Backup 、DPM/MABS、 Azure Site Recovery 、Azure Migrate 、System Center の各製品の技術サポートをしているチームです。
-現在は完全にフルリモートで各自家から仕事 (WfH, work from home と呼んでいます) しています。
+我々のチームは文字通り、ABRSとSCEMという二つの領域をカバーしているチームです。
+ABRS (Azure Backup and Recovery Service) は主にデータ保護ソリューションを提供する技術領域として Azure Backup 、SCDPM/MABS、 Azure Site Recovery 、Azure Migrate 、Azure Resource Mover 、Movere の技術サポートを担当しています。
+また、SCEMは統合運用管理製品群として提供されているSystem Centerという製品群のうち、次の製品を担当します。
+SCOM(System Center Operations Manager), SCVMM (System Center Virtual Machine Manager), SCO(System Center Operations), SCSM(System Center Service manager) の技術サポートを担当しています。
 
+現在は完全にフルリモートで各自家から仕事、 (WfH, work from home と呼んでいます) しています。
 • Azure Backup
 https://docs.microsoft.com/ja-jp/azure/backup/
 • DPM/MABS
@@ -20,8 +23,8 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm
 https://docs.microsoft.com/ja-jp/azure/site-recovery/
 • Azure Migrate
 https://docs.microsoft.com/ja-jp/azure/migrate/
-• SCOM
-https://docs.microsoft.com/ja-jp/system-center/scom/
+• System Center 製品群　
+https://docs.microsoft.com/ja-jp/system-center/?view=sc-om-2019
 
 
 #### Azure Backup  ってどんな製品？
@@ -55,7 +58,8 @@ Azure Migrate は、オンプレミスのアプリとワークロード、およ
 Azure Migrate を使用することでオンプレミスの VMware VM、Hyper-V VM、物理サーバー、その他の仮想化された VM、データベース、Web アプリ、仮想デスクトップの評価と移行を一元化することができます。
 ![Azure Migrate](https://user-images.githubusercontent.com/71251920/133727696-e693d2f9-aaa2-4eeb-8bb6-498ea225a939.png)
 
-#### SCOM ってどんな製品？
+#### System　Center ってどんな製品？
+今回は System Center 製品群のうち、SCOM(System Center Operations Manager)に関してご説明させていただきます。
 Microsoft System Center の 1 つのコンポーネントである Operations Manager は、1 つのコンソールから多数のコンピューターのサービス、デバイス、および操作を監視できるソフトウェアです。
 Windows Server や Linux コンピューターなどのエージェント側の死活監視からログ情報/イベント情報の監視、アラート発砲まで一元的に機能をご提供します。
 ![SCOM](https://user-images.githubusercontent.com/71251920/133543828-aa1bc2cc-ae05-4b80-b53f-1a87b1ddce2f.png)
