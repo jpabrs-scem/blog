@@ -31,6 +31,20 @@ Azure VM のバックアップでは、ディスクのスナップショット�
 また、取得したスナップショットから復元を行うこともできます。
 ![azure_backup](https://user-images.githubusercontent.com/71251920/133543826-a5d8ab99-b617-47be-aff9-3db6ff30e445.png)
 
+#### Azure Site Recovery ってどんな製品？
+Azure Site Recovery (ASR)　は、データの保護を行うことで、メンテナンスや災害などによるシステム停止の際に、お客様のビジネス継続性の確保とディザスター リカバリー (BCDR) を可能とするための製品です。システム停止時には、プライマリ サイトからセカンダリ サイト へフェール オーバーすることで、ビジネス継続性を確保することができます。
+主に以下の環境のデータの保護を行うことができます。
+・Azure プライマリ リージョン から Azure セカンダリ リージョン への保護
+・オンプレミス VM / 物理サーバー サイト から Azure サイト への保護
+
+オンプレミス VM / 物理サーバー サイト から Azure サイト への保護の図：
+![ASR_P2A](https://user-images.githubusercontent.com/71251920/133694495-87f3774d-656f-4ee4-8728-206be247a534.png)
+
+#### Azure Migrate ってどんな製品？
+Azure Migrate は、オンプレミスのアプリとワークロード、およびプライベート/パブリック クラウド VM の検出、評価、および Azure への移行を追跡するための中央ハブであり、Azure Migrate ツールのほか、サードパーティの ISV オファリングが用意されています。
+Azure Migrate を使用することでオンプレミスの VMware VM、Hyper-V VM、物理サーバー、その他の仮想化された VM、データベース、Web アプリ、仮想デスクトップの評価と移行を一元化することができます。
+![Azure Migrate](https://user-images.githubusercontent.com/71251920/133727696-e693d2f9-aaa2-4eeb-8bb6-498ea225a939.png)
+
 #### SCOM ってどんな製品？
 Microsoft System Center の 1 つのコンポーネントである Operations Manager は、1 つのコンソールから多数のコンピューターのサービス、デバイス、および操作を監視できるソフトウェアです。
 Windows Server や Linux コンピューターなどのエージェント側の死活監視からログ情報/イベント情報の監視、アラート発砲まで一元的に機能をご提供します。
@@ -45,13 +59,3 @@ DPM (System Center Data Protection Manager)とMABS（Microsoft Azure Backup Serv
 ・Windows オペレーティング システムを実行するコンピューターのシステム状態のバックアップまたは完全なベア メタル バックアップ
 ・Windows または Linux を実行する Hyper-V 仮想マシンとVMWare仮想マシン
 ![DPM](https://user-images.githubusercontent.com/71251920/133694113-89f8a5a1-0261-48aa-8005-7b5dd33f4eca.png)
-
-
-#### Azure Site Recovery ってどんな製品？
-Azure Site Recovery (ASR)　は、データの保護を行うことで、メンテナンスや災害などによるシステム停止の際に、お客様のビジネス継続性の確保とディザスター リカバリー (BCDR) を可能とするための製品です。システム停止時には、プライマリ サイトからセカンダリ サイト へフェール オーバーすることで、ビジネス継続性を確保することができます。
-主に以下の環境のデータの保護を行うことができます。
-・Azure プライマリ リージョン から Azure セカンダリ リージョン への保護
-・オンプレミス VM / 物理サーバー サイト から Azure サイト への保護
-
-オンプレミス VM / 物理サーバー サイト から Azure サイト への保護の図：
-![ASR_P2A](https://user-images.githubusercontent.com/71251920/133694495-87f3774d-656f-4ee4-8728-206be247a534.png)
