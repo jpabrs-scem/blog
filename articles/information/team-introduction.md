@@ -9,9 +9,9 @@ disableDisclaimer: false
 <!-- more -->
 #### ABRS & SCEM チームについて
 我々のチームは文字通り、ABRSとSCEMという二つの領域をカバーしているチームです。
-ABRSチームは (Azure Backup and Recovery Service) は主にデータ保護ソリューションを提供する技術領域として Azure Backup 、SCDPM/MABS、 Azure Site Recovery 、Azure Migrate 、Azure Resource Mover 、Movere の技術サポートを担当しています。
+ABRSチーム(Azure Backup and Recovery Service) は主にデータ保護ソリューションを提供する技術領域として Azure Backup 、SCDPM/MABS、 Azure Site Recovery 、Azure Migrate 、Azure Resource Mover 、Movere の技術サポートを担当しています。
 
-また、SCEMチームは統合運用管理製品群として提供されているSystem Centerという製品群のうち、次の製品を担当します。
+また、SCEMチーム(System Center Enterprise Management)は統合運用管理製品群として提供されているSystem Centerという製品群のうち、次のEnterprise Management製品を担当します。
 SCOM(System Center Operations Manager), SCVMM (System Center Virtual Machine Manager), SCO(System Center Operations), SCSM(System Center Service manager) の技術サポートを担当しています。
 
 現在は完全にフルリモートで各自家から仕事、 (WfH, work from home と呼んでいます) しています。
