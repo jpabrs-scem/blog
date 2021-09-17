@@ -1,5 +1,5 @@
 ---
-title: 【作成中】ABRS & SCEM チームについて
+title: ABRS & SCEM チームについて
 date: 2021-09-17 12:00:00
 tags:
   - Information
