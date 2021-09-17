@@ -28,7 +28,7 @@ https://docs.microsoft.com/ja-jp/azure/site-recovery/
 • Azure Migrate
 https://docs.microsoft.com/ja-jp/azure/migrate/
 • System Center 製品群　
-https://docs.microsoft.com/ja-jp/system-center/?view=sc-om-2019
+https://docs.microsoft.com/ja-jp/system-center/
 
 
 #### Azure Backup  ってどんな製品？
