@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   
   
-  <title>Azure VM バックアップを任意のタイミングのみでバックアップしたい | Japan CSS ABRS &amp; SCEM Support Blog</title>
+  <title>Azure VM バックアップを任意のタイミングのみで取得したい | Japan CSS ABRS &amp; SCEM Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Azure VM バックアップを任意のタイミングのみでバックアップしたい皆様こんにちは。Azure Backup サポートの谷脇です。今回はお問い合わせをいただくことが多い、 “任意のタイミングのみでバックアップの取得をしたい”、というご要望について解説します。 まず、Azure VM バックアップはバックアップ ポリシーを利用しスケジュールされたバックアップを取得する運用を想定した製品仕様とな">
+  <meta name="description" content="Azure VM バックアップを任意のタイミングのみで取得したい皆様こんにちは。Azure Backup サポートの谷脇です。今回はお問い合わせをいただくことが多い、 “任意のタイミングのみでバックアップの取得をしたい”、というご要望について解説します。 まず、Azure VM バックアップはバックアップ ポリシーを利用しスケジュールされたバックアップを取得する運用を想定した製品仕様となっており">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Azure VM バックアップを任意のタイミングのみでバックアップしたい">
+<meta property="og:title" content="Azure VM バックアップを任意のタイミングのみで取得したい">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureBackup/invalid_schedule/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
-<meta property="og:description" content="Azure VM バックアップを任意のタイミングのみでバックアップしたい皆様こんにちは。Azure Backup サポートの谷脇です。今回はお問い合わせをいただくことが多い、 “任意のタイミングのみでバックアップの取得をしたい”、というご要望について解説します。 まず、Azure VM バックアップはバックアップ ポリシーを利用しスケジュールされたバックアップを取得する運用を想定した製品仕様とな">
+<meta property="og:description" content="Azure VM バックアップを任意のタイミングのみで取得したい皆様こんにちは。Azure Backup サポートの谷脇です。今回はお問い合わせをいただくことが多い、 “任意のタイミングのみでバックアップの取得をしたい”、というご要望について解説します。 まず、Azure VM バックアップはバックアップ ポリシーを利用しスケジュールされたバックアップを取得する運用を想定した製品仕様となっており">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/135618848-76248e66-8013-452e-a471-c4f7c8c37281.png">
 <meta property="article:published_time" content="2021-10-01T03:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-01T14:43:44.182Z">
+<meta property="article:modified_time" content="2021-10-01T14:50:37.380Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup">
 <meta name="twitter:card" content="summary">
@@ -90,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Azure VM バックアップを任意のタイミングのみでバックアップしたい
+      Azure VM バックアップを任意のタイミングのみで取得したい
     </h1>
   
 
@@ -102,15 +102,15 @@
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ccaa9133-04a9-5812-8500-13c450121fdc%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%82%92%E4%BB%BB%E6%84%8F%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AE%E3%81%BF%E3%81%A7%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%97%E3%81%9F%E3%81%84%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackup%2Finvalid_schedule%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackup%2Finvalid_schedule.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackup%2Finvalid_schedule.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ccaa9133-04a9-5812-8500-13c450121fdc%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%82%92%E4%BB%BB%E6%84%8F%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AE%E3%81%BF%E3%81%A7%E5%8F%96%E5%BE%97%E3%81%97%E3%81%9F%E3%81%84%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackup%2Finvalid_schedule%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackup%2Finvalid_schedule.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackup%2Finvalid_schedule.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackup/invalid_schedule/" data-id="cku8h8g7400010nmrb27rbguw" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackup/invalid_schedule/" data-id="cku8hhaq500010pmghrbj0xas" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<h4 id="Azure-VM-バックアップを任意のタイミングのみでバックアップしたい"><a href="#Azure-VM-バックアップを任意のタイミングのみでバックアップしたい" class="headerlink" title="Azure VM バックアップを任意のタイミングのみでバックアップしたい"></a>Azure VM バックアップを任意のタイミングのみでバックアップしたい</h4><p>皆様こんにちは。Azure Backup サポートの谷脇です。<br>今回はお問い合わせをいただくことが多い、 “任意のタイミングのみでバックアップの取得をしたい”、というご要望について解説します。</p>
+<h4 id="Azure-VM-バックアップを任意のタイミングのみで取得したい"><a href="#Azure-VM-バックアップを任意のタイミングのみで取得したい" class="headerlink" title="Azure VM バックアップを任意のタイミングのみで取得したい"></a>Azure VM バックアップを任意のタイミングのみで取得したい</h4><p>皆様こんにちは。Azure Backup サポートの谷脇です。<br>今回はお問い合わせをいただくことが多い、 “任意のタイミングのみでバックアップの取得をしたい”、というご要望について解説します。</p>
 <p>まず、Azure VM バックアップはバックアップ ポリシーを利用しスケジュールされたバックアップを取得する運用を想定した製品仕様となっております。<br>しかし、任意のタイミングのみでバックアップする場合、バックアップを取得するタイミング以外は基本的にバックアップポリシーが無効化された状態となります。<br>そのため、<strong>弊社としては任意のタイミングのみでバックアップを取得していただく運用を推奨しておりません。</strong></p>
 <p>一方、上記のように任意のタイミングのみでバックアップを行いたいというご要望は多く寄せられております。<br>任意のタイミングのみでバックアップを取得する運用を行う際の懸念点がございますので以下にてご紹介します。<br>懸念点を踏まえ、任意のタイミングのみでバックアップを取得する運用方法について解説させていただきます。</p>
 <p>以下の文章では、任意のタイミングで取得していただくバックアップを [アドホック バックアップ] 、スケジュールされ取得していただくバックアップを [スケジュール バックアップ] としています。</p>
@@ -186,7 +186,7 @@
           </li>
         
           <li>
-            <a href="">Azure VM バックアップを任意のタイミングのみでバックアップしたい</a>
+            <a href="">Azure VM バックアップを任意のタイミングのみで取得したい</a>
           </li>
         
           <li>
