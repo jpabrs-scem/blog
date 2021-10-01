@@ -1,5 +1,5 @@
 ---
-title: ABRS & SCEM チームについて
+title: グローバル アセンブリ キャッシュの警告イベントについて
 date: 2021-09-17 12:00:00
 tags:
   - Information
@@ -7,64 +7,25 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-#### ABRS & SCEM チームについて
-我々のチームは文字通り、ABRSとSCEMという二つの領域をカバーしているチームです。
-ABRSチーム(Azure Backup and Recovery Service) は主にデータ保護ソリューションを提供する技術領域として Azure Backup 、SCDPM/MABS、 Azure Site Recovery 、Azure Migrate 、Azure Resource Mover 、Movere の技術サポートを担当しています。
+#### GAC (グローバル アセンブリ キャッシュ) の警告イベントについて
+皆様こんにちは。Azure Backup サポートの谷脇です。
+今回はお問い合わせをいただくことが多い、 Windows VM のバックアップ取得時に発現するイベントログについて解説させていただきます。
 
-また、SCEMチーム(System Center Enterprise Management)は統合運用管理製品群として提供されているSystem Centerという製品群のうち、次のEnterprise Management製品を担当します。
-SCOM(System Center Operations Manager), SCVMM (System Center Virtual Machine Manager), SCO(System Center Operations), SCSM(System Center Service manager) の技術サポートを担当しています。
+バックアップを取得した際に、『グローバル アセンブリ キャッシュからのアセンブリの削除に失敗しました』の警告が表示される。
 
-現在は完全にフルリモートで各自家から仕事、 (WfH, work from home と呼んでいます) しています。
-新しく加入したメンバーも多いチームですが、フルリモートであっても Teams などをフル活用してメンバー間のコミュニケーションは活発に行われており、チーム全員楽しく新しいチャレンジができています。
-以下に当チームの代表的な製品をご紹介します。
+こちらの警告は、グローバルアセンブリキャッシュ (GAC) からファイルの削除に失敗した際に出力されます。
+※ グローバルアセンブリキャッシュとは
+コンピュータ上の多数のアプリケーション間で共有するためにインストールされたアセンブリを格納するマシン全体のコード キャッシュ。
 
-• Azure Backup
-https://docs.microsoft.com/ja-jp/azure/backup/
-• DPM/MABS
-https://docs.microsoft.com/ja-jp/system-center/dpm/dpm-overview
-https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm
-• Azure Site Recovery
-https://docs.microsoft.com/ja-jp/azure/site-recovery/
-• Azure Migrate
-https://docs.microsoft.com/ja-jp/azure/migrate/
-• System Center 製品群　
-https://docs.microsoft.com/ja-jp/system-center/
+Azure Backup では、VMのバックアップを取得する際に、以下の2つのファイルを削除、インストールする場合があります。このメッセージが発現した際は、GAC 上からその削除、インストールに失敗しています。
+・iaasvmazurestorage.dll
+・iaasvmsnapshotmessage.dll
 
+このエラーが出る要因として、以前のファイルが存在しない場合や、以前のファイルがロックされている場合が考えられます。しかしながらファイルの削除やインストールはリトライが行われリトライにより成功する場合も多くなっております。従って、正常に Azure Backup によるバックアップが取得できている場合、GAC 上のファイルは正常に参照できている状態であり、無視可能なエラーメッセージです。
 
-#### Azure Backup  ってどんな製品？
-Azure Backup はデータをバックアップし、それを Microsoft Azure クラウド から回復するための製品です。 
-例えば、Azure VM, Azure Files, Azure Managed Disks, Azure BLOB などのバックアップを行うことが出来ます。
-Azure VM のバックアップでは、ディスクのスナップショットを取得し、取得したスナップショットを Recovery Services コンテナーにデータ転送することで実現しています。
-また、取得したスナップショットから復元を行うこともできます。
-![azure_backup](https://user-images.githubusercontent.com/71251920/133728140-8c4f95d7-e3dc-4439-8356-056e0590aebf.png)
+以下の画面のようなイベントログが発現します。
 
-#### DPM/MABS ってどんな製品？
-DPM (System Center Data Protection Manager)とMABS（Microsoft Azure Backup Server）は、多様な保護対象をバックアップと回復するための製品です。
-バックアップされたデータはローカル・ディスクだけではなく、Microsoft Azure クラウドにも保存できます。
-主に下記のワークロードを保護する機能を提供しています。
-・Microsoft ワークロードのアプリケーション（SQL Server、Exchange、SharePoint など）
-・Windows オペレーティング システムを実行するコンピューターのファイル、フォルダー、ボリューム
-・Windows オペレーティング システムを実行するコンピューターのシステム状態のバックアップまたは完全なベア メタル バックアップ
-・Windows または Linux を実行する Hyper-V 仮想マシンとVMWare仮想マシン
-![DPM](https://user-images.githubusercontent.com/71251920/133728130-f8ca4a41-0a0b-42da-ad6f-108a80fe2908.png)
+![グローバル アセンブリ キャッシュのエラー](https://user-images.githubusercontent.com/71251920/135617775-6ac8b8e6-c1a7-4311-9375-8389248969fe.png)
 
-#### Azure Site Recovery ってどんな製品？
-Azure Site Recovery (ASR)　は、データの保護を行うことで、メンテナンスや災害などによるシステム停止の際に、お客様のビジネス継続性の確保とディザスター リカバリー (BCDR) を可能とするための製品です。システム停止時には、プライマリ サイトからセカンダリ サイト へフェール オーバーすることで、ビジネス継続性を確保することができます。
-主に以下の環境のデータの保護を行うことができます。
-・Azure プライマリ リージョン から Azure セカンダリ リージョン への保護
-・オンプレミス VM / 物理サーバー サイト から Azure サイト への保護
-
-オンプレミス VM / 物理サーバー サイト から Azure サイト への保護の図：
-![ASR_P2A](https://user-images.githubusercontent.com/71251920/133694495-87f3774d-656f-4ee4-8728-206be247a534.png)
-
-#### Azure Migrate ってどんな製品？
-Azure Migrate は、オンプレミスのアプリとワークロード、およびプライベート/パブリック クラウド VM の検出、評価、および Azure への移行を追跡するための中央ハブであり、Azure Migrate ツールのほか、サードパーティの ISV オファリングが用意されています。
-Azure Migrate を使用することでオンプレミスの VMware VM、Hyper-V VM、物理サーバー、その他の仮想化された VM、データベース、Web アプリ、仮想デスクトップの評価と移行を一元化することができます。
-![Azure Migrate](https://user-images.githubusercontent.com/71251920/133727696-e693d2f9-aaa2-4eeb-8bb6-498ea225a939.png)
-
-#### System　Center ってどんな製品？
-今回は System Center 製品群のうち、SCOM(System Center Operations Manager)に関してご説明させていただきます。
-Microsoft System Center の 1 つのコンポーネントである Operations Manager は、1 つのコンソールから多数のコンピューターのサービス、デバイス、および操作を監視できるソフトウェアです。
-Windows Server や Linux コンピューターなどのエージェント側の死活監視からログ情報/イベント情報の監視、アラート発砲まで一元的に機能をご提供します。
-![SCOM](https://user-images.githubusercontent.com/71251920/133543828-aa1bc2cc-ae05-4b80-b53f-1a87b1ddce2f.png)
-
+このエラーメッセージが発現することを抑止する方法はありませんが、正常にバックアップを取得できていたら上記の通り無視可能なエラーメッセージです。
+-
