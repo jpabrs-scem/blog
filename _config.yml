@@ -29,6 +29,7 @@ author: Japan CSS ABRS & SCEM Support Team
 root_tag_generator:
   root_tag_names:
     - Information
+    - Azure Backup
   sub_tag_limit: 20
 
 # URL
