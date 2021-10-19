@@ -2,7 +2,7 @@
 title: グローバル アセンブリ キャッシュの警告イベントについて
 date: 2021-10-01 12:00:00
 tags:
-  - Azure Backup 
+  - Azure VM Backup
 disableDisclaimer: false
 ---
 
