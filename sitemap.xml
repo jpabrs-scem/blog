@@ -4,43 +4,57 @@
   <url>
     <loc>https://jpabrs-scem.github.io/blog/information/team-introduction/</loc>
     
-    <lastmod>2021-10-01</lastmod>
+    <lastmod>2021-10-19</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackup/GAC/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</loc>
     
-    <lastmod>2021-10-01</lastmod>
+    <lastmod>2021-10-19</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackup/invalid_schedule/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline/</loc>
     
-    <lastmod>2021-10-01</lastmod>
+    <lastmod>2021-10-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
+    
+    <lastmod>2021-10-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
+    
+    <lastmod>2021-10-19</lastmod>
     
   </url>
   
 
   <url>
     <loc>https://jpabrs-scem.github.io/blog</loc>
-    <lastmod>2021-10-01</lastmod>
+    <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/tags/Azure-Backup/</loc>
-    <lastmod>2021-10-01</lastmod>
+    <loc>https://jpabrs-scem.github.io/blog/tags/Azure-VM-Backup/</loc>
+    <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/tags/Information/</loc>
-    <lastmod>2021-10-01</lastmod>
+    <lastmod>2021-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

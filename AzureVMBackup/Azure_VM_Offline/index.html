@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Azure VM Backup では オフライン バックアップができるのか | Japan CSS ABRS &amp; SCEM Support Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Azure VM Backup では オフライン バックアップができるのか皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、 Azure VM Backup でオフライン バックアップができるのかというご要望について解説します。こちらまず、結論から申し上げますと可能でございます。 オンラインバックアップについてまず、オンライン バックアップの場">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure VM Backup では オフライン バックアップができるのか">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
+<meta property="og:description" content="Azure VM Backup では オフライン バックアップができるのか皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、 Azure VM Backup でオフライン バックアップができるのかというご要望について解説します。こちらまず、結論から申し上げますと可能でございます。 オンラインバックアップについてまず、オンライン バックアップの場">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/137937912-912a42c1-f750-4c8b-a157-6a3db50f11c7.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/137937882-bb5ea0da-be8a-451c-bd3a-a24c4a8070c4.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/137937936-0d85b5e6-7bb8-4131-9553-ec7c9e0e0d58.png">
+<meta property="article:published_time" content="2021-10-20T03:00:00.000Z">
+<meta property="article:modified_time" content="2021-10-19T15:35:48.006Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure VM Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/137937912-912a42c1-f750-4c8b-a157-6a3db50f11c7.png">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS &amp; SCEM Support Blog" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS &amp; SCEM Support Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup,Azure Site Recovery,Azure Migrate および System Center 製品(Orchestrator , Operations/Virtual Machine/Service/Data Protection Manager)に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureVMBackup/Azure_VM_Offline" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Azure VM Backup では オフライン バックアップができるのか
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2021-10-20T03:00:00.000Z" itemprop="datePublished">2021-10-20</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8c1cd430-3b34-5f06-910f-801fac22037b%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%A7%E3%81%AF+%E3%82%AA%E3%83%95%E3%83%A9%E3%82%A4%E3%83%B3+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%AE%E3%81%8B%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FAzure_VM_Offline%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FAzure_VM_Offline.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FAzure_VM_Offline.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline/" data-id="ckuy90qo200000ns32n84cmd6" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<h4 id="Azure-VM-Backup-では-オフライン-バックアップができるのか"><a href="#Azure-VM-Backup-では-オフライン-バックアップができるのか" class="headerlink" title="Azure VM Backup では オフライン バックアップができるのか"></a>Azure VM Backup では オフライン バックアップができるのか</h4><p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回はお問い合わせをいただくことが多い、 Azure VM Backup でオフライン バックアップができるのかというご要望について解説します。<br>こちらまず、結論から申し上げますと可能でございます。</p>
+<h3 id="オンラインバックアップについて"><a href="#オンラインバックアップについて" class="headerlink" title="オンラインバックアップについて"></a>オンラインバックアップについて</h3><p>まず、オンライン バックアップの場合 、Azure VM Backup はWindows VM の場合も Linux VM の場合も、それぞれのエージェント (およびバックアップ拡張機能) と通信・連携し、スナップショットを取得しています。<br>その際の整合性は通常 Windows OS の場合アプリケーション整合性となり、Linux VM の場合はファイルシステム整合性 (スクリプトを構成している場合はアプリケーション整合性) となります。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/137937912-912a42c1-f750-4c8b-a157-6a3db50f11c7.png" alt="Windows OS のオンラインバックアップ - アプリケーション整合性"></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/137937882-bb5ea0da-be8a-451c-bd3a-a24c4a8070c4.png" alt="Linux OS のオンラインバックアップ - ファイルシステム整合性"></p>
+<h3 id="オフラインバックアップについて"><a href="#オフラインバックアップについて" class="headerlink" title="オフラインバックアップについて"></a>オフラインバックアップについて</h3><p>次に、オフライン バックアップの場合、VM の電源が落ちているのでエージェントは動いていないため、VM との連携をせずにスナップショットを取得します。(VM 内部と連携しません。)<br>その際の整合性は Windows VM / Linux VM を問わずクラッシュ整合性となります。<br><img src="https://user-images.githubusercontent.com/71251920/137937936-0d85b5e6-7bb8-4131-9553-ec7c9e0e0d58.png" alt="オフライン バックアップ - クラッシュ整合性"></p>
+<h3 id="留意点"><a href="#留意点" class="headerlink" title="留意点"></a>留意点</h3><p>上記のとおり、 Azure VM の電源はオン / オフ どちらでも Azure VM Backup を取得することが可能です。<br>留意点としましては、バックアップ実行中 (正確にはスナップショット取得中) には電源状態の変更を行わないようにお願いします。<br>Azure VM Backup が失敗する可能性がございます。</p>
+<h4 id="参考情報"><a href="#参考情報" class="headerlink" title="参考情報"></a>参考情報</h4><p>・Azure VM バックアップの概要 - スナップショットの整合性<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency</a><br>・Azure Linux VM のアプリケーション整合性バックアップ<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent</a></p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/Azure_VM_Offline.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../VMRestoring_NIC_Configuration/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Azure VM のリストアの際 NIC の設定が消えてしまう</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">Azure VM Backup では オフライン バックアップができるのか</a>
+          </li>
+        
+          <li>
+            <a href="../VMRestoring_NIC_Configuration/">Azure VM のリストアの際 NIC の設定が消えてしまう</a>
+          </li>
+        
+          <li>
+            <a href="../GAC/">グローバル アセンブリ キャッシュの警告イベントについて</a>
+          </li>
+        
+          <li>
+            <a href="../invalid_schedule/">Azure VM バックアップを任意のタイミングのみで取得したい</a>
+          </li>
+        
+          <li>
+            <a href="../../information/team-introduction/">ABRS &amp; SCEM チームについて</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">4</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">1</span><ul></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-VM-Backup/" style="font-size: 20px;">Azure VM Backup</a> <a href="../../tags/Information/" style="font-size: 10px;">Information</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
