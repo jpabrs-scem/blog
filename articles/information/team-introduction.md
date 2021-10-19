@@ -14,7 +14,7 @@ ABRS チーム (Azure Backup and Recovery Service) は主にデータ保護ソ�
 また、SCEMチーム (System Center Enterprise Management) は統合運用管理製品群として提供されている System Center という製品群のうち、次の Enterprise Management製品を担当します。
 SCOM (System Center Operations Manager), SCVMM (System Center Virtual Machine Manager), SCO (System Center Operations), SCSM (System Center Service manager) の技術サポートを担当しています。
 
-現在は完全にフルリモートで各自家から仕事、 (WfH, work from home と呼んでいます) しています。
+現在は完全にフルリモートで各自家から仕事、(WfH, work from home と呼んでいます) しています。
 新しく加入したメンバーも多いチームですが、フルリモートであっても Teams などをフル活用してメンバー間のコミュニケーションは活発に行われており、チーム全員楽しく新しいチャレンジができています。
 以下に当チームの代表的な製品をご紹介します。
 
