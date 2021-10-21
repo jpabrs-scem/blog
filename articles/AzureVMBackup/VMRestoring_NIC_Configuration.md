@@ -18,14 +18,16 @@ https://docs.microsoft.com/ja-jp/azure/best-practices-availability-paired-region
 
 
 ### 本事象の場合に発生する Error Code 
-` ` ` 
-[Error code]
+
+-----------------------------------------------------------
+**[Error code]**
 UserErrorVmProvisioningFailedDueToLackOfResources
-[Warning message]
+**[Warning message]**
 Failed in provisioning the restored VM due to insufficient capacity for the requested VM size in this region.
-[Recommended action]
+**[Recommended action]**
 Read more about improving likelihood of provisioning success at http://aka.ms/allocation-guidance. Alternatively try restoring disks to a storage account and then create a VM
-` ` ` 
+-----------------------------------------------------------
+
 ### 具体的な問題が起こるシナリオ
 例えば、東日本リージョンで Standard E4as_v4 の VM のバックアップを取得しており、クロスリージョン リストアにて西日本リージョンで新規 VM の作成を行う場合に発生いたします。
 
