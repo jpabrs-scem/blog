@@ -9,7 +9,7 @@ disableDisclaimer: false
 <!-- more -->
 ####  Azure VM Backup の クロスリージョン リストア をした際に Error Code ”UserErrorVmProvisioningFailedDueToLackOfResources” で失敗する。
 皆様こんにちは。Azure Backup サポートの山本です。
-今回はお問い合わせをいただくことが多い、 "クロスリージョン リストア を実施した際にセカンダリ リージョン (ペアリージョン) へリストアできない、` ` `Error Code : UserErrorVmProvisioningFailedDueToLackOfResources` ` `で失敗する" といったお問い合わせについて解説させていただきます。
+今回はお問い合わせをいただくことが多い、 **"クロスリージョン リストア を実施した際にセカンダリ リージョン (ペアリージョン) へリストアできない、Error Code : serErrorVmProvisioningFailedDueToLackOfResources で失敗する"** といったお問い合わせについて解説させていただきます。
 *プライマリリージョンが東日本リージョンの場合、セカンダリリージョンは西日本リージョンとなります。
 
 ペアリージョンの関係は下記をご確認いただければ幸いです。
