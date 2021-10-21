@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/138295057-8819eb23-3029-403d-9d87-f764ce7b026c.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/138295033-694d40b5-8e4e-4366-8f01-b91db652a38e.png">
 <meta property="article:published_time" content="2021-10-22T03:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-21T15:25:55.712Z">
+<meta property="article:modified_time" content="2021-10-21T15:26:52.620Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -105,7 +105,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+323b8a01-52ab-5b72-864c-2a307ab42071%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AE+%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%AA%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3+%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2+%E3%82%92%E3%81%97%E3%81%9F%E9%9A%9B%E3%81%AB+Error+Code+%E2%80%9DUserErrorVmProvisioningFailedDueToLackOfResources%E2%80%9D+%E3%81%A7%E5%A4%B1%E6%95%97%E3%81%99%E3%82%8B%E3%80%82%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FCRR_UserErrorVmProvisioningFailedDueToLackOfResources%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FCRR_UserErrorVmProvisioningFailedDueToLackOfResources.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FCRR_UserErrorVmProvisioningFailedDueToLackOfResources.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/" data-id="ckv13jrwn00010mnz760y20sr" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/" data-id="ckv13kz0l00010msbedf99mxl" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -117,7 +117,7 @@
 <p><strong>[Error code]</strong><br>UserErrorVmProvisioningFailedDueToLackOfResources<br><strong>[Warning message]</strong><br>Failed in provisioning the restored VM due to insufficient capacity for the requested VM size in this region.<br><strong>[Recommended action]</strong><br>Read more about improving likelihood of provisioning success at <a target="_blank" rel="noopener" href="http://aka.ms/allocation-guidance">http://aka.ms/allocation-guidance</a>. Alternatively try restoring disks to a storage account and then create a VM</p>
 <hr>
 <h3 id="具体的な問題が起こるシナリオ"><a href="#具体的な問題が起こるシナリオ" class="headerlink" title="具体的な問題が起こるシナリオ"></a>具体的な問題が起こるシナリオ</h3><p>例えば、東日本リージョンで Standard E4as_v4 の VM のバックアップを取得しており、クロスリージョン リストアにて西日本リージョンで新規 VM の作成を行う場合に発生いたします。</p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>原因としましては、<strong>東日本リージョンでは 対応しているが、西日本リージョンでは対応していない VM Size であること</strong>が原因でございます。 </p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>原因としましては、<strong>対象の VM が東日本リージョンでは 対応しているが、西日本リージョンでは対応していない VM Size であること</strong>が原因でございます。 </p>
 <p>下記 URL からリージョンごとにおける VM の対応状況が分かります。<br>今回の Standard E4as_v4の場合、東日本リージョン (Japan East) ではサポートされているが 、西日本リージョン (Japan West) ではサポートされていないことが分かります。<br>下記の URL の通り、東日本リージョン (Japan East) ではサポートされているが 、西日本リージョン (Japan West) ではサポートされていない VM Size が複数ございます。<br>・Products available by region( Virtual Machines)<br><a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines&amp;regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,japan-east,japan-west">https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines&amp;regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,japan-east,japan-west</a></p>
 <p><img src="https://user-images.githubusercontent.com/71251920/138295057-8819eb23-3029-403d-9d87-f764ce7b026c.jpg" alt="VM Size_Region_Compatibility"></p>
 <h3 id="回避策"><a href="#回避策" class="headerlink" title="回避策"></a>回避策</h3><p>上記の原因の場合、以下の 2 通りの対応策が考えられます。<br>1.ペアリージョンの両方でサポートされている VM Size を利用する。<br>2.一度 クロスリージョン リストア にて ”ディスクの復元” (VMの作成ではなく) をしていただき、ディスクから VM を作成し、その際に VM Size を変更する。<br>データディスクがある場合は復元したディスクを選択しアタッチする。(LUN 番号が入れ替わらないようにご注意ください)</p>
