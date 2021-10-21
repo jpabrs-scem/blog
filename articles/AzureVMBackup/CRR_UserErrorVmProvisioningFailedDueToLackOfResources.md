@@ -36,7 +36,7 @@ Read more about improving likelihood of provisioning success at http://aka.ms/al
 
 下記 URL からリージョンごとにおける VM の対応状況が分かります。
 今回の Standard E4as_v4の場合、東日本リージョン (Japan East) ではサポートされているが 、西日本リージョン (Japan West) ではサポートされていないことが分かります。
-下記のURLの通り、東日本リージョン (Japan East) ではサポートされているが 、西日本リージョン (Japan West) ではサポートされていない VM Size が複数ございます。
+下記の URL の通り、東日本リージョン (Japan East) ではサポートされているが 、西日本リージョン (Japan West) ではサポートされていない VM Size が複数ございます。
 ・Products available by region( Virtual Machines)
 https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,japan-east,japan-west
  
