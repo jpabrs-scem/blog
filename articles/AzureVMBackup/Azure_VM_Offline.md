@@ -34,7 +34,7 @@ disableDisclaimer: false
 Azure VM Backup が失敗する可能性がございます。
 
 
-#### 参考情報
+### 参考情報
 ・Azure VM バックアップの概要 - スナップショットの整合性
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency
 ・Azure Linux VM のアプリケーション整合性バックアップ
