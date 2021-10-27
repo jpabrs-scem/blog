@@ -19,6 +19,8 @@ disableDisclaimer: false
 
 ・Azure VM バックアップの概要 - スナップショットの整合性
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency
+・Azure Linux VM のアプリケーション整合性バックアップ
+https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent
 
 ![Windows OS のオンラインバックアップ - アプリケーション整合性](https://user-images.githubusercontent.com/71251920/137937912-912a42c1-f750-4c8b-a157-6a3db50f11c7.png)
 
