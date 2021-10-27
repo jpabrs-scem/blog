@@ -15,7 +15,10 @@ disableDisclaimer: false
 
 ### オンラインバックアップについて
 まず、オンライン バックアップの場合 、Azure VM Backup は Windows VM の場合も Linux VM の場合も、それぞれのエージェント (およびバックアップ拡張機能) と通信・連携し、スナップショットを取得しています。
-その際の整合性は通常 Windows OS の場合は vSS (ボリューム シャドウ コピー サービス) と連携しアプリケーション整合性となり、Linux VM の場合は通常ファイルシステム整合性 (スクリプトを構成している場合はアプリケーション整合性) となります。
+その際の整合性は通常 Windows OS の場合は VSS (ボリューム シャドウ コピー サービス) と連携しアプリケーション整合性となり、Linux VM の場合は通常ファイルシステム整合性 (スクリプトを構成している場合はアプリケーション整合性) となります。
+
+・Azure VM バックアップの概要 - スナップショットの整合性
+https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency
 
 ![Windows OS のオンラインバックアップ - アプリケーション整合性](https://user-images.githubusercontent.com/71251920/137937912-912a42c1-f750-4c8b-a157-6a3db50f11c7.png)
 
