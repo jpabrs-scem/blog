@@ -62,6 +62,6 @@ https://docs.microsoft.com/ja-jp/azure/virtual-machines/faq-for-disks#----------
 詳細手順に関しましては、 Azure Iaas テクニカル サポートチームより、下記のブログがございますので参考にしていただければ幸いです。
 なお、下記リンク先では OS ディスクに限定していますが、データディスクでも同様の手順で既存のディスク (リストアされたディスク) の名前を変更することが可能です。
 ・既存 VM の OS ディスクのリソース名を変更する
-https://azuresupportcenter.msftcloudes.com/resourceexplorerv2/resource/%2Fsubscriptions%2F972e4399-ade0-4c3f-8130-8e2ba673c8c9%2FresourceGroups%2Frg-7001-spgpr-01-jpe%2Fproviders%2Fmicrosoft.compute%2Fvirtualmachines%2Fvm-spgtpr-01?srId=2111020060001146&tab=Diagnostics
+https://jpaztech.github.io/blog/vm/how-to-change-os-disk-name/
 
 
