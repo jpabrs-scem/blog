@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backupでリストアされるディスク名に関して
-date: 2021-10-20 12:00:00
+date: 2021-11-03 12:00:00
 tags:
   - Azure VM Backup
 disableDisclaimer: false
