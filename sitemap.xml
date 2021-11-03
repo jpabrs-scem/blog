@@ -16,20 +16,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
-    
-    <lastmod>2021-11-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline/</loc>
-    
-    <lastmod>2021-11-03</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/</loc>
     
     <lastmod>2021-11-03</lastmod>
@@ -45,6 +31,20 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
+    
+    <lastmod>2021-11-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
+    
+    <lastmod>2021-11-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline/</loc>
     
     <lastmod>2021-11-03</lastmod>
     
