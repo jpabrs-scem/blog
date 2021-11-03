@@ -42,8 +42,9 @@ Azure VM Backup ではディスクの情報をバックアップしますが、N
 結論から申し上げますと、Azure VM Backupからリストアしたディスク含め、Azure のマネージドディスクは、下記のとおり**作成済のディスクの名前を変更することはできません**。
 ・ディスクに関してよく寄せられる質問 - マネージド ディスクまたはアンマネージド ディスクの名前を、作成後に変更できますか?
 https://docs.microsoft.com/ja-jp/azure/virtual-machines/faq-for-disks#------------------------------------------
+>マネージド ディスクの名前は変更できません。 ただし、アンマネージド ディスクの場合は、現在 VHD または VM にアタッチされていなければ、名前を変更できます。
 
-そのため、Azure VM Backup によってリストアされたディスク名を変更されたい場合、代替案としては作業ステップが多いですが、下記がございます。
+そのため、Azure VM Backup によってリストアされたディスク名を変更されたい場合、代替案として下記がございます。
 
 ### 代替案
 〈作業概要〉
@@ -59,7 +60,7 @@ https://docs.microsoft.com/ja-jp/azure/virtual-machines/faq-for-disks#----------
 
 
 詳細手順に関しましては、 Azure Iaas テクニカル サポートチームより、下記のブログがございますので参考にしていただければ幸いです。
-なお、下記リンク先ではOSディスクに限定していますが、データディスクでもどうようの手順で既存のディスク(リストアされたディスク) の名前を変更することが可能です。
+なお、下記リンク先では OS ディスクに限定していますが、データディスクでも同様の手順で既存のディスク (リストアされたディスク) の名前を変更することが可能です。
 ・既存 VM の OS ディスクのリソース名を変更する
 https://azuresupportcenter.msftcloudes.com/resourceexplorerv2/resource/%2Fsubscriptions%2F972e4399-ade0-4c3f-8130-8e2ba673c8c9%2FresourceGroups%2Frg-7001-spgpr-01-jpe%2Fproviders%2Fmicrosoft.compute%2Fvirtualmachines%2Fvm-spgtpr-01?srId=2111020060001146&tab=Diagnostics
 
