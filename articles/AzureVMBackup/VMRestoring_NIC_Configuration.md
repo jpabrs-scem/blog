@@ -30,18 +30,15 @@ NIC を指定できることが分かります。
 
 ### <リストアされたディスク命名規則について>
 ディスクの復元が完了しますとリソース グループに OS ディスクとデータ ディスク (ある場合) が以下の命名規則で作成されます。
-` ` ` 
-     <VM名> - osdisk – yyyymmdd - hhmmss
-` ` ` 
-` ` ` 
-     <VM名> - datadisk - <lun 番号> - yyyymmdd – hhmmss
-` ` ` 
+
+>    <VM名> - osdisk - yyyymmdd - hhmmss
+>    <VM名> - datadisk - <lun 番号> - yyyymmdd – hhmmss
+
 
 なお、VM 名に - が入っている場合には省略されます。
 例えば、Windows2019-Disk-Test という VM 名の場合は下記のディスク名で復元されます。
-` ` `  　　　　
-     windows2019disktest-osdisk–20210414-125726
-` ` ` 
+　　　
+>windows2019disktest-osdisk–20210414-125726
 
 ### 参考情報
 ・Azure portal で Azure VM データを復元する方法 - ディスクを復元する
