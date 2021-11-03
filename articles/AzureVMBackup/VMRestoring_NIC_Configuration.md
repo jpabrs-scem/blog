@@ -40,7 +40,7 @@ NIC を指定できることが分かります。
 なお、VM 名に - が入っている場合には省略されます。
 例えば、Windows2019-Disk-Test という VM 名の場合は下記のディスク名で復元されます。
 ` ` `  　　　　
-     Windows2019DiskTest-osdisk–20210414-125726
+     windows2019disktest-osdisk–20210414-125726
 ` ` ` 
 
 ### 参考情報
