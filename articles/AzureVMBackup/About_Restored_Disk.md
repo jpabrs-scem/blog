@@ -21,7 +21,7 @@ disableDisclaimer: false
 ### <リストアされたディスク命名規則について>
 ディスクの復元が完了しますとリソース グループに OS ディスクとデータ ディスク (ある場合) が以下の命名規則で作成されます。
 
->     <VM名> - osdisk – yyyymmdd - hhmmss
+>    <VM名> - osdisk - yyyymmdd - hhmmss
 >    <VM名> - datadisk - <lun 番号> - yyyymmdd – hhmmss
 
 
@@ -46,7 +46,7 @@ disableDisclaimer: false
 ＊任意の名前のディスクの作成完了後、変更前のディスクは不要であれば削除いただいてかまいません。
 
  
-下記のように、ディスクのスナップショットからの作成の場合、任意の名前を指定することが可能です。
+下記のように、ディスクのスナップショットからのディスクの作成の場合、任意の名前を指定することが可能です。
 ![CreateDiskFromSnapshot](https://user-images.githubusercontent.com/71251920/140078998-fe56c03e-f230-4c17-85c6-da53d170172a.jpg)
 
 
