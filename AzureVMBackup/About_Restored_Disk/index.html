@@ -6,17 +6,17 @@
   
   <title>Azure VM Backupでリストアされるディスク名に関して | Japan CSS ABRS &amp; SCEM Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Azure VM Backupでリストアされるディスク名に関してこんにちは、Azure Backup サポートの山本です。今回は、Azure VM Backupでリストアされるディスク名に関してよくいただくお問い合わせとして、下記 2 点についてご案内いたします。１．「リストアするディスクの名前を指定できるか」２．「リストアしたディスクの名前を変更可能か」 １．「リストアするディスクの名前を指定">
+  <meta name="description" content="Azure VM Backupでリストアされるディスク名に関してこんにちは、Azure Backup サポートの山本です。今回は、Azure VM Backup でリストアされるディスク名に関してよくいただくお問い合わせとして、下記 2 点についてご案内いたします。１．「リストアするディスクの名前を指定できるか」２．「リストアしたディスクの名前を変更可能か」 １．「リストアするディスクの名前を指">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure VM Backupでリストアされるディスク名に関して">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
-<meta property="og:description" content="Azure VM Backupでリストアされるディスク名に関してこんにちは、Azure Backup サポートの山本です。今回は、Azure VM Backupでリストアされるディスク名に関してよくいただくお問い合わせとして、下記 2 点についてご案内いたします。１．「リストアするディスクの名前を指定できるか」２．「リストアしたディスクの名前を変更可能か」 １．「リストアするディスクの名前を指定">
+<meta property="og:description" content="Azure VM Backupでリストアされるディスク名に関してこんにちは、Azure Backup サポートの山本です。今回は、Azure VM Backup でリストアされるディスク名に関してよくいただくお問い合わせとして、下記 2 点についてご案内いたします。１．「リストアするディスクの名前を指定できるか」２．「リストアしたディスクの名前を変更可能か」 １．「リストアするディスクの名前を指">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://docs.microsoft.com/ja-jp/azure/virtual-machines/faq-for-disks#------------------------------------------">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/140078998-fe56c03e-f230-4c17-85c6-da53d170172a.jpg">
 <meta property="article:published_time" content="2021-11-03T03:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-03T14:46:50.241Z">
+<meta property="article:modified_time" content="2021-11-03T14:48:33.402Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -105,13 +105,13 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9848a47d-d721-525a-9afc-dbd115b04099%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup%E3%81%A7%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%95%E3%82%8C%E3%82%8B%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%90%8D%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FAbout_Restored_Disk%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FAbout_Restored_Disk.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FAbout_Restored_Disk.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/" data-id="ckvjmvjzs00000mqi37j36rgx" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/" data-id="ckvjmxrvg00000lqv5x90hggp" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<h4 id="Azure-VM-Backupでリストアされるディスク名に関して"><a href="#Azure-VM-Backupでリストアされるディスク名に関して" class="headerlink" title="Azure VM Backupでリストアされるディスク名に関して"></a>Azure VM Backupでリストアされるディスク名に関して</h4><p>こんにちは、Azure Backup サポートの山本です。<br>今回は、Azure VM Backupでリストアされるディスク名に関してよくいただくお問い合わせとして、下記 2 点についてご案内いたします。<br><strong>１．「リストアするディスクの名前を指定できるか」</strong><br><strong>２．「リストアしたディスクの名前を変更可能か」</strong></p>
+<h4 id="Azure-VM-Backupでリストアされるディスク名に関して"><a href="#Azure-VM-Backupでリストアされるディスク名に関して" class="headerlink" title="Azure VM Backupでリストアされるディスク名に関して"></a>Azure VM Backupでリストアされるディスク名に関して</h4><p>こんにちは、Azure Backup サポートの山本です。<br>今回は、Azure VM Backup でリストアされるディスク名に関してよくいただくお問い合わせとして、下記 2 点についてご案内いたします。<br><strong>１．「リストアするディスクの名前を指定できるか」</strong><br><strong>２．「リストアしたディスクの名前を変更可能か」</strong></p>
 <h3 id="１．「リストアするディスクの名前を指定できるか」"><a href="#１．「リストアするディスクの名前を指定できるか」" class="headerlink" title="１．「リストアするディスクの名前を指定できるか」"></a>１．「リストアするディスクの名前を指定できるか」</h3><p>結論から申し上げますと、リストアにて作成されるディスクの名前は指定することができません。<br>また、現在の仕様として下記のような命名規則で作成されます。</p>
 <h3 id="lt-リストアされたディスク命名規則について-gt"><a href="#lt-リストアされたディスク命名規則について-gt" class="headerlink" title="&lt;リストアされたディスク命名規則について&gt;"></a>&lt;リストアされたディスク命名規則について&gt;</h3><p>ディスクの復元が完了しますとリソース グループに OS ディスクとデータ ディスク (ある場合) が以下の命名規則で作成されます。<br><code> </code> <code>      &lt;VM名&gt; - osdisk – yyyymmdd - hhmmss</code> <code> </code><br><code> </code> <code>      &lt;VM名&gt; - datadisk - &lt;lun 番号&gt; - yyyymmdd – hhmmss</code> <code> </code> </p>
 <p>なお、VM 名に - が入っている場合には省略されます。<br>例えば、Windows2019-Disk-Test という VM 名の場合は下記のディスク名で復元されます。<br><code> </code> <code> 　　　　 windows2019disktest-osdisk–20210414-125726</code> <code> </code> </p>
@@ -120,7 +120,7 @@
 <p>マネージド ディスクの名前は変更できません。 ただし、アンマネージド ディスクの場合は、現在 VHD または VM にアタッチされていなければ、名前を変更できます。</p>
 </blockquote>
 <p>そのため、Azure VM Backup によってリストアされたディスク名を変更されたい場合、代替案として下記がございます。</p>
-<h3 id="代替案"><a href="#代替案" class="headerlink" title="代替案"></a>代替案</h3><p>〈作業概要〉<br>1）復元された OSディスク・データディスクの「スナップショットの作成」を実施<br>2）作成された OSディスク・データ ディスクのスナップショットを選択のうえ、さらに「ディスクの作成」を実施（このとき、「ディスク名」を希望の名前で作成）<br>3）仮想マシンへ３）で作成したディスクを、スワップ・アタッチ<br>＊任意の名前のディスクの作成完了後、変更前のディスクは不要であれば削除いただいてかまいません。</p>
+<h3 id="代替案"><a href="#代替案" class="headerlink" title="代替案"></a>代替案</h3><p>〈作業概要〉<br>1）復元された OS ディスク・データディスクの「スナップショットの作成」を実施<br>2）作成された OS ディスク・データ ディスクのスナップショットを選択のうえ、さらに「ディスクの作成」を実施（このとき、「ディスク名」を希望の名前で作成）<br>3）仮想マシンへ３）で作成したディスクを、スワップ・アタッチ<br>＊任意の名前のディスクの作成完了後、変更前のディスクは不要であれば削除いただいてかまいません。</p>
 <p>下記のように、ディスクのスナップショットからの作成の場合、任意の名前を指定することが可能です。<br><img src="https://user-images.githubusercontent.com/71251920/140078998-fe56c03e-f230-4c17-85c6-da53d170172a.jpg" alt="CreateDiskFromSnapshot"></p>
 <p>詳細手順に関しましては、 Azure Iaas テクニカル サポートチームより、下記のブログがございますので参考にしていただければ幸いです。<br>なお、下記リンク先では OS ディスクに限定していますが、データディスクでも同様の手順で既存のディスク (リストアされたディスク) の名前を変更することが可能です。<br>・既存 VM の OS ディスクのリソース名を変更する<br><a target="_blank" rel="noopener" href="https://jpaztech.github.io/blog/vm/how-to-change-os-disk-name/">https://jpaztech.github.io/blog/vm/how-to-change-os-disk-name/</a></p>
 
