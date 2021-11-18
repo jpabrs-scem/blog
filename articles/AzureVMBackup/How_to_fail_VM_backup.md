@@ -127,7 +127,7 @@ https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli#get-properties-in-a-d
 上記警告については、現在使用可能な ”Get-AzRecoveryServicesBackupJobDetail” のエイリアス ”Get-AzRecoveryServicesBackupJobDetails” が将来的に廃止されていることを示しますが、上記のコマンドであれば使用していないので無視していただいて構いません。
 
 また下記コマンドを実行していただくことで警告を表示させないことが可能です。
->コマンド：Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
+>コマンド：` ` `Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"` ` `
 
 上記のコマンドを実行したところ警告が出ていないことが分かります。
 
