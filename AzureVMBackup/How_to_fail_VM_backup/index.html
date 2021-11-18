@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142249588-14b3aca1-3e4d-4948-81a9-b874ec1b5dc1.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142242086-55eda1c2-5509-4bac-9c5c-c7d1b64c3401.png">
 <meta property="article:published_time" content="2021-11-18T03:00:00.000Z">
-<meta property="article:modified_time" content="2021-11-18T02:56:53.307Z">
+<meta property="article:modified_time" content="2021-11-18T03:01:30.654Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -114,13 +114,13 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6160a371-98be-5571-99d1-e75116e8544e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B+Take+Snapshot+%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA%E3%81%AE%E7%A2%BA%E8%AA%8D%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHow_to_fail_VM_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHow_to_fail_VM_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHow_to_fail_VM_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="ckw4d4bw800050ms4dxrl6icl" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="ckw4daad1000a0on05sg73fh4" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回はお問い合わせをいただくことが多い、 <strong>“Azure VM Backup における Take Snapshot フェーズの確認方法”</strong>  について解説させていただきます。<br>Azure VM Backup では  Take Snapshot フェーズ が終わっていれば VM の再起動などを実施いただいても影響がないため、**Take Snapshot フェーズの “ステータス確認を確認したい”、”かかった時間を知りたい”**、というお問い合わせをよくいただきます。</p>
+<p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回はお問い合わせをいただくことが多い、 <strong>“Azure VM Backup における Take Snapshot フェーズの確認方法”</strong>  について解説させていただきます。<br>Azure VM Backup では  Take Snapshot フェーズ が終わっていれば VM の再起動などを実施いただいても影響がないため、**Take Snapshot フェーズの “ステータス確認を確認したい 、かかった時間を知りたい”**、というお問い合わせをよくいただきます。</p>
 <p>まず、はじめに前提知識として Azure VM Backup ではバックアップを取得する際に下記 2 つのサブタスクがございます。<br>1.Take Snapshot (スナップショットの取得)<br>2.Transfer data to vault (Recovery Services コンテナーへの転送)<br><img src="https://user-images.githubusercontent.com/71251920/142253918-138343ac-b7dc-4a35-9e6e-180b4b5542f8.png" alt="Azure VM Backupの 2 つのサブタスク"></p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
 <p><a href="#1">1. サブタスク (Take Snapshot フェーズ) 確認方法</a><br> <a href="#1-1">1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法</a><br> <a href="#1-2">1-2. Azure CLI を用いたサブタスク (Take Snapshot フェーズ) 確認方法</a><br> <a href="#1-3">1-3. Azure PowerShell を用いたサブタスク (Take Snapshot フェーズ) 確認方法</a><br><a href="#2">2. サブタスク (Take Snapshot フェーズ) にかかった時間を確認する方法</a></p>
