@@ -47,11 +47,11 @@ Azure VM Backup では  Take Snapshot フェーズ が終わっていれば VM �
 
 #### 0.事前準備
 　 Azure へログインします。ログインしている環境であれば不要です。
-  >コマンド：az login
+  >コマンド：` ` `az login` ` `
 
 #### 1.Name 値 の取得 /  バックアップ ジョブのステータス確認
-  >コマンド：az backup job list --resource-group < RSV リソースグループ名> --vault-name < RSV 名> --status inprogress​ -o table
-  >コマンド例：az backup job list --resource-group RG-NormalTest --vault-name RSV-JPE-LRS --status inprogress​ -o table
+  >コマンド：` ` `az backup job list --resource-group < RSV リソースグループ名> --vault-name < RSV 名> --status inprogress​ -o table` ` `
+  >コマンド例：` ` `az backup job list --resource-group RG-NormalTest --vault-name RSV-JPE-LRS --status inprogress​ -o table` ` `
 
 上記コマンドを実行いただくと実行中のバックアップ ジョブの name 値が取得できます。
  出力結果を Azure VM Backup の実行中のバックアップ ジョブに限定する場合は "--backup-management-type AzureIaasVM" を付けることで可能です。
@@ -63,15 +63,15 @@ Azure VM Backup では  Take Snapshot フェーズ が終わっていれば VM �
 name 値 を用いて下記のコマンドを実行することでサブタスクのステータスが確認できます。
 下記例では Take Snapshot のステータスが Completed 、Transfer data to vault のステータスが InProgress 、となっており、スナップショットの取得が終わり、 Recovery Services コンテナーへの転送中であることが分かります。
 
->コマンド：az backup job show --name <name値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名> --query properties.extendedInfo.tasksList -o table
+>コマンド：` ` `az backup job show --name <name値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名> --query properties.extendedInfo.tasksList -o table` ` `
 
->コマンド例 : az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS --query properties.extendedInfo.tasksList -o table
+>コマンド例 :` ` `az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS --query properties.extendedInfo.tasksList -o table` ` `
 
 ![Check_Subtask_Azure_CLI_1](https://user-images.githubusercontent.com/71251920/142236727-60dfeae5-4960-4f91-a96e-c9d223acaff2.png)
 
 --query オプションを付けない場合は下記の部分から確認できます。
->コマンド：az backup job show --name < name 値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名>
->コマンド例：az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS
+>コマンド：` ` `az backup job show --name < name 値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名>` ` `
+>コマンド例：` ` `az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS` ` `
 
 ![Check_Subtask_Azure_CLI_2](https://user-images.githubusercontent.com/71251920/142236740-9817d4cf-13a9-480b-816c-ba09e252aea6.png)
 
@@ -88,29 +88,29 @@ https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli#get-properties-in-a-d
 
 #### 0.事前準備
 　 Azure へログインします。ログインしている環境であれば不要です。
-  >コマンド：Connect-AzAccount　　
+  >コマンド：` ` `Connect-AzAccount` ` `　　
 
 #### 1.定数を設定します。
->コマンド：$Vault = Get-AzRecoveryServicesVault -Name ”< RSV 名>”
->コマンド例：$Vault = Get-AzRecoveryServicesVault -Name ”RSV-JPE-LRS”
+>コマンド：` ` `$Vault = Get-AzRecoveryServicesVault -Name ”< RSV 名>”` ` `
+>コマンド例：` ` `$Vault = Get-AzRecoveryServicesVault -Name ”RSV-JPE-LRS”` ` `
 
->コマンド：$VMName = "< VM 名>"
->コマンド例：$VMName = "VM-Win10"
+>コマンド：` ` `$VMName = "< VM 名>"` ` `
+>コマンド例：` ` `$VMName = "VM-Win10"` ` `
 
 ![configure_const](https://user-images.githubusercontent.com/71251920/142237893-8c25f4e9-4db1-4da5-b27b-7f33160e893a.png)
 
-#### 2.実行中のバックアップ ジョブの情報を取得・表示
+#### 2.実行中のバックアップ ジョブの情報を取得・表示<a id="a"></a>
 下記コマンドを実行することで、指定した VM の実行中のバックアップ ジョブの一覧が確認できます。
 下記例では1つしかないため、$Jobs[0] に実行中のバックアップ ジョブの情報が格納されます。
 複数ある場合は直近に実行されたものから若い番号に格納されます。
 
 >コマンド：
->$Jobs = (Get-AzRecoveryservicesBackupJob -Status "InProgress" -VaultId $Vault.id | ? {$_.WorkloadName -eq $vmName})
->$Jobs
+>` ` `$Jobs = (Get-AzRecoveryservicesBackupJob -Status "InProgress" -VaultId $Vault.id | ? {$_.WorkloadName -eq $vmName})` ` `
+>` ` `$Jobs` ` `
 
 ![Check_job_status_ps_1](https://user-images.githubusercontent.com/71251920/142238480-a33273d9-7e95-43e0-b23a-451b947fd4f3.png)
 
->コマンド：$Jobs[0]
+>コマンド：` ` `$Jobs[0]` ` `
 
 ![Check_job_status_ps_2](https://user-images.githubusercontent.com/71251920/142238471-c9927a38-86e5-4a5d-9140-dee620472a93.png)
 
@@ -119,8 +119,8 @@ https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli#get-properties-in-a-d
 下記例では、Take Snapshot は Completed、Transfer data to vault は InProgress 、となっており、スナップショットの取得が終わり、 Recovery Services コンテナーへの転送中であることが分かります。
 
 >コマンド：
->$SubTasks = Get-AzRecoveryServicesBackupJobDetail -Job $Jobs[0]  -VaultId $Vault.id
->$SubTasks.subtasks
+>` ` `$SubTasks = Get-AzRecoveryServicesBackupJobDetail -Job $Jobs[0]  -VaultId $Vault.id` ` `
+>` ` `$SubTasks.subtasks` ` `
 
 ![Check_sub_task_ps_1](https://user-images.githubusercontent.com/71251920/142249583-ef423e62-9bef-4352-bc34-6a87edf18b4a.png)
 
@@ -137,10 +137,10 @@ https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli#get-properties-in-a-d
 https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/breaking-changes-messages-help.md#how-do-i-get-rid-of-the-warnings
 
 #### 補足
-なお、**2.実行中のバックアップ ジョブの情報を取得・表示** で下記のように　VM 名を指定しない場合、その他の実行中のバックアップ ジョブも表示されます。(実行中のその他の VM がある場合)
+なお、[2.実行中のバックアップ ジョブの情報を取得・表示](#a) で下記のように　VM 名を指定しない場合、その他の実行中のバックアップ ジョブも表示されます。(実行中のその他の VM がある場合)
 >コマンド：
->$Jobs = Get-AzRecoveryservicesBackupJob -Status "InProgress" -VaultId $Vault.id
->$Jobs
+>` ` `$Jobs = Get-AzRecoveryservicesBackupJob -Status "InProgress" -VaultId $Vault.id` ` `
+>` ` `$Jobs` ` `
 
 その際の $Jobs[0]、$Jobs[1] の値は次のようになります。
 ![Check_job_status_ps_3](https://user-images.githubusercontent.com/71251920/142242086-55eda1c2-5509-4bac-9c5c-c7d1b64c3401.png)
