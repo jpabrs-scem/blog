@@ -9,7 +9,7 @@ disableDisclaimer: false
 <!-- more -->
 皆様こんにちは。Azure Backup サポートの山本です。
 今回はお問い合わせをいただくことが多い、 **"Azure VM Backup における Take Snapshot フェーズの確認方法"**  について解説させていただきます。
-Azure VM Backup では  Take Snapshot フェーズ が終わっていれば VM の再起動などを実施いただいても影響がないため、**Take Snapshot フェーズの "ステータス確認を確認したい 、かかった時間を知りたい"**、というお問い合わせをよくいただきます。
+Azure VM Backup では  Take Snapshot フェーズ が終わっていれば VM の再起動などを実施いただいても影響がないため、**Take Snapshot フェーズのステータス確認を確認したい、かかった時間を知りたい**、というお問い合わせをよくいただきます。
 
 まず、はじめに前提知識として Azure VM Backup ではバックアップを取得する際に下記 2 つのサブタスクがございます。
 1.Take Snapshot (スナップショットの取得)
