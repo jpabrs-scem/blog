@@ -12,7 +12,7 @@ disableDisclaimer: false
 今回は、**Azure VM Backup を故意に失敗させる方法**について、ご案内いたします。
 
 ## 今回故意的にエラーを発生させる仕組み
-VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Recovery Services コンテナー (Azure Backup service) との通信ができない状態を作ります。
+VM 内の Windows Azure Guest Agent (VM agent) を停止させ、Azure 側の Recovery Services コンテナー (Azure Backup service) との通信ができない状態を作ります。
 この状態で Backup 取得をしようとすると、VM agent と通信できないためにエラーが発生し、Backup が失敗となります。
 ![How_to_Backup_Fail](https://user-images.githubusercontent.com/71251920/142736316-5995d329-63d1-4b63-acd5-7f3da9f90cf9.png)
 
