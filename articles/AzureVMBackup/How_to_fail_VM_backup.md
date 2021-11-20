@@ -119,7 +119,7 @@ Backup 対象の VM にリモートログインし、Services を開き、下記
 > Recovery Service コンテナー名 : vault-BackupFailTest
 
 ### 2.2手順概略 
-下記コマンドを実行しプロセスを停止しバックアップを失敗させます。
+下記コマンドを実行しagent プロセスを停止しバックアップを失敗させます。
 失敗したのを確認したのち、Agent の再起動を行います。
 
 #### Agent の停止
@@ -156,7 +156,7 @@ Suse & RHEL & CentOS の場合
 > waagent.service
 
 
-下記の手順でバックアップを失敗させます。
+下記の手順で agentのプロセスを停止し、バックアップを失敗させます。
 #### Agent の停止
 ・Backup 対象の VM に SSH 接続します。
 
