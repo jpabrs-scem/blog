@@ -32,8 +32,7 @@ VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Re
 >	4.自動起動を停止
 >	　（Ubuntu の場合）` ` `sudo systemctl disable walinuxagent ` ` `
 >	　（Ubuntu 以外の場合）` ` `sudo systemctl disable waagent` ` `
->	
->	5.Backup を実行し、エラーの確認
+>	>	5.Backup を実行し、エラーの確認
 >	・Agent の再度起動
 >	（Ubuntu の場合）
 >	　　` ` `sudo systemctl start walinuxagent ` ` `
