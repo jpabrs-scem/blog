@@ -12,8 +12,8 @@ disableDisclaimer: false
 今回は、**Azure VM Backup を故意に失敗させる方法**について、ご案内いたします。
 
 ## 今回故意的にエラーを発生させる仕組み
-VM 内の Windows Azure Guest Agent (VM agent) を停止させ、Azure 側の Recovery Services コンテナー (Azure Backup service) との通信ができない状態を作ります。
-この状態で Backup 取得をしようとすると、VM agent と通信できないためにエラーが発生し、Backup が失敗となります。
+VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Recovery Services コンテナー (Azure Backup service) との通信ができない状態を作ります。
+この状態で Backup 取得をしようとすると、VM agent と通信できないためにエラー (Error Code ”UserErrorGuestAgentStatusUnavailable”) が発生し、Backup が失敗となります。
 ![How_to_Backup_Fail](https://user-images.githubusercontent.com/71251920/142736316-5995d329-63d1-4b63-acd5-7f3da9f90cf9.png)
 
 ## バックアップを故意に失敗させる方法 (手順概略)
@@ -46,7 +46,7 @@ VM 内の Windows Azure Guest Agent (VM agent) を停止させ、Azure 側の Re
 ## 目次
 -----------------------------------------------------------
 [1. バックアップを故意に失敗させる方法 (Windows VM の場合)](#1)
-[2．バックアップを故意に失敗させる方法 (Linux VM の場合)](#2)
+[2. バックアップを故意に失敗させる方法 (Linux VM の場合)](#2)
 -----------------------------------------------------------
 
 ## 1. バックアップを故意に失敗させる方法 (Windows VM の場合)  (所要時間 : 2時間～6時間)<a id="1"></a>
@@ -71,7 +71,7 @@ Backup 対象の VM にリモートログインし、Services を開き、下記
 #### RdAgent
 最初に "RdAgent" を停止、スタートアップ無効にします。
 ・Sercives 一覧の画面で "RdAgent" を右クリック → "Properties" を選択します。
-・ Startup type で "Disabled" を選択 → Service status で Stop を選択 → Service 停止プロセスが完了した後、"OK" を選択します。
+・Startup type で "Disabled" を選択 → Service status で Stop を選択 → Service 停止プロセスが完了した後、"OK" を選択します。
 ・Services 一覧の画面にて、 RbAgent の Status の Running が消えており、Startup Type が Disabled 場合、 RbAgent の停止が完了となります。
 
 ![RdAgent](https://user-images.githubusercontent.com/71251920/142736495-97875c34-577f-483d-a46e-c1f7c53d5133.png)
