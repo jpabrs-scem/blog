@@ -7,7 +7,6 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-####  Azure VM Backupでリストアされるディスク名に関して
 こんにちは、Azure Backup サポートの山本です。
 今回は、Azure VM Backup でリストアされるディスク名に関してよくいただくお問い合わせとして、下記 2 点についてご案内いたします。
 **１．「リストアするディスクの名前を指定できるか」**
