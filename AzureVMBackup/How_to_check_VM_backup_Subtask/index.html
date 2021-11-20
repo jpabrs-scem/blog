@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Azure VM Backup における Take Snapshot フェーズの確認方法 | Japan CSS ABRS &amp; SCEM Support Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、 “Azure VM Backup における Take Snapshot フェーズの確認方法”  について解説させていただきます。Azure VM Backup では  Take Snapshot フェーズ が終わっていれば VM の再起動などを実施いただいても影響がないため、Take Snap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure VM Backup における Take Snapshot フェーズの確認方法">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
+<meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、 “Azure VM Backup における Take Snapshot フェーズの確認方法”  について解説させていただきます。Azure VM Backup では  Take Snapshot フェーズ が終わっていれば VM の再起動などを実施いただいても影響がないため、Take Snap">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142253918-138343ac-b7dc-4a35-9e6e-180b4b5542f8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142235689-8f2a6b5d-44b9-47f4-80fe-571407e09e47.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142236195-c47b1fe8-73b0-401e-a050-43be7c4a35d6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142236727-60dfeae5-4960-4f91-a96e-c9d223acaff2.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142236740-9817d4cf-13a9-480b-816c-ba09e252aea6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142237893-8c25f4e9-4db1-4da5-b27b-7f33160e893a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142238480-a33273d9-7e95-43e0-b23a-451b947fd4f3.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142238471-c9927a38-86e5-4a5d-9140-dee620472a93.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142249583-ef423e62-9bef-4352-bc34-6a87edf18b4a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142249588-14b3aca1-3e4d-4948-81a9-b874ec1b5dc1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142242086-55eda1c2-5509-4bac-9c5c-c7d1b64c3401.png">
+<meta property="article:published_time" content="2021-11-18T03:00:00.000Z">
+<meta property="article:modified_time" content="2021-11-20T18:40:36.876Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure VM Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/142253918-138343ac-b7dc-4a35-9e6e-180b4b5542f8.png">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS &amp; SCEM Support Blog" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS &amp; SCEM Support Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup,Azure Site Recovery,Azure Migrate および System Center 製品(Orchestrator , Operations/Virtual Machine/Service/Data Protection Manager)に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureVMBackup/How_to_check_VM_backup_Subtask" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Azure VM Backup における Take Snapshot フェーズの確認方法
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2021-11-18T03:00:00.000Z" itemprop="datePublished">2021-11-18</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+2a446145-1bfb-5251-860d-0f92570dc233%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B+Take+Snapshot+%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA%E3%81%AE%E7%A2%BA%E8%AA%8D%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHow_to_check_VM_backup_Subtask%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHow_to_check_VM_backup_Subtask.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHow_to_check_VM_backup_Subtask.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/" data-id="ckw85po2x00050mo27j3kg6tx" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回はお問い合わせをいただくことが多い、 <strong>“Azure VM Backup における Take Snapshot フェーズの確認方法”</strong>  について解説させていただきます。<br>Azure VM Backup では  Take Snapshot フェーズ が終わっていれば VM の再起動などを実施いただいても影響がないため、<strong>Take Snapshot フェーズのステータス確認を確認したい、かかった時間を知りたい</strong>、というお問い合わせをよくいただきます。</p>
+<p>まず、はじめに前提知識として Azure VM Backup ではバックアップを取得する際に下記 2 つのサブタスクがございます。<br>1.Take Snapshot (スナップショットの取得)<br>2.Transfer data to vault (Recovery Services コンテナーへの転送)<br><img src="https://user-images.githubusercontent.com/71251920/142253918-138343ac-b7dc-4a35-9e6e-180b4b5542f8.png" alt="Azure VM Backupの 2 つのサブタスク"></p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. サブタスク (Take Snapshot フェーズ) 確認方法</a><br> <a href="#1-1">1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法</a><br> <a href="#1-2">1-2. Azure CLI を用いたサブタスク (Take Snapshot フェーズ) 確認方法</a><br> <a href="#1-3">1-3. Azure PowerShell を用いたサブタスク (Take Snapshot フェーズ) 確認方法</a><br><a href="#2">2. サブタスク (Take Snapshot フェーズ) にかかった時間を確認する方法</a></p>
+<hr>
+<h2 id="1-サブタスク-Take-Snapshot-フェーズ-確認方法"><a href="#1-サブタスク-Take-Snapshot-フェーズ-確認方法" class="headerlink" title="1. サブタスク (Take Snapshot フェーズ) 確認方法"></a>1. サブタスク (Take Snapshot フェーズ) 確認方法<a id="1"></a></h2><p>サブタスク確認方法は <strong>Azure Portal で確認する方法</strong>、および、 <strong>Azure CLI や Azure PowerShell といった CLI を用いた方法</strong>がございます。<br>今回弊社検証環境で確認結果も添えてお伝えさせていただきます。<br>また Recovery Services コンテナーのことを RSV と略して表記している部分がございます。</p>
+<ul>
+<li>検証環境情報<br>まず、はじめに今回の検証環境の情報です。<blockquote>
+<p>VM名：VM-Win10<br>リソースグループ：RG-alwaysONVM<br>Recovery Services コンテナー：RSV-JPE-LRS<br>リソースグループ：RG-NormalTest</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="1-1-Azure-Portal-を用いたサブタスク-Take-Snapshot-フェーズ-確認方法"><a href="#1-1-Azure-Portal-を用いたサブタスク-Take-Snapshot-フェーズ-確認方法" class="headerlink" title="1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法"></a>1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法<a id="1-1"></a></h3><p>[対象の Recovery Services コンテナー] → 左ペインの [バックアップ ジョブ] → 対象のバックアップ ジョブの [View details] → [Sub Tasks] の手順で確認いただくことが可能です。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/142235689-8f2a6b5d-44b9-47f4-80fe-571407e09e47.png" alt="Check_Subtask"></p>
+<h3 id="1-2-Azure-CLI-を用いたサブタスク-Take-Snapshot-フェーズ-確認方法"><a href="#1-2-Azure-CLI-を用いたサブタスク-Take-Snapshot-フェーズ-確認方法" class="headerlink" title="1-2. Azure CLI を用いたサブタスク (Take Snapshot フェーズ) 確認方法"></a>1-2. Azure CLI を用いたサブタスク (Take Snapshot フェーズ) 確認方法<a id="1-2"></a></h3><p>今回は Windows の PowerShell を用いて Azure CLI を実行します。</p>
+<h4 id="0-事前準備"><a href="#0-事前準備" class="headerlink" title="0.事前準備"></a>0.事前準備</h4><p>　 Azure へログインします。ログインしている環境であれば不要です。</p>
+<blockquote>
+<p>コマンド：<code> </code> <code>az login</code> <code> </code></p>
+</blockquote>
+<h4 id="1-Name-値-の取得-バックアップ-ジョブのステータス確認"><a href="#1-Name-値-の取得-バックアップ-ジョブのステータス確認" class="headerlink" title="1.Name 値 の取得 /  バックアップ ジョブのステータス確認"></a>1.Name 値 の取得 /  バックアップ ジョブのステータス確認</h4><blockquote>
+<p>コマンド：<code> </code> <code>az backup job list --resource-group &lt; RSV リソースグループ名&gt; --vault-name &lt; RSV 名&gt; --status inprogress​ -o table</code> <code> </code><br>コマンド例：<code> </code> <code>az backup job list --resource-group RG-NormalTest --vault-name RSV-JPE-LRS --status inprogress​ -o table</code> <code> </code></p>
+</blockquote>
+<p>上記コマンドを実行いただくと実行中のバックアップ ジョブの name 値が取得できます。<br> 出力結果を Azure VM Backup の実行中のバックアップ ジョブに限定する場合は “–backup-management-type AzureIaasVM” を付けることで可能です。</p>
+<p>　下記例 “name” : “2a8c96f8-c282-4f62-9286-fda08088047e”<br><img src="https://user-images.githubusercontent.com/71251920/142236195-c47b1fe8-73b0-401e-a050-43be7c4a35d6.png" alt="Check_name_value"></p>
+<h4 id="2-サブタスク-Take-Snapshot-フェーズ-のステータス確認"><a href="#2-サブタスク-Take-Snapshot-フェーズ-のステータス確認" class="headerlink" title="2.サブタスク (Take Snapshot フェーズ) のステータス確認"></a>2.サブタスク (Take Snapshot フェーズ) のステータス確認</h4><p>name 値 を用いて下記のコマンドを実行することでサブタスクのステータスが確認できます。<br>下記例では Take Snapshot のステータスが Completed 、Transfer data to vault のステータスが InProgress 、となっており、スナップショットの取得が終わり、 Recovery Services コンテナーへの転送中であることが分かります。</p>
+<blockquote>
+<p>コマンド：<code> </code> <code>az backup job show --name &lt;name値&gt; --resource-group  &lt; RSV リソースグループ名&gt; --vault-name  &lt; RSV 名&gt; --query properties.extendedInfo.tasksList -o table</code> <code> </code></p>
+</blockquote>
+<blockquote>
+<p>コマンド例 :<code> </code> <code>az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS --query properties.extendedInfo.tasksList -o table</code> <code> </code></p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/71251920/142236727-60dfeae5-4960-4f91-a96e-c9d223acaff2.png" alt="Check_Subtask_Azure_CLI_1"></p>
+<p>–query オプションを付けない場合は下記の部分から確認できます。</p>
+<blockquote>
+<p>コマンド：<code> </code> <code>az backup job show --name &lt; name 値&gt; --resource-group  &lt; RSV リソースグループ名&gt; --vault-name  &lt; RSV 名&gt;</code> <code> </code><br>コマンド例：<code> </code> <code>az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS</code> <code> </code></p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/71251920/142236740-9817d4cf-13a9-480b-816c-ba09e252aea6.png" alt="Check_Subtask_Azure_CLI_2"></p>
+<ul>
+<li>参考：<br>・Azure CLI を使用した Azure での仮想マシンのバックアップ - バックアップ ジョブを監視する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/quick-backup-vm-cli#monitor-the-backup-job">https://docs.microsoft.com/ja-jp/azure/backup/quick-backup-vm-cli#monitor-the-backup-job</a><br>・az backup job - az backup job list<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/cli/azure/backup/job?view=azure-cli-latest#az_backup_job_list">https://docs.microsoft.com/ja-jp/cli/azure/backup/job?view=azure-cli-latest#az_backup_job_list</a><br>・JMESPath クエリを使用して Azure CLI コマンドの出力に対してクエリを実行する方法 - 辞書のプロパティを取得する(–query オプションに関する参考情報)<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli#get-properties-in-a-dictionary">https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli#get-properties-in-a-dictionary</a></li>
+</ul>
+<h3 id="1-3-Azure-PowerShell-を用いたサブタスク-Take-Snapshot-フェーズ-確認方法"><a href="#1-3-Azure-PowerShell-を用いたサブタスク-Take-Snapshot-フェーズ-確認方法" class="headerlink" title="1-3. Azure PowerShell を用いたサブタスク (Take Snapshot フェーズ) 確認方法"></a>1-3. Azure PowerShell を用いたサブタスク (Take Snapshot フェーズ) 確認方法<a id="1-3"></a></h3><p>今回は Windows の PowerShell を用いて Azure PowerShell を実行します。</p>
+<h4 id="0-事前準備-1"><a href="#0-事前準備-1" class="headerlink" title="0.事前準備"></a>0.事前準備</h4><p>　 Azure へログインします。ログインしている環境であれば不要です。</p>
+<blockquote>
+<p>コマンド：<code> </code> <code>Connect-AzAccount</code> <code> </code>　　</p>
+</blockquote>
+<h4 id="1-定数を設定します。"><a href="#1-定数を設定します。" class="headerlink" title="1.定数を設定します。"></a>1.定数を設定します。</h4><blockquote>
+<p>コマンド：<code> </code> <code>$Vault = Get-AzRecoveryServicesVault -Name ”&lt; RSV 名&gt;”</code> <code> </code><br>コマンド例：<code> </code> <code>$Vault = Get-AzRecoveryServicesVault -Name ”RSV-JPE-LRS”</code> <code> </code></p>
+</blockquote>
+<blockquote>
+<p>コマンド：<code> </code> <code>$VMName = &quot;&lt; VM 名&gt;&quot;</code> <code> </code><br>コマンド例：<code> </code> <code>$VMName = &quot;VM-Win10&quot;</code> <code> </code></p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/71251920/142237893-8c25f4e9-4db1-4da5-b27b-7f33160e893a.png" alt="configure_const"></p>
+<h4 id="2-実行中のバックアップ-ジョブの情報を取得・表示"><a href="#2-実行中のバックアップ-ジョブの情報を取得・表示" class="headerlink" title="2.実行中のバックアップ ジョブの情報を取得・表示"></a>2.実行中のバックアップ ジョブの情報を取得・表示<a id="a"></a></h4><p>下記コマンドを実行することで、指定した VM の実行中のバックアップ ジョブの一覧が確認できます。<br>下記例では1つしかないため、$Jobs[0] に実行中のバックアップ ジョブの情報が格納されます。<br>複数ある場合は直近に実行されたものから若い番号に格納されます。</p>
+<blockquote>
+<p>コマンド：<br><code> </code> <code>$Jobs = (Get-AzRecoveryservicesBackupJob -Status &quot;InProgress&quot; -VaultId $Vault.id | ? &#123;$_.WorkloadName -eq $vmName&#125;)</code> <code> </code><br><code> </code> <code>$Jobs</code> <code> </code></p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/71251920/142238480-a33273d9-7e95-43e0-b23a-451b947fd4f3.png" alt="Check_job_status_ps_1"></p>
+<blockquote>
+<p>コマンド：<code> </code> <code>$Jobs[0]</code> <code> </code></p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/71251920/142238471-c9927a38-86e5-4a5d-9140-dee620472a93.png" alt="Check_job_status_ps_2"></p>
+<h4 id="3．実行中のバックアップ-ジョブのサブタスクを取得・表示"><a href="#3．実行中のバックアップ-ジョブのサブタスクを取得・表示" class="headerlink" title="3．実行中のバックアップ ジョブのサブタスクを取得・表示"></a>3．実行中のバックアップ ジョブのサブタスクを取得・表示</h4><p>下記コマンドを実行することでサブタスクのステータスが確認できます。<br>下記例では、Take Snapshot は Completed、Transfer data to vault は InProgress 、となっており、スナップショットの取得が終わり、 Recovery Services コンテナーへの転送中であることが分かります。</p>
+<blockquote>
+<p>コマンド：<br><code> </code> <code>$SubTasks = Get-AzRecoveryServicesBackupJobDetail -Job $Jobs[0]  -VaultId $Vault.id</code> <code> </code><br><code> </code> <code>$SubTasks.subtasks</code> <code> </code></p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/71251920/142249583-ef423e62-9bef-4352-bc34-6a87edf18b4a.png" alt="Check_sub_task_ps_1"></p>
+<p>上記警告については、現在使用可能な ”Get-AzRecoveryServicesBackupJobDetail” のエイリアス ”Get-AzRecoveryServicesBackupJobDetails” が将来的に廃止されていることを示しますが、上記のコマンドであれば使用していないので無視していただいて構いません。</p>
+<p>また下記コマンドを実行していただくことで警告を表示させないことが可能です。</p>
+<blockquote>
+<p>コマンド：<code> </code> <code>Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings &quot;true&quot;</code> <code> </code></p>
+</blockquote>
+<p>上記のコマンドを実行したところ警告が出ていないことが分かります。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/142249588-14b3aca1-3e4d-4948-81a9-b874ec1b5dc1.png" alt="Check_sub_task_ps_2"></p>
+<p>・How do I get rid of the warnings? (警告の非表示について)<br><a target="_blank" rel="noopener" href="https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/breaking-changes-messages-help.md#how-do-i-get-rid-of-the-warnings">https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/breaking-changes-messages-help.md#how-do-i-get-rid-of-the-warnings</a></p>
+<h4 id="補足"><a href="#補足" class="headerlink" title="補足"></a>補足</h4><p>なお、<a href="#a">2.実行中のバックアップ ジョブの情報を取得・表示</a> で下記のように　VM 名を指定しない場合、その他の実行中のバックアップ ジョブも表示されます。(実行中のその他の VM がある場合)</p>
+<blockquote>
+<p>コマンド：<br><code> </code> <code>$Jobs = Get-AzRecoveryservicesBackupJob -Status &quot;InProgress&quot; -VaultId $Vault.id</code> <code> </code><br><code> </code> <code>$Jobs</code> <code> </code></p>
+</blockquote>
+<p>その際の $Jobs[0]、$Jobs[1] の値は次のようになります。<br><img src="https://user-images.githubusercontent.com/71251920/142242086-55eda1c2-5509-4bac-9c5c-c7d1b64c3401.png" alt="Check_job_status_ps_3"></p>
+<ul>
+<li>参考：<br>・APowerShell を使用して Azure VM をバックアップおよび復元する - バックアップ ジョブの監視<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-automation#monitoring-a-backup-job">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-automation#monitoring-a-backup-job</a><br>・Get-AzRecoveryServicesBackupJob<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-6.6.0">https://docs.microsoft.com/ja-jp/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-6.6.0</a></li>
+</ul>
+<h2 id="2-サブタスク-Take-Snapshot-フェーズ-にかかった時間を確認する方法"><a href="#2-サブタスク-Take-Snapshot-フェーズ-にかかった時間を確認する方法" class="headerlink" title="2. サブタスク (Take Snapshot フェーズ) にかかった時間を確認する方法 "></a>2. サブタスク (Take Snapshot フェーズ) にかかった時間を確認する方法 <a id="2"></a></h2><p>お客様では Azure Portal、およびコマンド (Azure CLI 、Azure PowerShell) を用いても残念ながらサブタスク (Take Snapshot フェーズ) にかかった時間を確認できません。<br>しかし、お問い合わせいただくことで弊社にてお客様環境の実績値をお調べしお伝えすることが可能です。<br>その際には下記情報を添えてお問い合わせいただきますようお願いいたします。<br>　・サブスクリプション ID<br>　・VM 名およびそのリソースグループ名<br>　・Recovery Services コンテナー 名およびそのリソースグループ名</p>
+<p>また、今後のバックアップ ジョブであれば、<a href="#1">1. サブタスク (Take Snapshot フェーズ) 確認方法</a>を参考にしていただくことでおおよそ可能かと存じます。<br>具体的には、実行中のバックアップ ジョブを検知し、ループを回して定期的に対象のサブタスク (Take Snapshot フェーズ等) のステータスを確認し、Inprogress である間の時間を計測していただくことでおおよその時間を測定いただければと存じます。<br>なお、具体的な実装につきましては、恐縮ながら Azure サポートサービスの範囲外であるためお客様ご自身でご実装いただきますようお願いいたします。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/How_to_check_VM_backup_Subtask.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../How_to_fail_VM_backup/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          Azure VM Backup を故意に失敗させる方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="../About_Restored_Disk/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Azure VM Backupでリストアされるディスク名に関して</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../How_to_fail_VM_backup/">Azure VM Backup を故意に失敗させる方法</a>
+          </li>
+        
+          <li>
+            <a href="">Azure VM Backup における Take Snapshot フェーズの確認方法</a>
+          </li>
+        
+          <li>
+            <a href="../About_Restored_Disk/">Azure VM Backupでリストアされるディスク名に関して</a>
+          </li>
+        
+          <li>
+            <a href="../CRR_UserErrorVmProvisioningFailedDueToLackOfResources/">Azure VM Backup の クロスリージョン リストア をした際に Error Code ”UserErrorVmProvisioningFailedDueToLackOfResources” で失敗する。</a>
+          </li>
+        
+          <li>
+            <a href="../Azure_VM_Offline_backup/">Azure VM Backup では オフライン バックアップができるのか</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">8</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">1</span><ul></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-VM-Backup/" style="font-size: 20px;">Azure VM Backup</a> <a href="../../tags/Information/" style="font-size: 10px;">Information</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
