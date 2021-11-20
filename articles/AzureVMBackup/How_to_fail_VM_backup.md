@@ -134,7 +134,7 @@ Backup 対象の VM にリモートログインし、Services を開き、下記
 > （Ubuntu 以外の場合）sudo systemctl disable waagent
 
 
-#### Agent の再度起動
+#### Agent の再起動
 バックアップ エラーの検証後は、以下コマンドで waagent を再開します。
 > （Ubuntu の場合）
 > 	sudo systemctl start walinuxagent 
