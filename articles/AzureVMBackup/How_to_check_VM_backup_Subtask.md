@@ -54,7 +54,7 @@ Azure VM Backup では  Take Snapshot フェーズ が終わっていれば VM �
   >コマンド例：` ` `az backup job list --resource-group RG-NormalTest --vault-name RSV-JPE-LRS --status inprogress​ -o table` ` `
 
 上記コマンドを実行いただくと実行中のバックアップ ジョブの name 値が取得できます。
- 出力結果を Azure VM Backup の実行中のバックアップ ジョブに限定する場合は "--backup-management-type AzureIaasVM" を付けることで可能です。
+ 出力結果を Azure VM Backup の実行中のバックアップ ジョブに限定する場合は ` ` `--backup-management-type AzureIaasVM` ` ` を付けることで可能です。
 
 　下記例 "name" : "2a8c96f8-c282-4f62-9286-fda08088047e"
 ![Check_name_value](https://user-images.githubusercontent.com/71251920/142236195-c47b1fe8-73b0-401e-a050-43be7c4a35d6.png)
@@ -91,8 +91,8 @@ https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli#get-properties-in-a-d
   >コマンド：` ` `Connect-AzAccount` ` `　　
 
 #### 1.定数を設定します。
->コマンド：` ` `$Vault = Get-AzRecoveryServicesVault -Name ”< RSV 名>”` ` `
->コマンド例：` ` `$Vault = Get-AzRecoveryServicesVault -Name ”RSV-JPE-LRS”` ` `
+>コマンド：` ` `$Vault = Get-AzRecoveryServicesVault -Name "< RSV 名>"` ` `
+>コマンド例：` ` `$Vault = Get-AzRecoveryServicesVault -Name "RSV-JPE-LRS"` ` `
 
 >コマンド：` ` `$VMName = "< VM 名>"` ` `
 >コマンド例：` ` `$VMName = "VM-Win10"` ` `
