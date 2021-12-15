@@ -12,7 +12,8 @@ disableDisclaimer: false
 
 
 Azure VM Backup ではバックアップ ジョブのスケジュールを日時、週次にて計画することができます。
-一方、現状の料金計算ツールでは週次のバックアップ スケジュールのシナリオに対応しておらず日次のシナリオのみの見積もりが可能となっております。
+一方、現状の料金計算ツールでは週次のバックアップ スケジュールのシナリオに対応しておらず、**日次のシナリオのみの見積もりが可能**となっております。
+
 そのため、現時点では週次の見積もりに計算ツールを利用していただくことが叶いません。
 ・料金計算ツール
 https://azure.microsoft.com/ja-jp/pricing/calculator/
@@ -25,6 +26,7 @@ https://azure.microsoft.com/ja-jp/pricing/calculator/
  
 ・The scenario in Pricing Calculator to run only weekly backup.
 https://feedback.azure.com/d365community/idea/7aa7fd4a-0925-ec11-b6e6-000d3a4f0858
+
  
 上記サイトは機能改善のリクエストを行うサイトであり、リクエストの中で Vote (改善要望) が多いものや影響度の大きいものを判断して優先して修正に取り組みます。
 そのため、もし週次のスケジュール見積もりを今後ご要望の場合には、お手数ではございますが可能であれば上記の URL より機能改善リクエストに Vote いただけますと幸いです。
