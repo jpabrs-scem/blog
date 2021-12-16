@@ -175,5 +175,5 @@ https://docs.microsoft.com/ja-jp/powershell/module/az.recoveryservices/get-azrec
 https://feedback.azure.com/d365community/idea/ff50fa2f-785d-ec11-a819-0022484e8090
  
 上記サイトは機能改善のリクエストを行うサイトであり、リクエストの中で Vote (改善要望) が多いものや影響度の大きいものを判断して優先して修正に取り組みます。
-そのため、もし週次のスケジュール見積もりを今後ご要望の場合には、お手数ではございますが可能であれば上記の URL より機能改善リクエストに Vote いただけますと幸いです。
+そのため、もし、Azure Portal から Take Snapshot にかかった時間を表示できるようご要望の場合には、お手数ではございますが可能であれば上記の URL より機能改善リクエストに Vote いただけますと幸いです。
 Vote の際にはメールアドレスを入力することができ、本投稿が Completed した際に指定のメールアドレスに通知される仕組みとなっております。
