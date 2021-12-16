@@ -1,5 +1,5 @@
 ---
-title: 料金計算ツールを用いた Azure VM Backup の料金見積もりついて
+title: 料金計算ツールを用いた Azure VM Backup の料金見積もりについて
 date: 2021-12-16 12:00:00
 tags:
   - Azure VM Backup
@@ -8,7 +8,7 @@ disableDisclaimer: false
 
 <!-- more -->
 皆様こんにちは、Azure Backup サポートです。
-今回は、料金計算ツールを用いた Azure VM Backup の料金見積もりついて、ご案内いたします。
+今回は、料金計算ツールを用いた Azure VM Backup の料金見積もりについて、ご案内いたします。
 
 
 Azure VM Backup ではバックアップ ジョブのスケジュールを日時、週次にて計画することができます。
