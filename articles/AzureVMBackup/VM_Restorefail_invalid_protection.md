@@ -1,6 +1,6 @@
 ---
-title: 料金計算ツールを用いた Azure VM Backup の料金見積もりについて
-date: 2021-12-16 12:00:00
+title: Azure VM のリストア (既存を置換) が失敗する
+date: 2022-01-05 12:00:00
 tags:
   - Azure VM Backup
 disableDisclaimer: false
