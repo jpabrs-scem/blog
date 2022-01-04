@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148112970-9689b050-a986-4de4-b752-274624c4a17e.gif">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148112967-eaab9628-7f5e-4fd4-a11f-63faa6ad75b5.jpg">
 <meta property="article:published_time" content="2022-01-05T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-04T20:00:14.042Z">
+<meta property="article:modified_time" content="2022-01-04T20:03:04.494Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -110,7 +110,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+946d5410-3e30-5150-b569-d739bc930c34%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+%E3%81%AE%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2+%28%E6%97%A2%E5%AD%98%E3%82%92%E7%BD%AE%E6%8F%9B%29+%E3%81%8C%E5%A4%B1%E6%95%97%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FVM_Restorefail_invalid_protection%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FVM_Restorefail_invalid_protection.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FVM_Restorefail_invalid_protection.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/" data-id="cky0jdf3a000f0olgb2sh1efb" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/" data-id="cky0jh1sp000f0mobf1500vre" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -119,14 +119,14 @@
 <p>皆様こんにちは、Azure Backup サポートです。<br>今回は、Azure VM Backup にて、対象の仮想マシンを <strong>VM の復元」-「構成の復元：既存を置換」にて「復元」を実行すると、「OlrBackupFailed」エラーが発生する</strong>場合の原因と対処法についてご案内します。</p>
 <p>上記「OlrBackupFailed」エラーが発生した場合、考えられる要因として、対象の仮想マシンに対して「バックアップの停止」を行っていることが考えられます。<br>（対象の仮想マシンに対して「バックアップの停止」を行っていない、以下のシナリオに合致しない等あれば、弊社までお問い合わせ願います。）</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">〈1. 該当シナリオ〉</a><br><a href="#2">〈2. 原因〉</a><br><a href="#3">〈3. 「構成の復元：既存を置換」として復元したい場合の回避策&gt;</a></p>
+<p><a href="#1">1. 該当シナリオ</a><br><a href="#2">2. 原因</a><br><a href="#3">3. 「構成の復元：既存を置換」として復元したい場合の回避策</a></p>
 <hr>
-<h2 id="〈1-該当シナリオ〉"><a href="#〈1-該当シナリオ〉" class="headerlink" title="〈1. 該当シナリオ〉"></a>〈1. 該当シナリオ〉<a id="1"></a></h2><p>１） 「VM の復元」を実行したい仮想マシンに対して、「バックアップの停止」を実施済である<br>（下図のように、「バックアップの停止」ボタンが非活性、「バックアップの再開」ボタンが活性、「前回のバックアップの状態：警告（バックアップが無効）」と表示されている状態となります）<br><img src="https://user-images.githubusercontent.com/71251920/148112964-af3db82c-a70e-4fe0-bdab-8d0dddc58086.png" alt="invalid_VM_backup"></p>
+<h2 id="1-該当シナリオ"><a href="#1-該当シナリオ" class="headerlink" title="1. 該当シナリオ"></a>1. 該当シナリオ<a id="1"></a></h2><p>１） 「VM の復元」を実行したい仮想マシンに対して、「バックアップの停止」を実施済である<br>（下図のように、「バックアップの停止」ボタンが非活性、「バックアップの再開」ボタンが活性、「前回のバックアップの状態：警告（バックアップが無効）」と表示されている状態となります）<br><img src="https://user-images.githubusercontent.com/71251920/148112964-af3db82c-a70e-4fe0-bdab-8d0dddc58086.png" alt="invalid_VM_backup"></p>
 <p>２）上記「バックアップの停止」を実施済の状態で、「VM の復元」をクリックし、「構成の復元：既存を置換」を選択している状態で「復元」を実行する<br><img src="https://user-images.githubusercontent.com/71251920/148112978-b25ab648-9245-4db6-a81e-bc7279595399.png" alt="VM_OLR"></p>
 <p>３）「バックアップ ジョブ」画面にて、以下の状態で処理が終了する。<br>「Operation : Restore」・・・「StatusCompleted with warnings」「Error Code : OlrBackupFailed」<br>「Operation : Backup」・・・「Status : Failed」「Error Code : UserErrorBcmDatasourceNotPresent」<br><img src="https://user-images.githubusercontent.com/71251920/148112973-7caf6f19-c212-4f22-90ea-558998abc2d7.png" alt="OLR_Error_Jobs"><br>（「Operation : Restore」側の詳細画面）<br><img src="https://user-images.githubusercontent.com/71251920/148112977-0cd72cb6-c2bb-403f-8100-cd25a5b02b44.png" alt="Restore_error_details"><br>（「Operation : Backup」側の詳細画面）<br><img src="https://user-images.githubusercontent.com/71251920/148112975-73526fb8-4586-4cc9-863e-c3d314999398.png" alt="Backup_error_details"></p>
 <p>上記のシナリオてに合致した場合、「復元」がエラーコード「OlrBackupFailed」となる理由は、仮想マシンに対して、「バックアップの停止」が行われているためである可能性が高いです。</p>
-<h2 id="〈2-原因〉"><a href="#〈2-原因〉" class="headerlink" title="〈2. 原因〉"></a>〈2. 原因〉<a id="2"></a></h2><p>「構成の復元：既存を置換」で「復元」を実行した場合、復元の流れとして、復元ポイントからディスクが復元された後、「復元されたディスクに置換する前の仮想マシンの状態」に対するバックアップ（※）が実施されます。<br>「復元されたディスクに置換する前の仮想マシンの状態」に対するバックアップ（※）が成功した場合、復元されたディスクとの置換作業が実施されます。<br>「バックアップの停止」中の場合は、（※）のバックアップ処理が行えず「Status：Failed」となり、復元ジョブもエラーコード「OlrBackupFailed」となります。<br>仮想マシンに対するディスクの置換は行われず、指定した復元ポイント時点のディスクが復元され、Azure ポータル画面の「ディスク」一覧にて確認可能となります。</p>
-<h2 id="〈3-「構成の復元：既存を置換」として復元したい場合の回避策〉"><a href="#〈3-「構成の復元：既存を置換」として復元したい場合の回避策〉" class="headerlink" title="〈3. 「構成の復元：既存を置換」として復元したい場合の回避策〉"></a>〈3. 「構成の復元：既存を置換」として復元したい場合の回避策〉<a id="3"></a></h2><p>下記の 2 種類の方法が考えられます。<br>１．対象の仮想マシンに対して、「バックアップの再開」をクリックし、バックアップを有効にした状態で、再度「VM の復元」-「構成の復元：既存を置換」を実施する。<br>これにより、復元時に自動トリガーされるバックアップ ジョブ（※）も正常に実施され、復元ジョブも成功します。<br><img src="https://user-images.githubusercontent.com/71251920/148112970-9689b050-a986-4de4-b752-274624c4a17e.gif" alt="VM_backup_resume"></p>
+<h2 id="2-原因"><a href="#2-原因" class="headerlink" title="2. 原因"></a>2. 原因<a id="2"></a></h2><p>「構成の復元：既存を置換」で「復元」を実行した場合、復元の流れとして、復元ポイントからディスクが復元された後、「復元されたディスクに置換する前の仮想マシンの状態」に対するバックアップ（※）が実施されます。<br>「復元されたディスクに置換する前の仮想マシンの状態」に対するバックアップ（※）が成功した場合、復元されたディスクとの置換作業が実施されます。<br>「バックアップの停止」中の場合は、（※）のバックアップ処理が行えず「Status：Failed」となり、復元ジョブもエラーコード「OlrBackupFailed」となります。<br>仮想マシンに対するディスクの置換は行われず、指定した復元ポイント時点のディスクが復元され、Azure ポータル画面の「ディスク」一覧にて確認可能となります。</p>
+<h2 id="3-「構成の復元：既存を置換」として復元したい場合の回避策"><a href="#3-「構成の復元：既存を置換」として復元したい場合の回避策" class="headerlink" title="3. 「構成の復元：既存を置換」として復元したい場合の回避策"></a>3. 「構成の復元：既存を置換」として復元したい場合の回避策<a id="3"></a></h2><p>下記の 2 種類の方法が考えられます。<br>１．対象の仮想マシンに対して、「バックアップの再開」をクリックし、バックアップを有効にした状態で、再度「VM の復元」-「構成の復元：既存を置換」を実施する。<br>これにより、復元時に自動トリガーされるバックアップ ジョブ（※）も正常に実施され、復元ジョブも成功します。<br><img src="https://user-images.githubusercontent.com/71251920/148112970-9689b050-a986-4de4-b752-274624c4a17e.gif" alt="VM_backup_resume"></p>
 <p>２．対象の仮想マシンに対して、「バックアップの停止」を実施済の状態のまま、「VM の復元」-「構成の復元：既存を置換」を実施する。<br>この場合、前述の通り「Operation : Restore」「StatusCompleted with warnings」となりますが、ディスクとしては復元されます。<br>ディスクとして復元後、対象の仮想マシンを「停止済み (割り当て解除)」としている状態で、仮想マシンにアタッチされているディスクと、復元したディスクを手動でスワップすることで、復元ポイント時点の仮想マシンの状態に戻すことが可能です。</p>
 <p>Azure Portal ＞  対象の仮想マシン ＞ 左ペインのディスク ＞ 「OSディスクのスワップ」にて復元されたディスクと現在のディスクをスワップします。<br><img src="https://user-images.githubusercontent.com/71251920/148112967-eaab9628-7f5e-4fd4-a11f-63faa6ad75b5.jpg" alt="Disk_Swap"></p>
 <p>「既存を置換」にて「復元」を実行すると、「OlrBackupFailed」エラーが発生するという場合の対処法について、ご案内は以上となります。</p>
