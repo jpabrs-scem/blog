@@ -7,7 +7,7 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-皆様こんにちは、Azure Backup サポートです。
+皆様こんにちは、Azure Backup サポート の山本です。
 今回は、料金計算ツールを用いた Azure VM Backup の料金見積もりについて、ご案内いたします。
 
 
