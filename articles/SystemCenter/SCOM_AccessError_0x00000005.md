@@ -1,5 +1,5 @@
 ---
-title:　AdtAdmin / setquery でアクセス拒否エラー(0x00000005)が発生する場合の対処法
+title: AdtAdmin / setquery でアクセス拒否エラー(0x00000005)が発生する場合の対処法
 date: 2022-01-06 12:00:00
 tags:
   - System Center
