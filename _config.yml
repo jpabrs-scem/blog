@@ -22,8 +22,10 @@ keywords:
   - MABS
   - SCOM
   - SCEM
+  - System Center
   - Microsoft
   - Microsoft 公式情報
+  
 
 author: Japan CSS ABRS & SCEM Support Team
 
@@ -33,6 +35,7 @@ root_tag_generator:
     - Information
     - Azure Backup
     - Azure VM Backup
+    - System Center
   sub_tag_limit: 20
 
 # URL
