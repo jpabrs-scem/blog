@@ -26,4 +26,4 @@ ACS は WQL（[WMI Provider for Server Events と WQL の使用 - SQL Server | M
 
 参考図：
 
-![RegEdit](https://user-images.githubusercontent.com/71251920/148327138-6c2ba2db-ced8-4408-9c43-144a170ee18d.png)
+![参考図](https://user-images.githubusercontent.com/71251920/148327138-6c2ba2db-ced8-4408-9c43-144a170ee18d.png)
