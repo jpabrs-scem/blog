@@ -9,9 +9,9 @@ disableDisclaimer: false
 <!-- more -->
 皆様こんにちは、System Center サポートチームの 佐藤 です。
 
-本日は System Center Operations Manager（以後 SCOM） の機能である 監査コレクション サービス (ACS) （![監査コレクション サービス (ACS) コレクターとデータベースをインストールする方法 | Microsoft Docs](https://docs.microsoft.com/ja-jp/system-center/scom/deploy-install-acs?view=sc-om-2019)）において WQL クエリ設定を実行する際に必要な設定をご紹介いたします。
+本日は System Center Operations Manager（以後 SCOM） の機能である 監査コレクション サービス (ACS) （[監査コレクション サービス (ACS) コレクターとデータベースをインストールする方法 | Microsoft Docs](https://docs.microsoft.com/ja-jp/system-center/scom/deploy-install-acs?view=sc-om-2019)）において WQL クエリ設定を実行する際に必要な設定をご紹介いたします。
 
-ACS は WQL（![WMI Provider for Server Events と WQL の使用 - SQL Server | Microsoft Docs](https://docs.microsoft.com/ja-jp/sql/relational-databases/wmi-provider-server-events/using-wql-with-the-wmi-provider-for-server-events?view=sql-server-ver15)）を使用して取得対象のイベントの範囲を絞ることが可能です。
+ACS は WQL（[WMI Provider for Server Events と WQL の使用 - SQL Server | Microsoft Docs](https://docs.microsoft.com/ja-jp/sql/relational-databases/wmi-provider-server-events/using-wql-with-the-wmi-provider-for-server-events?view=sql-server-ver15)）を使用して取得対象のイベントの範囲を絞ることが可能です。
 
 
 
