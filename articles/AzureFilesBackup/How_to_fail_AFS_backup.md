@@ -1,5 +1,5 @@
 ---
-title: Azure VM Backup を意図的に失敗させる方法
+title: Azure Files Backup を意図的に失敗させる方法
 date: 2022-01-10 12:00:00
 tags:
   - Azure Files Backup
