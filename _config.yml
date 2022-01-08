@@ -16,6 +16,8 @@ keywords:
   - Azure VM バックアップ
   - Azure SQL バックアップ
   - Azure SAP HANA バックアップ
+  - Azure Files Backup
+  - Azure Files バックアップ
   - Azure Site Recovery 
   - Azure Migrate
   - DPM
@@ -35,6 +37,7 @@ root_tag_generator:
     - Information
     - Azure Backup
     - Azure VM Backup
+    - Azure Files Backup
     - System Center
   sub_tag_limit: 20
 
