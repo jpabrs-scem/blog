@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Azure Files Backup を意図的に失敗させる方法 | Japan CSS ABRS &amp; SCEM Support Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、アラート通知のテスト等のために、Azure Files （Azure ファイル共有）のバックアップを意図的に失敗させる方法についてご案内します。方法としては、バックアップ構成しているAzure Files のストレージ アカウントに対して「読み取り専用」ロックを追加しておき、スケジュール バックアップを実施する方法がございます。 A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure Files Backup を意図的に失敗させる方法">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、アラート通知のテスト等のために、Azure Files （Azure ファイル共有）のバックアップを意図的に失敗させる方法についてご案内します。方法としては、バックアップ構成しているAzure Files のストレージ アカウントに対して「読み取り専用」ロックを追加しておき、スケジュール バックアップを実施する方法がございます。 A">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148649503-d62312ca-088e-49ea-98a1-f503b4b0f5e2.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148649504-9477278b-381c-4966-ad88-c38750bddf3f.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148649505-f9da8577-1942-42a8-9ffb-1b6b01d365a1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148649491-01ec384a-493e-4c28-b40c-5150c3fe894a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148649493-f43a1cdf-dae3-4b30-b3a0-7efa24eb8d7d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148649494-a738edda-9b29-4b64-8d49-b89281946dce.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148649496-1799a8de-0156-4556-b02f-447c64605e69.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148649498-49c6aea5-4381-4cdc-8e1c-5a181eec5e5d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148649499-e7dd44af-21e0-4217-b1b6-638e17ed6f16.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148649500-fce2b072-d882-416e-a919-9124b9cf314a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148649502-836ffea1-9659-475d-9230-8ec612158642.png">
+<meta property="article:published_time" content="2022-01-10T03:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-08T16:10:54.047Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure Files Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/148649503-d62312ca-088e-49ea-98a1-f503b4b0f5e2.png">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS &amp; SCEM Support Blog" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS &amp; SCEM Support Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup,Azure Site Recovery,Azure Migrate および System Center 製品(Orchestrator , Operations/Virtual Machine/Service/Data Protection Manager)に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureFilesBackup/How_to_fail_AFS_backup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Azure Files Backup を意図的に失敗させる方法
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2022-01-10T03:00:00.000Z" itemprop="datePublished">2022-01-10</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+0a8d6005-23d0-519c-8e82-46ac48f3fb14%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Files+Backup+%E3%82%92%E6%84%8F%E5%9B%B3%E7%9A%84%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureFilesBackup%2FHow_to_fail_AFS_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureFilesBackup%2FHow_to_fail_AFS_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureFilesBackup%2FHow_to_fail_AFS_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/" data-id="cky60xv2900000mqi3pd02bqm" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは、Azure Backup サポートです。<br>今回は、アラート通知のテスト等のために、<strong>Azure Files （Azure ファイル共有）のバックアップを意図的に失敗させる方法</strong>についてご案内します。<br>方法としては、バックアップ構成しているAzure Files のストレージ アカウントに対して「読み取り専用」ロックを追加しておき、スケジュール バックアップを実施する方法がございます。</p>
+<h2 id="Azure-Files-のAzure-Backup-ジョブを意図的に失敗させる方法"><a href="#Azure-Files-のAzure-Backup-ジョブを意図的に失敗させる方法" class="headerlink" title="Azure Files のAzure Backup ジョブを意図的に失敗させる方法"></a>Azure Files のAzure Backup ジョブを意図的に失敗させる方法</h2><ol>
+<li><p>テスト希望時間に、スケジュールされたバックアップを実行させたい場合は、（ストレージ アカウントへ「読み取り専用」ロックを追加する前に）Recovery Services コンテナー ＞ バックアップ ポリシー にて、スケジュール バックアップを実行したい時間を変更しておきます。<br><img src="https://user-images.githubusercontent.com/71251920/148649503-d62312ca-088e-49ea-98a1-f503b4b0f5e2.png"></p>
+</li>
+<li><p>バックアップ構成しているAzure Files のストレージ アカウントに対して「読み取り専用」ロックを追加しておき、スケジュール バックアップが実行開始されるまで待ちます。<br>（※ 「AzureBackupProtectionLock」という「削除」ロックが自動的に追加されている場合、「読み取り専用」ロックを追加してもバックアップが成功します。<br>一度「AzureBackupProtectionLock」ロックを削除したうえで「読み取り専用」ロックを追加しておきます。）<br><img src="https://user-images.githubusercontent.com/71251920/148649504-9477278b-381c-4966-ad88-c38750bddf3f.png"><br><img src="https://user-images.githubusercontent.com/71251920/148649505-f9da8577-1942-42a8-9ffb-1b6b01d365a1.png"><br><img src="https://user-images.githubusercontent.com/71251920/148649491-01ec384a-493e-4c28-b40c-5150c3fe894a.png"></p>
+</li>
+<li><p>スケジュール バックアップの実行開始時間後に、Recovery Services コンテナー ＞ バックアップ ジョブ にて、ジョブが失敗していることを確認します。<br><img src="https://user-images.githubusercontent.com/71251920/148649493-f43a1cdf-dae3-4b30-b3a0-7efa24eb8d7d.png"><br>「View details」をクリックすると、「Error Code：400190」にてAzure Files のバックアップが失敗していることが確認できます。<br><img src="https://user-images.githubusercontent.com/71251920/148649494-a738edda-9b29-4b64-8d49-b89281946dce.png"></p>
+</li>
+<li><p>指定したメールアドレスへアラート通知を送信するよう設定している場合、指定のメールアドレスへアラート通知が送信されていることが確認できます。</p>
+</li>
+</ol>
+<p>下記アラート設定に関しましては下記をご覧ください。<br>&lt;URL準備中&gt;</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/148649496-1799a8de-0156-4556-b02f-447c64605e69.png"></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/148649498-49c6aea5-4381-4cdc-8e1c-5a181eec5e5d.png"></p>
+<ol start="5">
+<li>バックアップ センター でもアラートを確認可能です。<br>バックアップ センター ＞ 概要 ＞ データソースの種類：Azure Files（Azure Storage）を選択します。<br>「ジョブ(過去 24 時間)」欄に「スケジュールされたバックアップ 失敗」にカウントされていること、「アクティブなアラート(過去 24 時間)」欄に「Sev1」としてカウントされていることが確認できます。</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/71251920/148649499-e7dd44af-21e0-4217-b1b6-638e17ed6f16.png"></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/148649500-fce2b072-d882-416e-a919-9124b9cf314a.png"></p>
+<p>アラート通知の検証後は、ストレージ アカウントに対して自動的に追加されていた「削除」ロックを再追加・「読み取り専用」ロックを削除し、元のロック状態に戻します。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/148649502-836ffea1-9659-475d-9230-8ec612158642.png"></p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureFilesBackup/How_to_fail_AFS_backup.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../SystemCenter/SCOM_AccessError_0x00000005/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">AdtAdmin / setquery でアクセス拒否エラー(0x00000005)が発生する場合の対処法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">Azure Files Backup を意図的に失敗させる方法</a>
+          </li>
+        
+          <li>
+            <a href="../../SystemCenter/SCOM_AccessError_0x00000005/">AdtAdmin / setquery でアクセス拒否エラー(0x00000005)が発生する場合の対処法</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/VM_Restorefail_invalid_protection/">Azure VM のリストア (既存を置換) が失敗する</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/VM_Backup_calculator/">料金計算ツールを用いた Azure VM Backup の料金見積もりについて</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/How_to_fail_AFS_backup/">Azure VM Backup を意図的に失敗させる方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/" rel="tag">System Center</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">11</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/">System Center</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">1</span><ul></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 20px;">Azure VM Backup</a> <a href="../../tags/Information/" style="font-size: 10px;">Information</a> <a href="../../tags/System-Center/" style="font-size: 10px;">System Center</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
