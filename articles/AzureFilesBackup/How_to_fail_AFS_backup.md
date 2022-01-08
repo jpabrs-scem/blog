@@ -16,14 +16,14 @@ disableDisclaimer: false
 1) テスト希望時間に、スケジュールされたバックアップを実行させたい場合は、（ストレージ アカウントへ「読み取り専用」ロックを追加する前に）Recovery Services コンテナー ＞ バックアップ ポリシー にて、スケジュール バックアップを実行したい時間を変更しておきます。
 ![](https://user-images.githubusercontent.com/71251920/148649503-d62312ca-088e-49ea-98a1-f503b4b0f5e2.png)
 
-2) バックアップ構成しているAzure Files のストレージ アカウントに対して「読み取り専用」ロックを追加しておき、スケジュール バックアップが実行開始されるまで待ちます。
+2) バックアップ構成をしている Azure Files のストレージ アカウントに対して「読み取り専用」ロックを追加しておき、スケジュール バックアップが実行開始されるまで待ちます。(または今すぐバックアップを実行します。)
 （※ 「AzureBackupProtectionLock」という「削除」ロックが自動的に追加されている場合、「読み取り専用」ロックを追加してもバックアップが成功します。
 一度「AzureBackupProtectionLock」ロックを削除したうえで「読み取り専用」ロックを追加しておきます。）
 ![](https://user-images.githubusercontent.com/71251920/148649504-9477278b-381c-4966-ad88-c38750bddf3f.png)
 ![](https://user-images.githubusercontent.com/71251920/148649505-f9da8577-1942-42a8-9ffb-1b6b01d365a1.png)
 ![](https://user-images.githubusercontent.com/71251920/148649491-01ec384a-493e-4c28-b40c-5150c3fe894a.png)
 
-3) スケジュール バックアップの実行開始時間後に、Recovery Services コンテナー ＞ バックアップ ジョブ にて、ジョブが失敗していることを確認します。
+3) バックアップの実行後に、Recovery Services コンテナー ＞ バックアップ ジョブ にて、ジョブが失敗していることを確認します。
 ![](https://user-images.githubusercontent.com/71251920/148649493-f43a1cdf-dae3-4b30-b3a0-7efa24eb8d7d.png)
 「View details」をクリックすると、「Error Code：400190」にてAzure Files のバックアップが失敗していることが確認できます。
 ![](https://user-images.githubusercontent.com/71251920/148649494-a738edda-9b29-4b64-8d49-b89281946dce.png)
@@ -31,7 +31,7 @@ disableDisclaimer: false
 4) 指定したメールアドレスへアラート通知を送信するよう設定している場合、指定のメールアドレスへアラート通知が送信されていることが確認できます。
 
 下記アラート設定に関しましては下記をご覧ください。
-<URL準備中>
+**<現在URL準備中>**
 
 ![](https://user-images.githubusercontent.com/71251920/148649496-1799a8de-0156-4556-b02f-447c64605e69.png)
 
