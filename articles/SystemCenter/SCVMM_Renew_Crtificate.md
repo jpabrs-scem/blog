@@ -7,7 +7,8 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-皆様こんにちは、System Center サポートチームの 佐藤 です。
+皆さんこんにちは、System Center サポートチームの 保科と申します。
+
 
 今回は、System Center Virtual Machine Manager (SCVMM) で使用する自己署名証明書の有効期限が切れた場合や、削除をされた場合の対処方法についてご案内いたします。
 
