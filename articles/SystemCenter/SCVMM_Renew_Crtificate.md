@@ -86,25 +86,3 @@ SCVMM サーバー限定の手順となり、Hyper-V サーバーに対しては
 4. 自己署名証明書を更新されるサーバーに、有効期限が 5 年後 (10 年後) の 1 月 1 日に設定された自己署名証明書が無事再作成されたことを、"対処手順 ①" の 10. の手順で開けるコンソール上で確認いただきます。
 手順実施後も証明書が更新されていない場合、画面を最新の情報に更新いただくことで表示される場合がございます。
 
------------------------------------------------------------
-
-
-
-しかし、規定の設定では下記のように WQL を実行しようとする際にアクセス拒否エラーが出力される事が確認されております。
->■コマンド例
-> ` ` `C:\Windows\System32\Security\AdtServer>AdtAdmin /setquery /query:"SELECT * FROM AdtsEvent WHERE EventId=XXX" ` ` `
-
-その際はレジストリエディタにて以下キーに対してユーザー "NETWORK SERVICE" へ フルコントールなどの "値の設定"の権限付与することで改善されます。
-こちらの設定については SCOM 用に定義されているパラーメータ設定であり、設定変更により他アプリケーションへの影響はございませんのでご安心ください。
->■キー
-> ` ` `HKLM\SYSTEM\CurrentControlSet\Services\AdtServer\Parameters` ` `
-
-
-参考図：
-
-![参考図](https://user-images.githubusercontent.com/71251920/148327138-6c2ba2db-ced8-4408-9c43-144a170ee18d.png)
-
-> 対象バージョン：
->　System Center Operations Manager 2012 R2
->　System Center Operations Manager 2016
->　System Center Operations Manager 2019
