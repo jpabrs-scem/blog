@@ -1,6 +1,6 @@
 ---
-title: AdtAdmin / setquery でアクセス拒否エラー(0x00000005)が発生する場合の対処法
-date: 2022-01-06 12:00:00
+title: SCVMM サーバーおよび SCVMM 管理対象サーバーの自己署名証明書の更新手順
+date: 2022-01-12 12:00:00
 tags:
   - System Center
 disableDisclaimer: false
