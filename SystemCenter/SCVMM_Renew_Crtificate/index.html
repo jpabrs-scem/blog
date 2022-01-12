@@ -6,16 +6,16 @@
   
   <title>SCVMM サーバーおよび SCVMM 管理対象サーバーの自己署名証明書の更新手順 | Japan CSS ABRS &amp; SCEM Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、System Center サポートチームの 佐藤 です。 今回は、System Center Virtual Machine Manager (SCVMM) で使用する自己署名証明書の有効期限が切れた場合や、削除をされた場合の対処方法についてご案内いたします。 [本ページが対象とする SCVMM バージョン]SCVMM 2012SCVMM 2012 SP1SCVMM 2012">
+  <meta name="description" content="皆さんこんにちは、System Center サポートチームの 保科と申します。 今回は、System Center Virtual Machine Manager (SCVMM) で使用する自己署名証明書の有効期限が切れた場合や、削除をされた場合の対処方法についてご案内いたします。 [本ページが対象とする SCVMM バージョン]SCVMM 2012SCVMM 2012 SP1SCVMM 20">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SCVMM サーバーおよび SCVMM 管理対象サーバーの自己署名証明書の更新手順">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/SystemCenter/SCVMM_Renew_Crtificate/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
-<meta property="og:description" content="皆様こんにちは、System Center サポートチームの 佐藤 です。 今回は、System Center Virtual Machine Manager (SCVMM) で使用する自己署名証明書の有効期限が切れた場合や、削除をされた場合の対処方法についてご案内いたします。 [本ページが対象とする SCVMM バージョン]SCVMM 2012SCVMM 2012 SP1SCVMM 2012">
+<meta property="og:description" content="皆さんこんにちは、System Center サポートチームの 保科と申します。 今回は、System Center Virtual Machine Manager (SCVMM) で使用する自己署名証明書の有効期限が切れた場合や、削除をされた場合の対処方法についてご案内いたします。 [本ページが対象とする SCVMM バージョン]SCVMM 2012SCVMM 2012 SP1SCVMM 20">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148327138-6c2ba2db-ced8-4408-9c43-144a170ee18d.png">
 <meta property="article:published_time" content="2022-01-12T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-12T09:43:51.616Z">
+<meta property="article:modified_time" content="2022-01-12T09:45:01.203Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="System Center">
 <meta name="twitter:card" content="summary">
@@ -104,13 +104,13 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+63e26895-79aa-53b7-9c4a-78e033608448%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BSCVMM+%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%8A%E3%82%88%E3%81%B3+SCVMM+%E7%AE%A1%E7%90%86%E5%AF%BE%E8%B1%A1%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E8%87%AA%E5%B7%B1%E7%BD%B2%E5%90%8D%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E6%9B%B4%E6%96%B0%E6%89%8B%E9%A0%86%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FSystemCenter%2FSCVMM_Renew_Crtificate%2F%29%0A*+Content+Source%3A+%5Barticles%2FSystemCenter%2FSCVMM_Renew_Crtificate.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FSystemCenter%2FSCVMM_Renew_Crtificate.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/SystemCenter/SCVMM_Renew_Crtificate/" data-id="ckybcvk1z000o0nmzhbiseqee" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/SystemCenter/SCVMM_Renew_Crtificate/" data-id="ckybcx2qu000o0ooxethd4gfl" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは、System Center サポートチームの 佐藤 です。</p>
+<p>皆さんこんにちは、System Center サポートチームの 保科と申します。</p>
 <p>今回は、System Center Virtual Machine Manager (SCVMM) で使用する自己署名証明書の有効期限が切れた場合や、削除をされた場合の対処方法についてご案内いたします。</p>
 <p>[本ページが対象とする SCVMM バージョン]<br>SCVMM 2012<br>SCVMM 2012 SP1<br>SCVMM 2012 R2<br>SCVMM 2016<br>SCVMM 2019</p>
 <p>[概要]<br>SCVMM では、SCVMM サーバー機能をインストールしたサーバーや、SCVMM にて管理対象となる Hyper-V サーバーに SCVMM エージェントがインストールされた際、同時に自己署名証明書も当該サーバーにインストールされます。<br>これは、SCVMM サーバーと管理対象 Hyper-V サーバーの間の通信の安全性を確保するためにインストールされます。<br>そのため、この自己署名証明書は、SCVMM サーバーが管理対象 Hyper-V サーバーと通信を行う際に必須となる証明書となります。</p>
