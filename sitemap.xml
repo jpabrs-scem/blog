@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_AccessError_0x00000005/</loc>
-    
-    <lastmod>2022-01-12</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/information/team-introduction/</loc>
     
     <lastmod>2022-01-12</lastmod>
@@ -17,6 +10,13 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</loc>
+    
+    <lastmod>2022-01-12</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_AccessError_0x00000005/</loc>
     
     <lastmod>2022-01-12</lastmod>
     
@@ -52,13 +52,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/</loc>
-    
-    <lastmod>2022-01-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_AFS_backup/</loc>
     
     <lastmod>2022-01-12</lastmod>
     
