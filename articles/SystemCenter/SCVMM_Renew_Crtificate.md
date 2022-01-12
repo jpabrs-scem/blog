@@ -64,11 +64,11 @@ SCVMM では、SCVMM サーバー機能をインストールしたサーバー�
 そのような証明書が既に存在しない場合、そのまま手順 11. に進みます。
 11. SCVMM サーバー上で、"Virtual Machine Manager Command Shell" を起動します。
 12. 以下のコマンドを実行します。
-> $credential = get-credential
+> ` ` `$credential = get-credential` ` `
 13. 表示されたウインドウに、SCVMM サーバーのローカル管理者権限のあるユーザーのユーザー名とパスワードを入力して [OK] をクリックします。
 14. 続いて、以下のコマンドを実行します。
 (*** の部分は SCVMM サーバーもしくは Hyper-V サーバーの完全修飾ドメイン名を入力します。)
-> Get-VMMManagedComputer -ComputerName "***" | Register-SCVMMManagedComputer  -Credential $credential
+> ` ` `Get-VMMManagedComputer -ComputerName "***" | Register-SCVMMManagedComputer  -Credential $credential` ` `
 15. 自己署名証明書を更新されるサーバーに、有効期限が 5 年後 (10 年後) の 1 月 1 日に設定された自己署名証明書が無事再作成されたことを、10. の手順で開いたコンソール上で確認いただきます。
 手順実施後も証明書が更新されていない場合、画面を最新の情報に更新いただくことで表示される場合がございます。
 
