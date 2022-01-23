@@ -1,6 +1,6 @@
 ---
 title: 「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例
-date: 2021-11-22 12:00:00
+date: 2022-01-24 12:00:00
 tags:
   -  Recovery Services vaults
 disableDisclaimer: false
