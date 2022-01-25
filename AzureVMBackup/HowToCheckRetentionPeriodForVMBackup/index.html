@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Azure VM Backup を意図的に失敗させる方法 | Japan CSS ABRS &amp; SCEM Support Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法 について、ご案内いたします。 目次 1. スケジュール バックアップにて取得した復元ポイントの保持期限を確認されたい場合2. 「今すぐバックアップ」にて取得した復元ポイントの保持期限を確認されたい場合3. 参考 - 改善リクエストについて  1. スケ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure VM Backup を意図的に失敗させる方法">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法 について、ご案内いたします。 目次 1. スケジュール バックアップにて取得した復元ポイントの保持期限を確認されたい場合2. 「今すぐバックアップ」にて取得した復元ポイントの保持期限を確認されたい場合3. 参考 - 改善リクエストについて  1. スケ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151015032-1fe8bebd-1246-42f0-9ff0-8a511b7c9ef0.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151015030-46e75c4e-f1a8-4109-8bf1-4ae1234f1363.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151015028-5fcc5364-1da2-4ea8-9221-60b40294dd07.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151015023-bd46a1cd-a3ec-4d7a-8bd6-942be9442e64.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151015021-d768d177-6836-42da-acd7-92b6ff6fa2d9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151015016-3fa5aebe-b792-4c4a-9a06-d316eb9c6262.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151015012-5a6e4247-66a7-4c5a-83d8-25d17feb149c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151015009-70369f7e-c5fb-4ea2-8ff9-5f082f44e64b.png">
+<meta property="article:published_time" content="2022-01-26T03:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-25T16:21:00.312Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure VM Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/151015032-1fe8bebd-1246-42f0-9ff0-8a511b7c9ef0.png">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS &amp; SCEM Support Blog" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS &amp; SCEM Support Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup,Azure Site Recovery,Azure Migrate および System Center 製品(Orchestrator , Operations/Virtual Machine/Service/Data Protection Manager)に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureVMBackup/HowToCheckRetentionPeriodForVMBackup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Azure VM Backup を意図的に失敗させる方法
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2022-01-26T03:00:00.000Z" itemprop="datePublished">2022-01-26</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+c3631661-56a1-501a-bd0c-c3b953fb4461%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%82%92%E6%84%8F%E5%9B%B3%E7%9A%84%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHowToCheckRetentionPeriodForVMBackup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHowToCheckRetentionPeriodForVMBackup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHowToCheckRetentionPeriodForVMBackup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/" data-id="ckyubsd7k00080nod6ofabais" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは、Azure Backup サポートです。<br>今回は、<strong>Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</strong> について、ご案内いたします。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. スケジュール バックアップにて取得した復元ポイントの保持期限を確認されたい場合</a><br><a href="#2">2. 「今すぐバックアップ」にて取得した復元ポイントの保持期限を確認されたい場合</a><br><a href="#3">3. 参考 - 改善リクエストについて</a></p>
+<hr>
+<h2 id="1-スケジュール-バックアップにて取得した復元ポイントの保持期限を確認されたい場合"><a href="#1-スケジュール-バックアップにて取得した復元ポイントの保持期限を確認されたい場合" class="headerlink" title="1. スケジュール バックアップにて取得した復元ポイントの保持期限を確認されたい場合"></a>1. スケジュール バックアップにて取得した復元ポイントの保持期限を確認されたい場合<a id="1"></a></h2><p>スケジュール バックアップにて取得する復元ポイントは、バックアップ ポリシーにて設定した保持期限に従って保持されますので、設定しているバックアップ ポリシーを参照ください。</p>
+<p>Recovery Services コンテナー ＞ バックアップ ポリシー にて確認可能です。<br>もしくは、下図のように Recovery Services コンテナー ＞ バックアップ アイテム ＞ Azure Virtual Machine ＞ 対象の仮想マシンを選択し、「バックアップ ポリシー」を確認可能です。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/151015032-1fe8bebd-1246-42f0-9ff0-8a511b7c9ef0.png" alt="HowToCheckRetentionPeriodForVMBackup_01"></p>
+<h2 id="2-「今すぐバックアップ」にて取得した復元ポイントの保持期限を確認されたい場合"><a href="#2-「今すぐバックアップ」にて取得した復元ポイントの保持期限を確認されたい場合" class="headerlink" title="2. 「今すぐバックアップ」にて取得した復元ポイントの保持期限を確認されたい場合"></a>2. 「今すぐバックアップ」にて取得した復元ポイントの保持期限を確認されたい場合<a id="2"></a></h2><p>「今すぐバックアップ」にて取得した復元ポイントの保持期限は、Azure ポータル画面上の「バックアップ ジョブ」画面から確認可能です。<br>対象のRecovery Services コンテナー ＞ バックアップ ジョブ ＞ 「View details」をクリックいただき、「Recovery Point Expiry Time in UTC」欄をご確認ください。</p>
+<p>・復旧ポイントの管理<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/manage-recovery-points#frequently-asked-question">https://docs.microsoft.com/ja-jp/azure/backup/manage-recovery-points#frequently-asked-question</a></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/151015030-46e75c4e-f1a8-4109-8bf1-4ae1234f1363.png" alt="HowToCheckRetentionPeriodForVMBackup_02"></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/151015028-5fcc5364-1da2-4ea8-9221-60b40294dd07.png" alt="HowToCheckRetentionPeriodForVMBackup_03"></p>
+<p>なお、「今すぐバックアップ」にて取得した復元ポイントの保持期限は、Azure ポータル画面のバックアップ ジョブからのみ、確認可能となっております。<br>また、この保持期限情報を含めた、Azure ポータル画面上のバックアップ ジョブ情報の保持期間は、最大 6 か月間でございます。<br>（弊社検証環境にて確認したところ、現状 1 年以上前のバックアップ ジョブも確認はできましたが、仕様としては 6 か月間となっております）</p>
+<p>そのため、6 か月以上前の バックアップ ジョブ履歴を保持し、オンデマンド バックアップにて取得したバックアップ ポイントの保持期限を確認されたい場合は以下をご検討ください。<br>〈Azure ポータル画面より、定期的に csv へエクスポートしていただく〉<br>〈手順詳細〉<br>Azure ポータル画面より、定期的に csv にエクスポートしていただく、<br>対象の Recovery Services コンテナー ＞ バックアップ ジョブから、「Filter」にて任意の期間等を選択いただき、バックアップ ジョブが存在するうちに「Export jobs」を実施いただきますよう、お願いいたします。<br> <img src="https://user-images.githubusercontent.com/71251920/151015023-bd46a1cd-a3ec-4d7a-8bd6-942be9442e64.png" alt="HowToCheckRetentionPeriodForVMBackup_04"><br> <img src="https://user-images.githubusercontent.com/71251920/151015021-d768d177-6836-42da-acd7-92b6ff6fa2d9.png" alt="HowToCheckRetentionPeriodForVMBackup_05"><br> <img src="https://user-images.githubusercontent.com/71251920/151015016-3fa5aebe-b792-4c4a-9a06-d316eb9c6262.png" alt="HowToCheckRetentionPeriodForVMBackup_07"><br> <img src="https://user-images.githubusercontent.com/71251920/151015012-5a6e4247-66a7-4c5a-83d8-25d17feb149c.png" alt="HowToCheckRetentionPeriodForVMBackup_08"></p>
+<h2 id="3-参考-改善リクエストについて"><a href="#3-参考-改善リクエストについて" class="headerlink" title="3. 参考 - 改善リクエストについて"></a>3. 参考 - 改善リクエストについて<a id="3"></a></h2><p>・現状は「今すぐバックアップ」で取得した復元ポイントの保持期限は、Azure ポータル画面＞バックアップ ジョブからのみ確認可能<br>・Azure ポータル画面＞バックアップ ジョブ は、6 か月で表示が切れる仕様のため、すべての情報を保持したい場合は、最低 6 か月ごとにAzure ポータル画面からCSVエクスポートを手動で行う必要がある<br>（Azure PowerShell 、Azure CLI 、REST API にて「保持期限」を含めたバックアップ ジョブの確認やExportは不可な状況）<br>上記の仕様については、お客様よりコマンド実行で保持期限を取得できるようにするなど、利便性を向上してほしいとのこと、ご要望をいただいております。<br>そのため下記サイトにて、弊社開発部門へ機能の改善リクエストを投稿しております。<br>下記サイトは、お客様が希望する機能がない場合に、サポート チーム もしくはお客様から、弊社開発部門へ機能のリクエストを上げることができるサイトとなっております。<br><a target="_blank" rel="noopener" href="https://feedback.azure.com/d365community/idea/fb238a80-2954-ec11-a81a-6045bd78b970">https://feedback.azure.com/d365community/idea/fb238a80-2954-ec11-a81a-6045bd78b970</a></p>
+<p>当サイトは多数の要望がリクエストされ、投票数が多いものから機能改修の検討がなされますため、現状仕様の改善をご要望の場合は、可能であれば下図「投票数」のボタンをクリックいただけますと幸いです。<br>（「投票」時はマイクロソフト アカウントが必須となります）<br><img src="https://user-images.githubusercontent.com/71251920/151015009-70369f7e-c5fb-4ea2-8ff9-5f082f44e64b.png" alt="HowToCheckRetentionPeriodForVMBackup_09"></p>
+<p>Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法について、ご案内は以上となります。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../Recovery%20Services%20vaults/How_to_set_Backup_Alert/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">Azure VM Backup を意図的に失敗させる方法</a>
+          </li>
+        
+          <li>
+            <a href="../../Recovery%20Services%20vaults/How_to_set_Backup_Alert/">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
+          </li>
+        
+          <li>
+            <a href="../../SystemCenter/SCVMM_Renew_Crtificate/">SCVMM サーバーおよび SCVMM 管理対象サーバーの自己署名証明書の更新手順</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureFilesBackup/How_to_fail_AFS_backup/">Azure Files Backup を意図的に失敗させる方法</a>
+          </li>
+        
+          <li>
+            <a href="../../SystemCenter/SCOM_AccessError_0x00000005/">AdtAdmin / setquery でアクセス拒否エラー(0x00000005)が発生する場合の対処法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/" rel="tag">System Center</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">11</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/">System Center</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">1</span><ul></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 20px;">Azure VM Backup</a> <a href="../../tags/Information/" style="font-size: 10px;">Information</a> <a href="../../tags/Recovery-Services-vaults/" style="font-size: 10px;">Recovery Services vaults</a> <a href="../../tags/System-Center/" style="font-size: 15px;">System Center</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
