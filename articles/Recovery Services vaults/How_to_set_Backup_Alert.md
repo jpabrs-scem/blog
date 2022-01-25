@@ -18,7 +18,7 @@ disableDisclaimer: false
 ## アラート処理ルール 作成手順
 Azure Backup にて、バックアップ ジョブが失敗した際にアラート通知を出す手段は、下記ドキュメントの通り複数種類ございます。
 今回は **「Azure Monitor を使用した組み込みのアラート」** を利用します。
-・Azure Backup の監視とレポートのソリューション - Azure Backup | Microsoft Docs
+・Azure Backup の監視とレポートのソリューション
 https://docs.microsoft.com/ja-jp/azure/backup/monitoring-and-alerts-overview#monitoring-and-reporting-scenarios
 
 ![How_to_set_Backup_Alert_01](https://user-images.githubusercontent.com/71251920/151009982-ca6af556-0142-42f7-b991-33de2714c482.png)
@@ -43,7 +43,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-m
 ![How_to_set_Backup_Alert_05](https://user-images.githubusercontent.com/71251920/151009992-071f529c-b069-4e95-b579-57e41d858db5.png)
 
 また、バックアップ ジョブのエラーを検知した際にアラート通知を発報したいため、「フィルター：重要度」とし、「階層：１ - エラー」を選択します。
-・Azure Backup で保護されたワークロードの監視 - Azure Backup | Microsoft Docs
+・Azure Backup で保護されたワークロードの監視
 　https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#azure-monitor-alerts-for-azure-backup-preview
 
 ![How_to_set_Backup_Alert_06](https://user-images.githubusercontent.com/71251920/151009994-805f0f47-4085-4c6b-b1e0-5453f242f62f.png)
