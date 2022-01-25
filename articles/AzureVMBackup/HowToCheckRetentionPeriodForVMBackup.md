@@ -30,7 +30,7 @@ Recovery Services コンテナー ＞ バックアップ ポリシー にて確�
 
 
 ## 2. 「今すぐバックアップ」にて取得した復元ポイントの保持期限を確認されたい場合<a id="2"></a>
-### Azure ポータル画面から確認する<a id="2-1"></a>
+### 2-1. Azure ポータル画面から確認する<a id="2-1"></a>
 「今すぐバックアップ」にて取得した復元ポイントの保持期限は、Azure ポータル画面上の「バックアップ ジョブ」画面から確認可能です。
 対象のRecovery Services コンテナー ＞ バックアップ ジョブ ＞ 「View details」をクリックいただき、「Recovery Point Expiry Time in UTC」欄をご確認ください。
 
@@ -46,9 +46,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/manage-recovery-points#frequently-
 （弊社検証環境にて確認したところ、現状 1 年以上前のバックアップ ジョブも確認はできましたが、仕様としては 6 か月間となっております）
  
 そのため、6 か月以上前の バックアップ ジョブ履歴を保持し、オンデマンド バックアップにて取得したバックアップ ポイントの保持期限を確認されたい場合は以下をご検討ください。
-### Azure ポータル画面より、定期的に csv へエクスポートする<a id="2-2"></a>
-〈手順詳細〉
-Azure ポータル画面より、定期的に csv にエクスポートしていただく、
+### 2-2.Azure ポータル画面より、定期的に csv へエクスポートする<a id="2-2"></a>
 対象の Recovery Services コンテナー ＞ バックアップ ジョブから、「Filter」にて任意の期間等を選択いただき、バックアップ ジョブが存在するうちに「Export jobs」を実施いただきますよう、お願いいたします。
  ![HowToCheckRetentionPeriodForVMBackup_04](https://user-images.githubusercontent.com/71251920/151015023-bd46a1cd-a3ec-4d7a-8bd6-942be9442e64.png)
  ![HowToCheckRetentionPeriodForVMBackup_05](https://user-images.githubusercontent.com/71251920/151015021-d768d177-6836-42da-acd7-92b6ff6fa2d9.png)
