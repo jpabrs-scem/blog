@@ -53,7 +53,7 @@ C:\Program Files\Microsoft System Center 2016\Operations Manager\Server\AgentMan
 
 
 
-### ◆削除対象のレジストリ
+### 削除対象のレジストリ
 ・全てフォルダとなります。keyではございません。
 ・2行目の[XXXX\C96403E8AD6025B4F9E1FE9C574E34AE]は固定文字列のフォルダとなります。
 
