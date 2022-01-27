@@ -16,15 +16,16 @@ disableDisclaimer: false
 
 ## Error Message
 具体的にはプッシュインストール時には下記のようなインストール失敗メッセージが出力されます
------------------------------メッセージ内容------------------------------------------------------------
-リモート コンピューター <<コンピューターFQDN>> のエージェント管理オペレーションは エージェントのインストール に失敗しました。 
-インストール アカウント: XXX 
-エラー コード: 80070643 
-エラーの説明: インストール中に致命的なエラーが発生しました。 
-Microsoft インストーラーのエラーの説明: 
-詳細については、管理サーバーの Windows インストーラーのログ ファイル "C:\Program Files\Microsoft System Center 2016\Operations Manager\Server\AgentManagement\AgentLogs\xxxAgentInstall.LOG 
-C:\Program Files\Microsoft System Center 2016\Operations Manager\Server\AgentManagement\AgentLogs\XXXMOMAgentMgmt.log" を参照してください。 
------------------------------メッセージ内容------------------------------------------------------------
+
+<メッセージ内容>
+>リモート コンピューター <<コンピューターFQDN>> のエージェント管理オペレーションは エージェントのインストール に失敗しました。 
+>インストール アカウント: XXX 
+>エラー コード: 80070643 
+>エラーの説明: インストール中に致命的なエラーが発生しました。 
+>Microsoft インストーラーのエラーの説明: 
+>詳細については、管理サーバーの Windows インストーラーのログ ファイル "C:\Program Files\Microsoft System Center 2016\Operations >Manager\Server\AgentManagement\AgentLogs\xxxAgentInstall.LOG 
+>C:\Program Files\Microsoft System Center 2016\Operations Manager\Server\AgentManagement\AgentLogs\XXXMOMAgentMgmt.log" を参照してください。 
+
 
 ## 対処策
 当事象が発生した際には
