@@ -41,7 +41,7 @@ C:\Program Files\Microsoft System Center 2016\Operations Manager\Server\AgentMan
 下図のように [InstallProperties] の [DisplayName] が “Microsoft Monitoring Agent”となっている箇所の フォルダ名
  
 下図の確認結果として ”D996D247BE65CC940AA413D70EF113DC” を ”5C0796876F6E14A42B83EA524D9BE1AE” に読み替えます。
-
+![SCOM_agent_failures_01](https://user-images.githubusercontent.com/71251920/151289630-3ed34906-47a7-467f-ac70-4bf269148ce7.gif)
 
 
 ・742D699D-56EB-49CC-A04A-317DE01F31CD
@@ -49,6 +49,7 @@ C:\Program Files\Microsoft System Center 2016\Operations Manager\Server\AgentMan
 下図のように [DisplayName] が “Microsoft Monitoring Agent”となっている箇所の フォルダ名
  
 下図の確認結果として ”742D699D-56EB-49CC-A04A-317DE01F31CD” を”786970C5-E6F6-4A41-B238-AE25D4B91EEA” に読み替えます。
+![SCOM_agent_failures_02](https://user-images.githubusercontent.com/71251920/151289631-00aa5d7c-8b20-4bf3-baca-4baefd861d66.gif)
 
 
 
