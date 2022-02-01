@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/135618848-76248e66-8013-452e-a471-c4f7c8c37281.png">
 <meta property="article:published_time" content="2021-10-01T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-01T03:33:26.036Z">
+<meta property="article:modified_time" content="2022-02-01T03:35:15.662Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -104,7 +104,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8377b5b1-b305-5716-965e-9de8afee92d4%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%82%92%E4%BB%BB%E6%84%8F%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AE%E3%81%BF%E3%81%A7%E5%8F%96%E5%BE%97%E3%81%97%E3%81%9F%E3%81%84%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2Finvalid_schedule%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2Finvalid_schedule.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2Finvalid_schedule.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/" data-id="ckz3kg7xy000o0np9gdomhudf" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/" data-id="ckz3kikjb000o0mmq5mwd0cvs" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -115,7 +115,7 @@
 <p>一方、上記のように任意のタイミングのみでバックアップを行いたいというご要望は多く寄せられております。<br>任意のタイミングのみでバックアップを取得する運用を行う際の懸念点がございますので以下にてご紹介します。<br>懸念点を踏まえ、任意のタイミングのみでバックアップを取得する運用方法について解説させていただきます。</p>
 <p>以下の文章では、任意のタイミングで取得していただくバックアップを [アドホック バックアップ] 、スケジュールされ取得していただくバックアップを [スケジュール バックアップ] としています。</p>
 <h4 id="アドホック-バックアップのみを取得する運用を行う際の懸念点"><a href="#アドホック-バックアップのみを取得する運用を行う際の懸念点" class="headerlink" title="[アドホック バックアップのみを取得する運用を行う際の懸念点]"></a>[アドホック バックアップのみを取得する運用を行う際の懸念点]</h4><p>通常時は、バックアップ ポリシーを無効化 (バックアップの停止) し、必要なときだけバックアップを有効化しアドホック バックアップを取得する場合、下記のような懸念点が考えられます。</p>
-<p>バックアップ ポリシーを無効化すると Garbage Collection と呼ばれるクリーンアップが実行されず、期限切れ復旧ポイントや復旧ポイントのメタデータがクリーンアップされません。<br>メタデータがたまることによって最短で 18 個以上復旧ポイントがたまった場合にエラーメッセージ(<strong>UserErrorRpCollectionLimitReached</strong>) が発生し、それ以降のバックアップが取得できなくなる可能性があります。</p>
+<p>バックアップ ポリシーを無効化すると Garbage Collection と呼ばれるクリーンアップが実行されず、期限切れ復旧ポイントや復旧ポイントのメタデータがクリーンアップされません。<br>メタデータがたまることによって最短で 18 個以上復旧ポイントがたまった場合にエラーメッセージ (<strong>UserErrorRpCollectionLimitReached</strong>) が発生し、それ以降のバックアップが取得できなくなる可能性があります。</p>
 <p> [参考]<br> ・<strong>UserErrorRpCollectionLimitReached</strong> - The Restore Point collection max limit has reached (復元ポイント コレクションの上限に達しました)<br> <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached</a></p>
 <blockquote>
 <p>エラー コード: UserErrorRpCollectionLimitReached<br>エラー メッセージ: The Restore Point collection max limit has reached (復元ポイント コレクションの上限に達しました)</p>
