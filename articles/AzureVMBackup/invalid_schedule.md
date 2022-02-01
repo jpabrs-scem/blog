@@ -26,9 +26,10 @@ disableDisclaimer: false
 通常時は、バックアップ ポリシーを無効化 (バックアップの停止) し、必要なときだけバックアップを有効化しアドホック バックアップを取得する場合、下記のような懸念点が考えられます。
 
 バックアップ ポリシーを無効化すると Garbage Collection と呼ばれるクリーンアップが実行されず、期限切れ復旧ポイントや復旧ポイントのメタデータがクリーンアップされません。
-メタデータがたまることによって最短で 18 個以上復旧ポイントがたまった場合にエラーメッセージが発生し、それ以降のバックアップが取得できなくなる可能性があります。
+メタデータがたまることによって最短で 18 個以上復旧ポイントがたまった場合にエラーメッセージ(**UserErrorRpCollectionLimitReached**) が発生し、それ以降のバックアップが取得できなくなる可能性があります。
  
- ・UserErrorRpCollectionLimitReached - The Restore Point collection max limit has reached (復元ポイント コレクションの上限に達しました)
+ [参考]
+ ・**UserErrorRpCollectionLimitReached** - The Restore Point collection max limit has reached (復元ポイント コレクションの上限に達しました)
  https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached
  > エラー コード: UserErrorRpCollectionLimitReached
  > エラー メッセージ: The Restore Point collection max limit has reached (復元ポイント コレクションの上限に達しました)
