@@ -8,7 +8,7 @@ title: Japan CSS ABRS & SCEM Support Blog
 subtitle: Azure Backup,Azure Site Recovery,Azure Migrate および System Center 製品(Orchestrator , Operations/Virtual Machine/Service/Data Protection Manager)に関するサポート情報を発信します。
 # Description
 description: Japan CSS ABRS & SCEM Support Blog
-
+<meta name="msvalidate.01" content="5FBEF83FA3BD3FB99A8996B7FECED6E5" />
 # Keywords
 keywords:
   - Azure Backup 
@@ -27,6 +27,7 @@ keywords:
   - System Center
   - Microsoft
   - Microsoft 公式情報
+  - Recovery Services vaults
   
 
 author: Japan CSS ABRS & SCEM Support Team
@@ -39,6 +40,7 @@ root_tag_generator:
     - Azure VM Backup
     - Azure Files Backup
     - System Center
+    - Recovery Services vaults
   sub_tag_limit: 20
 
 # URL
