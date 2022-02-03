@@ -17,23 +17,23 @@ disableDisclaimer: false
 
 アンインストールした際には下記パスのように SCOM エージェント専用のフォルダやフォルダ配下のファイルが削除されるのは当然ですが、その他に別ソフトウェアでも使用するファイルが配置しているフォルダにある SCOM エージェント で使用するファイルも削除する対象となります。
 
-例）
+>例）
 >SCOM エージェント専用のフォルダの例
 >　C:\Program Files\Microsoft Monitoring Agent\Agent
 >別ソフトウェアでも使用するファイルが配置しているフォルダの例
 >　C:\Windows\System32
-
-上記例に記載しているフォルダ「C:\Windows\System32」からは以下ファイルが削除対象となります。
-　AcsMsgs.dll
-　AdtAgent.exe
-　InterceptCounters.dll
-　msvcp100.dll
-　msvcr100.dll
+>
+>上記例に記載しているフォルダ「C:\Windows\System32」からは以下ファイルが削除対象となります。
+>　AcsMsgs.dll
+>　AdtAgent.exe
+>　InterceptCounters.dll
+>　msvcp100.dll
+>　msvcr100.dll
 
 通常他ソフトウェアで上記ファイルを使用している場合は Windows のレジストリの設定値（複数のプログラムで使用しているため、アンインストールしない設定）によりアンインストール時に削除されないようになっているはずが、その設定がされておらず想定外にファイル msvcp100.dll が削除される事例がございました。
 
 ### ■レジストリ設定個所
-　HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SharedDLLs
+>　HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SharedDLLs
 
 当事象は基本発生しないはずですが、万一発生してしまった場合は削除されたファイルを再度インストールする事で基本は復旧いたします。
 必要なファイルについては各ソフトウェア次第でございますので、ここでのご説明は省略させていただきますが、上記ファイル msvcp100.dll の例でしたら
