@@ -7,7 +7,7 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-#### ABRS & SCEM チームについて
+
 我々のチームは文字通り、ABRS と SCEM という二つの領域をカバーしているチームです。
 ABRS チーム (Azure Backup and Recovery Service) は主にデータ保護ソリューションを提供する技術領域として Azure Backup 、SCDPM / MABS、 Azure Site Recovery 、Azure Migrate、Azure Resource Mover、Movere の技術サポートを担当しています。
 

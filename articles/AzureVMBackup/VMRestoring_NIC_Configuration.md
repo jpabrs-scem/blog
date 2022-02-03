@@ -7,7 +7,6 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-####  Azure VM のリストアの際 NIC の設定が消えてしまう
 皆様こんにちは。Azure Backup サポートの山本です。
 今回はお問い合わせをいただくことが多い、Azure VM のリストアの際 NIC の設定が消えてしまうというお問い合わせについて解説させていただきます。
 
