@@ -22,8 +22,8 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148112975-73526fb8-4586-4cc9-863e-c3d314999398.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148112970-9689b050-a986-4de4-b752-274624c4a17e.gif">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148112967-eaab9628-7f5e-4fd4-a11f-63faa6ad75b5.jpg">
-<meta property="article:published_time" content="2022-01-05T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-04T05:39:56.690Z">
+<meta property="article:published_time" content="2022-02-05T03:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-04T05:43:18.940Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -106,13 +106,13 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-01-05T03:00:00.000Z" itemprop="datePublished">2022-01-05</time>
+  <time datetime="2022-02-05T03:00:00.000Z" itemprop="datePublished">2022-02-05</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+946d5410-3e30-5150-b569-d739bc930c34%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+%E3%81%AE%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2+%28%E6%97%A2%E5%AD%98%E3%82%92%E7%BD%AE%E6%8F%9B%29+%E3%81%8C%E5%A4%B1%E6%95%97%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FVM_Restorefail_invalid_protection%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FVM_Restorefail_invalid_protection.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FVM_Restorefail_invalid_protection.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/" data-id="ckz7zagux000m0opkc0yzeolz" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/" data-id="ckz7zeszo000m0nqph84wc06c" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -120,8 +120,8 @@
         <span id="more"></span>
 <p>皆様こんにちは、Azure Backup サポートです。<br>今回は、Azure VM Backup にて、対象の仮想マシンを <strong>「VM の復元」-「構成の復元：既存を置換」にて「復元」を実行すると、「OlrBackupFailed」エラーが発生する</strong>場合の原因と対処法についてご案内します。</p>
 <p>上記「OlrBackupFailed」エラーが発生した場合、考えられる要因として、対象の仮想マシンに対して「バックアップの停止」を行っていることが考えられます。<br>（対象の仮想マシンに対して「バックアップの停止」を行っていない、以下のシナリオに合致しない等あれば、弊社までお問い合わせ願います。）</p>
-<h2 id="【前提】既存を置換-にて復元する場合、対象の-VM-の電源は停止しておく必要がございます。"><a href="#【前提】既存を置換-にて復元する場合、対象の-VM-の電源は停止しておく必要がございます。" class="headerlink" title="【前提】既存を置換 にて復元する場合、対象の VM の電源は停止しておく必要がございます。"></a>【前提】既存を置換 にて復元する場合、対象の VM の電源は停止しておく必要がございます。</h2><p>作業実施前にの画面ショットのように ”停止済み(割り当て解除)” であることを確認し再試行してください。<br><img src="https://user-images.githubusercontent.com/71251920/152478015-6ef0aea5-4143-4347-99b3-1eea5ec42b06.png" alt="OLR_premise_01"></p>
-<p>VM を起動したまま実施した場合、下記のような Error Message、および 画面となり失敗します。(リストアのトリガー自体ができません。)</p>
+<h2 id="【前提】既存を置換-にて復元する場合、対象の-VM-の電源は停止しておく必要がございます。"><a href="#【前提】既存を置換-にて復元する場合、対象の-VM-の電源は停止しておく必要がございます。" class="headerlink" title="【前提】既存を置換 にて復元する場合、対象の VM の電源は停止しておく必要がございます。"></a>【前提】既存を置換 にて復元する場合、対象の VM の電源は停止しておく必要がございます。</h2><p>作業実施前にの画面ショットのように ”停止済み(割り当て解除)” であることを確認してください。<br><img src="https://user-images.githubusercontent.com/71251920/152478015-6ef0aea5-4143-4347-99b3-1eea5ec42b06.png" alt="OLR_premise_01"></p>
+<p>VM を起動したまま実施した場合、下記のような Error Message、および 画面となり失敗します。(リストアのトリガー自体ができません。)<br>その場合は、上記の画面ショットの状態になるように VM の電源 を停止してください。</p>
 <blockquote>
 <p>エラー コード    UserErrorVmNotShutDown<br>エラー メッセージ    VM needs to be in deallocated state for performing replace disks operation<br>推奨される操作    Please shut down the VM, and retry</p>
 </blockquote>
@@ -162,19 +162,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../SystemCenter/SCOM_AccessError_0x00000005/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          AdtAdmin / setquery でアクセス拒否エラー(0x00000005)が発生する場合の対処法
-        
-      </div>
-    </a>
   
-  
-    <a href="../VM_Backup_calculator/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../SystemCenter/SCOM_2012R2_Uninstall-TroubleCase/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">料金計算ツールを用いた Azure VM Backup の料金見積もりについて</div>
+      <div class="article-nav-title">SCOM 2012 R2 エージェントのアンインストール時のトラブル事例</div>
     </a>
   
 </nav>
@@ -193,6 +184,10 @@
       <ul>
         
           <li>
+            <a href="">Azure VM のリストア (既存を置換) が失敗する</a>
+          </li>
+        
+          <li>
             <a href="../../SystemCenter/SCOM_2012R2_Uninstall-TroubleCase/">SCOM 2012 R2 エージェントのアンインストール時のトラブル事例</a>
           </li>
         
@@ -206,10 +201,6 @@
         
           <li>
             <a href="../HowToCheckRetentionPeriodForVMBackup/">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</a>
-          </li>
-        
-          <li>
-            <a href="../../Recovery%20Services%20vaults/How_to_set_Backup_Alert/">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
           </li>
         
       </ul>
