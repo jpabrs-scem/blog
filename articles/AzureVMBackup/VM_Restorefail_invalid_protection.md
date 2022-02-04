@@ -1,6 +1,6 @@
 ---
 title: Azure VM のリストア (既存を置換) が失敗する
-date: 2022-01-05 12:00:00
+date: 2022-02-05 12:00:00
 tags:
   - Azure VM Backup
 disableDisclaimer: false
@@ -15,11 +15,11 @@ disableDisclaimer: false
 
 ## 【前提】既存を置換 にて復元する場合、対象の VM の電源は停止しておく必要がございます。
 
-作業実施前にの画面ショットのように ”停止済み(割り当て解除)” であることを確認し再試行してください。
+作業実施前にの画面ショットのように ”停止済み(割り当て解除)” であることを確認してください。
 ![OLR_premise_01](https://user-images.githubusercontent.com/71251920/152478015-6ef0aea5-4143-4347-99b3-1eea5ec42b06.png)
 
 VM を起動したまま実施した場合、下記のような Error Message、および 画面となり失敗します。(リストアのトリガー自体ができません。)
-
+その場合は、上記の画面ショットの状態になるように VM の電源 を停止してください。
 > エラー コード	UserErrorVmNotShutDown
 >エラー メッセージ	VM needs to be in deallocated state for performing replace disks operation
 >推奨される操作	Please shut down the VM, and retry
