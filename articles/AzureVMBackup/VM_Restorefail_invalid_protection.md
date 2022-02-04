@@ -13,7 +13,18 @@ disableDisclaimer: false
 上記「OlrBackupFailed」エラーが発生した場合、考えられる要因として、対象の仮想マシンに対して「バックアップの停止」を行っていることが考えられます。
 （対象の仮想マシンに対して「バックアップの停止」を行っていない、以下のシナリオに合致しない等あれば、弊社までお問い合わせ願います。）
 
+## 【前提】既存を置換 にて復元する場合、対象の VM の電源は停止しておく必要がございます。
 
+作業実施前にの画面ショットのように ”停止済み(割り当て解除)” であることを確認し再試行してください。
+![OLR_premise_01](https://user-images.githubusercontent.com/71251920/152478015-6ef0aea5-4143-4347-99b3-1eea5ec42b06.png)
+
+VM を起動したまま実施した場合、下記のような Error Message、および 画面となり失敗します。(リストアのトリガー自体ができません。)
+
+> エラー コード	UserErrorVmNotShutDown
+>エラー メッセージ	VM needs to be in deallocated state for performing replace disks operation
+>推奨される操作	Please shut down the VM, and retry
+
+![OLR_premise_02](https://user-images.githubusercontent.com/71251920/152478012-f216f599-44e5-4e0f-913e-5c0013071509.png)
 ## 目次
 -----------------------------------------------------------
 [1. 該当シナリオ](#1)
