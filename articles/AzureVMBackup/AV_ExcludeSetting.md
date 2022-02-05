@@ -31,6 +31,14 @@ Windows OS と Linux OS に場合分けしてお伝えします。
 > C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot
 
 
+なお、上記は下記の公式ドキュメントにも記載されております。
+・Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題 - 手順 4:Azure Backup VM 拡張機能の正常性を確認する
+https://docs.microsoft.com/ja-jp/azure/backup/https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#step-4-check-azure-backup-extension-health
+
+・VMRestorePointInternalError - VM で構成されているウイルス対策により、バックアップ拡張機能の実行が制限されています
+https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#vmrestorepointinternalerror---antivirus-configured-in-the-vm-is-restricting-the-execution-of-backup-extension
+
+
 ### 1-2. Linux OS の場合<a id="1-2"></a>
 下記をアンチウイルス ソフトの除外設定から除外してください。
 > `/var/lib/waagent/WALinuxAgent
