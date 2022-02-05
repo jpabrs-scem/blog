@@ -23,7 +23,7 @@ Azure VM Backup とは Azure 上の VM に対するバックアップサービ�
 ・Azure VM バックアップの概要
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction
 
-wWindows OS と Linux OS に場合分けしてお伝えします。
+Windows OS と Linux OS に場合分けしてお伝えします。
 
 ### 1-1. Windows OS の場合<a id="1-1"></a>
 下記をアンチウイルス ソフトの除外設定から除外してください。
