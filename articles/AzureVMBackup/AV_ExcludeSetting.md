@@ -1,6 +1,6 @@
 ---
 title: Azure Backup におけるウイルス除外設定
-date: 2021-02-06 12:00:00
+date: 2022-02-06 12:00:00
 tags:
   - Azure VM Backup
   - Azure MARS Backup 
