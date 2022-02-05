@@ -41,7 +41,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#vmre
 
 ### 1-2. Linux OS の場合<a id="1-2"></a>
 Linux OS の場合、下記をアンチウイルス ソソフトの除外設定にいれてください。
-> `/var/lib/waagent/WALinuxAgent
+> /var/lib/waagent/WALinuxAgent
 > /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux
 
 
