@@ -26,7 +26,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction
 Windows OS と Linux OS に場合分けしてお伝えします。
 
 ### 1-1. Windows OS の場合<a id="1-1"></a>
-下記をアンチウイルス ソフトの除外設定から除外してください。
+Windows OS の場合、下記をアンチウイルス ソフトの除外設定から除外してください。
 > C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot
 > C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot
 
@@ -40,7 +40,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#vmre
 
 
 ### 1-2. Linux OS の場合<a id="1-2"></a>
-下記をアンチウイルス ソフトの除外設定から除外してください。
+Linux OS の場合、下記をアンチウイルス ソフトの除外設定から除外してください。
 > `/var/lib/waagent/WALinuxAgent
 > /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux
 
