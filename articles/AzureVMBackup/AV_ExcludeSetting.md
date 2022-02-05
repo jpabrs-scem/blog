@@ -26,7 +26,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction
 Windows OS と Linux OS に場合分けしてお伝えします。
 
 ### 1-1. Windows OS の場合<a id="1-1"></a>
-Windows OS の場合、下記をアンチウイルス ソフトの除外設定から除外してください。
+Windows OS の場合、下記をアンチウイルス ソフトの除外設定にいれてください。
 > C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot
 > C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot
 
@@ -52,7 +52,7 @@ MARS バックアップ (Azure MARS Backup エージェントを利用したバ�
 https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent
 
 
-下記をアンチウイルス ソフトの除外設定から除外してください。
+MARS バックアップをお使いの場合、下記をアンチウイルス ソフトの除外設定にいれてください。
 > C:\Program Files\Microsoft Azure Recovery Services Agent\bin\cbengine.exe (プロセスとして除外)
 > C:\Program Files\Microsoft Azure Recovery Services Agent\ 
 >スクラッチ場所 (標準的の場所を使用していない場合)
