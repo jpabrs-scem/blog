@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151024656-f6589f03-6965-47ad-9848-36742f9e3e7e.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151024649-a76bd670-cc4c-4dc6-9b89-7849ca86f7e2.gif">
 <meta property="article:published_time" content="2022-02-05T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-07T01:08:09.467Z">
+<meta property="article:modified_time" content="2022-02-07T01:50:18.363Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -105,7 +105,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f43d1ea1-34fd-56d6-a101-92a34c6aff5b%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%A7%E5%8F%96%E5%BE%97%E3%81%97%E3%81%9F%E5%BE%A9%E6%97%A7%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E4%BF%9D%E6%8C%81%E6%9C%9F%E9%96%93%E3%81%AE%E5%BB%B6%E9%95%B7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHowToExtendVMRetentionPeriod%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHowToExtendVMRetentionPeriod.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHowToExtendVMRetentionPeriod.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/" data-id="ckzbzwhr2000c0mq44lkkaisi" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/" data-id="ckzc1eozn000c0oqi6bi150pq" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -119,13 +119,13 @@
 <li>「今すぐバックアップ」にて取得済の復元ポイントの保持期間を延長して保持しておくことは可能か</li>
 </ol>
 <p>結論から申し上げますと、1. は可能でございますが、2. 3. については保持期間を延長して保持しておくことはかないません。</p>
-<p>また Azure Backup では無期限に保存するような設定はできません。</p>
+<p>また <strong>Azure Backup では無期限に保存するような設定はできません</strong>。</p>
 <p>代替案含め、下記にてご説明いたします。</p>
 <h2 id="1-バックアップ-ポリシーに従って取得済の復元ポイントの保持期間を延長することは可能か"><a href="#1-バックアップ-ポリシーに従って取得済の復元ポイントの保持期間を延長することは可能か" class="headerlink" title="1. バックアップ ポリシーに従って取得済の復元ポイントの保持期間を延長することは可能か"></a>1. バックアップ ポリシーに従って取得済の復元ポイントの保持期間を延長することは可能か<a id="1"></a></h2><p>対象の仮想マシンに適用しているバックアップ ポリシー内の保持期間を変更することで、これまで取得済の復元ポイントに対しても保持期間を延長することが可能でございます。<br>例えば、週次 (日次) にて取得する復元ポイント（バックアップ ポイント）に対する保持期間の変更は、すでに週次 (日次) にて取得した復元ポイントに対しても変更が適用されます。</p>
 <p>下記の弊社公開情報をご覧ください。<br>・アーキテクチャの概要 -  復旧ポイントに対するポリシーの変更の影響<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-architecture#impact-of-policy-change-on-recovery-points">https://docs.microsoft.com/ja-jp/azure/backup/backup-architecture#impact-of-policy-change-on-recovery-points</a></p>
 <p><img src="https://user-images.githubusercontent.com/71251920/151024656-f6589f03-6965-47ad-9848-36742f9e3e7e.png" alt="HowToExtendVMRetentionPeriod_01"></p>
 <h2 id="2-バックアップ-ポリシーに従って取得済の復元ポイントの中の、特定の復元ポイントのみの保持期間を延長して保持しておくことは可能か"><a href="#2-バックアップ-ポリシーに従って取得済の復元ポイントの中の、特定の復元ポイントのみの保持期間を延長して保持しておくことは可能か" class="headerlink" title="2. バックアップ ポリシーに従って取得済の復元ポイントの中の、特定の復元ポイントのみの保持期間を延長して保持しておくことは可能か"></a>2. バックアップ ポリシーに従って取得済の復元ポイントの中の、特定の復元ポイントのみの保持期間を延長して保持しておくことは可能か<a id="2"></a></h2><h2 id="3-「今すぐバックアップ」にて取得済の復元ポイントの保持期間を延長して保持しておくことは可能か"><a href="#3-「今すぐバックアップ」にて取得済の復元ポイントの保持期間を延長して保持しておくことは可能か" class="headerlink" title="3. 「今すぐバックアップ」にて取得済の復元ポイントの保持期間を延長して保持しておくことは可能か"></a>3. 「今すぐバックアップ」にて取得済の復元ポイントの保持期間を延長して保持しておくことは可能か<a id="3"></a></h2><p>バックアップ ポリシー上で「保持期間」を変更した場合、これまで取得してきたすべての復元ポイントに対して、ポリシーの変更が適用されます。<br>残念ながら、これまで取得してきた復元ポイントのうち、「ある特定の復元ポイントのみ」の保持期間を延長して保持しておく、ということはかないません。<br>また、「今すぐバックアップ」（オンデマンド バックアップ）にて取得した復元ポイントの保持期間も延長することはかないません。<br>上記 2. 3. をご所望の場合は、下記代替案の通り、対象の復元ポイントからディスクとして復元しておき、ご利用者様にてディスクを保持していただくことをお勧めします。</p>
-<h3 id="代替案"><a href="#代替案" class="headerlink" title="代替案"></a>代替案<a id="4"></a></h3><p>対象の仮想マシン ＞ 「VM の復元」をクリック ＞ 「復元ポイント」にて、保持しておきたい特定の復元ポイントを選択します。<br>「構成の復元：新規作成」「復元の種類：ディスクの復元」を選択のうえ、「復元」をクリックします。<br>復元されたディスクは、ご利用者様にてディスクを削除しない限り、保持され続けます。</p>
+<h3 id="代替案"><a href="#代替案" class="headerlink" title="代替案"></a>代替案<a id="4"></a></h3><p>対象の仮想マシン ＞ 「VM の復元」をクリック ＞ 「復元ポイント」にて、保持しておきたい特定の復元ポイントを選択します。<br>「構成の復元：新規作成」「復元の種類：ディスクの復元」を選択のうえ、「復元」をクリックします。<br><strong>復元されたディスクは、ご利用者様にてディスクを削除しない限り、保持され続けます。</strong></p>
 <p>復元されたからディスクを既存の VM にアタッチすることや、既存の VM とディスクをスワップすること、および、復元されたディスクを使って新規 VM を作成することが可能です。</p>
 <p><img src="https://user-images.githubusercontent.com/71251920/151024649-a76bd670-cc4c-4dc6-9b89-7849ca86f7e2.gif" alt="HowToExtendVMRetentionPeriod_02"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考<a id="5"></a></h2><p>・Azure VM Backupでリストアされるディスク名に関して<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/">https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</a><br>・Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/</a></p>
