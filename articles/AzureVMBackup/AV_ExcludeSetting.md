@@ -40,12 +40,12 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#vmre
 
 
 ### 1-2. Linux OS の場合<a id="1-2"></a>
-Linux OS の場合、下記をアンチウイルス ソソフトの除外設定にいれてください。
+Linux OS の場合、下記をアンチウイルス ソフトの除外設定にいれてください。
 > /var/lib/waagent/WALinuxAgent
 > /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux
 
 
-#### 2 .MARS バックアップの場合のウイルス検知除外設定<a id="2"></a>
+### 2 .MARS バックアップの場合のウイルス検知除外設定<a id="2"></a>
 MARS バックアップ (Azure MARS Backup エージェントを利用したバックアップ) とはクラウドかオンプレミス環境かを問わず、Windows OS において、ファイルとフォルダー単位のバックアップやシステム状態のバックアップを 取得し Azure 上に保存するバックアップサービスです。
 
 ・Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
