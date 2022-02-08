@@ -15,7 +15,7 @@ MARS エージェント によるバックアップはマシン内のファイ�
 
 - 参考
 ・Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
-https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent
+ https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent
 
 
 
@@ -31,7 +31,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent
 
 ## 1. MARS エージェントのプロパティ設定を利用したプロキシ設定例<a id="1"></a>
 本設定に関連した公式ドキュメントは下記でございます。
-
+- 参考
 ・Azure Backup MARS エージェントをインストールする - エージェントをインストールして登録する
 　https://docs.microsoft.com/ja-jp/azure/backup/install-mars-agent#install-and-register-the-agent
 
@@ -44,6 +44,7 @@ MARS のインストール時の下記プロキシ設定に、プロキシ サ�
 
 ## 2. Windows のシステムアカウントプロキシ設定を利用した設定例 <a id="2"></a>
 本設定に関連した公式ドキュメントは下記でございます。
+- 参考
 ・Windows のプロキシ設定を確認する
 　https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-mars-troubleshoot#verifying-proxy-settings-for-windows
 
