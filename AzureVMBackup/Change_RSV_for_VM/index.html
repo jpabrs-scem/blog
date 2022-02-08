@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Azure VM BackupにおけるRecovery Services コンテナーの変更について | Japan CSS ABRS &amp; SCEM Support Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、Azure VM Backup を取得している Recovery Services コンテナーを変更することは可能か？について説明させていただきます。 結論から申し上げますと可能です。 なお、本件に関連した公式ドキュメントは下記でございます。・Recovery Services コンテナーを作成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure VM BackupにおけるRecovery Services コンテナーの変更について">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
+<meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、Azure VM Backup を取得している Recovery Services コンテナーを変更することは可能か？について説明させていただきます。 結論から申し上げますと可能です。 なお、本件に関連した公式ドキュメントは下記でございます。・Recovery Services コンテナーを作成">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033255-67f50490-d9e1-4da1-bd32-38b90169176f.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033252-b754f533-636e-48b7-954a-64d05b206926.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033249-43853045-8fe5-45db-81f8-192f132642c6.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033247-afd58826-d3ab-4a12-a97f-200aed5e8080.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033243-14e0e75a-aeee-4fa6-9e31-c2d74e63f494.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033242-3bec21b2-4884-49f0-b4a3-79f618e886c8.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033238-2dd487ff-b8e1-44b9-af62-2ec16276a830.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033235-749eb8ff-5a0e-4573-b736-01bb9232fd8e.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033232-ea02b8b6-f6a5-48d5-b59a-8cd6f20bd115.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033229-353621e5-0fa7-4ffc-9e24-23650542bc4e.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033227-2c45fbbd-0036-429a-8a33-9dbf06cce622.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033224-cee11ab5-892f-4ed0-b085-2222c859c83b.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033220-1a7bdbaa-c235-47c1-a999-04ecff700e92.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033219-95548634-88d5-4dd1-a6b1-f2a3287402c1.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033215-abe38422-30ba-450e-a27e-773957273cf8.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033211-44a0eab1-f6cf-41ba-908b-e83454025295.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033209-9d8daa07-6052-49e7-ae71-0ba5a7e3a15e.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033202-587b9bd3-bcd5-41a6-a10f-d6a1bffdbca4.jpg">
+<meta property="article:published_time" content="2022-02-09T03:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-08T16:55:14.415Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure VM Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/153033255-67f50490-d9e1-4da1-bd32-38b90169176f.jpg">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS &amp; SCEM Support Blog" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS &amp; SCEM Support Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup,Azure Site Recovery,Azure Migrate および System Center 製品(Orchestrator , Operations/Virtual Machine/Service/Data Protection Manager)に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureVMBackup/Change_RSV_for_VM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Azure VM BackupにおけるRecovery Services コンテナーの変更について
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2022-02-09T03:00:00.000Z" itemprop="datePublished">2022-02-09</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6704c4a7-9762-507a-bd14-497b7c1b27cb%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8BRecovery+Services+%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%BC%E3%81%AE%E5%A4%89%E6%9B%B4%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FChange_RSV_for_VM%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FChange_RSV_for_VM.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FChange_RSV_for_VM.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="ckzed6bfr00080mnv6h8w46vu" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回はお問い合わせをいただくことが多い、<strong>Azure VM Backup を取得している Recovery Services コンテナーを変更することは可能か？</strong>について説明させていただきます。</p>
+<p>結論から申し上げますと<strong>可能</strong>です。</p>
+<p>なお、本件に関連した公式ドキュメントは下記でございます。<br>・Recovery Services コンテナーを作成して構成する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-default-settings">https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-default-settings</a></p>
+<p>すでにバックアップを構成している　VM に対して Recovery Services コンテナー を変更するには、VM と 既存のRecovery Services コンテナーとの紐づけを解除する必要がございます。<br>紐づけを解除することで、新たに別の Recovery Services コンテナーに紐づけることが可能です。</p>
+<p>紐づけを解除する方法としては 後述の通り２ 種類ございます。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1.既存のバックアップデータを維持する方法</a><br><a href="#2">2.既存のバックアップデータを削除する方法</a></p>
+<hr>
+<h3 id="1-既存のバックアップデータを維持する方法"><a href="#1-既存のバックアップデータを維持する方法" class="headerlink" title="1.既存のバックアップデータを維持する方法"></a>1.既存のバックアップデータを維持する方法<a id="1"></a></h3><p> Recovery Services コンテナーと VM の紐づけはVMのリソースグループ名と VM名によってを行っています。<br>この方法ではその仕組みを利用、つまり対象の VM のリソースグループを変更することにより、既存の Recovery Services コンテナーとの紐づけを解除します。<br>なお、リソースグループを変更し新しい Recovery Services コンテナーにてバックアップを構成した場合でも、VM のリソースグループ名を 元のリソースグループに戻した場合、既存の Recovery Services コンテナーと紐づいている状態になります。</p>
+<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><p>こちらの方法では対象の VM のリソースグループの変更が必要です。<br>・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Docs<br>    <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data">https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data</a><br>“Azure VM の場合は、GRS コンテナー内の VM に対して保護を停止してデータを保持し、VM を別のリソース グループに移動してから、LRS コンテナー内の VM を保護することができます。”</p>
+<h2 id="変更手順概要"><a href="#変更手順概要" class="headerlink" title="変更手順概要"></a>変更手順概要</h2><ol>
+<li>古いRecovery Service コンテナーでのバックアップ停止する</li>
+<li>バックアップ対象の VM のリソースグループを変更する</li>
+<li>新しいRecovery Service コンテナーにてバックアップを構成する</li>
+</ol>
+<h2 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h2><p>0-1. Recovery Service コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )<br><img src="https://user-images.githubusercontent.com/71251920/153033255-67f50490-d9e1-4da1-bd32-38b90169176f.jpg" alt="Change_RSV_for_VM_01"></p>
+<p>0-2. Recovery Service コンテナー: rsv-1 にてバックアップ有効化、復旧ポイント作成済み<br><img src="https://user-images.githubusercontent.com/71251920/153033252-b754f533-636e-48b7-954a-64d05b206926.jpg" alt="Change_RSV_for_VM_02"></p>
+<p>1-1. VM のバックアップを停止<br><img src="https://user-images.githubusercontent.com/71251920/153033249-43853045-8fe5-45db-81f8-192f132642c6.jpg" alt="Change_RSV_for_VM_03"></p>
+<p>1-2. 停止の際、バックアップデータ (復旧ポイント) の保持を選択し、理由を記入してバックアップの停止をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033247-afd58826-d3ab-4a12-a97f-200aed5e8080.jpg" alt="Change_RSV_for_VM_04"></p>
+<p>1-3. バックアップの無効化完了を確認</p>
+<p>(1-4) この状態では別のRecovery Service コンテナーではまだ紐づけが解除されていないためバックアップを有効化できません。<br>(別のRecovery Service コンテナーでバックアップを有効化しようとしても対象に表示されません)<br><img src="https://user-images.githubusercontent.com/71251920/153033243-14e0e75a-aeee-4fa6-9e31-c2d74e63f494.jpg" alt="Change_RSV_for_VM_06"></p>
+<p>2-1. VM &gt; 概要 &gt; リソースグループ 横の移動をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033242-3bec21b2-4884-49f0-b4a3-79f618e886c8.jpg" alt="Change_RSV_for_VM_07"></p>
+<p>2-2. 移動させたいリソースグループを選択し、次へ<br>2-3. 検証が完了するのを待ち、次へ<br>2-4. 内容を確認し、下部チェックを選択して、移動をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033238-2dd487ff-b8e1-44b9-af62-2ec16276a830.jpg" alt="Change_RSV_for_VM_08"></p>
+<p>2-5. リソースグループの移動完了を確認<br><img src="https://user-images.githubusercontent.com/71251920/153033235-749eb8ff-5a0e-4573-b736-01bb9232fd8e.jpg" alt="Change_RSV_for_VM_09"></p>
+<p>3-1. 新たにバックアップを取得したい別の Recovery Service コンテナーにて該当の VM のバックアップを有効化<br>    (この時点で別の Recovery Service コンテナーのバックアップ構成の仮想マシン選択欄に該当の VM が表示されるようになります)<br><img src="https://user-images.githubusercontent.com/71251920/153033232-ea02b8b6-f6a5-48d5-b59a-8cd6f20bd115.jpg" alt="Change_RSV_for_VM_10"></p>
+<p>3-2. 今すぐバックアップにてバックアップ完了。<br>新たなRecovery Service コンテナーにて問題なくバックアップできることを確認</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/153033229-353621e5-0fa7-4ffc-9e24-23650542bc4e.jpg" alt="Change_RSV_for_VM_11"></p>
+<p>(3-3) 古いRecovery Service コンテナーには過去の復旧ポイントは残存したままで、この復旧ポイントからも VM を復元することが可能です。<br><img src="https://user-images.githubusercontent.com/71251920/153033227-2c45fbbd-0036-429a-8a33-9dbf06cce622.jpg" alt="Change_RSV_for_VM_12"></p>
+<h3 id="2-既存のバックアップデータを削除する方法"><a href="#2-既存のバックアップデータを削除する方法" class="headerlink" title="2.既存のバックアップデータを削除する方法"></a>2.既存のバックアップデータを削除する方法<a id="2"></a></h3><p> 既存のRecovery Services コンテナーに保存された対象 VM のバックアップデータを削除することによって、既存の Recovery Services コンテナーと対象の VM との紐づけを解除します。 </p>
+<h2 id="注意事項-1"><a href="#注意事項-1" class="headerlink" title="注意事項"></a>注意事項</h2><p>こちらの方法では対象VMの 既存のバックアップデータの削除が必要です。<br>・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Docs<br>    <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#dont-need-to-preserve-previous-backed-up-data">https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#dont-need-to-preserve-previous-backed-up-data</a><br>“新しい LRS コンテナーのワークロードを保護するには、GRS コンテナー内の現在の保護とデータを削除し、バックアップを再構成する必要があります。”</p>
+<p>また本作業を行う際、バックアップアラートを設定していない場合でも発砲されます。<br>詳細につきましては下記をご確認ください。<br>バックアップ アラートの通知<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#notification-for-backup-alerts">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#notification-for-backup-alerts</a><br>“破壊的な操作 (データを削除して保護を停止など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。”</p>
+<h2 id="変更手順概要-1"><a href="#変更手順概要-1" class="headerlink" title="変更手順概要"></a>変更手順概要</h2><ol>
+<li>古いRecovery Service コンテナーでのバックアップを停止し、バックアップデータを削除する</li>
+<li>新しいRecovery Service コンテナーにてバックアップを構成する</li>
+</ol>
+<p>(手順)<br>0-1. Recovery Service コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )<br><img src="https://user-images.githubusercontent.com/71251920/153033224-cee11ab5-892f-4ed0-b085-2222c859c83b.jpg" alt="Change_RSV_for_VM_13"></p>
+<p>0-2. Recovery Service コンテナー: rsv-1 にてバックアップ有効化、復旧ポイント作成済み<br><img src="https://user-images.githubusercontent.com/71251920/153033220-1a7bdbaa-c235-47c1-a999-04ecff700e92.jpg" alt="Change_RSV_for_VM_14"></p>
+<p>1-1. VM のバックアップを停止<br><img src="https://user-images.githubusercontent.com/71251920/153033219-95548634-88d5-4dd1-a6b1-f2a3287402c1.jpg" alt="Change_RSV_for_VM_15"></p>
+<p>1-2. 停止の際、バックアップデータ (復旧ポイント) の削除を選択し、理由を記入してバックアップの停止をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033215-abe38422-30ba-450e-a27e-773957273cf8.jpg" alt="Change_RSV_for_VM_16"></p>
+<p>1-3. この時、設定 – プロパティ &gt; セキュリティ設定 更新 &gt; 論理削除 が 無効 に設定されていることを確認してください。<br>    バックアップデータは完全に削除される必要があります。<br><img src="https://user-images.githubusercontent.com/71251920/153033211-44a0eab1-f6cf-41ba-908b-e83454025295.jpg" alt="Change_RSV_for_VM_17"></p>
+<ul>
+<li>論理削除状態について<br>論理削除状態(論理削除が有効な状態で削除した状態)では完全にバックアップデータが消えず、対象 VM と  Recovery Services コンテナーの紐づけが解除されません。その際は下記 URL を参考にして論理削除状態のバックアップアイテムを完全に削除してください。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items</a> </li>
+</ul>
+<p>1-4. バックアップデータの削除完了を”  Azure Portal  → 対象のRecovery Services コンテナー → バックアップアイテム → Azure Virtual Machines” から、対象のVMが表示されないことを確認します。</p>
+<p>2-1. 新たにバックアップを取得したい別の Recovery Service コンテナーにて該当の VM のバックアップを有効化<br>    (この時点で別の Recovery Service コンテナーのバックアップ構成の仮想マシン選択欄に該当の VM が表示されるようになります)<br><img src="https://user-images.githubusercontent.com/71251920/153033209-9d8daa07-6052-49e7-ae71-0ba5a7e3a15e.jpg" alt="Change_RSV_for_VM_18"></p>
+<p>2-2. 今すぐバックアップにてバックアップ完了。<br>新たなRecovery Service コンテナーにて問題なくバックアップできることを確認<br><img src="https://user-images.githubusercontent.com/71251920/153033202-587b9bd3-bcd5-41a6-a10f-d6a1bffdbca4.jpg" alt="Change_RSV_for_VM_19"></p>
+<hr>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/Change_RSV_for_VM.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../MARSBackup/MARS_Proxy_Setting/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">プロキシを利用した MARS エージェントによるバックアップについて</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">Azure VM BackupにおけるRecovery Services コンテナーの変更について</a>
+          </li>
+        
+          <li>
+            <a href="../../MARSBackup/MARS_Proxy_Setting/">プロキシを利用した MARS エージェントによるバックアップについて</a>
+          </li>
+        
+          <li>
+            <a href="../AV_ExcludeSetting/">Azure Backup におけるウイルス除外設定について</a>
+          </li>
+        
+          <li>
+            <a href="../HowToExtendVMRetentionPeriod/">Azure VM Backup で取得した復旧ポイントの保持期間の延長について</a>
+          </li>
+        
+          <li>
+            <a href="../VM_Restorefail_invalid_protection/">Azure VM のリストア (既存を置換) が失敗する</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/" rel="tag">System Center</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">14</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Recovery-Services-vaults/">Recovery Services vaults</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/">System Center</a><span class="tag-list-count">4</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">1</span><ul></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 20px;">Azure VM Backup</a> <a href="../../tags/Information/" style="font-size: 10px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 10px;">MARS Backup</a> <a href="../../tags/Recovery-Services-vaults/" style="font-size: 10px;">Recovery Services vaults</a> <a href="../../tags/System-Center/" style="font-size: 15px;">System Center</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
