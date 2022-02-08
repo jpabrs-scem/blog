@@ -24,27 +24,30 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-defa
 ## 目次
 -----------------------------------------------------------
 [1.既存のバックアップデータを維持する方法](#1)
+ [注意事項](#1-1)
+ [変更手順概要](#1-2)
+ [手順](#1-3)
 [2.既存のバックアップデータを削除する方法](#2)
 -----------------------------------------------------------
 
-### 1.既存のバックアップデータを維持する方法<a id="1"></a>
+## 1.既存のバックアップデータを維持する方法<a id="1"></a>
  Recovery Services コンテナーと VM の紐づけはVMのリソースグループ名と VM名によってを行っています。
 この方法ではその仕組みを利用、つまり対象の VM のリソースグループを変更することにより、既存の Recovery Services コンテナーとの紐づけを解除します。 
 なお、リソースグループを変更し新しい Recovery Services コンテナーにてバックアップを構成した場合でも、VM のリソースグループ名を 元のリソースグループに戻した場合、既存の Recovery Services コンテナーと紐づいている状態になります。
 
-## 注意事項
+### 注意事項<a id="1-1"></a>
 こちらの方法では対象の VM のリソースグループの変更が必要です。
 ・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Docs
 	https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data
 "Azure VM の場合は、GRS コンテナー内の VM に対して保護を停止してデータを保持し、VM を別のリソース グループに移動してから、LRS コンテナー内の VM を保護することができます。"
 
-## 変更手順概要
+### 変更手順概要<a id="1-2"></a>
 1. 古いRecovery Service コンテナーでのバックアップ停止する
 2. バックアップ対象の VM のリソースグループを変更する
 3. 新しいRecovery Service コンテナーにてバックアップを構成する
 
 
-## 手順
+### 手順<a id="1-3"></a>
 0-1. Recovery Service コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )
 ![Change_RSV_for_VM_01](https://user-images.githubusercontent.com/71251920/153033255-67f50490-d9e1-4da1-bd32-38b90169176f.jpg)
 
@@ -104,11 +107,11 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-defa
  
 
 
-### 2.既存のバックアップデータを削除する方法<a id="2"></a>
+## 2.既存のバックアップデータを削除する方法<a id="2"></a>
  既存のRecovery Services コンテナーに保存された対象 VM のバックアップデータを削除することによって、既存の Recovery Services コンテナーと対象の VM との紐づけを解除します。 
 
 
-## 注意事項
+### 注意事項<a id="2-1"></a>
 こちらの方法では対象VMの 既存のバックアップデータの削除が必要です。
 ・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Docs
 	https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#dont-need-to-preserve-previous-backed-up-data
@@ -120,12 +123,12 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-defa
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#notification-for-backup-alerts
 "破壊的な操作 (データを削除して保護を停止など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。"
 
-## 変更手順概要
+### 変更手順概要<a id="2-2"></a>
 1. 古いRecovery Service コンテナーでのバックアップを停止し、バックアップデータを削除する
 2. 新しいRecovery Service コンテナーにてバックアップを構成する
 
 
-(手順)
+### 手順<a id="2-3"></a>
 0-1. Recovery Service コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )
 ![Change_RSV_for_VM_13](https://user-images.githubusercontent.com/71251920/153033224-cee11ab5-892f-4ed0-b085-2222c859c83b.jpg)
 
