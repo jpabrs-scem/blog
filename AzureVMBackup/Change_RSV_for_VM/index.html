@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033209-9d8daa07-6052-49e7-ae71-0ba5a7e3a15e.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033202-587b9bd3-bcd5-41a6-a10f-d6a1bffdbca4.jpg">
 <meta property="article:published_time" content="2022-02-09T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-08T16:57:01.853Z">
+<meta property="article:modified_time" content="2022-02-08T17:00:47.340Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -121,7 +121,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6704c4a7-9762-507a-bd14-497b7c1b27cb%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8BRecovery+Services+%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%BC%E3%81%AE%E5%A4%89%E6%9B%B4%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FChange_RSV_for_VM%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FChange_RSV_for_VM.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FChange_RSV_for_VM.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="ckzed8mf000080nl2aiur3iej" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="ckzeddgmn00080mqwebxsel4l" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -133,16 +133,19 @@
 <p>すでにバックアップを構成している　VM に対して Recovery Services コンテナー を変更するには、VM と 既存のRecovery Services コンテナーとの紐づけを解除する必要がございます。<br>紐づけを解除することで、新たに別の Recovery Services コンテナーに紐づけることが可能です。</p>
 <p>紐づけを解除する方法としては 後述の通り２ 種類ございます。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. 既存のバックアップデータを維持する方法</a><br> <a href="#1-1"> 注意事項</a><br> <a href="#1-2"> 変更手順概要</a><br> <a href="#1-3"> 手順</a><br><a href="#2">2. 既存のバックアップデータを削除する方法</a><br> <a href="#2-1"> 注意事項</a><br> <a href="#2-2"> 変更手順概要</a><br> <a href="#2-3"> 手順</a></p>
+<p><a href="#1">1. 既存のバックアップデータを維持する方法</a><br> <a href="#1-1"> 1.1 注意事項</a><br> <a href="#1-2"> 1.2 変更手順概要</a><br> <a href="#1-3"> 1.3 手順</a><br><a href="#2">2. 既存のバックアップデータを削除する方法</a><br> <a href="#2-1"> 2.1 注意事項</a><br> <a href="#2-2"> 2.2 変更手順概要</a><br> <a href="#2-3"> 2.3 手順</a></p>
 <hr>
-<h2 id="1-既存のバックアップデータを維持する方法"><a href="#1-既存のバックアップデータを維持する方法" class="headerlink" title="1. 既存のバックアップデータを維持する方法"></a>1. 既存のバックアップデータを維持する方法<a id="1"></a></h2><p> Recovery Services コンテナーと VM の紐づけはVMのリソースグループ名と VM名によってを行っています。<br>この方法ではその仕組みを利用、つまり対象の VM のリソースグループを変更することにより、既存の Recovery Services コンテナーとの紐づけを解除します。<br>なお、リソースグループを変更し新しい Recovery Services コンテナーにてバックアップを構成した場合でも、VM のリソースグループ名を 元のリソースグループに戻した場合、既存の Recovery Services コンテナーと紐づいている状態になります。</p>
-<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項<a id="1-1"></a></h3><p>こちらの方法では対象の VM のリソースグループの変更が必要です。<br>・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Docs<br>    <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data">https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data</a><br>“Azure VM の場合は、GRS コンテナー内の VM に対して保護を停止してデータを保持し、VM を別のリソース グループに移動してから、LRS コンテナー内の VM を保護することができます。”</p>
-<h3 id="変更手順概要"><a href="#変更手順概要" class="headerlink" title="変更手順概要"></a>変更手順概要<a id="1-2"></a></h3><ol>
+<h2 id="1-既存のバックアップデータを維持する方法"><a href="#1-既存のバックアップデータを維持する方法" class="headerlink" title="1. 既存のバックアップデータを維持する方法"></a>1. 既存のバックアップデータを維持する方法<a id="1"></a></h2><p> Recovery Services コンテナーと VM の紐づけは VM のリソースグループ名と VM 名によって行っています。<br>この方法ではその仕組みを利用、つまり対象の VM のリソースグループを変更することにより、既存の Recovery Services コンテナーとの紐づけを解除します。<br>なお、リソースグループを変更し新しい Recovery Services コンテナーにてバックアップを構成した場合でも、VM のリソースグループ名を 元のリソースグループに戻した場合、既存の Recovery Services コンテナーと紐づいている状態になります。</p>
+<h3 id="1-2-注意事項"><a href="#1-2-注意事項" class="headerlink" title="1.2 注意事項"></a>1.2 注意事項<a id="1-1"></a></h3><p>こちらの方法では対象の VM のリソースグループの変更が必要です。<br>・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Docs<br>    <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data">https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data</a></p>
+<blockquote>
+<p>Azure VM の場合は、GRS コンテナー内の VM に対して保護を停止してデータを保持し、VM を別のリソース グループに移動してから、LRS コンテナー内の VM を保護することができます。</p>
+</blockquote>
+<h3 id="1-2-変更手順概要"><a href="#1-2-変更手順概要" class="headerlink" title="1.2 変更手順概要"></a>1.2 変更手順概要<a id="1-2"></a></h3><ol>
 <li>古いRecovery Service コンテナーでのバックアップ停止する</li>
 <li>バックアップ対象の VM のリソースグループを変更する</li>
 <li>新しいRecovery Service コンテナーにてバックアップを構成する</li>
 </ol>
-<h3 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順<a id="1-3"></a></h3><p>0-1. Recovery Service コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )<br><img src="https://user-images.githubusercontent.com/71251920/153033255-67f50490-d9e1-4da1-bd32-38b90169176f.jpg" alt="Change_RSV_for_VM_01"></p>
+<h3 id="1-3-手順"><a href="#1-3-手順" class="headerlink" title="1.3 手順"></a>1.3 手順<a id="1-3"></a></h3><p>0-1. Recovery Service コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )<br><img src="https://user-images.githubusercontent.com/71251920/153033255-67f50490-d9e1-4da1-bd32-38b90169176f.jpg" alt="Change_RSV_for_VM_01"></p>
 <p>0-2. Recovery Service コンテナー: rsv-1 にてバックアップ有効化、復旧ポイント作成済み<br><img src="https://user-images.githubusercontent.com/71251920/153033252-b754f533-636e-48b7-954a-64d05b206926.jpg" alt="Change_RSV_for_VM_02"></p>
 <p>1-1. VM のバックアップを停止<br><img src="https://user-images.githubusercontent.com/71251920/153033249-43853045-8fe5-45db-81f8-192f132642c6.jpg" alt="Change_RSV_for_VM_03"></p>
 <p>1-2. 停止の際、バックアップデータ (復旧ポイント) の保持を選択し、理由を記入してバックアップの停止をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033247-afd58826-d3ab-4a12-a97f-200aed5e8080.jpg" alt="Change_RSV_for_VM_04"></p>
@@ -156,13 +159,19 @@
 <p><img src="https://user-images.githubusercontent.com/71251920/153033229-353621e5-0fa7-4ffc-9e24-23650542bc4e.jpg" alt="Change_RSV_for_VM_11"></p>
 <p>(3-3) 古いRecovery Service コンテナーには過去の復旧ポイントは残存したままで、この復旧ポイントからも VM を復元することが可能です。<br><img src="https://user-images.githubusercontent.com/71251920/153033227-2c45fbbd-0036-429a-8a33-9dbf06cce622.jpg" alt="Change_RSV_for_VM_12"></p>
 <h2 id="2-既存のバックアップデータを削除する方法"><a href="#2-既存のバックアップデータを削除する方法" class="headerlink" title="2. 既存のバックアップデータを削除する方法"></a>2. 既存のバックアップデータを削除する方法<a id="2"></a></h2><p> 既存のRecovery Services コンテナーに保存された対象 VM のバックアップデータを削除することによって、既存の Recovery Services コンテナーと対象の VM との紐づけを解除します。 </p>
-<h3 id="注意事項-1"><a href="#注意事項-1" class="headerlink" title="注意事項"></a>注意事項<a id="2-1"></a></h3><p>こちらの方法では対象VMの 既存のバックアップデータの削除が必要です。<br>・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Docs<br>    <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#dont-need-to-preserve-previous-backed-up-data">https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#dont-need-to-preserve-previous-backed-up-data</a><br>“新しい LRS コンテナーのワークロードを保護するには、GRS コンテナー内の現在の保護とデータを削除し、バックアップを再構成する必要があります。”</p>
-<p>また本作業を行う際、バックアップアラートを設定していない場合でも発砲されます。<br>詳細につきましては下記をご確認ください。<br>バックアップ アラートの通知<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#notification-for-backup-alerts">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#notification-for-backup-alerts</a><br>“破壊的な操作 (データを削除して保護を停止など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。”</p>
-<h3 id="変更手順概要-1"><a href="#変更手順概要-1" class="headerlink" title="変更手順概要"></a>変更手順概要<a id="2-2"></a></h3><ol>
+<h3 id="2-1-注意事項"><a href="#2-1-注意事項" class="headerlink" title="2.1 注意事項"></a>2.1 注意事項<a id="2-1"></a></h3><p>こちらの方法では対象VMの 既存のバックアップデータの削除が必要です。<br>・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Docs<br>    <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#dont-need-to-preserve-previous-backed-up-data">https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#dont-need-to-preserve-previous-backed-up-data</a></p>
+<blockquote>
+<p>新しい LRS コンテナーのワークロードを保護するには、GRS コンテナー内の現在の保護とデータを削除し、バックアップを再構成する必要があります。</p>
+</blockquote>
+<p>また本作業を行う際、バックアップアラートを設定していない場合でも発砲されます。<br>詳細につきましては下記をご確認ください。<br>バックアップ アラートの通知<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#notification-for-backup-alerts">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#notification-for-backup-alerts</a></p>
+<blockquote>
+<p>“破壊的な操作 (データを削除して保護を停止など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。</p>
+</blockquote>
+<h3 id="2-2-変更手順概要"><a href="#2-2-変更手順概要" class="headerlink" title="2.2 変更手順概要"></a>2.2 変更手順概要<a id="2-2"></a></h3><ol>
 <li>古いRecovery Service コンテナーでのバックアップを停止し、バックアップデータを削除する</li>
 <li>新しいRecovery Service コンテナーにてバックアップを構成する</li>
 </ol>
-<h3 id="手順-1"><a href="#手順-1" class="headerlink" title="手順"></a>手順<a id="2-3"></a></h3><p>0-1. Recovery Service コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )<br><img src="https://user-images.githubusercontent.com/71251920/153033224-cee11ab5-892f-4ed0-b085-2222c859c83b.jpg" alt="Change_RSV_for_VM_13"></p>
+<h3 id="2-3-手順"><a href="#2-3-手順" class="headerlink" title="2.3 手順"></a>2.3 手順<a id="2-3"></a></h3><p>0-1. Recovery Service コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )<br><img src="https://user-images.githubusercontent.com/71251920/153033224-cee11ab5-892f-4ed0-b085-2222c859c83b.jpg" alt="Change_RSV_for_VM_13"></p>
 <p>0-2. Recovery Service コンテナー: rsv-1 にてバックアップ有効化、復旧ポイント作成済み<br><img src="https://user-images.githubusercontent.com/71251920/153033220-1a7bdbaa-c235-47c1-a999-04ecff700e92.jpg" alt="Change_RSV_for_VM_14"></p>
 <p>1-1. VM のバックアップを停止<br><img src="https://user-images.githubusercontent.com/71251920/153033219-95548634-88d5-4dd1-a6b1-f2a3287402c1.jpg" alt="Change_RSV_for_VM_15"></p>
 <p>1-2. 停止の際、バックアップデータ (復旧ポイント) の削除を選択し、理由を記入してバックアップの停止をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033215-abe38422-30ba-450e-a27e-773957273cf8.jpg" alt="Change_RSV_for_VM_16"></p>
