@@ -41,7 +41,8 @@ root_tag_generator:
     - Azure Files Backup
     - System Center
     - Recovery Services vaults
-    - Azure MARS Backup 
+    - MARS Backup 
+    
   sub_tag_limit: 20
 
 # URL
