@@ -38,7 +38,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-defa
 この方法ではその仕組みを利用、つまり対象の VM のリソースグループを変更することにより、既存の Recovery Services コンテナーとの紐づけを解除します。 
 なお、リソースグループを変更し新しい Recovery Services コンテナーにてバックアップを構成した場合でも、VM のリソースグループ名を 元のリソースグループに戻した場合、既存の Recovery Services コンテナーと紐づいている状態になります。
 
-### 1.2 注意事項<a id="1-1"></a>
+### 1.1 注意事項<a id="1-1"></a>
 こちらの方法では対象の VM のリソースグループの変更が必要です。
 ・Recovery Services コンテナーを作成して構成する
 	https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data
