@@ -13,7 +13,7 @@ disableDisclaimer: false
 結論から申し上げますと**可能**です。
 
 なお、本件に関連した公式ドキュメントは下記でございます。
-・Recovery Services コンテナーを作成して構成する
+・Recovery Services コンテナーを作成して構成する - 既定の設定を変更する
 https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-default-settings
 
 すでにバックアップを構成している　VM に対して Recovery Services コンテナー を変更するには、VM と 既存のRecovery Services コンテナーとの紐づけを解除する必要がございます。
