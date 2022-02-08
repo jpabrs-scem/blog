@@ -116,13 +116,13 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-defa
 
 ### 2.1 注意事項<a id="2-1"></a>
 こちらの方法では対象VMの 既存のバックアップデータの削除が必要です。
-・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Docs
+・Recovery Services コンテナーを作成して構成する
 	https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#dont-need-to-preserve-previous-backed-up-data
 > 新しい LRS コンテナーのワークロードを保護するには、GRS コンテナー内の現在の保護とデータを削除し、バックアップを再構成する必要があります。
 
 また本作業を行う際、バックアップアラートを設定していない場合でも発砲されます。
 詳細につきましては下記をご確認ください。
-バックアップ アラートの通知
+・バックアップ アラートの通知
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#notification-for-backup-alerts
 > "破壊的な操作 (データを削除して保護を停止など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。
 
