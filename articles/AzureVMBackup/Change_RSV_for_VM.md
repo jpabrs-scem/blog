@@ -40,7 +40,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-defa
 
 ### 1.2 注意事項<a id="1-1"></a>
 こちらの方法では対象の VM のリソースグループの変更が必要です。
-・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Docs
+・Recovery Services コンテナーを作成して構成する
 	https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data
 > Azure VM の場合は、GRS コンテナー内の VM に対して保護を停止してデータを保持し、VM を別のリソース グループに移動してから、LRS コンテナー内の VM を保護することができます。
 
