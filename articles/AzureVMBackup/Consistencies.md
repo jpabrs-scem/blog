@@ -50,7 +50,7 @@ Azure Portal 上の表示では、Windows OS の場合は VSS (VSS ライター)
 https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shadow-copy-service#how-volume-shadow-copy-service-work
  ”Microsoft 以外の VSS ライターは、バックアップ中のデータの整合性を保証する必要がある Windows 用の多くのアプリケーションに含まれています。”
 
-###　1.1 VSS 観点での調査について<a id="1-1"></a>
+### 1.1 VSS 観点での調査について<a id="1-1"></a>
 よくあるお問い合わせとして、以下のようなものがございます。
 まず、幣 Azure Backup チームでは VSS 関連の障害調査に関しては  VSS および 特定の VSS ライターに不調があるというころまでが調査可能です。
 なぜ "VSS および 特定の VSS ライターに不調が起きたのか" に関する根本原因についてはお客様の契約次第では、 オンプレミス チームでの有償対応が必要となることがございます。
@@ -97,7 +97,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#trou
 https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%82%92/
 
 ### 1.3  Oracle DB for Windows VM の Azure VM Backup について<a id="1-3"></a>
-よくお問い合わせをいただく例としましては Oracle DB が搭載された　Windows OS に関してお問い合わせをいただくことがございます。
+よくお問い合わせをいただく例としましては Oracle DB が搭載された Windows OS に関してお問い合わせをいただくことがございます。
 弊社では Windows OS 向けの Oracle  DB がすべて VSS 対応しているかわかりかねますが、実績はございます。
 ご利用の Oracle DB が VSS に対応しているかが不明な場合は別途 Oracle 社にお問い合わせいただければと存じます。
 
@@ -105,7 +105,7 @@ https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%
 ・Oracleがインストールされているシステムで Exit Code -311が発生する
 https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B
  
-・(Oracle社) VSSを使用したデータベースのバックアップおよびリカバリの目的　
+・(Oracle社) VSSを使用したデータベースのバックアップおよびリカバリの目的
   ※Oracle DB すべてが対応しているかわかりかねます
 https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B
 
