@@ -11,20 +11,20 @@ disableDisclaimer: false
 今回は Azure  Backup バックアップ失敗、リストア失敗の時の調査をするにあたりまず、ご提供いただきたい情報をお伝えいたします。
 
 
-1. Azure VM バックアップの障害調査に必要なログ
+## 1. Azure VM バックアップの障害調査に必要なログ
 　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や Azure Backup for SAP HANA in Azure VM など Azure VM 上のDBのバックアップに関するものでも同様に必要です。
-環境情報
+#### 環境情報
 ・Subscription ID
 ・Recovery Services コンテナー名、およびそのリソースグループ名
 ・バックアップ対象 VM 名、およびそのリソースグループ名
 
-ログ情報
+#### ログ情報
 下記を参考に zip などにまとめてご提供いただけますと幸いです。
-・Windows の場合
+#### ・Windows の場合
 >C:\Windows\System32\winevt\Logs\
 >C:\WindowsAzure\
 
-・Linuxの場合
+#### ・Linuxの場合
 >/var/log/
 
 全量いただけることが望ましいですが、全量が困難な場合は下記をご提供ください。
@@ -32,7 +32,7 @@ disableDisclaimer: false
 >/var/log/syslog*
 >/var/log/waagent.*
 
-1-1 . Azure VM Backup の　VSS 障害調査に追加で必要なログ
+### 1-1 . Azure VM Backup の　VSS 障害調査に追加で必要なログ
 Azure VM Backupの下記のようなエラーが出ることがございます。
 その場合には VSS 観点での調査が必要であるため、そのための上記に加えてログの採取をお願いします。
 
@@ -46,7 +46,7 @@ https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 
 
 
-2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ
+## 2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ
 環境情報
 ・Subscription ID
 ・Recovery Services コンテナー名、およびそのリソースグループ名
@@ -63,7 +63,7 @@ zip などにまとめてご提供いただけますと幸いです。
 
 
 
-3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ
+## 3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ
 　1. Azure VM バックアップの障害調査に必要なログ に加えて下記もご対応お願いします。
 *お手数ですが、全てのDBのbackup.log及びbackint.logのアップロードお願いします。
 
