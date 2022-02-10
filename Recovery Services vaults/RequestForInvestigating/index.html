@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153464381-6ba8f9bf-56fd-48fd-9784-b819d8a4f79c.png">
 <meta property="article:published_time" content="2022-02-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-10T17:54:26.159Z">
+<meta property="article:modified_time" content="2022-02-10T18:02:29.187Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Recovery Services vaults">
 <meta name="twitter:card" content="summary">
@@ -104,7 +104,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f12bd177-369e-542a-b231-66b45319090c%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FRecovery%2520Services%2520vaults%2FRequestForInvestigating%2F%29%0A*+Content+Source%3A+%5Barticles%2FRecovery+Services+vaults%2FRequestForInvestigating.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FRecovery%2520Services%2520vaults%2FRequestForInvestigating.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvestigating/" data-id="ckzha64u500110mmb9zvh2q74" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvestigating/" data-id="ckzhaghja00110ms5f90d0xf9" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -127,7 +127,7 @@
 <blockquote>
 <p>/var/log/azure/*<br>/var/log/syslog*<br>/var/log/waagent.*</p>
 </blockquote>
-<h3 id="1-1-Azure-VM-Backup-の-VSS-障害調査に追加で必要なログ"><a href="#1-1-Azure-VM-Backup-の-VSS-障害調査に追加で必要なログ" class="headerlink" title="1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ"></a>1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ</h3><p>Azure VM Backupの下記のようなエラーが出ることがございます。<br>その場合には VSS 観点での調査が必要であるため、そのための上記に加えてログの採取をお願いします。</p>
+<h3 id="1-1-Azure-VM-Backup-の-VSS-障害調査に追加で必要なログ"><a href="#1-1-Azure-VM-Backup-の-VSS-障害調査に追加で必要なログ" class="headerlink" title="1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ"></a>1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ</h3><p>Azure VM Backupの下記のようなエラーが出ることがございます。<br>その場合には VSS 観点での調査が必要であるため、そのため上記に加えて下記のログの採取もお願いします。</p>
 <blockquote>
 <p>Error Code ：Snapshot operation failed due to VSS Writers in bad state.<br>Error Message ：ExtensionFailedVssWriterInBadState</p>
 </blockquote>
