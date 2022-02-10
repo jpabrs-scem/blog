@@ -119,7 +119,7 @@ https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%
 https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B
  
 ・(Oracle社) VSSを使用したデータベースのバックアップおよびリカバリの目的
-  ※Oracle DB すべてが対応しているかわかりかねます
+  ※Oracle DB すべてが VSS に対応しているかはわかりかねます
 https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B
 
 ### 1.4 事前事後スクリプトについて<a id="1-4"></a>
