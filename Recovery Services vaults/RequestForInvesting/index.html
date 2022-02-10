@@ -6,18 +6,18 @@
   
   <title>Azure Backup の障害調査に必要な情報 | Japan CSS ABRS &amp; SCEM Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure  Backup バックアップ失敗、リストア失敗の時の調査をするにあたりまず、ご提供いただきたい情報をお伝えいたします。  Azure VM バックアップの障害調査に必要なログ　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や Az">
+  <meta name="description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure  Backup バックアップ失敗、リストア失敗の時の調査をするにあたりまず、ご提供いただきたい情報をお伝えいたします。 1. Azure VM バックアップの障害調査に必要なログ　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure Backup の障害調査に必要な情報">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvesting/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
-<meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure  Backup バックアップ失敗、リストア失敗の時の調査をするにあたりまず、ご提供いただきたい情報をお伝えいたします。  Azure VM バックアップの障害調査に必要なログ　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や Az">
+<meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure  Backup バックアップ失敗、リストア失敗の時の調査をするにあたりまず、ご提供いただきたい情報をお伝えいたします。 1. Azure VM バックアップの障害調査に必要なログ　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153444342-2ef78226-36af-42ec-b791-def280af289e.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153444335-2c65943d-8f13-4c6d-b2d0-7bf4283b6fc4.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153444341-0b61bf0e-5b58-4040-a0ef-c0d213a2187b.png">
 <meta property="article:published_time" content="2022-02-12T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-10T17:31:26.966Z">
+<meta property="article:modified_time" content="2022-02-10T17:34:30.288Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Recovery Services vaults">
 <meta name="twitter:card" content="summary">
@@ -106,42 +106,35 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+c80c65dd-5c4d-5eab-b3b2-8e635d79e587%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FRecovery%2520Services%2520vaults%2FRequestForInvesting%2F%29%0A*+Content+Source%3A+%5Barticles%2FRecovery+Services+vaults%2FRequestForInvesting.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FRecovery%2520Services%2520vaults%2FRequestForInvesting.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvesting/" data-id="ckzh9cl7e001m0pntbypschfc" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvesting/" data-id="ckzh9giho001m0nped3k1dfle" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
 <p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回は Azure  Backup バックアップ失敗、リストア失敗の時の調査をするにあたりまず、ご提供いただきたい情報をお伝えいたします。</p>
-<ol>
-<li>Azure VM バックアップの障害調査に必要なログ<br>　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や Azure Backup for SAP HANA in Azure VM など Azure VM 上のDBのバックアップに関するものでも同様に必要です。<br>環境情報<br>・Subscription ID<br>・Recovery Services コンテナー名、およびそのリソースグループ名<br>・バックアップ対象 VM 名、およびそのリソースグループ名</li>
-</ol>
-<p>ログ情報<br>下記を参考に zip などにまとめてご提供いただけますと幸いです。<br>・Windows の場合</p>
-<blockquote>
+<h2 id="1-Azure-VM-バックアップの障害調査に必要なログ"><a href="#1-Azure-VM-バックアップの障害調査に必要なログ" class="headerlink" title="1. Azure VM バックアップの障害調査に必要なログ"></a>1. Azure VM バックアップの障害調査に必要なログ</h2><p>　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や Azure Backup for SAP HANA in Azure VM など Azure VM 上のDBのバックアップに関するものでも同様に必要です。</p>
+<h4 id="環境情報"><a href="#環境情報" class="headerlink" title="環境情報"></a>環境情報</h4><p>・Subscription ID<br>・Recovery Services コンテナー名、およびそのリソースグループ名<br>・バックアップ対象 VM 名、およびそのリソースグループ名</p>
+<h4 id="ログ情報"><a href="#ログ情報" class="headerlink" title="ログ情報"></a>ログ情報</h4><p>下記を参考に zip などにまとめてご提供いただけますと幸いです。</p>
+<h4 id="・Windows-の場合"><a href="#・Windows-の場合" class="headerlink" title="・Windows の場合"></a>・Windows の場合</h4><blockquote>
 <p>C:\Windows\System32\winevt\Logs<br>C:\WindowsAzure\</p>
 </blockquote>
-<p>・Linuxの場合</p>
-<blockquote>
+<h4 id="・Linuxの場合"><a href="#・Linuxの場合" class="headerlink" title="・Linuxの場合"></a>・Linuxの場合</h4><blockquote>
 <p>/var/log/</p>
 </blockquote>
 <p>全量いただけることが望ましいですが、全量が困難な場合は下記をご提供ください。</p>
 <blockquote>
 <p>/var/log/azure/*<br>/var/log/syslog*<br>/var/log/waagent.*</p>
 </blockquote>
-<p>1-1 . Azure VM Backup の　VSS 障害調査に追加で必要なログ<br>Azure VM Backupの下記のようなエラーが出ることがございます。<br>その場合には VSS 観点での調査が必要であるため、そのための上記に加えてログの採取をお願いします。</p>
+<h3 id="1-1-Azure-VM-Backup-の-VSS-障害調査に追加で必要なログ"><a href="#1-1-Azure-VM-Backup-の-VSS-障害調査に追加で必要なログ" class="headerlink" title="1-1 . Azure VM Backup の　VSS 障害調査に追加で必要なログ"></a>1-1 . Azure VM Backup の　VSS 障害調査に追加で必要なログ</h3><p>Azure VM Backupの下記のようなエラーが出ることがございます。<br>その場合には VSS 観点での調査が必要であるため、そのための上記に加えてログの採取をお願いします。</p>
 <blockquote>
 <p>Error Code ：Snapshot operation failed due to VSS Writers in bad state.<br>Error Message ：ExtensionFailedVssWriterInBadState</p>
 </blockquote>
 <p>VSS 観点での調査のためには下記 URL 先のログの採取をお願いします。<br> <strong>可能な限り “[A]”が望ましいですが、”[B]” でもある程度調査が可能な場合がございます。</strong><br>・VSS エラーが発生している事象の調査<br><a target="_blank" rel="noopener" href="https://jpwinsup.github.io/mslog/storage/vss/vss-error.html">https://jpwinsup.github.io/mslog/storage/vss/vss-error.html</a></p>
-<ol start="2">
-<li>  Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ<br>環境情報<br>・Subscription ID<br>・Recovery Services コンテナー名、およびそのリソースグループ名<br>・バックアップ対象 VM 名、およびそのリソースグループ名、OS 名<br>・リストア先の VM 名、およびそのリソースグループ名、OS 名</li>
-</ol>
+<h2 id="2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調時にご提供いただきたいログ"><a href="#2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調時にご提供いただきたいログ" class="headerlink" title="2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ"></a>2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ</h2><p>環境情報<br>・Subscription ID<br>・Recovery Services コンテナー名、およびそのリソースグループ名<br>・バックアップ対象 VM 名、およびそのリソースグループ名、OS 名<br>・リストア先の VM 名、およびそのリソースグループ名、OS 名</p>
 <p>ログ情報<br>zip などにまとめてご提供いただけますと幸いです。<br>・実行したスクリプトおよび実行後に作成されたフォルダ一式<br>・(Windowsの場合) “ディスクの管理” の画面の画面ショット</p>
 <p>　(参考画面)</p>
-<ol start="3">
-<li>Azure Backup for SAP HANA in Azure VM の調査に必要なログ<br>　1. Azure VM バックアップの障害調査に必要なログ に加えて下記もご対応お願いします。</li>
-</ol>
-<p>*お手数ですが、全てのDBのbackup.log及びbackint.logのアップロードお願いします。</p>
+<h2 id="3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の調査に必要なログ"><a href="#3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の調査に必要なログ" class="headerlink" title="3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ"></a>3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ</h2><p>　1. Azure VM バックアップの障害調査に必要なログ に加えて下記もご対応お願いします。<br>*お手数ですが、全てのDBのbackup.log及びbackint.logのアップロードお願いします。</p>
 <p>&lt;SAP HANAのbackup.log及びbackint.log&gt; </p>
 <blockquote>
 <ul>
