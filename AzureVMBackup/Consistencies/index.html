@@ -14,7 +14,7 @@
 <meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure VM Backup における整合性について関して具体例をも踏まえつつご説明させていただきます。 まず、Azure VM Backup における整合性は下記の３種類ございます。・アプリケーション整合性 (Application-consistent)・ファイルシステム整合性 (File-system consiste">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2022-02-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-10T15:21:45.844Z">
+<meta property="article:modified_time" content="2022-02-10T15:23:00.798Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -102,7 +102,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f861e6f5-56df-57ae-804b-37d8fc5ea69e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%95%B4%E5%90%88%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FConsistencies%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FConsistencies.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FConsistencies.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="ckzh4psrj00090mpjdh6k46a9" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="ckzh4rf8s00090mmv7flp4hxv" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -147,11 +147,11 @@
 <p>既定では、VM バックアップによって Windows VM 上に VSS フル バックアップが作成されます。 SQL Server を実行していて SQL Server のバックアップを構成されている VM では、スナップショットの遅延が発生する可能性がありますナップショットの遅延が原因でバックアップが失敗する場合は、次のレジストリ キーを設定します。<br>[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]<br>“USEVSSCOPYBACKUP”=”TRUE”</p>
 </blockquote>
 <p>また、下記は弊社外のブログではございますが、本件に関する参考になればと存じ、ご案内させていただきます。<br>※社外の情報のため内容につきましては当社は、下記外部のリンク先ウェブサイトの内容に関していかなる責任も負うものではありません。<br>・Azure Backup で SQL Server がインストールされている仮想マシンをバックアップする際に意識しておきたいこと<br><a target="_blank" rel="noopener" href="https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%82%92/">https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%82%92/</a></p>
-<h3 id="1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について"><a href="#1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について" class="headerlink" title="1.3  Oracle DB for Windows VM の Azure VM Backup について"></a>1.3  Oracle DB for Windows VM の Azure VM Backup について<a id="1-3"></a></h3><p>よくお問い合わせをいただく例としましては Oracle DB が搭載された　Windows OS に関してお問い合わせをいただくことがございます。<br>弊社では Windows OS 向けの Oracle  DB がすべて VSS 対応しているかわかりかねますが、実績はございます。<br>ご利用の Oracle DB が VSS に対応しているかが不明な場合は別途 Oracle 社にお問い合わせいただければと存じます。</p>
+<h3 id="1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について"><a href="#1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について" class="headerlink" title="1.3  Oracle DB for Windows VM の Azure VM Backup について"></a>1.3  Oracle DB for Windows VM の Azure VM Backup について<a id="1-3"></a></h3><p>よくお問い合わせをいただく例としましては Oracle DB が搭載された Windows OS に関してお問い合わせをいただくことがございます。<br>弊社では Windows OS 向けの Oracle  DB がすべて VSS 対応しているかわかりかねますが、実績はございます。<br>ご利用の Oracle DB が VSS に対応しているかが不明な場合は別途 Oracle 社にお問い合わせいただければと存じます。</p>
 <ul>
 <li>下記情報は弊社外のサイトでございますが、ご参考になれば幸いです。弊社情報ではございませんのでその点ご留意ください。<br>・Oracleがインストールされているシステムで Exit Code -311が発生する<br><a target="_blank" rel="noopener" href="https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B">https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B</a></li>
 </ul>
-<p>・(Oracle社) VSSを使用したデータベースのバックアップおよびリカバリの目的　<br>  ※Oracle DB すべてが対応しているかわかりかねます<br><a target="_blank" rel="noopener" href="https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B">https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B</a></p>
+<p>・(Oracle社) VSSを使用したデータベースのバックアップおよびリカバリの目的<br>  ※Oracle DB すべてが対応しているかわかりかねます<br><a target="_blank" rel="noopener" href="https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B">https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B</a></p>
 <h3 id="1-4-事前事後スクリプトについて"><a href="#1-4-事前事後スクリプトについて" class="headerlink" title="1.4 事前事後スクリプトについて"></a>1.4 事前事後スクリプトについて<a id="1-4"></a></h3><p>Linux VM 事前事後スクリプトに関しましては、お客様自身で対象のアプリケーション (DBなど) の IO を停止 / 再開する処理を記載いただく必要がございます。<br>そのため、対象のアプリケーションに対してそのようなコマンド制御ができない場合は、残念ながら事前事後スクリプトを用いることはできません。そのようなコマンド制御が可能かはアプリケーション提供ベンダーまでお問い合わせをいただきますようお願いします。</p>
 <ul>
 <li>参考<br>・Azure Linux VM のアプリケーション整合性バックアップ<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent</a><br>・git hub 上のサンプル事前事後スクリプト (Oracle や MySQLがございます。)<br><a target="_blank" rel="noopener" href="https://github.com/MicrosoftAzureBackup">https://github.com/MicrosoftAzureBackup</a></li>
