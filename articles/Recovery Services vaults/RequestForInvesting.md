@@ -10,6 +10,15 @@ disableDisclaimer: false
 皆様こんにちは。Azure Backup サポートの山本です。
 今回は Azure  Backup バックアップ失敗、リストア失敗の時の調査をするにあたりまず、ご提供いただきたい情報をお伝えいたします。
 
+## 目次
+-----------------------------------------------------------
+[1. Azure VM バックアップの障害調査に必要なログ](#1)
+[  1-1 . Azure VM Backup の　VSS 障害調査に追加で必要なログ](#1-1)
+[2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ](#2)
+[3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ](#3)
+
+-----------------------------------------------------------
+
 
 ## 1. Azure VM バックアップの障害調査に必要なログ<a id="1"></a>
 　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や Azure Backup for SAP HANA in Azure VM など Azure VM 上のDBのバックアップに関するものでも同様に必要です。
@@ -69,7 +78,7 @@ zip などにまとめてご提供いただけますと幸いです。
 *お手数ですが、全てのDBのbackup.log及びbackint.logのアップロードお願いします。
 
 <SAP HANAのbackup.log及びbackint.log> 
->* xxにはインスタンスナンバーが入ります。
+>　* xxにはインスタンスナンバーが入ります。
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/backup.log
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_<DB名>/backup.log
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/backint.log
@@ -80,26 +89,4 @@ zip などにまとめてご提供いただけますと幸いです。
 	#cd / (ディレクトリの最上層に移動します)
 	#find ./ -name “backup.log” (findコマンドにより該当のログの場所を特定します)
 	#find ./ -name “backint.log” (findコマンドにより該当のログの場所を特定します)
-
-
------------------------------------------------------------
-
-まず、Azure VM Backup における整合性は下記の３種類ございます。
-・アプリケーション整合性 (Application-consistent)
-![2022-02-11_00h49_03](https://user-images.githubusercontent.com/71251920/153444342-2ef78226-36af-42ec-b791-def280af289e.png)
-
-
-・ファイルシステム整合性 (File-system consistent)
-![2022-02-11_00h49_22](https://user-images.githubusercontent.com/71251920/153444335-2c65943d-8f13-4c6d-b2d0-7bf4283b6fc4.png)
-
-
-・クラッシュ整合性 (Crash-consistent)
-![2022-02-11_00h49_36](https://user-images.githubusercontent.com/71251920/153444341-0b61bf0e-5b58-4040-a0ef-c0d213a2187b.png)
-
-なお、公開情報は下記にございますのでまず一度ご一読ください。
-その前提で説明させていただきます。
-
-- 参考
-・Azure VM バックアップの概要 スナップショットの整合性
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency
 
