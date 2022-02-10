@@ -80,14 +80,14 @@ zip などにまとめてご提供いただけますと幸いです。
  [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記もご対応お願いします。
 *お手数ですが、全てのDBのbackup.log及びbackint.logのアップロードお願いします。
 
-<SAP HANAのbackup.log及びbackint.log> 
->　* xxにはインスタンスナンバーが入ります。
+#### SAP HANAのbackup.log 及び backint.log 
+>* xxにはインスタンスナンバーが入ります。
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/backup.log
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_<DB名>/backup.log
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/backint.log
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_<DB名>/backint.log
  
-	*上記パスに該当のログが無い場合は以下を試し、出てきたディレクトリの場所の log をアップロードしてください。
+*上記パスに該当のログが無い場合は以下を試し、出てきたディレクトリの場所の log をアップロードしてください。
 >	#sudo -i (rootユーザーに切り替えます)
 	#cd / (ディレクトリの最上層に移動します)
 	#find ./ -name “backup.log” (findコマンドにより該当のログの場所を特定します)
