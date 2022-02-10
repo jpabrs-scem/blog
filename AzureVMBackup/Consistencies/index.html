@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Azure VM Backupにおける整合性について | Japan CSS ABRS &amp; SCEM Support Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure VM Backup における整合性について関して具体例をも踏まえつつご説明させていただきます。 まず、Azure VM Backup における整合性は下記の３種類ございます。・アプリケーション整合性 (Application-consistent)・ファイルシステム整合性 (File-system consiste">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure VM Backupにおける整合性について">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
+<meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure VM Backup における整合性について関して具体例をも踏まえつつご説明させていただきます。 まず、Azure VM Backup における整合性は下記の３種類ございます。・アプリケーション整合性 (Application-consistent)・ファイルシステム整合性 (File-system consiste">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2022-02-11T03:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-10T15:16:45.795Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure VM Backup">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS &amp; SCEM Support Blog" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS &amp; SCEM Support Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup,Azure Site Recovery,Azure Migrate および System Center 製品(Orchestrator , Operations/Virtual Machine/Service/Data Protection Manager)に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureVMBackup/Consistencies" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Azure VM Backupにおける整合性について
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2022-02-11T03:00:00.000Z" itemprop="datePublished">2022-02-11</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f861e6f5-56df-57ae-804b-37d8fc5ea69e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%95%B4%E5%90%88%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FConsistencies%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FConsistencies.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FConsistencies.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="ckzh4jdvm00090mnugzw841vt" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回は Azure VM Backup における整合性について関して具体例をも踏まえつつご説明させていただきます。</p>
+<p>まず、Azure VM Backup における整合性は下記の３種類ございます。<br>・アプリケーション整合性 (Application-consistent)<br>・ファイルシステム整合性 (File-system consistent)<br>・クラッシュ整合性 (Crash-consistent)</p>
+<p>なお、公開情報は下記にございますのでまず一度ご一読ください。<br>その前提で説明させていただきます。</p>
+<ul>
+<li>参考<br>・Azure VM バックアップの概要 スナップショットの整合性<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency</a></li>
+</ul>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. アプリケーション整合性</a><br><a href="#1-1">  1.1 VSS 観点での調査について</a><br><a href="#1-2">  1.2  SQL サーバーのインストールされた Windows OS のバックアップについて</a><br><a href="#1-1">  1.3  Oracle DB for Windows VM の Azure VM Backup について</a><br><a href="#2">2. ファイルシステム整合性</a><br><a href="#3">3. クラッシュ整合性</a></p>
+<hr>
+<h2 id="1-アプリケーション整合性"><a href="#1-アプリケーション整合性" class="headerlink" title="1. アプリケーション整合性"></a>1. アプリケーション整合性<a id="1"></a></h2><p>こちらAzure VM Backupにおける最も上位の整合性でございます。<br>Windows OS のバックアップを取得した場合や事前事後スクリプトを設定した Linux OS でオンライン バックアップを取得した場合にアプリケーション整合性となります。<br>なお、Windows OS の場合は VSS (ボリューム シャドウ コピー サービス) との連携によりアプリケーション整合性を取得するのみであり、Linux OS のような事前事後スクリプトの準備はございません。</p>
+<p>Azure Portal 上の表示では、Windows OS の場合は VSS (VSS ライター) が正常に稼働すればアプリケーション整合性となり、Linux VM の場合は事前事後スクリプトが正常に完了すればアプリケーション整合性となります。<br>つまり、VSS に対応していないアプリケーションをご利用の場合は該当アプリケーションに対する整合性はないですが、 Azure Portal では対象のアプリケーションを検知することが出来ないため Azure Portal 上の表示はアプリケーション整合性となります。</p>
+<p>また、ご利用のアプリケーション整合性が VSS に対応しているかは各アプリケーションの提供元ベンダーまでお問い合わせくいただきますようお願いします。</p>
+<ul>
+<li>参考<br>・ボリューム シャドウ コピー サービスの仕組み<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shadow-copy-service#how-volume-shadow-copy-service-work">https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shadow-copy-service#how-volume-shadow-copy-service-work</a><br>”Microsoft 以外の VSS ライターは、バックアップ中のデータの整合性を保証する必要がある Windows 用の多くのアプリケーションに含まれています。”</li>
+</ul>
+<h3 id="1-1-VSS-観点での調査について"><a href="#1-1-VSS-観点での調査について" class="headerlink" title="1.1 VSS 観点での調査について"></a>1.1 VSS 観点での調査について<a id="1-1"></a></h3><p>よくあるお問い合わせとして、以下のようなものがございます。<br>まず、幣 Azure Backup チームでは VSS 関連の障害調査に関しては  VSS および 特定の VSS ライターに不調があるというころまでが調査可能です。<br>なぜ “VSS および 特定の VSS ライターに不調が起きたのか” に関する根本原因についてはお客様の契約次第では、 オンプレミス チームでの有償対応が必要となることがございます。<br>また切り分けの結果、他社製品のアプリケーションの VSS ライターの不具合であった場合には弊社ではサポート出来かねますので、ご利用のアプリケーション提供ベンダーまでお問い合わせいただくようお願い申し上げます。</p>
+<p>それぞれについて下記の通りお伝えさせていただきます。</p>
+<h4 id="・VSS-の不調によりAzure-VM-Backupが失敗する"><a href="#・VSS-の不調によりAzure-VM-Backupが失敗する" class="headerlink" title="・VSS の不調によりAzure VM Backupが失敗する"></a>・VSS の不調によりAzure VM Backupが失敗する</h4><p>こちら根本原因の特定 VSS 観点での調査が必要となります。<br> Azure Backup チームでは 根本原因の特定については可能な範囲での調査をさせていただきます。<br> VSS 観点での調査のためのログの採取をお願いします。<br>ご参考にまでに、下記のようなエラーが出ることがございます。</p>
+<blockquote>
+<p>Error Code ：Snapshot operation failed due to VSS Writers in bad state.<br>Error Message ：ExtensionFailedVssWriterInBadState</p>
+</blockquote>
+<h4 id="・VSS-ライターのエラーにより警告付き完了となる-アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている"><a href="#・VSS-ライターのエラーにより警告付き完了となる-アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている" class="headerlink" title="・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている"></a>・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている</h4><p>　調査の結果、VSS ライターのエラーを出しているアプリケーションが 弊社 SQL Server 等弊社製品の場合、は担当 チームで対応が可能でございますが、お客様の契約次第では有償対応が必要となることがございます。<br>　一方、VSS ライターのエラーを出しているアプリケーションが他社製品の場合、ご利用のアプリケーション提供ベンダーまでお問い合わせいただくようお願い申し上げます。</p>
+<h3 id="1-2-SQL-サーバーのインストールされた-Windows-OS-のバックアップについて"><a href="#1-2-SQL-サーバーのインストールされた-Windows-OS-のバックアップについて" class="headerlink" title="1.2  SQL サーバーのインストールされた Windows OS のバックアップについて"></a>1.2  SQL サーバーのインストールされた Windows OS のバックアップについて<a id="1-2"></a></h3><p>こちらよくいただくお問い合わせとして次の通りお伝えします。</p>
+<blockquote>
+<p>・SQL サーバーのインストールされた Windows OS をAzure VM Backup でバックアップすることは可能か、また何か考慮点があるか？</p>
+</blockquote>
+<p>こちら結論から申し上げますと、可能でございます。<br>SQL ライターがございますので、SQL データベースの整合性を保った VM 全体のバックアップを取得することが可能です。</p>
+<p>考慮点としましては下記 URL をご覧ください。</p>
+<ul>
+<li>参考<br>・Azure VM バックアップの概要 - スナップショットの作成<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-creation">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-creation</a><blockquote>
+<p>既定の Azure Backup では、VSS の完全バックアップが作成されます (アプリケーション レベルで整合性のあるバックアップを取得するため、バックアップ時に、SQL Server などのアプリケーションのログは切り捨てられます)。 Azure VM バックアップで SQL Server データベースを使用している場合は、(ログを保持するため) VSS コピー バックアップを作成するように設定を変更できます。 詳細については、 こちらの記事を参照してください。</p>
+</blockquote>
+</li>
+</ul>
+<p>・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - VM スナップショットに関する問題のトラブルシューティング<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues</a></p>
+<blockquote>
+<p>既定では、VM バックアップによって Windows VM 上に VSS フル バックアップが作成されます。 SQL Server を実行していて SQL Server のバックアップを構成されている VM では、スナップショットの遅延が発生する可能性がありますナップショットの遅延が原因でバックアップが失敗する場合は、次のレジストリ キーを設定します。<br>[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]<br>“USEVSSCOPYBACKUP”=”TRUE”</p>
+</blockquote>
+<p>また、下記は弊社外のブログではございますが、本件に関する参考になればと存じ、ご案内させていただきます。<br>※社外の情報のため内容につきましては当社は、下記外部のリンク先ウェブサイトの内容に関していかなる責任も負うものではありません。<br>・Azure Backup で SQL Server がインストールされている仮想マシンをバックアップする際に意識しておきたいこと<br><a target="_blank" rel="noopener" href="https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%82%92/">https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%82%92/</a></p>
+<h3 id="1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について"><a href="#1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について" class="headerlink" title="1.3  Oracle DB for Windows VM の Azure VM Backup について"></a>1.3  Oracle DB for Windows VM の Azure VM Backup について<a id="1-3"></a></h3><p>よくお問い合わせをいただく例としましては Oracle DB が搭載された　Windows OS に関してお問い合わせをいただくことがございます。<br>弊社では Windows OS 向けの Oracle  DB がすべて VSS 対応しているかわかりかねますが、実績はございます。<br>ご利用の Oracle DB が VSS に対応しているかが不明な場合は別途 Oracle 社にお問い合わせいただければと存じます。</p>
+<ul>
+<li>下記情報は弊社外のサイトでございますが、ご参考になれば幸いです。弊社情報ではございませんのでその点ご留意ください。<br>・Oracleがインストールされているシステムで Exit Code -311が発生する<br><a target="_blank" rel="noopener" href="https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B">https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B</a></li>
+</ul>
+<p>・(Oracle社) VSSを使用したデータベースのバックアップおよびリカバリの目的　<br>  ※Oracle DB すべてが対応しているかわかりかねます<br><a target="_blank" rel="noopener" href="https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B">https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B</a></p>
+<h3 id="1-4-事前事後スクリプトについて"><a href="#1-4-事前事後スクリプトについて" class="headerlink" title="1.4 事前事後スクリプトについて"></a>1.4 事前事後スクリプトについて<a id="1-4"></a></h3><p>Linux VM 事前事後スクリプトに関しましては、お客様自身で対象のアプリケーション (DBなど) の IO を停止 / 再開する処理を記載いただく必要がございます。<br>そのため、対象のアプリケーションに対してそのようなコマンド制御ができない場合は、残念ながら事前事後スクリプトを用いることはできません。そのようなコマンド制御が可能かはアプリケーション提供ベンダーまでお問い合わせをいただきますようお願いします。</p>
+<ul>
+<li>参考<br>・Azure Linux VM のアプリケーション整合性バックアップ<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent</a><br>・git hub 上のサンプル事前事後スクリプト (Oracle や MySQLがございます。)<br><a target="_blank" rel="noopener" href="https://github.com/MicrosoftAzureBackup">https://github.com/MicrosoftAzureBackup</a></li>
+</ul>
+<h2 id="2-ファイルシステム整合性"><a href="#2-ファイルシステム整合性" class="headerlink" title="2.ファイルシステム整合性"></a>2.ファイルシステム整合性<a id="2"></a></h2><p>Windows OS のオンライン バックアップを取得した際に一部の VSSライターが失敗した場合や Linux OS でオンライン バックアップを取得した場合(または 事前事後スクリプトが失敗した場合)にファイルシステム整合性となります。<br>こちらは OS の起動を保証した整合性ですが、アプリケーションレベルでの整合性は担保されておりません。</p>
+<h2 id="3-クラッシュ整合性"><a href="#3-クラッシュ整合性" class="headerlink" title="3.クラッシュ整合性"></a>3.クラッシュ整合性<a id="3"></a></h2><p>スナップショット作成実行時のディスクのデータのみを保存します。<br>アプリケーション整合性やファイルシステム整合性とは異なり、OS 内部とは連携せずスナップショットを取得します。<br>そのため、オフライン状態の VM をバックアップした際にクラッシュ整合性となります。<br>OS の起動を保証しない整合性ではございますが、<strong>正常に電源が落とされた状態の VM であればメモリ上の情報や I/O の発生はなく、ディスクにしか情報はないため整合性の懸念は全くございません。</strong></p>
+<ul>
+<li>参考<br>・Azure VM Backup では オフライン バックアップができるのか<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</a></li>
+</ul>
+<p>一方、Azure Disk Backup やマネージドディスクのスナップショットなどは、起動中の VM にアタッチされているディスクのスナップショットを取得することが可能ですが、この際のオンライン状態でのスナップショットの整合性は Azure VM Backupとは異なり、クラッシュ整合性となります。<br>整合性は劣るものの、後述の通り DB のない VM であればクラッシュ整合性でも基本的には問題ございません。</p>
+<p>クラッシュ整合性に関しましては次の公開情報にございますようなイメージをしていただけるとわかりやすいかと存じます。<br> (Azure Site Recovery のドキュメントではございますが、考え方は同じです。)<br>・Azure Site Recovery に関する一般的な質問 - クラッシュ整合性復旧ポイントとは何ですか?<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------">https://docs.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------</a></p>
+<p>“クラッシュ整合性復旧ポイントには、スナップショットの作成中にサーバーから電源コードが引き抜かれたときのディスク上のデータが含まれます。 クラッシュ整合性復旧ポイントには、スナップショットの作成時にメモリに入っていたものは一切含まれません。”</p>
+<blockquote>
+<p>クラッシュ整合性復旧ポイントは通常、データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションにとっては十分です。</p>
+</blockquote>
+<ul>
+<li>参考<br>・Azure ディスク バックアップの概要<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview">https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview</a><br>・仮想ハード ディスクのスナップショットを作成する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal">https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal</a></li>
+</ul>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/Consistencies.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../Change_RSV_for_VM/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Azure VM BackupにおけるRecovery Services コンテナーの変更について</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">Azure VM Backupにおける整合性について</a>
+          </li>
+        
+          <li>
+            <a href="../Change_RSV_for_VM/">Azure VM BackupにおけるRecovery Services コンテナーの変更について</a>
+          </li>
+        
+          <li>
+            <a href="../../MARSBackup/MARS_Proxy_Setting/">プロキシを利用した MARS エージェントによるバックアップについて</a>
+          </li>
+        
+          <li>
+            <a href="../AV_ExcludeSetting/">Azure Backup におけるウイルス除外設定について</a>
+          </li>
+        
+          <li>
+            <a href="../HowToExtendVMRetentionPeriod/">Azure VM Backup で取得した復旧ポイントの保持期間の延長について</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/" rel="tag">System Center</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">15</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Recovery-Services-vaults/">Recovery Services vaults</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/">System Center</a><span class="tag-list-count">4</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">1</span><ul></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 20px;">Azure VM Backup</a> <a href="../../tags/Information/" style="font-size: 10px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 10px;">MARS Backup</a> <a href="../../tags/Recovery-Services-vaults/" style="font-size: 10px;">Recovery Services vaults</a> <a href="../../tags/System-Center/" style="font-size: 15px;">System Center</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
