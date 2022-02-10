@@ -8,7 +8,7 @@ disableDisclaimer: false
 
 <!-- more -->
 皆様こんにちは。Azure Backup サポートの山本です。
-今回は Azure VM Backup における整合性について関して具体例をも踏まえつつご説明させていただきます。
+今回は Azure VM Backup における整合性について関して具体例も踏まえつつご説明させていただきます。
 
 まず、Azure VM Backup における整合性は下記の３種類ございます。
 ・アプリケーション整合性 (Application-consistent)
