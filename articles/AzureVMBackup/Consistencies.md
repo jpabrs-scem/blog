@@ -111,7 +111,7 @@ https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%
 
 ### 1.3  Oracle DB for Windows VM の Azure VM Backup について<a id="1-3"></a>
 よくお問い合わせをいただく例としましては Oracle DB が搭載された Windows OS に関してお問い合わせをいただくことがございます。
-弊社では Windows OS 向けの Oracle  DB がすべて VSS 対応しているかわかりかねますが、実績はございます。
+弊社では Windows OS 向けの Oracle DB すべてが VSS に対応しているかわかりかねますが、少なくとも実績はございます。
 ご利用の Oracle DB が VSS に対応しているかが不明な場合は別途 Oracle 社にお問い合わせいただければと存じます。
 
 * 下記情報は弊社外のサイトでございますが、ご参考になれば幸いです。弊社情報ではございませんのでその点ご留意ください。
