@@ -13,7 +13,7 @@ disableDisclaimer: false
 ## 目次
 -----------------------------------------------------------
 [1. Azure VM バックアップの障害調査に必要なログ](#1)
-[  1-1 . Azure VM Backup の　VSS 障害調査に追加で必要なログ](#1-1)
+[  1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ](#1-1)
 [2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ](#2)
 [3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ](#3)
 
@@ -41,7 +41,7 @@ disableDisclaimer: false
 >/var/log/syslog*
 >/var/log/waagent.*
 
-### 1-1 . Azure VM Backup の　VSS 障害調査に追加で必要なログ
+### 1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ
 Azure VM Backupの下記のようなエラーが出ることがございます。
 その場合には VSS 観点での調査が必要であるため、そのための上記に加えてログの採取をお願いします。
 
