@@ -67,7 +67,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-1-VSS-%E8%A6%B
 
 #### ログ情報
 zip などにまとめてご提供いただけますと幸いです。
-・実行したスクリプトおよび実行後に作成されたフォルダ一式
+・実行したスクリプト、および実行後に作成されたフォルダ一式
 ・(Windowsの場合) "ディスクの管理" の画面の画面ショット
 
 
