@@ -14,7 +14,7 @@
 <meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure VM Backup における整合性について関して具体例をも踏まえつつご説明させていただきます。 まず、Azure VM Backup における整合性は下記の３種類ございます。・アプリケーション整合性 (Application-consistent)・ファイルシステム整合性 (File-system consiste">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2022-02-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-10T15:26:31.771Z">
+<meta property="article:modified_time" content="2022-02-10T15:28:03.389Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -102,7 +102,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f861e6f5-56df-57ae-804b-37d8fc5ea69e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%95%B4%E5%90%88%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FConsistencies%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FConsistencies.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FConsistencies.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="ckzh4vx7q00090nqm34nfegzf" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="ckzh4xwy100090mmgemv827cx" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -157,18 +157,18 @@
 <li>参考<br>・Azure Linux VM のアプリケーション整合性バックアップ<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent</a><br>・git hub 上のサンプル事前事後スクリプト (Oracle や MySQLがございます。)<br><a target="_blank" rel="noopener" href="https://github.com/MicrosoftAzureBackup">https://github.com/MicrosoftAzureBackup</a></li>
 </ul>
 <h2 id="2-ファイルシステム整合性"><a href="#2-ファイルシステム整合性" class="headerlink" title="2.ファイルシステム整合性"></a>2.ファイルシステム整合性<a id="2"></a></h2><p>Windows OS のオンライン バックアップを取得した際に一部の VSSライターが失敗した場合や Linux OS でオンライン バックアップを取得した場合 (または 事前事後スクリプトが失敗した場合) にファイルシステム整合性となります。<br>こちらは OS の起動を保証した整合性ですが、アプリケーションレベルでの整合性は担保されておりません。</p>
-<h2 id="3-クラッシュ整合性"><a href="#3-クラッシュ整合性" class="headerlink" title="3.クラッシュ整合性"></a>3.クラッシュ整合性<a id="3"></a></h2><p>スナップショット作成実行時のディスクのデータのみを保存します。<br>アプリケーション整合性やファイルシステム整合性とは異なり、OS 内部とは連携せずスナップショットを取得します。<br>そのため、オフライン状態の VM をバックアップした際にクラッシュ整合性となります。<br>OS の起動を保証しない整合性ではございますが、<strong>正常に電源が落とされた状態の VM であればメモリ上の情報や I/O の発生はなく、ディスクにしか情報はないため整合性の懸念は全くございません。</strong></p>
+<h2 id="3-クラッシュ整合性"><a href="#3-クラッシュ整合性" class="headerlink" title="3.クラッシュ整合性"></a>3.クラッシュ整合性<a id="3"></a></h2><p>スナップショット作成実行時のディスクのデータのみを保存します。<br>アプリケーション整合性やファイルシステム整合性とは異なり、OS 内部とは連携せずスナップショットを取得します。<br>そのため、オフライン状態の VM をバックアップした際にはクラッシュ整合性となります。<br>OS の起動を保証しない整合性ではございますが、<strong>正常に電源が落とされた状態の VM であればメモリ上の情報や I/O の発生はなく、ディスクにしか情報はないため整合性の懸念は全くございません。</strong></p>
 <ul>
 <li>参考<br>・Azure VM Backup では オフライン バックアップができるのか<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</a></li>
 </ul>
 <p>一方、Azure Disk Backup やマネージドディスクのスナップショットなどは、起動中の VM にアタッチされているディスクのスナップショットを取得することが可能ですが、この際のオンライン状態でのスナップショットの整合性は Azure VM Backupとは異なり、クラッシュ整合性となります。<br>整合性は劣るものの、後述の通り DB のない VM であればクラッシュ整合性でも基本的には問題ございません。</p>
+<ul>
+<li>参考<br>・Azure ディスク バックアップの概要<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview">https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview</a><br>・仮想ハード ディスクのスナップショットを作成する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal">https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal</a></li>
+</ul>
 <p>クラッシュ整合性に関しましては次の公開情報にございますようなイメージをしていただけるとわかりやすいかと存じます。<br> (Azure Site Recovery のドキュメントではございますが、考え方は同じです。)<br>・Azure Site Recovery に関する一般的な質問 - クラッシュ整合性復旧ポイントとは何ですか?<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------">https://docs.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------</a></p>
 <blockquote>
 <p>クラッシュ整合性復旧ポイントには、スナップショットの作成中にサーバーから電源コードが引き抜かれたときのディスク上のデータが含まれます。 クラッシュ整合性復旧ポイントには、スナップショットの作成時にメモリに入っていたものは一切含まれません。<br>クラッシュ整合性復旧ポイントは通常、データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションにとっては十分です。</p>
 </blockquote>
-<ul>
-<li>参考<br>・Azure ディスク バックアップの概要<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview">https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview</a><br>・仮想ハード ディスクのスナップショットを作成する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal">https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal</a></li>
-</ul>
 
       
       
