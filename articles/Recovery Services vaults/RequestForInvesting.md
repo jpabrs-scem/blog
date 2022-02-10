@@ -11,7 +11,7 @@ disableDisclaimer: false
 今回は Azure  Backup バックアップ失敗、リストア失敗の時の調査をするにあたりまず、ご提供いただきたい情報をお伝えいたします。
 
 
-## 1. Azure VM バックアップの障害調査に必要なログ
+## 1. Azure VM バックアップの障害調査に必要なログ<a id="1"></a>
 　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や Azure Backup for SAP HANA in Azure VM など Azure VM 上のDBのバックアップに関するものでも同様に必要です。
 #### 環境情報
 ・Subscription ID
@@ -47,24 +47,25 @@ https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 
 
 ## 2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ
-環境情報
+#### 環境情報
 ・Subscription ID
 ・Recovery Services コンテナー名、およびそのリソースグループ名
 ・バックアップ対象 VM 名、およびそのリソースグループ名、OS 名
 ・リストア先の VM 名、およびそのリソースグループ名、OS 名
 
-ログ情報
+#### ログ情報
 zip などにまとめてご提供いただけますと幸いです。
 ・実行したスクリプトおよび実行後に作成されたフォルダ一式
 ・(Windowsの場合) "ディスクの管理" の画面の画面ショット
 
 
-　(参考画面)
+![参考画像](https://user-images.githubusercontent.com/71251920/153464381-6ba8f9bf-56fd-48fd-9784-b819d8a4f79c.png)
+
 
 
 
 ## 3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ
-　1. Azure VM バックアップの障害調査に必要なログ に加えて下記もご対応お願いします。
+ [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記もご対応お願いします。
 *お手数ですが、全てのDBのbackup.log及びbackint.logのアップロードお願いします。
 
 <SAP HANAのbackup.log及びbackint.log> 
