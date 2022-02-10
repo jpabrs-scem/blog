@@ -58,7 +58,7 @@ https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 ・Azure VM Backupにおける整合性について
 https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-1-VSS-%E8%A6%B3%E7%82%B9%E3%81%A7%E3%81%AE%E8%AA%BF%E6%9F%BB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
-## 2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ
+## 2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ<a id="2"></a>
 #### 環境情報
 ・Subscription ID
 ・Recovery Services コンテナー名、およびそのリソースグループ名
@@ -76,7 +76,7 @@ zip などにまとめてご提供いただけますと幸いです。
 
 
 
-## 3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ
+## 3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ<a id="3"></a>
  [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記もご対応お願いします。
 *お手数ですが、全てのDBのbackup.log及びbackint.logのアップロードお願いします。
 
