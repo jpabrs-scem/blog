@@ -66,13 +66,19 @@ https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shado
 
 つぎに、それぞれについて下記の通りお伝えさせていただきます。
 
-#### ・VSS の不調によりAzure VM Backupが失敗する
-こちら根本原因の特定 VSS 観点での調査が必要となります。
+#### ・VSS の不調 (bad state)によりAzure VM Backupが失敗する
+こちら根本原因の特定には VSS 観点での調査が必要となります。
  Azure Backup チームでは 根本原因の特定については可能な範囲での調査をさせていただきます。
- VSS 観点での調査のためのログの採取をお願いします。
+
 ご参考にまでに、下記のようなエラーが出ることがございます。
 >Error Code ：Snapshot operation failed due to VSS Writers in bad state.
 >Error Message ：ExtensionFailedVssWriterInBadState
+
+ VSS 観点での調査のためには下記のログの採取をお願いします。
+ **可能な限り "[A]"が望ましいですが、”[B]” でもある程度調査が可能です。**
+・VSS エラーが発生している事象の調査
+https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
+
 
 #### ・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている
 　調査の結果、VSS ライターのエラーを出しているアプリケーションが 弊社 SQL Server 等弊社製品の場合、は担当 チームで対応が可能でございますが、お客様の契約次第では有償対応が必要となることがございます。
