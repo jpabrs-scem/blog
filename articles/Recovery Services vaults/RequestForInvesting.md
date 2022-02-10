@@ -54,6 +54,9 @@ VSS 観点での調査のためには下記 URL 先のログの採取をお願�
 https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 
 
+また合わせて下記も関連するブログでございます。
+・Azure VM Backupにおける整合性について
+https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-1-VSS-%E8%A6%B3%E7%82%B9%E3%81%A7%E3%81%AE%E8%AA%BF%E6%9F%BB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 ## 2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ
 #### 環境情報
