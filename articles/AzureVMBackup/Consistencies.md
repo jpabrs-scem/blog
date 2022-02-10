@@ -75,7 +75,7 @@ https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shado
 
  VSS 観点での調査のためには下記 URL 先のログの採取をお願いします。
  **可能な限り "[A]"が望ましいですが、”[B]” でもある程度調査が可能な場合がございます。**
-・VSS エラーが発生している事象の調査
+・VSS エラーが発生している事象の調査 
 https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 
 
