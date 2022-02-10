@@ -129,7 +129,7 @@ Windows OS のオンライン バックアップを取得した際に一部の V
 ## 3.クラッシュ整合性<a id="3"></a>
 スナップショット作成実行時のディスクのデータのみを保存します。
 アプリケーション整合性やファイルシステム整合性とは異なり、OS 内部とは連携せずスナップショットを取得します。
-そのため、オフライン状態の VM をバックアップした際にクラッシュ整合性となります。
+そのため、オフライン状態の VM をバックアップした際にはクラッシュ整合性となります。
 OS の起動を保証しない整合性ではございますが、**正常に電源が落とされた状態の VM であればメモリ上の情報や I/O の発生はなく、ディスクにしか情報はないため整合性の懸念は全くございません。**
 
 - 参考
@@ -139,7 +139,11 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
 一方、Azure Disk Backup やマネージドディスクのスナップショットなどは、起動中の VM にアタッチされているディスクのスナップショットを取得することが可能ですが、この際のオンライン状態でのスナップショットの整合性は Azure VM Backupとは異なり、クラッシュ整合性となります。
 整合性は劣るものの、後述の通り DB のない VM であればクラッシュ整合性でも基本的には問題ございません。
 
-
+- 参考
+・Azure ディスク バックアップの概要
+https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview
+・仮想ハード ディスクのスナップショットを作成する
+https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal
 
 クラッシュ整合性に関しましては次の公開情報にございますようなイメージをしていただけるとわかりやすいかと存じます。
  (Azure Site Recovery のドキュメントではございますが、考え方は同じです。)
@@ -149,8 +153,3 @@ https://docs.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------
 >クラッシュ整合性復旧ポイントには、スナップショットの作成中にサーバーから電源コードが引き抜かれたときのディスク上のデータが含まれます。 クラッシュ整合性復旧ポイントには、スナップショットの作成時にメモリに入っていたものは一切含まれません。
 >クラッシュ整合性復旧ポイントは通常、データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションにとっては十分です。
 
-- 参考
-・Azure ディスク バックアップの概要
-https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview
-・仮想ハード ディスクのスナップショットを作成する
-https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal
