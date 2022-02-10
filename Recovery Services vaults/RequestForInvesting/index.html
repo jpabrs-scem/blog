@@ -13,15 +13,16 @@
 <meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
 <meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure  Backup バックアップ失敗、リストア失敗の時の調査をするにあたりまず、ご提供いただきたい情報をお伝えいたします。 1. Azure VM バックアップの障害調査に必要なログ　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や">
 <meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153464381-6ba8f9bf-56fd-48fd-9784-b819d8a4f79c.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153444342-2ef78226-36af-42ec-b791-def280af289e.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153444335-2c65943d-8f13-4c6d-b2d0-7bf4283b6fc4.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153444341-0b61bf0e-5b58-4040-a0ef-c0d213a2187b.png">
 <meta property="article:published_time" content="2022-02-12T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-10T17:34:30.288Z">
+<meta property="article:modified_time" content="2022-02-10T17:40:16.228Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Recovery Services vaults">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/153444342-2ef78226-36af-42ec-b791-def280af289e.png">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/153464381-6ba8f9bf-56fd-48fd-9784-b819d8a4f79c.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS &amp; SCEM Support Blog" type="application/atom+xml">
   
@@ -106,14 +107,14 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+c80c65dd-5c4d-5eab-b3b2-8e635d79e587%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FRecovery%2520Services%2520vaults%2FRequestForInvesting%2F%29%0A*+Content+Source%3A+%5Barticles%2FRecovery+Services+vaults%2FRequestForInvesting.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FRecovery%2520Services%2520vaults%2FRequestForInvesting.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvesting/" data-id="ckzh9giho001m0nped3k1dfle" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvesting/" data-id="ckzh9nx4c00110onzavx2eoq8" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
 <p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回は Azure  Backup バックアップ失敗、リストア失敗の時の調査をするにあたりまず、ご提供いただきたい情報をお伝えいたします。</p>
-<h2 id="1-Azure-VM-バックアップの障害調査に必要なログ"><a href="#1-Azure-VM-バックアップの障害調査に必要なログ" class="headerlink" title="1. Azure VM バックアップの障害調査に必要なログ"></a>1. Azure VM バックアップの障害調査に必要なログ</h2><p>　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や Azure Backup for SAP HANA in Azure VM など Azure VM 上のDBのバックアップに関するものでも同様に必要です。</p>
+<h2 id="1-Azure-VM-バックアップの障害調査に必要なログ"><a href="#1-Azure-VM-バックアップの障害調査に必要なログ" class="headerlink" title="1. Azure VM バックアップの障害調査に必要なログ"></a>1. Azure VM バックアップの障害調査に必要なログ<a id="1"></a></h2><p>　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や Azure Backup for SAP HANA in Azure VM など Azure VM 上のDBのバックアップに関するものでも同様に必要です。</p>
 <h4 id="環境情報"><a href="#環境情報" class="headerlink" title="環境情報"></a>環境情報</h4><p>・Subscription ID<br>・Recovery Services コンテナー名、およびそのリソースグループ名<br>・バックアップ対象 VM 名、およびそのリソースグループ名</p>
 <h4 id="ログ情報"><a href="#ログ情報" class="headerlink" title="ログ情報"></a>ログ情報</h4><p>下記を参考に zip などにまとめてご提供いただけますと幸いです。</p>
 <h4 id="・Windows-の場合"><a href="#・Windows-の場合" class="headerlink" title="・Windows の場合"></a>・Windows の場合</h4><blockquote>
@@ -131,10 +132,10 @@
 <p>Error Code ：Snapshot operation failed due to VSS Writers in bad state.<br>Error Message ：ExtensionFailedVssWriterInBadState</p>
 </blockquote>
 <p>VSS 観点での調査のためには下記 URL 先のログの採取をお願いします。<br> <strong>可能な限り “[A]”が望ましいですが、”[B]” でもある程度調査が可能な場合がございます。</strong><br>・VSS エラーが発生している事象の調査<br><a target="_blank" rel="noopener" href="https://jpwinsup.github.io/mslog/storage/vss/vss-error.html">https://jpwinsup.github.io/mslog/storage/vss/vss-error.html</a></p>
-<h2 id="2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調時にご提供いただきたいログ"><a href="#2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調時にご提供いただきたいログ" class="headerlink" title="2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ"></a>2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ</h2><p>環境情報<br>・Subscription ID<br>・Recovery Services コンテナー名、およびそのリソースグループ名<br>・バックアップ対象 VM 名、およびそのリソースグループ名、OS 名<br>・リストア先の VM 名、およびそのリソースグループ名、OS 名</p>
-<p>ログ情報<br>zip などにまとめてご提供いただけますと幸いです。<br>・実行したスクリプトおよび実行後に作成されたフォルダ一式<br>・(Windowsの場合) “ディスクの管理” の画面の画面ショット</p>
-<p>　(参考画面)</p>
-<h2 id="3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の調査に必要なログ"><a href="#3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の調査に必要なログ" class="headerlink" title="3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ"></a>3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ</h2><p>　1. Azure VM バックアップの障害調査に必要なログ に加えて下記もご対応お願いします。<br>*お手数ですが、全てのDBのbackup.log及びbackint.logのアップロードお願いします。</p>
+<h2 id="2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調時にご提供いただきたいログ"><a href="#2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調時にご提供いただきたいログ" class="headerlink" title="2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ"></a>2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調時にご提供いただきたいログ</h2><h4 id="環境情報-1"><a href="#環境情報-1" class="headerlink" title="環境情報"></a>環境情報</h4><p>・Subscription ID<br>・Recovery Services コンテナー名、およびそのリソースグループ名<br>・バックアップ対象 VM 名、およびそのリソースグループ名、OS 名<br>・リストア先の VM 名、およびそのリソースグループ名、OS 名</p>
+<h4 id="ログ情報-1"><a href="#ログ情報-1" class="headerlink" title="ログ情報"></a>ログ情報</h4><p>zip などにまとめてご提供いただけますと幸いです。<br>・実行したスクリプトおよび実行後に作成されたフォルダ一式<br>・(Windowsの場合) “ディスクの管理” の画面の画面ショット</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/153464381-6ba8f9bf-56fd-48fd-9784-b819d8a4f79c.png" alt="参考画像"></p>
+<h2 id="3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の調査に必要なログ"><a href="#3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の調査に必要なログ" class="headerlink" title="3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ"></a>3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ</h2><p> <a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> に加えて下記もご対応お願いします。<br>*お手数ですが、全てのDBのbackup.log及びbackint.logのアップロードお願いします。</p>
 <p>&lt;SAP HANAのbackup.log及びbackint.log&gt; </p>
 <blockquote>
 <ul>
@@ -154,66 +155,6 @@
 <ul>
 <li>参考<br>・Azure VM バックアップの概要 スナップショットの整合性<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency</a></li>
 </ul>
-<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. アプリケーション整合性</a><br><a href="#1-1">  1.1 VSS 観点での調査について</a><br><a href="#1-2">  1.2  SQL サーバーのインストールされた Windows OS のバックアップについて</a><br><a href="#1-1">  1.3  Oracle DB for Windows VM の Azure VM Backup について</a><br><a href="#1-4">  1.4  事前事後スクリプトについて</a><br><a href="#2">2. ファイルシステム整合性</a><br><a href="#3">3. クラッシュ整合性</a></p>
-<hr>
-<h2 id="1-アプリケーション整合性"><a href="#1-アプリケーション整合性" class="headerlink" title="1. アプリケーション整合性"></a>1. アプリケーション整合性<a id="1"></a></h2><p>こちら Azure VM Backup における最も上位の整合性でございます。<br>Windows OS のバックアップを取得した場合や事前事後スクリプトを設定した Linux OS でオンライン バックアップを取得した場合にアプリケーション整合性となります。<br>なお、Windows OS の場合は VSS (ボリューム シャドウ コピー サービス) との連携によりアプリケーション整合性を取得するのみであり、Linux OS のような事前事後スクリプトの準備はございません。</p>
-<p>Azure Portal 上の表示では、Windows OS の場合は VSS (VSS ライター) が正常に稼働すればアプリケーション整合性となり、Linux VM の場合は事前事後スクリプトが正常に完了すればアプリケーション整合性となります。<br>つまり、VSS に対応していないアプリケーションをご利用の場合は該当アプリケーションに対する整合性はないですが、 Azure Portal では対象のアプリケーションを検知することが出来ないため Azure Portal 上の表示はアプリケーション整合性となります。</p>
-<p>また、<strong>ご利用のアプリケーション整合性が VSS に対応しているかは各アプリケーションの提供元ベンダーまでお問い合わせいただきますようお願いします。</strong></p>
-<ul>
-<li>参考<br>・ボリューム シャドウ コピー サービスの仕組み<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shadow-copy-service#how-volume-shadow-copy-service-work">https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shadow-copy-service#how-volume-shadow-copy-service-work</a><blockquote>
-<p>Microsoft 以外の VSS ライターは、バックアップ中のデータの整合性を保証する必要がある Windows 用の多くのアプリケーションに含まれています。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="1-1-VSS-観点での調査について"><a href="#1-1-VSS-観点での調査について" class="headerlink" title="1.1 VSS 観点での調査について"></a>1.1 VSS 観点での調査について<a id="1-1"></a></h3><p>まず、Azure Backup チームでは VSS 関連の障害調査に関しては VSS および 特定の VSS ライターに不調があるというところまでが調査可能です。<br>なぜ “VSS および 特定の VSS ライターに不調が起きたのか” に関する根本原因についてはお客様の契約次第では、 オンプレミス チームでの有償対応が必要となることがございます。<br>また切り分けの結果、他社製品のアプリケーションの VSS ライターの不具合であった場合には弊社ではサポート出来かねますので、ご利用のアプリケーション提供ベンダーまでお問い合わせお願いします。</p>
-<p>つぎに、それぞれについて下記の通りお伝えさせていただきます。</p>
-<h4 id="・VSS-の不調-bad-state-によりAzure-VM-Backupが失敗する"><a href="#・VSS-の不調-bad-state-によりAzure-VM-Backupが失敗する" class="headerlink" title="・VSS の不調 (bad state)によりAzure VM Backupが失敗する"></a>・VSS の不調 (bad state)によりAzure VM Backupが失敗する</h4><p>こちら根本原因の特定には VSS 観点での調査が必要となります。<br> Azure Backup チームでは 根本原因の特定については可能な範囲での調査をさせていただきます。</p>
-<p>ご参考にまでに、下記のようなエラーが出ることがございます。</p>
-<blockquote>
-<p>Error Code ：Snapshot operation failed due to VSS Writers in bad state.<br>Error Message ：ExtensionFailedVssWriterInBadState</p>
-</blockquote>
-<p> VSS 観点での調査のためには下記 URL 先のログの採取をお願いします。<br> <strong>可能な限り “[A]”が望ましいですが、”[B]” でもある程度調査が可能な場合がございます。</strong><br>・VSS エラーが発生している事象の調査<br><a target="_blank" rel="noopener" href="https://jpwinsup.github.io/mslog/storage/vss/vss-error.html">https://jpwinsup.github.io/mslog/storage/vss/vss-error.html</a></p>
-<h4 id="・VSS-ライターのエラーにより警告付き完了となる-アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている"><a href="#・VSS-ライターのエラーにより警告付き完了となる-アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている" class="headerlink" title="・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている"></a>・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている</h4><p>　調査の結果、VSS ライターのエラーを出しているアプリケーションが 弊社 SQL Server 等弊社製品の場合は担当チームで対応が可能でございますが、お客様の契約次第では有償対応が必要となることがございます。<br>　一方、VSS ライターのエラーを出しているアプリケーションが他社製品の場合、ご利用のアプリケーション提供ベンダーまでお問い合わせいただくようお願い申し上げます。</p>
-<h3 id="1-2-SQL-サーバーのインストールされた-Windows-OS-のバックアップについて"><a href="#1-2-SQL-サーバーのインストールされた-Windows-OS-のバックアップについて" class="headerlink" title="1.2  SQL サーバーのインストールされた Windows OS のバックアップについて"></a>1.2  SQL サーバーのインストールされた Windows OS のバックアップについて<a id="1-2"></a></h3><p>こちらよくいただくお問い合わせとして次の通りお伝えします。</p>
-<blockquote>
-<p>・SQL サーバーのインストールされた Windows OS をAzure VM Backup でバックアップすることは可能か、また何か考慮点があるか？</p>
-</blockquote>
-<p>こちら結論から申し上げますと、可能です。<br>SQL ライターがございますので、SQL データベースの整合性を保った VM 全体のバックアップを取得することが可能です。</p>
-<p>考慮点としましては下記 URL をご覧ください。</p>
-<ul>
-<li>参考<br>・Azure VM バックアップの概要 - スナップショットの作成<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-creation">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-creation</a><blockquote>
-<p>既定の Azure Backup では、VSS の完全バックアップが作成されます (アプリケーション レベルで整合性のあるバックアップを取得するため、バックアップ時に、SQL Server などのアプリケーションのログは切り捨てられます)。 Azure VM バックアップで SQL Server データベースを使用している場合は、(ログを保持するため) VSS コピー バックアップを作成するように設定を変更できます。 詳細については、 こちらの記事を参照してください。</p>
-</blockquote>
-</li>
-</ul>
-<p>・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - VM スナップショットに関する問題のトラブルシューティング<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues</a></p>
-<blockquote>
-<p>既定では、VM バックアップによって Windows VM 上に VSS フル バックアップが作成されます。 SQL Server を実行していて SQL Server のバックアップを構成されている VM では、スナップショットの遅延が発生する可能性がありますナップショットの遅延が原因でバックアップが失敗する場合は、次のレジストリ キーを設定します。<br>[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]<br>“USEVSSCOPYBACKUP”=”TRUE”</p>
-</blockquote>
-<p>また、下記は弊社外のブログではございますが、本件に関する参考になればと存じ、ご案内させていただきます。<br>※社外の情報のため内容につきましては当社は、下記外部のリンク先ウェブサイトの内容に関していかなる責任も負うものではありません。<br>・Azure Backup で SQL Server がインストールされている仮想マシンをバックアップする際に意識しておきたいこと<br><a target="_blank" rel="noopener" href="https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%82%92/">https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%82%92/</a></p>
-<h3 id="1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について"><a href="#1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について" class="headerlink" title="1.3  Oracle DB for Windows VM の Azure VM Backup について"></a>1.3  Oracle DB for Windows VM の Azure VM Backup について<a id="1-3"></a></h3><p>よくお問い合わせをいただく例としましては Oracle DB が搭載された Windows OS に関してお問い合わせをいただくことがございます。<br>弊社では Windows OS 向けの Oracle DB すべてが VSS に対応しているかわかりかねますが、少なくとも実績はございます。<br>ご利用の Oracle DB が VSS に対応しているかが不明な場合は別途 Oracle 社にお問い合わせいただければと存じます。</p>
-<ul>
-<li>下記情報は弊社外のサイトでございますが、ご参考になれば幸いです。弊社情報ではございませんのでその点ご留意ください。<br>・Oracleがインストールされているシステムで Exit Code -311が発生する<br><a target="_blank" rel="noopener" href="https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B">https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B</a></li>
-</ul>
-<p>・(Oracle社) VSSを使用したデータベースのバックアップおよびリカバリの目的<br>  ※Oracle DB すべてが対応しているかわかりかねます<br><a target="_blank" rel="noopener" href="https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B">https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B</a></p>
-<h3 id="1-4-事前事後スクリプトについて"><a href="#1-4-事前事後スクリプトについて" class="headerlink" title="1.4 事前事後スクリプトについて"></a>1.4 事前事後スクリプトについて<a id="1-4"></a></h3><p>Linux VM 事前事後スクリプトに関しましては、お客様自身で対象のアプリケーション (DBなど) の IO を停止 / 再開する処理を記載いただく必要がございます。<br>そのため、対象のアプリケーションに対してそのようなコマンド制御ができない場合は、残念ながら事前事後スクリプトを用いることはできません。そのようなコマンド制御が可能かはアプリケーション提供ベンダーまでお問い合わせをいただきますようお願いします。</p>
-<ul>
-<li>参考<br>・Azure Linux VM のアプリケーション整合性バックアップ<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent</a><br>・git hub 上のサンプル事前事後スクリプト (Oracle や MySQLがございます。)<br><a target="_blank" rel="noopener" href="https://github.com/MicrosoftAzureBackup">https://github.com/MicrosoftAzureBackup</a></li>
-</ul>
-<h2 id="2-ファイルシステム整合性"><a href="#2-ファイルシステム整合性" class="headerlink" title="2.ファイルシステム整合性"></a>2.ファイルシステム整合性<a id="2"></a></h2><p>Windows OS のオンライン バックアップを取得した際に一部の VSSライターが失敗した場合や Linux OS でオンライン バックアップを取得した場合 (または 事前事後スクリプトが失敗した場合) にファイルシステム整合性となります。<br>こちらは OS の起動を保証した整合性ですが、アプリケーションレベルでの整合性は担保されておりません。</p>
-<h2 id="3-クラッシュ整合性"><a href="#3-クラッシュ整合性" class="headerlink" title="3.クラッシュ整合性"></a>3.クラッシュ整合性<a id="3"></a></h2><p>スナップショット作成実行時のディスクのデータのみを保存します。<br>アプリケーション整合性やファイルシステム整合性とは異なり、OS 内部とは連携せずスナップショットを取得します。<br>そのため、オフライン状態の VM をバックアップした際にはクラッシュ整合性となります。<br>OS の起動を保証しない整合性ではございますが、<strong>正常に電源が落とされた状態の VM であればメモリ上の情報や I/O の発生はなく、ディスクにしか情報はないため整合性の懸念は全くございません。</strong></p>
-<ul>
-<li>参考 (関連するブログ記事です。)<br>・Azure VM Backup では オフライン バックアップができるのか<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</a></li>
-</ul>
-<p>一方、Azure Disk Backup やマネージドディスクのスナップショットなどは、起動中の VM にアタッチされているディスクのスナップショットを取得することが可能ですが、この際のオンライン状態でのスナップショットの整合性は Azure VM Backupとは異なり、クラッシュ整合性となります。<br>整合性は劣るものの、後述の通り DB のない VM であればクラッシュ整合性でも基本的には問題ございません。</p>
-<ul>
-<li>参考<br>・Azure ディスク バックアップの概要<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview">https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview</a><br>・仮想ハード ディスクのスナップショットを作成する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal">https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal</a></li>
-</ul>
-<p>クラッシュ整合性に関しましては次の公開情報にございますようなイメージをしていただけるとわかりやすいかと存じます。<br> (Azure Site Recovery のドキュメントではございますが、考え方は同じです。)<br>・Azure Site Recovery に関する一般的な質問 - クラッシュ整合性復旧ポイントとは何ですか?<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------">https://docs.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------</a></p>
-<blockquote>
-<p>クラッシュ整合性復旧ポイントには、スナップショットの作成中にサーバーから電源コードが引き抜かれたときのディスク上のデータが含まれます。 クラッシュ整合性復旧ポイントには、スナップショットの作成時にメモリに入っていたものは一切含まれません。<br>クラッシュ整合性復旧ポイントは通常、データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションにとっては十分です。</p>
-</blockquote>
 
       
       
