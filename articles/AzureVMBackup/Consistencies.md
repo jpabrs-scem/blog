@@ -12,8 +12,15 @@ disableDisclaimer: false
 
 まず、Azure VM Backup における整合性は下記の３種類ございます。
 ・アプリケーション整合性 (Application-consistent)
+![](https://user-images.githubusercontent.com/71251920/137937912-912a42c1-f750-4c8b-a157-6a3db50f11c7.png)
+
+
 ・ファイルシステム整合性 (File-system consistent)
+![](https://user-images.githubusercontent.com/71251920/137937882-bb5ea0da-be8a-451c-bd3a-a24c4a8070c4.png)
+
+
 ・クラッシュ整合性 (Crash-consistent)
+![](https://user-images.githubusercontent.com/71251920/137937936-0d85b5e6-7bb8-4131-9553-ec7c9e0e0d58.png)
 
 なお、公開情報は下記にございますのでまず一度ご一読ください。
 その前提で説明させていただきます。
@@ -133,7 +140,7 @@ Windows OS のオンライン バックアップを取得した際に一部の V
 そのため、オフライン状態の VM をバックアップした際にはクラッシュ整合性となります。
 OS の起動を保証しない整合性ではございますが、**正常に電源が落とされた状態の VM であればメモリ上の情報や I/O の発生はなく、ディスクにしか情報はないため整合性の懸念は全くございません。**
 
-- 参考
+- 参考 (関連するブログ記事です。)
 ・Azure VM Backup では オフライン バックアップができるのか
 https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
 
