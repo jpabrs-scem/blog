@@ -100,10 +100,10 @@ zip などにまとめてご提供いただけますと幸いです。
 
 ### 4.1 Microsoft Azure Backup Agent のログ　
  まず、下記 リンク先から調査用スクリプトのダウンロードをお願いします。
- [WABDiag.zip](https://github.com/jpabrs-scem/blog/files/8045864/WABDiag.zip)
+[WABDiag.zip](https://github.com/jpabrs-scem/blog/files/8045897/WABDiag.zip)
 
 ダウンロードいただきました WABDiag.tx を .ps1 に変更して使用し、問題が発生しているマシンより Azure Backup ログの収集をお願いいたします。
-※ ファイルの解凍パスワードは "Azure Backup" となります。
+※ ファイルの解凍パスワードは "AzureBackup" となります。
  
 1. WABDiag.ps1 を管理者権限の PowerShell で実行します。
  
