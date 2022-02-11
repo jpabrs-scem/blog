@@ -17,7 +17,9 @@ disableDisclaimer: false
 [2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ](#2)
 [3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ](#3)
 [4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ](#4)
-
+[4-1. Microsoft Azure Backup Agent のログ](#4-1)
+[4-2. システム情報](#4-2)
+[4-3. イベント ログ](#4-3)
 -----------------------------------------------------------
 
 
@@ -98,7 +100,7 @@ zip などにまとめてご提供いただけますと幸いです。
 
 [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記もご対応お願いします。
 
-### 4.1 Microsoft Azure Backup Agent のログ　
+### 4.1 Microsoft Azure Backup Agent のログ　<a id="4-1"></a>
  まず、下記 リンク先から調査用スクリプトのダウンロードをお願いします。
 [WABDiag.zip](https://github.com/jpabrs-scem/blog/files/8045897/WABDiag.zip)
 
@@ -117,7 +119,7 @@ zip などにまとめてご提供いただけますと幸いです。
 PowerShellを管理者権限で起動し、再度実行していただけますでしょうか。
 コマンド：Set-ExecutionPolicy Unrestricted
  
-#### * PowerShell の実行ポリシーに寄よりスクリプトが実行できない場合
+#### PowerShell の実行ポリシーに寄よりスクリプトが実行できない場合
 PowerShellを管理者権限で起動し、下記コマンドを実行のし実行ポリシーを変更後、再度実行していただけますでしょうか。
 >コマンド：Set-ExecutionPolicy Unrestricted
 
@@ -128,7 +130,7 @@ PowerShellを管理者権限で起動し、下記コマンドを実行のし実�
  ・実行ポリシーについて - PowerShell 
  https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2
 
-###  システム情報 
+###  4.2 システム情報 <a id="4-2"></a>
 1. 対象のマシンに管理者権限を保持するユーザーでログオンします。
 2. 管理者権限でコマンド プロンプトを起動し、以下のコマンドで取得します。
   > msinfo32 /nfo <出力ファイル名> 
@@ -136,7 +138,7 @@ PowerShellを管理者権限で起動し、下記コマンドを実行のし実�
 3. 生成されたファイルをご提供ください。
  
 
-### イベント ログ
+### 4.3 イベント ログ<a id="4-3"></a>
 1. 対象のマシンに管理者権限を保持するユーザーでログオンします。
 2. [スタート] - [管理ツール] - [イベント ビューアー] を開きます。
 3. 左側ペインの以下のイベントに対して、右クリックをし、[すべてのイベントを名前をつけて保存] を選択し、ファイルの種類が "イベント ファイル (*.evtx)" であることを確認し、任意の名前を付けて、[保存] をクリックします。
