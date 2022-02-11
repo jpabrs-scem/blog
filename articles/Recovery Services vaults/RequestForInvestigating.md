@@ -15,7 +15,8 @@ disableDisclaimer: false
 [1. Azure VM バックアップの障害調査に必要なログ](#1)
 [  1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ](#1-1)
 [2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ](#2)
-[3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ](#3)
+[3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ](#3)
+[4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ](#3)
 
 -----------------------------------------------------------
 
@@ -76,7 +77,7 @@ zip などにまとめてご提供いただけますと幸いです。
 
 
 
-## 3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ<a id="3"></a>
+## 3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ<a id="3"></a>
  [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記もご対応お願いします。
 *お手数ですが、全ての DB の backup.log 及び backint.log の採取をお願いします。
 
@@ -93,3 +94,53 @@ zip などにまとめてご提供いただけますと幸いです。
 	#find ./ -name “backup.log” (findコマンドにより該当のログの場所を特定します)
 	#find ./ -name “backint.log” (findコマンドにより該当のログの場所を特定します)
 
+## 4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ<a id="4"></a>
+
+[1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記もご対応お願いします。
+
+### 4.1 Microsoft Azure Backup Agent のログ　
+ まず、下記 リンク先から調査用スクリプトのダウンロードをお願いします。
+ [WABDiag.zip](https://github.com/jpabrs-scem/blog/files/8045864/WABDiag.zip)
+
+ダウンロードいただきました WABDiag.tx を .ps1 に変更して使用し、問題が発生しているマシンより Azure Backup ログの収集をお願いいたします。
+※ ファイルの解凍パスワードは "Azure Backup" となります。
+ 
+1. WABDiag.ps1 を管理者権限の PowerShell で実行します。
+ 
+  > 実行コマンド: <スクリプトのパス>\WABDiag.ps1 <パス\保存するフォルダ名>
+   実行例: C:\WABDiag\WABDiag.ps1 C:\Logs
+ 
+   実行結果にファイル パスが無い旨のメッセージが表示される可能性がございますが、
+   対象のファイル自体が無い事を示すメッセージとなりますので、無視していただいて
+   問題ございません。
+ 
+PowerShellを管理者権限で起動し、再度実行していただけますでしょうか。
+コマンド：Set-ExecutionPolicy Unrestricted
+ 
+#### * PowerShell の実行ポリシーに寄よりスクリプトが実行できない場合
+PowerShellを管理者権限で起動し、下記コマンドを実行のし実行ポリシーを変更後、再度実行していただけますでしょうか。
+>コマンド：Set-ExecutionPolicy Unrestricted
+
+また現在の実行ポリシーを後ほど元に戻す場合は、変更前に下記コマンドを実行し、設定されているポリシーを確認、メモし、スクリプト実行後に同様の手順で変更していただきますようお願いいたします。
+>コマンド：Get-ExecutionPolicy 
+ 
+ - 参考
+ ・実行ポリシーについて - PowerShell 
+ https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2
+
+###  システム情報 
+1. 対象のマシンに管理者権限を保持するユーザーでログオンします。
+2. 管理者権限でコマンド プロンプトを起動し、以下のコマンドで取得します。
+  > msinfo32 /nfo <出力ファイル名> 
+  実行例)  > msinfo32 /nfo SVR_msinfo32.nfo
+3. 生成されたファイルをご提供ください。
+ 
+
+### イベント ログ
+1. 対象のマシンに管理者権限を保持するユーザーでログオンします。
+2. [スタート] - [管理ツール] - [イベント ビューアー] を開きます。
+3. 左側ペインの以下のイベントに対して、右クリックをし、[すべてのイベントを名前をつけて保存] を選択し、ファイルの種類が "イベント ファイル (*.evtx)" であることを確認し、任意の名前を付けて、[保存] をクリックします。
+   (ファイルの種類が "イベント ファイル (*.csv)" も併せて取得をお願いいたします) 
+a) [イベント ビューアー (ローカル)] - [Windows ログ] - [システム]
+b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Application]
+4. 保存したイベント ログ ファイルをご提供ください。
