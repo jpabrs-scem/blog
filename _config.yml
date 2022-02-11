@@ -42,9 +42,9 @@ root_tag_generator:
     - System Center
     - Recovery Services vaults
     - MARS Backup 
+    - 情報採取
     
   sub_tag_limit: 20
-  - TROUBLE SHOOTING
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
