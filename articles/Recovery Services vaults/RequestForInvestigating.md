@@ -49,7 +49,7 @@ Azure VM Backupの下記のようなエラーが出ることがございます�
 Error Message ：ExtensionFailedVssWriterInBadState
 
 VSS 観点での調査のためには下記 URL 先のログの採取をお願いします。
- **可能な限り "[A]"が望ましいですが、”[B]” でもある程度調査が可能な場合がございます。**
+ **可能な限り "[A]"が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。**
 ・VSS エラーが発生している事象の調査 
 https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 
@@ -78,7 +78,7 @@ zip などにまとめてご提供いただけますと幸いです。
 
 ## 3. Azure Backup for SAP HANA in Azure VM の調査に必要なログ<a id="3"></a>
  [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記もご対応お願いします。
-*お手数ですが、全てのDBのbackup.log及びbackint.logのアップロードお願いします。
+*お手数ですが、全ての DB の backup.log 及び backint.log の採取をお願いします。
 
 #### SAP HANAのbackup.log 及び backint.log 
 >* xxにはインスタンスナンバーが入ります。
@@ -87,7 +87,7 @@ zip などにまとめてご提供いただけますと幸いです。
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/backint.log
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_<DB名>/backint.log
  
-*上記パスに該当のログが無い場合は以下を試し、出てきたディレクトリの場所の log をアップロードしてください。
+*上記パスに該当のログが無い場合は以下を試し、コマンド実行結果に表示されディレクトリの場所の log をアップロードしてください。
 >	#sudo -i (rootユーザーに切り替えます)
 	#cd / (ディレクトリの最上層に移動します)
 	#find ./ -name “backup.log” (findコマンドにより該当のログの場所を特定します)
