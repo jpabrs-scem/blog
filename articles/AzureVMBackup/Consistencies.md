@@ -88,8 +88,8 @@ https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 >・SQL Server のインストールされた Windows OS をAzure VM Backup でバックアップすることは可能か、また何か考慮点があるか？
 *ここでのSQL Server とは Microsoft SQL Server を指します。
 
-こちら結論から申し上げますと、可能です。
-SQL ライターがございますので、SQL データベースの整合性を保った VM 全体のバックアップを取得することが可能です。
+**こちら結論から申し上げますと、可能です。**
+Microsoft SQL Server では SQL ライターがございますので、SQL データベースの整合性を保った VM 全体のバックアップを取得することが可能です。
 
 考慮点としましては下記 URL をご覧ください。
 - 参考
@@ -102,7 +102,6 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#trou
 > 既定では、VM バックアップによって Windows VM 上に VSS フル バックアップが作成されます。 SQL Server を実行していて SQL Server のバックアップを構成されている VM では、スナップショットの遅延が発生する可能性がありますナップショットの遅延が原因でバックアップが失敗する場合は、次のレジストリ キーを設定します。
 [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
 "USEVSSCOPYBACKUP"="TRUE"
-
 
 
 また、下記は弊社外のブログではございますが、本件に関する参考になればと存じ、ご案内させていただきます。
