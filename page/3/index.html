@@ -95,6 +95,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-AzureVMBackup/Azure_VM_Offline_backup" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../AzureVMBackup/Azure_VM_Offline_backup/" class="article-date">
+  <time datetime="2021-10-20T03:00:00.000Z" itemprop="datePublished">2021-10-20</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../AzureVMBackup/Azure_VM_Offline_backup/">Azure VM Backup では オフライン バックアップができるのか</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+Azure VM Backup では オフライン バックアップができるのか皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、Azure VM Backup でオフライン バックアップができるのかというご要望について解説します。こちらまず、結論から申し上げますと可能でございます。
+オンラインバックアップについてまず、オンライン バックアップの場合 、Azure VM Backup は Windows VM の場合も Linux VM の場合も、それぞれのエージェント (およびバックアップ拡張機能) と通信・連携し、スナップショットを取得しています。その際の整合性は通常 Windows OS の場合は VSS (ボリューム シャドウ コピー サービス) と連携しアプリケーション整合性となり、Linux VM の場合は通常ファイルシステム整合...
+        <p class="article-readmore">
+          <a href="../../AzureVMBackup/Azure_VM_Offline_backup/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/" data-id="ckzk13tpu00040mt82josejry" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-AzureVMBackup/VMRestoring_NIC_Configuration" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -134,7 +184,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/" data-id="ckzjxphco000m0or5hpge8dvm" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/" data-id="ckzk13tq7000o0mt84p9mh8wj" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
@@ -186,7 +236,7 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/" data-id="ckzjxphcg00090or56ytygikb" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/" data-id="ckzk13tq0000c0mt822wxbfvp" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
@@ -237,7 +287,7 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/" data-id="ckzjxphcr000t0or52qr135lp" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/" data-id="ckzk13tqa000v0mt8702ndnyn" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
@@ -288,7 +338,7 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/information/team-introduction/" data-id="ckzjxphcz001c0or5buxmc30r" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/information/team-introduction/" data-id="ckzk13tqk001e0mt88d6m6b30" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li></ul>
@@ -317,6 +367,10 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
       <ul>
         
           <li>
+            <a href="../../AzureVMBackup/CRR/">Azure VM Backup における CRR (クロスリージョン リストア)について</a>
+          </li>
+        
+          <li>
             <a href="../../Recovery%20Services%20vaults/RequestForInvestigating/">Azure Backup の障害調査に必要な情報</a>
           </li>
         
@@ -332,10 +386,6 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
             <a href="../../MARSBackup/MARS_Proxy_Setting/">プロキシを利用した MARS エージェントによるバックアップについて</a>
           </li>
         
-          <li>
-            <a href="../../AzureVMBackup/AV_ExcludeSetting/">Azure Backup におけるウイルス除外設定について</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -346,7 +396,7 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
     <h3 class="widget-title">タグ</h3>
     <div class="widget">
       <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/" rel="tag">System Center</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">15</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Recovery-Services-vaults/">Recovery Services vaults</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Recovery-Services-vaults/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/">情報採取</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Recovery-Services-vaults">Recovery Services vaults</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/">System Center</a><span class="tag-list-count">4</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">1</span><ul></ul></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">16</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Recovery-Services-vaults/">Recovery Services vaults</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Recovery-Services-vaults/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/">情報採取</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/Recovery-Services-vaults">Recovery Services vaults</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/">System Center</a><span class="tag-list-count">4</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">1</span><ul></ul></li></ul>
     </div>
   </div>
 
