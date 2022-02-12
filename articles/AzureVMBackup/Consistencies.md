@@ -70,23 +70,42 @@ https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shado
  Azure Backup チームでは 根本原因の特定については可能な範囲での調査をさせていただきます。
 
 ご参考にまでに、下記のようなエラーが出ることがございます。
->Error Code ：Snapshot operation failed due to VSS Writers in bad state.
->Error Message ：ExtensionFailedVssWriterInBadState
+>Error Code ：ExtensionFailedVssServiceInBadState
+>Error Message ：Snapshot operation failed due to VSS (Volume Shadow Copy) service in bad state
 
- VSS 観点での調査のためには下記 URL 先のログの採取をお願いします。
+事象の改善方法としては下記 URL 記載の VSS の再起動、および VM の再起動を行うことで改善することがほとんどでございます。
+
+・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssServiceInBadState - VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました
+https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state
+
+
+ VSS 観点でのなぜ VSS が bad state になったか、に関する根本原因の調査のためには下記 URL 先のログの採取をお願いします。
  **可能な限り "[A]"が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。**
 ・VSS エラーが発生している事象の調査 
 https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 
 
 #### ・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている
-　調査の結果、VSS ライターのエラーを出しているアプリケーションが 弊社 SQL Server 等弊社製品の場合は担当チーム (SQL Server 等) で対応が可能でございますが、お客様の契約次第では有償対応が必要となることがございます。
+こちら根本原因の特定には VSS および VSS ライター観点での調査が必要となります。
+ Azure Backup チームでは どうして VSS ライター が失敗したのか、に関する根本原因の特定については可能な範囲での調査をさせていただきます。
+　一次調査の結果、VSS ライターのエラーを出しているアプリケーションが 弊社 SQL Server 等弊社製品の場合は担当チーム (SQL Server 等) で対応が可能でございますが、お客様の契約次第では有償対応が必要となることがございます。
 　一方、VSS ライターのエラーを出しているアプリケーションが他社製品の場合、ご利用のアプリケーション提供ベンダーまでお問い合わせいただくようお願い申し上げます。
+
+ご参考にまでに、下記のようなエラーが出ることがございます。
+>Error Code ：ExtensionFailedVssWriterInBadState
+>Error Message ：Snapshot operation failed due to VSS Writers in bad state.
+
+改善策としては、下記の URL をご参考にして対応いただければと存じます。
+・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssWriterInBadState - VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました
+https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state
+
+
+
 
 ###　1.2  SQL Server のインストールされた Windows OS のバックアップについて<a id="1-2"></a>
 こちらよくいただくお問い合わせとして次の通りお伝えします。
 >・SQL Server のインストールされた Windows OS をAzure VM Backup でバックアップすることは可能か、また何か考慮点があるか？
-*ここでのSQL Server とは Microsoft SQL Server を指します。
+*ここで SQL Server とは Microsoft SQL Server を指します。
 
 **こちら結論から申し上げますと、可能です。**
 Microsoft SQL Server では SQL ライターがございますので、SQL データベースの整合性を保った VM 全体のバックアップを取得することが可能です。
