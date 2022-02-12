@@ -29,7 +29,7 @@ RA-GRSとなります。
 https://docs.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#grs
 
  
-冗長性の概要については、以下ブログ記事をご参考ください。
+Azure Backup における冗長性の概要については、以下ブログ記事をご参考ください。
 **・(ページ作成中)**
 
 ### <a id="1-1"> Azure Portal での CRR 有効時の確認方法
