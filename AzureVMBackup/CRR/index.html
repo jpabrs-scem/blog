@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153718051-58d3846a-cb16-4509-982d-f9034093cf3d.gif">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153718050-bf4b2841-6c14-40fa-8c21-94d806c47872.jpg">
 <meta property="article:published_time" content="2022-02-13T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-12T16:14:54.521Z">
+<meta property="article:modified_time" content="2022-02-12T16:21:54.620Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -119,7 +119,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+14940a69-df0b-5e52-9fa2-c72b567fdf9a%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B+CRR+%28%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%AA%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3+%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%29%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FCRR%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FCRR.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FCRR.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/" data-id="ckzk1hun000050os62vf7a93l" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/" data-id="ckzk1qv0b00050npjdpxd8ys9" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -145,7 +145,7 @@
 <p>また、下記英語版ドキュメントにおいて記載がある通り、プライマリリージョンの RPO が 24 時間なのに対し、セカンダリリージョンの RPO は 36 時間となりますので、こちらもご留意ください。<br>（公開ドキュメントは英語版からアップデートされ、ローカル言語へは順次翻訳が行われますため、現在内容に差がある状況となっております）<br>なお、セカンダリ リージョンへのレプリケート時間については SLA はございません。</p>
 <p>・(英語版) Restore VMs by using the Azure portal - Azure Backup | Microsoft Docs<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region">https://docs.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region</a></p>
 <blockquote>
-<p>機械翻訳：“現在、セカンダリーリージョンのRPOは36時間です。これは、プライマリー地域のRPOが24時間で、プライマリーからセカンダリー地域へのバックアップデータのレプリケーションに最大12時間かかることがあるためです。”<br><img src="https://user-images.githubusercontent.com/71251920/153718064-9940c074-bcb8-4993-b6c6-c180fbea47d9.png" alt="CRR_07"></p>
+<p>機械翻訳：“現在、セカンダリーリージョンのRPOは36時間です。これは、<strong>プライマリー地域のRPOが24時間で、プライマリーからセカンダリー地域へのバックアップデータのレプリケーションに最大12時間かかる</strong>ことがあるためです。”<br><img src="https://user-images.githubusercontent.com/71251920/153718064-9940c074-bcb8-4993-b6c6-c180fbea47d9.png" alt="CRR_07"></p>
 </blockquote>
 <h2 id="3-セカンダリ-リージョンへ復元ポイントがいつレプリケート完了したか、Azure-ポータル画面上でどのように確認すればよいのか？"><a href="#3-セカンダリ-リージョンへ復元ポイントがいつレプリケート完了したか、Azure-ポータル画面上でどのように確認すればよいのか？" class="headerlink" title=" 3. セカンダリ リージョンへ復元ポイントがいつレプリケート完了したか、Azure ポータル画面上でどのように確認すればよいのか？"></a><a id="3"></a> 3. セカンダリ リージョンへ復元ポイントがいつレプリケート完了したか、Azure ポータル画面上でどのように確認すればよいのか？</h2><p>Recovery Services コンテナー ＞ バックアップ アイテム ＞ 2 次領域 ＞ Azure Virtual Machine ＞ 対象の仮想マシンを選択し、「復元ポイント」欄に、対象の復元ポイントが表示されていれば、 2 次領域へのレプリケートは完了していると判断できます。<br><img src="https://user-images.githubusercontent.com/71251920/153718060-4b01fca7-5815-4b8a-b2e8-3eb2f32ffa17.png" alt="CRR_08"><br>作業例）主要領域に配置されている仮想マシン「SAPHANA03」を「今すぐバックアップ」を実施し、取得された復元ポイントが 2 次領域に複製されているかを確認する</p>
 <p>下図画面の黄色罫線部分が、「今すぐバックアップ」にてトリガーし、バックアップが完了したバックアップ ジョブです。<br><em><strong>2021/12/9 17:50 に「今すぐバックアップ」のバックアップ ジョブがトリガーされ、18:21 ごろにバックアップが完了しております。</strong></em><br><img src="https://user-images.githubusercontent.com/71251920/153718059-212e67d8-e43b-483f-9f18-19906a8b0805.gif" alt="CRR_09"></p>
@@ -153,7 +153,7 @@
 <p>「主要領域」側のバックアップ項目画面では、「復元ポイント」欄に、取得済の復元ポイントが表示されています。<br><img src="https://user-images.githubusercontent.com/71251920/153718056-ffaa1520-c74a-424e-a0ed-b58585c6235d.png" alt="CRR_11"></p>
 <p>一方で、バックアップ アイテム ＞ 2 次領域 ＞ Azure Virtual Machine ＞ 対象の仮想マシンをクリックします。<br>バックアップ項目画面では、<em><strong>「復元ポイント」欄に、12/09 18:32 時点では、12/09 に主要領域側にて取得済の復元ポイントはまだ表示されておらず、2 次領域側に復元ポイントが複製されていないことが分かります。</strong></em><br>（2021/12/09 24時ごろも確認しましたが、復元ポイントは表示されておりませんでした）<br><img src="https://user-images.githubusercontent.com/71251920/153718055-f4e602c6-942e-4542-bc68-1105e1e595d2.png" alt="CRR_12"></p>
 <p>同じく、「セカンダリ リージョンへの復元」をクリックし、「復元ポイントの選択」欄を表示しても、<em><strong>12/09 17:50 に開始・取得済の復元ポイントは表示されていないことが確認できます。</strong></em><br><img src="https://user-images.githubusercontent.com/71251920/153718054-b2f2fa69-cee7-4fb6-9997-46186c01f2b2.png" alt="CRR_13"></p>
-<p>2021/12/09 17:50 Auzre VM Backup 開始後、 12 時間以上経過した 2021/12/10 8:09 時点では、「復元ポイントの選択」欄にて、<em><strong>セカンダリ リージョンのデータとして 17:50 のバックアップ開始分が表示されていることが確認できました。</strong></em></p>
+<p>2021/12/09 17:50 Auzre VM Backup 開始後、 <em><strong>12 時間以上経過した 2021/12/10 8:09 時点では、「復元ポイントの選択」欄にて、セカンダリ リージョンのデータとして 17:50 のバックアップ開始分が表示されていることが確認できました。</strong></em></p>
 <p><img src="https://user-images.githubusercontent.com/71251920/153718052-24c17913-41e2-4936-bb36-39735f087e94.png" alt="CRR_14"></p>
 <h3 id="補足：バックアップ-ジョブについて"><a href="#補足：バックアップ-ジョブについて" class="headerlink" title=" 補足：バックアップ ジョブについて"></a><a id="3-1"></a> 補足：バックアップ ジョブについて</h3><p>Recovery Services コンテナー ＞ バックアップ ジョブ ＞「View jobs in secondary region」をクリックすると、2 次領域のバックアップ ジョブを確認可能です。<br>しかし、主要領域に配置されている仮想マシン「SAPHANA03」の「今すぐバックアップ」のバックアップ ジョブは、 2 次領域のバックアップ ジョブ上には表示されません。<br><img src="https://user-images.githubusercontent.com/71251920/153718051-58d3846a-cb16-4509-982d-f9034093cf3d.gif" alt="CRR_15"></p>
 <p><img src="https://user-images.githubusercontent.com/71251920/153718050-bf4b2841-6c14-40fa-8c21-94d806c47872.jpg" alt="CRR_16"></p>
