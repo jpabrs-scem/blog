@@ -73,7 +73,7 @@ https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shado
 >Error Code ：ExtensionFailedVssServiceInBadState
 >Error Message ：Snapshot operation failed due to VSS (Volume Shadow Copy) service in bad state
 
-事象の改善方法としては下記 URL 記載の VSS の再起動、および VM の再起動を行うことで改善することがほとんどでございます。
+事象の改善方法としては下記 URL 記載の **VSS の再起動、および VM の再起動を行うことで改善することがほとんどでございます。**
 
 ・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssServiceInBadState - VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state
