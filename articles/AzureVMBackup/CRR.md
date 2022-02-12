@@ -22,7 +22,7 @@ disableDisclaimer: false
 
 ## <a id="1"></a> 1 CRR 機能を有効した場合の、冗長性オプションは「GRS」になるのか、「RA-GRS」になるのか？
 
-RA-GRSとなります。
+結論から申し上げますと、RA-GRS となります。
 ![CRR_01](https://user-images.githubusercontent.com/71251920/153718070-4b865afe-f876-47e2-afd0-2484e7889235.gif)
 
 ・Azure Backup 用語集 - Azure Backup | Microsoft Docs
@@ -32,7 +32,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#grs
 Azure Backup における冗長性の概要については、以下ブログ記事をご参考ください。
 **・(ページ作成中)**
 
-### <a id="1-1"> Azure Portal での CRR 有効時の確認方法
+### <a id="1-1"></a>  Azure Portal での CRR 有効時の確認方法
 ご参考までに、CRR 機能を有効にした場合の Azure ポータル画面上の見え方を説明いたします。 
 Recovery Services コンテナー「RSV-JPE-GRS-CRR」は「ストレージ レプリケーションの種類：geo 冗長」かつ「リージョンをまたがる復元：有効にする」となっております。
 これによって CRR 機能が有効 (=RA-GRS) となります。
@@ -96,7 +96,7 @@ Recovery Services コンテナー ＞ バックアップ アイテム ＞ 2 次�
 
 ![CRR_14](https://user-images.githubusercontent.com/71251920/153718052-24c17913-41e2-4936-bb36-39735f087e94.png)
 
-### <a id="3-1">補足：バックアップ ジョブについて
+### <a id="3-1"></a> 補足：バックアップ ジョブについて
 Recovery Services コンテナー ＞ バックアップ ジョブ ＞「View jobs in secondary region」をクリックすると、2 次領域のバックアップ ジョブを確認可能です。
 しかし、主要領域に配置されている仮想マシン「SAPHANA03」の「今すぐバックアップ」のバックアップ ジョブは、 2 次領域のバックアップ ジョブ上には表示されません。
 ![CRR_15](https://user-images.githubusercontent.com/71251920/153718051-58d3846a-cb16-4509-982d-f9034093cf3d.gif)
