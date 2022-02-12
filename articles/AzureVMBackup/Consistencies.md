@@ -79,7 +79,7 @@ https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shado
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state
 
 
- VSS 観点でのなぜ VSS が bad state になったか、に関する根本原因の調査のためには下記 URL 先のログの採取をお願いします。
+ VSS 観点で、なぜ VSS が bad state になったか、に関する根本原因の調査のためには下記 URL 先のログの採取をお願いします。
  **可能な限り "[A]"が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。**
 ・VSS エラーが発生している事象の調査 
 https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
