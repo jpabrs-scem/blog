@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153714816-49b0446b-8728-498e-b51f-bff02f37f0a5.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153714814-a652e630-b1c8-4e43-a96f-4d974c9d7cf4.png">
 <meta property="article:published_time" content="2022-02-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-12T14:21:32.128Z">
+<meta property="article:modified_time" content="2022-02-12T14:26:18.423Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Recovery Services vaults">
 <meta property="article:tag" content="情報採取">
@@ -110,7 +110,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f12bd177-369e-542a-b231-66b45319090c%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FRecovery%2520Services%2520vaults%2FRequestForInvestigating%2F%29%0A*+Content+Source%3A+%5Barticles%2FRecovery+Services+vaults%2FRequestForInvestigating.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FRecovery%2520Services%2520vaults%2FRequestForInvestigating.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvestigating/" data-id="ckzjxg1z200100op67g6046dh" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvestigating/" data-id="ckzjxm6rc00100noy9zdy240a" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -139,10 +139,10 @@
 </blockquote>
 <p>VSS 観点での調査のためには下記 URL 先のログの採取をお願いします。<br> <strong>可能な限り “[A]”が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。</strong><br>・VSS エラーが発生している事象の調査<br><a target="_blank" rel="noopener" href="https://jpwinsup.github.io/mslog/storage/vss/vss-error.html">https://jpwinsup.github.io/mslog/storage/vss/vss-error.html</a></p>
 <p>また合わせて下記も関連するブログでございます。<br>・Azure VM Backupにおける整合性について<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-1-VSS-%E8%A6%B3%E7%82%B9%E3%81%A7%E3%81%AE%E8%AA%BF%E6%9F%BB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-1-VSS-%E8%A6%B3%E7%82%B9%E3%81%A7%E3%81%AE%E8%AA%BF%E6%9F%BB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6</a></p>
-<h2 id="2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調査に必要なログ"><a href="#2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調査に必要なログ" class="headerlink" title="2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ"></a>2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ<a id="2"></a></h2><h4 id="環境情報-1"><a href="#環境情報-1" class="headerlink" title="環境情報"></a>環境情報</h4><p>・Subscription ID<br>・Recovery Services コンテナー名、およびそのリソースグループ名<br>・バックアップ対象 VM 名、およびそのリソースグループ名、OS 名<br>・リストア先の VM 名、およびそのリソースグループ名、OS 名</p>
-<h4 id="ログ情報-1"><a href="#ログ情報-1" class="headerlink" title="ログ情報"></a>ログ情報</h4><p>zip などにまとめてご提供いただけますと幸いです。<br>・(Windows の場合) “ディスクの管理” の画面の画面ショット<br><img src="https://user-images.githubusercontent.com/71251920/153464381-6ba8f9bf-56fd-48fd-9784-b819d8a4f79c.png" alt="参考画像"></p>
-<p>・実行したスクリプト、および実行後に作成されたフォルダ一式</p>
-<ul>
+<h2 id="2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調査に必要なログ"><a href="#2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調査に必要なログ" class="headerlink" title="2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ"></a>2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ<a id="2"></a></h2><h3 id="環境情報-1"><a href="#環境情報-1" class="headerlink" title="環境情報"></a>環境情報</h3><p>・Subscription ID<br>・Recovery Services コンテナー名、およびそのリソースグループ名<br>・バックアップ対象 VM 名、およびそのリソースグループ名、OS 名<br>・リストア先の VM 名、およびそのリソースグループ名、OS 名</p>
+<h3 id="ログ情報-1"><a href="#ログ情報-1" class="headerlink" title="ログ情報"></a>ログ情報</h3><p>zip などにまとめてご提供いただけますと幸いです。</p>
+<h4 id="・-Windows-の場合-“ディスクの管理”-の画面の画面ショット"><a href="#・-Windows-の場合-“ディスクの管理”-の画面の画面ショット" class="headerlink" title="・(Windows の場合) “ディスクの管理” の画面の画面ショット"></a>・(Windows の場合) “ディスクの管理” の画面の画面ショット</h4><p><img src="https://user-images.githubusercontent.com/71251920/153464381-6ba8f9bf-56fd-48fd-9784-b819d8a4f79c.png" alt="参考画像"></p>
+<h4 id="・実行したスクリプト、および実行後に作成されたフォルダ一式"><a href="#・実行したスクリプト、および実行後に作成されたフォルダ一式" class="headerlink" title="・実行したスクリプト、および実行後に作成されたフォルダ一式"></a>・実行したスクリプト、および実行後に作成されたフォルダ一式</h4><ul>
 <li><strong>Windowsの場合</strong><br>スクリプトファイル：IaaSVMILRExeForWindows.exe<br>スクリプト実行後に作成されるフォルダー：”仮想マシン名(小文字)”+”スクリプトファイル実行日時”</li>
 </ul>
 <p>　下記例では “okt-temp-win-20220212145642” が作成されています。<br><img src="https://user-images.githubusercontent.com/71251920/153714819-e9f24f63-75f0-4268-b0fc-ac6e43155cc1.png"></p>
@@ -160,7 +160,7 @@
 </blockquote>
 <p><img src="https://user-images.githubusercontent.com/71251920/153714814-a652e630-b1c8-4e43-a96f-4d974c9d7cf4.png" alt="「vm02kensho-20220212151619」ディレクトリの中身"></p>
 <h2 id="3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の障害調査に必要なログ"><a href="#3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の障害調査に必要なログ" class="headerlink" title="3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ"></a>3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ<a id="3"></a></h2><p> <a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> に加えて下記もご対応お願いします。<br>*お手数ですが、全ての DB の backup.log 及び backint.log の採取をお願いします。</p>
-<h4 id="SAP-HANAのbackup-log-及び-backint-log"><a href="#SAP-HANAのbackup-log-及び-backint-log" class="headerlink" title="SAP HANAのbackup.log 及び backint.log"></a>SAP HANAのbackup.log 及び backint.log</h4><blockquote>
+<h3 id="SAP-HANAのbackup-log-及び-backint-log"><a href="#SAP-HANAのbackup-log-及び-backint-log" class="headerlink" title="SAP HANAのbackup.log 及び backint.log"></a>SAP HANAのbackup.log 及び backint.log</h3><blockquote>
 <ul>
 <li>xxにはインスタンスナンバーが入ります。<br>  ・/hana/shared/HXE/HDBxx/<hostname>/trace/backup.log<br>  ・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_&lt;DB名&gt;/backup.log<br>  ・/hana/shared/HXE/HDBxx/<hostname>/trace/backint.log<br>  ・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_&lt;DB名&gt;/backint.log</li>
 </ul>
