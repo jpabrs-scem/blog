@@ -63,7 +63,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#resto
 
 ・(英語版) Restore VMs by using the Azure portal - Azure Backup | Microsoft Docs
 https://docs.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region
-> 機械翻訳：“現在、セカンダリーリージョンのRPOは36時間です。これは、プライマリー地域のRPOが24時間で、プライマリーからセカンダリー地域へのバックアップデータのレプリケーションに最大12時間かかることがあるためです。”
+> 機械翻訳：“現在、セカンダリーリージョンのRPOは36時間です。これは、**プライマリー地域のRPOが24時間で、プライマリーからセカンダリー地域へのバックアップデータのレプリケーションに最大12時間かかる**ことがあるためです。”
 ![CRR_07](https://user-images.githubusercontent.com/71251920/153718064-9940c074-bcb8-4993-b6c6-c180fbea47d9.png)
 
 ## <a id="3"></a> 3. セカンダリ リージョンへ復元ポイントがいつレプリケート完了したか、Azure ポータル画面上でどのように確認すればよいのか？
@@ -92,7 +92,7 @@ Recovery Services コンテナー ＞ バックアップ アイテム ＞ 2 次�
 同じく、「セカンダリ リージョンへの復元」をクリックし、「復元ポイントの選択」欄を表示しても、***12/09 17:50 に開始・取得済の復元ポイントは表示されていないことが確認できます。***
 ![CRR_13](https://user-images.githubusercontent.com/71251920/153718054-b2f2fa69-cee7-4fb6-9997-46186c01f2b2.png)
 
-2021/12/09 17:50 Auzre VM Backup 開始後、 12 時間以上経過した 2021/12/10 8:09 時点では、「復元ポイントの選択」欄にて、***セカンダリ リージョンのデータとして 17:50 のバックアップ開始分が表示されていることが確認できました。***
+2021/12/09 17:50 Auzre VM Backup 開始後、 ***12 時間以上経過した 2021/12/10 8:09 時点では、「復元ポイントの選択」欄にて、セカンダリ リージョンのデータとして 17:50 のバックアップ開始分が表示されていることが確認できました。***
 
 ![CRR_14](https://user-images.githubusercontent.com/71251920/153718052-24c17913-41e2-4936-bb36-39735f087e94.png)
 
