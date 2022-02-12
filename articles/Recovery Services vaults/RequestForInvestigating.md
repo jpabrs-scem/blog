@@ -80,17 +80,19 @@ zip などにまとめてご提供いただけますと幸いです。
 スクリプト実行後に作成されるフォルダー："仮想マシン名(小文字)"+"スクリプトファイル実行日時"
 
 　下記例では "okt-temp-win-20220212145642" が作成されています。
-![RequestForInvestigation_01](https://user-images.githubusercontent.com/71251920/153714819-e9f24f63-75f0-4268-b0fc-ac6e43155cc1.png)
+![](https://user-images.githubusercontent.com/71251920/153714819-e9f24f63-75f0-4268-b0fc-ac6e43155cc1.png)
 
 "okt-temp-win-20220212145642"の中身
 !["okt-temp-win-20220212145642"の中身](https://user-images.githubusercontent.com/71251920/153714818-906282be-7acc-4e9f-9d4e-62d5b2b369a0.png)
 
 - **Linux の場合**
 ILRのスクリプトの例　vm02kensho(小文字VM名)_1_jpe_6591639015130036692_802427195716_899298aac7c04bf094ad68bfc5b9584ed206b94b62d965.py
-スクリプトを実行後、「vm02kensho-20220212151619」ディレクトリが自動生成されていることがわかる
-![RequestForInvestigation_03](https://user-images.githubusercontent.com/71251920/153714817-892202e9-3df5-4377-9276-42b16eb82fd4.png)
+スクリプトを実行後、「vm02kensho-20220212151619」ディレクトリが自動生成されていることがわかる。
+![](https://user-images.githubusercontent.com/71251920/153714817-892202e9-3df5-4377-9276-42b16eb82fd4.png)
 
-![RequestForInvestigation_04](https://user-images.githubusercontent.com/71251920/153714816-49b0446b-8728-498e-b51f-bff02f37f0a5.png)
+ >ls -all
+
+![「vm02kensho-20220212151619」ディレクトリが自動生成されている](https://user-images.githubusercontent.com/71251920/153714816-49b0446b-8728-498e-b51f-bff02f37f0a5.png)
 
 「vm02kensho-20220212151619」ディレクトリの中身は下記の通り
  >ls -allR
