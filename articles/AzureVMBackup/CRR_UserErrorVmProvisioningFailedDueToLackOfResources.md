@@ -3,6 +3,7 @@ title: Azure VM Backup の クロスリージョン リストア をした際に
 date: 2021-10-22 12:00:00
 tags:
   - Azure VM Backup
+  - TROUBLE SHOOTING
 disableDisclaimer: false
 ---
 

@@ -3,6 +3,7 @@ title: Azure VM のリストア (既存を置換) が失敗する
 date: 2022-02-05 12:00:00
 tags:
   - Azure VM Backup
+  - TROUBLE SHOOTING
 disableDisclaimer: false
 ---
 
