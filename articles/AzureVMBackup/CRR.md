@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup における CRR (クロスリージョン リストア)について
-date: 2022-02-11 12:00:00
+date: 2022-02-13 12:00:00
 tags:
   - Azure VM Backup
 disableDisclaimer: false
