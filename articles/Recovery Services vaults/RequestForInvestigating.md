@@ -63,18 +63,18 @@ https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-1-VSS-%E8%A6%B3%E7%82%B9%E3%81%A7%E3%81%AE%E8%AA%BF%E6%9F%BB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 ## 2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ<a id="2"></a>
-#### 環境情報
+### 環境情報
 ・Subscription ID
 ・Recovery Services コンテナー名、およびそのリソースグループ名
 ・バックアップ対象 VM 名、およびそのリソースグループ名、OS 名
 ・リストア先の VM 名、およびそのリソースグループ名、OS 名
 
-#### ログ情報
+### ログ情報
 zip などにまとめてご提供いただけますと幸いです。
-・(Windows の場合) "ディスクの管理" の画面の画面ショット
+#### ・(Windows の場合) "ディスクの管理" の画面の画面ショット
 ![参考画像](https://user-images.githubusercontent.com/71251920/153464381-6ba8f9bf-56fd-48fd-9784-b819d8a4f79c.png)
 
-・実行したスクリプト、および実行後に作成されたフォルダ一式
+#### ・実行したスクリプト、および実行後に作成されたフォルダ一式
  - **Windowsの場合**
 スクリプトファイル：IaaSVMILRExeForWindows.exe
 スクリプト実行後に作成されるフォルダー："仮想マシン名(小文字)"+"スクリプトファイル実行日時"
@@ -103,7 +103,7 @@ ILRのスクリプトの例　vm02kensho(小文字VM名)_1_jpe_65916390151300366
  [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記もご対応お願いします。
 *お手数ですが、全ての DB の backup.log 及び backint.log の採取をお願いします。
 
-#### SAP HANAのbackup.log 及び backint.log 
+### SAP HANAのbackup.log 及び backint.log 
 >* xxにはインスタンスナンバーが入ります。
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/backup.log
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_<DB名>/backup.log
