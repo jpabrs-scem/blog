@@ -21,7 +21,6 @@ disableDisclaimer: false
 
 -----------------------------------------------------------
 
-
 ## <a id="1"></a> 1 CRR 機能を有効した場合の、冗長性オプションは「GRS」になるのか、「RA-GRS」になるのか？
 
 RA-GRSとなります。
@@ -35,9 +34,12 @@ https://docs.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#grs
 **・(ページ作成中)**
 
 ### <a id="1-1"> Azure Portal での CRR 有効時の確認方法
+
+
 ご参考までに、CRR 機能を有効にした場合の Azure ポータル画面上の見え方を説明いたします。 
 Recovery Services コンテナー「RSV-JPE-GRS-CRR」は「ストレージ レプリケーションの種類：geo 冗長」かつ「リージョンをまたがる復元：有効にする」となっております。
 これによって CRR 機能が有効 (=RA-GRS) となります。
+
 ![CRR_02](https://user-images.githubusercontent.com/71251920/153718069-e91606c7-4001-40d7-8ec1-4596719263c5.gif)
 
 CRR 機能が有効になっている場合、「バックアップ アイテム」画面上では「主要領域」のほかに「2 次領域」も選択できるよう、活性化されます。
