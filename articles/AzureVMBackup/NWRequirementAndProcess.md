@@ -94,7 +94,7 @@ Take Snapshot フェーズが終わっていれば有事の際にはインスタ
 https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
 
 
-### <a id="2-2"></a> Transfer to vaultフェーズ
+### <a id="2-2"></a> Transfer to vault フェーズ
 つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのため**バックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンド**で (ローカル物理ホスト上から物理的に離れた同一リージョン内にある) Recovery Services コンテナーへ転送されます。
 
 
