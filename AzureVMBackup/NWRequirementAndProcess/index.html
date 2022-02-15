@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   
   
-  <title>Azure VM Backup 通信要件や処理の流れについて | Japan CSS ABRS &amp; SCEM Support Blog</title>
+  <title>Azure VM Backup の通信要件や処理の流れについて | Japan CSS ABRS &amp; SCEM Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure VM Backup における通信要件や処理の流れに関して、具体的なお問い合わせ例を交えて公式ドキュメントを補足する形でご説明させていただきます。 まず、はじめに前提知識として Azure VM Backup ではバックアップを取得する際に下記 2 つのサブタスクがございます。1.Take Snapshot (スナッ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Azure VM Backup 通信要件や処理の流れについて">
+<meta property="og:title" content="Azure VM Backup の通信要件や処理の流れについて">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
 <meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure VM Backup における通信要件や処理の流れに関して、具体的なお問い合わせ例を交えて公式ドキュメントを補足する形でご説明させていただきます。 まず、はじめに前提知識として Azure VM Backup ではバックアップを取得する際に下記 2 つのサブタスクがございます。1.Take Snapshot (スナッ">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142253918-138343ac-b7dc-4a35-9e6e-180b4b5542f8.png">
 <meta property="article:published_time" content="2022-02-16T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-15T16:30:00.572Z">
+<meta property="article:modified_time" content="2022-02-15T16:33:09.832Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -90,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Azure VM Backup 通信要件や処理の流れについて
+      Azure VM Backup の通信要件や処理の流れについて
     </h1>
   
 
@@ -102,9 +102,9 @@
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ce87fa62-2335-565e-be9d-1e6db5c9e263%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E9%80%9A%E4%BF%A1%E8%A6%81%E4%BB%B6%E3%82%84%E5%87%A6%E7%90%86%E3%81%AE%E6%B5%81%E3%82%8C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FNWRequirementAndProcess%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FNWRequirementAndProcess.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FNWRequirementAndProcess.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ce87fa62-2335-565e-be9d-1e6db5c9e263%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AE%E9%80%9A%E4%BF%A1%E8%A6%81%E4%BB%B6%E3%82%84%E5%87%A6%E7%90%86%E3%81%AE%E6%B5%81%E3%82%8C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FNWRequirementAndProcess%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FNWRequirementAndProcess.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FNWRequirementAndProcess.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="ckzocd5lp000n0no4haxzfj5u" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="ckzocgvmr000n0npm14458ha3" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -113,7 +113,7 @@
 <p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回は Azure VM Backup における通信要件や処理の流れに関して、具体的なお問い合わせ例を交えて公式ドキュメントを補足する形でご説明させていただきます。</p>
 <p>まず、はじめに前提知識として Azure VM Backup ではバックアップを取得する際に下記 2 つのサブタスクがございます。<br>1.Take Snapshot (スナップショットの取得)<br>2.Transfer data to vault (Recovery Services コンテナーへの転送)<br><img src="https://user-images.githubusercontent.com/71251920/142253918-138343ac-b7dc-4a35-9e6e-180b4b5542f8.png" alt="Azure VM Backupの 2 つのサブタスク"></p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1.Azure VM Backup の 通信要件について</a><br> <a href="#1-1">1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法</a><br><a href="#2">2. サブタスク (Take Snapshot フェーズ) にかかった時間を確認する方法</a></p>
+<p><a href="#1">1. Azure VM Backup の 通信要件について</a><br> <a href="#1-1">1-1.参考</a><br><a href="#2">2. Azure VM Backup の処理の流れ</a><br> <a href="#2-1">2-1.Take Snapshot フェーズ</a><br> <a href="#2-2">2-2.Transfer to vault フェーズ</a></p>
 <hr>
 <h2 id="Azure-VM-Backup-の-通信要件について"><a href="#Azure-VM-Backup-の-通信要件について" class="headerlink" title="Azure VM Backup の 通信要件について"></a><a id="1"></a>Azure VM Backup の 通信要件について</h2><p>Azure VM Backup の通信要件は VM Agent が正常に動作するために必要な通信要件と同じでございます。<br>VM Agent の通信要件は下記の通り、Wire Server と呼ばれる各ノードごとにある 仮想パブリック IP 168.63.129.16 に対して通信ができることでございます。<br>つまり、Azure VM Backup の通信要件は168.63.129.16 に対して通信ができることです。</p>
 <p>・Azure Linux エージェントの理解と使用 - 必要条件 [Linux]<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-linux#requirements">https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-linux#requirements</a></p>
@@ -129,7 +129,7 @@
 <blockquote>
 <p>これらは、VM 上のローカル ファイアウォールでは開いている必要があります。 これらのポート上での 168.63.129.16 との通信は、構成されたネットワーク セキュリティ グループの対象ではありません。</p>
 </blockquote>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>合わせて下記の公式ドキュメントもご覧ください。<br>Azure VM Backup ではオンラインバックアップの場合、初回オンラインバックアップ時に VM agent の拡張機能がインストールされること、および VM agent が正常に動作することが必要であることが分かります。</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考<a id="1-1"></a></h4><p>合わせて下記の公式ドキュメントもご覧ください。<br>Azure VM Backup ではオンラインバックアップの場合、初回オンラインバックアップ時に VM agent の拡張機能がインストールされること、および VM agent が正常に動作することが必要であることが分かります。</p>
 <p>・Azure VM バックアップの概要 - バックアップ プロセス<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process</a></p>
 <blockquote>
 <p>最初のバックアップ時に、バックアップ拡張機能が VM にインストールされます (VM が実行されている場合)</p>
@@ -154,8 +154,8 @@
 <p><strong>上記公式ドキュメントをご覧いただいた前提で記載させていただきます。</strong><br>オンライン (VM 起動中) の Azure VM Backup では VM agent の機能の拡張機能としてバックアップ拡張機能を利用します。オフラインの場合は VM 内部と連携しないため、agent が対応していないような VM でもバックアップをクラッシュ整合性で取得することが可能です。<br>なお、 オフライン状態 とは VM が  状態:停止済み (割り当て解除) である状態を指します。</p>
 <p>ご参考にまでに下記も併せてご覧ください。<br>参考ブログ記事<br>・Azure VM Backup では オフライン バックアップができるのか<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</a><br>・クラッシュ整合性 - Azure VM Backupにおける整合性について<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3">https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3</a></p>
 <p>Azure VM Backupでは バックアップ ジョブの画面で確認できるように、順番に Take Snapshot と Transfer to vault の 2 つの大きなフェーズ  (Sub Task) がございます。これら 2 つのフェーズが完了して初めてバックアップ ジョブとして完了となります。</p>
-<h3 id="lt-aTake-Snapshot-フェーズ"><a href="#lt-aTake-Snapshot-フェーズ" class="headerlink" title="&lt;/aTake Snapshot フェーズ"></a><a id="2-1">&lt;/aTake Snapshot フェーズ</h3><p>まず、オンライン バックアップの場合、バックアップ拡張機能によって OS 内部と連携し静止点をとり、スナップショットを取得します。その際のスナップショットはユーザーからは見えない (マネージドな) ローカル物理ホスト上で取得します。<br>オフライン バックアップの場合 は OS 内部と連携せずスナップショットを取得します。</p>
-<h3 id="lt-aTransfer-to-vaultフェーズ"><a href="#lt-aTransfer-to-vaultフェーズ" class="headerlink" title="&lt;/aTransfer to vaultフェーズ"></a><a id="2-2">&lt;/aTransfer to vaultフェーズ</h3><p>つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのためバックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンドで ローカル物理ホスト上から物理的に離れた同一リージョン内にある Recovery Services コンテナーへ転送されます。</p>
+<h3 id="Take-Snapshot-フェーズ"><a href="#Take-Snapshot-フェーズ" class="headerlink" title=" Take Snapshot フェーズ"></a><a id="2-1"></a> Take Snapshot フェーズ</h3><p>まず、オンライン バックアップの場合、バックアップ拡張機能によって OS 内部と連携し静止点をとり、スナップショット データを取得します。その際のスナップショット データはユーザーからは見えない (マネージドな) ローカル物理ホスト上で取得します。<br>オフライン バックアップの場合 は OS 内部と連携せずスナップショットを取得します。</p>
+<h3 id="Transfer-to-vaultフェーズ"><a href="#Transfer-to-vaultフェーズ" class="headerlink" title=" Transfer to vaultフェーズ"></a><a id="2-2"></a> Transfer to vaultフェーズ</h3><p>つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのためバックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンドで ローカル物理ホスト上から物理的に離れた同一リージョン内にある Recovery Services コンテナーへ転送されます。</p>
 <h4 id="参考-1"><a href="#参考-1" class="headerlink" title="参考"></a>参考</h4><p>・Azure VM バックアップの概要 - バックアップ プロセス<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process</a></p>
 <p>・Azure VM Backup では オフライン バックアップができるのか<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</a></p>
 <p>・クラッシュ整合性 - Azure VM Backupにおける整合性について<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3">https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3</a></p>
@@ -219,7 +219,7 @@
       <ul>
         
           <li>
-            <a href="">Azure VM Backup 通信要件や処理の流れについて</a>
+            <a href="">Azure VM Backup の通信要件や処理の流れについて</a>
           </li>
         
           <li>
