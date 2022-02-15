@@ -1,5 +1,5 @@
 ---
-title: Azure VM Backup 通信要件や処理の流れについて
+title: Azure VM Backup の通信要件や処理の流れについて
 date: 2022-02-16 12:00:00
 tags:
   - Azure VM Backup
@@ -18,9 +18,11 @@ disableDisclaimer: false
 
 ## 目次
 -----------------------------------------------------------
-[1.Azure VM Backup の 通信要件について](#1)
- [1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法](#1-1)
-[2. サブタスク (Take Snapshot フェーズ) にかかった時間を確認する方法](#2)
+[1. Azure VM Backup の 通信要件について](#1)
+ [1-1.参考](#1-1)
+[2. Azure VM Backup の処理の流れ](#2)
+ [2-1.Take Snapshot フェーズ](#2-1)
+ [2-2.Transfer to vault フェーズ](#2-2)
 -----------------------------------------------------------
 
 ## <a id="1"></a>Azure VM Backup の 通信要件について
@@ -42,7 +44,7 @@ https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-windows
  https://docs.microsoft.com/ja-jp/azure/virtual-network/what-is-ip-address-168-63-129-16
 >これらは、VM 上のローカル ファイアウォールでは開いている必要があります。 これらのポート上での 168.63.129.16 との通信は、構成されたネットワーク セキュリティ グループの対象ではありません。
 
-#### 参考
+#### 参考<a id="1-1"></a>
 合わせて下記の公式ドキュメントもご覧ください。
 Azure VM Backup ではオンラインバックアップの場合、初回オンラインバックアップ時に VM agent の拡張機能がインストールされること、および VM agent が正常に動作することが必要であることが分かります。
 
@@ -86,11 +88,11 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3
 Azure VM Backupでは バックアップ ジョブの画面で確認できるように、順番に Take Snapshot と Transfer to vault の 2 つの大きなフェーズ  (Sub Task) がございます。これら 2 つのフェーズが完了して初めてバックアップ ジョブとして完了となります。
 
 
-### <a id="2-1"></aTake Snapshot フェーズ
-まず、オンライン バックアップの場合、バックアップ拡張機能によって OS 内部と連携し静止点をとり、スナップショットを取得します。その際のスナップショットはユーザーからは見えない (マネージドな) ローカル物理ホスト上で取得します。
+### <a id="2-1"></a> Take Snapshot フェーズ
+まず、オンライン バックアップの場合、バックアップ拡張機能によって OS 内部と連携し静止点をとり、スナップショット データを取得します。その際のスナップショット データはユーザーからは見えない (マネージドな) ローカル物理ホスト上で取得します。
 オフライン バックアップの場合 は OS 内部と連携せずスナップショットを取得します。
 
-### <a id="2-2"></aTransfer to vaultフェーズ
+### <a id="2-2"></a> Transfer to vaultフェーズ
 つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのためバックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンドで ローカル物理ホスト上から物理的に離れた同一リージョン内にある Recovery Services コンテナーへ転送されます。
 
 
