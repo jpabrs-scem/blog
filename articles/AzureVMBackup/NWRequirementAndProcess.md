@@ -120,12 +120,6 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#-------
 ## <a id="3"></a>よくいただくお問い合わせ
 これらに関連してよくいただくお問い合わせと回答を記載させていただきます。
 
->Q. バックアップはまだ完了していないが、 Take Snapshot が終わっていれば VM の再起動などを行ってもよいか？またTake Snapshot が終わっていればリストアすることは可能か？
->>A. Take Snapshot フェーズが完了していれば VM 内部と連携するフェーズは完了しているため、VM (OS内部) に対する変更、 VM の再起動などを行っていただいてもかまいません。
-また Take Snapshot が完了していればインスタント リストア機能を用いてローカル物理ホスト上に保存されたスナップショットデータからリストアを行うことが可能です。
-参考
-・Take Snapshot フェーズ - Azure VM Backup の 通信要件(本ページ)
-https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
 
 >Q. 強制トンネリングを実施しているが、Azure VM Backup の通信を強制トンネリング対象から除外したいが、どのような設定をすればよいか。UDR を用いて可能か？
 >>A. Azure VM Backupに必要な通信は強制トンネリングや NSG の影響を受けないためローカル (OS内部) FW でブロックしていない限り通信要件は満たされます。
@@ -134,6 +128,14 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
 参考
 ・Azure VM Backup の 通信要件について - Azure VM Backup の 通信要件(本ページ)
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1
+
+>Q. バックアップはまだ完了していないが、 Take Snapshot が終わっていれば VM の再起動などを行ってもよいか？またTake Snapshot が終わっていればリストアすることは可能か？
+>>A. Take Snapshot フェーズが完了していれば VM 内部と連携するフェーズは完了しているため、VM (OS内部) に対する変更、 VM の再起動などを行っていただいてもかまいません。
+また Take Snapshot が完了していればインスタント リストア機能を用いてローカル物理ホスト上に保存されたスナップショットデータからリストアを行うことが可能です。
+参考
+・Take Snapshot フェーズ - Azure VM Backup の 通信要件(本ページ)
+https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
+
 
 >Q. Azure VM Backup のバックアップデータ転送トラフィックが VM に与える影響を懸念しているがベストプラクティスはあるか？
 >>A. Azure Backup のデータ転送は Azure のバックアップエンド側で行われ VM の 仮想 NIC を経由しないためバックアップデータ転送トラフィックが VM に与える影響はございません。
