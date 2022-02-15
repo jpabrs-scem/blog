@@ -35,7 +35,7 @@ https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-windows
 >VM が IP アドレス168.63.129.16 にアクセスできることを確認します。
 
 **当該仮想パブリック IP 168.63.129.16 (Wire Server) は Azure VM Backupはじめ、DNS 機能など Azure 内の様々な用途で使用されているため、Azure 内部で優先的にルーティングされる様になっており NSG や Azure Firewall の影響は受けず、かつ、ロンゲストマッチにより、0/0 強制ルーティング (強制トンネリング) ではオンプレに引き込まれずに Azure 側にルーティングされるようになっています。ただし、VM 内部でのファイアーウォール ではブロックすることは可能です。**
-
+下記公式ドキュメントが参考になるかと存じます。
 ・IP アドレス 168.63.129.16 とは
  https://docs.microsoft.com/ja-jp/azure/virtual-network/what-is-ip-address-168-63-129-16
 >これらは、VM 上のローカル ファイアウォールでは開いている必要があります。 これらのポート上での 168.63.129.16 との通信は、構成されたネットワーク セキュリティ グループの対象ではありません。
@@ -70,8 +70,9 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-architecture#how-does-azure
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process
 
 **上記公式ドキュメントをご覧いただいた前提で記載させていただきます。**
-オンライン (VM 起動中) の Azure VM Backup では VM agent の機能の拡張機能としてバックアップ拡張機能を利用します。オフラインの場合は VM 内部と連携しないため、agent が対応していないような VM でもバックアップをクラッシュ整合性で取得することが可能です。
-なお、 オフライン状態 とは VM が  状態:停止済み (割り当て解除) である状態を指します。
+オンライン (VM 起動中) の Azure VM Backup では VM agent の機能の拡張機能としてバックアップ拡張機能を利用します。
+オフラインの場合は VM 内部と連携しないため、VM agent が対応していないような VM でもバックアップをクラッシュ整合性で取得することが可能です。
+なお、オフライン状態 とは VM が  状態:停止済み (割り当て解除) である状態を指します。
 
 ご参考にまでに下記も併せてご覧ください。
 参考ブログ記事
