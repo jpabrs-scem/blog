@@ -120,9 +120,9 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#-------
 ## <a id="3"></a>よくいただくお問い合わせ
 これらに関連してよくいただくお問い合わせと回答を記載させていただきます。
 
->Q. バックアップはまだ完了していないが、 Take Snapshot 終わっていれば VM の再起動などを行ってもよいか？またTake Snapshot が終わっていればリストアすることは可能か？
->>A. Take Snapshot フェーズが完了していれば VM 内部と連携するフェーズは完了しているため、OS に対する変更、 VM の再起動などを行っていただいてもかまいません。
-またTake Snapshotが完了していればインスタントリストア機能を用いてローカル物理ホスト上に保存されたスナップショットデータからリストアを行うことが可能です。
+>Q. バックアップはまだ完了していないが、 Take Snapshot が終わっていれば VM の再起動などを行ってもよいか？またTake Snapshot が終わっていればリストアすることは可能か？
+>>A. Take Snapshot フェーズが完了していれば VM 内部と連携するフェーズは完了しているため、VM (OS内部) に対する変更、 VM の再起動などを行っていただいてもかまいません。
+また Take Snapshot が完了していればインスタント リストア機能を用いてローカル物理ホスト上に保存されたスナップショットデータからリストアを行うことが可能です。
 参考
 ・Take Snapshot フェーズ - Azure VM Backup の 通信要件(本ページ)
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
