@@ -103,7 +103,7 @@ ILRのスクリプトの例　vm02kensho(小文字VM名)_1_jpe_65916390151300366
 ![「vm02kensho-20220212151619」ディレクトリの中身](https://user-images.githubusercontent.com/71251920/153714814-a652e630-b1c8-4e43-a96f-4d974c9d7cf4.png)
 
 ## 3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ<a id="3"></a>
- [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記もご対応お願いします。
+ [1. Azure VM バックアップの障害調査に必要なログ](#1) の **Linuxの場合** に加えて下記もご対応お願いします。
 *お手数ですが、全ての DB の backup.log 及び backint.log の採取をお願いします。
 
 ### SAP HANAのbackup.log 及び backint.log 
