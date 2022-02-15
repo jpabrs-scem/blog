@@ -125,11 +125,10 @@
       
         
 皆様こんにちは。Azure Backup サポートの山本です。今回は Azure VM Backup における通信要件や処理の流れに関して、具体的なお問い合わせ例を交えて公式ドキュメントを補足する形でご説明させていただきます。
-まず、はじめに前提知識として Azure VM Backup ではバックアップを取得する際に下記 2 つのサブタスクがございます。1.Take Snapshot (スナップショットの取得)2.Transfer data to vault (Recovery Services コンテナーへの転送)
 目次
 1. Azure VM Backup の 通信要件について 1-1.参考2. Azure VM Backup の処理の流れ 2-1.Take Snapshot フェーズ 2-2.Transfer to vault フェーズ
 
-Azure VM Backup の 通信...
+Azure VM Backup の 通信要件についてAzure VM Backup の通信要件は VM Agent が正常に動作するために必要な通信要件と同じでございます。VM Agent の通信要件は下記の通り、Wire Server と呼ばれる各ノードごとにある 仮想パブリック IP 168.63.129.16 に対して通信ができる...
         <p class="article-readmore">
           <a href="AzureVMBackup/NWRequirementAndProcess/">Read more</a>
         </p>
@@ -137,7 +136,7 @@ Azure VM Backup の 通信...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="ckzock2ij000n0ns13mjub4f1" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="ckzocs86c000n0ppe7ag4gze5" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
@@ -190,7 +189,7 @@ Azure VM Backup の 通信...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/" data-id="ckzock2i700050ns1fvdjeym8" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/" data-id="ckzocs86000050ppe0h131tkd" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
@@ -243,7 +242,7 @@ Azure VM Backup の 通信...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvestigating/" data-id="ckzock2is00140ns1huqc5n3t" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvestigating/" data-id="ckzocs86l00140ppeglfz7o42" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>
@@ -298,7 +297,7 @@ Azure VM Backup の 通信...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="ckzock2j6001y0ns1hyq39jw2" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="ckzocs86x001y0ppeawyo59ba" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
@@ -350,7 +349,7 @@ Azure VM Backup の 通信...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="ckzock2ia00090ns10fj29jbb" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="ckzocs86300090ppe16o60n2w" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
@@ -405,7 +404,7 @@ MARS エージェント によるバックアップはマシン内のファイ�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/" data-id="ckzock2io000z0ns1h65n3mr3" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/" data-id="ckzocs86h000z0ppe7b3i4q8v" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/MARS-Backup/" rel="tag">MARS Backup</a></li></ul>
@@ -458,7 +457,7 @@ MARS エージェント によるバックアップはマシン内のファイ�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/" data-id="ckzock2i200010ns155ps0dxz" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/" data-id="ckzocs85v00010ppebulz7sf8" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
@@ -515,7 +514,7 @@ Azure VM Backup 関連のお問い合わせで、以下のようなお問い合�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/" data-id="ckzock2if000g0ns198jc6a2l" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/" data-id="ckzocs868000g0ppe3e87h0um" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li></ul>
@@ -569,7 +568,7 @@ Azure VM Backup 関連のお問い合わせで、以下のようなお問い合�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/" data-id="ckzock2im000v0ns19kw91jli" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/" data-id="ckzocs86f000v0ppe6dnohoay" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
@@ -621,7 +620,7 @@ Azure VM Backup 関連のお問い合わせで、以下のようなお問い合�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_2012R2_Uninstall-TroubleCase/" data-id="ckzock2it00160ns1dh0n2jmq" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_2012R2_Uninstall-TroubleCase/" data-id="ckzocs86m00160ppegfxsdamr" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/System-Center/" rel="tag">System Center</a></li></ul>
