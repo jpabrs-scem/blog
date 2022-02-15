@@ -28,7 +28,7 @@ disableDisclaimer: false
 ## <a id="1"></a>Azure VM Backup の 通信要件について
 Azure VM Backup の通信要件は VM Agent が正常に動作するために必要な通信要件と同じでございます。
 VM Agent の通信要件は下記の通り、Wire Server と呼ばれる各ノードごとにある 仮想パブリック IP 168.63.129.16 に対して通信ができることでございます。
-つまり、Azure VM Backup の通信要件は168.63.129.16 に対して通信ができることです。
+つまり、**Azure VM Backup の通信要件は 168.63.129.16 に対して通信ができること**です。
 
 ・Azure Linux エージェントの理解と使用 - 必要条件 [Linux]
 https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-linux#requirements
@@ -93,7 +93,7 @@ Azure VM Backupでは バックアップ ジョブの画面で確認できるよ
 オフライン バックアップの場合 は OS 内部と連携せずスナップショットを取得します。
 
 ### <a id="2-2"></a> Transfer to vaultフェーズ
-つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのためバックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンドで ローカル物理ホスト上から物理的に離れた同一リージョン内にある Recovery Services コンテナーへ転送されます。
+つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのため**バックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンド**で (ローカル物理ホスト上から物理的に離れた同一リージョン内にある) Recovery Services コンテナーへ転送されます。
 
 
 #### 参考
@@ -109,7 +109,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3
 ・よく寄せられる質問 - Azure VM のバックアップ - スナップショットをストレージ アカウントからコンテナーに移動した場合、転送中の暗号化はどのように管理されますか?
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#-------------------------------------------------------
 
->Azure VM バックアップでは、転送中の暗号化に HTTPS 通信を使用します。 データ転送では、VM のバックアップにインターネット アクセスを必要としない Azure ファブリック (パブリック エンドポイントではなく) を使用します。
+>Azure VM バックアップでは、転送中の暗号化に HTTPS 通信を使用します。 **データ転送では、VM のバックアップにインターネット アクセスを必要としない Azure ファブリック (パブリック エンドポイントではなく) を使用します**。
 
 
 
@@ -132,4 +132,4 @@ UDR を用いて該当通信をルーティングすることはできません�
 >Q,Azure VM Backup のバックアップデータ転送トラフィックが VM に与える影響を懸念しているがベストプラクティスはあるか？
 A. Azure Backup のデータ転送は Azure のバックアップエンド側で行われ VM の 仮想 NIC を経由しないためバックアップデータ転送トラフィックが VM に与える影響はございません。
 参考
-・Azure VM Backup の 通信要件(本ページ)
+・Azure VM Backup の 通信要件
