@@ -13,10 +13,11 @@ disableDisclaimer: false
 ## 目次
 -----------------------------------------------------------
 [1. Azure VM Backup の 通信要件について](#1)
- [1-1.参考](#1-1)
+ [1-1.参考 URL](#1-1)
 [2. Azure VM Backup の処理の流れ](#2)
- [2-1.Take Snapshot フェーズ](#2-1)
- [2-2.Transfer to vault フェーズ](#2-2)
+ [2-1. Take Snapshot フェーズ](#2-1)
+ [2-2. Transfer to vault フェーズ](#2-2)
+ [2-3. 参考 URL](#1-1)
 -----------------------------------------------------------
 
 ## <a id="1"></a>Azure VM Backup の 通信要件について
@@ -85,12 +86,18 @@ Azure VM Backupでは バックアップ ジョブの画面で確認できるよ
 ### <a id="2-1"></a> Take Snapshot フェーズ
 まず、オンライン バックアップの場合、バックアップ拡張機能によって OS 内部と連携し静止点をとり、スナップショット データを取得します。その際のスナップショット データはユーザーからは見えない (マネージドな) ローカル物理ホスト上で取得します。
 オフライン バックアップの場合 は OS 内部と連携せずスナップショットを取得します。
+Azure VM Backup において VM 内部での処理は Take Snapshot フェーズのみでございます。
+そのため、Take Snapshot フェーズが完了すれば VM の起動や運用によってはアップデートやDB の再開などを行っていただいてもかまいません。
+Take Snapshot フェーズが終わっていれば有事の際にはインスタントリストア機能を用いてリストアすることも可能です。
+・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
+https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
+
 
 ### <a id="2-2"></a> Transfer to vaultフェーズ
 つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのため**バックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンド**で (ローカル物理ホスト上から物理的に離れた同一リージョン内にある) Recovery Services コンテナーへ転送されます。
 
 
-#### 参考
+####<a id="2-3"></a> 参考
 ・Azure VM バックアップの概要 - バックアップ プロセス
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process
 
@@ -113,8 +120,9 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#-------
 >Q.バックアップはまだ完了していないが、 Take Snapshot 終わっていれば VM の再起動などを行ってもよいか？またTake Snapshot が終わっていればリストアすることは可能か？
 A.Take Snapshot フェーズが完了していれば VM 内部と連携するフェーズは完了しているため、OS に対する変更、 VM の再起動などを行っていただいてもかまいません。
 またTake Snapshotが完了していればインスタントリストア機能を用いてローカル物理ホスト上に保存されたスナップショットデータからリストアを行うことが可能です。
-・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
-https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
+参考
+・Azure VM Backup の 通信要件(本ページ)
+https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
 
 >Q.強制トンネリングを実施しているが、Azure VM Backup の通信を強制トンネリング対象から除外したいが、どのような設定をすればよいか。UDR を用いて可能か。
 A.こちら、Azure VM Backupに必要な通信は強制トンネリングやNSGの影響を受けないためローカル (OS内部) FW でブロックしていない限り通信要件は満たされます。
@@ -122,8 +130,10 @@ A.こちら、Azure VM Backupに必要な通信は強制トンネリングやNSG
 UDR を用いて該当通信をルーティングすることはできません。
 参考
 ・Azure VM Backup の 通信要件(本ページ)
+https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1
 
 >Q,Azure VM Backup のバックアップデータ転送トラフィックが VM に与える影響を懸念しているがベストプラクティスはあるか？
 A. Azure Backup のデータ転送は Azure のバックアップエンド側で行われ VM の 仮想 NIC を経由しないためバックアップデータ転送トラフィックが VM に与える影響はございません。
 参考
-・Azure VM Backup の 通信要件
+・Azure VM Backup の 通信要件(本ページ)
+https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-2
