@@ -83,6 +83,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3
 
 
 Azure VM Backupでは バックアップ ジョブの画面で確認できるように、順番に Take Snapshot と Transfer to vault の 2 つの大きなフェーズ  (Sub Task) がございます。これら 2 つのフェーズが完了して初めてバックアップ ジョブとして完了となります。
+![](https://user-images.githubusercontent.com/71251920/154117538-c4961564-fd9e-4e77-91ee-bff235da3704.png)
 
 
 ### <a id="2-1"></a>2.1 Take Snapshot フェーズ
@@ -127,9 +128,9 @@ A.Take Snapshot フェーズが完了していれば VM 内部と連携するフ
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
 
 >Q.強制トンネリングを実施しているが、Azure VM Backup の通信を強制トンネリング対象から除外したいが、どのような設定をすればよいか。UDR を用いて可能か。
-A.こちら、Azure VM Backupに必要な通信は強制トンネリングやNSGの影響を受けないためローカル (OS内部) FW でブロックしていない限り通信要件は満たされます。
+A.こちら、Azure VM Backupに必要な通信は強制トンネリングや NSG の影響を受けないためローカル (OS内部) FW でブロックしていない限り通信要件は満たされます。
 そのため強制トンネリング環境であっても特別な考慮は不要です。
-UDR を用いて該当通信をルーティングすることはできません。
+また、UDR を用いて該当通信をルーティングすることはできません。
 参考
 ・Azure VM Backup の 通信要件について - Azure VM Backup の 通信要件(本ページ)
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1
