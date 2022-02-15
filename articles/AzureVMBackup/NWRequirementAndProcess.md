@@ -40,7 +40,7 @@ https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-windows
  https://docs.microsoft.com/ja-jp/azure/virtual-network/what-is-ip-address-168-63-129-16
 >これらは、VM 上のローカル ファイアウォールでは開いている必要があります。 これらのポート上での 168.63.129.16 との通信は、構成されたネットワーク セキュリティ グループの対象ではありません。
 
-#### 1.1 参考 URL<a id="1-1"></a>
+### 1.1 参考 URL<a id="1-1"></a>
 合わせて下記の公式ドキュメントもご覧ください。
 Azure VM Backup ではオンラインバックアップの場合、初回オンラインバックアップ時に VM agent の拡張機能がインストールされること、および VM agent が正常に動作することが必要であることが分かります。
 
