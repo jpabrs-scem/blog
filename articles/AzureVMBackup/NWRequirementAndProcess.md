@@ -21,7 +21,7 @@ disableDisclaimer: false
 [3. よくいただくお問い合わせ](#3)
 -----------------------------------------------------------
 
-## <a id="1"></a>Azure VM Backup の 通信要件について
+## <a id="1"></a>1. Azure VM Backup の 通信要件について
 Azure VM Backup の通信要件は VM Agent が正常に動作するために必要な通信要件と同じでございます。
 VM Agent の通信要件は下記の通り、Wire Server と呼ばれる各ノードごとにある 仮想パブリック IP 168.63.129.16 に対して通信ができることでございます。
 つまり、**Azure VM Backup の通信要件は 168.63.129.16 に対して通信ができること**です。
@@ -40,7 +40,7 @@ https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-windows
  https://docs.microsoft.com/ja-jp/azure/virtual-network/what-is-ip-address-168-63-129-16
 >これらは、VM 上のローカル ファイアウォールでは開いている必要があります。 これらのポート上での 168.63.129.16 との通信は、構成されたネットワーク セキュリティ グループの対象ではありません。
 
-#### 参考<a id="1-1"></a>
+#### 1.1 参考 URL<a id="1-1"></a>
 合わせて下記の公式ドキュメントもご覧ください。
 Azure VM Backup ではオンラインバックアップの場合、初回オンラインバックアップ時に VM agent の拡張機能がインストールされること、および VM agent が正常に動作することが必要であることが分かります。
 
@@ -64,7 +64,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#support
 https://docs.microsoft.com/ja-jp/azure/backup/backup-architecture#how-does-azure-backup-work
 >Azure VM をバックアップする:Azure VM を直接バックアップすることができます。 Azure Backup によって、VM 上で実行されている Azure VM エージェントに、バックアップ拡張機能がインストールされます。 この拡張機能は、VM 全体をバックアップします。
 
-## <a id="2"></a>Azure VM Backup の処理の流れ
+## <a id="2"></a>2. Azure VM Backup の処理の流れ
 まず、下記の公式ドキュメントをご覧ください。
 ・Azure VM バックアップの概要 - バックアップ プロセス
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process
@@ -84,7 +84,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3
 Azure VM Backupでは バックアップ ジョブの画面で確認できるように、順番に Take Snapshot と Transfer to vault の 2 つの大きなフェーズ  (Sub Task) がございます。これら 2 つのフェーズが完了して初めてバックアップ ジョブとして完了となります。
 
 
-### <a id="2-1"></a> Take Snapshot フェーズ
+### <a id="2-1"></a>2.1 Take Snapshot フェーズ
 まず、オンライン バックアップの場合、バックアップ拡張機能によって OS 内部と連携し静止点をとり、スナップショット データを取得します。その際のスナップショット データはユーザーからは見えない (マネージドな) ローカル物理ホスト上で取得します。
 オフライン バックアップの場合 は OS 内部と連携せずスナップショットを取得します。
 Azure VM Backup において VM 内部での処理は Take Snapshot フェーズのみでございます。
@@ -94,11 +94,11 @@ Take Snapshot フェーズが終わっていれば有事の際にはインスタ
 https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
 
 
-### <a id="2-2"></a> Transfer to vault フェーズ
+### <a id="2-2"></a>2.2 Transfer to vault フェーズ
 つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのため**バックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンド**で (ローカル物理ホスト上から物理的に離れた同一リージョン内にある) Recovery Services コンテナーへ転送されます。
 
 
-#### <a id="2-3"></a> 参考
+#### <a id="2-3"></a>2.3 参考 URL
 ・Azure VM バックアップの概要 - バックアップ プロセス
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process
 
