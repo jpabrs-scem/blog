@@ -122,7 +122,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#-------
 A.Take Snapshot フェーズが完了していれば VM 内部と連携するフェーズは完了しているため、OS に対する変更、 VM の再起動などを行っていただいてもかまいません。
 またTake Snapshotが完了していればインスタントリストア機能を用いてローカル物理ホスト上に保存されたスナップショットデータからリストアを行うことが可能です。
 参考
-・Azure VM Backup の 通信要件(本ページ)
+・Take Snapshot フェーズ - Azure VM Backup の 通信要件(本ページ)
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
 
 >Q.強制トンネリングを実施しているが、Azure VM Backup の通信を強制トンネリング対象から除外したいが、どのような設定をすればよいか。UDR を用いて可能か。
@@ -130,11 +130,11 @@ A.こちら、Azure VM Backupに必要な通信は強制トンネリングやNSG
 そのため強制トンネリング環境であっても特別な考慮は不要です。
 UDR を用いて該当通信をルーティングすることはできません。
 参考
-・Azure VM Backup の 通信要件(本ページ)
+・Azure VM Backup の 通信要件について - Azure VM Backup の 通信要件(本ページ)
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1
 
 >Q,Azure VM Backup のバックアップデータ転送トラフィックが VM に与える影響を懸念しているがベストプラクティスはあるか？
 A. Azure Backup のデータ転送は Azure のバックアップエンド側で行われ VM の 仮想 NIC を経由しないためバックアップデータ転送トラフィックが VM に与える影響はございません。
 参考
-・Azure VM Backup の 通信要件(本ページ)
+・Transfer to vaultフェーズ Azure VM Backup の 通信要件(本ページ)
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-2
