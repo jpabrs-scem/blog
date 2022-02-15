@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup 通信要件や処理の流れについて
-date: 2021-11-18 12:00:00
+date: 2022-02-16 12:00:00
 tags:
   - Azure VM Backup
 disableDisclaimer: false
