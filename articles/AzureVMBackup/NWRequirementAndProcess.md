@@ -10,12 +10,6 @@ disableDisclaimer: false
 皆様こんにちは。Azure Backup サポートの山本です。
 今回は Azure VM Backup における通信要件や処理の流れに関して、具体的なお問い合わせ例を交えて公式ドキュメントを補足する形でご説明させていただきます。
 
-
-まず、はじめに前提知識として Azure VM Backup ではバックアップを取得する際に下記 2 つのサブタスクがございます。
-1.Take Snapshot (スナップショットの取得)
-2.Transfer data to vault (Recovery Services コンテナーへの転送)
-![Azure VM Backupの 2 つのサブタスク](https://user-images.githubusercontent.com/71251920/142253918-138343ac-b7dc-4a35-9e6e-180b4b5542f8.png)
-
 ## 目次
 -----------------------------------------------------------
 [1. Azure VM Backup の 通信要件について](#1)
