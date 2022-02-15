@@ -97,7 +97,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
 つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのため**バックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンド**で (ローカル物理ホスト上から物理的に離れた同一リージョン内にある) Recovery Services コンテナーへ転送されます。
 
 
-####<a id="2-3"></a> 参考
+#### <a id="2-3"></a> 参考
 ・Azure VM バックアップの概要 - バックアップ プロセス
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process
 
