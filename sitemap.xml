@@ -51,6 +51,13 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</loc>
+    
+    <lastmod>2022-02-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/</loc>
     
     <lastmod>2022-02-16</lastmod>
@@ -66,6 +73,41 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvestigating/</loc>
+    
+    <lastmod>2022-02-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
+    
+    <lastmod>2022-02-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
+    
+    <lastmod>2022-02-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
+    
+    <lastmod>2022-02-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/</loc>
+    
+    <lastmod>2022-02-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/</loc>
     
     <lastmod>2022-02-16</lastmod>
     
@@ -149,41 +191,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
-    
-    <lastmod>2022-02-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
-    
-    <lastmod>2022-02-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
-    
-    <lastmod>2022-02-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/</loc>
-    
-    <lastmod>2022-02-16</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/</loc>
-    
-    <lastmod>2022-02-16</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/</loc>
     
     <lastmod>2022-02-16</lastmod>
@@ -222,6 +229,13 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/tags/MARS-Backup/</loc>
+    <lastmod>2022-02-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/tags/howto/</loc>
     <lastmod>2022-02-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
