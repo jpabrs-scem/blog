@@ -50,3 +50,5 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 
 ><原文>Description: Backup failed as none of the items specified as part of the backup policy exist.
 >><抄訳>説明：バックアップポリシーの一部として指定された項目が存在しないため、バックアップが失敗しました。
+
+以上で MARS バックアップ を意図的に失敗させる方法に関しましてのご説明は終了となります。
