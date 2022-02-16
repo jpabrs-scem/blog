@@ -39,10 +39,14 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
  ![](https://user-images.githubusercontent.com/71251920/154327020-f8d375b6-033a-45fb-a5f0-d6c4aafbfe01.jpg)
 
 #### 5. バックアップの失敗のメッセージが現れることを確認してください。
+下記画像では Status Details に　Job failed と表示されています。
  ![](https://user-images.githubusercontent.com/71251920/154327021-05c22aec-45ec-4adf-b615-04dc7424662d.jpg)
 
 ###　アラート例
-下記のような Azure Backup の組み込みアラートを背呈している場合アラートがメールで通知されます。
+下記のような Azure Backup の組み込みアラートを設定している場合アラートがメールで通知されます。
 ![組み込みアラート](https://user-images.githubusercontent.com/71251920/154327023-c5e4526e-9e9f-4c25-b2b3-faa4bb6f9705.jpg)
 
 ![アラート通知メール](https://user-images.githubusercontent.com/71251920/154327010-0a5c3e60-a3f3-4919-860d-98a8ae1530d3.jpg)
+
+>Description: Backup failed as none of the items specified as part of the backup policy exist.
+>>　抄訳：説明：バックアップポリシーの一部として指定された項目が存在しないため、バックアップが失敗しました。
