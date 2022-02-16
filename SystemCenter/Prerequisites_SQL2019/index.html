@@ -14,7 +14,7 @@
 <meta property="og:description" content="皆さんこんにちは、System Center サポートチームの 保科と申します。 2022 年 2 月 16 日現在、System Center 2012 の延長サポートが終了間近であったり、System Center 2016 のメインストリームサポートが終了となります。これに伴い、System Center 2019 へのアップグレードや新規環境構築を検討されているお客様も多くいらっしゃるか">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2022-02-16T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-16T03:02:41.029Z">
+<meta property="article:modified_time" content="2022-02-16T03:04:46.226Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="System Center">
 <meta property="article:tag" content="SCOM">
@@ -104,7 +104,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+444c0b8c-2658-5a50-9665-90cb440fde8f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E4%B8%80%E9%83%A8%E3%81%AE+System+Center+2019+%E3%81%A7+SQL+Server+2019+%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FSystemCenter%2FPrerequisites_SQL2019%2F%29%0A*+Content+Source%3A+%5Barticles%2FSystemCenter%2FPrerequisites_SQL2019.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FSystemCenter%2FPrerequisites_SQL2019.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/" data-id="ckzoyyfys00160moa9hrh3xft" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/" data-id="ckzoz14zt00160lovh6p558j6" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -112,9 +112,9 @@
         <span id="more"></span>
 <p>皆さんこんにちは、System Center サポートチームの 保科と申します。</p>
 <p>2022 年 2 月 16 日現在、System Center 2012 の延長サポートが終了間近であったり、System Center 2016 のメインストリームサポートが終了となります。<br>これに伴い、System Center 2019 へのアップグレードや新規環境構築を検討されているお客様も多くいらっしゃるかと思います。<br>System Center 2019 で使用するデータベースでは、SQL Server 2019 の使用がサポートされております。<br>本記事では、一部の System Center 2019 で SQL Server 2019 を使用する際の注意点について説明いたします。</p>
-<h3 id="本記事が対象とする-System-Center-製品"><a href="#本記事が対象とする-System-Center-製品" class="headerlink" title="本記事が対象とする System Center 製品"></a>本記事が対象とする System Center 製品</h3><pre><code>• System Center Operations Manager (SCOM) 2019
-• System Center Service Manager (SCSM) 2019
-</code></pre>
+<h3 id="本記事が対象とする-System-Center-製品"><a href="#本記事が対象とする-System-Center-製品" class="headerlink" title="本記事が対象とする System Center 製品"></a>本記事が対象とする System Center 製品</h3><blockquote>
+<p>・System Center Operations Manager (SCOM) 2019<br>・System Center Service Manager (SCSM) 2019</p>
+</blockquote>
 <h3 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h3><p>冒頭でもお伝えしました通り、System Center 2019 では SQL Server 2019 の利用がサポートされております。<br>一方で、本記事が対象としている System Center 製品においては、インストール直後の SQL Server 2019 にデータベースを構成するようにインストールを行うと、インストールに失敗する場合があります。<br>これは、<strong>対象の System Center 2019 製品では、SQL Server 2019 に加えて、SQL Server 2019 CU8 以上の適用が必要となるため</strong>です。<br>CU8 以上の適用はインストール時に表示される前提条件では確認できず、インストール開始まで進めることが可能です。<br>この際、CU8 以上が適用されていないため内部的にエラーが発生し、System Center 2019 のインストールが失敗します。<br>こちらは、各 System Center 2019 でサポートされる構成が掲載された弊社公開情報にも CU8 以上の適用が必須なことが明記されております。<br>・SCOM 2019 における SQL Server 2019 CU8 以上の適用が必要な旨記載された弊社公開情報:<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/system-center/scom/plan-sqlserver-design?view=sc-om-2019">https://docs.microsoft.com/ja-jp/system-center/scom/plan-sqlserver-design?view=sc-om-2019</a><br>(“SQL Server の要件” 項を参照ください。)<br>・SCSM 2019 における SQL Server 2019 CU8 以上の適用が必要な旨記載された弊社公開情報:<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/system-center/scsm/system-requirements?view=sc-sm-2019">https://docs.microsoft.com/ja-jp/system-center/scsm/system-requirements?view=sc-sm-2019</a><br>(“SQL Server の要件” 項を参照ください。)</p>
 <p>なお、System Center Virtual Machine Manager (SCVMM) 2019 および System Center Orchestrator (SCORCH) 2019、System Center Data Protection Manager (SCDPM) においては、SCOM 2019 および SCSM 2019 と同様に SQL Server 2019 の使用がサポートされております。<br>一方で、これらの System Center 2019 製品では CU8 以上のアップデートが SQL Server 2019 での適用が必須と明記されておりません。<br>また、実際に CU8 以上が適用されていない状態でもインストールに成功することを弊社検証環境において確認しております。</p>
 <h3 id="対処方法"><a href="#対処方法" class="headerlink" title="対処方法"></a>対処方法</h3><p>SQL Server 2019 を対象となる System Center 2019 製品で使用する場合、SQL Server 2019 に CU8 以上の適用が必要となります。<br>各 SQL Server のバージョンで提供されている最新の CU アップデートは下記の弊社公開情報から参照いただけます。</p>
