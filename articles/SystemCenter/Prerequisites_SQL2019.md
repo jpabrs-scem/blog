@@ -18,8 +18,8 @@ System Center 2019 で使用するデータベースでは、SQL Server 2019 の
 本記事では、一部の System Center 2019 で SQL Server 2019 を使用する際の注意点について説明いたします。
 
 ### 本記事が対象とする System Center 製品
-	• System Center Operations Manager (SCOM) 2019
-	• System Center Service Manager (SCSM) 2019
+> ・System Center Operations Manager (SCOM) 2019
+> ・System Center Service Manager (SCSM) 2019
 
 ### 概要
 冒頭でもお伝えしました通り、System Center 2019 では SQL Server 2019 の利用がサポートされております。
