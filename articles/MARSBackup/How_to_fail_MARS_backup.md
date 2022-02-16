@@ -9,7 +9,7 @@ disableDisclaimer: false
 
 <!-- more -->
 皆様こんにちは、Azure Backup サポートの 山本 です。
-アラートのテスト等のため " Azure MARS Backup エージェントを利用したバックアップ(以下MARSバックアップ) を失敗させたい" というお問い合わせをよくいただきます。
+アラートのテスト等のため " Azure MARS Backup エージェントを利用したバックアップ (以下MARSバックアップ) を失敗させたい" というお問い合わせをよくいただきます。
 今回は、**MARS バックアップ を意図的に失敗させる方法**について、ご案内いたします。
 
 なお、下記では Azure VM Backup を失敗させる方法について紹介しておます。
@@ -48,5 +48,5 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 
 ![アラート通知メール](https://user-images.githubusercontent.com/71251920/154327010-0a5c3e60-a3f3-4919-860d-98a8ae1530d3.jpg)
 
->Description: Backup failed as none of the items specified as part of the backup policy exist.
->>　抄訳：説明：バックアップポリシーの一部として指定された項目が存在しないため、バックアップが失敗しました。
+><原文>Description: Backup failed as none of the items specified as part of the backup policy exist.
+>><抄訳>説明：バックアップポリシーの一部として指定された項目が存在しないため、バックアップが失敗しました。
