@@ -3,6 +3,7 @@ title: SCOM 2012 R2 エージェントのアンインストール時のトラブ
 date: 2022-02-04 12:00:00
 tags:
   - System Center
+  - SCOM
 disableDisclaimer: false
 ---
 

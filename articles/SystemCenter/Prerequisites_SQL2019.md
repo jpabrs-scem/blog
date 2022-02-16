@@ -3,6 +3,8 @@ title: 一部の System Center 2019 で SQL Server 2019 を使用する際の前
 date: 2022-02-16 12:00:00
 tags:
   - System Center
+  - SCOM
+  - SCSM
 disableDisclaimer: false
 ---
 
@@ -15,14 +17,14 @@ disableDisclaimer: false
 System Center 2019 で使用するデータベースでは、SQL Server 2019 の使用がサポートされております。
 本記事では、一部の System Center 2019 で SQL Server 2019 を使用する際の注意点について説明いたします。
 
-[本記事が対象とする System Center 製品]
+### 本記事が対象とする System Center 製品
 	• System Center Operations Manager (SCOM) 2019
 	• System Center Service Manager (SCSM) 2019
 
-[概要]
+### 概要
 冒頭でもお伝えしました通り、System Center 2019 では SQL Server 2019 の利用がサポートされております。
 一方で、本記事が対象としている System Center 製品においては、インストール直後の SQL Server 2019 にデータベースを構成するようにインストールを行うと、インストールに失敗する場合があります。
-これは、対象の System Center 2019 製品では、SQL Server 2019 に加えて、SQL Server 2019 CU8 以上の適用が必要となるためです。
+これは、**対象の System Center 2019 製品では、SQL Server 2019 に加えて、SQL Server 2019 CU8 以上の適用が必要となるため**です。
 CU8 以上の適用はインストール時に表示される前提条件では確認できず、インストール開始まで進めることが可能です。
 この際、CU8 以上が適用されていないため内部的にエラーが発生し、System Center 2019 のインストールが失敗します。
 こちらは、各 System Center 2019 でサポートされる構成が掲載された弊社公開情報にも CU8 以上の適用が必須なことが明記されております。
@@ -37,15 +39,15 @@ https://docs.microsoft.com/ja-jp/system-center/scsm/system-requirements?view=sc-
 一方で、これらの System Center 2019 製品では CU8 以上のアップデートが SQL Server 2019 での適用が必須と明記されておりません。
 また、実際に CU8 以上が適用されていない状態でもインストールに成功することを弊社検証環境において確認しております。
 
-[対処方法]
+### 対処方法
 SQL Server 2019 を対象となる System Center 2019 製品で使用する場合、SQL Server 2019 に CU8 以上の適用が必要となります。
 各 SQL Server のバージョンで提供されている最新の CU アップデートは下記の弊社公開情報から参照いただけます。
 - アプリケーションとそのコンポーネントのバージョン、エディション、および更新SQL Server決定する
 https://docs.microsoft.com/ja-jp/troubleshoot/sql/general/determine-version-edition-update-level
 
 SQL Server 2019 の最新版の CU アップデートを入手される場合、こちらの公開情報より "現在サポートされているバージョンの更新プログラムで利用可能な最新SQL Server" 項の表を参照します。
-"バージョン" 列が "SQL Server 2019" と記載された行の "最新の累積的な更新プログラム" より、"CU<xx> for 2019" と書かれた文字をクリックすることで、対象の CU アップデートの内容およびダウンロード先が掲載された弊社サイトが開かれます。
-(<xx> には、CU アップデートの数値が記載されております。
+"バージョン" 列が "SQL Server 2019" と記載された行の "最新の累積的な更新プログラム" より、"CU **xx** for 2019" と書かれた文字をクリックすることで、対象の CU アップデートの内容およびダウンロード先が掲載された弊社サイトが開かれます。
+( **xx** には、CU アップデートの数値が記載されております。
 2022 年 2 月 16 日現在、こちらは "CU15 for 2019" と記載されております。)
 開かれたサイトより最新版の CU アップデートをダウンロードいただけるリンクをクリックし、アップデートファイルを入手します。
 そのアップデートファイルを System Center 2019 製品で使用する SQL Server 上で適用することでアップデートが完了します。
