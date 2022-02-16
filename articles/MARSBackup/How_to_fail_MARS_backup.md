@@ -17,7 +17,7 @@ disableDisclaimer: false
 https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 
 
-### 意図的にAzure VM Backup エラーを発生させる仕組み
+### 意図的に MARS バックアップ エラーを発生させる仕組み
 バックアップ対象にフォルダを指定し、ポリシーを設定した後、対象のフォルダ名を変更します。そうすることでバックアップ対象のフォルダがない為にバックアップが失敗します。
 
 ### MARS バックアップ を失敗させる方法(手順)
