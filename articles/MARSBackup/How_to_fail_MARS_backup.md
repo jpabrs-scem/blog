@@ -22,21 +22,27 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 
 ### MARS バックアップ を失敗させる方法(手順)
 * 以下は MARS エージェントがインストールされているリソース内での作業となります。
-1. MARSエージェントのスケジュールバックアップ設定よりテスト用のフォルダをバックアップ対象として選択し、設定します。その他の設定は任意の設定で問題ございません。
+
+#### 1. MARSエージェントのスケジュールバックアップ設定よりテスト用のフォルダをバックアップ対象として選択し、設定します。その他の設定は任意の設定で問題ございません。
 (画像ではデスクトップ上の test フォルダを対象として選択しています)
- ![How_to_fail_MARS_backup_01](https://user-images.githubusercontent.com/71251920/154327014-9a8eb2b3-13e5-48f3-905c-031ae5e7126a.jpg)
+ ![](https://user-images.githubusercontent.com/71251920/154327014-9a8eb2b3-13e5-48f3-905c-031ae5e7126a.jpg)
 
-2. 上記でバックアップ対象としたフォルダ名を変更します。
+#### 2. 上記でバックアップ対象としたフォルダ名を変更します。
 (画像ではtestフォルダをtest_changeフォルダと変更しました)
- ![How_to_fail_MARS_backup_02](https://user-images.githubusercontent.com/71251920/154327016-1281d20b-feb2-4524-8ea5-fa50cecf8359.jpg)
+ ![](https://user-images.githubusercontent.com/71251920/154327016-1281d20b-feb2-4524-8ea5-fa50cecf8359.jpg)
 
-3. 今すぐバックアップを実行します。
+#### 3. 今すぐバックアップを実行します。
 　バックアップ期間は任意の期間で問題ありません。
- ![How_to_fail_MARS_backup_03](https://user-images.githubusercontent.com/71251920/154327019-106c84e8-9bc7-4df5-9aa3-854e399666ac.jpg)
+ ![](https://user-images.githubusercontent.com/71251920/154327019-106c84e8-9bc7-4df5-9aa3-854e399666ac.jpg)
 
-4. 確認画面にて、1で設定した名前変更前のフォルダが指定されてることを確認し、バックアップを実施してください。
- ![How_to_fail_MARS_backup_04](https://user-images.githubusercontent.com/71251920/154327020-f8d375b6-033a-45fb-a5f0-d6c4aafbfe01.jpg)
+#### 4. 確認画面にて、1で設定した名前変更前のフォルダが指定されてることを確認し、バックアップを実施してください。
+ ![](https://user-images.githubusercontent.com/71251920/154327020-f8d375b6-033a-45fb-a5f0-d6c4aafbfe01.jpg)
 
-5. バックアップの失敗のメッセージが現れることを確認してください。
- ![How_to_fail_MARS_backup_05](https://user-images.githubusercontent.com/71251920/154327021-05c22aec-45ec-4adf-b615-04dc7424662d.jpg)
+#### 5. バックアップの失敗のメッセージが現れることを確認してください。
+ ![](https://user-images.githubusercontent.com/71251920/154327021-05c22aec-45ec-4adf-b615-04dc7424662d.jpg)
 
+###　アラート例
+下記のような Azure Backup の組み込みアラートを背呈している場合アラートがメールで通知されます。
+![組み込みアラート](https://user-images.githubusercontent.com/71251920/154327023-c5e4526e-9e9f-4c25-b2b3-faa4bb6f9705.jpg)
+
+![アラート通知メール](https://user-images.githubusercontent.com/71251920/154327010-0a5c3e60-a3f3-4919-860d-98a8ae1530d3.jpg)
