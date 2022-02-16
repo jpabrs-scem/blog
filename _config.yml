@@ -42,7 +42,6 @@ root_tag_generator:
     - System Center
     - Recovery Services vaults
     - MARS Backup 
-    - 情報採取
     
   sub_tag_limit: 20
 
