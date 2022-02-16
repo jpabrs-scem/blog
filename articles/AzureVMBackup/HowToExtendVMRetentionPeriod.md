@@ -3,6 +3,7 @@ title: Azure VM Backup で取得した復旧ポイントの保持期間の延長
 date: 2022-02-05 12:00:00
 tags:
   - Azure VM Backup
+  - how to
 disableDisclaimer: false
 ---
 

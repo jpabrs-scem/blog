@@ -3,6 +3,7 @@ title: 料金計算ツールを用いた Azure VM Backup の料金見積もり�
 date: 2021-12-16 12:00:00
 tags:
   - Azure VM Backup
+  - how to
 disableDisclaimer: false
 ---
 

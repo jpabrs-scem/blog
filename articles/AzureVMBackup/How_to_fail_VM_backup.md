@@ -3,6 +3,7 @@ title: Azure VM Backup を意図的に失敗させる方法
 date: 2021-11-22 12:00:00
 tags:
   - Azure VM Backup
+  - how to
 disableDisclaimer: false
 ---
 

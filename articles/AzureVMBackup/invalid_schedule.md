@@ -3,6 +3,7 @@ title: Azure VM バックアップを任意のタイミングのみで取得し�
 date: 2021-10-01 12:00:00
 tags:
   - Azure VM Backup
+  - how to
 disableDisclaimer: false
 ---
 

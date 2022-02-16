@@ -3,6 +3,7 @@ title: Azure VM Backup における Take Snapshot フェーズの確認方法
 date: 2021-11-18 12:00:00
 tags:
   - Azure VM Backup
+  - how to
 disableDisclaimer: false
 ---
 

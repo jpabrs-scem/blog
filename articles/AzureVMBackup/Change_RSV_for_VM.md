@@ -3,6 +3,7 @@ title: Azure VM BackupにおけるRecovery Services コンテナーの変更に�
 date: 2022-02-09 12:00:00
 tags:
   - Azure VM Backup
+  - how to
 disableDisclaimer: false
 ---
 

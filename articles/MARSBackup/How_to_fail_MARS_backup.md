@@ -3,7 +3,7 @@ title: MARS バックアップ を意図的に失敗させる方法
 date: 2022-02-17 12:00:00
 tags:
   - MARS Backup 
-  - howto
+  - how to
 disableDisclaimer: false
 ---
 

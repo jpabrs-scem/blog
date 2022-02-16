@@ -3,6 +3,7 @@ title: Azure VM のリストアの際 NIC の設定が消えてしまう
 date: 2021-10-20 12:00:00
 tags:
   - Azure VM Backup
+  - how to
 disableDisclaimer: false
 ---
 

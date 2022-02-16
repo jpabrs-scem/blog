@@ -3,6 +3,7 @@ title: Azure Backup におけるウイルス除外設定について
 date: 2022-02-06 12:00:00
 tags:
   - Azure VM Backup
+  - how to
 disableDisclaimer: false
 ---
 
