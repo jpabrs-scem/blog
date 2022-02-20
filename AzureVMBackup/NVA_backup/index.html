@@ -4,23 +4,23 @@
   <meta charset="utf-8">
   
   
-  <title>グローバル アセンブリ キャッシュの警告イベントについて | Japan CSS ABRS &amp; SCEM Support Blog</title>
+  <title>NVA のバックアップについて | Japan CSS ABRS &amp; SCEM Support Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは。Azure Backup サポートの谷脇です。今回はお問い合わせをいただくことが多い、 Windows VM の Azure VM バックアップ取得時に発現するイベントログについて解説させていただきます。 バックアップを取得した際に、『グローバル アセンブリ キャッシュからのアセンブリの削除に失敗しました』の警告が表示される。 こちらの警告は、グローバルアセンブリキャッシュ (G">
+  <meta name="description" content="みなさこんにちは、Azure Backup サポートです。今回は、「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」というお問い合わせについて回答します。 目次 1. 仮想アプライアンスはバックアップできない可能性がある2. VM エージェント の状態の確認3. 代替案 - Azure Disk Backup を利用する  1. 仮想アプラ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="グローバル アセンブリ キャッシュの警告イベントについて">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/index.html">
+<meta property="og:title" content="NVA のバックアップについて">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS &amp; SCEM Support Blog">
-<meta property="og:description" content="皆様こんにちは。Azure Backup サポートの谷脇です。今回はお問い合わせをいただくことが多い、 Windows VM の Azure VM バックアップ取得時に発現するイベントログについて解説させていただきます。 バックアップを取得した際に、『グローバル アセンブリ キャッシュからのアセンブリの削除に失敗しました』の警告が表示される。 こちらの警告は、グローバルアセンブリキャッシュ (G">
+<meta property="og:description" content="みなさこんにちは、Azure Backup サポートです。今回は、「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」というお問い合わせについて回答します。 目次 1. 仮想アプライアンスはバックアップできない可能性がある2. VM エージェント の状態の確認3. 代替案 - Azure Disk Backup を利用する  1. 仮想アプラ">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/135617775-6ac8b8e6-c1a7-4311-9375-8389248969fe.png">
-<meta property="article:published_time" content="2021-10-01T03:00:00.000Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/154855287-696dca76-4bdc-4e8b-ac40-1108515edca8.png">
+<meta property="article:published_time" content="2022-02-22T03:00:00.000Z">
 <meta property="article:modified_time" content="2022-02-20T18:03:14.042Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
-<meta property="article:tag" content="TROUBLE SHOOTING">
+<meta property="article:tag" content="how to">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/135617775-6ac8b8e6-c1a7-4311-9375-8389248969fe.png">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/154855287-696dca76-4bdc-4e8b-ac40-1108515edca8.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS &amp; SCEM Support Blog" type="application/atom+xml">
   
@@ -82,7 +82,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureVMBackup/GAC" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureVMBackup/NVA_backup" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -91,7 +91,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      グローバル アセンブリ キャッシュの警告イベントについて
+      NVA のバックアップについて
     </h1>
   
 
@@ -99,28 +99,35 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2021-10-01T03:00:00.000Z" itemprop="datePublished">2021-10-01</time>
+  <time datetime="2022-02-22T03:00:00.000Z" itemprop="datePublished">2022-02-22</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+fdb5d11d-55e6-58fc-909f-1f780085abc7%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB+%E3%82%A2%E3%82%BB%E3%83%B3%E3%83%96%E3%83%AA+%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%AE%E8%AD%A6%E5%91%8A%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FGAC%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FGAC.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FGAC.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+73fca631-e5a1-56c2-9468-544fb7fd9203%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BNVA+%E3%81%AE%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FNVA_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FNVA_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FNVA_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/" data-id="ckzvkvz52000b0nmnfp7z2u29" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/" data-id="ckzvkvz59000l0nmn5c1260on" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは。Azure Backup サポートの谷脇です。<br>今回はお問い合わせをいただくことが多い、 Windows VM の Azure VM バックアップ取得時に発現するイベントログについて解説させていただきます。</p>
-<p>バックアップを取得した際に、<strong>『グローバル アセンブリ キャッシュからのアセンブリの削除に失敗しました』</strong>の警告が表示される。</p>
-<p>こちらの警告は、グローバルアセンブリキャッシュ (GAC) からファイルの削除に失敗した際に出力されます。<br>※ グローバルアセンブリキャッシュとは<br>コンピュータ上の多数のアプリケーション間で共有するためにインストールされたアセンブリを格納するマシン全体のコード キャッシュ。</p>
-<p>Azure Backup では、 Azure VM のバックアップを取得する際に、以下の2つのファイルを削除、インストールする場合があります。このメッセージが発現した際は、GAC 上からその削除、インストールに失敗しています。<br>・iaasvmazurestorage.dll<br>・iaasvmsnapshotmessage.dll</p>
-<p>このエラーが出る要因として、以前のファイルが存在しない場合や、以前のファイルがロックされている場合が考えられます。しかしながらファイルの削除やインストールはリトライが行われリトライにより成功する場合も多くなっております。<br>従って、正常に Azure Backup によるバックアップが取得できている場合、GAC 上のファイルは正常に参照できている状態であり、無視可能なエラーメッセージです。</p>
-<p>以下の画面のようなイベントログが発現します。</p>
-<blockquote>
-<p>&lt;イベントログ例 &gt;<br>ソース : COM+ SOAP Services<br>EventID : 0<br>Message : グローバル アセンブリ キャッシュからのアセンブリの削除に失敗しました :  C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\1.0.70.0\iaasvmsnapshotmessage.dll iaasvmsnapshotmessage,Version=3.0.0.0</p>
-</blockquote>
-<p><img src="https://user-images.githubusercontent.com/71251920/135617775-6ac8b8e6-c1a7-4311-9375-8389248969fe.png" alt="グローバル アセンブリ キャッシュのエラー"><br>このエラーメッセージが発現することを抑止する方法はありませんが、正常にバックアップが取得できていましたら、上記の通り無視可能なエラーメッセージです。</p>
+<p>みなさこんにちは、Azure Backup サポートです。<br>今回は、<strong>「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」</strong>というお問い合わせについて回答します。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. 仮想アプライアンスはバックアップできない可能性がある</a><br><a href="#2">2. VM エージェント の状態の確認</a><br><a href="#3">3. 代替案 - Azure Disk Backup を利用する</a></p>
+<hr>
+<h3 id="1-仮想アプライアンスはバックアップできない可能性が高い"><a href="#1-仮想アプライアンスはバックアップできない可能性が高い" class="headerlink" title="1. 仮想アプライアンスはバックアップできない可能性が高い"></a><a id="1"></a>1. 仮想アプライアンスはバックアップできない可能性が高い</h3><p>結論から申し上げますと、残念ながら NVA として機能する仮想マシンについては、Azure VM Backup サポート対象外の カスタム OS となる可能性が高いです。<br>*NVA 以外の仮想アプライアンス、カスタム OS などにおいても同様です。</p>
+<p>Azure Marketplace より、NVA として機能する仮想マシンを作成した場合も同様に、Azure VM Backup サポート対象外の OS であることが多くございます。<br>Azure VM Backup では、オンライン バックアップを実施する際、VM エージェントの拡張機能を利用しますが、NVA に用いられる OS に対しては一般的に、VM エージェントが対応しておりません。</p>
+<p>正確にご確認いただくには、後述のドキュメントを参照の上、<strong>まず VM エージェントが対応しているかをお客様ご自身、および OS 発行ベンダーにご確認いただく必要</strong> がございます。</p>
+<p>事例ベースのご案内では、<strong>Zscaler 社の NVA や Palo Alto 社の NVA が対応していない事例がございました。また同様に NVA 以外のカスタム OS に関しましても VM エージェントが対応していないために Azure VM Backup がご利用いただけない事例がございました。</strong></p>
+<p>・Azure Linux VM エージェントの概要 - Azure Virtual Machines | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-linux#requirements">https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-linux#requirements</a></p>
+<p>下記 に Azure VM Backup の OSサポート対象範囲について記載がございますので、ご参考ください。<br>・Azure VM バックアップのサポート マトリックス - オペレーティング システムのサポート (Windows)<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-windows">https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-windows</a><br>・Azure VM バックアップのサポート マトリックス - オペレーティング システムのサポート (Linux)<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-linux">https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-linux</a><br>・Azure で動作保証済みの Linux ディストリビューション<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/linux/endorsed-distros">https://docs.microsoft.com/ja-jp/azure/virtual-machines/linux/endorsed-distros</a></p>
+<h3 id="2-VM-エージェント-の状態の確認"><a href="#2-VM-エージェント-の状態の確認" class="headerlink" title="2. VM エージェント の状態の確認"></a><a id="2"></a>2. VM エージェント の状態の確認</h3><p>Azure VM Backup をオンラインでご利用いただくには対象の VM を起動しエージェントの状態を確認いただき、Ready となっていることが大前提 (必要条件) となります。<br>お客様で確認するには下記 <strong>“エージェントの状態”</strong> をご確認ください。<br>サポート外の OS の場合、<strong>Ready</strong> ではなく <strong>Not Ready</strong> となる事例が多くございます。<br><img src="https://user-images.githubusercontent.com/71251920/154855287-696dca76-4bdc-4e8b-ac40-1108515edca8.png" alt="エージェントの状態 の確認"></p>
+<p>また、サポート対象の OS で <strong>Not Ready</strong> となっていた場合にはエージェントが正しく動いていないと見受けられます。<br>その際には agent の再起動や 対象 VM の再起動を行っていただき、それでも事象が改善しない場合には Azure VM agent イシューとしてお問い合わせいただければと存じます。</p>
+<p>NVA として機能する仮想マシンをバックアップする方法の代替案としては、以下が挙げられます。</p>
+<h3 id="3-代替案-Azure-Disk-Backup-を利用する"><a href="#3-代替案-Azure-Disk-Backup-を利用する" class="headerlink" title=" 3. 代替案 - Azure Disk Backup を利用する"></a><a id="2"></a> 3. 代替案 - Azure Disk Backup を利用する</h3><p>Azure VM Backup にて仮想マシン全体をバックアップするのではなく、仮想マシンのディスクを Azure Disk Backup にてバックアップする方法がございます。<br>Azure Disk Backup にてディスクをバックアップする場合は、VM エージェントを利用いたしませんので、対象仮想マシンの ディスクをバックアップする手段として挙げられます。<br>・Azure ディスク バックアップの概要 - Azure Backup | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview#key-benefits-of-disk-backup">https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview#key-benefits-of-disk-backup</a></p>
+<p>どの種類のディスクがAzure Disk Backup のサポート対象であるかは、下記ドキュメントをご参考ください。<br>・Azure ディスク バックアップのサポート マトリックス - Azure Backup | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-support-matrix">https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-support-matrix</a></p>
+<p>Azure Disk Backup はクラッシュ整合性となりますのでその点もご留意いただければと思います。詳細につきましては下記 URL の幣ブログ記事をご覧ください。<br>・Azure VM Backupにおける整合性について - クラッシュ整合性<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3">https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3</a></p>
+<p>「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」に関する説明は以上となります。</p>
 
       
       
@@ -134,10 +141,10 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/GAC.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/NVA_backup.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -145,19 +152,10 @@
     
 <nav id="article-nav">
   
-    <a href="../VMRestoring_NIC_Configuration/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Azure VM のリストアの際 NIC の設定が消えてしまう
-        
-      </div>
-    </a>
   
-  
-    <a href="../invalid_schedule/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../MARSBackup/How_to_fail_MARS_backup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure VM バックアップを任意のタイミングのみで取得したい</div>
+      <div class="article-nav-title">MARS バックアップ を意図的に失敗させる方法</div>
     </a>
   
 </nav>
@@ -176,7 +174,7 @@
       <ul>
         
           <li>
-            <a href="../NVA_backup/">NVA のバックアップについて</a>
+            <a href="">NVA のバックアップについて</a>
           </li>
         
           <li>
