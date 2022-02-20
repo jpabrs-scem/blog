@@ -47,11 +47,11 @@ Azure VM Backup では、オンライン バックアップを実施する際、
 ### <a id="2"></a>2. VM エージェント の状態の確認
 Azure VM Backup をオンラインでご利用いただくには対象の VM を起動しエージェントの状態を確認いただき、Ready となっていることが大前提 (必要条件) となります。
 お客様で確認するには下記 **"エージェントの状態"** をご確認ください。
-サポート外の OS の場合、**Ready** ではなく **Not Ready** となる事例がおおくございます。
+サポート外の OS の場合、**Ready** ではなく **Not Ready** となる事例が多くございます。
 ![エージェントの状態 の確認](https://user-images.githubusercontent.com/71251920/154855287-696dca76-4bdc-4e8b-ac40-1108515edca8.png)
 
 また、サポート対象の OS で **Not Ready** となっていた場合にはエージェントが正しく動いていないと見受けられます。
-その際には agent の再起動や 対象マシンの再起動を行っていただき、それでも事象が改善しない場合には Azure VM agent イシューとしてお問い合わせいただければと存じます。
+その際には agent の再起動や 対象 VM の再起動を行っていただき、それでも事象が改善しない場合には Azure VM agent イシューとしてお問い合わせいただければと存じます。
 
 
 
@@ -60,7 +60,7 @@ NVA として機能する仮想マシンをバックアップする方法の代�
 
 ### <a id="2"></a> 3. 代替案 - Azure Disk Backup を利用する
 
-Azure VM Backup にて仮想マシン全体をバックアップするのではなく、仮想マシンのディスクを Azure Disk Backup にてバックアップする
+Azure VM Backup にて仮想マシン全体をバックアップするのではなく、仮想マシンのディスクを Azure Disk Backup にてバックアップする方法がございます。
 Azure Disk Backup にてディスクをバックアップする場合は、VM エージェントを利用いたしませんので、対象仮想マシンの ディスクをバックアップする手段として挙げられます。
 ・Azure ディスク バックアップの概要 - Azure Backup | Microsoft Docs
 　https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview#key-benefits-of-disk-backup
@@ -76,6 +76,6 @@ Azure Disk Backup はクラッシュ整合性となりますのでその点も�
 https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3
 
 
-「Azure VM Backup にてネットワーク仮想アプライアンス（ NVA ）をバックアップ可能か？」に関する説明は以上となります。
+「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」に関する説明は以上となります。
 
 
