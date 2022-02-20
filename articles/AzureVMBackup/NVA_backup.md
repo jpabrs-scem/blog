@@ -64,7 +64,7 @@ Azure VM Backup にて仮想マシン全体をバックアップするのでは�
 Azure Disk Backup にてディスクをバックアップする場合は、VM エージェントを利用いたしませんので、対象仮想マシンの ディスクをバックアップする手段として挙げられます。
 ・Azure ディスク バックアップの概要 - Azure Backup | Microsoft Docs
 　https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview#key-benefits-of-disk-backup
-	
+> 抜粋 : Azure ディスク バックアップは、増分スナップショットを使用する、エージェントレスでクラッシュ整合性のあるソリューションで、次のような利点があります。
 
 どの種類のディスクがAzure Disk Backup のサポート対象であるかは、下記ドキュメントをご参考ください。
 ・Azure ディスク バックアップのサポート マトリックス - Azure Backup | Microsoft Docs
