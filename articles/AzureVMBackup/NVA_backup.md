@@ -20,7 +20,7 @@ Azure Marketplace より、NVA として機能する仮想マシンを作成し�
 Azure VM Backup では、オンライン バックアップを実施する際、VM エージェントの拡張機能を利用しますが、NVA に用いられる OS に対しては一般的に、VM エージェントが対応しておりません。
 後述のドキュメントを参照の上、**まず VM エージェントが対応しているかをお客様ご自身、および OS 発行ベンダーにご確認いただく必要** がございます。
 
-#### 事例ベースのご案内では、 Zscaler 社の NVA や Palo Alto 社の NVA が対応していない事例がございました。また同様に NVA 以外のカスタム OS に関しましても VM エージェントが対応していないために Azure VM Backup がご利用いただけない事例がございました。
+事例ベースのご案内では、**Zscaler 社の NVA や Palo Alto 社の NVA が対応していない事例がございました。また同様に NVA 以外のカスタム OS に関しましても VM エージェントが対応していないために Azure VM Backup がご利用いただけない事例がございました。**
 
  
 ・Azure Linux VM エージェントの概要 - Azure Virtual Machines | Microsoft Docs
