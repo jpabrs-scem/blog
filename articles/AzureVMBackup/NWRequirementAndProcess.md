@@ -96,10 +96,12 @@ Take Snapshot フェーズが終わっていれば有事の際にはインスタ
 ・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
 
+なお、前回のバックアップ ジョブが Take Snapshot フェーズの場合、後続のバックアップ ジョブは失敗する仕様となっております。
 
 ### <a id="2-2"></a>2.2 Transfer to vault フェーズ
 つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのため**バックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンド**で (ローカル物理ホスト上から物理的に離れた同一リージョン内にある) Recovery Services コンテナーへ転送されます。
 
+なお、前回のバックアップ ジョブが Transfer to vault フェーズの場合、後続のバックアップ ジョブの Transfer to vault フェーズは Skip される仕様となっており、リトライなどは実施されません。
 
 #### <a id="2-3"></a>2.3 参考 URL
 ・Azure VM バックアップの概要 - バックアップ プロセス
