@@ -122,6 +122,8 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#trou
 [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
 "USEVSSCOPYBACKUP"="TRUE"
 
+上記レジストリ設定にあたって OS 再起動は必要ございません。
+
 
 また、下記は弊社外のブログではございますが、本件に関する参考になればと存じ、ご案内させていただきます。
 ※社外の情報のため内容につきましては当社は、下記外部のリンク先ウェブサイトの内容に関していかなる責任も負うものではありません。
