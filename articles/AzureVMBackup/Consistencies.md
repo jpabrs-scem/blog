@@ -73,6 +73,10 @@ https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shado
 >Error Code ：ExtensionFailedVssServiceInBadState
 >Error Message ：Snapshot operation failed due to VSS (Volume Shadow Copy) service in bad state
 
+ご参考にまでに、下記のようなエラーが出ることがございます。
+>Error Code ：ExtensionFailedVssWriterInBadState
+>Error Message ：Snapshot operation failed due to VSS Writers in bad state.
+
 事象の改善方法としては下記 URL 記載の **VSS の再起動、および VM の再起動を行うことで改善することがほとんどでございます。**
 
 ・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssServiceInBadState - VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました
@@ -91,9 +95,7 @@ https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 　一次調査の結果、VSS ライターのエラーを出しているアプリケーションが 弊社 SQL Server 等弊社製品の場合は担当チーム (SQL Server 等) で対応が可能でございますが、お客様の契約次第では有償対応が必要となることがございます。
 　一方、VSS ライターのエラーを出しているアプリケーションが他社製品の場合、ご利用のアプリケーション提供ベンダーまでお問い合わせいただくようお願い申し上げます。
 
-ご参考にまでに、下記のようなエラーが出ることがございます。
->Error Code ：ExtensionFailedVssWriterInBadState
->Error Message ：Snapshot operation failed due to VSS Writers in bad state.
+
 
 改善策としては、下記の URL をご参考にして対応いただければと存じます。
 ・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssWriterInBadState - VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました
