@@ -32,6 +32,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-defa
  [ 2.1 注意事項](#2-1)
  [ 2.2 変更手順概要](#2-2)
  [ 2.3 手順](#2-3)
+ [ 2.3.1 論理削除状態について](#2-3-1")
 -----------------------------------------------------------
 
 ## 1. 既存のバックアップデータを [維持] する方法<a id="1"></a>
@@ -154,7 +155,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-m
 	バックアップデータは完全に削除される必要があります。
 ![Change_RSV_for_VM_17](https://user-images.githubusercontent.com/71251920/153033211-44a0eab1-f6cf-41ba-908b-e83454025295.jpg)
 
-* 論理削除状態について
+* 2.3.1 論理削除状態について<a id="2-3-1"></a>
 論理削除状態(論理削除が有効な状態で削除した状態)では完全にバックアップデータが消えず、対象 VM と  Recovery Services コンテナーの紐づけが解除されません。その際は下記 URL を参考にして論理削除状態のバックアップアイテムを完全に削除してください。
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items 
 
