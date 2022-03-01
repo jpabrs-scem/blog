@@ -190,6 +190,6 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-clou
 ・代替案 - Azure VM Backup で取得した復旧ポイントの保持期間の延長について
 https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/#4
 
-2. その後 上述の[2. 既存のバックアップデータを [削除] する方法](#2)によって Recovery Services コンテナーを変更します
+2. その後 上述の[2. 既存のバックアップデータを [削除] する方法](#2)によって Recovery Services コンテナーを変更する。
 -----------------------------------------------------------
 
