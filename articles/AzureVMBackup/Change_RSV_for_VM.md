@@ -155,7 +155,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-m
 	バックアップデータは完全に削除される必要があります。
 ![Change_RSV_for_VM_17](https://user-images.githubusercontent.com/71251920/153033211-44a0eab1-f6cf-41ba-908b-e83454025295.jpg)
 
-* 2.3.1 論理削除状態について<a id="2-3-1"></a>
+* 注意事項： 論理削除状態について<a id="2-3-1"></a>
 論理削除状態(論理削除が有効な状態で削除した状態)では完全にバックアップデータが消えず、対象 VM と  Recovery Services コンテナーの紐づけが解除されません。その際は下記 URL を参考にして論理削除状態のバックアップアイテムを完全に削除してください。
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items 
 
@@ -173,5 +173,20 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-clou
 ![Change_RSV_for_VM_19](https://user-images.githubusercontent.com/71251920/153033202-587b9bd3-bcd5-41a6-a10f-d6a1bffdbca4.jpg)
 
 
+## 3. バックアップデータを残しつつリソースグループを変更しない方法<a id="2"></a>
+こちら Azure Backup のデータをそのまま保存し、VM のリソースグループを変更せずに新しい Recovery Services コンテナーに紐づけることは上述した通り、Recovery Services コンテナーと VM の紐づけは VM のリソースグループ名と VM 名によって行ってるためできません。
+[1. 既存のバックアップデータを [維持] する方法](#1) によって変更後、リソースグループを戻すと元の Recovery Services コンテナーが残っている場合にはもとの Recovery Services コンテナーに紐づいてしまいます。 また、もとの Recovery Services コンテナーが削除された場合には新しい Recovery Services コンテナーとの紐づけが切れ、 Azure VM  のバックアップメニューからはバックアップが構成されていない状態になります。
+
+そのため既存のバックアップデータを一度ディスクとして復元して保存いただくことで可能です。特定の復元ポイントだけを保存しておけばよいという場合はこちらの手順が利用可能です。
+もちろん、すべての復元ポイントからディスクとして復元いただければ、すべての バックアップデータをを保存することは可能です。
+
+#### 手順
+手順としては下記です。
+1. 保存したい復元ポインからディスクとしてリストアする。
+詳細は下記をご覧ください
+・代替案 - Azure VM Backup で取得した復旧ポイントの保持期間の延長について
+https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/#4
+
+2. その後 上述の[2. 既存のバックアップデータを [削除] する方法](#2)によって Recovery Services コンテナーを変更します
 -----------------------------------------------------------
 
