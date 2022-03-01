@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033209-9d8daa07-6052-49e7-ae71-0ba5a7e3a15e.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033202-587b9bd3-bcd5-41a6-a10f-d6a1bffdbca4.jpg">
 <meta property="article:published_time" content="2022-02-09T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-01T11:49:59.120Z">
+<meta property="article:modified_time" content="2022-03-01T11:57:08.060Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta property="article:tag" content="how to">
@@ -122,7 +122,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6704c4a7-9762-507a-bd14-497b7c1b27cb%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8BRecovery+Services+%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%BC%E3%81%AE%E5%A4%89%E6%9B%B4%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FChange_RSV_for_VM%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FChange_RSV_for_VM.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FChange_RSV_for_VM.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="cl082in3f00090npd1o1kf0i8" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="cl082rtq800090mo255vfcpdd" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -184,13 +184,13 @@
 <p>2-1. 新たにバックアップを取得したい別の Recovery Service コンテナーにて該当の VM のバックアップを有効化<br>    (この時点で別の Recovery Service コンテナーのバックアップ構成の仮想マシン選択欄に該当の VM が表示されるようになります)<br><img src="https://user-images.githubusercontent.com/71251920/153033209-9d8daa07-6052-49e7-ae71-0ba5a7e3a15e.jpg" alt="Change_RSV_for_VM_18"></p>
 <p>2-2. 今すぐバックアップにてバックアップ完了。<br>新たなRecovery Service コンテナーにて問題なくバックアップできることを確認<br><img src="https://user-images.githubusercontent.com/71251920/153033202-587b9bd3-bcd5-41a6-a10f-d6a1bffdbca4.jpg" alt="Change_RSV_for_VM_19"></p>
 <h2 id="3-バックアップデータを残しつつリソースグループを変更しない方法"><a href="#3-バックアップデータを残しつつリソースグループを変更しない方法" class="headerlink" title="3. バックアップデータを残しつつリソースグループを変更しない方法"></a>3. バックアップデータを残しつつリソースグループを変更しない方法<a id="3"></a></h2><p><strong>Azure Backup のデータをそのまま保存し、VM のリソースグループを変更せずに新しい Recovery Services コンテナーに紐づけることは上述した通り、Recovery Services コンテナーと VM の紐づけは VM のリソースグループ名と VM 名によって行ってるためできません。</strong><br><a href="#1">1. 既存のバックアップデータを [維持] する方法</a> によって変更後、リソースグループを戻すと元の Recovery Services コンテナーが残っている場合にはもとの Recovery Services コンテナーに紐づいてしまいます。<br>また、もとの Recovery Services コンテナーが削除された場合には新しい Recovery Services コンテナーとの紐づけが切れ、 Azure VM のバックアップメニューからはバックアップが構成されていない状態になります。</p>
-<p>そのため、方法としては、<strong>既存のバックアップデータを一度ディスクとして復元して保存いただくことで可能です</strong>。特定の復元ポイントだけを保存しておけばよいという場合はこちらの手順が利用可能です。<br>もちろん、すべての復元ポイントからディスクとして復元いただければ、すべての バックアップデータを保存することは可能です。</p>
+<p>そのため方法としては、<strong>既存のバックアップデータを一度ディスクとして復元して保存いただくことで可能です</strong>。特定の復元ポイントだけを保存しておけばよいという場合はこちらの手順が利用可能です。<br>もちろん、すべての復元ポイントからディスクとして復元いただければ、すべての バックアップデータを保存することは可能です。</p>
 <p>具体的な手順としては下記です。</p>
 <h4 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順<a id="3-1"></a></h4><ol>
-<li><p>保存したい復元ポインからディスクとしてリストアする。<br>詳細は下記をご覧ください<br>・代替案 - Azure VM Backup で取得した復旧ポイントの保持期間の延長について<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/#4">https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/#4</a></p>
-</li>
-<li><p>その後 上述の<a href="#2">2. 既存のバックアップデータを [削除] する方法</a>によって Recovery Services コンテナーを変更する。</p>
-</li>
+<li>保存したい復元ポイントからディスクとしてリストアする。<br>詳細は下記をご覧ください<br>・代替案 - Azure VM Backup で取得した復旧ポイントの保持期間の延長について<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/#4">https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/#4</a></li>
+</ol>
+<ol start="2">
+<li>その後 上述の<a href="#2">2. 既存のバックアップデータを [削除] する方法</a>によって Recovery Services コンテナーを変更する。</li>
 </ol>
 <hr>
 
