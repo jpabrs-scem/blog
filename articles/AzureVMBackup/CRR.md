@@ -53,19 +53,7 @@ CRR 機能が有効になっている場合、「バックアップ アイテム
 
 ・Azure portal を使用して VM を復元する - Azure Backup | Microsoft Docs
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region
-
-![CRR_06](https://user-images.githubusercontent.com/71251920/153718065-8091ed96-abc2-46e0-b523-0ee487d5d2df.png)
-
-* 上記ドキュメント上には 15 分と記載がありますが、同期が行われる間隔が 15 分であり、***レプリケーションが 15 分で完了するということではございません***。
-
-また、下記英語版ドキュメントにおいて記載がある通り、プライマリリージョンの RPO が 24 時間なのに対し、セカンダリリージョンの RPO は 36 時間となりますので、こちらもご留意ください。
-（公開ドキュメントは英語版からアップデートされ、ローカル言語へは順次翻訳が行われますため、現在内容に差がある状況となっております）
-なお、セカンダリ リージョンへのレプリケート時間については SLA はございません。
-
-・(英語版) Restore VMs by using the Azure portal - Azure Backup | Microsoft Docs
-https://docs.microsoft.com/en-us/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region
-> 機械翻訳：“現在、セカンダリーリージョンのRPOは36時間です。これは、**プライマリー地域のRPOが24時間で、プライマリーからセカンダリー地域へのバックアップデータのレプリケーションに最大12時間かかる**ことがあるためです。”
-![CRR_07](https://user-images.githubusercontent.com/71251920/153718064-9940c074-bcb8-4993-b6c6-c180fbea47d9.png)
+> 現在、セカンダリ リージョンの RPO は "36 時間" です。 これは、プライマリ リージョンの RPO が "24 時間" であり、プライマリからセカンダリ リージョンへのバックアップ データのレプリケーションに最大 "12 時間" かかることがあるためです。
 
 ## <a id="3"></a> 3. セカンダリ リージョンへ復元ポイントがいつレプリケート完了したか、Azure ポータル画面上でどのように確認すればよいのか？
 Recovery Services コンテナー ＞ バックアップ アイテム ＞ 2 次領域 ＞ Azure Virtual Machine ＞ 対象の仮想マシンを選択し、「復元ポイント」欄に、対象の復元ポイントが表示されていれば、 2 次領域へのレプリケートは完了していると判断できます。
