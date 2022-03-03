@@ -121,3 +121,6 @@ Coffee Break ミーティングでは、業務に関連のない雑談もして�
 通勤時間がなくなるので、その分を有意義に使えます。
 宅配の荷物が受け取れる。
 
+### 関連記事
+・ABRS & SCEM チームについて
+https://jpabrs-scem.github.io/blog/information/team-introduction/
