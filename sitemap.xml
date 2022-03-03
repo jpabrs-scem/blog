@@ -86,20 +86,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
-    
-    <lastmod>2022-03-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
-    
-    <lastmod>2022-03-03</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
     
     <lastmod>2022-03-03</lastmod>
@@ -192,6 +178,20 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
+    
+    <lastmod>2022-03-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
+    
+    <lastmod>2022-03-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
     
     <lastmod>2022-03-03</lastmod>
     
