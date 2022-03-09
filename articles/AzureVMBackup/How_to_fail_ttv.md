@@ -22,7 +22,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 ## 目次
 -----------------------------------------------------------
 [1. Transfer to vault を失敗させる方法概略](#1)
-[2. ransfer to vault を失敗させる方法の注意点](#2)
+[2. Transfer to vault を失敗させる方法の注意点](#2)
 [3. Transfer to vault を失敗させる手順](#3)
 -----------------------------------------------------------
 
@@ -31,7 +31,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 Azure VM Backup を実行し、Take Snapshot 完了後に該当の Azure VM のリストアポイントコレクション (ローカルスナップショットのメタデータ) を削除します。
 そうすることで Transfer to vault が失敗し、バックアップストレージ(標準コンテナー/ Recovery Services コンテナー)への転送が失敗します。
 
-## 2. ransfer to vault を失敗させる方法の注意点<a id="2"></a>
+## 2. Transfer to vault を失敗させる方法の注意点<a id="2"></a>
 1. この方法ではリストアポイントコレクションを削除するため、リストアポイントコレクションを削除する前に取得された復元ポイントおよび該当のバックアップ ジョブで作成された復元ポイントではインスタントリストアが出来なくなります。
 つまり、回復の種類が "スナップショット" のものは下記のように ***"UserErrorInstantRpNotFound" と復元するためのリソースがない旨のエラーメッセージがでて復元ができなくなります***。
 "スナップショットと標準コンテナー" のものは バックアップストレージ からの復元が可能です。
