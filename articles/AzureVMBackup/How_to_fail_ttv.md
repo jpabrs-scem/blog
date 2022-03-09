@@ -15,7 +15,7 @@ disableDisclaimer: false
 ・Transfer to vault フェーズ - Azure VM Backup の通信要件や処理の流れについて
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-2
 
-また下記幣ブログの記事ではTake Snapshot フェーズを失敗させる方法をご案内しております。
+また下記幣ブログの記事では Take Snapshot フェーズを失敗させる方法をご案内しております。
 ・Azure VM Backup を意図的に失敗させる方法
 https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 
@@ -39,7 +39,7 @@ Azure VM Backup を実行し、Take Snapshot 完了後に該当の Azure VM の�
 2. この方法を実施したあと下記のようなエラーが発生しますが、再度バックアップを実行することにより解消されます。
 ![how_to_fail_ttv_00](https://user-images.githubusercontent.com/71251920/157502733-09a19fbb-23f5-430a-a334-55591de41b52.png)
 
-その場合、"UserErrorInstantRpNotFound" となっていた復元ポイントは **無効/Invalid** と表示されます。
+その場合、復元した際に **"UserErrorInstantRpNotFound"** となっていた復元ポイントは **無効/Invalid** と表示されます。
 ![how_to_fail_ttv_02](https://user-images.githubusercontent.com/71251920/157502744-47f216d0-2f8a-4fa4-a72c-79f78a80a546.png)
 
 
