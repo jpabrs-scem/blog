@@ -10,9 +10,9 @@ disableDisclaimer: false
 <!-- more -->
 皆様こんにちは、Azure Backup サポートの 荘司 です。
 今回は、**Azure VM Backup における転送フェーズを意図的に失敗させる方法**について、ご案内いたします。
-*転送フェーズとは Transfer to vault フェーズを指します。
+*転送フェーズとは Transfer data to vault フェーズを指します。
 詳細については幣ブログの関連のページをご覧ください
-・Transfer to vault フェーズ - Azure VM Backup の通信要件や処理の流れについて
+・Transfer data to vault フェーズ - Azure VM Backup の通信要件や処理の流れについて
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-2
 
 また下記幣ブログの記事では Take Snapshot フェーズを失敗させる方法をご案内しております。
@@ -21,17 +21,17 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 
 ## 目次
 -----------------------------------------------------------
-[1. Transfer to vault を失敗させる方法概略](#1)
-[2. Transfer to vault を失敗させる方法の注意点](#2)
-[3. Transfer to vault を失敗させる手順](#3)
+[1. Transfer data to vault を失敗させる方法概略](#1)
+[2. Transfer data to vault を失敗させる方法の注意点](#2)
+[3. Transfer data to vault を失敗させる手順](#3)
 -----------------------------------------------------------
 
 
-## 1. Transfer to vault を失敗させる方法概略<a id="1"></a>
+## 1. Transfer data to vault を失敗させる方法概略<a id="1"></a>
 Azure VM Backup を実行し、Take Snapshot 完了後に該当の Azure VM のリストアポイントコレクション (ローカルスナップショットのメタデータ) を削除します。
-そうすることで Transfer to vault が失敗し、バックアップストレージ(標準コンテナー/ Recovery Services コンテナー)への転送が失敗します。
+そうすることで Transfer data to vault が失敗し、バックアップストレージ(標準コンテナー/ Recovery Services コンテナー)への転送が失敗します。
 
-## 2. Transfer to vault を失敗させる方法の注意点<a id="2"></a>
+## 2. Transfer data to vault を失敗させる方法の注意点<a id="2"></a>
 1. この方法ではリストアポイントコレクションを削除するため、リストアポイントコレクションを削除する前に取得された復元ポイントおよび該当のバックアップ ジョブで作成された復元ポイントではインスタントリストアが出来なくなります。
 つまり、回復の種類が "スナップショット" のものは下記のように ***"UserErrorInstantRpNotFound" と復元するためのリソースがない旨のエラーメッセージがでて復元ができなくなります***。
 "スナップショットと標準コンテナー" のものは バックアップストレージ からの復元が可能です。
@@ -43,7 +43,7 @@ Azure VM Backup を実行し、Take Snapshot 完了後に該当の Azure VM の�
 ![](https://user-images.githubusercontent.com/71251920/157502744-47f216d0-2f8a-4fa4-a72c-79f78a80a546.png)
 
 
-## 3. Transfer to vault を失敗させる手順<a id="3"></a>
+## 3. Transfer data to vault を失敗させる手順<a id="3"></a>
 1. 失敗させたい VM にて今すぐバックアップを実行します。
 
 2. バックアップ ジョブより該当のジョブの詳細を開き、サブタスクが以下の状態となっていることを確認します。(この状態になるのに通常 5 ~ 10 分程度かかります)

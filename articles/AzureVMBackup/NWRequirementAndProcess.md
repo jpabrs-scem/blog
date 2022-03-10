@@ -17,7 +17,7 @@ disableDisclaimer: false
  [1-1.参考 URL](#1-1)
 [2. Azure VM Backup の処理の流れ](#2)
  [2-1. Take Snapshot フェーズ](#2-1)
- [2-2. Transfer to vault フェーズ](#2-2)
+ [2-2. Transfer data to vault フェーズ](#2-2)
  [2-3. 参考 URL](#2-3)
 [3. よくいただくお問い合わせ](#3)
 -----------------------------------------------------------
@@ -83,7 +83,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
 https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3
 
 
-Azure VM Backupでは バックアップ ジョブの画面で確認できるように、順番に Take Snapshot と Transfer to vault の 2 つの大きなフェーズ  (Sub Task) がございます。これら 2 つのフェーズが完了して初めてバックアップ ジョブとして完了となります。
+Azure VM Backupでは バックアップ ジョブの画面で確認できるように、順番に Take Snapshot と Transfer data to vault の 2 つの大きなフェーズ  (Sub Task) がございます。これら 2 つのフェーズが完了して初めてバックアップ ジョブとして完了となります。
 ![](https://user-images.githubusercontent.com/71251920/154117538-c4961564-fd9e-4e77-91ee-bff235da3704.png)
 
 
@@ -98,10 +98,10 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
 
 なお、前回のバックアップ ジョブが Take Snapshot フェーズの場合、後続のバックアップ ジョブは失敗する仕様となっております。
 
-### <a id="2-2"></a>2.2 Transfer to vault フェーズ
+### <a id="2-2"></a>2.2 Transfer data to vault フェーズ
 つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのため**バックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンド**で (ローカル物理ホスト上から物理的に離れた同一リージョン内にある) Recovery Services コンテナーへ転送されます。
 
-なお、前回のバックアップ ジョブが Transfer to vault フェーズの場合、後続のバックアップ ジョブの Transfer to vault フェーズは Skip される仕様となっており、リトライなどは実施されません。
+なお、前回のバックアップ ジョブが Transfer data to vault フェーズの場合、後続のバックアップ ジョブの Transfer data to vault フェーズは Skip される仕様となっており、リトライなどは実施されません。
 
 #### <a id="2-3"></a>2.3 参考 URL
 ・Azure VM バックアップの概要 - バックアップ プロセス
@@ -143,5 +143,5 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
 >Q. Azure VM Backup のバックアップデータ転送トラフィックが VM に与える影響を懸念しているがベストプラクティスはあるか？
 >>A. Azure Backup のデータ転送は Azure のバックアップエンド側で行われ VM の 仮想 NIC を経由しないためバックアップデータ転送トラフィックが VM に与える影響はございません。
 参考
-・Transfer to vaultフェーズ Azure VM Backup の 通信要件(本ページ)
+・Transfer data to vaultフェーズ Azure VM Backup の 通信要件(本ページ)
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-2
