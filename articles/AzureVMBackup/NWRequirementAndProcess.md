@@ -120,7 +120,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#-------
 
 
 
-## <a id="3"></a>よくいただくお問い合わせ
+## <a id="3"></a>3. よくいただくお問い合わせ
 これらに関連してよくいただくお問い合わせと回答を記載させていただきます。
 
 
