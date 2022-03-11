@@ -90,8 +90,8 @@ Azure VM Backupでは バックアップ ジョブの画面で確認できるよ
 ### <a id="2-1"></a>2.1 Take Snapshot フェーズ
 まず、オンライン バックアップの場合、バックアップ拡張機能によって OS 内部と連携し静止点をとり、スナップショット データを取得します。その際のスナップショット データはユーザーからは見えない (マネージドな) ローカル物理ホスト上で取得します。
 オフライン バックアップの場合 は OS 内部と連携せずスナップショットを取得します。
-Azure VM Backup において VM 内部での処理は Take Snapshot フェーズのみでございます。
-そのため、Take Snapshot フェーズが完了すれば VM の起動や運用によってはアップデートやDB の再開などを行っていただいてもかまいません。
+Azure VM Backup において VM と連携する処理は Take Snapshot フェーズのみでございます。
+そのため、Take Snapshot フェーズが完了すれば VM の起動や運用によってはアップデートや DB の再開などを行っていただいてもかまいません。
 Take Snapshot フェーズが終わっていれば有事の際にはインスタントリストア機能を用いてリストアすることも可能です。
 ・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
