@@ -73,7 +73,6 @@ https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shado
 >Error Code ：ExtensionFailedVssServiceInBadState
 >Error Message ：Snapshot operation failed due to VSS (Volume Shadow Copy) service in bad state
 
-ご参考にまでに、下記のようなエラーが出ることがございます。
 >Error Code ：ExtensionFailedVssWriterInBadState
 >Error Message ：Snapshot operation failed due to VSS Writers in bad state.
 
