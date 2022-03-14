@@ -49,7 +49,7 @@ disableDisclaimer: false
 
 ### 1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ<a id="1-1"></a>
 Azure VM Backupの下記のようなエラーが出ることがございます。
-その場合には VSS 観点での調査が必要であるため、そのため上記に加えて下記のログの採取もお願いします。
+その場合には VSS 観点での調査が必要であるため、そのため上記 [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記のログの採取もお願いします。
 
 >Error Code ：Snapshot operation failed due to VSS Writers in bad state.
 Error Message ：ExtensionFailedVssWriterInBadState
