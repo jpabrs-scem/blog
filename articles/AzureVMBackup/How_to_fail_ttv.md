@@ -27,6 +27,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 -----------------------------------------------------------
 
 
+
 ## 1. Transfer data to vault を失敗させる方法概略<a id="1"></a>
 Azure VM Backup を実行し、Take Snapshot 完了後に該当の Azure VM のリストアポイントコレクション (ローカルスナップショットのメタデータ) を削除します。
 そうすることで Transfer data to vault が失敗し、バックアップストレージ(標準コンテナー/ Recovery Services コンテナー)への転送が失敗します。
