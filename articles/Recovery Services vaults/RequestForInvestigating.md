@@ -47,7 +47,7 @@ disableDisclaimer: false
 >/var/log/syslog*
 >/var/log/waagent.*
 
-### 1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ
+### 1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ<a id="1-1"></a>
 Azure VM Backupの下記のようなエラーが出ることがございます。
 その場合には VSS 観点での調査が必要であるため、そのため上記に加えて下記のログの採取もお願いします。
 
