@@ -97,7 +97,7 @@ https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 
 
 
-改善策としては、下記の URL をご参考にして対応いただければと存じます。
+改善策としては、下記の URL をご参考にして**VSS の再起動、および VM の再起動の対応いただければと存じます。**
 ・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssWriterInBadState - VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state
 
