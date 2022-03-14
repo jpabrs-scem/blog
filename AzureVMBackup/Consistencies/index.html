@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153444335-2c65943d-8f13-4c6d-b2d0-7bf4283b6fc4.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153444341-0b61bf0e-5b58-4040-a0ef-c0d213a2187b.png">
 <meta property="article:published_time" content="2022-02-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-14T15:24:49.038Z">
+<meta property="article:modified_time" content="2022-03-14T15:54:18.719Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
@@ -106,7 +106,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f861e6f5-56df-57ae-804b-37d8fc5ea69e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%95%B4%E5%90%88%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FConsistencies%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FConsistencies.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FConsistencies.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="cl0qux006003a0mn94iwb3z20" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="cl0qvyx6x003a0mk68lingcv1" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -146,7 +146,7 @@
 <p>・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssServiceInBadState - VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state</a></p>
 <p> VSS 観点で、なぜ VSS が bad state になったか、に関する根本原因の調査のためには下記 URL 先のログの採取をお願いします。<br> <strong>可能な限り “[A]”が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。</strong><br>・VSS エラーが発生している事象の調査<br><a target="_blank" rel="noopener" href="https://jpwinsup.github.io/mslog/storage/vss/vss-error.html">https://jpwinsup.github.io/mslog/storage/vss/vss-error.html</a></p>
 <h4 id="・VSS-ライターのエラーにより警告付き完了となる-アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている"><a href="#・VSS-ライターのエラーにより警告付き完了となる-アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている" class="headerlink" title="・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている"></a>・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている</h4><p>こちら根本原因の特定には VSS および VSS ライター観点での調査が必要となります。<br> Azure Backup チームでは どうして VSS ライター が失敗したのか、に関する根本原因の特定については可能な範囲での調査をさせていただきます。<br>　一次調査の結果、VSS ライターのエラーを出しているアプリケーションが 弊社 SQL Server 等弊社製品の場合は担当チーム (SQL Server 等) で対応が可能でございますが、お客様の契約次第では有償対応が必要となることがございます。<br>　一方、VSS ライターのエラーを出しているアプリケーションが他社製品の場合、ご利用のアプリケーション提供ベンダーまでお問い合わせいただくようお願い申し上げます。</p>
-<p>改善策としては、下記の URL をご参考にして対応いただければと存じます。<br>・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssWriterInBadState - VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state</a></p>
+<p>改善策としては、下記の URL をご参考にして<strong>VSS の再起動、および VM の再起動の対応いただければと存じます。</strong><br>・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssWriterInBadState - VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state</a></p>
 <h3 id="1-2-SQL-Server-のインストールされた-Windows-OS-のバックアップについて"><a href="#1-2-SQL-Server-のインストールされた-Windows-OS-のバックアップについて" class="headerlink" title="1.2  SQL Server のインストールされた Windows OS のバックアップについて"></a>1.2  SQL Server のインストールされた Windows OS のバックアップについて<a id="1-2"></a></h3><p>こちらよくいただくお問い合わせとして次の通りお伝えします。</p>
 <blockquote>
 <p>・SQL Server のインストールされた Windows OS をAzure VM Backup でバックアップすることは可能か、また何か考慮点があるか？<br>*ここで SQL Server とは Microsoft SQL Server を指します。</p>
