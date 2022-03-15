@@ -35,8 +35,8 @@ NIC を指定できることが分かります。
 ・既存の "ディスク" リソースを使用し、仮想マシンを作成する。
 https://docs.microsoft.com/ja-jp/archive/blogs/jpaztech/convertvhdtomanageddiskdeployvm#2
 
-※上記リンクのコマンドは **AzureRm** で記載されてますが、Azモジュールをご利用の場合は Az に変換して実行ください。
-　　　例）
+※上記リンクのコマンドは **AzureRm** で記載されてますが、Azモジュールをご利用の場合は 以下の例のように **Az** に変換して実行ください。
+　　　
 >#ログインとサブスクリプション指定
 Login-**AzureRm**Account →　Login-**Az**Account
 Select-**AzureRm**Subscription -SubscriptionId $SubscriptionId　→　Select-**Az**Subscription -SubscriptionId $SubscriptionId
