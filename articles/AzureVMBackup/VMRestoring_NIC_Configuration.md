@@ -36,14 +36,15 @@ NIC を指定できることが分かります。
 https://docs.microsoft.com/ja-jp/archive/blogs/jpaztech/convertvhdtomanageddiskdeployvm#2
 
 ※上記リンクのコマンドは **AzureRm** で記載されてますが、Azモジュールをご利用の場合は Az に変換して実行ください。
-　　　例）# ログインとサブスクリプション指定
-　　　　Login-**AzureRm**Account →　Login-**Az**Account
-　　　　Select-**AzureRm**Subscription -SubscriptionId $SubscriptionId　→　Select-**Az**Subscription -SubscriptionId $SubscriptionId
+　　　例）
+>#ログインとサブスクリプション指定
+Login-**AzureRm**Account →　Login-**Az**Account
+Select-**AzureRm**Subscription -SubscriptionId $SubscriptionId　→　Select-**Az**Subscription -SubscriptionId $SubscriptionId
 
 上記の URL 先の $NIC = New-AzNetworkInterface ($NIC = New-AzureRmNetworkInterface) にて新規 VM を作成する際の NIC を指定することができます。
 既存の NIC を追加するには下記コマンドをご利用ください。
 
-#既存の NIC を追加
+>#既存の NIC を追加
 $Nic = Get-AzNetworkInterface -ResourceGroupName $ResourceGroupName -Name $NicName
 $Vm = Add-AzVMNetworkInterface -VM $Vm -NetworkInterface $Nic
 
