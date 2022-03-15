@@ -17,30 +17,40 @@ Azure VM Backup ではディスクの情報をバックアップしますが、N
 
 
 ### 代替案
-次のような代替案がございます。
-(手順１) Azure VM バックアップのリストア メニューからディスクとして一旦復元する。
-(手順２) ディスクから VM を作成する。
-	  その際に既存の任意の設定をいれた NIC を選択する。
+#### 既存のパブリック IP を設定する場合
+既存のパブリック IP を設定する場合には次のような代替案がございます。
+(手順1) Azure VM バックアップのリストア メニューからディスクとして一旦復元する。
+(手順2) ディスクから VM を作成する。
+	  その際に既存のパブリック IP を選択する。
 	　データディスクがある場合は復元したディスクを選択しアタッチする。(LUN 番号が入れ替わらないようにご注意ください)
 
-(手順２) に関しましては、 Azure Portal からの操作の場合、下記のような手順で可能でございます。
+(手順2) に関しましては、 Azure Portal からの操作の場合、下記のような手順で可能でございます。
 NIC を指定できることが分かります。
 ![DiskからのVM作成](https://user-images.githubusercontent.com/71251920/137943407-1dad9711-f799-4921-9365-17f1ac006f3b.png)
 
 
-### <リストアされたディスク命名規則について>
-ディスクの復元が完了しますとリソース グループに OS ディスクとデータ ディスク (ある場合) が以下の命名規則で作成されます。
+#### 既存の NIC を設定する場合
+(手順1) Azure VM バックアップのリストア メニューからディスクとして一旦復元する。
+(手順2) Azure PowerShellを用いてディスクからの VM 作成時に利用する既存の NIC を指定して作成する。
+・既存の "ディスク" リソースを使用し、仮想マシンを作成する。
+https://docs.microsoft.com/ja-jp/archive/blogs/jpaztech/convertvhdtomanageddiskdeployvm#2
 
->    <VM名> - osdisk - yyyymmdd - hhmmss
->    <VM名> - datadisk - <lun 番号> - yyyymmdd – hhmmss
+※上記リンクのコマンドは **AzureRm** で記載されてますが、Azモジュールをご利用の場合は Az に変換して実行ください。
+　　　例）# ログインとサブスクリプション指定
+　　　　Login-**AzureRm**Account →　Login-**Az**Account
+　　　　Select-**AzureRm**Subscription -SubscriptionId $SubscriptionId　→　Select-**Az**Subscription -SubscriptionId $SubscriptionId
 
+上記の URL 先の $NIC = New-AzNetworkInterface ($NIC = New-AzureRmNetworkInterface)にて新規 VM を作成する際の NIC を指定することができます。
+既存の NIC を追加するには下記コマンドをご利用ください。
+# 既存の NIC を追加
+$Nic = Get-AzNetworkInterface -ResourceGroupName $ResourceGroupName -Name $NicName
+$Vm = Add-AzVMNetworkInterface -VM $Vm -NetworkInterface $Nic
 
-なお、VM 名に - が入っている場合には省略されます。
-例えば、Windows2019-Disk-Test という VM 名の場合は下記のディスク名で復元されます。
-　　　
->windows2019disktest-osdisk–20210414-125726
+*リストアされるディスクの命名規則については参考情報のリンク先をご覧ください。
 
 ### 参考情報
+・Azure VM Backupでリストアされるディスク名に関して
+https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/
 ・Azure portal で Azure VM データを復元する方法 - ディスクを復元する
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks
 
