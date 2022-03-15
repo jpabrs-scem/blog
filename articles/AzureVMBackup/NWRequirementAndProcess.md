@@ -100,7 +100,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
 なお、前回のバックアップ ジョブが Take Snapshot フェーズの場合、後続のバックアップ ジョブは失敗する仕様となっております。
 
 ### <a id="2-2"></a>2.2 Transfer data to vault フェーズ
-つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのため**バックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーて転送されるのではなく、バックエンド**で (ローカル物理ホスト上から物理的に離れた同一リージョン内にある) Recovery Services コンテナーへ転送されます。
+つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのため**バックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーへ転送されるのではなく、バックエンドで (ローカル物理ホスト上から物理的に離れた同一リージョン内にある) Recovery Services コンテナーへ転送されます。**
 
 なお、前回のバックアップ ジョブが Transfer data to vault フェーズの場合、後続のバックアップ ジョブの Transfer data to vault フェーズは Skip される仕様となっており、リトライなどは実施されません。
 
