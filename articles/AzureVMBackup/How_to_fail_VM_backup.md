@@ -110,7 +110,7 @@ Backup 対象の VM にリモートログインし、Services を開き、下記
 ・エラーの発生確認完了後は、 VM に再度ログインして頂き、各 Agent の Service properties 画面で、Start up type を **"Automatic"** に、Service Status で **"Start"** を選択し、 Agent を再度起動させてください。
 
 
-#### 補足
+#### 補足 Windows Firewall を用いた方法
 なお、Windows 内部 のローカルファイアウォールから 宛先 168.63.129.16 宛の通信をブロックしていただくことでも同様にエラーを発生させることが可能です。
 
 >リモートアドレス (宛先 IP) :  168.63.129.16 
