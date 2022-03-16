@@ -110,6 +110,28 @@ Backup 対象の VM にリモートログインし、Services を開き、下記
 ・エラーの発生確認完了後は、 VM に再度ログインして頂き、各 Agent の Service properties 画面で、Start up type を **"Automatic"** に、Service Status で **"Start"** を選択し、 Agent を再度起動させてください。
 
 
+#### 補足
+なお、Windows 内部 のローカルファイアウォールから 宛先 168.63.129.16 宛の通信をブロックしていただくことでも同様にエラーを発生させることが可能です。
+
+>リモートアドレス (宛先 IP) :  168.63.129.16 
+>操作 : ブロック
+>上記以外はすべて 任意 
+
+Windows Server　2016 をご利用の場合は虫眼鏡窓から "Firewall" と検索いただくことで設定可能です。
+![WindowsFW_01](https://user-images.githubusercontent.com/71251920/158552820-74147994-3072-4ee8-ae17-c6b92f9b7e36.png)
+
+
+下記例ではすでに、"Block 168.63.129.16" という規則を作成した後の画面ショットです。
+設定内容は上述の通りでございます。送信の規則 → 新しい規則 から設定ください。
+![WindowsFW_02](https://user-images.githubusercontent.com/71251920/158552815-e3b99fb6-78ec-4c3e-ba4e-616777a25e03.png)
+
+なお、 168.63.129.16 への通信は特殊な通信のため、NSG では制御することができません。
+下記ご参考にしてくだされば幸いです。
+・1. Azure VM Backup の 通信要件について - Azure VM Backup の通信要件や処理の流れについて
+https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1
+
+
+
 ## 2．バックアップを故意に失敗させる方法 (Linux VM の場合) (所要時間 : 2時間～6時間) <a id="2"></a>
 
 ### 2.1. 環境
