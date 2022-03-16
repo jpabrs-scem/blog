@@ -1,5 +1,5 @@
 ---
-title: ABRS & SCEM チームについて ~リモートワークでの働きかた~
+title: ABRS チームについて ~リモートワークでの働きかた~
 date: 2022-03-04 12:00:00
 tags:
   - Information
