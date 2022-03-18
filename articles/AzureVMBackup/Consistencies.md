@@ -3,6 +3,7 @@ title: Azure VM Backupにおける整合性について
 date: 2022-02-11 12:00:00
 tags:
   - Azure VM Backup
+  - how to
 disableDisclaimer: false
 ---
 

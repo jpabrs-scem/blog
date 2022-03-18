@@ -3,6 +3,7 @@ title: 「Azure Monitor を使用した組み込みのアラート」を利用�
 date: 2022-01-24 12:00:00
 tags:
   -  Recovery Services vaults
+  - how to
 disableDisclaimer: false
 ---
 
