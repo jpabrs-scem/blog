@@ -21,6 +21,11 @@ VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Re
 この状態で Backup 取得をしようとすると、VM agent と通信できないためにエラー (Error Code ”UserErrorGuestAgentStatusUnavailable”) が発生し、Backup が失敗となります。
 ![How_to_Backup_Fail](https://user-images.githubusercontent.com/71251920/142736316-5995d329-63d1-4b63-acd5-7f3da9f90cf9.png)
 
+*VM 電源状態 がオフライン状態であればこの方法は使えません。
+下記ご参考になれば幸いです。
+・Azure VM Backup では オフライン バックアップができるのか
+https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
+
 ## バックアップを故意に失敗させる方法 (手順概略)
 ・「バックアップを故意に失敗させる方法 (Windows VM の場合) 」
 >	1.Backup 対象の VM にリモート ログイン
@@ -62,11 +67,6 @@ VM名 : vm-BackupFailTest-win2016
 OS : Windows (Windows Server 2016 Datacenter) Version 1607
 Recovery Service コンテナー名 : vault-BackupFailTest
 VM 電源状態 : オンライン (起動状態)
-
-*VM 電源状態 がオフライン状態であればこの方法は使えません。
-下記ご参考になれば幸いです。
-・Azure VM Backup では オフライン バックアップができるのか
-https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
 
 ### 1.2.手順概略 
 "サービス" から プロセス "RdAgent"、"Windows Azure Guest Agent" を停止し、スタートアップを無効化しバックアップを実行します。
