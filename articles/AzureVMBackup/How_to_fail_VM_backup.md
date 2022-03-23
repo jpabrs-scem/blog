@@ -61,6 +61,12 @@ VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Re
 VM名 : vm-BackupFailTest-win2016
 OS : Windows (Windows Server 2016 Datacenter) Version 1607
 Recovery Service コンテナー名 : vault-BackupFailTest
+VM 電源状態 : オンライン (起動状態)
+
+*VM 電源状態 がオフライン状態であればこの方法は使えません。
+下記ご参考になれば幸いです。
+・Azure VM Backup では オフライン バックアップができるのか
+https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
 
 ### 1.2.手順概略 
 "サービス" から プロセス "RdAgent"、"Windows Azure Guest Agent" を停止し、スタートアップを無効化しバックアップを実行します。
