@@ -21,7 +21,7 @@ VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Re
 この状態で Backup 取得をしようとすると、VM agent と通信できないためにエラー (Error Code ”UserErrorGuestAgentStatusUnavailable”) が発生し、Backup が失敗となります。
 ![How_to_Backup_Fail](https://user-images.githubusercontent.com/71251920/142736316-5995d329-63d1-4b63-acd5-7f3da9f90cf9.png)
 
-*VM 電源状態 がオンライン状態でなければこの方法は使えません。オフライン状態では成功してい舞います。そのため、必ずオンライン (電源起動) 状態でご実施ください。
+*VM 電源状態 がオンライン状態でなければこの方法は使えません。オフライン状態では成功してしまいます。そのため、必ずオンライン (電源起動) 状態でご実施ください。
 下記ご参考になれば幸いです。
 ・Azure VM Backup では オフライン バックアップができるのか
 https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
