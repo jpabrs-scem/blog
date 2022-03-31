@@ -29,7 +29,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 >Internal error code 0x80990EF2 
 
 *** ＜DPMコンソールのエラー画面サンプル＞ ***
-![VMware_Error_332623_01](https://user-images.githubusercontent.com/71251920/161022695-3e7da576-4708-442b-800a-45d94a32f307.png)
+![](https://user-images.githubusercontent.com/71251920/161022695-3e7da576-4708-442b-800a-45d94a32f307.png)
 
 
 
@@ -91,7 +91,7 @@ Windows Registry Editor Version 5.00
 "IgnoreCertificateValidation"=dword:00000001
 ```
 
-②そのファイルを DisableSecureAuthentication.reg という名前で DPM、MABSサーバーに保存します。
+②そのファイルを DisableSecureAuthentication.reg という名前で DPM、MABS サーバーに保存します。
 
 ③ファイルをダブルクリックして、レジストリ エントリをアクティブ化します。
 
