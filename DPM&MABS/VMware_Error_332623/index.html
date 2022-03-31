@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/161022695-3e7da576-4708-442b-800a-45d94a32f307.png">
 <meta property="article:published_time" content="2022-03-31T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-31T09:48:11.278Z">
+<meta property="article:modified_time" content="2022-03-31T21:00:40.648Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="DPM &#x2F; MABS">
@@ -105,7 +105,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+996cb79c-0486-5419-8fcd-5dc8db5768c3%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BDPM%E3%81%A8MABS%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97vCenter+Server%E3%81%AB%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B%E6%99%82%E3%81%AB%E3%80%81%E3%80%8CVMWare+Server%E3%81%A8%E9%80%9A%E4%BF%A1%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84%E3%80%8DError+33623+%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88%E3%81%AE%E5%AF%BE%E5%87%A6%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FDPM%26MABS%2FVMware_Error_332623%2F%29%0A*+Content+Source%3A+%5Barticles%2FDPM%26MABS%2FVMware_Error_332623.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FDPM%26MABS%2FVMware_Error_332623.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/" data-id="cl1etdkrf001k0orm7khuez0u" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/" data-id="cl1fhedy700130nph67ikch1q" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -123,10 +123,11 @@
 <p>*** ＜DPMコンソールのエラー画面サンプル＞ ***<br><img src="https://user-images.githubusercontent.com/71251920/161022695-3e7da576-4708-442b-800a-45d94a32f307.png"></p>
 <p>上記エラーを解消するためのサポートチケットを起票する前に、まず下記 2 つの設定を確認することを推奨します。</p>
 <h2 id="2-【対処方法】"><a href="#2-【対処方法】" class="headerlink" title="2. 【対処方法】"></a>2. 【対処方法】<a id="2"></a></h2><ol>
-<li>vCenter Server 6.7 以降の場合、DPM、MABS サーバーにで TLS 1.2 を有効にします。<br>TLS 1.2を有効化する方法について下記ドキュメントをご参照ください。<br>MABS向けのドキュメント：<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#vmware-vsphere-67-and-70">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#vmware-vsphere-67-and-70</a></li>
+<li>vCenter Server 6.7 以降の場合、DPM、MABS サーバーにで TLS 1.2 を有効にします。</li>
 </ol>
+<p>TLS 1.2を有効化する方法について下記ドキュメントをご参照ください。<br> MABS向けのドキュメント：<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#vmware-vsphere-67-and-70">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#vmware-vsphere-67-and-70</a></p>
 <p>DPM向けのドキュメント：<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/system-center/dpm/back-up-vmware?view=sc-dpm-2019#vmware-vsphere-67">https://docs.microsoft.com/ja-jp/system-center/dpm/back-up-vmware?view=sc-dpm-2019#vmware-vsphere-67</a></p>
-<p>＜実施ステップのサンプル＞<br>①以下のテキストをコピーして、.txt ファイルに貼り付けます。</p>
+<h3 id="実施ステップのサンプル"><a href="#実施ステップのサンプル" class="headerlink" title="実施ステップのサンプル"></a>実施ステップのサンプル</h3><p>①以下のテキストをコピーして、.txt ファイルに貼り付けます。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]</span><br><span class="line">&quot;SystemDefaultTlsVersions&quot;=dword:00000001</span><br><span class="line">&quot;SchUseStrongCrypto&quot;=dword:00000001</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]</span><br><span class="line">&quot;SystemDefaultTlsVersions&quot;=dword:00000001</span><br><span class="line">&quot;SchUseStrongCrypto&quot;=dword:00000001</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]</span><br><span class="line">&quot;SystemDefaultTlsVersions&quot;=dword:00000001</span><br><span class="line">&quot;SchUseStrongCrypto&quot;=dword:00000001</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]</span><br><span class="line">&quot;SystemDefaultTlsVersions&quot;=dword:00000001</span><br><span class="line">&quot;SchUseStrongCrypto&quot;=dword:00000001</span><br></pre></td></tr></table></figure>
 <p>②そのファイルを EnableTLS12.reg という名前で DPM、MABSサーバーに保存します。</p>
 <p>③ファイルをダブルクリックして、レジストリ エントリをアクティブ化します。</p>
@@ -134,7 +135,7 @@
 <li>下記ドキュメントを参照し、HTTPS 証明書の検証を無効化にして、事象改善されるかを確認します。<br>MABS向けのドキュメント：<br>「HTTPS 証明書の検証の無効化」セッションを参照します。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#create-a-secure-connection-to-the-vcenter-server">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#create-a-secure-connection-to-the-vcenter-server</a></li>
 </ol>
 <p>DPM向けのドキュメント：<br>「セキュリティで保護された通信プロトコルを無効にする」セッションを参照します。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/system-center/dpm/back-up-vmware?view=sc-dpm-2019#configure-dpm-to-protect-vmware">https://docs.microsoft.com/ja-jp/system-center/dpm/back-up-vmware?view=sc-dpm-2019#configure-dpm-to-protect-vmware</a></p>
-<p>＜実施ステップのサンプル＞<br>①以下のテキストをコピーして、.txt ファイルに貼り付けます。</p>
+<h3 id="実施ステップのサンプル-1"><a href="#実施ステップのサンプル-1" class="headerlink" title="実施ステップのサンプル"></a>実施ステップのサンプル</h3><p>①以下のテキストをコピーして、.txt ファイルに貼り付けます。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]</span><br><span class="line">&quot;IgnoreCertificateValidation&quot;=dword:00000001</span><br></pre></td></tr></table></figure>
 
 <p>②そのファイルを DisableSecureAuthentication.reg という名前で DPM、MABS サーバーに保存します。</p>
