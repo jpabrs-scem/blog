@@ -1,5 +1,5 @@
 ---
-title: DPMとMABSを使用しvCenter Serverに接続する時に、「VMWare Serverと通信できない」Error 33623が発生した場合の対処方法
+title: DPMとMABSを使用しvCenter Serverに接続する時に、「VMWare Serverと通信できない」Error 33623 が発生した場合の対処方法
 date: 2022-03-31 12:00:00
 tags:
   - DPM / MABS 
