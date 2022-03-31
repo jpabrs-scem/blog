@@ -42,7 +42,7 @@ root_tag_generator:
     - System Center
     - Recovery Services vaults
     - MARS Backup 
-    
+    - DPM / MABS 
   sub_tag_limit: 20
 
 # URL
