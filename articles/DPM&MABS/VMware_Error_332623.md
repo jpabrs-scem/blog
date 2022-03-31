@@ -25,9 +25,10 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 
 
 ## 1. 【事象】<a id="1"></a>
-Error ID 33623 
-Internal error code 0x80990EF2 
-＜DPMコンソールのエラー画面サンプル＞
+>Error ID 33623 
+>Internal error code 0x80990EF2 
+
+*** ＜DPMコンソールのエラー画面サンプル＞ ***
 ![VMware_Error_332623_01](https://user-images.githubusercontent.com/71251920/161022695-3e7da576-4708-442b-800a-45d94a32f307.png)
 
 
