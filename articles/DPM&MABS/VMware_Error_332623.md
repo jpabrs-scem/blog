@@ -9,6 +9,7 @@ disableDisclaimer: false
 
 <!-- more -->
 皆様こんにちは、Microsoft Azure Backup ＆ Recovery Services サポートです。
+
 最近 DPM (Data Protection Manager)、MABS (Microsoft Azure Backup Server) を使用し、オンプレミス環境や AVS(Azure VMware Solution) 環境にある VMWare 仮想マシンをアックアップする需要が多くなっています。
 DPM と MABS を VMWare vCenter Server に初期接続する時に、下記のような「VMWare Server と通信できない」エラーが発生した問い合わせがあります。
 
