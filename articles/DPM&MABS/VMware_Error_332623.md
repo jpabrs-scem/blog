@@ -40,6 +40,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/
 
 ## 2. 【対処方法】<a id="2"></a>
 1. vCenter Server 6.7 以降の場合、DPM、MABS サーバーにで TLS 1.2 を有効にします。
+
 TLS 1.2を有効化する方法について下記ドキュメントをご参照ください。
  MABS向けのドキュメント：
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#vmware-vsphere-67-and-70
@@ -47,7 +48,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#
 DPM向けのドキュメント：
 https://docs.microsoft.com/ja-jp/system-center/dpm/back-up-vmware?view=sc-dpm-2019#vmware-vsphere-67
 
-＜実施ステップのサンプル＞
+### 実施ステップのサンプル
 ①以下のテキストをコピーして、.txt ファイルに貼り付けます。
 ```
 Windows Registry Editor Version 5.00
@@ -83,7 +84,7 @@ DPM向けのドキュメント：
 「セキュリティで保護された通信プロトコルを無効にする」セッションを参照します。
 https://docs.microsoft.com/ja-jp/system-center/dpm/back-up-vmware?view=sc-dpm-2019#configure-dpm-to-protect-vmware
 
-＜実施ステップのサンプル＞
+### 実施ステップのサンプル
 ①以下のテキストをコピーして、.txt ファイルに貼り付けます。
 ```
 Windows Registry Editor Version 5.00
