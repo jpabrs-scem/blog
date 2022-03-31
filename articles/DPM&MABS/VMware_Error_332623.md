@@ -3,7 +3,7 @@ title: DPMとMABSを使用しvCenter Serverに接続する時に、「VMWare Ser
 date: 2022-03-31 12:00:00
 tags:
   - DPM / MABS 
-  - how to
+  - TROUBLE SHOOTING
 disableDisclaimer: false
 ---
 
