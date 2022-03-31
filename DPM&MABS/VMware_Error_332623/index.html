@@ -4,24 +4,23 @@
   <meta charset="utf-8">
   
   
-  <title>Azure VM Backup で取得した復旧ポイントの保持期間の延長について | Japan CSS ABRS  Support Blog !!</title>
+  <title>Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法 | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、 Azure VM Backup として取得済の復元ポイントの保持期限を延長できるかという点 についてご案内いたします。 Azure VM Backup 関連のお問い合わせで、以下のようなお問い合わせを多くいただきます。  バックアップ ポリシーに従って取得済の復元ポイントの保持期間を延長することは可能か バックアップ ポリシーに従">
+  <meta name="description" content="皆様こんにちは、Microsoft Azure Backup ＆ Recovery Services サポートです。最近 DPM (Data Protection Manager)、MABS (Microsoft Azure Backup Server) を使用し、オンプレミス環境や AVS(Azure VMware Solution) 環境にある VMWare 仮想マシンをアックアップする需要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Azure VM Backup で取得した復旧ポイントの保持期間の延長について">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/index.html">
+<meta property="og:title" content="Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、 Azure VM Backup として取得済の復元ポイントの保持期限を延長できるかという点 についてご案内いたします。 Azure VM Backup 関連のお問い合わせで、以下のようなお問い合わせを多くいただきます。  バックアップ ポリシーに従って取得済の復元ポイントの保持期間を延長することは可能か バックアップ ポリシーに従">
+<meta property="og:description" content="皆様こんにちは、Microsoft Azure Backup ＆ Recovery Services サポートです。最近 DPM (Data Protection Manager)、MABS (Microsoft Azure Backup Server) を使用し、オンプレミス環境や AVS(Azure VMware Solution) 環境にある VMWare 仮想マシンをアックアップする需要">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151024656-f6589f03-6965-47ad-9848-36742f9e3e7e.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151024649-a76bd670-cc4c-4dc6-9b89-7849ca86f7e2.gif">
-<meta property="article:published_time" content="2022-02-05T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-31T09:31:33.902Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/161022695-3e7da576-4708-442b-800a-45d94a32f307.png">
+<meta property="article:published_time" content="2022-03-10T03:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-31T09:31:33.954Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta property="article:tag" content="how to">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/151024656-f6589f03-6965-47ad-9848-36742f9e3e7e.png">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/161022695-3e7da576-4708-442b-800a-45d94a32f307.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -83,7 +82,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureVMBackup/HowToExtendVMRetentionPeriod" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-DPM&amp;MABS/VMware_Error_332623" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -92,7 +91,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Azure VM Backup で取得した復旧ポイントの保持期間の延長について
+      Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法
     </h1>
   
 
@@ -100,38 +99,43 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-02-05T03:00:00.000Z" itemprop="datePublished">2022-02-05</time>
+  <time datetime="2022-03-10T03:00:00.000Z" itemprop="datePublished">2022-03-10</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f43d1ea1-34fd-56d6-a101-92a34c6aff5b%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%A7%E5%8F%96%E5%BE%97%E3%81%97%E3%81%9F%E5%BE%A9%E6%97%A7%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E4%BF%9D%E6%8C%81%E6%9C%9F%E9%96%93%E3%81%AE%E5%BB%B6%E9%95%B7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHowToExtendVMRetentionPeriod%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHowToExtendVMRetentionPeriod.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHowToExtendVMRetentionPeriod.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+996cb79c-0486-5419-8fcd-5dc8db5768c3%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E8%BB%A2%E9%80%81%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA%E3%82%92%E6%84%8F%E5%9B%B3%E7%9A%84%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FDPM%26MABS%2FVMware_Error_332623%2F%29%0A*+Content+Source%3A+%5Barticles%2FDPM%26MABS%2FVMware_Error_332623.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FDPM%26MABS%2FVMware_Error_332623.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/" data-id="cl1ess6se000e0mojd0a9h29z" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/" data-id="cl1ess6st00130mojew86850c" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは、Azure Backup サポートです。<br>今回は、 <strong>Azure VM Backup として取得済の復元ポイントの保持期限を延長できるかという点</strong> についてご案内いたします。</p>
-<p>Azure VM Backup 関連のお問い合わせで、以下のようなお問い合わせを多くいただきます。</p>
-<ol>
-<li>バックアップ ポリシーに従って取得済の復元ポイントの保持期間を延長することは可能か</li>
-<li>バックアップ ポリシーに従って取得済の復元ポイントの中の、特定の復元ポイントのみの保持期間を延長して保持しておくことは可能か</li>
-<li>「今すぐバックアップ」にて取得済の復元ポイントの保持期間を延長して保持しておくことは可能か</li>
+<p>皆様こんにちは、Microsoft Azure Backup ＆ Recovery Services サポートです。<br>最近 DPM (Data Protection Manager)、MABS (Microsoft Azure Backup Server) を使用し、オンプレミス環境や AVS(Azure VMware Solution) 環境にある VMWare 仮想マシンをアックアップする需要が多くなっています。<br>DPM と MABS を VMWare vCenter Server に初期接続する時に、下記のような「VMWare Server と通信できない」エラーが発生した問い合わせがあります。</p>
+<p>また下記幣ブログの記事では Take Snapshot フェーズを失敗させる方法をご案内しております。<br>・Azure VM Backup を意図的に失敗させる方法<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/</a></p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. 【事象 Error ID 33623】</a><br><a href="#2">2. 【対処方法】</a></p>
+<hr>
+<h2 id="1-【事象】"><a href="#1-【事象】" class="headerlink" title="1. 【事象】"></a>1. 【事象】<a id="1"></a></h2><p>Error ID 33623<br>Internal error code 0x80990EF2<br>＜DPMコンソールのエラー画面サンプル＞<br><img src="https://user-images.githubusercontent.com/71251920/161022695-3e7da576-4708-442b-800a-45d94a32f307.png" alt="VMware_Error_332623_01"></p>
+<p>上記エラーを解消するためのサポートチケットを起票する前に、まず下記 2 つの設定を確認することを推奨します。</p>
+<h2 id="2-【対処方法】"><a href="#2-【対処方法】" class="headerlink" title="2. 【対処方法】"></a>2. 【対処方法】<a id="2"></a></h2><ol>
+<li>vCenter Server 6.7 以降の場合、DPM、MABS サーバーにで TLS 1.2 を有効にします。<br>TLS 1.2を有効化する方法について下記ドキュメントをご参照ください。<br>MABS向けのドキュメント：<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#vmware-vsphere-67-and-70">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#vmware-vsphere-67-and-70</a></li>
 </ol>
-<p>結論から申し上げますと、<em><strong>1. は可能でございますが、2. 3. については保持期間を延長して保持しておくことはかないません。</strong></em></p>
-<p>バックアップポリシーにてスケジュールバックアップで取得した復元ポイントはポリシーによって管理されますが、「今すぐバックアップ」にて取得した復元ポイントはバックアップ時に設定した保持期限に従い管理されます。<br>即ち、<em><strong>「今すぐバックアップ」の保持期限はバックアップポリシーの設定内容の影響を受けません。</strong></em>(ただし、インスタントリストアの保持期限はバックアップポリシーに従います。)</p>
-<p>また <strong>Azure Backup では無期限に保存するような設定はできません</strong>。</p>
-<p>代替案含め、下記にてご説明いたします。</p>
-<h2 id="1-バックアップ-ポリシーに従って取得済の復元ポイントの保持期間を延長することは可能か"><a href="#1-バックアップ-ポリシーに従って取得済の復元ポイントの保持期間を延長することは可能か" class="headerlink" title="1. バックアップ ポリシーに従って取得済の復元ポイントの保持期間を延長することは可能か"></a>1. バックアップ ポリシーに従って取得済の復元ポイントの保持期間を延長することは可能か<a id="1"></a></h2><p>対象の仮想マシンに適用しているバックアップ ポリシー内の保持期間を変更することで、これまで取得済の復元ポイントに対しても保持期間を延長することが可能でございます。<br>例えば、週次 (日次) にて取得する復元ポイント（バックアップ ポイント）に対する保持期間の変更は、すでに週次 (日次) にて取得した復元ポイントに対しても変更が適用されます。</p>
-<p>下記の弊社公開情報をご覧ください。<br>・アーキテクチャの概要 -  復旧ポイントに対するポリシーの変更の影響<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-architecture#impact-of-policy-change-on-recovery-points">https://docs.microsoft.com/ja-jp/azure/backup/backup-architecture#impact-of-policy-change-on-recovery-points</a></p>
-<p><img src="https://user-images.githubusercontent.com/71251920/151024656-f6589f03-6965-47ad-9848-36742f9e3e7e.png" alt="HowToExtendVMRetentionPeriod_01"></p>
-<h2 id="2-バックアップ-ポリシーに従って取得済の復元ポイントの中の、特定の復元ポイントのみの保持期間を延長して保持しておくことは可能か"><a href="#2-バックアップ-ポリシーに従って取得済の復元ポイントの中の、特定の復元ポイントのみの保持期間を延長して保持しておくことは可能か" class="headerlink" title="2. バックアップ ポリシーに従って取得済の復元ポイントの中の、特定の復元ポイントのみの保持期間を延長して保持しておくことは可能か"></a>2. バックアップ ポリシーに従って取得済の復元ポイントの中の、特定の復元ポイントのみの保持期間を延長して保持しておくことは可能か<a id="2"></a></h2><h2 id="3-「今すぐバックアップ」にて取得済の復元ポイントの保持期間を延長して保持しておくことは可能か"><a href="#3-「今すぐバックアップ」にて取得済の復元ポイントの保持期間を延長して保持しておくことは可能か" class="headerlink" title="3. 「今すぐバックアップ」にて取得済の復元ポイントの保持期間を延長して保持しておくことは可能か"></a>3. 「今すぐバックアップ」にて取得済の復元ポイントの保持期間を延長して保持しておくことは可能か<a id="3"></a></h2><p>バックアップ ポリシー上で「保持期間」を変更した場合、これまで取得してきたすべての復元ポイントに対して、ポリシーの変更が適用されます。<br>残念ながら、これまで取得してきた復元ポイントのうち、「ある特定の復元ポイントのみ」の保持期間を延長して保持しておく、ということはかないません。</p>
-<p>また、「今すぐバックアップ」（オンデマンド バックアップ）にて取得した復元ポイントの保持期間も延長することはかないません。(「今すぐバックアップ」の保持期限はバックアップポリシーの設定内容の影響を受けないため)<br>上記 2. 3. をご所望の場合は、下記代替案の通り、対象の復元ポイントからディスクとして復元しておき、ご利用者様にてディスクを保持していただくことをお勧めします。</p>
-<h3 id="代替案"><a href="#代替案" class="headerlink" title="代替案"></a>代替案<a id="4"></a></h3><p>対象の仮想マシン ＞ 「VM の復元」をクリック ＞ 「復元ポイント」にて、保持しておきたい特定の復元ポイントを選択します。<br>「構成の復元：新規作成」「復元の種類：ディスクの復元」を選択のうえ、「復元」をクリックします。<br><strong>復元されたディスクは、ご利用者様にてディスクを削除しない限り、保持され続けます。</strong></p>
-<p>復元されたからディスクを既存の VM にアタッチすることや、既存の VM とディスクをスワップすること、および、復元されたディスクを使って新規 VM を作成することが可能です。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/151024649-a76bd670-cc4c-4dc6-9b89-7849ca86f7e2.gif" alt="HowToExtendVMRetentionPeriod_02"></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考<a id="5"></a></h2><p>・Azure VM Backupでリストアされるディスク名に関して<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/">https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</a><br>・Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/</a></p>
+<p>DPM向けのドキュメント：<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/system-center/dpm/back-up-vmware?view=sc-dpm-2019#vmware-vsphere-67">https://docs.microsoft.com/ja-jp/system-center/dpm/back-up-vmware?view=sc-dpm-2019#vmware-vsphere-67</a></p>
+<p>＜実施ステップのサンプル＞<br>①以下のテキストをコピーして、.txt ファイルに貼り付けます。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]</span><br><span class="line">&quot;SystemDefaultTlsVersions&quot;=dword:00000001</span><br><span class="line">&quot;SchUseStrongCrypto&quot;=dword:00000001</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]</span><br><span class="line">&quot;SystemDefaultTlsVersions&quot;=dword:00000001</span><br><span class="line">&quot;SchUseStrongCrypto&quot;=dword:00000001</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]</span><br><span class="line">&quot;SystemDefaultTlsVersions&quot;=dword:00000001</span><br><span class="line">&quot;SchUseStrongCrypto&quot;=dword:00000001</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]</span><br><span class="line">&quot;SystemDefaultTlsVersions&quot;=dword:00000001</span><br><span class="line">&quot;SchUseStrongCrypto&quot;=dword:00000001</span><br></pre></td></tr></table></figure>
+<p>②そのファイルを EnableTLS12.reg という名前で DPM、MABSサーバーに保存します。</p>
+<p>③ファイルをダブルクリックして、レジストリ エントリをアクティブ化します。</p>
+<ol start="2">
+<li>下記ドキュメントを参照し、HTTPS 証明書の検証を無効化にして、事象改善されるかを確認します。<br>MABS向けのドキュメント：<br>「HTTPS 証明書の検証の無効化」セッションを参照します。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#create-a-secure-connection-to-the-vcenter-server">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-server-vmware#create-a-secure-connection-to-the-vcenter-server</a></li>
+</ol>
+<p>DPM向けのドキュメント：<br>「セキュリティで保護された通信プロトコルを無効にする」セッションを参照します。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/system-center/dpm/back-up-vmware?view=sc-dpm-2019#configure-dpm-to-protect-vmware">https://docs.microsoft.com/ja-jp/system-center/dpm/back-up-vmware?view=sc-dpm-2019#configure-dpm-to-protect-vmware</a></p>
+<p>＜実施ステップのサンプル＞<br>①以下のテキストをコピーして、.txt ファイルに貼り付けます。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]</span><br><span class="line">&quot;IgnoreCertificateValidation&quot;=dword:00000001</span><br></pre></td></tr></table></figure>
+
+<p>②そのファイルを DisableSecureAuthentication.reg という名前で DPM、MABSサーバーに保存します。</p>
+<p>③ファイルをダブルクリックして、レジストリ エントリをアクティブ化します。</p>
+<p>もし上記アクションを実施後でも事象改善しない場合、問い合わせを起票していただければと存じます。</p>
 
       
       
@@ -148,7 +152,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/HowToExtendVMRetentionPeriod.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/DPM&MABS/VMware_Error_332623.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -156,19 +160,19 @@
     
 <nav id="article-nav">
   
-    <a href="../AV_ExcludeSetting/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/How_to_fail_ttv/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          Azure Backup におけるウイルス除外設定について
+          Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法
         
       </div>
     </a>
   
   
-    <a href="../VM_Restorefail_invalid_protection/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../information/team-introduction_2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure VM のリストア (既存を置換) が失敗する</div>
+      <div class="article-nav-title">ABRS チームについて ~リモートワークでの働きかた~</div>
     </a>
   
 </nav>
@@ -187,11 +191,11 @@
       <ul>
         
           <li>
-            <a href="../How_to_fail_ttv/">Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法</a>
+            <a href="../../AzureVMBackup/How_to_fail_ttv/">Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法</a>
           </li>
         
           <li>
-            <a href="../../DPM&MABS/VMware_Error_332623/">Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法</a>
+            <a href="">Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法</a>
           </li>
         
           <li>
@@ -199,7 +203,7 @@
           </li>
         
           <li>
-            <a href="../NVA_backup/">NVA のバックアップについて</a>
+            <a href="../../AzureVMBackup/NVA_backup/">NVA のバックアップについて</a>
           </li>
         
           <li>
