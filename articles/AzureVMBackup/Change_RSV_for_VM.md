@@ -11,11 +11,20 @@ disableDisclaimer: false
 皆様こんにちは。Azure Backup サポートの山本です。
 今回はお問い合わせをいただくことが多い、**Azure VM Backup を取得している Recovery Services コンテナーを変更することは可能か？**について説明させていただきます。
 
-結論から申し上げますと**可能**です。
+バックアップアイテムが保護されたあとは冗長性の変更をいただくことが出来ないので、 Recovery Services コンテナーを変更いただく必要がございます。
+ただし、GRS 設定時、CRR 有効化のみ可能です。
+・ストレージ冗長性の設定
+https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#set-storage-redundancy
+>コンテナーでバックアップを構成する前に、必ず Recovery Services コンテナーのストレージ レプリケーションの種類を変更してください。 バックアップを構成した後、変更するオプションは無効になります。
+
+
+結論から申し上げますと **Recovery Services コンテナーを変更することは可能**です。
+
 
 なお、本件に関連した公式ドキュメントは下記でございます。
 ・Recovery Services コンテナーを作成して構成する - 既定の設定を変更する
 https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-default-settings
+
 
 すでにバックアップを構成している　VM に対して Recovery Services コンテナー を変更するには、VM と 既存のRecovery Services コンテナーとの紐づけを解除する必要がございます。
 紐づけを解除することで、新たに別の Recovery Services コンテナーに紐づけることが可能です。
