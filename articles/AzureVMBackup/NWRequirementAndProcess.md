@@ -99,6 +99,17 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
 
 なお、前回のバックアップ ジョブが Take Snapshot フェーズの場合、後続のバックアップ ジョブは失敗する仕様となっております。
 
+
+その他 以下参考になれば幸いです。
+・Azure Backup は、アプリケーションのパフォーマンスに影響を与えますか?
+https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#azure-backup----------------------------
+抜粋 : “VM スナップショットの作成には数分かかります。この段階では、アプリケーションのパフォーマンスに対する影響はほとんどありません。”
+
+・ VM スナップショットに関する問題のトラブルシューティング
+ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues
+抜粋 : “VM の CPU またはメモリが高くなっています。 仮想マシンのメモリまたは CPU の使用率が高くなり、90% を超えてると、スナップショット タスクがキューに格納されて遅延します。 最終的にはタイムアウトになります。”
+
+
 ### <a id="2-2"></a>2.2 Transfer data to vault フェーズ
 つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのため**バックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーへ転送されるのではなく、バックエンドで (ローカル物理ホスト上から物理的に離れた同一リージョン内にある) Recovery Services コンテナーへ転送されます。**
 
