@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/154117538-c4961564-fd9e-4e77-91ee-bff235da3704.png">
 <meta property="article:published_time" content="2022-02-16T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-04-01T02:08:14.114Z">
+<meta property="article:modified_time" content="2022-04-26T00:47:09.239Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta property="article:tag" content="how to">
@@ -105,7 +105,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ce87fa62-2335-565e-be9d-1e6db5c9e263%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AE%E9%80%9A%E4%BF%A1%E8%A6%81%E4%BB%B6%E3%82%84%E5%87%A6%E7%90%86%E3%81%AE%E6%B5%81%E3%82%8C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FNWRequirementAndProcess%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FNWRequirementAndProcess.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FNWRequirementAndProcess.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="cl1fsdx6r000q0nnwfbace03g" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="cl2ffhxj9000q0nph0iwa5fq8" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -155,6 +155,8 @@
 <p>Azure VM Backupでは バックアップ ジョブの画面で確認できるように、順番に Take Snapshot と Transfer data to vault の 2 つの大きなフェーズ  (Sub Task) がございます。これら 2 つのフェーズが完了して初めてバックアップ ジョブとして完了となります。<br><img src="https://user-images.githubusercontent.com/71251920/154117538-c4961564-fd9e-4e77-91ee-bff235da3704.png"></p>
 <h3 id="2-1-Take-Snapshot-フェーズ"><a href="#2-1-Take-Snapshot-フェーズ" class="headerlink" title="2.1 Take Snapshot フェーズ"></a><a id="2-1"></a>2.1 Take Snapshot フェーズ</h3><p>まず、オンライン バックアップの場合、バックアップ拡張機能によって OS 内部と連携し静止点をとり、スナップショット データを取得します。その際のスナップショット データはユーザーからは見えない (マネージドな) ローカル物理ホスト上で取得します。<br>次に、オフライン バックアップの場合 は OS 内部と連携せずスナップショットを取得します。<br>Azure VM Backup において VM と連携する処理は Take Snapshot フェーズのみでございます。<br>そのため、Take Snapshot フェーズが完了すれば VM の再起動や運用によってはアップデートや DB の再開などを行っていただいてもかまいません。<br>Azure VM Backup はオンラインでもオフラインでもバックアップすることが可能ですが、<strong>Take Snapshot フェーズ</strong> に電源操作をされた場合には対象のバックアップが失敗する可能性がございます。<br>Take Snapshot フェーズが終わっていれば有事の際にはインスタントリストア機能を用いてリストアすることも可能です。<br>・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability">https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability</a></p>
 <p>なお、前回のバックアップ ジョブが Take Snapshot フェーズの場合、後続のバックアップ ジョブは失敗する仕様となっております。</p>
+<p>その他 以下参考になれば幸いです。<br>・Azure Backup は、アプリケーションのパフォーマンスに影響を与えますか?<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#azure-backup----------------------------">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#azure-backup----------------------------</a><br>抜粋 : “VM スナップショットの作成には数分かかります。この段階では、アプリケーションのパフォーマンスに対する影響はほとんどありません。”</p>
+<p>・ VM スナップショットに関する問題のトラブルシューティング<br> <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues</a><br>抜粋 : “VM の CPU またはメモリが高くなっています。 仮想マシンのメモリまたは CPU の使用率が高くなり、90% を超えてると、スナップショット タスクがキューに格納されて遅延します。 最終的にはタイムアウトになります。”</p>
 <h3 id="2-2-Transfer-data-to-vault-フェーズ"><a href="#2-2-Transfer-data-to-vault-フェーズ" class="headerlink" title="2.2 Transfer data to vault フェーズ"></a><a id="2-2"></a>2.2 Transfer data to vault フェーズ</h3><p>つぎに、ローカル物理ホスト上から Recovery Services コンテナー(バックアップデータ専用ストレージコンテナー) へ転送いたします。そのため<strong>バックアップデータは VM の 仮想 NIC を通って Recovery Services コンテナーへ転送されるのではなく、バックエンドで (ローカル物理ホスト上から物理的に離れた同一リージョン内にある) Recovery Services コンテナーへ転送されます。</strong></p>
 <p>なお、前回のバックアップ ジョブが Transfer data to vault フェーズの場合、後続のバックアップ ジョブの Transfer data to vault フェーズは Skip される仕様となっており、リトライなどは実施されません。</p>
 <h4 id="2-3-参考-URL"><a href="#2-3-参考-URL" class="headerlink" title="2.3 参考 URL"></a><a id="2-3"></a>2.3 参考 URL</h4><p>・Azure VM バックアップの概要 - バックアップ プロセス<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process</a></p>
