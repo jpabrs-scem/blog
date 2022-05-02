@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/137943407-1dad9711-f799-4921-9365-17f1ac006f3b.png">
 <meta property="article:published_time" content="2021-10-20T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-04-26T00:47:09.239Z">
+<meta property="article:modified_time" content="2022-05-02T07:26:24.753Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta property="article:tag" content="how to">
@@ -105,17 +105,20 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+07d2e452-f715-5391-9089-d7da2b3afd58%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+%E3%81%AE%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%AE%E9%9A%9B+NIC+%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%8C%E6%B6%88%E3%81%88%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FVMRestoring_NIC_Configuration%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FVMRestoring_NIC_Configuration.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FVMRestoring_NIC_Configuration.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/" data-id="cl2ffhxjb000t0npheukngc8r" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/" data-id="cl2oeehtw000t0nphbz03aa5b" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
 <p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回はお問い合わせをいただくことが多い、Azure VM のリストアの際 NIC の設定が消えてしまうというお問い合わせについて解説させていただきます。</p>
-<p>こちら結論から申し上げますと、<strong>Azure VM Backupのリストアメニューにて、[新規VMの作成] を選んだ際、デフォルトで NIC が新たに作成され (設定できない) アタッチされるため、復元時に NIC の情報が消えてしまうのは仕様</strong>となっております。<br>Azure VM Backup ではディスクの情報をバックアップしますが、NIC の情報はバックアップいたしません。<br>なお、リストアメニューにて [既存の置き換え] を選択された場合は VM のディスクのみを入れ替え (スワップ) 、NIC はそのまま利用されるため、NIC の設定が消えるようなことは起こりません。</p>
-<h3 id="代替案"><a href="#代替案" class="headerlink" title="代替案"></a>代替案</h3><h4 id="既存のパブリック-IP-を設定する場合"><a href="#既存のパブリック-IP-を設定する場合" class="headerlink" title="既存のパブリック IP を設定する場合"></a>既存のパブリック IP を設定する場合</h4><p>既存のパブリック IP を設定する場合には次のような代替案がございます。<br>(手順1) Azure VM バックアップのリストア メニューからディスクとして一旦復元する。<br>(手順2) ディスクから VM を作成する。<br>      その際に既存のパブリック IP を選択する。<br>    　データディスクがある場合は復元したディスクを選択しアタッチする。(LUN 番号が入れ替わらないようにご注意ください)</p>
+<p>こちら結論から申し上げますと、<strong>Azure VM Backupのリストアメニューにて、[新規VMの作成] を選んだ際、デフォルトで NIC が新たに作成され (設定できない) アタッチされるため、復元時に NIC の情報が消えてしまうのは仕様</strong>となっております。<br>Azure VM Backup ではディスクの情報をバックアップしますが、NIC の情報はバックアップいたしません。<br>なお、リストアメニューにて [既存の置き換え] を選択された場合は VM のディスクのみを入れ替え (スワップ) 、NIC はそのまま利用されるため、NIC の設定が消えるようなことは起こりません。<br>以下の代替をお伝えさせいただきます。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. 既存のパブリック IP を設定する場合</a><br><a href="#2">2. 既存の NIC を設定する場合</a></p>
+<hr>
+<h2 id="代替案"><a href="#代替案" class="headerlink" title="代替案"></a>代替案</h2><h3 id="1-既存のパブリック-IP-を設定する場合"><a href="#1-既存のパブリック-IP-を設定する場合" class="headerlink" title=" 1. 既存のパブリック IP を設定する場合"></a><a id="1"></a> 1. 既存のパブリック IP を設定する場合</h3><p>既存のパブリック IP を設定する場合には次のような代替案がございます。<br>(手順1) Azure VM バックアップのリストア メニューからディスクとして一旦復元する。<br>(手順2) ディスクから VM を作成する。<br>      その際に既存のパブリック IP を選択する。<br>    　データディスクがある場合は復元したディスクを選択しアタッチする。(LUN 番号が入れ替わらないようにご注意ください)</p>
 <p>(手順2) に関しましては、 Azure Portal からの操作の場合、下記のような手順で可能でございます。<br>NIC を指定できることが分かります。<br><img src="https://user-images.githubusercontent.com/71251920/137943407-1dad9711-f799-4921-9365-17f1ac006f3b.png" alt="DiskからのVM作成"></p>
-<h4 id="既存の-NIC-を設定する場合"><a href="#既存の-NIC-を設定する場合" class="headerlink" title="既存の NIC を設定する場合"></a>既存の NIC を設定する場合</h4><p>(手順1) Azure VM バックアップのリストア メニューからディスクとして一旦復元する。<br>(手順2) Azure PowerShellを用いてディスクからの VM 作成時に利用する既存の NIC を指定して作成する。<br>・既存の “ディスク” リソースを使用し、仮想マシンを作成する。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/archive/blogs/jpaztech/convertvhdtomanageddiskdeployvm#2">https://docs.microsoft.com/ja-jp/archive/blogs/jpaztech/convertvhdtomanageddiskdeployvm#2</a></p>
+<h3 id="2-既存の-NIC-を設定する場合"><a href="#2-既存の-NIC-を設定する場合" class="headerlink" title=" 2. 既存の NIC を設定する場合"></a><a id="2"></a> 2. 既存の NIC を設定する場合</h3><p>(手順1) Azure VM バックアップのリストア メニューからディスクとして一旦復元する。<br>(手順2) Azure PowerShellを用いてディスクからの VM 作成時に利用する既存の NIC を指定して作成する。<br>・既存の “ディスク” リソースを使用し、仮想マシンを作成する。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/archive/blogs/jpaztech/convertvhdtomanageddiskdeployvm#2">https://docs.microsoft.com/ja-jp/archive/blogs/jpaztech/convertvhdtomanageddiskdeployvm#2</a></p>
 <p>※上記リンクのコマンドは <strong>AzureRm</strong> で記載されてますが、Azモジュールをご利用の場合は 以下の例のように <strong>Az</strong> に変換して実行ください。
 　　　</p>
 <blockquote>
