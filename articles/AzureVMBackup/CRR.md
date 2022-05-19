@@ -30,8 +30,7 @@ disableDisclaimer: false
 https://docs.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#grs
 
  
-Azure Backup における冗長性の概要については、以下ブログ記事をご参考ください。
-**・(ページ作成中)**
+
 
 ### <a id="1-1"></a>  Azure Portal での CRR 有効時の確認方法
 ご参考までに、CRR 機能を有効にした場合の Azure ポータル画面上の見え方を説明いたします。 
