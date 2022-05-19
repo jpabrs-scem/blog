@@ -23,7 +23,7 @@ disableDisclaimer: false
 [3-1. 補足：バックアップ ジョブについて](#3-1)
 -----------------------------------------------------------
 
-## <a id="1"></a> 1 CRR 機能を有効した場合の、冗長性オプションは「GRS」になるのか、「RA-GRS」になるのか？
+## <a id="1"></a> 1. CRR 機能を有効した場合の、冗長性オプションは「GRS」になるのか、「RA-GRS」になるのか？
 
 結論から申し上げますと、RA-GRS となります。
 ![CRR_01](https://user-images.githubusercontent.com/71251920/153718070-4b865afe-f876-47e2-afd0-2484e7889235.gif)
@@ -34,7 +34,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#grs
  
 
 
-### <a id="1-1"></a>  Azure Portal での CRR 有効時の確認方法
+### <a id="1-1"></a> 1-1. Azure Portal での CRR 有効時の確認方法
 ご参考までに、CRR 機能を有効にした場合の Azure ポータル画面上の見え方を説明いたします。 
 Recovery Services コンテナー「RSV-JPE-GRS-CRR」は「ストレージ レプリケーションの種類：geo 冗長」かつ「リージョンをまたがる復元：有効にする」となっております。
 これによって CRR 機能が有効 (=RA-GRS) となります。
@@ -48,13 +48,13 @@ CRR 機能が有効になっている場合、「バックアップ アイテム
  一方でRecovery Services コンテナー「リージョンをまたがる復元：無効にする」の場合は、下図のように「主要領域」のみが選択となり、かつ非活性表示となります。
  ![CRR_05](https://user-images.githubusercontent.com/71251920/153718066-3ecee4e8-f824-49c1-bd0c-8e9fed23b2f1.png)
 
- ### <a id="1-2"></a>  GRS と RA-GRS (CRR有効化時) の違い
+ ### <a id="1-2"></a> 1-2. GRS と RA-GRS (CRR有効化時) の違い
  Recovery Services コンテナーの冗長性が GRS であっても、RA-GRS(CRR有効化時) であってもセカンダリーリージョンにバックアップデータはレプリケーションされ保持されます。
  違いは**任意のタイミングでセカンダリ リージョンへ復元できるか**どうかです。
  GRS の場合は弊社がリージョン障害を宣言した場合に限りセカンダリーリージョンへのリストアが可能です。
  一方 RA-GRS の場合は任意のタイミングで(リージョン障害が起こっていなくても)セカンダリーリージョンへののリストアが可能です。
 
-  ### <a id="1-3"></a>  セカンダリ リージョンへのリストア手順
+  ### <a id="1-3"></a> 1-3. セカンダリ リージョンへのリストア手順
 下記公開情報をご覧ください。
 ・セカンダリ リージョンに復元する - Azure portal で Azure VM データを復元する方法
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region
