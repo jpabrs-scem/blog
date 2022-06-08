@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153718051-58d3846a-cb16-4509-982d-f9034093cf3d.gif">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153718050-bf4b2841-6c14-40fa-8c21-94d806c47872.jpg">
 <meta property="article:published_time" content="2022-02-13T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-19T02:45:11.664Z">
+<meta property="article:modified_time" content="2022-06-08T10:15:35.982Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta property="article:tag" content="how to">
@@ -118,7 +118,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+14940a69-df0b-5e52-9fa2-c72b567fdf9a%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B+CRR+%28%E3%82%AF%E3%83%AD%E3%82%B9%E3%83%AA%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3+%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%29%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FCRR%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FCRR.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FCRR.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/" data-id="cl3ceud0s00050opqf5p2hv3l" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/" data-id="cl45fql3g00050omg9ylp91g1" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -134,7 +134,7 @@
 <p><img src="https://user-images.githubusercontent.com/71251920/153718069-e91606c7-4001-40d7-8ec1-4596719263c5.gif" alt="CRR_02"></p>
 <p>CRR 機能が有効になっている場合、「バックアップ アイテム」画面上では「主要領域」のほかに「2 次領域」も選択できるよう、活性化されます。<br><img src="https://user-images.githubusercontent.com/71251920/153718068-75b83793-921b-41ce-a330-4d957fd9e11f.gif" alt="CRR_03"><br><img src="https://user-images.githubusercontent.com/71251920/153718067-585d2fb5-242b-4352-87e9-efbb5ba0984e.gif" alt="CRR_04"></p>
 <p> 一方でRecovery Services コンテナー「リージョンをまたがる復元：無効にする」の場合は、下図のように「主要領域」のみが選択となり、かつ非活性表示となります。<br> <img src="https://user-images.githubusercontent.com/71251920/153718066-3ecee4e8-f824-49c1-bd0c-8e9fed23b2f1.png" alt="CRR_05"></p>
-<h3 id="1-2-GRS-と-RA-GRS-CRR有効化時-の違い"><a href="#1-2-GRS-と-RA-GRS-CRR有効化時-の違い" class="headerlink" title=" 1-2. GRS と RA-GRS (CRR有効化時) の違い"></a><a id="1-2"></a> 1-2. GRS と RA-GRS (CRR有効化時) の違い</h3><p> Recovery Services コンテナーの冗長性が GRS であっても、RA-GRS(CRR有効化時) であってもセカンダリーリージョンにバックアップデータはレプリケーションされ保持されます。<br> 違いは<strong>任意のタイミングでセカンダリ リージョンへ復元できるか</strong>どうかです。<br> GRS の場合は弊社がリージョン障害を宣言した場合に限りセカンダリーリージョンへのリストアが可能です。<br> 一方 RA-GRS の場合は任意のタイミングで(リージョン障害が起こっていなくても)セカンダリーリージョンへののリストアが可能です。</p>
+<h3 id="1-2-GRS-と-RA-GRS-CRR有効化時-の違い"><a href="#1-2-GRS-と-RA-GRS-CRR有効化時-の違い" class="headerlink" title=" 1-2. GRS と RA-GRS (CRR有効化時) の違い"></a><a id="1-2"></a> 1-2. GRS と RA-GRS (CRR有効化時) の違い</h3><p> Recovery Services コンテナーの冗長性が GRS であっても、RA-GRS (CRR有効化時) であってもセカンダリーリージョンにバックアップデータはレプリケーションされ保持されます。<br> 違いは<strong>任意のタイミングでセカンダリ リージョンへ復元できるか</strong>どうかです。<br> GRS の場合は弊社がリージョン障害を宣言した場合に限りセカンダリーリージョンへのリストアが可能です。<br> 一方 RA-GRS の場合は任意のタイミングで (リージョン障害が起こっていなくても) セカンダリーリージョンへのリストアが可能です。</p>
 <h3 id="1-3-セカンダリ-リージョンへのリストア手順"><a href="#1-3-セカンダリ-リージョンへのリストア手順" class="headerlink" title=" 1-3. セカンダリ リージョンへのリストア手順"></a><a id="1-3"></a> 1-3. セカンダリ リージョンへのリストア手順</h3><p>下記公開情報をご覧ください。<br>・セカンダリ リージョンに復元する - Azure portal で Azure VM データを復元する方法<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region</a></p>
 <h2 id="2-セカンダリ-リージョンへ復元ポイントがレプリケートされるまでに、最大何時間かかるのか？"><a href="#2-セカンダリ-リージョンへ復元ポイントがレプリケートされるまでに、最大何時間かかるのか？" class="headerlink" title=" 2. セカンダリ リージョンへ復元ポイントがレプリケートされるまでに、最大何時間かかるのか？"></a><a id="2"></a> 2. セカンダリ リージョンへ復元ポイントがレプリケートされるまでに、最大何時間かかるのか？</h2><p>セカンダリリージョンへのデータのレプリケーションは、プライマリリージョンへのバックアップジョブが完了 (最大24時間) してから 12 時間以内にレプリケーションが完了するように動作します。<br>そのため、プライマリリージョンのバックアップジョブ完了とセカンダリリージョンへのレプリケーションにはラグが生じます。</p>
 <p>・Azure portal を使用して VM を復元する - Azure Backup | Microsoft Docs<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region</a></p>
