@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/154855287-696dca76-4bdc-4e8b-ac40-1108515edca8.png">
 <meta property="article:published_time" content="2022-02-22T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-22T05:04:30.805Z">
+<meta property="article:modified_time" content="2022-06-22T06:34:34.850Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure VM Backup">
 <meta property="article:tag" content="how to">
@@ -105,7 +105,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+73fca631-e5a1-56c2-9468-544fb7fd9203%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BNVA+%E3%81%AE%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FNVA_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FNVA_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FNVA_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/" data-id="cl4p4sioj000o0pln7298cam0" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/" data-id="cl4p809zk000o0noc0jdfaut5" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -118,7 +118,7 @@
 <h3 id="1-仮想アプライアンスはバックアップできない可能性が高い"><a href="#1-仮想アプライアンスはバックアップできない可能性が高い" class="headerlink" title="1. 仮想アプライアンスはバックアップできない可能性が高い"></a><a id="1"></a>1. 仮想アプライアンスはバックアップできない可能性が高い</h3><p>結論から申し上げますと、残念ながら NVA として機能する仮想マシンについては、Azure VM Backup サポート対象外の カスタム OS となる可能性が高いです。<br>*NVA 以外の仮想アプライアンス、カスタム OS などにおいても同様です。</p>
 <p>Azure Marketplace より、NVA として機能する仮想マシンを作成した場合も同様に、Azure VM Backup サポート対象外の OS であることが多くございます。<br>Azure VM Backup では、オンライン バックアップを実施する際、VM エージェントの拡張機能を利用しますが、NVA に用いられる OS に対しては一般的に、VM エージェントが対応しておりません。</p>
 <p>正確にご確認いただくには、後述のドキュメントを参照の上、<strong>まず VM エージェントが対応しているかをお客様ご自身、および OS 発行ベンダーにご確認いただく必要</strong> がございます。</p>
-<p>事例ベースのご案内では、<strong>Zscaler 社の NVA や Palo Alto 社の NVA ,Fortinet 社の NVA (Fortianalyzer) が対応していない事例がございました。また同様に NVA 以外のカスタム OS に関しましても VM エージェントが対応していないために Azure VM Backup がご利用いただけない事例がございました。</strong></p>
+<p>事例ベースのご案内では、<strong>Zscaler 社の NVA や Palo Alto 社の NVA 、Fortinet 社の NVA (Fortianalyzer) が対応していない事例がございました。また同様に NVA 以外のカスタム OS に関しましても VM エージェントが対応していないために Azure VM Backup がご利用いただけない事例がございました。</strong></p>
 <p>・Azure Linux VM エージェントの概要 - Azure Virtual Machines | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-linux#requirements">https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-linux#requirements</a></p>
 <p>下記 に Azure VM Backup の OSサポート対象範囲について記載がございますので、ご参考ください。<br>・Azure VM バックアップのサポート マトリックス - オペレーティング システムのサポート (Windows)<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-windows">https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-windows</a><br>・Azure VM バックアップのサポート マトリックス - オペレーティング システムのサポート (Linux)<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-linux">https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-linux</a><br>・Azure で動作保証済みの Linux ディストリビューション<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/linux/endorsed-distros">https://docs.microsoft.com/ja-jp/azure/virtual-machines/linux/endorsed-distros</a></p>
 <h3 id="2-VM-エージェント-の状態の確認"><a href="#2-VM-エージェント-の状態の確認" class="headerlink" title="2. VM エージェント の状態の確認"></a><a id="2"></a>2. VM エージェント の状態の確認</h3><p>Azure VM Backup をオンラインでご利用いただくには対象の VM を起動しエージェントの状態を確認いただき、Ready となっていることが大前提 (必要条件) となります。<br>お客様で確認するには下記 <strong>“エージェントの状態”</strong> をご確認ください。<br>サポート外の OS の場合、<strong>Ready</strong> ではなく <strong>Not Ready</strong> となる事例が多くございます。<br><img src="https://user-images.githubusercontent.com/71251920/154855287-696dca76-4bdc-4e8b-ac40-1108515edca8.png" alt="エージェントの状態 の確認"></p>
