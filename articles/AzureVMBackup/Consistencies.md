@@ -37,6 +37,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snap
 [1. アプリケーション整合性](#1)
 [  1.1 VSS 観点での調査について](#1-1)
 [  1.2  SQL Server のインストールされた Windows OS のバックアップについて](#1-2)
+[  1.2.1  ご参考ページ] (#1-2-1)</a>
 [  1.3  Oracle DB for Windows VM の Azure VM Backup について](#1-3)
 [  1.4  事前事後スクリプトについて](#1-4)
 [2. ファイルシステム整合性](#2)
@@ -127,7 +128,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#trou
 
 上記レジストリ設定にあたって OS 再起動は必要ございません。
 
-#### 上記に関するご参考ページ
+#### 上記に関するご参考ページ <a id="1-2-1"></a>
 ・コピーのみのバックアップ - SQL Server
 https://docs.microsoft.com/ja-jp/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver16
 > コピーのみのバックアップは、従来の SQL Server バックアップのシーケンスから独立した SQL Server バックアップです。 通常、バックアップを行うとデータベースが変更され、その後のバックアップの復元方法に影響します。 ただし、データベース全体のバックアップや復元の手順に影響を与えない、特殊な目的にバックアップを行うと役に立つ場合があります。 このため、コピーのみのバックアップが導入されました。
