@@ -16,13 +16,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCVMM_Renew_Crtificate/</loc>
-    
-    <lastmod>2022-06-22</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
     
     <lastmod>2022-06-22</lastmod>
@@ -45,6 +38,13 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_agent_failures/</loc>
+    
+    <lastmod>2022-06-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCVMM_Renew_Crtificate/</loc>
     
     <lastmod>2022-06-22</lastmod>
     
@@ -87,34 +87,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/RequestForInvestigating/</loc>
-    
-    <lastmod>2022-06-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/</loc>
-    
-    <lastmod>2022-06-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
-    
-    <lastmod>2022-06-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
-    
-    <lastmod>2022-06-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
     
     <lastmod>2022-06-22</lastmod>
     
@@ -206,6 +178,34 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/</loc>
+    
+    <lastmod>2022-06-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/</loc>
+    
+    <lastmod>2022-06-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
+    
+    <lastmod>2022-06-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
+    
+    <lastmod>2022-06-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
     
     <lastmod>2022-06-22</lastmod>
     
