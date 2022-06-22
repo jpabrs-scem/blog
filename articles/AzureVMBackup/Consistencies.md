@@ -37,7 +37,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snap
 [1. アプリケーション整合性](#1)
 [  1.1 VSS 観点での調査について](#1-1)
 [  1.2  SQL Server のインストールされた Windows OS のバックアップについて](#1-2)
-[  1.2.1  ご参考ページ] (#1-2-1)</a>
+[   1.2.1  ご参考ページ] (#1-2-1)
 [  1.3  Oracle DB for Windows VM の Azure VM Backup について](#1-3)
 [  1.4  事前事後スクリプトについて](#1-4)
 [2. ファイルシステム整合性](#2)
