@@ -93,13 +93,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
-    
-    <lastmod>2022-06-22</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
     
     <lastmod>2022-06-22</lastmod>
@@ -108,6 +101,13 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
+    
+    <lastmod>2022-06-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
     
     <lastmod>2022-06-22</lastmod>
     
