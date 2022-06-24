@@ -1,6 +1,6 @@
 ---
 title: Azure Backup の障害調査に必要な情報 (疎通確認)
-date: 2022-02-11 12:00:00
+date: 2022-06-24 12:00:00
 tags:
   - Recovery Services vaults
   - 情報採取
