@@ -47,16 +47,16 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#back
 Azure VM Backup のバックアップにかかった時間と転送データ量の実績値をグラフにしたものになります。
 ![](https://user-images.githubusercontent.com/71251920/175569827-32081c88-3b8a-4eca-abdc-471033b3d4b8.png)
 
- Azure VM のバックアップにおいて **転送データ量とかかった時間に相関がないこと**がわかるかと存じます。
+ Azure VM のバックアップにおいて **転送データ量とかかった時間に相関がない**ことがわかるかと存じます。
 
 ### <a id="1-3"></a> 1.3 Azure VM Backup におけるリストア タイムの実績値グラフ
 こちら、インスタントリストアではなく Recovery Services コンテナー (標準コンテナー / Vault-Standard) からのリストアでございます。
 Azure VM Backup のリストアにかかった時間と転送データ量の実績値をグラフにしたものになります。
 ![](https://user-images.githubusercontent.com/71251920/175569833-99834c3c-46f3-4901-8014-5c0a6dc0cb22.png)
-リストアにおいても転送データ量とかかった時間に相関がないことがわかるかと存じます。
+リストアにおいても**転送データ量とかかった時間に相関がない**ことがわかるかと存じます。
 
 
-インスタント リストアに関しては下記をご覧ください。
+#### インスタント リストアに関しては下記をご覧ください。
 インスタント リストアは Recovery Services コンテナーからの転送フェーズがございませんので、上記のグラフ結果よりも早い復元が期待できる機能でございます。
 ・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
