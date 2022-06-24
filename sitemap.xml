@@ -16,6 +16,13 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
+    
+    <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_2012R2_Uninstall-TroubleCase/</loc>
     
     <lastmod>2022-06-24</lastmod>
@@ -44,7 +51,21 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/How_to_set_Backup_Alert/</loc>
+    
+    <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigating/</loc>
+    
+    <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/</loc>
     
     <lastmod>2022-06-24</lastmod>
     
@@ -73,76 +94,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/</loc>
-    
-    <lastmod>2022-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/How_to_set_Backup_Alert/</loc>
-    
-    <lastmod>2022-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigating/</loc>
-    
-    <lastmod>2022-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/</loc>
-    
-    <lastmod>2022-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
-    
-    <lastmod>2022-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
-    
-    <lastmod>2022-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/</loc>
-    
-    <lastmod>2022-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/</loc>
-    
-    <lastmod>2022-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/</loc>
-    
-    <lastmod>2022-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
-    
-    <lastmod>2022-06-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/</loc>
     
     <lastmod>2022-06-24</lastmod>
     
@@ -212,14 +163,63 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
     
     <lastmod>2022-06-24</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
+    
+    <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
+    
+    <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/</loc>
+    
+    <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/</loc>
+    
+    <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/</loc>
+    
+    <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
+    
+    <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/</loc>
+    
+    <lastmod>2022-06-24</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
     
     <lastmod>2022-06-24</lastmod>
     
