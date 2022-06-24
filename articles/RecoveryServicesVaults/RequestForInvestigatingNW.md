@@ -21,7 +21,6 @@ disableDisclaimer: false
 ## 1.Windows VM における Azure Backup 疎通確認<a id="1"></a>
 まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。
 [Check_Backup_NW_ver1.4.zip](https://github.com/jpabrs-scem/blog/files/8975919/Check_Backup_NW_ver1.4.zip)
-スクリプトを実行し、実行結果のログをご提供ください。
  
 
 (スクリプト実行手順)
