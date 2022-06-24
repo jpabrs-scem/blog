@@ -1,5 +1,5 @@
 ---
-title: Azure Backup のバックアップ / リストア 時間について
+title: Azure Backup の バックアップ / リストア 所要時間について
 date: 2022-06-25 12:00:00
 tags:
   - Recovery Services vaults
