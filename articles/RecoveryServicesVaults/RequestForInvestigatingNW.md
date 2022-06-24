@@ -41,7 +41,6 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 4. 以下コマンドを実行し、スクリプトを実行してください。
 (現在画像とバージョンが異なりますが、同様の手順でございます。)
 >.\Check_Backup_NW_ver1.4.ps1
-
 ![](https://user-images.githubusercontent.com/71251920/175529518-afd3ab91-e450-42b9-b7b6-310c6633cca1.png)
 * 上記スクリプト実施時に実行ポリシーの制限によりスクリプトが実行できない場合はPowerShell を管理者権限で起動し、下記コマンドを実行し実行ポリシーを変更後、再度実行していただければ幸いでございます。
 >Set-ExecutionPolicy Unrestricted
