@@ -25,20 +25,20 @@ disableDisclaimer: false
 
 (スクリプト実行手順)
 1. 疎通確認スクリプトをダウンロードし、展開してください。
-※ ファイルの解凍パスワードは “AzureBackup” となります。
+※ ファイルの解凍パスワードは **“AzureBackup”** となります。
  
 2. PowerShell を右クリックし、管理者として実行をクリックしてください。
  ![Win_testNW_01](https://user-images.githubusercontent.com/71251920/175529513-5196c393-be7b-439e-aba3-063969d1ce26.png)
 3. PowerShell にて手順 1 で展開したスクリプトの場所に移動してください。
-例 ) デスクトップ上のPowerShellというフォルダ内にスクリプトをダウンロードしたときの移動コマンド
+例 ) "Takato" というユーザーのデスクトップ上の PowerShell というフォルダ内にスクリプトをダウンロードしたときの移動コマンド
 >cd C:\Users\Takato\Desktop\powershell
  
 4. 以下コマンドを実行し、スクリプトを実行してください。
 (現在画像とバージョンが異なりますが、同様の手順でございます。)
 >.\Check_Backup_NW_ver1.4.ps1
 ![Win_testNW_02](https://user-images.githubusercontent.com/71251920/175529518-afd3ab91-e450-42b9-b7b6-310c6633cca1.png)
-* 上記スクリプト実施時に実行ポリシーの制限によりスクリプトが実行できない場合はPowerShellを管理者権限で起動し、下記コマンドを実行し実行ポリシーを変更後、再度実行していただければ幸いでございます。
-Set-ExecutionPolicy Unrestricted
+* 上記スクリプト実施時に実行ポリシーの制限によりスクリプトが実行できない場合はPowerShell を管理者権限で起動し、下記コマンドを実行し実行ポリシーを変更後、再度実行していただければ幸いでございます。
+>Set-ExecutionPolicy Unrestricted
  
 5. 以下のような “ScriptStart Completed” 出力がされるまで、お待ちください。
 *コマンドの実行には、環境によって 20 分ほど要する場合がございます。20 分経っても完了しない場合は、control + c を押下して強制終了してください。
