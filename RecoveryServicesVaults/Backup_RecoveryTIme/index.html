@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   
   
-  <title>Azure Backup のバックアップ / リストア 時間について | Japan CSS ABRS  Support Blog !!</title>
+  <title>Azure Backup の バックアップ / リストア 所要時間について | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、Azure VM バックアップにおけるやバックアップやリストアにかかる時間についてご説明いたします。 また Azure VM Backup に限らず、 各 Azure Backup サービスにおける各種所要時間を見積もることはかないません。 目次 1. 転送データ量とバックアップやリストアにかか">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Azure Backup のバックアップ &#x2F; リストア 時間について">
+<meta property="og:title" content="Azure Backup の バックアップ &#x2F; リストア 所要時間について">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、Azure VM バックアップにおけるやバックアップやリストアにかかる時間についてご説明いたします。 また Azure VM Backup に限らず、 各 Azure Backup サービスにおける各種所要時間を見積もることはかないません。 目次 1. 転送データ量とバックアップやリストアにかか">
@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/175569827-32081c88-3b8a-4eca-abdc-471033b3d4b8.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/175569833-99834c3c-46f3-4901-8014-5c0a6dc0cb22.png">
 <meta property="article:published_time" content="2022-06-25T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-24T15:52:26.445Z">
+<meta property="article:modified_time" content="2022-06-24T15:53:10.709Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Recovery Services vaults">
@@ -92,7 +92,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Azure Backup のバックアップ / リストア 時間について
+      Azure Backup の バックアップ / リストア 所要時間について
     </h1>
   
 
@@ -104,9 +104,9 @@
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+29c0aa89-a8b8-583b-8b96-757d90bef904%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%2F+%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2+%E6%99%82%E9%96%93%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FRecoveryServicesVaults%2FBackup_RecoveryTIme%2F%29%0A*+Content+Source%3A+%5Barticles%2FRecoveryServicesVaults%2FBackup_RecoveryTIme.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FRecoveryServicesVaults%2FBackup_RecoveryTIme.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+29c0aa89-a8b8-583b-8b96-757d90bef904%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%2F+%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2+%E6%89%80%E8%A6%81%E6%99%82%E9%96%93%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FRecoveryServicesVaults%2FBackup_RecoveryTIme%2F%29%0A*+Content+Source%3A+%5Barticles%2FRecoveryServicesVaults%2FBackup_RecoveryTIme.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FRecoveryServicesVaults%2FBackup_RecoveryTIme.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/" data-id="cl4smtehy001p0omqcat2gn5s" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/" data-id="cl4smucw8001a0nms8hmrf1wg" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -177,7 +177,7 @@
       <ul>
         
           <li>
-            <a href="">Azure Backup のバックアップ / リストア 時間について</a>
+            <a href="">Azure Backup の バックアップ / リストア 所要時間について</a>
           </li>
         
           <li>
