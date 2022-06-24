@@ -9,7 +9,7 @@ disableDisclaimer: false
 
 <!-- more -->
 皆様こんにちは。Azure Backup サポートの山本です。
-今回はお問い合わせをいただくことが多い、Azure VM バックアップにおけるやバックアップやリストアにかかる時間についてご説明いたします。 また Azure VM Backup に限らず、 各 Azure Backup サービスにおける各所要時間を見積もることはかないません。
+今回はお問い合わせをいただくことが多い、Azure VM バックアップにおけるやバックアップやリストアにかかる時間についてご説明いたします。 Azure VM Backup に限らず、 各 Azure Backup サービスにおける各所要時間を見積もることはかないません。
 
 ## 目次
 -----------------------------------------------------------
@@ -43,13 +43,13 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#back
 
 
 次に実際の Azure VM Backup の実際のデータより作成したグラフをご参考までにお伝えさせていただきます。
-### <a id="1-2"></a> 1.1 Azure VM Backup におけるバックアップ タイムの実績値グラフ
+### <a id="1-2"></a> 1.2 Azure VM Backup におけるバックアップ タイムの実績値グラフ
 Azure VM Backup のバックアップにかかった時間と転送データ量の実績値をグラフにしたものになります。
 ![](https://user-images.githubusercontent.com/71251920/175569827-32081c88-3b8a-4eca-abdc-471033b3d4b8.png)
 
  Azure VM のバックアップにおいて **転送データ量とかかった時間に相関がないこと**がわかるかと存じます。
 
-### <a id="1-3"></a> 1.2 Azure VM Backup におけるリストア タイムの実績値グラフ
+### <a id="1-3"></a> 1.3 Azure VM Backup におけるリストア タイムの実績値グラフ
 こちら、インスタントリストアではなく Recovery Services コンテナー (標準コンテナー / Vault-Standard) からのリストアでございます。
 Azure VM Backup のリストアにかかった時間と転送データ量の実績値をグラフにしたものになります。
 ![](https://user-images.githubusercontent.com/71251920/175569833-99834c3c-46f3-4901-8014-5c0a6dc0cb22.png)
