@@ -2,7 +2,7 @@
 title: Azure Backup のバックアップ / リストア 時間について
 date: 2022-06-25 12:00:00
 tags:
-  - Azure VM Backup
+  - Recovery Services vaults
   - how to
 disableDisclaimer: false
 ---
