@@ -40,7 +40,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#back
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process
 >抜粋："スナップショット データはコンテナーにすぐにコピーされない場合があります。 ピーク時には、数時間かかる場合があります。 毎日のバックアップ ポリシーでは、**VM のバックアップの合計時間は 24 時間未満になります。**"
 
-また、Azure VM Backupでは Take Snapshot と　 Transfer data to vault の2 つのフェーズがありますが、Take Snapshot にかかった慈雨間を確認する方針については下記をご覧ください。
+また、Azure VM Backupでは Take Snapshot と Transfer data to vault の2 つのフェーズがありますが、Take Snapshot にかかった慈雨間を確認する方針については下記をご覧ください。
 ・Azure VM Backup における Take Snapshot フェーズの確認方法
 https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/
 
