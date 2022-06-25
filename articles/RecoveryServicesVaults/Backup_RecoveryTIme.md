@@ -40,7 +40,8 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#back
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process
 >抜粋："スナップショット データはコンテナーにすぐにコピーされない場合があります。 ピーク時には、数時間かかる場合があります。 毎日のバックアップ ポリシーでは、**VM のバックアップの合計時間は 24 時間未満になります。**"
 
-また、Azure VM Backupでは Take Snapshot と Transfer data to vault の2 つのフェーズがありますが、Take Snapshot にかかった慈雨間を確認する方針については下記をご覧ください。
+また、Azure VM Backupでは Take Snapshot と Transfer data to vault の2 つのフェーズがありますが、Take Snapshot にかかった時間を確認する方法については下記をご覧ください。
+
 ・Azure VM Backup における Take Snapshot フェーズの確認方法
 https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/
 
@@ -52,13 +53,13 @@ Azure VM Backup のバックアップにかかった時間と転送データ量�
  Azure VM のバックアップにおいて **転送データ量とかかった時間に相関がない**ことがわかるかと存じます。
 
 ### <a id="1-3"></a> 1.3 Azure VM Backup におけるリストア タイムの実績値グラフ
-こちら、インスタントリストアではなく Recovery Services コンテナー (標準コンテナー / Vault-Standard) からのリストアでございます。
+こちら、**インスタント リストア**ではなく Recovery Services コンテナー (標準コンテナー / Vault-Standard) からのリストアでございます。
 Azure VM Backup のリストアにかかった時間と転送データ量の実績値をグラフにしたものになります。
 ![](https://user-images.githubusercontent.com/71251920/175569833-99834c3c-46f3-4901-8014-5c0a6dc0cb22.png)
 リストアにおいても**転送データ量とかかった時間に相関がない**ことがわかるかと存じます。
 
 
-#### インスタント リストアに関しては下記をご覧ください。
+#### インスタント リストアついて
 インスタント リストアは Recovery Services コンテナーからの転送フェーズがございませんので、上記のグラフ結果よりも早い復元が期待できる機能でございます。
 ・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability

@@ -21,7 +21,7 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 -----------------------------------------------------------
 
 
-## 1.Windows VM における Azure Backup 疎通確認<a id="1"></a>
+## 1. Windows VM における Azure Backup 疎通確認<a id="1"></a>
 まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。
 [Check_Backup_NW_ver1.4.zip](https://github.com/jpabrs-scem/blog/files/8975919/Check_Backup_NW_ver1.4.zip)
  
@@ -50,8 +50,12 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 
 ![](https://user-images.githubusercontent.com/71251920/175529520-b67e7eab-baef-4036-8c89-64ec9a86e40b.gif)
  
-6. コマンド実行が完了すると、スクリプトと同じフォルダ内に以下のようなログファイルが出力されますので、こちらを後述のアップロードサイトまでアップロード願います。
+6. コマンド実行が完了すると、スクリプトと同じフォルダ内に以下のようなログファイルが出力されますので、弊社までご提供お願いいたします。
 ログファイル名: AzureBackup_Check_NW_yyyymmdd_hhmmss.log
 
 ![](https://user-images.githubusercontent.com/71251920/175529523-b5004d01-f4cd-4879-9c48-b9de17a8c477.jpg)
-* control + c にて強制終了した場合においても該当のログファイルが出力されますので、アップロードをお願いします。
+* control + c にて強制終了した場合においても該当のログファイルが出力されますので、弊社までご提供お願いいたします。
+
+
+## 2. Linux VM における Azure Backup 疎通確認(作成中)<a id="2"></a>
+こちら現在作成中です。
