@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/175569827-32081c88-3b8a-4eca-abdc-471033b3d4b8.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/175569833-99834c3c-46f3-4901-8014-5c0a6dc0cb22.png">
 <meta property="article:published_time" content="2022-06-25T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-25T05:53:04.992Z">
+<meta property="article:modified_time" content="2022-06-25T05:54:57.758Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Recovery Services vaults">
@@ -106,7 +106,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+29c0aa89-a8b8-583b-8b96-757d90bef904%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%2F+%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2+%E6%89%80%E8%A6%81%E6%99%82%E9%96%93%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FRecoveryServicesVaults%2FBackup_RecoveryTIme%2F%29%0A*+Content+Source%3A+%5Barticles%2FRecoveryServicesVaults%2FBackup_RecoveryTIme.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FRecoveryServicesVaults%2FBackup_RecoveryTIme.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/" data-id="cl4tguhto001a0qp94pyn0y6f" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/" data-id="cl4tgwwmc001a0op339r1bkvz" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -114,7 +114,7 @@
         <span id="more"></span>
 <p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回はお問い合わせをいただくことが多い、Azure VM Backup におけるバックアップやリストアにかかる時間についてご説明いたします。 Azure VM Backup に限らず、 各 Azure Backup サービスにおける各所要時間を見積もることはかないません。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. 転送データ量とバックアップやリストアにかかる時間</a><br><a href="#1-2">  1.2 バックアップ タイムの実績値グラフ</a><br><a href="#1-3">  1.3 リストア タイムの実績値グラフ</a><br><a href="#2">2. データディスクの数とバックアップやリストアにかかる時間</a><br><a href="#2-1">  2.1 リストア検証</a> </p>
+<p><a href="#1">1. 転送データ量とバックアップやリストアにかかる時間</a><br>   <a href="#1-2">  1.2 バックアップ タイムの実績値グラフ</a><br>   <a href="#1-3">  1.3 リストア タイムの実績値グラフ</a><br><a href="#2">2. データディスクの数とバックアップやリストアにかかる時間</a><br>   <a href="#2-1">  2.1 リストア検証</a> </p>
 <hr>
 <h2 id="1-転送データ量とバックアップやリストアにかかる時間"><a href="#1-転送データ量とバックアップやリストアにかかる時間" class="headerlink" title=" 1. 転送データ量とバックアップやリストアにかかる時間"></a><a id="1"></a> 1. 転送データ量とバックアップやリストアにかかる時間</h2><p>よくお客様より、<strong>時間の目安を見積もりたい、100GB だとどれくらいの時間がかかるか？</strong>といったようなお問い合わせをいただくことがございます。</p>
 <p>こちら結論から申し上げますと、<strong>Azure VM Backup におけるバックアップやリストアの時間を見積もることは出来ません。</strong><br>Azure サービスはマルチテナント サービスであるため、 Azure Backup サービスにおける所要時間はバックアップ / リストア対象のバックアップ アイテム (VM) の転送データサイズのみではなく、他のリソース、他のユーザー様の稼働状況、帯域の状況などにも処理時間は左右されるためです。</p>
