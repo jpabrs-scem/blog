@@ -48,7 +48,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snap
 ## 1. アプリケーション整合性<a id="1"></a>
 こちら Azure VM Backup における最も上位の整合性でございます。
 Windows OS のバックアップを取得した場合や事前事後スクリプトを設定した Linux OS でオンライン バックアップを取得した場合にアプリケーション整合性となります。
-なお、Windows OS の場合は VSS (ボリューム シャドウ コピー サービス) との連携によりアプリケーション整合性を取得するのみであり、Linux OS のような事前事後スクリプトの準備はございません。
+なお、Windows OS の場合は VSS (ボリューム シャドウ コピー サービス) との連携によりアプリケーション整合性を取得するのみであり、Linux OS のような事前事後スクリプトの準備はございません。また Windows / Linux いずれも OS の起動を保証します。
 
 Azure Portal 上の表示では、Windows OS の場合は VSS (VSS ライター) が正常に稼働すればアプリケーション整合性となり、Linux VM の場合は事前事後スクリプトが正常に完了すればアプリケーション整合性となります。
 つまり、VSS に対応していないアプリケーションをご利用の場合は該当アプリケーションに対する整合性はございませんが、Azure Portal (Azure Backup) では VSS ライターが提供されていない対象のアプリケーションを検知することが出来ないため Azure Portal 上の表示はアプリケーション整合性となります。
