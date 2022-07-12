@@ -29,7 +29,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
 ## バックアップを故意に失敗させる方法 (手順概略)
 ・「バックアップを故意に失敗させる方法 (Windows VM の場合) 」
 >	1.Backup 対象の VM にリモート ログイン
->	2.Services 内で "RbAgent" と "Windows Azure Guest Agent" の停止、スタートアップの無効化
+>	2.Services 内で "RdAgent" と "Windows Azure Guest Agent" の停止、スタートアップの無効化
 >	3.Backup を実施し、エラーの確認
 >	4.Agent の再度起動
 
