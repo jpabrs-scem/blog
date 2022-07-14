@@ -64,6 +64,12 @@ Azure VM Backup のリストアにかかった時間と転送データ量の実�
 
 #### インスタント リストアついて
 インスタント リストアは Recovery Services コンテナーからの転送フェーズがございませんので、上記のグラフ結果よりも早い復元が期待できる機能でございます。
+
+下記のように回復の種類に "スナップショット" が含まれる場合は自動的にインスタント リストアとなります。
+
+![](https://user-images.githubusercontent.com/71251920/178863089-01be3556-bf72-472a-9e48-888f80dd7875.png)
+
+
 ・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
 
