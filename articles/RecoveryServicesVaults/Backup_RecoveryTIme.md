@@ -33,6 +33,7 @@ Azure サービスはマルチテナント サービスであるため、 Azure 
 ### <a id="1-1"></a> 1.1 Azure VM Backup のバックアップ時間について
 特に、Azure VM Backup のバックアップ時間に関しましては、増分データが 200GB 以下である場合、24時間 以内に完了する仕様となっており、24 時間以内の完了であれば仕様の範疇でございます。
 
+
 ・バックアップ パフォーマンス
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-performance
 
@@ -51,6 +52,8 @@ Azure VM Backup のバックアップにかかった時間と転送データ量�
 ![](https://user-images.githubusercontent.com/71251920/175569827-32081c88-3b8a-4eca-abdc-471033b3d4b8.png)
 
  Azure VM のバックアップにおいて **転送データ量とかかった時間に相関がない**ことがわかるかと存じます。
+
+また、転送データ量が数TBなど(200GB より多い) 場合、24 時間以上かかる事例がございますが、上述の通り、データ量から時間を概算することはかないません。
 
 ### <a id="1-3"></a> 1.3 Azure VM Backup におけるリストア タイムの実績値グラフ
 こちら、**インスタント リストア**ではなく Recovery Services コンテナー (標準コンテナー / Vault-Standard) からのリストアでございます。
