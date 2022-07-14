@@ -9,7 +9,7 @@ disableDisclaimer: false
 
 <!-- more -->
 こんにちは、Azure Backup サポートです。
-今回は、Azure Backup での リージョンをまたがる復元（ = Cross-Region Restore / CRR）にて頻繁にいただくお問い合わせに関して、下記 3 点ご案内いたします。
+今回は、Azure Backup での リージョンをまたがる復元（ = Cross-Region Restore / CRR）にて頻繁にいただくお問い合わせに関して、下記ご案内いたします。
 
 
 ## 目次
