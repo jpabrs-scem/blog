@@ -30,6 +30,9 @@ Azure VM Backup 関連のお問い合わせで、以下のようなお問い合�
 例えば、週次 (日次) にて取得する復元ポイント（バックアップ ポイント）に対する保持期間の変更は、すでに週次 (日次) にて取得した復元ポイントに対しても変更が適用されます。
 
 下記の弊社公開情報をご覧ください。
+・Azure Backup - よく寄せられる質問 - バックアップ ポリシーを変更した場合どうなりますか。
+https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-faq#--------------------------
+
 ・アーキテクチャの概要 -  復旧ポイントに対するポリシーの変更の影響
 　https://docs.microsoft.com/ja-jp/azure/backup/backup-architecture#impact-of-policy-change-on-recovery-points
 
