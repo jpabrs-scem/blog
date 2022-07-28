@@ -8,7 +8,7 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-みなさこんにちは、Azure Backup サポートです。
+みなさんこんにちは、Azure Backup サポートです。
 今回は、**「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」**というお問い合わせについて回答します。
 
 ## 目次
