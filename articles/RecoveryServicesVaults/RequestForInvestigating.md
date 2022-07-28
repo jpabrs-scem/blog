@@ -31,10 +31,17 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や Azure Backup for SAP HANA in Azure VM など Azure VM 上の DB のバックアップに関するものでも同様に必要です。
 下記の **環境情報**と**ログ情報**の収集をお願いいたします。
 
+*NVA などの場合、OS が対応していない可能性もございます。
+(参考)詳細は下記をご覧ください
+・NVA のバックアップについて
+https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/
+
+
 ### 環境情報
 ・Subscription ID
 ・Recovery Services コンテナー名、およびそのリソースグループ名
 ・バックアップ対象 VM 名、およびそのリソースグループ名
+・OS およびバージョン情報
 
 #### ログ情報
 下記を参考に zip などにまとめてご提供いただけますと幸いです。
