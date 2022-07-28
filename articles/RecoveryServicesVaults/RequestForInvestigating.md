@@ -32,7 +32,7 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 下記の **環境情報**と**ログ情報**の収集をお願いいたします。
 
 *NVA などの場合、OS が対応していない可能性もございます。
-(参考)詳細は下記をご覧ください
+(参考) 詳細は下記をご覧ください
 ・NVA のバックアップについて
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/
 
