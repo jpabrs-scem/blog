@@ -93,7 +93,7 @@ Azure VM Backupでは バックアップ ジョブの画面で確認できるよ
 Azure VM Backup において VM と連携する処理は Take Snapshot フェーズのみでございます。
 そのため、Take Snapshot フェーズが完了すれば VM の再起動や運用によってはアップデートや DB の再開などを行っていただいてもかまいません。
 Azure VM Backup はオンラインでもオフラインでもバックアップすることが可能ですが、**Take Snapshot フェーズ** に電源操作をされた場合には対象のバックアップが失敗する可能性がございます。
-Take Snapshot フェーズが終わっていれば有事の際にはインスタントリストア機能を用いてリストアすることも可能です。
+ Transfer data to vault フェーズが終わっていなくても Take Snapshot フェーズが終わっていれば有事の際にはインスタントリストア機能を用いてリストアすることも可能です。
 ・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
 
