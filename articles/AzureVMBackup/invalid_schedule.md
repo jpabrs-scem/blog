@@ -40,7 +40,7 @@ disableDisclaimer: false
 [参考]
  ・バックアップ ポリシーに設定されている保有期間が過ぎても、スナップショットが存在するのはなぜですか。https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability#why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy
  >ガベージ コレクター (GC) の負荷の増加に基づいて、追加のスナップショットが 1、2 個存在することがあります。
- 
+
  ・ 自分の保有ポリシーよりも多くのスナップショットが表示されるのはなぜですか。
  https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability#why-do-i-see-more-snapshots-than-my-retention-policy
 >ガベージ コレクションに遅延がある場合は、"n + 1 + 2" 個のスナップショットが表示される場合もあります。 これは、次のような場合にまれに発生することがあります。
@@ -89,3 +89,10 @@ https://jpaztech.github.io/blog/vm/vm-replica-3/#2-VM-%E3%82%92%E5%81%9C%E6%AD%A
  
 ・ポータルまたは PowerShell を使用してスナップショットを作成する
 https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal
+
+#### 注意事項
+上記、ディスクのスナップショットはAzure VM Backupとは異なり整合性が常にクラッシュ整合性となります。
+詳細については下記をご覧ください。
+
+・Azure VM Backupにおける整合性について - 3.クラッシュ整合性
+https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3
