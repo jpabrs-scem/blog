@@ -24,6 +24,7 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
   [4-1. Microsoft Azure Backup Agent のログ](#4-1)
   [4-2. システム情報](#4-2)
   [4-3. イベント ログ](#4-3)
+  [4.4 各種証明書の確認証跡](#4-4)
 -----------------------------------------------------------
 
 
@@ -176,3 +177,46 @@ PowerShellを管理者権限で起動し、下記コマンドを実行し実行�
 a) [イベント ビューアー (ローカル)] - [Windows ログ] - [システム]
 b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Application]
 4. 保存したイベント ログ ファイルをご提供ください。
+
+### 4.4 各種証明書の確認証跡<a id="4-4"></a>
+下記詳細手順のもと、証明書 および 権限の確認を確認のうえ、画面ショットを zip などにおまとめの上ご提供お願いいたします。
+
+対象マシン上の「スタート」ボタンを右クリック＞「ファイル名を指定して実行」＞「certlm.msc」と入力して「OK」し、以下すべての証明書が存在するかご確認ください。
+
+![](https://user-images.githubusercontent.com/71251920/182520764-1ed4e4ab-c925-4a87-b905-1414bab17e47.png)
+
+![](https://user-images.githubusercontent.com/71251920/182520768-feacd580-7217-4148-af08-27cab663d93f.png)
+
+
+#### 〈 個人 ＞ 証明書 〉
+>・CB_<MARSのバックアップを実施する予定のRecovery Services コンテナー名 → -x-x-xxxx-vaultcredentials
+>・CB_<VM名>._xxxxxxxxxxxxxxxxxx
+※　上記 2 が存在していることを確認の上、その画面スクリーンショットをご提供ください
+（存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）
+![](https://user-images.githubusercontent.com/71251920/182520770-6e2bac01-d72e-4a3a-b358-56f853538f5a.png)
+
+
+#### 〈 信頼されたルート証明書 ＞ 証明書 〉
+>ルート証明書名	証明書の拇印
+>DigiCert Global Root G2	df3c24f9bfd666761b268073fe06d1cc8d4f82a4
+>DigiCert Global Root CA	a8985d3a65e5e5c4b2d7d66d40c6dd2fb19c5436
+>Baltimore CyberTrust Root	d4de20d05e66fc53fe1a50882c78db2852cae474
+>D-TRUST Root Class 3 CA 2 2009	58e8abb0361533fb80f79b1b6d29d3ff8d5f00f0
+>Microsoft RSA Root Certificate Authority2017	73a5e64a3bff8316ff0edccc618a906e4eae4d74
+>Microsoft ECC Root Certificate Authority 2017	999a64c37ff47d9fab95f14769891460eec4c3c5
+
+![](https://user-images.githubusercontent.com/71251920/182520772-59ba76df-31cf-488d-bfec-066830b44698.png)
+
+※　上記 6 つすべての証明書が存在していること (存在していない場合もございます) ・証明書をダブルクリックし、「詳細」タブ ＞ スクロールして下の方に「拇印」がありますので、値が上記と同一であることが確認し、その画面ショットをご提供ください。
+（存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）
+
+#### 〈 中間証明機関 ＞ 証明書 〉　
+>中間証明書名	証明書の拇印
+>Microsoft RSA TLS CA 01	703d7a8f0ebf55aaa59f98eaf4a206004eb2516a
+>Microsoft RSA TLS CA 02	b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75
+
+![](https://user-images.githubusercontent.com/71251920/182520776-8f30a8f5-67d5-4bfd-a264-590ca251689d.png)
+
+※　上記 2 つすべての証明書が存在していること・証明書をダブルクリックし、「詳細」タブ ＞ スクロールして下の方に「拇印」がありますので、値が上記と同一であることが確認できる画面スクリーンショットをご提供ください。
+
+![](https://user-images.githubusercontent.com/71251920/182520778-a9e6e160-5830-4cf5-a6c3-00acf7ce0941.png)
