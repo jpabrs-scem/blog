@@ -37,6 +37,16 @@ disableDisclaimer: false
 
 バックアップが常に有効化されている場合、Garbage Collection が一日 (24 時間) のうちどこかで行われる仕様ですので、上記エラーは通常は発生いたしません。
 
+[参考]
+ ・バックアップ ポリシーに設定されている保有期間が過ぎても、スナップショットが存在するのはなぜですか。https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability#why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy
+ >ガベージ コレクター (GC) の負荷の増加に基づいて、追加のスナップショットが 1、2 個存在することがあります。
+ 
+ ・ 自分の保有ポリシーよりも多くのスナップショットが表示されるのはなぜですか。
+ https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability#why-do-i-see-more-snapshots-than-my-retention-policy
+>ガベージ コレクションに遅延がある場合は、"n + 1 + 2" 個のスナップショットが表示される場合もあります。 これは、次のような場合にまれに発生することがあります。
+>過去の保有期間のスナップショットをクリーンアップするとき。
+>バックエンドのガベージ コレクター (GC) に負荷がかかっているとき。
+
 
 参考：Azure Poretal からバックアップ アイテムを選択し、[バックアップの停止] を行うことが出来ます。
 
