@@ -188,7 +188,7 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 ![](https://user-images.githubusercontent.com/71251920/182520768-feacd580-7217-4148-af08-27cab663d93f.png)
 
 
-#### 〈 個人 ＞ 証明書 〉
+#### 個人 ＞ 証明書
 >・CB_<MARSのバックアップを実施する予定のRecovery Services コンテナー名 → -x-x-xxxx-vaultcredentials
 >・CB_<VM名>._xxxxxxxxxxxxxxxxxx
 ※　上記 2 が存在していることを確認の上、その画面スクリーンショットをご提供ください
@@ -196,7 +196,7 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 ![](https://user-images.githubusercontent.com/71251920/182520770-6e2bac01-d72e-4a3a-b358-56f853538f5a.png)
 
 
-#### 〈 信頼されたルート証明書 ＞ 証明書 〉
+#### 信頼されたルート証明書 ＞ 証明書 
 >ルート証明書名	証明書の拇印
 >DigiCert Global Root G2	df3c24f9bfd666761b268073fe06d1cc8d4f82a4
 >DigiCert Global Root CA	a8985d3a65e5e5c4b2d7d66d40c6dd2fb19c5436
@@ -210,7 +210,7 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 ※　上記 6 つすべての証明書が存在していること (存在していない場合もございます) ・証明書をダブルクリックし、「詳細」タブ ＞ スクロールして下の方に「拇印」がありますので、値が上記と同一であることが確認し、その画面ショットをご提供ください。
 （存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）
 
-#### 〈 中間証明機関 ＞ 証明書 〉　
+#### 中間証明機関 ＞ 証明書 
 >中間証明書名	証明書の拇印
 >Microsoft RSA TLS CA 01	703d7a8f0ebf55aaa59f98eaf4a206004eb2516a
 >Microsoft RSA TLS CA 02	b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75
