@@ -64,3 +64,5 @@ Azure VM では、Unmanaged Disk を利用している場合にストレージ �
 https://docs.microsoft.com/ja-jp/azure/storage/common/storage-redundancy#locally-redundant-storage
 >シナリオで Azure アンマネージド ディスクを使用している場合は、LRS を選択できます。 GRS を使用する Azure アンマネージド ディスクのストレージ アカウントを作成することはできますが、非同期 geo レプリケーションの整合性に関する潜在的な問題のため、お勧めしません。
 
+
+本記事の内容は以上となります。
