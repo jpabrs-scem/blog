@@ -21,7 +21,6 @@ disableDisclaimer: false
    [  1.2 Recovery Time Objective (RTO)](#1-2) 
    [  1.3 Recovery Point Objective (RPO)](#1-3) 
 [2. Azure VM Backup と Azure Site Recovery の比較](#2)
-   [  2.1 リストア検証](#2-1) 
 [3. 参考情報 : DR 大作のための Azure VM のディスクの冗長構成は非推奨](#2)
 -----------------------------------------------------------
 
