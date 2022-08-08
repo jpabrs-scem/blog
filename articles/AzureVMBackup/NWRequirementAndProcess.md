@@ -153,8 +153,8 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
 
 
 >Q.  Recovery Services コンテナーにプライベート エンドポイントを設定した際の Azure VM バックアップをとるための NSG の設定を知りたい
->>A. Azure VM Backup では1.Take Snapshotフェーズて Wire Server (168.63.129.16) と通信し、2.  Transfer data to vault フェーズで Azure 基盤内でバックアップデータ(取得したスナップショット) を Recovery Services コンテナーへ転送します。
-そのため、 Azure VM と Recovery Services コンテナーは直接通信しないので、プライベート エンドポイント観点での 対象 VM に対する NSG の考慮はAzure VM Backupでは不要です。
+>>A. Azure VM Backup では1.Take Snapshotフェーズで Wire Server (168.63.129.16) と通信し、2.  Transfer data to vault フェーズで Azure 基盤内でバックアップデータ(取得したスナップショット) を Recovery Services コンテナーへ転送します。
+そのため、 Azure VM と Recovery Services コンテナーは直接通信しないので、プライベート エンドポイント観点での 対象 VM に対する NSG の考慮は Azure VM Backup では不要です。
 また Wire Server (Wire Server) への通信もプライベート エンドポイントの影響を受けません。
 プライベート エンドポイント を設定していても設定していなくても、その前後で Azure VM Backup は設定変更することなく取得することが可能です。
 参考
