@@ -152,6 +152,19 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
 
 
+>Q.  Recovery Services コンテナーにプライベート エンドポイントを設定した際の Azure VM バックアップをとるための NSG の設定を知りたい
+>>A. Azure VM Backup では1.Take Snapshotフェーズて Wire Server (168.63.129.16) と通信し、2.  Transfer data to vault フェーズで Azure 基盤内でバックアップデータ(取得したスナップショット) を Recovery Services コンテナーへ転送します。
+そのため、 Azure VM と Recovery Services コンテナーは直接通信しないので、プライベート エンドポイント観点での 対象 VM に対する NSG の考慮はAzure VM Backupでは不要です。
+また Wire Server (Wire Server) への通信もプライベート エンドポイントの影響を受けません。
+プライベート エンドポイント を設定していても設定していなくても Azure VM Backup は設定変更することなく取得することが可能です。
+参考
+・Azure VM Backup の 通信要件について - Azure VM Backup の 通信要件(本ページ)
+https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1
+・Take Snapshot フェーズ - Azure VM Backup の 通信要件(本ページ)
+https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
+・Transfer data to vaultフェーズ Azure VM Backup の 通信要件(本ページ)
+https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-2
+
 >Q. Azure VM Backup のバックアップデータ転送トラフィックが VM に与える影響を懸念しているがベストプラクティスはあるか？
 >>A. Azure Backup のデータ転送は Azure のバックアップエンド側で行われ VM の 仮想 NIC を経由しないためバックアップデータ転送トラフィックが VM に与える影響はございません。
 参考
