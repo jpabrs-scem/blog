@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Azure Migrate で PE プロジェクトに ova からデプロイしたアプライアンスを登録する手順 | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="こんにちは! ABRS チームの 朴 です。今回は VMware VM を Azure に移行する (エージェントレス型方式) 際、既にパブリック エンドポイントを利用する Azure Migrate プロジェクトに登録されているAzure Migrate アプライアンスをプライベート エンドポイント接続を利用する他の Azure Migrate プロジェクトに再登録する方法についてご説明させて">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure Migrate で PE プロジェクトに ova からデプロイしたアプライアンスを登録する手順">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/ASR_Migrate/RegisterApplianceFromOVA/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="こんにちは! ABRS チームの 朴 です。今回は VMware VM を Azure に移行する (エージェントレス型方式) 際、既にパブリック エンドポイントを利用する Azure Migrate プロジェクトに登録されているAzure Migrate アプライアンスをプライベート エンドポイント接続を利用する他の Azure Migrate プロジェクトに再登録する方法についてご説明させて">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872769-21b6ce08-c80e-46b1-836b-229f2b7b4c4b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872774-607827ea-0021-4727-b0bf-3eb4fd74b0ef.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872777-8eed04ff-cb7a-4b48-9467-8d23de5b0192.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872782-439979cc-d4b9-4a1f-8b3c-f3d00a28927f.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872732-3d2fc9ec-812f-4d86-a2e5-0587ece25875.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872742-e1eb0069-9776-42e9-9dcb-d884ba943019.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872748-7feab4d1-4067-48de-9a70-16a336a8fa3d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872749-267f9bc4-15fb-45aa-aca0-03405074d0a9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872751-ddc0bf98-e560-4dfc-b745-67a3076a9f12.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872756-d446ea96-38e5-4fec-abbe-ee2acb833e76.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872760-e94e88e6-7f75-4db3-808b-545a0459194f.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872762-5fd9e062-2f81-4938-b83c-da04eec2fd72.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872766-4e725e3d-2d74-4de0-975b-0e3d6a089ce8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872768-06315655-ce47-432d-b3e7-9aa08fe683bf.png">
+<meta property="article:published_time" content="2022-08-11T03:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-10T10:28:06.486Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure Migrate">
+<meta property="article:tag" content="how to">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/183872769-21b6ce08-c80e-46b1-836b-229f2b7b4c4b.png">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ASR_Migrate/RegisterApplianceFromOVA" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Azure Migrate で PE プロジェクトに ova からデプロイしたアプライアンスを登録する手順
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2022-08-11T03:00:00.000Z" itemprop="datePublished">2022-08-11</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+5a3dc5e0-2114-585f-a208-abd797825035%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Migrate+%E3%81%A7+PE+%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AB+ova+%E3%81%8B%E3%82%89%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%97%E3%81%9F%E3%82%A2%E3%83%97%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%82%B9%E3%82%92%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8B%E6%89%8B%E9%A0%86%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FASR_Migrate%2FRegisterApplianceFromOVA%2F%29%0A*+Content+Source%3A+%5Barticles%2FASR_Migrate%2FRegisterApplianceFromOVA.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FASR_Migrate%2FRegisterApplianceFromOVA.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/ASR_Migrate/RegisterApplianceFromOVA/" data-id="cl6ngxcmf00000npkgwcpdd2o" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>こんにちは! ABRS チームの 朴 です。<br>今回は VMware VM を Azure に移行する (エージェントレス型方式) 際、既にパブリック エンドポイントを利用する Azure Migrate プロジェクトに登録されている<br>Azure Migrate アプライアンスをプライベート エンドポイント接続を利用する他の Azure Migrate プロジェクトに再登録する方法についてご説明させていただきます。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. 接続方法ごとの Azure Migrate アプライアンスのデプロイ方法について</a><br>   <a href="#1-1">  1.1 パブリック エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法</a><br>   <a href="#1-2">  1.2 プライベート エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法</a><br><a href="#2">2. OVA ファイルから Azure Migrate アプライアンスをデプロイした後、プライベート エンドポイント接続を利用する他の Azure Migrate プロジェクトに再登録する手順</a></p>
+<hr>
+<h2 id="1-接続方法ごとの-Azure-Migrate-アプライアンスのデプロイ方法について"><a href="#1-接続方法ごとの-Azure-Migrate-アプライアンスのデプロイ方法について" class="headerlink" title=" 1. 接続方法ごとの Azure Migrate アプライアンスのデプロイ方法について"></a><a id="1"></a> 1. 接続方法ごとの Azure Migrate アプライアンスのデプロイ方法について</h2><h3 id="1-1-パブリック-エンドポイントを使用する-Azure-Migrate-を使用する時-V2A-エージェントレス型方式-の-Azure-Migrate-アプライアンスのデプロイ方法"><a href="#1-1-パブリック-エンドポイントを使用する-Azure-Migrate-を使用する時-V2A-エージェントレス型方式-の-Azure-Migrate-アプライアンスのデプロイ方法" class="headerlink" title=" 1-1 パブリック エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法"></a><a id="1-1"></a> 1-1 パブリック エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法</h3><p> パブリック エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) :<br> この場合は、Azure Portal から OVA ファイル および ZIP ファイルがダウンロードできます。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/183872769-21b6ce08-c80e-46b1-836b-229f2b7b4c4b.png"></p>
+<h3 id="1-2-プライベート-エンドポイントを使用する-Azure-Migrate-を使用する時-V2A-エージェントレス型方式-の-Azure-Migrate-アプライアンスのデプロイ方法"><a href="#1-2-プライベート-エンドポイントを使用する-Azure-Migrate-を使用する時-V2A-エージェントレス型方式-の-Azure-Migrate-アプライアンスのデプロイ方法" class="headerlink" title="1-2 プライベート エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法"></a><a id="1-2"></a>1-2 プライベート エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法</h3><p> プライベート エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) : この際は、Azure Portal から Zip ファイルのみがダウンロードできます。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/183872774-607827ea-0021-4727-b0bf-3eb4fd74b0ef.png"></p>
+<p>Azure Migrate アプライアンスのデプロイ方法については、公開情報をご参照いただければ幸いです。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/migrate-appliance">https://docs.microsoft.com/ja-jp/azure/migrate/migrate-appliance</a></p>
+<p>上記の画面によりますと、ダウンロードするファイル (OVA ファイルと ZIP ファイル) が異なるため、パブリック エンドポイントを使用する Azure Migrate プロジェクトに登録した Azure Migrate アプライアンスは、<br>プライベート エンドポイントを使用する Azure Migrate プロジェクトに再登録できないのではないかと読み取れますが、実際そうではありません。<br><a href="#2">2. の手順</a> にて Azure Migrate アプライアンスを切り替えて登録する方法を紹介します。
+　</p>
+<h2 id="2-OVA-ファイルから-Azure-Migrate-アプライアンスをデプロイした後、プライベート-エンドポイント接続を利用する他の-Azure-Migrate-プロジェクトに再登録する手順"><a href="#2-OVA-ファイルから-Azure-Migrate-アプライアンスをデプロイした後、プライベート-エンドポイント接続を利用する他の-Azure-Migrate-プロジェクトに再登録する手順" class="headerlink" title=" 2. OVA ファイルから Azure Migrate アプライアンスをデプロイした後、プライベート エンドポイント接続を利用する他の Azure Migrate プロジェクトに再登録する手順"></a><a id="2"></a> 2. OVA ファイルから Azure Migrate アプライアンスをデプロイした後、プライベート エンドポイント接続を利用する他の Azure Migrate プロジェクトに再登録する手順</h2><blockquote>
+<p>(注: <strong>既に Azure Migrate アプライアンスが存在するサーバーで実施する場合、既存の構成がクリーンアップされますのでご注意ください。</strong>)</p>
+</blockquote>
+<h3 id="2-1-Azure-Migrate-Project-を-2-つ作成します。"><a href="#2-1-Azure-Migrate-Project-を-2-つ作成します。" class="headerlink" title=" 2-1. Azure Migrate Project を 2 つ作成します。"></a><a id="2-1"></a> 2-1. Azure Migrate Project を 2 つ作成します。</h3><p>  a. Azure Migrate Project 1 : (プロジェクト名 : PublicEndpoint, V2A エージェントレス、パブリックエンドポイント接続)<br>  b. Azure Migrate Project 2 : (プロジェクト名 : PrivateEP, V2A エージェントレス、プライベートエンドポイント接続)                                </p>
+<p><img src="https://user-images.githubusercontent.com/71251920/183872777-8eed04ff-cb7a-4b48-9467-8d23de5b0192.png"></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/183872782-439979cc-d4b9-4a1f-8b3c-f3d00a28927f.png"></p>
+<h3 id="2-2-Azure-Migrate-Project-1-PublicEndpoint-から-OVA-ファイルをダウンロードし、Azure-Migrate-アプライアンスをデプロイします。"><a href="#2-2-Azure-Migrate-Project-1-PublicEndpoint-から-OVA-ファイルをダウンロードし、Azure-Migrate-アプライアンスをデプロイします。" class="headerlink" title=" 2-2. Azure Migrate Project 1 (PublicEndpoint) から OVA ファイルをダウンロードし、Azure Migrate アプライアンスをデプロイします。"></a><a id="2-2"></a> 2-2. Azure Migrate Project 1 (PublicEndpoint) から OVA ファイルをダウンロードし、Azure Migrate アプライアンスをデプロイします。</h3><p>a. ova ファイルは、Azure Portal もしくは 公開情報からダウンロードいただいても問題ございません。<br>・アプライアンス - Vmware  - Azure Migrate アプライアンス<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/migrate-appliance#appliance---vmware">https://docs.microsoft.com/ja-jp/azure/migrate/migrate-appliance#appliance---vmware</a>                        </p>
+<p><img src="https://user-images.githubusercontent.com/71251920/183872732-3d2fc9ec-812f-4d86-a2e5-0587ece25875.png"><br><img src="https://user-images.githubusercontent.com/71251920/183872742-e1eb0069-9776-42e9-9dcb-d884ba943019.png"></p>
+<h3 id="2-3-検証環境は、ova-ファイルからデプロイした-Azure-Migrate-アプライアンスを-Azure-Migrate-Project-1-PublicEndpoint-に登録している状態を前提としています。"><a href="#2-3-検証環境は、ova-ファイルからデプロイした-Azure-Migrate-アプライアンスを-Azure-Migrate-Project-1-PublicEndpoint-に登録している状態を前提としています。" class="headerlink" title=" 2-3. 検証環境は、ova ファイルからデプロイした Azure Migrate アプライアンスを Azure Migrate Project 1 (PublicEndpoint) に登録している状態を前提としています。"></a><a id="2-3"></a> 2-3. 検証環境は、ova ファイルからデプロイした Azure Migrate アプライアンスを Azure Migrate Project 1 (PublicEndpoint) に登録している状態を前提としています。</h3><p>ova ファイルからデプロイした Azure Migrate アプライアンスを Azure Migrate Project 1 (PublicEndpoint) に登録する手順は、割愛させていただきます。                </p>
+<h3 id="2-4-アプライアンスをホストするサーバー上のフォルダーに-インストーラー-スクリプトを含んだ-ZIP-ファイル-AzureMigrateInstaller-zip-を抽出します。"><a href="#2-4-アプライアンスをホストするサーバー上のフォルダーに-インストーラー-スクリプトを含んだ-ZIP-ファイル-AzureMigrateInstaller-zip-を抽出します。" class="headerlink" title=" 2-4. アプライアンスをホストするサーバー上のフォルダーに インストーラー スクリプトを含んだ ZIP ファイル (AzureMigrateInstaller.zip) を抽出します。"></a><a id="2-4"></a> 2-4. アプライアンスをホストするサーバー上のフォルダーに インストーラー スクリプトを含んだ ZIP ファイル (AzureMigrateInstaller.zip) を抽出します。</h3><p>a. インストーラー スクリプトを含んだ ZIP ファイル (AzureMigrateInstaller.zip) 、Azure Portal もしくは公開情報からダウンロードいただいても問題ございません。<br>・スクリプトを使用してアプライアンスを設定する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/deploy-appliance-script?msclkid=1eb571a2a5ca11eca56137c5033e85e4">https://docs.microsoft.com/ja-jp/azure/migrate/deploy-appliance-script?msclkid=1eb571a2a5ca11eca56137c5033e85e4</a></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/183872748-7feab4d1-4067-48de-9a70-16a336a8fa3d.png"></p>
+<h3 id="2-5-PowerShell-スクリプトファイルを実行するため、下記のコマンドを実行します。"><a href="#2-5-PowerShell-スクリプトファイルを実行するため、下記のコマンドを実行します。" class="headerlink" title=" 2-5. PowerShell スクリプトファイルを実行するため、下記のコマンドを実行します。"></a><a id="2-5"></a> 2-5. PowerShell スクリプトファイルを実行するため、下記のコマンドを実行します。</h3><pre><code> # Set-Executionpolicy Allsigned
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/71251920/183872749-267f9bc4-15fb-45aa-aca0-03405074d0a9.png"></p>
+<h3 id="2-6-PowerShell-ディレクトリを、ダウンロードした-ZIP-ファイルの内容が抽出されたフォルダーに変更し、下記のコマンドを実行します。"><a href="#2-6-PowerShell-ディレクトリを、ダウンロードした-ZIP-ファイルの内容が抽出されたフォルダーに変更し、下記のコマンドを実行します。" class="headerlink" title=" 2-6. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更し、下記のコマンドを実行します。"></a><a id="2-6"></a> 2-6. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更し、下記のコマンドを実行します。</h3><pre><code># PS C:\Users\administrator\Desktop\AzureMigrateInstaller&gt; .\AzureMigrateInstaller.ps1    
+</code></pre>
+<p> a. 下記の公開情報の技術の通り、Azure Migrate アプライアンスがすでに設定されているサーバーでスクリプト実行する場合、既存の構成がクリーンアップし、必要な構成の新しいアプライアンスが設定される仕組みとなっています。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/183872751-ddc0bf98-e560-4dfc-b745-67a3076a9f12.png"></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/183872756-d446ea96-38e5-4fec-abbe-ee2acb833e76.png"></p>
+<h3 id="2-7-ova-ファイルをデプロイした時と同様に、ApplianceConfigurationManager-が自動に起動されます。"><a href="#2-7-ova-ファイルをデプロイした時と同様に、ApplianceConfigurationManager-が自動に起動されます。" class="headerlink" title=" 2-7. ova ファイルをデプロイした時と同様に、ApplianceConfigurationManager が自動に起動されます。"></a><a id="2-7"></a> 2-7. ova ファイルをデプロイした時と同様に、ApplianceConfigurationManager が自動に起動されます。</h3><p><img src="https://user-images.githubusercontent.com/71251920/183872760-e94e88e6-7f75-4db3-808b-545a0459194f.png"></p>
+<h3 id="2-8-ApplianceConfigurationManager-が起動されたら、お客様の環境に合わせて-Azure-Migrate-アプライアンスを-Azure-Migrate-Project-2-PrivateEndpoint-に登録して頂ければと思います。"><a href="#2-8-ApplianceConfigurationManager-が起動されたら、お客様の環境に合わせて-Azure-Migrate-アプライアンスを-Azure-Migrate-Project-2-PrivateEndpoint-に登録して頂ければと思います。" class="headerlink" title=" 2-8. ApplianceConfigurationManager が起動されたら、お客様の環境に合わせて Azure Migrate アプライアンスを Azure Migrate Project 2 (PrivateEndpoint) に登録して頂ければと思います。"></a><a id="2-8"></a> 2-8. ApplianceConfigurationManager が起動されたら、お客様の環境に合わせて Azure Migrate アプライアンスを Azure Migrate Project 2 (PrivateEndpoint) に登録して頂ければと思います。</h3><p>a. Azure Migrate アプライアンスは、インターネットに接続する必要がありますので Azure Migrate アプライアンスのサーバーに Proxy が設定されている場合は、<br>下記の設定を改めてご確認頂ければと思います。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/183872762-5fd9e062-2f81-4938-b83c-da04eec2fd72.png"></p>
+<p>b. ソース環境からプライベート エンドポイントのプライベート IP アドレスを解決するために、追加の DNS 設定が必要になる場合があります。<br>プライベート IP アドレスが使用できるよう、Azure Migrate プロジェクトの評価ツールのプロパティーから DNS 設定をダウンロードして頂き、<br>ダウンロードした DNS 設定をオンプレミスの DNS サーバーもしくはアプライアンスの Hosts ファイルへ設定し、プライベート エンドポイントの FQDN の名前解決できるように設定する必要があります。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/183872766-4e725e3d-2d74-4de0-975b-0e3d6a089ce8.png"></p>
+<p>c. VM Ware から Azure へ移行する際、エージェント レスやエージェント ベスの方式に関係なく、vCenter Server のアクセス許可が必要となります。</p>
+<p>d. プライベート エンドポイントを使用した Azure Migrate の設定手順は下記の公開情報をご参照ください。<br>・サポート要件と考慮事項 - プライベート エンドポイントで Azure Migrate を使用する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/how-to-use-azure-migrate-with-private-endpoints">https://docs.microsoft.com/ja-jp/azure/migrate/how-to-use-azure-migrate-with-private-endpoints</a><br>・パブリック エンドポイント接続を使用して Azure Migrate プロジェクトのデータを ExpressRoute 経由でレプリケートする<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/replicate-using-expressroute">https://docs.microsoft.com/ja-jp/azure/migrate/replicate-using-expressroute</a><br>・ネットワーク接続に関する問題のトラブルシューティング - Azure Migrate<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/troubleshoot-network-connectivity#possible-causes-1">https://docs.microsoft.com/ja-jp/azure/migrate/troubleshoot-network-connectivity#possible-causes-1</a></p>
+<h3 id="2-9-下記の画面になると、登録完了を意味します。"><a href="#2-9-下記の画面になると、登録完了を意味します。" class="headerlink" title=" 2-9. 下記の画面になると、登録完了を意味します。"></a><a id="2-9"></a> 2-9. 下記の画面になると、登録完了を意味します。</h3><p><img src="https://user-images.githubusercontent.com/71251920/183872768-06315655-ce47-432d-b3e7-9aa08fe683bf.png"></p>
+<p>本記事の内容は以上となります。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/ASR_Migrate/RegisterApplianceFromOVA.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../RecoveryServicesVaults/DR_ASR_or_VMBackup/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Azure VM Backup と Azure Site Recovery による DR 要件について</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">Azure Migrate で PE プロジェクトに ova からデプロイしたアプライアンスを登録する手順</a>
+          </li>
+        
+          <li>
+            <a href="../../RecoveryServicesVaults/DR_ASR_or_VMBackup/">Azure VM Backup と Azure Site Recovery による DR 要件について</a>
+          </li>
+        
+          <li>
+            <a href="../../RecoveryServicesVaults/Backup_RecoveryTIme/">Azure Backup の バックアップ / リストア 所要時間について</a>
+          </li>
+        
+          <li>
+            <a href="../../RecoveryServicesVaults/RequestForInvestigatingNW/">Azure Backup の障害調査に必要な情報 (疎通確認)</a>
+          </li>
+        
+          <li>
+            <a href="../../DPM&MABS/VMware_Error_332623/">DPMとMABSを使用しvCenter Serverに接続する時に、「VMWare Serverと通信できない」Error 33623 が発生した場合の対処方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SCOM/" rel="tag">SCOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SCSM/" rel="tag">SCSM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/SCVMM/" rel="tag">SCVMM</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/" rel="tag">System Center</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">19</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">16</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Recovery-Services-vaults/">Recovery Services vaults</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Recovery-Services-vaults/how-to">how to</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Recovery-Services-vaults/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/System-Center/">System Center</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/System-Center/SCOM">SCOM</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/System-Center/SCSM">SCSM</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/System-Center/SCVMM">SCVMM</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 10px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 12px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 12px;">MARS Backup</a> <a href="../../tags/Recovery-Services-vaults/" style="font-size: 16px;">Recovery Services vaults</a> <a href="../../tags/SCOM/" style="font-size: 14px;">SCOM</a> <a href="../../tags/SCSM/" style="font-size: 10px;">SCSM</a> <a href="../../tags/SCVMM/" style="font-size: 10px;">SCVMM</a> <a href="../../tags/System-Center/" style="font-size: 16px;">System Center</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 14px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 12px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
