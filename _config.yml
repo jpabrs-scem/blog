@@ -41,6 +41,8 @@ root_tag_generator:
     - Azure Files Backup
     - System Center
     - Recovery Services vaults
+    - Azure Site Recovery
+    - Azure Migrate
     - MARS Backup 
     - DPM / MABS 
   sub_tag_limit: 20
