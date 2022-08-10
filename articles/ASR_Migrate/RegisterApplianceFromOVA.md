@@ -111,7 +111,7 @@ b. ソース環境からプライベート エンドポイントのプライベ�
 ![](https://user-images.githubusercontent.com/71251920/183872766-4e725e3d-2d74-4de0-975b-0e3d6a089ce8.png)
 	
 
-c. VM Ware から Azure へ移行する際、エージェント レスやエージェント ベスの方式に関係なく、vCenter Server のアクセス許可が必要となります。
+c. VM Ware から Azure へ移行する際、エージェント レスやエージェント ベースの方式に関係なく、vCenter Server のアクセス許可が必要となります。
 
 d. プライベート エンドポイントを使用した Azure Migrate の設定手順は下記の公開情報をご参照ください。	
 ・サポート要件と考慮事項 - プライベート エンドポイントで Azure Migrate を使用する 
