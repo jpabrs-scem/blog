@@ -133,9 +133,11 @@ zip などにまとめてご提供いただけますと幸いです。
 
 ## 4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ<a id="4"></a>
 
-[1. Azure VM バックアップの障害調査に必要なログ](#1) の **環境情報** ならびに **ログ情報 - Windows の場合** に加えて下記もご対応お願いします。
-*MARS バックアップ のバックアップ対象の環境が Azure VM でない場合は Azure VM 名は不要です。
+## 4.0 環境情報とWindowsログ
+[1. Azure VM バックアップの障害調査に必要なログ](#1) の **環境情報** ならびに **ログ情報 - Windows の場合** の取得をお願いします。
+*MARS バックアップ のバックアップ対象の環境が Azure VM でない場合は Azure VM 名 / VM リソース グループ名は不要です。
 
+上記に加えて下記もご対応お願いします。
 ### 4.1 Microsoft Azure Backup Agent のログ　<a id="4-1"></a>
  まず、下記 リンク先から調査用スクリプトのダウンロードをお願いします。
 [WABDiag.zip](https://github.com/jpabrs-scem/blog/files/8045897/WABDiag.zip)
