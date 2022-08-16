@@ -105,6 +105,10 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#azure-backup----------------------------
 抜粋 : “VM スナップショットの作成には数分かかります。この段階では、アプリケーションのパフォーマンスに対する影響はほとんどありません。”
 
+・自分の VM バックアップ ポリシーで設定した、スケジュールされたバックアップ時刻からバックアップ開始時刻までの最大遅延時間はどれぐらいですか。
+https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#----vm-----------------------------------------------------------------
+抜粋 : "スケジュールされたバックアップは、スケジュールされたバックアップ時刻から 2 時間以内にトリガーされます。"
+
 ・ VM スナップショットに関する問題のトラブルシューティング
  https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues
 抜粋 : “VM の CPU またはメモリが高くなっています。 仮想マシンのメモリまたは CPU の使用率が高くなり、90% を超えてると、スナップショット タスクがキューに格納されて遅延します。 最終的にはタイムアウトになります。”
