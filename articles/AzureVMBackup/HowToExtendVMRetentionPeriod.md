@@ -64,4 +64,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-faq#----------
 https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/
 ・Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法
 https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/
-
+・バックアップ ポリシーに設定されている保有期間が過ぎても、スナップショットが存在するのはなぜですか。
+https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability#why-does-my-snapshot-still-exist-even-after-the-set-retention-period-in-backup-policy
+・自分の保有ポリシーよりも多くのスナップショットが表示されるのはなぜですか。
+https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability#why-do-i-see-more-snapshots-than-my-retention-policy
