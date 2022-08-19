@@ -52,8 +52,8 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
   >コマンド：` ` `az login` ` `
 
 #### 1.バックアップ ジョブのステータス確認 (.Name 値 の取得)
-  >コマンド：` ` `az backup job list --resource-group < RSV リソースグループ名> --vault-name < RSV 名> --status Inprogress​ -o table` ` `
-  >コマンド例：` ` `az backup job list --resource-group RG-NormalTest --vault-name RSV-JPE-LRS --status Inprogress​ -o table` ` `
+  >コマンド：` ` `az backup job list --resource-group < RSV リソースグループ名> --vault-name < RSV 名> --status InProgress -o table` ` `
+  >コマンド例：` ` `az backup job list --resource-group RG-NormalTest --vault-name RSV-JPE-LRS --status InProgress -o table` ` `
 
 上記コマンドを実行いただくと実行中のバックアップ ジョブの name 値が取得できます。
  出力結果を Azure VM Backup の実行中のバックアップ ジョブに限定する場合は下記のオプションを付けることで可能です。
