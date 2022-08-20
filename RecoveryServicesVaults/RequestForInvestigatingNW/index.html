@@ -17,8 +17,9 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/175529518-afd3ab91-e450-42b9-b7b6-310c6633cca1.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/175529520-b67e7eab-baef-4036-8c89-64ec9a86e40b.gif">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/175529523-b5004d01-f4cd-4879-9c48-b9de17a8c477.jpg">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/185762249-d5dbed3c-9bce-409e-8a88-a5b43a52fe95.png">
 <meta property="article:published_time" content="2022-06-24T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-08-20T18:23:17.495Z">
+<meta property="article:modified_time" content="2022-08-20T18:59:15.310Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Recovery Services vaults">
 <meta property="article:tag" content="情報採取">
@@ -108,7 +109,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+971c4226-694e-5c75-8da6-ca80e0154cf3%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1+%28%E7%96%8E%E9%80%9A%E7%A2%BA%E8%AA%8D%29%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FRecoveryServicesVaults%2FRequestForInvestigatingNW%2F%29%0A*+Content+Source%3A+%5Barticles%2FRecoveryServicesVaults%2FRequestForInvestigatingNW.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FRecoveryServicesVaults%2FRequestForInvestigatingNW.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/" data-id="cl728axxy001q0op7exrmd2ka" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/" data-id="cl729l6rh001q0os66es1a4ww" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -153,7 +154,28 @@
 <ul>
 <li>control + c にて強制終了した場合においても該当のログファイルが出力されますので、弊社までご提供お願いいたします。</li>
 </ul>
-<h2 id="2-Linux-VM-における-Azure-Backup-疎通確認-作成中"><a href="#2-Linux-VM-における-Azure-Backup-疎通確認-作成中" class="headerlink" title="2. Linux VM における Azure Backup 疎通確認(作成中)"></a>2. Linux VM における Azure Backup 疎通確認(作成中)<a id="2"></a></h2><p>こちら現在作成中です。</p>
+<h2 id="2-Linux-VM-における-Azure-Backup-疎通確認-作成中"><a href="#2-Linux-VM-における-Azure-Backup-疎通確認-作成中" class="headerlink" title="2. Linux VM における Azure Backup 疎通確認(作成中)"></a>2. Linux VM における Azure Backup 疎通確認(作成中)<a id="2"></a></h2><p>まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。<br><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/9387864/Check_Backup_NW_Linux_ver1.3.zip">Check_Backup_NW_Linux_ver1.3.zip</a></p>
+<p>(スクリプト実行手順)</p>
+<ol>
+<li><p>疎通確認スクリプトをダウンロードし、展開してください。<br>※ ファイルの解凍パスワードは <strong>“AzureBackup”</strong> となります。</p>
+</li>
+<li><p>対象の Linux マシンにスクリプトを移動し実行します。<br>必要に応じて chmod コマンドなどを用いてパーミッションを変更してください。</p>
+<blockquote>
+<p>chmod 777 Check_Backup_NW_Linux_ver1.3.sh </p>
+</blockquote>
+</li>
+</ol>
+<p>下記のように実行します。</p>
+<blockquote>
+<p>./Check_Backup_NW_Linux_ver1.3.sh</p>
+</blockquote>
+<ol start="3">
+<li>実行完了<br>実行が完了すれば下記のファイルが作成されます。<br>弊社までご提供お願いいたします。<blockquote>
+<p>ログファイルは CheckNWResult_(ホスト名)_(YYYYMMDDHHMM).log です。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="2-1-参考画像"><a href="#2-1-参考画像" class="headerlink" title="2.1 参考画像"></a>2.1 参考画像</h3><p><img src="https://user-images.githubusercontent.com/71251920/185762249-d5dbed3c-9bce-409e-8a88-a5b43a52fe95.png" alt="2022-08-21_03h55_09"></p>
 
       
       
