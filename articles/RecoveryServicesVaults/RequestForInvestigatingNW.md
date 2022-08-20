@@ -79,4 +79,4 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 >ログファイルは CheckNWResult_(ホスト名)_(YYYYMMDDHHMM).log です。
 
 ### 2.1 参考画像
-![2022-08-21_03h55_09](https://user-images.githubusercontent.com/71251920/185762249-d5dbed3c-9bce-409e-8a88-a5b43a52fe95.png)
+![-参考画像-](https://user-images.githubusercontent.com/71251920/185762249-d5dbed3c-9bce-409e-8a88-a5b43a52fe95.png)
