@@ -58,4 +58,25 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 
 
 ## 2. Linux VM における Azure Backup 疎通確認(作成中)<a id="2"></a>
-こちら現在作成中です。
+
+まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。
+[Check_Backup_NW_Linux_ver1.3.zip](https://github.com/jpabrs-scem/blog/files/9387864/Check_Backup_NW_Linux_ver1.3.zip)
+
+(スクリプト実行手順)
+1. 疎通確認スクリプトをダウンロードし、展開してください。
+※ ファイルの解凍パスワードは **“AzureBackup”** となります。
+
+2. 対象の Linux マシンにスクリプトを移動し実行します。
+必要に応じて chmod コマンドなどを用いてパーミッションを変更してください。
+>chmod 777 Check_Backup_NW_Linux_ver1.3.sh 
+
+下記のように実行します。
+>./Check_Backup_NW_Linux_ver1.3.sh
+
+3. 実行完了
+実行が完了すれば下記のファイルが作成されます。
+弊社までご提供お願いいたします。
+>ログファイルは CheckNWResult_(ホスト名)_(YYYYMMDDHHMM).log です。
+
+### 2.1 参考画像
+![2022-08-21_03h55_09](https://user-images.githubusercontent.com/71251920/185762249-d5dbed3c-9bce-409e-8a88-a5b43a52fe95.png)
