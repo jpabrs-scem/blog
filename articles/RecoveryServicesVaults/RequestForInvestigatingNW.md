@@ -17,7 +17,7 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 ## 目次
 -----------------------------------------------------------
 [1. Windows VM における Azure Backup 疎通確認](#1)
-[2. Linux VM における Azure Backup 疎通確認(作成中)](#2)
+[2. Linux VM における Azure Backup 疎通確認](#2)
 -----------------------------------------------------------
 
 
@@ -57,7 +57,7 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 * control + c にて強制終了した場合においても該当のログファイルが出力されますので、弊社までご提供お願いいたします。
 
 
-## 2. Linux VM における Azure Backup 疎通確認(作成中)<a id="2"></a>
+## 2. Linux VM における Azure Backup 疎通確認<a id="2"></a>
 
 まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。
 [Check_Backup_NW_Linux_ver1.3.zip](https://github.com/jpabrs-scem/blog/files/9387864/Check_Backup_NW_Linux_ver1.3.zip)
