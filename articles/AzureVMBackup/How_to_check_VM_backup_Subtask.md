@@ -79,6 +79,19 @@ name 値 を用いて下記のコマンドを実行することでサブタス�
 
 ![Check_Subtask_Azure_CLI_2](https://user-images.githubusercontent.com/71251920/142236740-9817d4cf-13a9-480b-816c-ba09e252aea6.png)
 
+
+また、サブタスクのステータスだけを抜き出して確認したい場合は下記で可能です。
+##### Take Snapshot
+>コマンド：` ` `az backup job show --name <name値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名> --query properties.extendedInfo..tasksList[0].status`` ` `
+>コマンド例 :` ` `az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS --query properties.extendedInfo.tasksList[0].status` ` `
+![](https://user-images.githubusercontent.com/71251920/185889525-8f7398dc-5c59-453c-a74b-6593c2278c20.png)
+ 
+##### Transfer data to vault 
+>コマンド：` ` `az backup job show --name <name値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名> --query properties.extendedInfo..tasksList[1].status`` ` `
+>コマンド例 :` ` `az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS --query properties.extendedInfo.tasksList[1].status` ` `
+![](https://user-images.githubusercontent.com/71251920/185889531-49205aea-377f-4d7f-a1c2-55f3e9706ac0.png)
+
+
 - 参考：
 ・Azure CLI を使用した Azure での仮想マシンのバックアップ - バックアップ ジョブを監視する
 https://docs.microsoft.com/ja-jp/azure/backup/quick-backup-vm-cli#monitor-the-backup-job
@@ -86,6 +99,8 @@ https://docs.microsoft.com/ja-jp/azure/backup/quick-backup-vm-cli#monitor-the-ba
 https://docs.microsoft.com/ja-jp/cli/azure/backup/job?view=azure-cli-latest#az_backup_job_list
 ・JMESPath クエリを使用して Azure CLI コマンドの出力に対してクエリを実行する方法 - 辞書のプロパティを取得する(--query オプションに関する参考情報)
 https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli#get-properties-in-a-dictionary
+・配列内のプロパティを取得する
+https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli?tabs=concepts%2Cpowershell#get-properties-in-an-array
 
 ### 1-3. Azure PowerShell を用いたサブタスク (Take Snapshot フェーズ) 確認方法<a id="1-3"></a>
 今回は Windows の PowerShell を用いて Azure PowerShell を実行します。
