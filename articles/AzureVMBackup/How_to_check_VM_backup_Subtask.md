@@ -82,12 +82,14 @@ name 値 を用いて下記のコマンドを実行することでサブタス�
 
 また、サブタスクのステータスだけを抜き出して確認したい場合は下記で可能です。
 ##### Take Snapshot
->コマンド：` ` `az backup job show --name <name値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名> --query properties.extendedInfo..tasksList[0].status`` ` `
+>コマンド：` ` `az backup job show --name <name値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名> --query properties.extendedInfo..tasksList[0].status`` ` 
+
 >コマンド例 :` ` `az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS --query properties.extendedInfo.tasksList[0].status` ` `
 ![](https://user-images.githubusercontent.com/71251920/185889525-8f7398dc-5c59-453c-a74b-6593c2278c20.png)
  
 ##### Transfer data to vault 
->コマンド：` ` `az backup job show --name <name値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名> --query properties.extendedInfo..tasksList[1].status`` ` `
+>コマンド：` ` `az backup job show --name <name値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名> --query properties.extendedInfo..tasksList[1].status`` ` 
+
 >コマンド例 :` ` `az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS --query properties.extendedInfo.tasksList[1].status` ` `
 ![](https://user-images.githubusercontent.com/71251920/185889531-49205aea-377f-4d7f-a1c2-55f3e9706ac0.png)
 
