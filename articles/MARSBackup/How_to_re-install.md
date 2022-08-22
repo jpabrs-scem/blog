@@ -31,7 +31,12 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 
 ## <a id="1"></a> 1.MARS エージェントのアンインストール
 ### <a id="1-1"></a> 1-1. MARSバックアップ対象のマシンにログインします
- 
+ 下記のフォルダーをコピーして任意の別の場所に退避しておきます。
+ 正常に再インストールが完了した際にはこの退避したフォルダは不要です。
+
+>（対象パス）C:\Program Files\
+>（コピーする対象のフォルダー）Microsoft Azure Recovery Services Agent
+
 ### <a id="1-2"></a> 1-2. windows ボタン + r を押し、”appwiz.cpl” と入力し、「OK」＞「プログラムのアンインストールまたは変更」画面を開きます
 ![](https://user-images.githubusercontent.com/71251920/183884809-a24326c5-9e6c-4650-98df-f354c90bb8e6.gif)
 
