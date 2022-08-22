@@ -23,7 +23,7 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 
 ## 1. Windows VM における Azure Backup 疎通確認<a id="1"></a>
 まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。
-[Check_Backup_NW_ver1.5.zip](https://github.com/jpabrs-scem/blog/files/9387814/Check_Backup_NW_ver1.5.zip)
+[Check_Backup_NW_ver1.6.zip](https://github.com/jpabrs-scem/blog/files/9391344/Check_Backup_NW_ver1.6.zip)
  
 
 (スクリプト実行手順)
