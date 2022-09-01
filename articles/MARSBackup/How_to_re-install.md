@@ -26,6 +26,7 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 [1. MARS エージェントのアンインストール](#1)
 [2. MARS エージェントの(再)インストール](#2)
 [3. サーバーの登録](#3)
+[4. 関連公開情報](#4)
 -----------------------------------------------------------
 
 
@@ -109,5 +110,14 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 ### <a id="3-4"></a>3-4. 以前登録したパスフレーズを入力し、パスフレーズを保存する任意の場所を選択して、”登録” をクリックして登録を完了してください。
 ![](https://user-images.githubusercontent.com/71251920/183884846-073e873b-b194-4efa-9ab0-7cbbcd6a33a9.png)
 
+
+## <a id="4"></a>4. 関連公開情報
+・MARS エージェントのダウンロード
+https://docs.microsoft.com/ja-jp/azure/backup/install-mars-agent#download-the-mars-agent
+
+・サーバーにインストールされている MARS エージェントの更新
+https://docs.microsoft.com/ja-jp/azure/backup/upgrade-mars-agent#update-the-mars-agent-installation-on-the-server
+・パスフレーズを忘れた場合、復旧できますか?
+https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-file-folder-backup-faq#%E5%BE%A9%E5%85%83
 
 本記事の内容は以上となります。
