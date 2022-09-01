@@ -193,7 +193,7 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 
 #### 個人 ＞ 証明書
 >・CB_<MARSのバックアップを実施する予定のRecovery Services コンテナー名 → -x-x-xxxx-vaultcredentials
->・CB_<VM名>._xxxxxxxxxxxxxxxxxx
+>・CB_<ホスト名>._xxxxxxxxxxxxxxxxxx
 ※　上記 2 が存在していることを確認の上、その画面スクリーンショットをご提供ください
 （存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）
 ![](https://user-images.githubusercontent.com/71251920/182520770-6e2bac01-d72e-4a3a-b358-56f853538f5a.png)
