@@ -117,6 +117,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/install-mars-agent#download-the-ma
 
 ・サーバーにインストールされている MARS エージェントの更新
 https://docs.microsoft.com/ja-jp/azure/backup/upgrade-mars-agent#update-the-mars-agent-installation-on-the-server
+
 ・パスフレーズを忘れた場合、復旧できますか?
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-file-folder-backup-faq#%E5%BE%A9%E5%85%83
 
