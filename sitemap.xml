@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/information/team-introduction_2/</loc>
-    
-    <lastmod>2022-09-21</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/information/team-introduction/</loc>
     
     <lastmod>2022-09-21</lastmod>
@@ -16,7 +9,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/information/team-introduction_2/</loc>
     
     <lastmod>2022-09-21</lastmod>
     
@@ -51,6 +44,20 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
+    
+    <lastmod>2022-09-21</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/</loc>
+    
+    <lastmod>2022-09-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/</loc>
     
     <lastmod>2022-09-21</lastmod>
@@ -66,13 +73,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/How_to_set_Backup_Alert/</loc>
-    
-    <lastmod>2022-09-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/</loc>
     
     <lastmod>2022-09-21</lastmod>
     
