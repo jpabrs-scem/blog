@@ -184,6 +184,9 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 ### 4.4 各種証明書の確認証跡<a id="4-4"></a>
 下記詳細手順のもと、証明書 および 権限の確認を確認のうえ、画面ショットを zip などにおまとめの上ご提供お願いいたします。
 
+*該当の証明書がない場合は下記 URL よりダウンロードしインポートをお願いします。
+これによりMARS エージェントが立ち上がらないなどの場合の場合改善することがございます。
+
 対象マシン上の「スタート」ボタンを右クリック＞「ファイル名を指定して実行」＞「certlm.msc」と入力して「OK」し、以下すべての証明書が存在するかご確認ください。
 
 ![](https://user-images.githubusercontent.com/71251920/182520764-1ed4e4ab-c925-4a87-b905-1414bab17e47.png)
@@ -197,16 +200,20 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 ※　上記 2 が存在していることを確認の上、その画面スクリーンショットをご提供ください
 （存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）
 ![](https://user-images.githubusercontent.com/71251920/182520770-6e2bac01-d72e-4a3a-b358-56f853538f5a.png)
+"**・CB_<ホスト名>._xxxxxxxxxxxxxxxxxx** の期限がきれている場合は正常に MARS エージェントが正常に起動しないことがあります。
+下記を参考に再インストール をご実施ください。それにより証明書がインストールされます。
+・MARS エージェントの再インストール手順
+https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/
 
 
 #### 信頼されたルート証明書 ＞ 証明書 
 >ルート証明書名	証明書の拇印
->DigiCert Global Root G2	: df3c24f9bfd666761b268073fe06d1cc8d4f82a4
->DigiCert Global Root CA	: a8985d3a65e5e5c4b2d7d66d40c6dd2fb19c5436
->Baltimore CyberTrust Root	: d4de20d05e66fc53fe1a50882c78db2852cae474
->D-TRUST Root Class 3 CA 2 2009	: 58e8abb0361533fb80f79b1b6d29d3ff8d5f00f0
->Microsoft RSA Root Certificate Authority2017	: 73a5e64a3bff8316ff0edccc618a906e4eae4d74
->Microsoft ECC Root Certificate Authority 2017	: 999a64c37ff47d9fab95f14769891460eec4c3c5
+>[DigiCert Global Root G2	: df3c24f9bfd666761b268073fe06d1cc8d4f82a4](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt)
+>[DigiCert Global Root CA	: a8985d3a65e5e5c4b2d7d66d40c6dd2fb19c5436](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
+>[Baltimore CyberTrust Root	: d4de20d05e66fc53fe1a50882c78db2852cae474](https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt)
+>[D-TRUST Root Class 3 CA 2 2009	: 58e8abb0361533fb80f79b1b6d29d3ff8d5f00f0](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)
+>[Microsoft RSA Root Certificate Authority2017	: 73a5e64a3bff8316ff0edccc618a906e4eae4d74](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
+>[Microsoft ECC Root Certificate Authority 2017	: 999a64c37ff47d9fab95f14769891460eec4c3c5](https://www.microsoft.com/pkiops/certs/Microsoft%20ECC%20Root%20Certificate%20Authority%202017.crt)
 
 ![](https://user-images.githubusercontent.com/71251920/182520772-59ba76df-31cf-488d-bfec-066830b44698.png)
 
@@ -217,12 +224,41 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 
 ![](https://user-images.githubusercontent.com/71251920/182520776-8f30a8f5-67d5-4bfd-a264-590ca251689d.png)
 
+[参考および]
+・Azure TLS 証明書の変更
+https://learn.microsoft.com/ja-jp/azure/security/fundamentals/tls-certificate-changes#what-changed
+
+[証明書zipダウンロード先]
+[root certificate.zip](https://github.com/jpabrs-scem/blog/files/9615338/root.certificate.zip)
+
 #### 中間証明機関 ＞ 証明書 
 >中間証明書名	証明書の拇印
->Microsoft RSA TLS CA 01	: 703d7a8f0ebf55aaa59f98eaf4a206004eb2516a
->Microsoft RSA TLS CA 02	: b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75
+>[Microsoft RSA TLS CA 01	: 703d7a8f0ebf55aaa59f98eaf4a206004eb2516a](http://www.microsoft.com/pki/mscorp/Microsoft%20RSA%20TLS%20CA%2001.crt)
+>[Microsoft RSA TLS CA 02	: b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75](http://www.microsoft.com/pki/mscorp/Microsoft%20RSA%20TLS%20CA%2002.crt)
 
 ※　上記 2 つすべての証明書が存在していること
 ・証明書をダブルクリックし、「詳細」タブ ＞ スクロールして下の方に「拇印」がありますので、値が上記と同一であることが確認できる画面スクリーンショットをご提供ください。
 
 ![](https://user-images.githubusercontent.com/71251920/182520778-a9e6e160-5830-4cf5-a6c3-00acf7ce0941.png)
+
+
+[参考]
+・Azure Storage TLS: Changes are coming! (…and why you care)
+https://learn.microsoft.com/ja-jp/azure/security/fundamentals/tls-certificate-changes#what-changed
+
+[証明書zipダウンロード先]
+[intermediate certificate.zip](https://github.com/jpabrs-scem/blog/files/9615291/intermediate.certificate.zip)
+
+
+#### 証明書インポート手順
+1. 証明書をエクスポートしたいマシンに、管理者権限でログインします。
+2. [スタート] - [ファイル名を指定して実行] から、certlm.msc と入力して、[Enter]キーを押します。
+3. ユーザーアカウント制御 が起動する場合は管理者権限での実行を許可します。
+4. 左側の [証明書 (ローカル コンピューター)]を展開して、 [信頼されたルート証明機関] - [証明書] を開きます。
+5. [証明書] を右クリックし [すべてのタスク] – [インポート] と選択します。
+6. 証明書のインポートウィザードが起動しますので以下の様に進めます。
+・ 「証明書のインポート ウィザードの開始」画面で [次へ] をクリック。
+・ インポートする証明書のファイル  ->  (上記公開情報よりダウンロードした各証明書を保存したパス)
+・ 証明書ストア -> ("信頼されたルート証明機関" となっていることを確認)
+7. 「信頼されたルート証明機関」証明書ストアに証明書がインポートされた事を確認します。
+* 中間証明書のインポート手順は、上記の「信頼されたルート証明機関」の箇所を「中間証明機関」にお読み替えいただけますようお願いいたします。
