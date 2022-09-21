@@ -257,6 +257,8 @@ https://learn.microsoft.com/ja-jp/azure/security/fundamentals/tls-certificate-ch
 
 
 #### 証明書インポート手順
+**（※ Windows Server 2012 以前の OS の場合は、MMC スナップインより証明書スナップインを起動してください）
+
 1. 証明書をエクスポートしたいマシンに、管理者権限でログインします。
 2. [スタート] - [ファイル名を指定して実行] から、certlm.msc と入力して、[Enter]キーを押します。
 3. ユーザーアカウント制御 が起動する場合は管理者権限での実行を許可します。
