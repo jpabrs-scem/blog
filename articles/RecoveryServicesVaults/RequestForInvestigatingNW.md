@@ -92,7 +92,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-requ
 上記 URL に従って下記スクリプトをご実施いただき、名前解決ができるかおよび疎通確認をお願いします。
 [PrivateIP.ps1](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/PrivateIP.ps1)
 
-**結果に "backup" が含まれる場合** と **結果に "backup" が含まれない("blob" や"queue"等が含まれる)場合** から最低それぞれ 1 パターン合計 2 パターン 実施いただきスクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて)ご提供お願いします。
+**結果に "backup" が含まれる場合** と **結果に "backup" が含まれない("blob" や"queue"等が含まれる)場合** から最低それぞれ 1 パターン合計 2 パターン 実施いただきスクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて) zip  などにおまとめの上ご提供お願いします。
 
 
 ### 結果に "backup" が含まれる場合
@@ -103,14 +103,14 @@ https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-requ
 
 スクリプトの実行結果が上記の場合は下記のようにお願いします。
 
->**windows(PowerShell)**
+**windows(PowerShell)**
 > nslookup <vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > tnc -port 443 <vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > tnc -port 443 10.12.0.15
 >Invoke-WebRequest <vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 >Invoke-WebRequest 10.12.0.15
 
->**Linux**
+**Linux**
 > nslookup <vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > nc -vz <vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > nc -vz  10.12.0.15　443
@@ -125,18 +125,18 @@ https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-requ
 
 スクリプトの実行結果が上記の場合は下記のようにお願いします。
 
->**windows(PowerShell)**
+**windows(PowerShell)**
 > nslookup abcdeypod01ecs114.blob.core.windows.net
 > tnc -port 443 abcdeypod01ecs114.blob.core.windows.net
 > tnc -port 443 10.12.0.23
 >Invoke-WebRequest abcdeypod01ecs114.blob.core.windows.net
 >Invoke-WebRequest 10.12.0.23
 
->**Linux**
+**Linux**
 > nslookup abcdeypod01ecs114.blob.core.windows.net
 > nc -vz abcdeypod01ecs114.blob.core.windows.net
 > nc -vz  10.12.0.23　443
 > curl -I abcdeypod01ecs114.blob.core.windows.net
 > curl -I 10.12.0.23
 
-スクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて)ご提供お願いします。
+スクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて) zip  などにおまとめの上ご提供お願いします。
