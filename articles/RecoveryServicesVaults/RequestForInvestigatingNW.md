@@ -89,8 +89,15 @@ VM 上の　DB のバックアップ (Azure  SQL VM Backup や　Azure SAP HANA)
 ・必須の DNS エントリを取得する
 https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-required-dns-entries
 
-上記 URL に従って下記スクリプトをご実施いただき、名前解決ができるかおよび疎通確認をお願いします。
+上記 URL に従って下記  PowerShell スクリプトをご実施いただき、名前解決ができるかおよび疎通確認をお願いします。
+
 [PrivateIP.ps1](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/PrivateIP.ps1)
+
+\*Azure PowerShell が実行できる(Az moduleがインストールされた) 環境でご実施ください。
+
+・[ご参考] Install the Azure Az PowerShell module
+https://learn.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0
+
 
 **結果に "backup" が含まれる場合** と **結果に "backup" が含まれない ("blob" や"queue"等が含まれる)場合** から最低それぞれ 1 パターン合計 2 パターン 実施いただきスクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて) zip  などにおまとめの上ご提供お願いします。
 
