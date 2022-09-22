@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/175529523-b5004d01-f4cd-4879-9c48-b9de17a8c477.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/185762249-d5dbed3c-9bce-409e-8a88-a5b43a52fe95.png">
 <meta property="article:published_time" content="2022-06-24T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-21T12:10:45.657Z">
+<meta property="article:modified_time" content="2022-09-22T06:38:18.343Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Recovery Services vaults">
 <meta property="article:tag" content="情報採取">
@@ -109,7 +109,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+971c4226-694e-5c75-8da6-ca80e0154cf3%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1+%28%E7%96%8E%E9%80%9A%E7%A2%BA%E8%AA%8D%29%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FRecoveryServicesVaults%2FRequestForInvestigatingNW%2F%29%0A*+Content+Source%3A+%5Barticles%2FRecoveryServicesVaults%2FRequestForInvestigatingNW.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FRecoveryServicesVaults%2FRequestForInvestigatingNW.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/" data-id="cl8bl351x001n0npe9n2hf1li" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/" data-id="cl8conh4u001n0po864z370eo" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -117,7 +117,7 @@
         <span id="more"></span>
 <p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、NW 観点で提供いただきたい情報をお伝えいたします。<br>NW 観点以外の情報採集提供依頼については下記をご覧ください<br>・Azure Backup の障害調査に必要な情報<br><a href="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigating/">https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigating/</a></p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. Windows VM における Azure Backup 疎通確認</a><br><a href="#2">2. Linux VM における Azure Backup 疎通確認</a></p>
+<p><a href="#1">1. Windows VM における Azure Backup 疎通確認</a><br><a href="#2">2. Linux VM における Azure Backup 疎通確認</a><br><a href="#3">3. プライベート エンドポイント環境における Azure Backup 疎通確認</a></p>
 <hr>
 <h2 id="1-Windows-VM-における-Azure-Backup-疎通確認"><a href="#1-Windows-VM-における-Azure-Backup-疎通確認" class="headerlink" title="1. Windows VM における Azure Backup 疎通確認"></a>1. Windows VM における Azure Backup 疎通確認<a id="1"></a></h2><p>まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。<br><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/9391344/Check_Backup_NW_ver1.6.zip">Check_Backup_NW_ver1.6.zip</a></p>
 <p>(スクリプト実行手順)</p>
@@ -176,6 +176,35 @@
 </li>
 </ol>
 <h3 id="2-1-参考画像"><a href="#2-1-参考画像" class="headerlink" title="2.1 参考画像"></a>2.1 参考画像</h3><p><img src="https://user-images.githubusercontent.com/71251920/185762249-d5dbed3c-9bce-409e-8a88-a5b43a52fe95.png" alt="-参考画像-"></p>
+<h2 id="3-プライベート-エンドポイント環境における-Azure-Backup-疎通確認"><a href="#3-プライベート-エンドポイント環境における-Azure-Backup-疎通確認" class="headerlink" title="3. プライベート エンドポイント環境における Azure Backup 疎通確認"></a>3. プライベート エンドポイント環境における Azure Backup 疎通確認<a id="3"></a></h2><p>VM 上の　DB のバックアップ (Azure  SQL VM Backup や　Azure SAP HANA) や MARS エージェントを利用したバックアップで<strong>プライベート エンドポイントをご利用の場合</strong>は下記もご対応お願いします。</p>
+<p>・必須の DNS エントリを取得する<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-required-dns-entries">https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-required-dns-entries</a></p>
+<p>上記 URL に従って下記スクリプトをご実施いただき、名前解決ができるかおよび疎通確認をお願いします。<br><a target="_blank" rel="noopener" href="https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/PrivateIP.ps1">PrivateIP.ps1</a></p>
+<p><strong>結果に “backup” が含まれる場合</strong> と <strong>結果に “backup” が含まれない(“blob” や”queue”等が含まれる)場合</strong> から最低それぞれ 1 パターン合計 2 パターン 実施いただきスクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて)ご提供お願いします。</p>
+<h3 id="結果に-“backup”-が含まれる場合"><a href="#結果に-“backup”-が含まれる場合" class="headerlink" title="結果に “backup” が含まれる場合"></a>結果に “backup” が含まれる場合</h3><p>“privatlink” 付の FQDN に対して名前解決を行ってください。</p>
+<p>例：）</p>
+<blockquote>
+<p><vaultId>-ab-pod01-fc1         <strong>privatelink</strong>.eus.backup.windowsazure.com         10.12.0.15</p>
+</blockquote>
+<p>スクリプトの実行結果が上記の場合は下記のようにお願いします。</p>
+<blockquote>
+<p><strong>windows(PowerShell)</strong><br>nslookup <vaultId>-ab-pod01-fc1.<strong>privatelink</strong>.eus.backup.windowsazure.com<br>tnc -port 443 <vaultId>-ab-pod01-fc1.<strong>privatelink</strong>.eus.backup.windowsazure.com<br>tnc -port 443 10.12.0.15<br>Invoke-WebRequest <vaultId>-ab-pod01-fc1.<strong>privatelink</strong>.eus.backup.windowsazure.com<br>Invoke-WebRequest 10.12.0.15</p>
+</blockquote>
+<blockquote>
+<p><strong>Linux</strong><br>nslookup <vaultId>-ab-pod01-fc1.<strong>privatelink</strong>.eus.backup.windowsazure.com<br>nc -vz <vaultId>-ab-pod01-fc1.<strong>privatelink</strong>.eus.backup.windowsazure.com<br>nc -vz  10.12.0.15　443<br>curl -I <vaultId>-ab-pod01-fc1.<strong>privatelink</strong>.eus.backup.windowsazure.com<br>curl -I 10.12.0.15 </p>
+</blockquote>
+<h3 id="結果に-“backup”-が含まれない-“blob”-や”queue”等が含まれる-場合"><a href="#結果に-“backup”-が含まれない-“blob”-や”queue”等が含まれる-場合" class="headerlink" title="結果に “backup” が含まれない(“blob” や”queue”等が含まれる)場合"></a>結果に “backup” が含まれない(“blob” や”queue”等が含まれる)場合</h3><p>“privatlink” 無しの FQDN に対して名前解決を行ってください。</p>
+<p>例：）</p>
+<blockquote>
+<p>abcdeypod01ecs114        privatelink.blob.core.windows.net       10.12.0.23</p>
+</blockquote>
+<p>スクリプトの実行結果が上記の場合は下記のようにお願いします。</p>
+<blockquote>
+<p><strong>windows(PowerShell)</strong><br>nslookup abcdeypod01ecs114.blob.core.windows.net<br>tnc -port 443 abcdeypod01ecs114.blob.core.windows.net<br>tnc -port 443 10.12.0.23<br>Invoke-WebRequest abcdeypod01ecs114.blob.core.windows.net<br>Invoke-WebRequest 10.12.0.23</p>
+</blockquote>
+<blockquote>
+<p><strong>Linux</strong><br>nslookup abcdeypod01ecs114.blob.core.windows.net<br>nc -vz abcdeypod01ecs114.blob.core.windows.net<br>nc -vz  10.12.0.23　443<br>curl -I abcdeypod01ecs114.blob.core.windows.net<br>curl -I 10.12.0.23</p>
+</blockquote>
+<p>スクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて)ご提供お願いします。</p>
 
       
       
