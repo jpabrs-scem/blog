@@ -16,6 +16,13 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
+    
+    <lastmod>2022-09-22</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_2012R2_Uninstall-TroubleCase/</loc>
     
     <lastmod>2022-09-22</lastmod>
@@ -38,13 +45,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCVMM_Renew_Crtificate/</loc>
-    
-    <lastmod>2022-09-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
     
     <lastmod>2022-09-22</lastmod>
     
@@ -86,20 +86,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</loc>
-    
-    <lastmod>2022-09-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/</loc>
-    
-    <lastmod>2022-09-22</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</loc>
     
     <lastmod>2022-09-22</lastmod>
@@ -115,6 +101,27 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/</loc>
+    
+    <lastmod>2022-09-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</loc>
+    
+    <lastmod>2022-09-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/</loc>
+    
+    <lastmod>2022-09-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
     
     <lastmod>2022-09-22</lastmod>
     
@@ -227,13 +234,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
-    
-    <lastmod>2022-09-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
     
     <lastmod>2022-09-22</lastmod>
     
