@@ -99,7 +99,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-requ
 "privatlink" 付の FQDN に対して名前解決を行ってください。
 
 スクリプト実行結果例)
-><vaultId>-ab-pod01-fc1      **privatelink**.eus.**backup**.windowsazure.com     10.12.0.15
+` ` ` <vaultId>-ab-pod01-fc1      **privatelink**.eus.**backup**.windowsazure.com     10.12.0.15
 
 スクリプトの実行結果が上記の場合は下記のようにお願いします。
 
