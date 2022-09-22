@@ -16,13 +16,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
-    
-    <lastmod>2022-09-22</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_2012R2_Uninstall-TroubleCase/</loc>
     
     <lastmod>2022-09-22</lastmod>
@@ -51,14 +44,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/</loc>
-    
-    <lastmod>2022-09-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/DR_ASR_or_VMBackup/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
     
     <lastmod>2022-09-22</lastmod>
     
@@ -80,6 +66,20 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigating/</loc>
+    
+    <lastmod>2022-09-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/</loc>
+    
+    <lastmod>2022-09-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/DR_ASR_or_VMBackup/</loc>
     
     <lastmod>2022-09-22</lastmod>
     
