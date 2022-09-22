@@ -98,23 +98,23 @@ https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-requ
 ### 結果に "backup" が含まれる場合
 "privatlink" 付の FQDN に対して名前解決を行ってください。
 
-スクリプト実行結果例)
-` ` ` <vaultId>-ab-pod01-fc1      **privatelink**.eus.**backup**.windowsazure.com     10.12.0.15
+>スクリプト実行結果例)
+` ` \<vaultId>-ab-pod01-fc1      **privatelink**.eus.**backup**.windowsazure.com     10.12.0.15
 
 スクリプトの実行結果が上記の場合は下記のようにお願いします。
 
 **windows(PowerShell)**
-> nslookup <vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
-> tnc -port 443 <vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+> nslookup \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+> tnc -port 443 \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > tnc -port 443 10.12.0.15
->Invoke-WebRequest <vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+>Invoke-WebRequest \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 >Invoke-WebRequest 10.12.0.15
 
 **Linux**
-> nslookup <vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
-> nc -vz <vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+> nslookup \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+> nc -vz \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > nc -vz  10.12.0.15　443
-> curl -I <vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+> curl -I \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > curl -I 10.12.0.15 
 
 ### 結果に "backup" が含まれない ("blob" や"queue"等が含まれる) 場合
