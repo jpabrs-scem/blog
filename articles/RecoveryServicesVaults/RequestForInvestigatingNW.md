@@ -120,8 +120,8 @@ https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-requ
 ### 結果に "backup" が含まれない ("blob" や"queue"等が含まれる) 場合
 "privatlink" 無しの FQDN に対して名前解決を行ってください。
 
-スクリプト実行結果例)
->abcdeypod01ecs114     privatelink.**blob**.core.windows.net     10.12.0.23
+>スクリプト実行結果例)
+` ` abcdeypod01ecs114       privatelink.**blob**.core.windows.net     10.12.0.23
 
 スクリプトの実行結果が上記の場合は下記のようにお願いします。
 
