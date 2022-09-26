@@ -125,7 +125,7 @@ https://learn.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0
 > curl -I https://10.12.0.15 
 
 ### 結果に "backup" が含まれない ("blob" や"queue"等が含まれる) 場合
-上記を参考に "privatlink" 付の FQDN に対して疎通確認を行った後、***"privatlink" 無しの FQDN に対して疎通確認を行ってください。***
+上記を参考に "privatlink" 付の FQDN に対して疎通確認を行った後、**"privatlink" 無しの FQDN に対して疎通確認を行ってください。**
 
 >スクリプト実行結果例)
 ` ` abcdeypod01ecs114       privatelink.**blob**.core.windows.net     10.12.0.23
