@@ -84,7 +84,7 @@ https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatin
 
 
 ## 3. プライベート エンドポイント環境における Azure Backup 疎通確認<a id="3"></a>
-VM 上の　DB のバックアップ (Azure  SQL VM Backup や　Azure SAP HANA) や MARS エージェントを利用したバックアップで**プライベート エンドポイントをご利用の場合**は下記もご対応お願いします。
+ Azure VM 上の DB のバックアップ (Azure  SQL VM Backup や　Azure SAP HANA バックアップ) や MARS エージェントを利用したバックアップで**プライベート エンドポイントをご利用の場合**は下記もご対応お願いします。
 
 ・必須の DNS エントリを取得する
 https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-required-dns-entries
@@ -125,7 +125,7 @@ https://learn.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0
 > curl -I https://10.12.0.15 
 
 ### 結果に "backup" が含まれない ("blob" や"queue"等が含まれる) 場合
-上記を参考に "privatlink" 付の FQDN に対して疎通確認を行った後、**"privatlink" 無しの FQDN に対して疎通確認を行ってください。**
+上記を参考に "privatlink" 付の FQDN に対して疎通確認を行った後、**"privatlink" 無しの FQDN に対しても疎通確認を行ってください。**
 
 >スクリプト実行結果例)
 ` ` abcdeypod01ecs114       privatelink.**blob**.core.windows.net     10.12.0.23
