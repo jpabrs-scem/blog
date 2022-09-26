@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/information/team-introduction/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/information/team-introduction_2/</loc>
     
     <lastmod>2022-09-26</lastmod>
@@ -9,7 +16,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/information/team-introduction/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_2012R2_Uninstall-TroubleCase/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_AccessError_0x00000005/</loc>
     
     <lastmod>2022-09-26</lastmod>
     
@@ -31,20 +45,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_2012R2_Uninstall-TroubleCase/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_AccessError_0x00000005/</loc>
     
     <lastmod>2022-09-26</lastmod>
     
@@ -128,34 +128,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/</loc>
     
     <lastmod>2022-09-26</lastmod>
@@ -212,13 +184,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
     
     <lastmod>2022-09-26</lastmod>
@@ -248,6 +213,41 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
     
     <lastmod>2022-09-26</lastmod>
     

@@ -126,10 +126,10 @@
         
 皆様こんにちは。Azure Backup サポートの山本です。今回は、Azure VM Backup で　[既存を置換] を用いる場合にいただくご質問について下記の通りご案内いたします。
 目次
-1. [既存を置換]の際、元のディスクはどうなるのか2. セカンダリ リージョンへ復元ポイントがレプリケートされるまでに、最大何時間かかるのか？
+1. [既存を置換]の際、元のディスクはどうなるのか2. 2. [既存を置換]の際、 バックアップが走る件について
 
  1. [既存を置換]の際、元のディスクはどうなるのか結論から申し上げますと削除されずに残ります。Azure VM Backup のリストアの [既存を置換] はバックアップ データよりディスクを復元し、 Azure VM のディスクを置き換えるまでを行います。そのため、元の古いディスクは削除されずにディスク リソースとして残り続けます (課金も行われます)。そのため、不要な場合は手動で削除いただく必要がございます。
-なお、リストアによって復元されるデ...
+なお、リストアによって復元されるディスクの命名規則に関しては下記...
         <p class="article-readmore">
           <a href="AzureVMBackup/restore_swapdsik/">Read more</a>
         </p>
@@ -137,7 +137,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/" data-id="cl8iclm7l00160oqu4fm2f97d" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/" data-id="cl8id1cbh00160oo088o8eu07" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -188,7 +188,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/ASR_Migrate/RegisterApplianceFromOVA/" data-id="cl8iclm6j00000oquf2u47ggm" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/ASR_Migrate/RegisterApplianceFromOVA/" data-id="cl8id1cal00000oo0avpmfrtf" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -239,7 +239,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/" data-id="cl8iclm7p001e0oqu340dco0u" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/" data-id="cl8id1cbl001e0oo0hm7e0j15" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -291,7 +291,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/DR_ASR_or_VMBackup/" data-id="cl8iclm7t001l0oqu7e3valpm" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/DR_ASR_or_VMBackup/" data-id="cl8id1cbp001l0oo0eybtdtz6" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -345,7 +345,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/" data-id="cl8iclm7s001j0oquauwibcow" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/" data-id="cl8id1cbo001j0oo0dvh1d27t" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -398,7 +398,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/" data-id="cl8iclm7w001q0oqudqi10i3c" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/" data-id="cl8id1cbr001q0oo0bq3m1jad" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>
@@ -455,7 +455,7 @@ Error ID 33623Internal error code 0x80990EF2
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/" data-id="cl8iclm7n00190oqu0bnm8qda" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/" data-id="cl8id1cbj00190oo00z2n65bt" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
@@ -505,7 +505,7 @@ Error ID 33623Internal error code 0x80990EF2
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/" data-id="cl8iclm7a000p0oqu2a264w7i" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/" data-id="cl8id1cb8000p0oo0hyux2pcm" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -558,7 +558,7 @@ Error ID 33623Internal error code 0x80990EF2
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/information/team-introduction_2/" data-id="cl8iclm8400270oquh4srfgv3" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/information/team-introduction_2/" data-id="cl8id1cby00270oo0chufahnl" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Information/" rel="tag">Information</a></li></ul>
@@ -612,7 +612,7 @@ Azure Marketplace より、NVA として機能する仮想マシンを作成し�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/" data-id="cl8iclm7c000r0oquc8z1edl7" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/" data-id="cl8id1cb9000r0oo0316e8blf" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
