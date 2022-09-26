@@ -27,7 +27,11 @@ Azure VM Backup のリストアの [既存を置換] はバックアップ デ�
 ・Azure VM Backupでリストアされるディスク名に関して
 https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/
  
+下記公開情報にも記載されております。
+・既存のものを置き換える - 復元オプション- Azure portal で Azure VM データを復元する方法
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms
 
+>ディスクの交換操作の後、元のディスクはリソース グループに保持されます。 元のディスクが必要ない場合は、それを手動で削除することを選択できます。
 
 ## <a id="2"></a> 2. [既存を置換]の際、 バックアップが走る件について
 現在の仕様として[既存を置換] のリストアを行う際にディスクを置き換える前の状態のバックアップを取得するために自動でリストアジョブと並行してバックアップ ジョブも実施されます。
@@ -37,6 +41,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/
 詳細については下記をご覧ください
 ・Azure VM のリストア (既存を置換) が失敗する
 https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/
+
 
 
 ## <a id="2"></a> 2.1. バックアップを走らせたくない場合の代替案 
