@@ -93,17 +93,17 @@ https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-requ
 
 [PrivateIP.ps1](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/PrivateIP.ps1)
 
-\*Azure PowerShell が実行できる(Az moduleがインストールされた) 環境でご実施ください。
+\*Azure PowerShell が実行できる (Az moduleがインストールされた) 環境でご実施ください。
 
 ・[ご参考] Install the Azure Az PowerShell module
 https://learn.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0
 
 
-**結果に "backup" が含まれる場合** と **結果に "backup" が含まれない ("blob" や"queue"等が含まれる)場合** から最低それぞれ 1 パターン合計 2 パターン 実施いただきスクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて) zip  などにおまとめの上ご提供お願いします。
+**結果に "backup" が含まれる場合** と **結果に "backup" が含まれない ("blob" や"queue"等が含まれる)場合** から最低それぞれ 1 パターン合計 2 パターン 実施いただきスクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて) zip などにおまとめの上ご提供お願いします。
 
 
 ### 結果に "backup" が含まれる場合
-"privatlink" 付の FQDN に対して名前解決を行ってください。
+"privatlink" 付の FQDN に対して疎通確認を行ってください。
 
 >スクリプト実行結果例)
 ` ` \<vaultId>-ab-pod01-fc1      **privatelink**.eus.**backup**.windowsazure.com     10.12.0.15
@@ -114,18 +114,18 @@ https://learn.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0
 > nslookup \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > tnc -port 443 \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > tnc -port 443 10.12.0.15
->Invoke-WebRequest \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
->Invoke-WebRequest 10.12.0.15
+>Invoke-WebRequest https://\<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+>Invoke-WebRequest https://10.12.0.15
 
 **Linux**
 > nslookup \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > nc -vz \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > nc -vz  10.12.0.15　443
-> curl -I \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
-> curl -I 10.12.0.15 
+> curl -I https://\<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+> curl -I https://10.12.0.15 
 
 ### 結果に "backup" が含まれない ("blob" や"queue"等が含まれる) 場合
-"privatlink" 無しの FQDN に対して名前解決を行ってください。
+上記を参考に "privatlink" 付の FQDN に対して疎通確認を行った後、***"privatlink" 無しの FQDN に対して疎通確認を行ってください。***
 
 >スクリプト実行結果例)
 ` ` abcdeypod01ecs114       privatelink.**blob**.core.windows.net     10.12.0.23
@@ -136,14 +136,14 @@ https://learn.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0
 > nslookup abcdeypod01ecs114.blob.core.windows.net
 > tnc -port 443 abcdeypod01ecs114.blob.core.windows.net
 > tnc -port 443 10.12.0.23
->Invoke-WebRequest abcdeypod01ecs114.blob.core.windows.net
->Invoke-WebRequest 10.12.0.23
+>Invoke-WebRequest https://abcdeypod01ecs114.blob.core.windows.net
+>Invoke-WebRequest https://10.12.0.23
 
 **Linux**
 > nslookup abcdeypod01ecs114.blob.core.windows.net
 > nc -vz abcdeypod01ecs114.blob.core.windows.net
 > nc -vz  10.12.0.23　443
-> curl -I abcdeypod01ecs114.blob.core.windows.net
-> curl -I 10.12.0.23
+> curl -I https://abcdeypod01ecs114.blob.core.windows.net
+> curl -I https://10.12.0.23
 
 スクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて) zip  などにおまとめの上ご提供お願いします。
