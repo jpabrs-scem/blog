@@ -51,20 +51,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigating/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/</loc>
     
     <lastmod>2022-09-26</lastmod>
@@ -80,6 +66,20 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/How_to_set_Backup_Alert/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigating/</loc>
     
     <lastmod>2022-09-26</lastmod>
     
@@ -122,6 +122,55 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
+    
+    <lastmod>2022-09-26</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
     
     <lastmod>2022-09-26</lastmod>
     
@@ -192,55 +241,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
-    
-    <lastmod>2022-09-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
     
     <lastmod>2022-09-26</lastmod>
     
