@@ -204,7 +204,7 @@ Suse & RHEL & CentOS の場合
 
 > ・以下のコマンドで、 Agent の Service の状態を確認できます。
 > （Ubuntu の場合）systemctl status walinuxagent 
-> （Ubuntu 以外の場合）systemctl  waagent
+> （Ubuntu 以外の場合）systemctl status waagent
 
 #### Ubuntu 環境の実行例
 
