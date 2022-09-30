@@ -99,51 +99,31 @@ https://learn.microsoft.com/ja-jp/azure/backup/private-endpoints#step-1-get-requ
 https://learn.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0
 
 
-**結果に "backup" が含まれる場合** と **結果に "backup" が含まれない ("blob" や"queue"等が含まれる)場合** から最低それぞれ 1 パターン合計 2 パターン 実施いただきスクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて) zip などにおまとめの上ご提供お願いします。
 
-
-### 結果に "backup" が含まれる場合
+### 結果に "backup" が含まれる場合から1つの宛先に対する疎通確認
 "privatlink" 付の FQDN に対して疎通確認を行ってください。
+実施いただいたスクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて) zip などにおまとめの上ご提供お願いします。
+
 
 >スクリプト実行結果例)
 ` ` \<vaultId>-ab-pod01-fc1      **privatelink**.eus.**backup**.windowsazure.com     10.12.0.15
 
 スクリプトの実行結果が上記の場合は下記のようにお願いします。
+また hosts ファイルをご利用の場合は nslookup コマンドの代わりに ping コマンドをご利用ください。
 
 **windows(PowerShell)**
-> nslookup \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+> nslookup(ping) \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > tnc -port 443 \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > tnc -port 443 10.12.0.15
 >Invoke-WebRequest https://\<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 >Invoke-WebRequest https://10.12.0.15
 
 **Linux**
-> nslookup \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+> nslookup(ping) \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > nc -vz \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > nc -vz  10.12.0.15　443
 > curl -I https://\<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > curl -I https://10.12.0.15 
 
 ### 結果に "backup" が含まれない ("blob" や"queue"等が含まれる) 場合
-上記を参考に "privatlink" 付の FQDN に対して疎通確認を行った後、**"privatlink" 無しの FQDN に対しても疎通確認を行ってください。**
-
->スクリプト実行結果例)
-` ` abcdeypod01ecs114       privatelink.**blob**.core.windows.net     10.12.0.23
-
-スクリプトの実行結果が上記の場合は下記のようにお願いします。
-
-**windows(PowerShell)**
-> nslookup abcdeypod01ecs114.blob.core.windows.net
-> tnc -port 443 abcdeypod01ecs114.blob.core.windows.net
-> tnc -port 443 10.12.0.23
->Invoke-WebRequest https://abcdeypod01ecs114.blob.core.windows.net
->Invoke-WebRequest https://10.12.0.23
-
-**Linux**
-> nslookup abcdeypod01ecs114.blob.core.windows.net
-> nc -vz abcdeypod01ecs114.blob.core.windows.net
-> nc -vz  10.12.0.23　443
-> curl -I https://abcdeypod01ecs114.blob.core.windows.net
-> curl -I https://10.12.0.23
-
-スクリプトの実行結果と後述の疎通確認コマンドの結果をテキスト(可能であれば画面ショットも添えて) zip  などにおまとめの上ご提供お願いします。
+こちらは初期調査では一旦不要です。
