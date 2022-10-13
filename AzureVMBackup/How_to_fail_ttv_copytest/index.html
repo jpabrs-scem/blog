@@ -4,21 +4,30 @@
   <meta charset="utf-8">
   
   
-  <title>SCVMM サーバーおよび SCVMM 管理対象サーバーの自己署名証明書の更新手順 | Japan CSS ABRS  Support Blog !!</title>
+  <title>(Test)Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法 | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆さんこんにちは、System Center サポートチームの 保科と申します。 今回は、System Center Virtual Machine Manager (SCVMM) で使用する自己署名証明書の有効期限が切れた場合や、削除をされた場合の対処方法についてご案内いたします。 [本ページが対象とする SCVMM バージョン]SCVMM 2012SCVMM 2012 SP1SCVMM 20">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートの 荘司 です。今回は、Azure VM Backup における転送フェーズを意図的に失敗させる方法について、ご案内いたします。*転送フェーズとは Transfer data to vault フェーズを指します。詳細については幣ブログの関連のページをご覧ください・Transfer data to vault フェーズ - Azure VM Ba">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SCVMM サーバーおよび SCVMM 管理対象サーバーの自己署名証明書の更新手順">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/SystemCenter/SCVMM_Renew_Crtificate/index.html">
+<meta property="og:title" content="(Test)Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv_copytest/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆さんこんにちは、System Center サポートチームの 保科と申します。 今回は、System Center Virtual Machine Manager (SCVMM) で使用する自己署名証明書の有効期限が切れた場合や、削除をされた場合の対処方法についてご案内いたします。 [本ページが対象とする SCVMM バージョン]SCVMM 2012SCVMM 2012 SP1SCVMM 20">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートの 荘司 です。今回は、Azure VM Backup における転送フェーズを意図的に失敗させる方法について、ご案内いたします。*転送フェーズとは Transfer data to vault フェーズを指します。詳細については幣ブログの関連のページをご覧ください・Transfer data to vault フェーズ - Azure VM Ba">
 <meta property="og:locale" content="ja_JP">
-<meta property="article:published_time" content="2022-01-12T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-13T04:07:57.935Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157503085-0d5ff930-b877-444f-83ab-7637015cbfeb.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502733-09a19fbb-23f5-430a-a334-55591de41b52.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502744-47f216d0-2f8a-4fa4-a72c-79f78a80a546.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502743-dd6c88d7-a959-47e1-b3cd-8cded953ceb0.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502742-73239758-d52f-4230-96ba-005cb7e411f6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502740-150a8c21-19e4-4bdd-89ea-28e1f9db93fd.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502739-4d1655cc-2ee2-4eb2-ba22-d8cb9d73d4af.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502737-ba0b8cda-001e-421e-a6d7-e3648c2c38fa.png">
+<meta property="article:published_time" content="2022-10-14T03:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-13T04:07:57.851Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
-<meta property="article:tag" content="System Center">
-<meta property="article:tag" content="SCVMM">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/157503085-0d5ff930-b877-444f-83ab-7637015cbfeb.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -80,7 +89,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-SystemCenter/SCVMM_Renew_Crtificate" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureVMBackup/How_to_fail_ttv_copytest" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -89,7 +98,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SCVMM サーバーおよび SCVMM 管理対象サーバーの自己署名証明書の更新手順
+      (Test)Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法
     </h1>
   
 
@@ -97,62 +106,44 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-01-12T03:00:00.000Z" itemprop="datePublished">2022-01-12</time>
+  <time datetime="2022-10-14T03:00:00.000Z" itemprop="datePublished">2022-10-14</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+63e26895-79aa-53b7-9c4a-78e033608448%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BSCVMM+%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%8A%E3%82%88%E3%81%B3+SCVMM+%E7%AE%A1%E7%90%86%E5%AF%BE%E8%B1%A1%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E8%87%AA%E5%B7%B1%E7%BD%B2%E5%90%8D%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E6%9B%B4%E6%96%B0%E6%89%8B%E9%A0%86%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FSystemCenter%2FSCVMM_Renew_Crtificate%2F%29%0A*+Content+Source%3A+%5Barticles%2FSystemCenter%2FSCVMM_Renew_Crtificate.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FSystemCenter%2FSCVMM_Renew_Crtificate.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+1190aac2-224f-55c2-9e51-d3f1a6b35bae%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%28Test%29Azure+VM+Backup+%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E8%BB%A2%E9%80%81%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA%E3%82%92%E6%84%8F%E5%9B%B3%E7%9A%84%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHow_to_fail_ttv_copytest%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHow_to_fail_ttv_copytest.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHow_to_fail_ttv_copytest.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/SystemCenter/SCVMM_Renew_Crtificate/" data-id="cl96jj1x700250mmm1w3a19re" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv_copytest/" data-id="cl96jj1wd000r0mmm6p847jfo" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆さんこんにちは、System Center サポートチームの 保科と申します。</p>
-<p>今回は、System Center Virtual Machine Manager (SCVMM) で使用する自己署名証明書の有効期限が切れた場合や、削除をされた場合の対処方法についてご案内いたします。</p>
-<h3 id="本ページが対象とする-SCVMM-バージョン"><a href="#本ページが対象とする-SCVMM-バージョン" class="headerlink" title="[本ページが対象とする SCVMM バージョン]"></a>[本ページが対象とする SCVMM バージョン]</h3><p>SCVMM 2012<br>SCVMM 2012 SP1<br>SCVMM 2012 R2<br>SCVMM 2016<br>SCVMM 2019</p>
-<h3 id="概要"><a href="#概要" class="headerlink" title="[概要]"></a>[概要]</h3><p>SCVMM では、SCVMM サーバー機能をインストールしたサーバーや、SCVMM にて管理対象となる Hyper-V サーバーに SCVMM エージェントがインストールされた際、同時に自己署名証明書も当該サーバーにインストールされます。<br>これは、SCVMM サーバーと管理対象 Hyper-V サーバーの間の通信の安全性を確保するためにインストールされます。<br>そのため、この自己署名証明書は、SCVMM サーバーが管理対象 Hyper-V サーバーと通信を行う際に必須となる証明書となります。</p>
-<p>この自己署名証明書は、フレンドリ名が  “SCVMM_CERTIFICATE_KEY_CONTAINER***” となっており、発行者はそのホスト自身になっています。<br>(*** の部分は SCVMM サーバーもしくは Hyper-V サーバーの完全修飾ドメイン名となります。)<br>この証明書の期限は SCVMM サーバーや、Hyper-V サーバーを SCVMM の管理対象に設定した年の 1/1 から 5 年間に設定されます。<br>例えば 2015/10/26 に Hyper-V ホストを SCVMM の管理対象に設定した場合、設定される証明書の有効期限は 2020/1/1 になります。<br>これは 2015 年中であればいつ Hyper-Vホストを管理対象に追加された場合でも同様の結果となります。</p>
-<p>上記の通りこの証明書の期限は 5 年間 (SCVMM のバージョンによっては 10 年間)となっています。<br>このため、5 年間 (10 年間) が経過するとこの証明書は無効になります。<br>なお、この証明書の有効期限が超過する 1 ヶ月前になりますと、SCVMM サーバー上で以下の警告メッセージが出力されるようになります。</p>
-<blockquote>
-<p>警告 (20583)<br>コンピューター &lt;対象サーバーの完全修飾ドメイン名&gt; の自己署名証明書は既に有効期限切れか、1 か月以内に有効期限切れになります。</p>
-<p>推奨される操作<br>VMM から &lt;対象サーバーの完全修飾ドメイン名&gt; を削除してから追加して、新しい証明書を取得してください。</p>
-</blockquote>
-<p>また何かのトラブルシュートの際などに誤ってこの証明書を削除してしまったりすることも考えられます。<br>その場合、SCVMM サーバーと Hyper-V サーバーの間の通信に問題が発生し、Hyper-V サーバーの管理作業などが正しく動作しなくなります。</p>
-<p>このような場合、SCVMM サーバーもしくは Hyper-V サーバーにインストールされている SCVMM エージェントを再インストールすることで対処することもできますが、証明書を再発行することでも対処することができます。<br>この際の手順は以下の [対処手順 ①] に従って自己署名証明書の再インストールを実施します。<br>また、SCVMM サーバー限定かつ特定の SCVMM バージョン限定の手順とはなりますが、[対処手順 ②] に従った自己署名証明書の更新も実施いただけます。</p>
-<h3 id="対処手順-①"><a href="#対処手順-①" class="headerlink" title="[対処手順 ①]"></a>[対処手順 ①]</h3><ol>
-<li>自己署名証明書を更新いただくサーバーに管理者権限でログインします。</li>
-<li>Windows + R を入力して、[ファイル名を指定して実行] を起動します。</li>
-<li>mmc と入力して [OK] をクリックします。</li>
-<li>表示されたウインドウで、メニュー バーから [ファイル] - [スナップインの追加と削除] を選択します。</li>
-<li>“利用できるスナップイン” から “証明書” を選択し、[追加] をクリックします。</li>
-<li>[証明書スナップイン] ウインドウが表示されたら、”コンピューター アカウント” をチェックし、[次へ] をクリックします。</li>
-<li>[コンピューターの選択] ウインドウでは、既定値のまま [完了] をクリックします。</li>
-<li>[OK] をクリックして、[スナップインの追加と削除] ウインドウを閉じます。</li>
-<li>左側のツリーから、[証明書 (ローカル コンピューター)] -&gt; [個人] -&gt; [証明書] を開きます。</li>
-<li>中央ペインに表示されている証明書のうち、”フレンドリ名” 列に “SCVMM_CERTIFICATE_KEY_CONTAINER***” と表示されてる証明書を選択して削除します。<br>(*** の部分は SCVMM サーバーもしくは Hyper-V サーバーの完全修飾ドメイン名となります。)<br>そのような証明書が既に存在しない場合、そのまま手順 11. に進みます。</li>
-<li>SCVMM サーバー上で、”Virtual Machine Manager Command Shell” を起動します。</li>
-<li>以下のコマンドを実行します。<blockquote>
-<p><code> </code> <code>$credential = get-credential</code> <code> </code></p>
-</blockquote>
-</li>
-<li>表示されたウインドウに、SCVMM サーバーのローカル管理者権限のあるユーザーのユーザー名とパスワードを入力して [OK] をクリックします。</li>
-<li>続いて、以下のコマンドを実行します。<br>(*** の部分は SCVMM サーバーもしくは Hyper-V サーバーの完全修飾ドメイン名を入力します。)<blockquote>
-<p><code> </code> <code>Get-VMMManagedComputer -ComputerName &quot;***&quot; | Register-SCVMMManagedComputer  -Credential $credential</code> <code> </code></p>
-</blockquote>
-</li>
-<li>自己署名証明書を更新されるサーバーに、有効期限が 5 年後 (10 年後) の 1 月 1 日に設定された自己署名証明書が無事再作成されたことを、10. の手順で開いたコンソール上で確認いただきます。<br>手順実施後も証明書が更新されていない場合、画面を最新の情報に更新いただくことで表示される場合がございます。</li>
+<p>皆様こんにちは、Azure Backup サポートの 荘司 です。<br>今回は、<strong>Azure VM Backup における転送フェーズを意図的に失敗させる方法</strong>について、ご案内いたします。<br>*転送フェーズとは Transfer data to vault フェーズを指します。<br>詳細については幣ブログの関連のページをご覧ください<br>・Transfer data to vault フェーズ - Azure VM Backup の通信要件や処理の流れについて<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-2">https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-2</a></p>
+<p>また下記幣ブログの記事では Take Snapshot フェーズを失敗させる方法をご案内しております。<br>・Azure VM Backup を意図的に失敗させる方法<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/</a></p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. Transfer data to vault を失敗させる方法概略</a><br><a href="#2">2. Transfer data to vault を失敗させる方法の注意点</a><br><a href="#3">3. Transfer data to vault を失敗させる手順</a></p>
+<hr>
+<h2 id="1-Transfer-data-to-vault-を失敗させる方法概略"><a href="#1-Transfer-data-to-vault-を失敗させる方法概略" class="headerlink" title="1. Transfer data to vault を失敗させる方法概略"></a>1. Transfer data to vault を失敗させる方法概略<a id="1"></a></h2><p>Azure VM Backup を実行し、Take Snapshot 完了後に該当の Azure VM のリストアポイントコレクション (ローカルスナップショットのメタデータ) を削除します。<br>そうすることで Transfer data to vault が失敗し、バックアップストレージ(標準コンテナー/ Recovery Services コンテナー)への転送が失敗します。</p>
+<h2 id="2-Transfer-data-to-vault-を失敗させる方法の注意点"><a href="#2-Transfer-data-to-vault-を失敗させる方法の注意点" class="headerlink" title="2. Transfer data to vault を失敗させる方法の注意点"></a>2. Transfer data to vault を失敗させる方法の注意点<a id="2"></a></h2><ol>
+<li>この方法ではリストアポイントコレクションを削除するため、リストアポイントコレクションを削除する前に取得された復元ポイントおよび該当のバックアップ ジョブで作成された復元ポイントではインスタントリストアが出来なくなります。<br>つまり、回復の種類が “スナップショット” のものは下記のように <em><strong>“UserErrorInstantRpNotFound” と復元するためのリソースがない旨のエラーメッセージがでて復元ができなくなります</strong></em>。<br>“スナップショットと標準コンテナー” のものは バックアップストレージ からの復元が可能です。<br><img src="https://user-images.githubusercontent.com/71251920/157503085-0d5ff930-b877-444f-83ab-7637015cbfeb.png"></li>
+<li>この方法を実施したあと下記のようなエラーが発生しますが、再度バックアップを実行することにより解消されます。<br><img src="https://user-images.githubusercontent.com/71251920/157502733-09a19fbb-23f5-430a-a334-55591de41b52.png"></li>
 </ol>
-<h3 id="対処手順-②"><a href="#対処手順-②" class="headerlink" title="[対処手順 ②]"></a>[対処手順 ②]</h3><p>こちらの手順は、以下の SCVMM バージョンにて追加されたコマンドレットを使用する手順となります。<br>・SCVMM 2016 Update Rollup 10<br>・SCVMM 2019 Update Rollup 2<br>上記のバージョンに SCVMM をアップデートすると、SCVMM サーバーの自己署名証明書を更新する “Update-SCVMMCertificate” コマンドレットがご利用いただけるようになります。<br>SCVMM サーバー限定の手順となり、Hyper-V サーバーに対しては実施いただけない手順となりますが、以下の手順に沿って SCVMM サーバーにインストールされた自己署名証明書を更新いただけます。</p>
-<ol>
-<li>SCVMM サーバーに管理者権限でログインします。</li>
-<li>ログインしたサーバー上で “Virtual Machine Manager Command Shell” を起動します。</li>
-<li>以下のコマンドを実行します。<blockquote>
-<p><code> </code> <code>Update-SCVMMCertificate -VMMServer &#39;***&#39; </code> <code> </code><br><code> </code> <code> (*** の部分は SCVMM サーバーの完全修飾ドメイン名を入力します。)</code> <code> </code></p>
-</blockquote>
+<p>その場合、復元した際に <strong>“UserErrorInstantRpNotFound”</strong> となっていた復元ポイントは <strong>無効/Invalid</strong> と表示されます。<br><img src="https://user-images.githubusercontent.com/71251920/157502744-47f216d0-2f8a-4fa4-a72c-79f78a80a546.png"></p>
+<h2 id="3-Transfer-data-to-vault-を失敗させる手順"><a href="#3-Transfer-data-to-vault-を失敗させる手順" class="headerlink" title="3. Transfer data to vault を失敗させる手順"></a>3. Transfer data to vault を失敗させる手順<a id="3"></a></h2><ol>
+<li><p>失敗させたい VM にて今すぐバックアップを実行します。</p>
 </li>
-<li>自己署名証明書を更新されるサーバーに、有効期限が 5 年後 (10 年後) の 1 月 1 日に設定された自己署名証明書が無事再作成されたことを、”対処手順 ①” の 10. の手順で開けるコンソール上で確認いただきます。<br>手順実施後も証明書が更新されていない場合、画面を最新の情報に更新いただくことで表示される場合がございます。</li>
+<li><p>バックアップ ジョブより該当のジョブの詳細を開き、サブタスクが以下の状態となっていることを確認します。(この状態になるのに通常 5 ~ 10 分程度かかります)<br>　・Take Snapshot：Completed<br>　・Transfer data to vault：In progress<br><img src="https://user-images.githubusercontent.com/71251920/157502743-dd6c88d7-a959-47e1-b3cd-8cded953ceb0.png"></p>
+</li>
+<li><p>ポータルのホーム画面にて “Restore Point Celloctions” と検索し、サービス欄に出てきた Restore Point Celloctions をクリックします。<br><img src="https://user-images.githubusercontent.com/71251920/157502742-73239758-d52f-4230-96ba-005cb7e411f6.png"></p>
+</li>
+<li><p>検索欄に該当の VM 名を入力し、出てきた RestorePoint Collection をクリックします。<br>　RestorePoint Collection は “AzureBackup_&lt;VM 名&gt;_xxxxxxxxxxxxx” といった命名規則にて存在しております。<br><img src="https://user-images.githubusercontent.com/71251920/157502740-150a8c21-19e4-4bdd-89ea-28e1f9db93fd.png"></p>
+</li>
+<li><p>Delete をクリックし、出現したメッセージの OK をクリックして RestorePoint Collection を削除します。<br><img src="https://user-images.githubusercontent.com/71251920/157502739-4d1655cc-2ee2-4eb2-ba22-d8cb9d73d4af.png"></p>
+</li>
+<li><p>バックアップ ジョブが完了するのを待ちます。(状況によって数十分から数時間要する場合があります)</p>
+</li>
+<li><p>時間が経過すると、以下のように Transfer data to vault プロセスが失敗したことを確認できます。<br><img src="https://user-images.githubusercontent.com/71251920/157502737-ba0b8cda-001e-421e-a6d7-e3648c2c38fa.png"></p>
+</li>
 </ol>
 
       
@@ -167,10 +158,10 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/SCVMM/" rel="tag">SCVMM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/System-Center/" rel="tag">System Center</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/SystemCenter/SCVMM_Renew_Crtificate.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/How_to_fail_ttv_copytest.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -178,19 +169,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../RecoveryServicesVaults/How_to_set_Backup_Alert/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureFilesBackup/How_to_fail_AFS_backup/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../restore_swapdsik/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure Files Backup を意図的に失敗させる方法</div>
+      <div class="article-nav-title">Azure VM Backup [既存を置換] リストア について</div>
     </a>
   
 </nav>
@@ -209,11 +191,11 @@
       <ul>
         
           <li>
-            <a href="../../AzureVMBackup/How_to_fail_ttv_copytest/">(Test)Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法</a>
+            <a href="">(Test)Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法</a>
           </li>
         
           <li>
-            <a href="../../AzureVMBackup/restore_swapdsik/">Azure VM Backup [既存を置換] リストア について</a>
+            <a href="../restore_swapdsik/">Azure VM Backup [既存を置換] リストア について</a>
           </li>
         
           <li>
