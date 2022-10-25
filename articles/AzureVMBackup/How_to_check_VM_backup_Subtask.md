@@ -20,7 +20,7 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
 ## 目次
 -----------------------------------------------------------
 [1. サブタスク (Take Snapshot フェーズ) 確認方法](#1)
- [コマンド実行環境に関する注意](#1-notice)
+ [ (注意)コマンド実行環境に関する注意](#1-notice)
  [1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法](#1-1)
  [1-2. Azure CLI を用いたサブタスク (Take Snapshot フェーズ) 確認方法](#1-2)
  [1-3. Azure PowerShell を用いたサブタスク (Take Snapshot フェーズ) 確認方法](#1-3)
