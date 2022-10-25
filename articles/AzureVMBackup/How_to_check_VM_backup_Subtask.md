@@ -43,6 +43,7 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
 >リソースグループ：RG-alwaysONVM
 >Recovery Services コンテナー：RSV-JPE-LRS
 >リソースグループ：RG-NormalTest
+>コマンド実行ターミナル：PowerShell
 
 ###  1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法<a id="1-1"></a>
 [対象の Recovery Services コンテナー] → 左ペインの [バックアップ ジョブ] → 対象のバックアップ ジョブの [View details] → [Sub Tasks] の手順で確認いただくことが可能です。
