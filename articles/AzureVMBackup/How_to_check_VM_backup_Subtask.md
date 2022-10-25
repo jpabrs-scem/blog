@@ -20,6 +20,7 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
 ## 目次
 -----------------------------------------------------------
 [1. サブタスク (Take Snapshot フェーズ) 確認方法](#1)
+ [コマンド実行環境に関する注意](#1-notice)
  [1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法](#1-1)
  [1-2. Azure CLI を用いたサブタスク (Take Snapshot フェーズ) 確認方法](#1-2)
  [1-3. Azure PowerShell を用いたサブタスク (Take Snapshot フェーズ) 確認方法](#1-3)
@@ -31,6 +32,10 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
 サブタスク確認方法は **Azure Portal で確認する方法**、および、 **Azure CLI や Azure PowerShell といった CLI を用いた方法**がございます。
 今回弊社検証環境で確認結果も添えてお伝えさせていただきます。
 また Recovery Services コンテナーのことを RSV と略して表記している部分がございます。
+
+### コマンド実行環境に関する注意<a id="1-notice"></a>
+本記事の実行環境は Azure CLI も Azure PowerShell もインターフェースを PowerShell を用いて今回実施しております。
+そのため、bat ファイル (コマンドプロンプト) などで記述される際には call コマンドを付けていただく必要があるなど、ご利用のインターフェースに応じた対応、記述が必要となることがございます。
 
 - 検証環境情報
 まず、はじめに今回の検証環境の情報です。
