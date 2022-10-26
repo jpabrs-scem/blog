@@ -4,23 +4,25 @@
   <meta charset="utf-8">
   
   
-  <title>AdtAdmin / setquery でアクセス拒否エラー(0x00000005)が発生する場合の対処法 | Japan CSS ABRS  Support Blog !!</title>
+  <title>Azure Backup の 保持期間について | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、System Center サポートチームの 佐藤 です。 本日は System Center Operations Manager（以後 SCOM） の機能である 監査コレクション サービス (ACS) （監査コレクション サービス (ACS) コレクターとデータベースをインストールする方法 | Microsoft Docs）において WQL クエリ設定を実行する際に必要な設定">
+  <meta name="description" content="皆様こんにちは。Azure Backup サポートです。今回は、よくお問い合わせをうける「保持期限」について、取りまとめてお伝えします。公開ドキュメント上では、下記のように「最大保有期間：バックアップ頻度次第」と記載が書かれており、実際に「毎日」「毎週」のバックアップを構成した場合の最大保有期間は、ポリシー作成画面で確認するのみとなっております。 ・保有の制限https:&#x2F;&#x2F;docs.micro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AdtAdmin &#x2F; setquery でアクセス拒否エラー(0x00000005)が発生する場合の対処法">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_AccessError_0x00000005/index.html">
+<meta property="og:title" content="Azure Backup の 保持期間について">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RetentionPeriod/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、System Center サポートチームの 佐藤 です。 本日は System Center Operations Manager（以後 SCOM） の機能である 監査コレクション サービス (ACS) （監査コレクション サービス (ACS) コレクターとデータベースをインストールする方法 | Microsoft Docs）において WQL クエリ設定を実行する際に必要な設定">
+<meta property="og:description" content="皆様こんにちは。Azure Backup サポートです。今回は、よくお問い合わせをうける「保持期限」について、取りまとめてお伝えします。公開ドキュメント上では、下記のように「最大保有期間：バックアップ頻度次第」と記載が書かれており、実際に「毎日」「毎週」のバックアップを構成した場合の最大保有期間は、ポリシー作成画面で確認するのみとなっております。 ・保有の制限https:&#x2F;&#x2F;docs.micro">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/148327138-6c2ba2db-ced8-4408-9c43-144a170ee18d.png">
-<meta property="article:published_time" content="2022-01-06T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-26T05:53:00.224Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/197381027-dcf0c231-950e-4b50-a14f-4f2d991c9616.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/197453814-73c643d9-ad3f-458c-b729-4fb7a409aab6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/197448093-5b532557-b4e6-44de-b837-01993756862a.png">
+<meta property="article:published_time" content="2022-10-27T03:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-26T05:53:00.204Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
-<meta property="article:tag" content="System Center">
-<meta property="article:tag" content="SCOM">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Recovery Services vaults">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/148327138-6c2ba2db-ced8-4408-9c43-144a170ee18d.png">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/96324317/197381027-dcf0c231-950e-4b50-a14f-4f2d991c9616.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -82,7 +84,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-SystemCenter/SCOM_AccessError_0x00000005" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-RecoveryServicesVaults/Backup_RetentionPeriod" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -91,7 +93,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      AdtAdmin / setquery でアクセス拒否エラー(0x00000005)が発生する場合の対処法
+      Azure Backup の 保持期間について
     </h1>
   
 
@@ -99,34 +101,247 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-01-06T03:00:00.000Z" itemprop="datePublished">2022-01-06</time>
+  <time datetime="2022-10-27T03:00:00.000Z" itemprop="datePublished">2022-10-27</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+c9725b34-9e6a-55be-be47-aeac96ce2807%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAdtAdmin+%2F+setquery+%E3%81%A7%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E6%8B%92%E5%90%A6%E3%82%A8%E3%83%A9%E3%83%BC%280x00000005%29%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88%E3%81%AE%E5%AF%BE%E5%87%A6%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FSystemCenter%2FSCOM_AccessError_0x00000005%2F%29%0A*+Content+Source%3A+%5Barticles%2FSystemCenter%2FSCOM_AccessError_0x00000005.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FSystemCenter%2FSCOM_AccessError_0x00000005.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+15194503-f198-56b3-83a3-05bc766d03c5%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE+%E4%BF%9D%E6%8C%81%E6%9C%9F%E9%96%93%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FRecoveryServicesVaults%2FBackup_RetentionPeriod%2F%29%0A*+Content+Source%3A+%5Barticles%2FRecoveryServicesVaults%2FBackup_RetentionPeriod.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FRecoveryServicesVaults%2FBackup_RetentionPeriod.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_AccessError_0x00000005/" data-id="cl9p804vp00200mnz6u0v0xuv" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RetentionPeriod/" data-id="cl9p804vj001l0mnzbd0c6gwz" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは、System Center サポートチームの 佐藤 です。</p>
-<p>本日は System Center Operations Manager（以後 SCOM） の機能である 監査コレクション サービス (ACS) （<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/system-center/scom/deploy-install-acs?view=sc-om-2019">監査コレクション サービス (ACS) コレクターとデータベースをインストールする方法 | Microsoft Docs</a>）において WQL クエリ設定を実行する際に必要な設定をご紹介いたします。</p>
-<p>ACS は WQL（<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/sql/relational-databases/wmi-provider-server-events/using-wql-with-the-wmi-provider-for-server-events?view=sql-server-ver15">WMI Provider for Server Events と WQL の使用 - SQL Server | Microsoft Docs</a>）を使用して取得対象のイベントの範囲を絞ることが可能です。<br>これは ACS データを保存するデータベースの肥大化の防止、また不要なデータを取得しないことでSCOM 管理サーバー/監視対象サーバーの処理負荷の軽減に寄与いたします。</p>
-<p>しかし、規定の設定では下記のように WQL を実行しようとする際にアクセス拒否エラーが出力される事が確認されております。</p>
-<blockquote>
-<p>■コマンド例<br><code> </code> <code>C:\Windows\System32\Security\AdtServer&gt;AdtAdmin /setquery /query:&quot;SELECT * FROM AdtsEvent WHERE EventId=XXX&quot; </code> <code> </code></p>
-</blockquote>
-<p>その際はレジストリエディタにて以下キーに対してユーザー “NETWORK SERVICE” へ フルコントールなどの “値の設定”の権限付与することで改善されます。<br>こちらの設定については SCOM 用に定義されているパラーメータ設定であり、設定変更により他アプリケーションへの影響はございませんのでご安心ください。</p>
-<blockquote>
-<p>■キー<br><code> </code> <code>HKLM\SYSTEM\CurrentControlSet\Services\AdtServer\Parameters</code> <code> </code></p>
-</blockquote>
-<p>参考図：</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/148327138-6c2ba2db-ced8-4408-9c43-144a170ee18d.png" alt="参考図"></p>
-<blockquote>
-<p>対象バージョン：<br>　System Center Operations Manager 2012 R2<br>　System Center Operations Manager 2016<br>　System Center Operations Manager 2019</p>
-</blockquote>
+<p>皆様こんにちは。Azure Backup サポートです。<br>今回は、よくお問い合わせをうける「保持期限」について、取りまとめてお伝えします。<br>公開ドキュメント上では、下記のように「最大保有期間：バックアップ頻度次第」と記載が書かれており、実際に「毎日」「毎週」のバックアップを構成した場合の最大保有期間は、ポリシー作成画面で確認するのみとなっております。</p>
+<p>・保有の制限<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits">https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits</a></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/197381027-dcf0c231-950e-4b50-a14f-4f2d991c9616.png"></p>
+<p>（図例：Azure VM Backup の場合）<br><img src="https://user-images.githubusercontent.com/96324317/197453814-73c643d9-ad3f-458c-b729-4fb7a409aab6.png"></p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. Azure VM Backup の場合</a><br><a href="#2">2. Azure ファイル共有に対する Azure Backup の場合</a><br><a href="#3">3. SQL Server DB に対する Azure Backup の場合</a><br><a href="#4">4. SAP HANA DB に対する Azure Backup の場合</a><br><a href="#5">5. Microsoft Azure Recovery Services (MARS) の場合</a></p>
+<hr>
+<h2 id="1-Azure-VM-Backup-の場合"><a href="#1-Azure-VM-Backup-の場合" class="headerlink" title=" 1. Azure VM Backup の場合"></a><a id="1"></a> 1. Azure VM Backup の場合</h2><table>
+<thead>
+<tr>
+<th>Azure VM に対するバックアップの頻度</th>
+<th>最小保持期間</th>
+<th>最大保持期間</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>インスタント回復スナップショットの保有期間</td>
+<td>1 日</td>
+<td>ポリシーのサブタイプ：Standard の場合： 5<br>ポリシーのサブタイプ：Enhanced の場合： 30 日</td>
+</tr>
+<tr>
+<td>毎日</td>
+<td>7 日</td>
+<td>9999 日</td>
+</tr>
+<tr>
+<td>毎週</td>
+<td>1 週</td>
+<td>5163 週</td>
+</tr>
+<tr>
+<td>毎月</td>
+<td>1 ヶ月</td>
+<td>1188 ヶ月</td>
+</tr>
+<tr>
+<td>毎年</td>
+<td>1 年</td>
+<td>99 年</td>
+</tr>
+</tbody></table>
+<p>（補足）オンデマンド バックアップの場合、最大 99 年まで保持期間を指定可能です。<br><img src="https://user-images.githubusercontent.com/96324317/197448093-5b532557-b4e6-44de-b837-01993756862a.png"></p>
+<h2 id="2-Azure-ファイル共有に対する-Azure-Backup-の場合"><a href="#2-Azure-ファイル共有に対する-Azure-Backup-の場合" class="headerlink" title=" 2. Azure ファイル共有に対する Azure Backup の場合"></a><a id="2"></a> 2. Azure ファイル共有に対する Azure Backup の場合</h2><table>
+<thead>
+<tr>
+<th>Azure ファイル共有 に対するバックアップの頻度</th>
+<th>最小保持期間</th>
+<th>最大保持期間</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>毎日</td>
+<td>1 日</td>
+<td>200 日</td>
+</tr>
+<tr>
+<td>毎週</td>
+<td>1 週</td>
+<td>200 週</td>
+</tr>
+<tr>
+<td>毎月</td>
+<td>1 ヶ月</td>
+<td>120 ヶ月</td>
+</tr>
+<tr>
+<td>毎年</td>
+<td>1 年</td>
+<td>10 年</td>
+</tr>
+</tbody></table>
+<h2 id="3-SQL-Server-DB-に対する-Azure-Backup-の場合"><a href="#3-SQL-Server-DB-に対する-Azure-Backup-の場合" class="headerlink" title=" 3. SQL Server DB に対する Azure Backup の場合"></a><a id="3"></a> 3. SQL Server DB に対する Azure Backup の場合</h2><table>
+<thead>
+<tr>
+<th>完全バックアップの頻度</th>
+<th>最小保持期間</th>
+<th>最大保持期間</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>毎日</td>
+<td>7 日</td>
+<td>9999 日</td>
+</tr>
+<tr>
+<td>毎週</td>
+<td>1 週</td>
+<td>5163 週</td>
+</tr>
+<tr>
+<td>毎月</td>
+<td>1 ヶ月</td>
+<td>1188 ヶ月</td>
+</tr>
+<tr>
+<td>毎年</td>
+<td>1 年</td>
+<td>99 年</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>差分バックアップの頻度</th>
+<th>最小保持期間</th>
+<th>最大保持期間</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>毎週</td>
+<td>7 日</td>
+<td>180 日</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>ログバックアップの頻度</th>
+<th>最小保持期間</th>
+<th>最大保持期間</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>毎分/毎時</td>
+<td>7 日</td>
+<td>35 日</td>
+</tr>
+</tbody></table>
+<h2 id="4-SAP-HANA-DB-に対する-Azure-Backup-の場合"><a href="#4-SAP-HANA-DB-に対する-Azure-Backup-の場合" class="headerlink" title=" 4. SAP HANA DB に対する Azure Backup の場合"></a><a id="4"></a> 4. SAP HANA DB に対する Azure Backup の場合</h2><table>
+<thead>
+<tr>
+<th>完全バックアップの頻度</th>
+<th>最小保持期間</th>
+<th>最大保持期間</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>毎日</td>
+<td>7 日</td>
+<td>9999 日</td>
+</tr>
+<tr>
+<td>毎週</td>
+<td>1 週</td>
+<td>5163 週</td>
+</tr>
+<tr>
+<td>毎月</td>
+<td>1 ヶ月</td>
+<td>1188 ヶ月</td>
+</tr>
+<tr>
+<td>毎年</td>
+<td>1 年</td>
+<td>99 年</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>差分バックアップの頻度</th>
+<th>最小保持期間</th>
+<th>最大保持期間</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>毎週</td>
+<td>7 日</td>
+<td>180 日</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>増分バックアップの頻度</th>
+<th>最小保持期間</th>
+<th>最大保持期間</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>毎週</td>
+<td>7 日</td>
+<td>180 日</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>ログバックアップの頻度</th>
+<th>最小保持期間</th>
+<th>最大保持期間</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>毎分/毎時</td>
+<td>7 日</td>
+<td>35 日</td>
+</tr>
+</tbody></table>
+<h2 id="5-Microsoft-Azure-Recovery-Services-MARS-の場合"><a href="#5-Microsoft-Azure-Recovery-Services-MARS-の場合" class="headerlink" title=" 5. Microsoft Azure Recovery Services (MARS) の場合"></a><a id="5"></a> 5. Microsoft Azure Recovery Services (MARS) の場合</h2><table>
+<thead>
+<tr>
+<th>MARS バックアップの頻度</th>
+<th>最小保持期間</th>
+<th>最大保持期間</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>毎日</td>
+<td>7 日</td>
+<td>9999 日</td>
+</tr>
+<tr>
+<td>毎週</td>
+<td>4 週</td>
+<td>5163 週</td>
+</tr>
+<tr>
+<td>毎月</td>
+<td>3 ヶ月</td>
+<td>1316 ヶ月</td>
+</tr>
+<tr>
+<td>毎年</td>
+<td>1 年</td>
+<td>100 年</td>
+</tr>
+</tbody></table>
+<p>Azure Backup における保有期間について、以上となります。</p>
 
       
       
@@ -140,10 +355,10 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/SCOM/" rel="tag">SCOM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/System-Center/" rel="tag">System Center</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/SystemCenter/SCOM_AccessError_0x00000005.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/RecoveryServicesVaults/Backup_RetentionPeriod.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -151,19 +366,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureFilesBackup/How_to_fail_AFS_backup/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Azure Files Backup を意図的に失敗させる方法
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureVMBackup/VM_Backup_calculator/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">料金計算ツールを用いた Azure VM Backup の料金見積もりについて</div>
+      <div class="article-nav-title">SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定</div>
     </a>
   
 </nav>
@@ -182,7 +388,7 @@
       <ul>
         
           <li>
-            <a href="../../RecoveryServicesVaults/Backup_RetentionPeriod/">Azure Backup の 保持期間について</a>
+            <a href="">Azure Backup の 保持期間について</a>
           </li>
         
           <li>

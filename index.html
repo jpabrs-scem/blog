@@ -95,6 +95,111 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-RecoveryServicesVaults/Backup_RetentionPeriod" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="RecoveryServicesVaults/Backup_RetentionPeriod/" class="article-date">
+  <time datetime="2022-10-27T03:00:00.000Z" itemprop="datePublished">2022-10-27</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="RecoveryServicesVaults/Backup_RetentionPeriod/">Azure Backup の 保持期間について</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+皆様こんにちは。Azure Backup サポートです。今回は、よくお問い合わせをうける「保持期限」について、取りまとめてお伝えします。公開ドキュメント上では、下記のように「最大保有期間：バックアップ頻度次第」と記載が書かれており、実際に「毎日」「毎週」のバックアップを構成した場合の最大保有期間は、ポリシー作成画面で確認するのみとなっております。
+・保有の制限https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits
+
+（図例：Azure VM Backup の場合）
+目次
+1. Azure VM Backup の場合2. Azure ファイル共有に対する Azure Backup の場合3. SQL Server DB に対する Azure Backup の場合4. SAP H...
+        <p class="article-readmore">
+          <a href="RecoveryServicesVaults/Backup_RetentionPeriod/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RetentionPeriod/" data-id="cl9p804vj001l0mnzbd0c6gwz" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/" class="article-date">
+  <time datetime="2022-10-27T03:00:00.000Z" itemprop="datePublished">2022-10-27</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/">SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+皆様こんにちは、Azure Backup サポートです。今回は、SQL Server DB に対する Azure Backupを、Proxy Serverをパイパスして PE 経由でバックアップする場合の設定方法についてお伝えします。
+ポイント( ポイントその 1 )Poxyを経由させてSQL Server DB に対する Azure Backupを行いたい場合は、下記2種類のアカウントに対して、クライアントOS上でProxy設定を行う必要があります。　１つ目：Local System アカウント　２つ目：NT Service\AzureWLBackupPluginSvcアカウント
+そのため、Proxyは経由せず（＝「Proxyをバイパスする」）、バックアップを取得したい場合は、上記 ２ つのアカウントに対してバイパス設定を行う必要があります。※もともと２つのアカウントに対してProxy...
+        <p class="article-readmore">
+          <a href="AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/" data-id="cl9p804wb00450mnz3cif4bu8" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-SQL-%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97/" rel="tag">Azure SQL バックアップ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-AzureVMBackup/restore_swapdsik" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -137,7 +242,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/" data-id="cl9ns2p4400160mru210b60za" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/" data-id="cl9p804vc00160mnz36uiggoo" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -188,7 +293,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/ASR_Migrate/RegisterApplianceFromOVA/" data-id="cl9ns2p3300000mruhs7jdg6d" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/ASR_Migrate/RegisterApplianceFromOVA/" data-id="cl9p804uh00000mnz08bzcpqh" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -239,7 +344,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/" data-id="cl9ns2p48001e0mrud6xt45te" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/" data-id="cl9p804vf001e0mnze6cm5j2g" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -291,7 +396,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/DR_ASR_or_VMBackup/" data-id="cl9ns2p4c001l0mruhw9fcp1s" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/DR_ASR_or_VMBackup/" data-id="cl9p804vk001n0mnzgemohs7x" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -345,7 +450,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/" data-id="cl9ns2p4b001j0mrubjbde2u5" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/Backup_RecoveryTIme/" data-id="cl9p804vi001j0mnz41e1ci3j" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -398,7 +503,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/" data-id="cl9ns2p4f001q0mru6m6ec98o" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/" data-id="cl9p804vm001s0mnz4qy1c436" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>
@@ -455,7 +560,7 @@ Error ID 33623Internal error code 0x80990EF2
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/" data-id="cl9ns2p4500190mrud30d78zn" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/" data-id="cl9p804vd00190mnzhlii0omp" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
@@ -505,114 +610,7 @@ Error ID 33623Internal error code 0x80990EF2
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/" data-id="cl9ns2p3p000p0mrude251n3t" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-information/team-introduction_2" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="information/team-introduction_2/" class="article-date">
-  <time datetime="2022-03-04T03:00:00.000Z" itemprop="datePublished">2022-03-04</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="information/team-introduction_2/">ABRS チームについて ~リモートワークでの働きかた~</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-こんにちは！ABRS チームの山本です。今日は、私たちのチームがどのように働いているのか、少しでも皆さんにイメージしていただき、興味をもっていただけるよう、普段の働き方や仕事環境について紹介いたします。現在は全メンバーがリモートワークをしており、首都圏以外にも北海道や大阪在住、またUS在住のメンバーまで在籍しております。
-目次
-1. よくある仕事の流れ2. とある日の一日3. デスク ツアー！4. リモート ワークの魅力5. 関連記事
-
-1. よくある仕事の流れMicrosoft のサポート エンジニアはお客様から起票いただいたサポート リクエストを通してお客様の抱える問題を解決するための技術支援を行います。案件の受付からクローズまで基本的には担当するメンバーがオーナーシップを持って対応します。基本的な案件対応の流れとしては、案件の受付 → 調査方針の決定 → 発生している問題の調査 →...
-        <p class="article-readmore">
-          <a href="information/team-introduction_2/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/information/team-introduction_2/" data-id="cl9ns2p4m00270mrufs3r4b13" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Information/" rel="tag">Information</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-AzureVMBackup/NVA_backup" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="AzureVMBackup/NVA_backup/" class="article-date">
-  <time datetime="2022-02-22T03:00:00.000Z" itemprop="datePublished">2022-02-22</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="AzureVMBackup/NVA_backup/">NVA のバックアップについて</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-みなさんこんにちは、Azure Backup サポートです。今回は、「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」というお問い合わせについて回答します。
-目次
-1. 仮想アプライアンスはバックアップできない可能性がある2. VM エージェント の状態の確認3. 代替案 - Azure Disk Backup を利用する
-
-1. 仮想アプライアンスはバックアップできない可能性が高い結論から申し上げますと、残念ながら NVA として機能する仮想マシンについては、Azure VM Backup サポート対象外の カスタム OS となる可能性が高いです。*NVA 以外の仮想アプライアンス、カスタム OS などにおいても同様です。
-Azure Marketplace より、NVA として機能する仮想マシンを作成した場合も同様に、Azure...
-        <p class="article-readmore">
-          <a href="AzureVMBackup/NVA_backup/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/" data-id="cl9ns2p3r000r0mru308z7dg7" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/" data-id="cl9p804v2000p0mnzdyeogqmz" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="tags/how-to/" rel="tag">how to</a></li></ul>
@@ -641,6 +639,14 @@ Azure Marketplace より、NVA として機能する仮想マシンを作成し�
       <ul>
         
           <li>
+            <a href="RecoveryServicesVaults/Backup_RetentionPeriod/">Azure Backup の 保持期間について</a>
+          </li>
+        
+          <li>
+            <a href="AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/">SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定</a>
+          </li>
+        
+          <li>
             <a href="AzureVMBackup/restore_swapdsik/">Azure VM Backup [既存を置換] リストア について</a>
           </li>
         
@@ -652,14 +658,6 @@ Azure Marketplace より、NVA として機能する仮想マシンを作成し�
             <a href="MARSBackup/How_to_re-install/">MARS エージェントの再インストール手順</a>
           </li>
         
-          <li>
-            <a href="RecoveryServicesVaults/DR_ASR_or_VMBackup/">Azure VM Backup と Azure Site Recovery による DR 要件について</a>
-          </li>
-        
-          <li>
-            <a href="RecoveryServicesVaults/Backup_RecoveryTIme/">Azure Backup の バックアップ / リストア 所要時間について</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -669,8 +667,8 @@ Azure Marketplace より、NVA として機能する仮想マシンを作成し�
   <div class="widget-wrap">
     <h3 class="widget-title">タグ</h3>
     <div class="widget">
-      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/SCOM/" rel="tag">SCOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/SCSM/" rel="tag">SCSM</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/SCVMM/" rel="tag">SCVMM</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/System-Center/" rel="tag">System Center</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">20</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">17</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Recovery-Services-vaults/">Recovery Services vaults</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/Recovery-Services-vaults/how-to">how to</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/Recovery-Services-vaults/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/System-Center/">System Center</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/System-Center/SCOM">SCOM</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/System-Center/SCSM">SCSM</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/System-Center/SCVMM">SCVMM</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li></ul>
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-SQL-%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97/" rel="tag">Azure SQL バックアップ</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Recovery-Services-vaults/" rel="tag">Recovery Services vaults</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/SCOM/" rel="tag">SCOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/SCSM/" rel="tag">SCSM</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/SCVMM/" rel="tag">SCVMM</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/System-Center/" rel="tag">System Center</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">20</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">17</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Recovery-Services-vaults/">Recovery Services vaults</a><span class="tag-list-count">6</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/Recovery-Services-vaults/how-to">how to</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/Recovery-Services-vaults/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/System-Center/">System Center</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/System-Center/SCOM">SCOM</a><span class="tag-list-count">4</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/System-Center/SCSM">SCSM</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="tags/System-Center/SCVMM">SCVMM</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li></ul>
     </div>
   </div>
 
@@ -680,7 +678,7 @@ Azure Marketplace より、NVA として機能する仮想マシンを作成し�
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
@@ -690,7 +688,7 @@ Azure Marketplace より、NVA として機能する仮想マシンを作成し�
   <div class="widget-wrap">
     <h3 class="widget-title">タグクラウド</h3>
     <div class="widget tagcloud">
-      <a href="tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="tags/DPM-MABS/" style="font-size: 10px;">DPM / MABS</a> <a href="tags/Information/" style="font-size: 11.67px;">Information</a> <a href="tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="tags/Recovery-Services-vaults/" style="font-size: 16.67px;">Recovery Services vaults</a> <a href="tags/SCOM/" style="font-size: 15px;">SCOM</a> <a href="tags/SCSM/" style="font-size: 10px;">SCSM</a> <a href="tags/SCVMM/" style="font-size: 10px;">SCVMM</a> <a href="tags/System-Center/" style="font-size: 16.67px;">System Center</a> <a href="tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="tags/how-to/" style="font-size: 20px;">how to</a> <a href="tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+      <a href="tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="tags/Azure-SQL-%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97/" style="font-size: 10px;">Azure SQL バックアップ</a> <a href="tags/Azure-VM-Backup/" style="font-size: 18.57px;">Azure VM Backup</a> <a href="tags/DPM-MABS/" style="font-size: 10px;">DPM / MABS</a> <a href="tags/Information/" style="font-size: 11.43px;">Information</a> <a href="tags/MARS-Backup/" style="font-size: 12.86px;">MARS Backup</a> <a href="tags/Recovery-Services-vaults/" style="font-size: 17.14px;">Recovery Services vaults</a> <a href="tags/SCOM/" style="font-size: 14.29px;">SCOM</a> <a href="tags/SCSM/" style="font-size: 10px;">SCSM</a> <a href="tags/SCVMM/" style="font-size: 10px;">SCVMM</a> <a href="tags/System-Center/" style="font-size: 15.71px;">System Center</a> <a href="tags/TROUBLE-SHOOTING/" style="font-size: 14.29px;">TROUBLE SHOOTING</a> <a href="tags/how-to/" style="font-size: 20px;">how to</a> <a href="tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.43px;">情報採取</a>
     </div>
   </div>
 
