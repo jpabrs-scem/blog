@@ -2,7 +2,7 @@
 title: Azure VM Backup と Azure Site Recovery による DR 要件について
 date: 2022-08-08 12:00:00
 tags:
-  - Recovery Services vaults
+  - Azure Backup General
   - how to
 disableDisclaimer: false
 ---

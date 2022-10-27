@@ -2,7 +2,7 @@
 title: Azure Backup の 保持期間について
 date: 2022-10-27 12:00:00
 tags:
-  - Recovery Services vaults
+  - Azure Backup General
   - how to
 disableDisclaimer: false
 ---
