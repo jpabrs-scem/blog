@@ -16,13 +16,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_2012R2_Uninstall-TroubleCase/</loc>
     
     <lastmod>2022-10-27</lastmod>
@@ -45,6 +38,13 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCVMM_Renew_Crtificate/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
     
     <lastmod>2022-10-27</lastmod>
     
@@ -87,6 +87,48 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AzureBackupStagingStorageAccount/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/</loc>
     
     <lastmod>2022-10-27</lastmod>
     
@@ -177,49 +219,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
     
     <lastmod>2022-10-27</lastmod>
     
