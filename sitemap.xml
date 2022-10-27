@@ -16,6 +16,13 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCOM_2012R2_Uninstall-TroubleCase/</loc>
     
     <lastmod>2022-10-27</lastmod>
@@ -38,13 +45,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/SystemCenter/SCVMM_Renew_Crtificate/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/SystemCenter/Prerequisites_SQL2019/</loc>
     
     <lastmod>2022-10-27</lastmod>
     
@@ -240,20 +240,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/</loc>
     
     <lastmod>2022-10-27</lastmod>
@@ -276,6 +262,20 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/</loc>
     
     <lastmod>2022-10-27</lastmod>
     
