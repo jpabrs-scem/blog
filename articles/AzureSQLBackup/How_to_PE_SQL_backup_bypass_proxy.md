@@ -172,21 +172,21 @@ passwordreset.microsoftonline.com;provisioningapi.microsoftonline.com;20.190.128
 「Start-ConnectivityTests.ps1」スクリプトを実行後、ターミナル上に結果が返却されます。
 
 ##### 「Start-ConnectivityTests.ps1」実行結果の期待値
-（１）
+(1)
 WinInet settings for NT Authority\System (used by Azure Workload Backup Coordinator service)
 ProxyEnable: <span style="color: red; ">1</span>
 となっていること。(=プロキシ設定 ON を表す)
 
-（２）
+(2)
 WinInet settings for NT Authority\System (used by Azure Workload Backup Coordinator service)
 「ProxyOverride:」以降が、設定した例外リスト/バイパスリストの内容となっていること
 
-（３）
+(3)
 WinInet settings for NT Service\AzureWLBackupPluginSvc (used by Azure Workload Backup Plugin service)
 ProxyEnable: <span style="color: red; ">1</span>
 となっていること。(=プロキシ設定 ON を表す)
 
-（４）
+(4)
 WinInet settings for NT Service\AzureWLBackupPluginSv (used by Azure Workload Backup Plugin service)
 「ProxyOverride:」以降が、設定した例外リスト/バイパスリストの内容となっていること
 ![](https://user-images.githubusercontent.com/96324317/197704402-d3ac2ec2-6778-4bfa-bf48-356c975f8d4a.png)
