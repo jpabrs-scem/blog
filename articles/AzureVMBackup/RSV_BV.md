@@ -47,6 +47,10 @@ Azure ファイル共有 バックアップは Azure Files の共有スナップ
 
 そのため、バックアップデータ (スナップショットデータ) の保存先はAzure Files の共有スナップショットと同じく、そのストレージ アカウント自身 (のスナップショット領域)となります。
 そのため、 Recovery Services コンテナーには転送されません。
+下記のように** Azure ファイル共有のスナップショット リソースとしてよって、Azure ファイル共有バックアップにて取得されたスナップショットも確認可能です**。("発信側" が "AzureBackup" となっているものです)
+![2022-10-28_01h46_38](https://user-images.githubusercontent.com/71251920/198350606-969ef3b9-0c2a-4744-9940-87c41936cb09.png)
+
+
 ・バックアップ プロセスのしくみ - Azure ファイル共有のバックアップについて
 https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview
 >抜粋：ファイル共有データは Backup サービスには転送されません。これは、Backup サービスでは、ストレージ アカウントの一部であるスナップショットの作成および管理が行われ、バックアップはコンテナーに転送されないからです。
@@ -75,6 +79,9 @@ https://learn.microsoft.com/ja-jp/azure/storage/blobs/point-in-time-restore-over
 Azure ディスク バックアップ は マネージドディスクの増分スナップショットの機能とバックアップサービスと連携することによりスナップショット取得の自動化、スナップショットの削除の自動化を実現したバックアップソリューションです。
 
 そのため、バックアップデータ (スナップショット データ) の保存先は マネージドディスクのスナップショットと同じく、マネージドディスクのスナップショットの専用領域 (運用層) となります。そのため、 Recovery Services コンテナーには転送されません。
+また、下記のように**スナップショットリソースとして Azure ディスクのバックアップによって取得されたスナップショットも確認可能です**。(タグが "CreatedBy：AzureBackup" となっているものです)
+![2022-10-28_01h40_54](https://user-images.githubusercontent.com/71251920/198349785-951e0497-fe17-46e5-9714-53f2daf30344.png)
+
 
 ・バックアップと復元のプロセスのしくみ - Azure ディスク バックアップの概要
 https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-the-backup-and-restore-process-works
