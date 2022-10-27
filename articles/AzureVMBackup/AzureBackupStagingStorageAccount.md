@@ -73,4 +73,4 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#stor
  vmrhelpe-datadisk-000-20220319-233028.vhd
  vmrhelpe-datadisk-001-20220319-233028.vhd
  vmrhelpe-osdisk-20220319-233028.vhd
- 上記の通り、Azure VM 名にリストア日次 (UTC表記) が付加された vhd ファイルが作成されます。
+ 上記の通り、Azure VM 名にリストア日時 (UTC表記) が付加された vhd ファイルが作成されます。
