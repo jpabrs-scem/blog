@@ -51,27 +51,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</loc>
     
     <lastmod>2022-10-27</lastmod>
@@ -87,6 +66,27 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/</loc>
     
     <lastmod>2022-10-27</lastmod>
     
@@ -240,6 +240,20 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/</loc>
+    
+    <lastmod>2022-10-27</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/</loc>
     
     <lastmod>2022-10-27</lastmod>
@@ -262,20 +276,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/</loc>
-    
-    <lastmod>2022-10-27</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/</loc>
     
     <lastmod>2022-10-27</lastmod>
     
