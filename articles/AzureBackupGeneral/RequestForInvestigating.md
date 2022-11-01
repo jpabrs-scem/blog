@@ -12,7 +12,7 @@ disableDisclaimer: false
 今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。
 なお、 Azure Backup の障害調査にあたり NW 観点で取得いただきたいログに関しては下記をご覧ください
 ・Azure Backup の障害調査に必要な情報 (疎通確認)
-https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigatingNW/
+https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/
 
 ## 目次
 -----------------------------------------------------------

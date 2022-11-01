@@ -12,7 +12,7 @@ disableDisclaimer: false
 今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、NW 観点で提供いただきたい情報をお伝えいたします。
 NW 観点以外の情報採集提供依頼については下記をご覧ください
 ・Azure Backup の障害調査に必要な情報
-https://jpabrs-scem.github.io/blog/RecoveryServicesVaults/RequestForInvestigating/
+https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/
 
 ## 目次
 -----------------------------------------------------------
