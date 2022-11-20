@@ -4,23 +4,25 @@
   <meta charset="utf-8">
   
   
-  <title>NVA のバックアップについて | Japan CSS ABRS  Support Blog !!</title>
+  <title>空き領域があるのに、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する場合の対処方法 | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="みなさんこんにちは、Azure Backup サポートです。今回は、「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」というお問い合わせについて回答します。 目次 1. 仮想アプライアンスはバックアップできない可能性がある2. VM エージェント の状態の確認3. 代替案 - Azure Disk Backup を利用する  1. 仮想アプ">
+  <meta name="description" content="皆様こんにちは、Microsoft Azure Backup ＆ Recovery Services サポートです。DPM (Data Protection Manager) や MABS (Microsoft Azure Backup Server) を使用し、ファイルサーバーなどサイズの大きい保護対象をバックアップすることはよくあることです。今回は、データサイズが 16 TB 前後の保護対象">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NVA のバックアップについて">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/index.html">
+<meta property="og:title" content="空き領域があるのに、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する場合の対処方法">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="みなさんこんにちは、Azure Backup サポートです。今回は、「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」というお問い合わせについて回答します。 目次 1. 仮想アプライアンスはバックアップできない可能性がある2. VM エージェント の状態の確認3. 代替案 - Azure Disk Backup を利用する  1. 仮想アプ">
+<meta property="og:description" content="皆様こんにちは、Microsoft Azure Backup ＆ Recovery Services サポートです。DPM (Data Protection Manager) や MABS (Microsoft Azure Backup Server) を使用し、ファイルサーバーなどサイズの大きい保護対象をバックアップすることはよくあることです。今回は、データサイズが 16 TB 前後の保護対象">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/154855287-696dca76-4bdc-4e8b-ac40-1108515edca8.png">
-<meta property="article:published_time" content="2022-02-22T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-20T06:42:15.254Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/202888559-f4e44492-53ff-4b2c-930b-a2af9c15480e.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/202888596-0a507b94-2a66-4956-b6b2-cbe7dd2e0a0b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/202888754-c88a83bf-1fda-4461-b249-a06e58be7792.png">
+<meta property="article:published_time" content="2022-11-21T03:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-20T06:42:15.314Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
-<meta property="article:tag" content="how to">
-<meta property="article:tag" content="Azure VM Backup">
+<meta property="article:tag" content="TROUBLE SHOOTING">
+<meta property="article:tag" content="DPM &#x2F; MABS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/154855287-696dca76-4bdc-4e8b-ac40-1108515edca8.png">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/96324317/202888559-f4e44492-53ff-4b2c-930b-a2af9c15480e.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -82,7 +84,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureVMBackup/NVA_backup" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-DPM&amp;MABS/Error_58_NoDiskSpace" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -91,7 +93,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      NVA のバックアップについて
+      空き領域があるのに、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する場合の対処方法
     </h1>
   
 
@@ -99,38 +101,37 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-02-22T03:00:00.000Z" itemprop="datePublished">2022-02-22</time>
+  <time datetime="2022-11-21T03:00:00.000Z" itemprop="datePublished">2022-11-21</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+73fca631-e5a1-56c2-9468-544fb7fd9203%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BNVA+%E3%81%AE%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FNVA_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FNVA_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FNVA_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+15dbe737-db02-5474-a8ee-fdd44156ae87%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E7%A9%BA%E3%81%8D%E9%A0%98%E5%9F%9F%E3%81%8C%E3%81%82%E3%82%8B%E3%81%AE%E3%81%AB%E3%80%81ID+58%E3%80%8C%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%81%AB%E5%8D%81%E5%88%86%E3%81%AA%E7%A9%BA%E3%81%8D%E9%A0%98%E5%9F%9F%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93%E3%80%8D%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%A7%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%82%B8%E3%83%A7%E3%83%96%E3%81%8C%E5%A4%B1%E6%95%97%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88%E3%81%AE%E5%AF%BE%E5%87%A6%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FDPM%26MABS%2FError_58_NoDiskSpace%2F%29%0A*+Content+Source%3A+%5Barticles%2FDPM%26MABS%2FError_58_NoDiskSpace.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FDPM%26MABS%2FError_58_NoDiskSpace.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/" data-id="claozrt71000y0mq4blzo8hli" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/" data-id="claozrt7g001i0mq40fmeckqt" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>みなさんこんにちは、Azure Backup サポートです。<br>今回は、<strong>「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」</strong>というお問い合わせについて回答します。</p>
+<p>皆様こんにちは、Microsoft Azure Backup ＆ Recovery Services サポートです。<br>DPM (Data Protection Manager) や MABS (Microsoft Azure Backup Server) を使用し、ファイルサーバーなどサイズの大きい保護対象をバックアップすることはよくあることです。<br>今回は、データサイズが 16 TB 前後の保護対象をバックアップした際に、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する事象が発生する場合の、その原因と対処方法についてお伝えします。 </p>
+<p>&lt;エラーの抜粋&gt;<br><img src="https://user-images.githubusercontent.com/96324317/202888559-f4e44492-53ff-4b2c-930b-a2af9c15480e.png" alt="エラーの抜粋"></p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. 仮想アプライアンスはバックアップできない可能性がある</a><br><a href="#2">2. VM エージェント の状態の確認</a><br><a href="#3">3. 代替案 - Azure Disk Backup を利用する</a></p>
+<p><a href="#1">1. 【原因】</a><br><a href="#2">2. 【対処方法】</a></p>
 <hr>
-<h3 id="1-仮想アプライアンスはバックアップできない可能性が高い"><a href="#1-仮想アプライアンスはバックアップできない可能性が高い" class="headerlink" title="1. 仮想アプライアンスはバックアップできない可能性が高い"></a><a id="1"></a>1. 仮想アプライアンスはバックアップできない可能性が高い</h3><p>結論から申し上げますと、残念ながら NVA として機能する仮想マシンについては、Azure VM Backup サポート対象外の カスタム OS となる可能性が高いです。<br>*NVA 以外の仮想アプライアンス、カスタム OS などにおいても同様です。</p>
-<p>Azure Marketplace より、NVA として機能する仮想マシンを作成した場合も同様に、Azure VM Backup サポート対象外の OS であることが多くございます。<br>Azure VM Backup では、オンライン バックアップを実施する際、VM エージェントの拡張機能を利用しますが、NVA に用いられる OS に対しては一般的に、VM エージェントが対応しておりません。</p>
-<p>正確にご確認いただくには、後述のドキュメントを参照の上、<strong>まず VM エージェントが対応しているかをお客様ご自身、および OS 発行ベンダーにご確認いただく必要</strong> がございます。</p>
-<p>事例ベースのご案内では、<strong>Zscaler 社の NVA や Palo Alto 社の NVA 、Fortinet 社の NVA (Fortianalyzer) が対応していない事例がございました。また同様に NVA 以外のカスタム OS に関しましても VM エージェントが対応していないために Azure VM Backup がご利用いただけない事例がございました。</strong></p>
-<p>・Azure Linux VM エージェントの概要 - Azure Virtual Machines | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-linux#requirements">https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-linux#requirements</a></p>
-<p>下記 に Azure VM Backup の OSサポート対象範囲について記載がございますので、ご参考ください。<br>・Azure VM バックアップのサポート マトリックス - オペレーティング システムのサポート (Windows)<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-windows">https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-windows</a><br>・Azure VM バックアップのサポート マトリックス - オペレーティング システムのサポート (Linux)<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-linux">https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#operating-system-support-linux</a><br>・Azure で動作保証済みの Linux ディストリビューション<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/linux/endorsed-distros">https://docs.microsoft.com/ja-jp/azure/virtual-machines/linux/endorsed-distros</a></p>
-<h3 id="2-VM-エージェント-の状態の確認"><a href="#2-VM-エージェント-の状態の確認" class="headerlink" title="2. VM エージェント の状態の確認"></a><a id="2"></a>2. VM エージェント の状態の確認</h3><p>Azure VM Backup をオンラインでご利用いただくには対象の VM を起動しエージェントの状態を確認いただき、Ready となっていることが大前提 (必要条件) となります。<br>お客様で確認するには下記 <strong>“エージェントの状態”</strong> をご確認ください。<br>サポート外の OS の場合、<strong>Ready</strong> ではなく <strong>Not Ready</strong> となる事例が多くございます。<br><img src="https://user-images.githubusercontent.com/71251920/154855287-696dca76-4bdc-4e8b-ac40-1108515edca8.png" alt="エージェントの状態 の確認"></p>
-<p>また、サポート対象の OS で <strong>Not Ready</strong> となっていた場合にはエージェントが正しく動いていないと見受けられます。<br>その際には agent の再起動や 対象 VM の再起動を行っていただき、それでも事象が改善しない場合には Azure VM agent イシューとしてお問い合わせいただければと存じます。</p>
-<p>NVA として機能する仮想マシンをバックアップする方法の代替案としては、以下が挙げられます。</p>
-<h3 id="3-代替案-Azure-Disk-Backup-を利用する"><a href="#3-代替案-Azure-Disk-Backup-を利用する" class="headerlink" title=" 3. 代替案 - Azure Disk Backup を利用する"></a><a id="3"></a> 3. 代替案 - Azure Disk Backup を利用する</h3><p>Azure VM Backup にて仮想マシン全体をバックアップするのではなく、仮想マシンのディスクを Azure Disk Backup にてバックアップする方法がございます。<br>Azure Disk Backup にてディスクをバックアップする場合は、VM エージェントを利用いたしませんので、対象仮想マシンの ディスクをバックアップする手段として挙げられます。<br>・Azure ディスク バックアップの概要 - Azure Backup | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview#key-benefits-of-disk-backup">https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview#key-benefits-of-disk-backup</a></p>
+<h2 id="1-【原因】"><a href="#1-【原因】" class="headerlink" title="1. 【原因】"></a>1. 【原因】<a id="1"></a></h2><p>データ保存先のディスク記憶域ボリュームの空き領域を確認したところ、十分な「未使用領域」があるのに、なぜ ID 58 にて「ディスクに十分な空き領域がありません」のエラーが発生することがあるのでしょうか。<br><img src="https://user-images.githubusercontent.com/96324317/202888596-0a507b94-2a66-4956-b6b2-cbe7dd2e0a0b.png" alt="画面サンプル"></p>
+<p>【原因】<br>原因として、DPM/MABS が作成するレプリカのサイズは、デフォルトで 16 TB までしか拡張することができないためです。<br>保護対象のデータサイズが約 16 TB に達すると、DPM/MABS はバックアップするためにレプリカのサイズを 16 TB 以上に拡張します。<br>しかし、NTFS ファイルシステムのデフォルトのレプリカクラスターサイズは 4 K 、サポートされる最大ボリュームのサイズは 16 TB となっています。<br>そのため拡張が失敗し、「ディスクに十分な空き領域がありません」のエラーでバックアップ失敗します。 </p>
+<p>＜NTFSのクラスター サイズと最大ボリューム一覧表＞<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/ntfs-overview#support-for-large-volumes">https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/ntfs-overview#support-for-large-volumes</a></p>
+<p>上記エラーを解消するためには、まず下記をお試しください。</p>
+<h2 id="2-【対処方法】"><a href="#2-【対処方法】" class="headerlink" title="2. 【対処方法】"></a>2. 【対処方法】<a id="2"></a></h2><p>保護グループを作成する前に、保護対象のサイズが将来的に 16 TB を超える可能性がある場合、あらかじめ下記の方法でデフォルトのレプリカクラスターサイズを変更してから、保護グループを作成することを強く推奨します。 </p>
+<h5 id="デフォルトのレプリカクラスターサイズを変更する方法"><a href="#デフォルトのレプリカクラスターサイズを変更する方法" class="headerlink" title="デフォルトのレプリカクラスターサイズを変更する方法"></a>デフォルトのレプリカクラスターサイズを変更する方法</h5><p>DPMサーバーにて、下記レジストリエントリを追加します。 </p>
 <blockquote>
-<p>抜粋 : Azure ディスク バックアップは、増分スナップショットを使用する、エージェントレスでクラッシュ整合性のあるソリューションで、次のような利点があります。</p>
+<p>Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Configuration\DiskStorage<br>ReplicaVolumeClusterSize REG_DWORD<br>REG_DWORD<br>0x00004000(16384) </p>
 </blockquote>
-<p>どの種類のディスクが Azure Disk Backup のサポート対象であるかは、下記ドキュメントをご参考ください。<br>・Azure ディスク バックアップのサポート マトリックス - Azure Backup | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-support-matrix">https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-support-matrix</a></p>
-<p>Azure Disk Backup はクラッシュ整合性となりますのでその点もご留意いただければと思います。詳細につきましては下記 URL の幣ブログ記事をご覧ください。<br>・Azure VM Backupにおける整合性について - クラッシュ整合性<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3">https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3</a></p>
-<p>「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」に関する説明は以上となります。</p>
+<p>＜設定サンプル＞<br><img src="https://user-images.githubusercontent.com/96324317/202888754-c88a83bf-1fda-4461-b249-a06e58be7792.png" alt="設定サンプル"></p>
+<p>0x00002000 (8192) に設定する場合、最大ボリュームのサイズ上限は 32 TB になります。<br>0x00004000 (16384) に設定する場合、最大ボリュームのサイズ上限は 64 TB になります。 </p>
+<p>もし、すでにデフォルトのレプリカクラスターサイズが 4 K の環境で、保護グループを作成している場合、レプリカのサイズを 16 TB 以上に拡張するためには、下記手順で保護グループをいったん削除してから、再作成していただく必要があります。 </p>
+<p>１．問題が発生したバックアップの保護グループを削除する (バックアップ データも削除)<br>２．DPM サーバーにて、デフォルトのレプリカクラスターサイズを変更<br>３．新しい保護グループを作成し、バックアップ実施する </p>
+<p>ご案内は以上です。<br>上記アクションを実施後でも事象が改善されない場合、問い合わせを起票していただけますと幸いです。</p>
 
       
       
@@ -144,10 +145,10 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/NVA_backup.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/DPM&MABS/Error_58_NoDiskSpace.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -155,19 +156,19 @@
     
 <nav id="article-nav">
   
-    <a href="../../information/team-introduction_2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/How_to_check_VM_backup_Subtask/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          ABRS チームについて ~リモートワークでの働きかた~
+          Azure VM Backup における Take Snapshot フェーズの確認方法
         
       </div>
     </a>
   
   
-    <a href="../../MARSBackup/How_to_fail_MARS_backup/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/RSV_BV/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">MARS バックアップ を意図的に失敗させる方法</div>
+      <div class="article-nav-title">Recovery Services コンテナーとバックアップ コンテナーについて</div>
     </a>
   
 </nav>
@@ -186,19 +187,19 @@
       <ul>
         
           <li>
-            <a href="../How_to_check_VM_backup_Subtask/">Azure VM Backup における Take Snapshot フェーズの確認方法</a>
+            <a href="../../AzureVMBackup/How_to_check_VM_backup_Subtask/">Azure VM Backup における Take Snapshot フェーズの確認方法</a>
           </li>
         
           <li>
-            <a href="../../DPM&MABS/Error_58_NoDiskSpace/">空き領域があるのに、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する場合の対処方法</a>
+            <a href="">空き領域があるのに、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する場合の対処方法</a>
           </li>
         
           <li>
-            <a href="../RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
+            <a href="../../AzureVMBackup/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
           </li>
         
           <li>
-            <a href="../RestoreStagingStorageAccount/">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
+            <a href="../../AzureVMBackup/RestoreStagingStorageAccount/">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
           </li>
         
           <li>
