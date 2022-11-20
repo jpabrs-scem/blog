@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup における Take Snapshot フェーズの確認方法
-date: 2021-11-18 12:00:00
+date: 2022-11-21 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -15,7 +15,7 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
 まず、はじめに前提知識として Azure VM Backup ではバックアップを取得する際に下記 2 つのサブタスクがございます。
 1.Take Snapshot (スナップショットの取得)
 2.Transfer data to vault (Recovery Services コンテナーへの転送)
-![Azure VM Backupの 2 つのサブタスク](https://user-images.githubusercontent.com/71251920/142253918-138343ac-b7dc-4a35-9e6e-180b4b5542f8.png)
+![Azure VM Backupの 2 つのサブタスク](https://user-images.githubusercontent.com/96324317/202889060-48865029-ab86-4ac5-aa2f-0c85ed6ee901.png)
 
 ## 目次
 -----------------------------------------------------------
@@ -37,6 +37,11 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
 本記事の実行環境は Azure CLI も Azure PowerShell もインターフェースを PowerShell を用いて今回実施しております。
 そのため、bat ファイル (コマンドプロンプト) などで記述される際には call コマンドを付けていただく必要があるなど、ご利用のインターフェースに応じた対応、記述が必要となることがございます。
 
+###  1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法<a id="1-1"></a>
+[対象の Recovery Services コンテナー] → 左ペインの [バックアップ ジョブ] → 対象のバックアップ ジョブの [View details] → [サブ タスク] の手順で確認いただくことが可能です。
+![Check_Subtask](https://user-images.githubusercontent.com/96324317/202889187-6a0f9005-1a2e-45f4-8738-d629b0aad991.png)
+
+### 1-2. Azure CLI を用いたサブタスク (Take Snapshot フェーズ) 確認方法<a id="1-2"></a>
 - 検証環境情報
 まず、はじめに今回の検証環境の情報です。
 >VM名：VM-Win10
@@ -45,14 +50,7 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
 >リソースグループ：RG-NormalTest
 >コマンド実行ターミナル：PowerShell
 
-###  1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法<a id="1-1"></a>
-[対象の Recovery Services コンテナー] → 左ペインの [バックアップ ジョブ] → 対象のバックアップ ジョブの [View details] → [Sub Tasks] の手順で確認いただくことが可能です。
-
-![Check_Subtask](https://user-images.githubusercontent.com/71251920/142235689-8f2a6b5d-44b9-47f4-80fe-571407e09e47.png)
-
-### 1-2. Azure CLI を用いたサブタスク (Take Snapshot フェーズ) 確認方法<a id="1-2"></a>
 今回は Windows の PowerShell を用いて Azure CLI を実行します。
-
 #### 0.事前準備
 　 Azure へログインします。ログインしている環境であれば不要です。
   >コマンド：` ` `az login` ` `
@@ -64,7 +62,6 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
 上記コマンドを実行いただくと実行中のバックアップ ジョブの name 値が取得できます。
  出力結果を Azure VM Backup の実行中のバックアップ ジョブに限定する場合は下記のオプションを付けることで可能です。
   >コマンド： ` ` `--backup-management-type AzureIaasVM` ` ` 
-
 
 　下記例 "name" : "2a8c96f8-c282-4f62-9286-fda08088047e"
 ![Check_name_value](https://user-images.githubusercontent.com/71251920/142236195-c47b1fe8-73b0-401e-a050-43be7c4a35d6.png)
@@ -180,8 +177,8 @@ https://docs.microsoft.com/ja-jp/powershell/module/az.recoveryservices/get-azrec
 
 
 ## 2. サブタスク (Take Snapshot フェーズ) にかかった時間を確認する方法 <a id="2"></a>
-お客様では Azure Portal、およびコマンド (Azure CLI 、Azure PowerShell) を用いても残念ながらサブタスク (Take Snapshot フェーズ) にかかった時間を確認できません。
-しかし、お問い合わせいただくことで弊社にてお客様環境の実績値をお調べしお伝えすることが可能です。
+2022/11 月現在、Azure Portal 上より、各フェーズの所要時間を確認可能でございます。
+もしくは、お問い合わせいただくことで弊社にてお客様環境の実績値をお調べしお伝えすることが可能です。
 その際には下記情報を添えてお問い合わせいただきますようお願いいたします。
 　・サブスクリプション ID 
 　・VM 名およびそのリソースグループ名
@@ -190,14 +187,3 @@ https://docs.microsoft.com/ja-jp/powershell/module/az.recoveryservices/get-azrec
 また、今後のバックアップ ジョブであれば、[1. サブタスク (Take Snapshot フェーズ) 確認方法](#1)を参考にしていただくことでおおよそ可能かと存じます。
 具体的には、実行中のバックアップ ジョブを検知し、ループを回して定期的に対象のサブタスク (Take Snapshot フェーズ等) のステータスを確認し、Inprogress である間の時間を計測していただくことでおおよその時間を測定いただければと存じます。
 なお、具体的な実装につきましては、恐縮ながら Azure サポートサービスの範囲外であるためお客様ご自身でご実装いただきますようお願いいたします。
-
-#### フィードバックご協力のお願い<a id="2-1"></a>
-現在、Azure Portal から Take Snapshot にかかった時間を表示できるように弊社開発部門へのフィードバックが行われております。
-お客様側では以下のサイトを通じてステータスを確認することが可能です。
- 
-・Visualize what time "Take snapshot" is completed in Azure portal
-https://feedback.azure.com/d365community/idea/ff50fa2f-785d-ec11-a819-0022484e8090
- 
-上記サイトは機能改善のリクエストを行うサイトであり、リクエストの中で Vote (改善要望) が多いものや影響度の大きいものを判断して優先して修正に取り組みます。
-そのため、もし、Azure Portal から Take Snapshot にかかった時間を表示できるようご要望の場合には、お手数ではございますが可能であれば上記の URL より機能改善リクエストに Vote いただけますと幸いです。
-Vote の際にはメールアドレスを入力することができ、本投稿が Completed した際に指定のメールアドレスに通知される仕組みとなっております。
