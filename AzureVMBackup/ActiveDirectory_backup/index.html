@@ -15,7 +15,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/96324317/204124178-ccfee87e-1cf2-4de9-8cb9-4a1053847bf9.png">
 <meta property="article:published_time" content="2022-11-28T03:00:00.000Z">
-<meta property="article:modified_time" content="2022-11-27T07:56:50.901Z">
+<meta property="article:modified_time" content="2022-11-27T08:00:26.766Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
@@ -105,7 +105,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8177be42-263a-5b17-b018-c24caceb0c02%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%A6%E3%81%84%E3%82%8BVM%E3%81%AEAzure+VM+Backup%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FActiveDirectory_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FActiveDirectory_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FActiveDirectory_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/" data-id="claz2ip7v000f0mpc8u8u47h7" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/" data-id="claz2nccj000f0npkhbkbbg1r" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -114,7 +114,7 @@
 <p>みなさんこんにちは、Azure Backup サポートです。<br>今回は、Active Directory ( 以下、AD ) のドメインに参加している Azure 仮想マシンを、Azure VM Backup にて保護する場合に、よくお問い合わせいただく内容についてご案内いたします。</p>
 <h4 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h4><p>Azure VM Backupにて保護することを前提とすると、「ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項」というのは特にございません。<br>ただし、リストア (=復元) 後は Active Directory の観点で、環境に合わせた考慮事項が発生いたします。<br>Widnows OS 上の作業詳細についてご不明点がございます場合は、恐縮ながら Azure Backup チームではなく、 Active Directory を取り扱う部署にて対応いたしております。<br>Active Directory 観点でのサポートについては、お客様の契約次第ではオンプレミス チームでの有償対応が必要となることがございます。<br>また、お客様のご契約が Azure 製品のサポート契約のみの場合は、オンプレミス範囲のサポート契約がないために、詳細なサポート対応・調査が行えない可能性がございます。<br>お客様にてご契約内容をご確認の上で、「復元」ジョブ完了後の Active Directory 観点の考慮点・作業詳細については、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？</a><br><a href="#2">Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？</a><br><a href="#3">Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？</a><br><a href="#4">Q4. ドメインコントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください</a><br><a href="#5">Q5. ドメイン内のひとつの ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</a><br><a href="#6">Q6. ドメイン内のすべての ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</a><br><a href="#7">Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。</a></p>
+<p><a href="#Q1">Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？</a><br><a href="#Q2">Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？</a><br><a href="#Q3">Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？</a><br><a href="#Q4">Q4. ドメインコントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください</a><br><a href="#Q5">Q5. ドメイン内のひとつの ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</a><br><a href="#Q6">Q6. ドメイン内のすべての ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</a><br><a href="#Q7">Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。</a></p>
 <hr>
 <h2 id="Q1-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合の考慮事項はありますか？"><a href="#Q1-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合の考慮事項はありますか？" class="headerlink" title="Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？"></a><a id="1"></a>Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？</h2><h4 id="「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？"><a href="#「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？" class="headerlink" title="「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？"></a>「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？</h4><p><strong>A1</strong> Azure VM Backupにて保護することを前提とすると、「バックアップ取得する際」「復元時」について、Azure Backup 観点では特に注意点、考慮事項はございません。<br>復元オプションには以下いずれかを選択いただいて構いませんので、お客様のご要件に従って決定ください。<br>（復元オプション）<br>・「構成の復元：新規作成」「復元の種類：新しい仮想マシンの作成」<br>・「構成の復元：新規作成」「復元の種類：ディスクの復元」<br>・「構成の復元：既存を置換」「復元の種類：ディスクの置換」</p>
 <p>・Azure portal で Azure VM データを復元する方法<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations</a></p>
