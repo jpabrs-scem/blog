@@ -8,7 +8,7 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-こんにちは、Azure Backup サポートの山本です。
+こんにちは、Azure Backup サポートです。
 今回は、 Azure バックアップソリューションので利用する Recovery Services コンテナーとバックアップ コンテナーのバックアップ対象の違いについてご説明させていただきます。
  Recovery Services コンテナーとバックアップ コンテナーはバックアップ対象(バックアップソリューション)の違いにより使い分ける必要がございます。
  また、バックアップセンターは サブスクリプション内の Recovery Services コンテナー (および Recovery Services コンテナーでバックアップしているバックアップアイテム) を統合管理するための管理画面です。
