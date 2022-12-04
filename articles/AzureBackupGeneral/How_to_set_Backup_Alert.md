@@ -22,22 +22,20 @@ Azure Backup にて、バックアップ ジョブが失敗した際にアラー
 ・Azure Backup の監視とレポートのソリューション
 https://docs.microsoft.com/ja-jp/azure/backup/monitoring-and-alerts-overview#monitoring-and-reporting-scenarios
 
-![How_to_set_Backup_Alert_01](https://user-images.githubusercontent.com/71251920/151009982-ca6af556-0142-42f7-b991-33de2714c482.png)
+![How_to_set_Backup_Alert_01](https://user-images.githubusercontent.com/96324317/205475179-202669bf-2a8b-48bc-8702-20739561daff.png)
 
 「Azure Monitor を使用した組み込みのアラート」を利用した、アラート ルールの作成手順の公開ドキュメントは下記にございます。
 ・ジョブの失敗のシナリオに対して Azure Monitor のアラートを有効にする
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#turning-on-azure-monitor-alerts-for-job-failure-scenarios
-
-![How_to_set_Backup_Alert_02](https://user-images.githubusercontent.com/71251920/151009985-41e50961-1328-4ca2-9814-116dd8eb63cf.png)
 
 ・アラートの通知を構成する
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#configuring-notifications-for-alerts
 
 バックアップ センター ＞ アラート処理ルール にて、新しいアラート処理ルールを作成することができます。
 
-![How_to_set_Backup_Alert_03](https://user-images.githubusercontent.com/71251920/151009987-c76bcfcd-04f3-49f4-ae05-033d3eee4d4e.png)
+![How_to_set_Backup_Alert_02](https://user-images.githubusercontent.com/96324317/205475247-3c6c2195-4eac-4d0e-b1b7-91ca7b8f6f83.png)
 
-![How_to_set_Backup_Alert_04](https://user-images.githubusercontent.com/71251920/151009990-288bd354-12f3-4a43-a567-3bb4b5ea9cab.png)
+![How_to_set_Backup_Alert_03](https://user-images.githubusercontent.com/96324317/205475279-c6bbffff-1b22-482f-9052-478362ba48b4.png)
 
 今回は、Recovery Services コンテナー「RSV-JPE-LRS」にて Azure Files をバックアップ構成しているため、スコープを「Recovery Services コンテナー：RSV-JPE-LRS」としています。
 
@@ -69,7 +67,6 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-m
 
 上図のように設定することで、Recovery Services コンテナー「RSV-JPE-LRS」にてバックアップ構成済のバックアップ ジョブが失敗した際に、指定した電子メール宛先へ、通知メールが送信されるようになります。
 **Subscription 全体を指定指定していただくことで Subscription 全体の Recovery Services コンテナーに対するバックアップアラートを設定することもできます。**
-
 
 ![How_to_set_Backup_Alert_13](https://user-images.githubusercontent.com/71251920/151009979-8f6868a8-2edd-4d08-86a5-ef843a877bda.png)
 

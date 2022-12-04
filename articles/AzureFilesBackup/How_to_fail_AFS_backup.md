@@ -32,7 +32,7 @@ disableDisclaimer: false
 
 アラート設定に関しましては下記をご覧ください。
 ・「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例
-https://jpabrs-scem.github.io/blog/Recovery%20Services%20vaults/How_to_set_Backup_Alert/
+https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/
 
 ![](https://user-images.githubusercontent.com/71251920/148649496-1799a8de-0156-4556-b02f-447c64605e69.png)
 
