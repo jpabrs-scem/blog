@@ -25,6 +25,10 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/
   [4-2. システム情報](#4-2)
   [4-3. イベント ログ](#4-3)
   [4-4. 各種証明書の確認証跡およびインポート](#4-4)
+   [4-4-1. 個人 ＞ 証明書](#4-4-1)
+   [4-4-2. 信頼されたルート証明書 ＞ 証明書](#4-4-2)
+   [4-4-3. 中間証明機関 ＞ 証明書](#4-4-3)
+   [4-4-4. 証明書インポート手順](#4-4-4)
 -----------------------------------------------------------
 
 
@@ -197,7 +201,7 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 ![](https://user-images.githubusercontent.com/71251920/182520768-feacd580-7217-4148-af08-27cab663d93f.png)
 
 
-#### 個人 ＞ 証明書<a id="4-4-1"></a>
+#### 4.4.1 個人 ＞ 証明書<a id="4-4-1"></a>
 >・CB_<MARSのバックアップを実施する予定のRecovery Services コンテナー名 → -x-x-xxxx-vaultcredentials
 >・CB_<ホスト名>._xxxxxxxxxxxxxxxxxx
 ※　上記 2 が存在していることを確認の上、その画面スクリーンショットをご提供ください
@@ -210,7 +214,7 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/
 
 
-#### 信頼されたルート証明書 ＞ 証明書 <a id="4-4-2"></a>
+#### 4.4.2 信頼されたルート証明書 ＞ 証明書 <a id="4-4-2"></a>
 [参考]
 ・Azure TLS 証明書の変更
 https://learn.microsoft.com/ja-jp/azure/security/fundamentals/tls-certificate-changes#what-changed
@@ -235,7 +239,7 @@ https://learn.microsoft.com/ja-jp/azure/security/fundamentals/tls-certificate-ch
 ![](https://user-images.githubusercontent.com/71251920/182520776-8f30a8f5-67d5-4bfd-a264-590ca251689d.png)
 
 
-#### 中間証明機関 ＞ 証明書 <a id="4-4-3"></a>
+#### 4.4.3 中間証明機関 ＞ 証明書 <a id="4-4-3"></a>
 [参考]
 ・Azure Storage TLS: Changes are coming! (…and why you care)
 https://techcommunity.microsoft.com/t5/azure-storage-blog/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518
@@ -253,7 +257,7 @@ https://techcommunity.microsoft.com/t5/azure-storage-blog/azure-storage-tls-chan
 ![](https://user-images.githubusercontent.com/71251920/182520778-a9e6e160-5830-4cf5-a6c3-00acf7ce0941.png)
 
 
-#### 証明書インポート手順 <a id="4-4-4"></a>
+#### 4.4.4 証明書インポート手順 <a id="4-4-4"></a>
 
 1. 証明書をエクスポートしたいマシンに、管理者権限でログインします。
 2. [スタート] - [ファイル名を指定して実行] から、certlm.msc と入力して、[Enter]キーを押します。**（※ Windows Server 2012 以前の OS の場合は、MMC スナップインより証明書スナップインを起動してください）**
