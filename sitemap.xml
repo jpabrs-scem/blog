@@ -16,27 +16,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</loc>
-    
-    <lastmod>2022-12-19</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/</loc>
-    
-    <lastmod>2022-12-19</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/</loc>
-    
-    <lastmod>2022-12-19</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</loc>
     
     <lastmod>2022-12-19</lastmod>
@@ -65,21 +44,21 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</loc>
     
     <lastmod>2022-12-19</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/</loc>
     
     <lastmod>2022-12-19</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/</loc>
     
     <lastmod>2022-12-19</lastmod>
     
@@ -205,6 +184,27 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
+    
+    <lastmod>2022-12-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
+    
+    <lastmod>2022-12-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
+    
+    <lastmod>2022-12-19</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/</loc>
     
     <lastmod>2022-12-19</lastmod>
@@ -226,27 +226,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/</loc>
-    
-    <lastmod>2022-12-19</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/</loc>
-    
-    <lastmod>2022-12-19</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/</loc>
-    
-    <lastmod>2022-12-19</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/</loc>
     
     <lastmod>2022-12-19</lastmod>
@@ -262,6 +241,27 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/</loc>
+    
+    <lastmod>2022-12-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/</loc>
+    
+    <lastmod>2022-12-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/</loc>
+    
+    <lastmod>2022-12-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/</loc>
     
     <lastmod>2022-12-19</lastmod>
     
