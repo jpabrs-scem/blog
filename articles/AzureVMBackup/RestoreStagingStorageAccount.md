@@ -36,7 +36,6 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#stor
 ・ZRS 以外の冗長性(LRS・GRS)
 ・アフィニティ グループにアタッチされていない
 ・Premium Storage アカウントではない
-・ネットワーク制限付きストレージ アカウントではない
 
 ### <a id="3"></a>3.リストアされた後にストレージ アカウントに残るファイルについて
 マネージドディスクの Azure VM の復元が完了しますと対象のストレージ アカウントの中に下記のファイルが残ります。
