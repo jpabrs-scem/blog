@@ -73,3 +73,17 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#stor
  vmrhelpe-datadisk-001-20220319-233028.vhd
  vmrhelpe-osdisk-20220319-233028.vhd
  上記の通り、Azure VM 名にディスク種別および LUN 番号リストア日時 (UTC表記) が付加された vhd ファイルが作成されます。
+
+ >json：
+ azuredeployf08911fe-654a-49e1-9baa-41ca15cbb272.json
+ config-sqlvm13-f08911fe-654a-49e1-9baa-41ca15cbb272.json
+ parameterf08911fe-654a-49e1-9baa-41ca15cbb272.json
+ 上記の通り、
+ 「azuredeploy<リストア ジョブで使用されるJob ID>」
+ 「config-<VM 名>-<リストア ジョブで使用されるJob ID>」
+ 「parameter<リストア ジョブで使用されるJob ID>」の名前から始まるファイルが 3 つ作成されます。
+
+「Job ID」は、コマンドからの確認や、Recovery Services コンテナー > バックアップ ジョブ > 「ジョブのエクスポート」より確認ができます。
+
+・ジョブをエクスポートする
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-manage-windows-server#export-jobs
