@@ -6,12 +6,12 @@
   
   <title>Azure VM Backup を意図的に失敗させる方法 | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、Azure Backup サポートの 相田 です。アラートのテスト等のため “Azure VM Backup を失敗させたい” というお問い合わせをよくいただきます。今回は、Azure VM Backup を意図的に失敗させる方法について、ご案内いたします。 なお、下記では MARS バックアップ を失敗させる方法について紹介しております。・Azure VM Backup を意図">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートの 相田 です。アラートのテスト等のため “Azure VM Backup を失敗させたい” というお問い合わせをよくいただきます。今回は、Azure VM Backup を意図的に失敗させる方法について、ご案内いたします。 (その他ブログで公開している Azure Backup の失敗方法)・Azure VM Backup のデータ転送フェーズ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure VM Backup を意図的に失敗させる方法">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、Azure Backup サポートの 相田 です。アラートのテスト等のため “Azure VM Backup を失敗させたい” というお問い合わせをよくいただきます。今回は、Azure VM Backup を意図的に失敗させる方法について、ご案内いたします。 なお、下記では MARS バックアップ を失敗させる方法について紹介しております。・Azure VM Backup を意図">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートの 相田 です。アラートのテスト等のため “Azure VM Backup を失敗させたい” というお問い合わせをよくいただきます。今回は、Azure VM Backup を意図的に失敗させる方法について、ご案内いたします。 (その他ブログで公開している Azure Backup の失敗方法)・Azure VM Backup のデータ転送フェーズ">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736316-5995d329-63d1-4b63-acd5-7f3da9f90cf9.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736495-97875c34-577f-483d-a46e-c1f7c53d5133.png">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736924-8e033f57-60aa-449e-bb34-2fb5c410d633.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736923-43d72bbc-e3cb-46a4-825b-a4b71fe61d9a.png">
 <meta property="article:published_time" content="2021-11-22T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-01-08T01:34:39.974Z">
+<meta property="article:modified_time" content="2023-01-09T06:46:39.590Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
@@ -118,14 +118,16 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6160a371-98be-5571-99d1-e75116e8544e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%82%92%E6%84%8F%E5%9B%B3%E7%9A%84%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHow_to_fail_VM_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHow_to_fail_VM_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHow_to_fail_VM_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="clcmpczez000w0mqw1b1udrvm" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="clcofy1nn000w0mo34ozl0v0n" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
 <p>皆様こんにちは、Azure Backup サポートの 相田 です。<br>アラートのテスト等のため “Azure VM Backup を失敗させたい” というお問い合わせをよくいただきます。<br>今回は、<strong>Azure VM Backup を意図的に失敗させる方法</strong>について、ご案内いたします。</p>
-<p>なお、下記では MARS バックアップ を失敗させる方法について紹介しております。<br>・Azure VM Backup を意図的に失敗させる方法<br><a href="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/">https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</a></p>
+<p>(その他ブログで公開している Azure Backup の失敗方法)<br>・Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法<br>　<a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/">https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/</a></p>
+<p>・MARS バックアップ を意図的に失敗させる方法<br>　<a href="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/">https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</a></p>
+<p>・Azure Files Backup を意図的に失敗させる方法<br>　<a href="https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/">https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/</a></p>
 <h2 id="意図的にAzure-VM-Backup-エラーを発生させる仕組み"><a href="#意図的にAzure-VM-Backup-エラーを発生させる仕組み" class="headerlink" title="意図的にAzure VM Backup エラーを発生させる仕組み"></a>意図的にAzure VM Backup エラーを発生させる仕組み</h2><p>VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Recovery Services コンテナー (Azure Backup service) との通信ができない状態を作ります。<br>この状態で Backup 取得をしようとすると、VM agent と通信できないためにエラー (Error Code ”UserErrorGuestAgentStatusUnavailable”) が発生し、Backup が失敗となります。<br><img src="https://user-images.githubusercontent.com/71251920/142736316-5995d329-63d1-4b63-acd5-7f3da9f90cf9.png" alt="How_to_Backup_Fail"></p>
 <p>*VM 電源状態 がオンライン状態でなければこの方法は使えません。オフライン状態では成功してしまいます。そのため、必ずオンライン (電源起動) 状態でご実施ください。<br>下記ご参考になれば幸いです。<br>・Azure VM Backup では オフライン バックアップができるのか<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</a></p>
 <h2 id="バックアップを故意に失敗させる方法-手順概略"><a href="#バックアップを故意に失敗させる方法-手順概略" class="headerlink" title="バックアップを故意に失敗させる方法 (手順概略)"></a>バックアップを故意に失敗させる方法 (手順概略)</h2><p>・「バックアップを故意に失敗させる方法 (Windows VM の場合) 」</p>
