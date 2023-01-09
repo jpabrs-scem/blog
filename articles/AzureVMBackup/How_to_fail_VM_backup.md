@@ -12,9 +12,15 @@ disableDisclaimer: false
 アラートのテスト等のため "Azure VM Backup を失敗させたい" というお問い合わせをよくいただきます。
 今回は、**Azure VM Backup を意図的に失敗させる方法**について、ご案内いたします。
 
-なお、下記では MARS バックアップ を失敗させる方法について紹介しております。
-・Azure VM Backup を意図的に失敗させる方法 
-https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/
+(その他ブログで公開している Azure Backup の失敗方法)
+・Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法
+　https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/
+
+・MARS バックアップ を意図的に失敗させる方法
+　https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/
+
+・Azure Files Backup を意図的に失敗させる方法
+　https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/
 
 ## 意図的にAzure VM Backup エラーを発生させる仕組み
 VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Recovery Services コンテナー (Azure Backup service) との通信ができない状態を作ります。
