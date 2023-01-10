@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Azure Disk Backup を意図的に失敗させる方法 | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。アラートのテスト等のため “Azure Disk Backup を失敗させたい” というお問い合わせをよくいただきます。今回は、Azure Disk Backup を意図的に失敗させる方法として、Azure Disk Backup 構成したディスクを削除して、バックアップ ジョブを失敗させる方法をご紹介いたします。 ・Azure ディスク">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure Disk Backup を意図的に失敗させる方法">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。アラートのテスト等のため “Azure Disk Backup を失敗させたい” というお問い合わせをよくいただきます。今回は、Azure Disk Backup を意図的に失敗させる方法として、Azure Disk Backup 構成したディスクを削除して、バックアップ ジョブを失敗させる方法をご紹介いたします。 ・Azure ディスク">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/211466707-79d9b00e-4aef-44ee-96be-a1b8a9c4fd4f.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/211467521-063fe1a2-4480-4191-b7cc-8caad114dbb8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/211467577-a01b51c5-a837-4816-b6d8-8a7625667485.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/211467614-9a5f9cc7-743b-4e08-8497-923fe41a6f09.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/211467662-9e0fa822-6330-4f9f-b078-c5acaf0ccefb.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/211467719-ddb8638a-3527-4c8f-bda2-20c97c37ade1.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/211467751-01b098ab-7af6-43bb-a1ed-c9c24838d0c2.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/211467800-547d8351-3bd6-47f5-b0ca-7b475d0b7542.png">
+<meta property="article:published_time" content="2023-01-11T03:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-10T06:04:39.663Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure Disk Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/96324317/211466707-79d9b00e-4aef-44ee-96be-a1b8a9c4fd4f.png">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureDiskBackup/How_to_fail_Asure_Disk_backup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Azure Disk Backup を意図的に失敗させる方法
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2023-01-11T03:00:00.000Z" itemprop="datePublished">2023-01-11</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ccb22066-cb02-5d18-b2a1-2b31b4ae3a6d%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Disk+Backup+%E3%82%92%E6%84%8F%E5%9B%B3%E7%9A%84%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureDiskBackup%2FHow_to_fail_Asure_Disk_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureDiskBackup%2FHow_to_fail_Asure_Disk_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureDiskBackup%2FHow_to_fail_Asure_Disk_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/" data-id="clcptvw4u00080npi7xpw33b7" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは、Azure Backup サポートです。<br>アラートのテスト等のため “Azure Disk Backup を失敗させたい” というお問い合わせをよくいただきます。<br>今回は、Azure Disk Backup を意図的に失敗させる方法として、Azure Disk Backup 構成したディスクを削除して、バックアップ ジョブを失敗させる方法をご紹介いたします。</p>
+<p>・Azure ディスク バックアップの概要<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview">https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview</a></p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. Azure Disk Backup を意図的に失敗させる方法</a><br><a href="#2">2. その他ブログで公開している Azure Backup の失敗方法</a></p>
+<hr>
+<h3 id="1-Azure-Disk-Backup-を意図的に失敗させる方法"><a href="#1-Azure-Disk-Backup-を意図的に失敗させる方法" class="headerlink" title=" 1. Azure Disk Backup を意図的に失敗させる方法"></a><a id="1"></a> 1. Azure Disk Backup を意図的に失敗させる方法</h3><p>(1) とある Azure Managed Disk に対して、Azure Disk Backup を構成し、バックアップ取得しておきます。</p>
+<p>・Azure Managed Disks のバックアップ<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks">https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks</a></p>
+<p>下図は例として、Azure Managed Disk「tmpDiskforAzureDiskBackup01」を Azure Disk Backup にてバックアップ構成している状態です。<br><img src="https://user-images.githubusercontent.com/96324317/211466707-79d9b00e-4aef-44ee-96be-a1b8a9c4fd4f.png" alt="バックアップ構成済"></p>
+<p>アラートが生成されることを確認するため、今回は「Azure Monitor を使用した組み込みのアラート」を、「スコープ：Azure Disk Backup を構成しているバックアップ コンテナー」にて構成しています。</p>
+<p>・Azure Backup の Azure Monitor アラート<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#azure-monitor-alerts-for-azure-backup">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#azure-monitor-alerts-for-azure-backup</a></p>
+<p>・「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例<br>　<a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/</a></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/211467521-063fe1a2-4480-4191-b7cc-8caad114dbb8.png" alt="アラート 処理ルール"></p>
+<p>(2) バックアップ構成した Azure Managed Disk リソースを削除します。<br><img src="https://user-images.githubusercontent.com/96324317/211467577-a01b51c5-a837-4816-b6d8-8a7625667485.png" alt="ディスク削除01"></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/211467614-9a5f9cc7-743b-4e08-8497-923fe41a6f09.png" alt="ディスク削除02"></p>
+<p>(3) Azure Disk Backup の「今すぐバックアップ」を実行します。</p>
+<p><img src="https://user-images.githubusercontent.com/96324317/211467662-9e0fa822-6330-4f9f-b078-c5acaf0ccefb.png" alt="今すぐバックアップ"></p>
+<p>(4) 約 1 - 2 分後に、バックアップ ジョブが「UserErrorManagedDiskNotFound」エラーにて失敗します。<br><img src="https://user-images.githubusercontent.com/96324317/211467719-ddb8638a-3527-4c8f-bda2-20c97c37ade1.png" alt="バックアップ ジョブ01"></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/211467751-01b098ab-7af6-43bb-a1ed-c9c24838d0c2.png" alt="バックアップ ジョブ02"></p>
+<p>(5) 「Azure Monitor を使用した組み込みのアラート」などのアラートにて、アラートを構成/メール通知構成をしていれば、下図のようなメールにてアラートが通知されます。<br><img src="https://user-images.githubusercontent.com/96324317/211467800-547d8351-3bd6-47f5-b0ca-7b475d0b7542.png" alt="アラート メール"></p>
+<h3 id="2-その他ブログで公開している-Azure-Backup-の失敗方法"><a href="#2-その他ブログで公開している-Azure-Backup-の失敗方法" class="headerlink" title=" 2. その他ブログで公開している Azure Backup の失敗方法"></a><a id="2"></a> 2. その他ブログで公開している Azure Backup の失敗方法</h3><p>・Azure VM Backup を意図的に失敗させる方法<br>　<a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/</a></p>
+<p>・Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法<br>　<a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/">https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/</a></p>
+<p>・MARS バックアップ を意図的に失敗させる方法<br>　<a href="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/">https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</a></p>
+<p>・Azure Files Backup を意図的に失敗させる方法<br>　<a href="https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/">https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/</a></p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureDiskBackup/How_to_fail_Asure_Disk_backup.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../AzureVMBackup/HowToConfigureOptionalProcess/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Azure VM Backup のジョブ前後で任意の処理を行いたい</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">Azure Disk Backup を意図的に失敗させる方法</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/HowToConfigureOptionalProcess/">Azure VM Backup のジョブ前後で任意の処理を行いたい</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/ActiveDirectory_backup/">ドメインに参加しているVMのAzure VM Backupリストアについて</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/How_to_check_VM_backup_Subtask/">Azure VM Backup における Take Snapshot フェーズの確認方法</a>
+          </li>
+        
+          <li>
+            <a href="../../DPM&MABS/Error_58_NoDiskSpace/">空き領域があるのに、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する場合の対処方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">7</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">5</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">23</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">20</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 10px;">Azure SQL Backup</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 11.67px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -21,6 +21,8 @@
 <meta property="article:tag" content="Azure SAP HANA バックアップ">
 <meta property="article:tag" content="Azure Files Backup">
 <meta property="article:tag" content="Azure Files バックアップ">
+<meta property="article:tag" content="Azure Disk Backup">
+<meta property="article:tag" content="Azure Disk バックアップ">
 <meta property="article:tag" content="Azure Site Recovery">
 <meta property="article:tag" content="Azure Migrate">
 <meta property="article:tag" content="DPM">
@@ -95,6 +97,110 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-AzureBackupGeneral/How_to_set_Backup_Alert" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../AzureBackupGeneral/How_to_set_Backup_Alert/" class="article-date">
+  <time datetime="2022-01-24T03:00:00.000Z" itemprop="datePublished">2022-01-24</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../AzureBackupGeneral/How_to_set_Backup_Alert/">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+皆様こんにちは、Azure Backup サポートです。今回は、「Azure Monitor を使用した組み込みのアラート」を利用して、Recovery Services コンテナーにてバックアップ構成済のバックアップ ジョブが失敗した際にメール通知を出すよう、アラート処理ルールを作成する例 をご紹介します。
+概要・「Azure Monitor を使用した組み込みのアラート」を利用・アラート処理ルールには、バックアップを構成している対象のRecovery Services コンテナーをスコープとして指定し、バックアップ ジョブが失敗した際に、指定のメールアドレスへ通知メールを送信させる
+アラート処理ルール 作成手順Azure Backup にて、バックアップ ジョブが失敗した際にアラート通知を出す手段は、下記ドキュメントの通り複数種類ございます。今回は 「Azure Monitor を使...
+        <p class="article-readmore">
+          <a href="../../AzureBackupGeneral/How_to_set_Backup_Alert/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/" data-id="clcptvw4s00050npi3ooqbucy" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-AzureFilesBackup/How_to_fail_AFS_backup" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../AzureFilesBackup/How_to_fail_AFS_backup/" class="article-date">
+  <time datetime="2022-01-10T03:00:00.000Z" itemprop="datePublished">2022-01-10</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../AzureFilesBackup/How_to_fail_AFS_backup/">Azure Files Backup を意図的に失敗させる方法</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+皆様こんにちは、Azure Backup サポートです。今回は、アラート通知のテスト等のために、Azure Files （Azure ファイル共有）のバックアップを意図的に失敗させる方法についてご案内します。方法としては、バックアップ構成しているAzure Files のストレージ アカウントに対して「読み取り専用」ロックを追加しておき、スケジュール バックアップを実施する方法がございます。
+Azure Files のAzure Backup ジョブを意図的に失敗させる方法
+テスト希望時間に、スケジュールされたバックアップを実行させたい場合は、（ストレージ アカウントへ「読み取り専用」ロックを追加する前に）Recovery Services コンテナー ＞ バックアップ ポリシー にて、スケジュール バックアップを実行したい時間を変更しておきます。
+
+バックアップ構成をしている Azur...
+        <p class="article-readmore">
+          <a href="../../AzureFilesBackup/How_to_fail_AFS_backup/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/" data-id="clcptvw4w000a0npid4dwf1xf" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-AzureVMBackup/VM_Backup_calculator" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -136,7 +242,7 @@ Azure VM Backup ではバックアップ ジョブのスケジュールを日時
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/" data-id="clcofy1nv001b0mo38a16gmd3" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/" data-id="clcptvw5m001g0npih9678aqm" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -188,7 +294,7 @@ Azure VM Backup ではバックアップ ジョブのスケジュールを日時
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="clcofy1nn000w0mo34ozl0v0n" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="clcptvw5e00100npibreqckj1" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -244,7 +350,7 @@ Azure VM Backup ではバックアップ ジョブのスケジュールを日時
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/" data-id="clcofy1n7000c0mo349xg3oi5" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/" data-id="clcptvw50000f0npiha1s5jjw" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -294,7 +400,7 @@ Azure VM Backup ではバックアップ ジョブのスケジュールを日時
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/" data-id="clcofy1nd000k0mo3h7pfc6h3" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/" data-id="clcptvw55000n0npi4t3k67ia" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
@@ -344,7 +450,7 @@ Azure VM Backup では オフライン バックアップができるのか皆�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/" data-id="clcofy1nb000g0mo3cq01cd96" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/" data-id="clcptvw52000i0npi1th3c4dp" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -394,7 +500,7 @@ Azure VM Backup では オフライン バックアップができるのか皆�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/" data-id="clcofy1nu00180mo32l8z5px9" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/" data-id="clcptvw5l001d0npiaxsw51ru" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -446,7 +552,7 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/" data-id="clcofy1ng000o0mo39nar2rmp" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/" data-id="clcptvw57000q0npi36ju1vfk" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
@@ -497,61 +603,10 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/" data-id="clcofy1nx001g0mo3a6iudlof" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/" data-id="clcptvw5o001k0npi5wrpdyhv" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-information/team-introduction" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../information/team-introduction/" class="article-date">
-  <time datetime="2021-09-17T03:00:00.000Z" itemprop="datePublished">2021-09-17</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../information/team-introduction/">ABRS &amp; SCEM チームについて</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-
-我々のチームは文字通り、ABRS と SCEM という二つの領域をカバーしているチームです。ABRS チーム (Azure Backup and Recovery Service) は主にデータ保護ソリューションを提供する技術領域として Azure Backup 、SCDPM / MABS、 Azure Site Recovery 、Azure Migrate、Azure Resource Mover、Movere の技術サポートを担当しています。
-また、SCEMチーム (System Center Enterprise Management) は統合運用管理製品群として提供されている System Center という製品群のうち、次の Enterprise Management製品を担当します。SCOM (System Center Operations Manager), SCV...
-        <p class="article-readmore">
-          <a href="../../information/team-introduction/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/information/team-introduction/" data-id="clcofy1o7001v0mo3ex8x273o" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li></ul>
 
     </footer>
   </div>
@@ -564,7 +619,7 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="../3/">&laquo; 戻る</a><a class="page-number" href="../../">1</a><a class="page-number" href="../2/">2</a><a class="page-number" href="../3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="../3/">&laquo; 戻る</a><a class="page-number" href="../../">1</a><a class="page-number" href="../2/">2</a><a class="page-number" href="../3/">3</a><span class="page-number current">4</span><a class="page-number" href="../5/">5</a><a class="extend next" rel="next" href="../5/">次へ &raquo;</a>
   </nav>
 </section>
         
@@ -575,6 +630,14 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
     <h3 class="widget-title">最近の投稿</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="../../AzureDiskBackup/How_to_fail_Asure_Disk_backup/">Azure Disk Backup を意図的に失敗させる方法</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/HowToConfigureOptionalProcess/">Azure VM Backup のジョブ前後で任意の処理を行いたい</a>
+          </li>
         
           <li>
             <a href="../../AzureVMBackup/ActiveDirectory_backup/">ドメインに参加しているVMのAzure VM Backupリストアについて</a>
@@ -588,14 +651,6 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
             <a href="../../DPM&MABS/Error_58_NoDiskSpace/">空き領域があるのに、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する場合の対処方法</a>
           </li>
         
-          <li>
-            <a href="../../AzureVMBackup/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureVMBackup/RestoreStagingStorageAccount/">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -605,8 +660,8 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
   <div class="widget-wrap">
     <h3 class="widget-title">タグ</h3>
     <div class="widget">
-      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">7</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">5</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">22</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">19</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">7</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">5</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">23</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">20</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -616,7 +671,7 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
@@ -626,7 +681,7 @@ Azure Backup では、 Azure VM のバックアップを取得する際に、以
   <div class="widget-wrap">
     <h3 class="widget-title">タグクラウド</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 10px;">Azure SQL Backup</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 11.67px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 10px;">Azure SQL Backup</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 11.67px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
     </div>
   </div>
 
