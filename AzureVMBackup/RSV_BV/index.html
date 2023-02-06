@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/198350606-969ef3b9-0c2a-4744-9940-87c41936cb09.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/198349785-951e0497-fe17-46e5-9714-53f2daf30344.png">
 <meta property="article:published_time" content="2022-10-28T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-02-06T05:22:27.003Z">
+<meta property="article:modified_time" content="2023-02-06T05:23:58.028Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure Backup General">
@@ -106,7 +106,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+21ee96d2-6b38-5a39-9324-8efb217edd16%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BRecovery+Services+%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%BC%E3%81%A8%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%BC%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FRSV_BV%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FRSV_BV.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FRSV_BV.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/RSV_BV/" data-id="cldsd9ndw00180npdezje5yx3" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/RSV_BV/" data-id="cldsdbke300180otj5trj8icf" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -183,7 +183,7 @@
 </tbody></table>
 <h3 id="2-コンテナーにバックアップデータが保存されないもの"><a href="#2-コンテナーにバックアップデータが保存されないもの" class="headerlink" title="2.コンテナーにバックアップデータが保存されないもの"></a><a id="2"></a>2.コンテナーにバックアップデータが保存されないもの</h3><p>上述のとおり、Azure ファイル共有バックアップ、Azure Blob バックアップ、Azure ディスク バックアップは各コンテナーにはバックアップデータは転送されません。<br>それぞれについて簡単にご説明させていただきます。<br>共通している点はそれぞれのソリューションはコアとなる別のソリューションをバックアップサービス側からトリガーし実現している点でございます。</p>
 <h4 id="2-1-Azure-ファイル共有バックアップ"><a href="#2-1-Azure-ファイル共有バックアップ" class="headerlink" title="2-1. Azure ファイル共有バックアップ"></a><a id="2-1"></a>2-1. Azure ファイル共有バックアップ</h4><p>Azure ファイル共有 バックアップは Azure Files の共有スナップショットの機能をバックアップサービスと連携することによりスナップショット取得の自動化、スナップショットの削除の自動化を実現したバックアップソリューションです。</p>
-<p>そのため、バックアップデータ (スナップショットデータ) の保存先はAzure Files の共有スナップショットと同じく、そのストレージ アカウント自身 (のスナップショット領域)となります。<br>そのため、 Recovery Services コンテナーには転送されません。<br>下記のように** Azure ファイル共有のスナップショット リソースとしてよって、Azure ファイル共有バックアップにて取得されたスナップショットも確認可能です**。(“発信側” が “AzureBackup” となっているものです)<br><img src="https://user-images.githubusercontent.com/71251920/198350606-969ef3b9-0c2a-4744-9940-87c41936cb09.png"></p>
+<p>そのため、バックアップデータ (スナップショットデータ) の保存先はAzure Files の共有スナップショットと同じく、そのストレージ アカウント自身 (のスナップショット領域)となります。<br>そのため、 Recovery Services コンテナーには転送されません。<br>下記のように<strong>Azure ファイル共有のスナップショット リソースとしてよって、Azure ファイル共有バックアップにて取得されたスナップショットも確認可能です</strong>。(“発信側” が “AzureBackup” となっているものです)<br><img src="https://user-images.githubusercontent.com/71251920/198350606-969ef3b9-0c2a-4744-9940-87c41936cb09.png"></p>
 <p>・バックアップ プロセスのしくみ - Azure ファイル共有のバックアップについて<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview">https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview</a></p>
 <blockquote>
 <p>抜粋：ファイル共有データは Backup サービスには転送されません。これは、Backup サービスでは、ストレージ アカウントの一部であるスナップショットの作成および管理が行われ、バックアップはコンテナーに転送されないからです。</p>
