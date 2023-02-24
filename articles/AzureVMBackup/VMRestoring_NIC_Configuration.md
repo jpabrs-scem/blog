@@ -42,6 +42,7 @@ NIC を指定できることが分かります。
 https://docs.microsoft.com/ja-jp/archive/blogs/jpaztech/convertvhdtomanageddiskdeployvm#2
 
 ※上記リンクのコマンドは **AzureRm** で記載されてますが、Azモジュールをご利用の場合は 以下の例のように **Az** に変換して実行ください。
+※また可用性セット(VMSS) の設定もAzure VM Backupのリストアメニューでは設定できないので、この場合も本手順を参考に一度ディスクとして復元していただき、 VM を作成する際に可用性セットの設定をしていただければと思います。
 　　　
 >#ログインとサブスクリプション指定
 Login-**AzureRm**Account →　Login-**Az**Account
