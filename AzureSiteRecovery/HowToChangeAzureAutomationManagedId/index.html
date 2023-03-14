@@ -9,7 +9,7 @@
   <meta name="description" content="みなさんこんにちは、Azure Backup サポートです。今回は、Active Directory ( 以下、AD ) のドメインに参加している Azure 仮想マシンを、Azure VM Backup にて保護する場合に、よくお問い合わせいただく内容についてご案内いたします。 前提Azure VM Backupにて保護することを前提とすると、「ドメインに参加している Azure 仮想マシンを">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ドメインに参加しているVMのAzure VM Backupリストアについて">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/index.html">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="みなさんこんにちは、Azure Backup サポートです。今回は、Active Directory ( 以下、AD ) のドメインに参加している Azure 仮想マシンを、Azure VM Backup にて保護する場合に、よくお問い合わせいただく内容についてご案内いたします。 前提Azure VM Backupにて保護することを前提とすると、「ドメインに参加している Azure 仮想マシンを">
 <meta property="og:locale" content="ja_JP">
@@ -82,7 +82,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureVMBackup/ActiveDirectory_backup" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureSiteRecovery/HowToChangeAzureAutomationManagedId" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -103,9 +103,9 @@
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8177be42-263a-5b17-b018-c24caceb0c02%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%A6%E3%81%84%E3%82%8BVM%E3%81%AEAzure+VM+Backup%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FActiveDirectory_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FActiveDirectory_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FActiveDirectory_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+97d1ecda-bd59-59b1-8c11-36f90389aad7%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%A6%E3%81%84%E3%82%8BVM%E3%81%AEAzure+VM+Backup%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/" data-id="clf7mzpu6000i0np92rsg7cpe" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" data-id="clf7mzpu0000c0np9hem1f6iz" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -170,7 +170,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/ActiveDirectory_backup.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSiteRecovery/HowToChangeAzureAutomationManagedId.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -178,19 +178,19 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/HowToConfigureOptionalProcess/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          ドメインに参加しているVMのAzure VM Backupリストアについて
+          Azure VM Backup のジョブ前後で任意の処理を行いたい
         
       </div>
     </a>
   
   
-    <a href="../How_to_check_VM_backup_Subtask/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/ActiveDirectory_backup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure VM Backup における Take Snapshot フェーズの確認方法</div>
+      <div class="article-nav-title">ドメインに参加しているVMのAzure VM Backupリストアについて</div>
     </a>
   
 </nav>
@@ -213,11 +213,7 @@
           </li>
         
           <li>
-            <a href="../HowToConfigureOptionalProcess/">Azure VM Backup のジョブ前後で任意の処理を行いたい</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureSiteRecovery/HowToChangeAzureAutomationManagedId/">ドメインに参加しているVMのAzure VM Backupリストアについて</a>
+            <a href="../../AzureVMBackup/HowToConfigureOptionalProcess/">Azure VM Backup のジョブ前後で任意の処理を行いたい</a>
           </li>
         
           <li>
@@ -225,7 +221,11 @@
           </li>
         
           <li>
-            <a href="../How_to_check_VM_backup_Subtask/">Azure VM Backup における Take Snapshot フェーズの確認方法</a>
+            <a href="../../AzureVMBackup/ActiveDirectory_backup/">ドメインに参加しているVMのAzure VM Backupリストアについて</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/How_to_check_VM_backup_Subtask/">Azure VM Backup における Take Snapshot フェーズの確認方法</a>
           </li>
         
       </ul>
