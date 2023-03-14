@@ -4,23 +4,46 @@
   <meta charset="utf-8">
   
   
-  <title>ドメインに参加しているVMのAzure VM Backupリストアについて | Japan CSS ABRS  Support Blog !!</title>
+  <title>ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="みなさんこんにちは、Azure Backup サポートです。今回は、Active Directory ( 以下、AD ) のドメインに参加している Azure 仮想マシンを、Azure VM Backup にて保護する場合に、よくお問い合わせいただく内容についてご案内いたします。 前提Azure VM Backupにて保護することを前提とすると、「ドメインに参加している Azure 仮想マシンを">
+  <meta name="description" content="みなさんこんにちは、Azure Site Recovery サポートです。今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。 ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ドメインに参加しているVMのAzure VM Backupリストアについて">
+<meta property="og:title" content="ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="みなさんこんにちは、Azure Backup サポートです。今回は、Active Directory ( 以下、AD ) のドメインに参加している Azure 仮想マシンを、Azure VM Backup にて保護する場合に、よくお問い合わせいただく内容についてご案内いたします。 前提Azure VM Backupにて保護することを前提とすると、「ドメインに参加している Azure 仮想マシンを">
+<meta property="og:description" content="みなさんこんにちは、Azure Site Recovery サポートです。今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。 ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/204124178-ccfee87e-1cf2-4de9-8cb9-4a1053847bf9.png">
-<meta property="article:published_time" content="2022-11-28T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-14T02:30:54.345Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874128-5a6427e3-6899-4cf8-bfbd-024334f58aaf.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874595-4ed973c2-4611-4548-8591-da9a1cb087e6.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874725-db03352c-829b-449a-ba34-88303a551f6d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874882-b6ccc582-13c4-4553-9d1f-9b9e4425b6db.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874916-5df9c1cb-92c0-4263-9f9c-16ece1912dd9.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874986-a883cb50-8fe5-4f05-b0c4-4c72cdc8d2f4.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875166-74a13c8e-d825-4bf7-97a5-18dd1855a576.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875187-021d493c-8ef9-4370-af8d-3aaedb04b611.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875252-a24fbdc4-2e71-4c89-9890-7b75530eb754.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875281-150ab88d-36b1-4b95-a9a2-c4a17cbc116b.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875348-6f138351-c0af-43ac-bd3c-8ef25d3372f0.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875466-44010fb0-2420-4753-b804-7130434a902a.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875619-9e10064b-923a-4fdc-a6d9-5d641a04f188.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875673-cd3d487c-21bf-448c-9536-3cfecf19f2cb.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875714-04847fc0-45fc-4aae-9d61-584fbe1a9768.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875759-fb94ba3e-061d-4ffe-b2b3-1407ad881b8d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875812-93a0ec82-db28-4b82-b5c5-dc930d084dde.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875967-f561d126-42e6-4c70-9889-39f4e94793f8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876010-8b07de47-3926-4233-8e3f-c188552281bc.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876087-d5649f14-4b30-441b-8bb6-6e2b73c4b1cd.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876152-99f45670-ee44-4220-8127-a976ab9fe546.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876230-77381459-a13e-45d2-a89f-16d85f54d8b8.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876291-5fab5687-0573-484c-b369-d26907b94b0d.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876315-d42595ed-2813-4fd4-99c0-163c6b9d4705.png">
+<meta property="article:published_time" content="2023-03-14T03:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-14T02:41:57.399Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
-<meta property="article:tag" content="Azure VM Backup">
+<meta property="article:tag" content="Azure Site Recovery">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/96324317/204124178-ccfee87e-1cf2-4de9-8cb9-4a1053847bf9.png">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/96324317/224874128-5a6427e3-6899-4cf8-bfbd-024334f58aaf.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -91,7 +114,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ドメインに参加しているVMのAzure VM Backupリストアについて
+      ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について
     </h1>
   
 
@@ -99,61 +122,96 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-11-28T03:00:00.000Z" itemprop="datePublished">2022-11-28</time>
+  <time datetime="2023-03-14T03:00:00.000Z" itemprop="datePublished">2023-03-14</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+97d1ecda-bd59-59b1-8c11-36f90389aad7%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%A6%E3%81%84%E3%82%8BVM%E3%81%AEAzure+VM+Backup%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+97d1ecda-bd59-59b1-8c11-36f90389aad7%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BASR+%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0%E3%81%AB%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B+Automation+%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AE+Managed+ID+%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" data-id="clf7mzpu0000c0np9hem1f6iz" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" data-id="clf7ndw6e000c0nwc8uu2add4" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>みなさんこんにちは、Azure Backup サポートです。<br>今回は、Active Directory ( 以下、AD ) のドメインに参加している Azure 仮想マシンを、Azure VM Backup にて保護する場合に、よくお問い合わせいただく内容についてご案内いたします。</p>
-<h4 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h4><p>Azure VM Backupにて保護することを前提とすると、「ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項」というのは特にございません。<br>ただし、リストア (=復元) 後は Active Directory の観点で、環境に合わせた考慮事項が発生いたします。<br>Widnows OS 上の作業詳細についてご不明点がございます場合は、恐縮ながら Azure Backup チームではなく、 Active Directory を取り扱う部署にて対応いたしております。<br>Active Directory 観点でのサポートについては、お客様の契約次第ではオンプレミス チームでの有償対応が必要となることがございます。<br>また、お客様のご契約が Azure 製品のサポート契約のみの場合は、オンプレミス範囲のサポート契約がないために、詳細なサポート対応・調査が行えない可能性がございます。<br>お客様にてご契約内容をご確認の上で、「復元」ジョブ完了後の Active Directory 観点の考慮点・作業詳細については、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。</p>
-<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#Q1">Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？</a><br><a href="#Q2">Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？</a><br><a href="#Q3">Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？</a><br><a href="#Q4">Q4. ドメインコントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください</a><br><a href="#Q5">Q5. ドメイン内のひとつの ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</a><br><a href="#Q6">Q6. ドメイン内のすべての ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</a><br><a href="#Q7">Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。</a></p>
-<hr>
-<h2 id="Q1-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合の考慮事項はありますか？"><a href="#Q1-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合の考慮事項はありますか？" class="headerlink" title="Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？"></a><a id="Q1"></a>Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？</h2><h4 id="「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？"><a href="#「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？" class="headerlink" title="「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？"></a>「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？</h4><p><strong>A1</strong> Azure VM Backupにて保護することを前提とすると、「バックアップ取得する際」「復元時」について、Azure Backup 観点では特に注意点、考慮事項はございません。<br>復元オプションには以下いずれかを選択いただいて構いませんので、お客様のご要件に従って決定ください。<br>（復元オプション）<br>・「構成の復元：新規作成」「復元の種類：新しい仮想マシンの作成」<br>・「構成の復元：新規作成」「復元の種類：ディスクの復元」<br>・「構成の復元：既存を置換」「復元の種類：ディスクの置換」</p>
-<p>・Azure portal で Azure VM データを復元する方法<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations</a></p>
-<p>ただし、〈前提〉に記載の通り、「復元」ジョブ完了後の Windows OS 上での作業詳細や考慮事項については、Azure サポートではなく、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。</p>
-<h5 id="「復元の種類：新しい仮想マシンの作成」にて復元する場合の考慮点"><a href="#「復元の種類：新しい仮想マシンの作成」にて復元する場合の考慮点" class="headerlink" title="「復元の種類：新しい仮想マシンの作成」にて復元する場合の考慮点"></a>「復元の種類：新しい仮想マシンの作成」にて復元する場合の考慮点</h5><p>この場合、復元される Azure 仮想マシンのホスト名や、SID識別子は復元もとと同一となります。<br>SID 識別子やユーザ固有の情報が重複する為、同一のネットワーク上に「復元の種類：新しい仮想マシンの作成」での復元を行った場合、なんらかの問題が起こる可能性、懸念が考えられます。<br>そのため、復元もとの Azure 仮想マシンが破損などにより起動できない状態などでの復元シナリオでは、重複トラブルは避けられますが、それ以外の目的で復元する場合は、この状態を避けるため、通常は一般化の上利用いただく必要がございます。</p>
-<p>一般化に関しては下記ブログ記事をご覧のうえ、下記の詳細については、新規サービスリクエストを起票の上、Azure VM 担当部署までご相談いただくようお願いいたします。<br>・VM 複製方法について part.1/3 2 つの方法の紹介<br>　<a target="_blank" rel="noopener" href="https://jpaztech.github.io/blog/vm/vm-replica-1/">https://jpaztech.github.io/blog/vm/vm-replica-1/</a></p>
-<p>また、「復元の種類：新しい仮想マシンの作成」にて復元した場合は、デフォルトで NIC が新たに作成される点に関するブログ記事を公開しておりますので、下記ご参考になれば幸いです。<br>・Azure VM のリストアの際 NIC の設定が消えてしまう | Japan CSS ABRS &amp; SCEM Support Blog (jpabrs-scem.github.io)<br>　<a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/">https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</a></p>
-<h5 id="「復元の種類：新しい仮想マシンの作成」かつ、復元した-Azure-仮想マシンはネットワーク的に元の環境と疎通がとれる場合"><a href="#「復元の種類：新しい仮想マシンの作成」かつ、復元した-Azure-仮想マシンはネットワーク的に元の環境と疎通がとれる場合" class="headerlink" title="「復元の種類：新しい仮想マシンの作成」かつ、復元した Azure 仮想マシンはネットワーク的に元の環境と疎通がとれる場合"></a>「復元の種類：新しい仮想マシンの作成」かつ、復元した Azure 仮想マシンはネットワーク的に元の環境と疎通がとれる場合</h5><p>「復元」指示時に、Azure 仮想マシン名を復元もと とは異なる名前にしていても、ホスト名・SID は復元もと と同一ですので、既存ドメインのドメインアカウントを有した状態で、ドメイン上に戻されることとなります。<br>仮に復元時、復元もとの Azure 仮想マシンも「実行中」の状態で、「復元」してしまうと、ドメイン上に戻される＆同一のホスト/ SID 名のマシンがドメインネットワーク内に 2 つ存在することとなるため、予期せぬトラブルを招く恐れがあるかと存じます。<br>同一のドメインネットワーク上に「復元」を希望される場合は、一度 ネットワーク 的に分離された環境でリストアしていただき、一般化  ( AD 観点では少なくともホスト名の変更 ) を した上で元のネットワークに参加させる、もとのVM を停止した状態にするなどの方法が考えられます。</p>
-<h5 id="「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した-Azure-仮想マシンはネットワーク的に元の環境と疎通ができない場合"><a href="#「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した-Azure-仮想マシンはネットワーク的に元の環境と疎通ができない場合" class="headerlink" title="「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した Azure 仮想マシンはネットワーク的に元の環境と疎通ができない場合"></a>「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した Azure 仮想マシンはネットワーク的に元の環境と疎通ができない場合</h5><p>既存ドメインのドメインアカウントを有した状態にて復元されますが、ネットワークが異なることによってドメイン コントローラーとの疎通ができないため、同じドメイン上には戻されません。</p>
-<h5 id="「復元の種類：ディスクの置換」の場合"><a href="#「復元の種類：ディスクの置換」の場合" class="headerlink" title="「復元の種類：ディスクの置換」の場合"></a>「復元の種類：ディスクの置換」の場合</h5><p>IP アドレスや NSG の設定は、「復元」ジョブ指示前と同じものを利用できます。<br>また、可用性セットを設定していた場合も、再び可用性セットの構成を利用することが可能です。</p>
-<h2 id="Q2-「復元」ジョブ完了後は、ドメインの再参加は必要ですか？"><a href="#Q2-「復元」ジョブ完了後は、ドメインの再参加は必要ですか？" class="headerlink" title="Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？"></a><a id="Q2"></a>Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？</h2><p><strong>A2</strong>  下記ドキュメントの通り、復元によってセキュア チャネルが破損する可能性もございますので、基本的には再度ドメイン参加を実施ください。<br>・ドメインにログオンできない ～ セキュア チャネルの破損 ～ | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/archive/blogs/jpntsblog/256">https://docs.microsoft.com/en-us/archive/blogs/jpntsblog/256</a></p>
-<h2 id="Q3-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合、「復元」後は-ドメイン-ID-は変わってしまいますか？"><a href="#Q3-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合、「復元」後は-ドメイン-ID-は変わってしまいますか？" class="headerlink" title="Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？"></a><a id="Q3"></a>Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？</h2><p><strong>A3</strong> 「復元」を指示する際に、ユーザーにて選択した「復元ポイント」時点のドメイン ID にて復元されます。<br><img src="https://user-images.githubusercontent.com/96324317/204124178-ccfee87e-1cf2-4de9-8cb9-4a1053847bf9.png" alt="RestoreVM"></p>
-<h2 id="Q4-ドメインコントローラー-DC-自体の-Azure-VM-Backup-におけるバックアップ・復元について詳細を教えてください"><a href="#Q4-ドメインコントローラー-DC-自体の-Azure-VM-Backup-におけるバックアップ・復元について詳細を教えてください" class="headerlink" title="Q4. ドメインコントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください"></a><a id="Q4"></a>Q4. ドメインコントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください</h2><p><strong>A4</strong> 詳細は下記公開ドキュメントに取りまとめていますので、こちらをご参照ください。<br>・Active Directory ドメイン コントローラーのバックアップおよび復元<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/active-directory-backup-restore">https://learn.microsoft.com/ja-jp/azure/backup/active-directory-backup-restore</a></p>
-<h2 id="Q5-ドメイン内のひとつの-ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？"><a href="#Q5-ドメイン内のひとつの-ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？" class="headerlink" title="Q5. ドメイン内のひとつの ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？"></a><a id="Q5"></a>Q5. ドメイン内のひとつの ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</h2><p><strong>A5</strong> ドメイン内に生存している DC が存在している場合、ひとつの DC を復元する方法に配慮は不要です。<br>例えば同一ドメイン内に DC が 2 台存在する構成の場合には、片方の DC だけ障害が発生する分には Azure Portal からの復元を実施できます。</p>
-<h2 id="Q6-ドメイン内のすべての-ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？"><a href="#Q6-ドメイン内のすべての-ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？" class="headerlink" title="Q6. ドメイン内のすべての ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？"></a><a id="Q6"></a>Q6. ドメイン内のすべての ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</h2><p><strong>A6</strong> 考慮が必要です。<br>下記は必要な作業として記載しておりますが、その他に必要な作業は、お客様の環境によって異なってまいりますので、お手数をおかけしますが Azure サポートではなく、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。<br>===<br>すべての DC を復元する場合、グループ ポリシー オブジェクトに関する情報が格納されている SYSVOL 共有の複製において、SYSVOL 共有の　“親” を定義する必要がございます。<br>生存した DC が存在する場合は、生存した DC が自動的に “親” となりますが、すべての DC を復元した場合は、すべての DC が “子” として復元されるため、明示的に “親” を定義する作業が必要になります。<br>簡単ではございますが、手順を作成いたしましたので、ご案内させていただきます。</p>
-<h5 id="留意事項"><a href="#留意事項" class="headerlink" title="留意事項"></a>留意事項</h5><p>最初の DC を Azure VM Backup から復元した後に、SYSVOL を複製しているオブジェクトを<br>編集することによって、SYSVOL のマスターを定義する必要があります。<br>なお、SYSVOL 複製方式は、一般的である DFSR を使用していることを前提とします。</p>
-<h5 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h5><ol>
-<li>1 台目のドメイン コントローラーをバックアップから復元します。</li>
-<li>1 台目のドメイン コントローラー上で DFSR の Authoritative Restore を実施します。</li>
-<li>2 台目以降のドメイン コントローラーをバックアップから復元します。<br>ここで、上記の手順 2) の DFSR の Authoritative Restore に関しては、具体的に下記のような手順を実施します。</li>
+<p>みなさんこんにちは、Azure Site Recovery サポートです。<br>今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。</p>
+<p>ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが決まっており、マネージド ID へ移行する必要がございます。<br>2023/3/14 時点では ASR の自動更新に利用する Azure Automation を手動でマネージド ID へ移行する必要がございますので、その移行手順についてご案内いたします。</p>
+<p>なお、今後は ASR 有効化時に自動でマネージド ID の Azure Automation が作成されるように開発部門と対応を継続しておりますので、進展がありましたら本ブログにて Update をお知らせいたします。</p>
+<p>・マネージド ID への移行に関する公開情報<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/automation/migrate-run-as-accounts-managed-identity?tabs=sa-managed-identity">https://learn.microsoft.com/ja-jp/azure/automation/migrate-run-as-accounts-managed-identity?tabs=sa-managed-identity</a></p>
+<h3 id="作業手順"><a href="#作業手順" class="headerlink" title="作業手順"></a>作業手順</h3><ol>
+<li>Azure Portal から Recovery Services コンテナーに移動し、[概要] の JSON ビューをクリックし、ID の行に表示される /subscriptions/ から始まるリソース ID をメモします。<br>※ 手順 8 で利用します。</li>
 </ol>
-<h5 id="DFSR-の-Authoritative-Restore"><a href="#DFSR-の-Authoritative-Restore" class="headerlink" title="DFSR の Authoritative Restore"></a>DFSR の Authoritative Restore</h5><ol>
-<li>対象のドメイン コントローラーに、管理者権限を持つユーザーでログオンします。</li>
-<li>[ファイル名を指定して実行] から dsa.msc を実行します。</li>
-<li>[表示] メニューの [コンテナーとしてのユーザー、連絡先、グループ、コンピューター] および [拡張機能] をオンにします。</li>
-<li>左ペインのツリーを [Active Directory ユーザーとコンピューター] - [&lt;ドメイン名&gt;] - [Domain Controllers] – [&lt;リストアを実施したドメイン コントローラー&gt;] - [DFSR-LocalSettings] - [Domain System Volume] の順に展開します。</li>
-<li>右ペインの [SYSVOL Subscriptions] を右クリックし、[プロパティ] をクリックします。</li>
-<li>[属性エディター] タブの [属性] 列が [msDFSR-Options] となっている行をダブルクリックします。</li>
-<li>[値] に 1 と入力し、[OK] をクリックします。</li>
-<li>[OK] をクリックします。</li>
-<li>[管理者として実行] からコマンド プロンプトを起動します。</li>
-<li>下記のコマンドを実行し、DFS Replication サービスを再起動します。<br>net stop dfsr &amp;&amp; net start dfsr</li>
+<p><img src="https://user-images.githubusercontent.com/96324317/224874128-5a6427e3-6899-4cf8-bfbd-024334f58aaf.png" alt="image1"></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224874595-4ed973c2-4611-4548-8591-da9a1cb087e6.png" alt="image2"></p>
+<ol start="2">
+<li>Recovery Services コンテナーの [Site Recovery インフラストラクチャ] - [拡張機能の更新の設定] 画面ご利用の Automation アカウント名をご確認ください。</li>
 </ol>
-<p>・AD フォレストの回復-DFSR によってレプリケートされた SYSVOL の権限のある同期を実行する<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/windows-server/identity/ad-ds/manage/ad-forest-recovery-authoritative-recovery-sysvol">https://docs.microsoft.com/ja-jp/windows-server/identity/ad-ds/manage/ad-forest-recovery-authoritative-recovery-sysvol</a></p>
-<h2 id="Q7-Azure-AD-Connect-AADC-をインストールして使用している-Azure-仮想マシンがあります。AADC-の復旧手順を教えてください。"><a href="#Q7-Azure-AD-Connect-AADC-をインストールして使用している-Azure-仮想マシンがあります。AADC-の復旧手順を教えてください。" class="headerlink" title="Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。"></a><a id="Q7"></a>Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。</h2><p><strong>A7</strong> AADC に対しては、「Azure VM Backup」機能を利用したバックアップ・リストアではなく、AADC における Export/Import での再構築が必要となります。<br>AADC に対するバックアップ運用については、下記をご参照ください。</p>
-<p>・Azure AD Connect 設定の Export / Import | Japan Azure Identity Support Blog (jpazureid.github.io)<br>　<a target="_blank" rel="noopener" href="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/">https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/</a></p>
-<p>なお、AADC に対するバックアップ/復旧手順について詳細を確認なされたい場合は、Azure Identity 宛へお問い合わせを起票いただきますよう、よろしくお願い申し上げます。<br>（補足）<br>Azure AD Connect をドメイン コントローラー上にインストールすることは推奨しておりません。</p>
-<p>・Azure AD Connect インストール前の確認事項 | Japan Azure Identity Support Blog (jpazureid.github.io)<br>　<a target="_blank" rel="noopener" href="https://jpazureid.github.io/blog/azure-active-directory-connect/checklist-before-installing-aad-connect/#Q-amp-A">https://jpazureid.github.io/blog/azure-active-directory-connect/checklist-before-installing-aad-connect/#Q-amp-A</a><br>　“Q. Azure AD Connect をドメイン コントローラー上にインストールして問題ないか ?<br>　  A. 弊社としては推奨していません。”</p>
-<p>AD 関連の Azure VM Backup について、よくお問い合わせいただく内容の案内としては、以上となります。</p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224874725-db03352c-829b-449a-ba34-88303a551f6d.png" alt="image3"></p>
+<ol start="3">
+<li>手順 2 で確認した Automation アカウントに移動し、  JSON ビューをクリックし、ID の行に表示される /subscriptions/ から始まるリソース ID をメモします。<br>※ 手順 9 で利用します。</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/96324317/224874882-b6ccc582-13c4-4553-9d1f-9b9e4425b6db.png" alt="image4"></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224874916-5df9c1cb-92c0-4263-9f9c-16ece1912dd9.png" alt="image5"></p>
+<ol start="4">
+<li>Automation アカウントの [ID] - [システム割り当て済み] 画面から状態が [オン] に選択されていない場合には、[オン] を選択し、[保存] をクリックします。</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/96324317/224874986-a883cb50-8fe5-4f05-b0c4-4c72cdc8d2f4.png" alt="image6"></p>
+<ol start="5">
+<li>Recovery Services コンテナーに戻り、[アクセス制御 (IAM)] から、Automation アカウントのマネージド ID に対して共同作成者ロールを付与します。</li>
+</ol>
+<p>・ロール : 共同作成者<br>・アクセスの割り当て先 : マネージド ID<br>・メンバー :Automation アカウント</p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875166-74a13c8e-d825-4bf7-97a5-18dd1855a576.png" alt="image7"></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875187-021d493c-8ef9-4370-af8d-3aaedb04b611.png" alt="image8"></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875252-a24fbdc4-2e71-4c89-9890-7b75530eb754.png" alt="image9"></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875281-150ab88d-36b1-4b95-a9a2-c4a17cbc116b.png" alt="image10"></p>
+<ol start="6">
+<li>Automation アカウントに戻り、[Runbook] - [Runbook の作成] から新しい Runbook を作成します。</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875348-6f138351-c0af-43ac-bd3c-8ef25d3372f0.png" alt="image11"></p>
+<p>・Runbook 名 : &lt;任意&gt;<br>・Runbook の種類 : PowerShell<br>・ランタイムのバージョン : 5.1</p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875466-44010fb0-2420-4753-b804-7130434a902a.png" alt="image12"></p>
+<ol start="7">
+<li>作成された Runbook に、下記 Github に公開されている UpdateAutomationAccount.ps1 の PowerShell スクリプトをコピーして貼り付け [保存] します。</li>
+</ol>
+<p>・PowerShell スクリプト<br>　<a target="_blank" rel="noopener" href="https://github.com/AsrOneSdk/published-scripts/blob/master/automationAccount/UpdateAutomationAccount.ps1">https://github.com/AsrOneSdk/published-scripts/blob/master/automationAccount/UpdateAutomationAccount.ps1</a></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875619-9e10064b-923a-4fdc-a6d9-5d641a04f188.png" alt="image13"></p>
+<ol start="8">
+<li>上部 [テスト ウィンドウ] からテスト画面に移動し、パラメーターを入力し [開始] をクリックします。</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875673-cd3d487c-21bf-448c-9536-3cfecf19f2cb.png" alt="image14"></p>
+<p>・VAULTRESOURCEID : 手順 1 で確認した Recovery Services コンテナーのリソース ID<br>・AUTOUPDATEACTION : Disabled<br>・AUTOMATIONACCOUNTARMID : 入力なし</p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875714-04847fc0-45fc-4aae-9d61-584fbe1a9768.png" alt="image15"></p>
+<p>完了と表示されるとテスト成功です。</p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875759-fb94ba3e-061d-4ffe-b2b3-1407ad881b8d.png" alt="image16"></p>
+<ol start="9">
+<li>パラメータ AUTOUPDATEACTION を Enabled に変更し、AUTOMATIONACCOUNTARMID にリソース ID を入力し、再度 [開始] をクリックします。</li>
+</ol>
+<p>・VAULTRESOURCEID : 手順 1 で確認した Recovery Services コンテナーのリソース ID<br>・AUTOUPDATEACTION : Enabled<br>・AUTOMATIONACCOUNTARMID : 手順 3 で確認した Automation アカウントのリソース ID</p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875812-93a0ec82-db28-4b82-b5c5-dc930d084dde.png" alt="image17"></p>
+<p>完了と表示されるとテスト成功です。</p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224875967-f561d126-42e6-4c70-9889-39f4e94793f8.png" alt="image"></p>
+<ol start="10">
+<li>画面右上の [X] から画面を一度閉じ、Runbook に戻り [公開] をクリックします。</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/96324317/224876010-8b07de47-3926-4233-8e3f-c188552281bc.png" alt="image"></p>
+<ol start="11">
+<li>Runbook のステータスが “発行済み” になっていることを確認し、[スケジュールへのリンク] をクリックし、スケジュールを設定します。</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/96324317/224876087-d5649f14-4b30-441b-8bb6-6e2b73c4b1cd.png" alt="image"></p>
+<ol start="12">
+<li>[スケジュール] をクリックし、既存のスケジュールを利用するか新規スケジュールを作成します。<br>※ 既定では 0:00 に毎日ジョブが実行され、最新バージョンでない保護されたアイテムがある場合に ASR モビリティ サービス エージェントを更新する処理がトリガーされます。</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/96324317/224876152-99f45670-ee44-4220-8127-a976ab9fe546.png" alt="image"></p>
+<p>新規スケジュールを作成する場合には、任意のスケジュールを設定します。<br>例えば、日本時刻 0:00 に毎日ジョブを実行する場合、下記のように入力します。</p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224876230-77381459-a13e-45d2-a89f-16d85f54d8b8.png" alt="image"></p>
+<ol start="13">
+<li>[パラメーターと実行設定] をクリックし、手順 9 で入力したパラメータを以下の通り再度入力し [OK] をクリックします。</li>
+</ol>
+<p>・VAULTRESOURCEID : 手順 1 で確認した Recovery Services コンテナーのリソース ID<br>・AUTOUPDATEACTION : Enabled<br>・AUTOMATIONACCOUNTARMID : 手順 3 で確認した Automation アカウントのリソース ID</p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224876291-5fab5687-0573-484c-b369-d26907b94b0d.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/224876315-d42595ed-2813-4fd4-99c0-163c6b9d4705.png" alt="image"></p>
+<p>上記作業が完了したら、次のスケジュール日時からマネージド ID を使用した Runbook にて更新ジョブが実行されます。</p>
+<p>ASR にて使用される、マネージド ID 設定の案内は、以上となります。</p>
 
       
       
@@ -167,7 +225,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
         <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSiteRecovery/HowToChangeAzureAutomationManagedId.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
@@ -178,19 +236,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureVMBackup/HowToConfigureOptionalProcess/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Azure VM Backup のジョブ前後で任意の処理を行いたい
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureVMBackup/ActiveDirectory_backup/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureDiskBackup/How_to_fail_Asure_Disk_backup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">ドメインに参加しているVMのAzure VM Backupリストアについて</div>
+      <div class="article-nav-title">Azure Disk Backup を意図的に失敗させる方法</div>
     </a>
   
 </nav>
@@ -209,15 +258,15 @@
       <ul>
         
           <li>
+            <a href="">ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について</a>
+          </li>
+        
+          <li>
             <a href="../../AzureDiskBackup/How_to_fail_Asure_Disk_backup/">Azure Disk Backup を意図的に失敗させる方法</a>
           </li>
         
           <li>
             <a href="../../AzureVMBackup/HowToConfigureOptionalProcess/">Azure VM Backup のジョブ前後で任意の処理を行いたい</a>
-          </li>
-        
-          <li>
-            <a href="">ドメインに参加しているVMのAzure VM Backupリストアについて</a>
           </li>
         
           <li>
@@ -237,8 +286,8 @@
   <div class="widget-wrap">
     <h3 class="widget-title">タグ</h3>
     <div class="widget">
-      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">7</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">5</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">24</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">21</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">7</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">5</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">23</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">20</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -248,7 +297,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
@@ -258,7 +307,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">タグクラウド</h3>
     <div class="widget tagcloud">
-      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 10px;">Azure SQL Backup</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 11.67px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 10px;">Azure SQL Backup</a> <a href="../../tags/Azure-Site-Recovery/" style="font-size: 10px;">Azure Site Recovery</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 11.67px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
     </div>
   </div>
 
