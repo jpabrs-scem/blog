@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/175569833-99834c3c-46f3-4901-8014-5c0a6dc0cb22.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/178863089-01be3556-bf72-472a-9e48-888f80dd7875.png">
 <meta property="article:published_time" content="2022-06-25T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-15T02:12:02.890Z">
+<meta property="article:modified_time" content="2023-03-15T03:29:29.644Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="how to">
@@ -107,7 +107,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+d4ca13de-d42e-5bc3-92f4-bbec6d73da6e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%2F+%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2+%E6%89%80%E8%A6%81%E6%99%82%E9%96%93%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FBackup_RecoveryTIme%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FBackup_RecoveryTIme.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FBackup_RecoveryTIme.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/" data-id="clf91r9z100000nrxdpcfh296" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/" data-id="clf94iwlx00000nkb642jg4xk" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -136,8 +136,9 @@
 <h4 id="インスタント-リストアついて"><a href="#インスタント-リストアついて" class="headerlink" title="インスタント リストアついて"></a>インスタント リストアついて</h4><p>インスタント リストアは Recovery Services コンテナーからの転送フェーズがございませんので、上記のグラフ結果よりも早い復元が期待できる機能でございます。</p>
 <p>下記のように回復の種類に “スナップショット” が含まれる場合は自動的にインスタント リストアとなります。</p>
 <p><img src="https://user-images.githubusercontent.com/71251920/178863089-01be3556-bf72-472a-9e48-888f80dd7875.png"></p>
-<p>・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability">https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability</a></p>
-<h2 id="2-データディスクの数とバックアップやリストアにかかる時間"><a href="#2-データディスクの数とバックアップやリストアにかかる時間" class="headerlink" title=" 2. データディスクの数とバックアップやリストアにかかる時間"></a><a id="2"></a> 2. データディスクの数とバックアップやリストアにかかる時間</h2><p>また類似の質問として、Azure VM Backup において<strong>同じデータ量であればディスクの数が多い方が早いか？または遅いか？</strong>といった質問もいただくことがございますが、<a href="#1">1.</a>と同様の理由から一概に<strong>どちらの方が早くなるなどといったことはお伝えできません。</strong></p>
+<p>・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability">https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability</a></p>
+<h2 id="2-データディスクの数とバックアップやリストアにかかる時間"><a href="#2-データディスクの数とバックアップやリストアにかかる時間" class="headerlink" title=" 2. データディスクの数とバックアップやリストアにかかる時間"></a><a id="2"></a> 2. データディスクの数とバックアップやリストアにかかる時間</h2><p>また類似の質問として、Azure VM Backup において<strong>同じデータ量であればディスクの数が多い方が早いか？または遅いか？</strong>といった質問もいただくことがございますが、<a href="#1">1.</a>と同様の理由から一概に<strong>どちらの方が早くなるなどといったことはお伝えできません。</strong><br>なお、下記公開ドキュメントに、3 種類のパターンを提示したチャーンの影響説明をしておりますのでご参考ください。</p>
+<p>・バックアップ パフォーマンスに対するチャーンの影響<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/manage-recovery-points#impact-of-churn-on-backup-performance">https://learn.microsoft.com/ja-jp/azure/backup/manage-recovery-points#impact-of-churn-on-backup-performance</a></p>
 <p>お客様のお役に立てれば幸いです。<br>本記事は以上です。</p>
 
       
