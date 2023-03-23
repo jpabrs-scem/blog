@@ -43,7 +43,7 @@ disableDisclaimer: false
 | 8 | [Azure ディスク バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview)  |   バックアップ コンテナー|**しない**|
 | 9 | [Azure PosgreSQL バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview)  |   バックアップ コンテナー|する|
 
-+ **(注1) 2023年3月現在  Azure Files Backup のコンテナー層へのBackup機能が Private Preview となりました。**
++ **(注1) 2023年3月現在  Azure ファイル共有バックアップ のコンテナー層へのBackup機能が Private Preview となりました。**
 ・Private Preview: Azure Backup enables vaulted backups for Azure Files for comprehensive data protection.
 https://azure.microsoft.com/ja-JP/updates/azurefilesvaultedbackups-2/
 
