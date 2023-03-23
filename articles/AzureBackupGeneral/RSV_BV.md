@@ -17,6 +17,7 @@ disableDisclaimer: false
 
 
 
+
 ## 目次
 -----------------------------------------------------------
 [1. バックアップソリューションとコンテナー、およびデータ保存先の比較表](#1)
@@ -37,13 +38,18 @@ disableDisclaimer: false
 | 3 | [MABS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-microsoft-azure-backup) |   Recovery Services コンテナー|する|
 | 4 | [SQL in Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database) |   Recovery Services コンテナー|する|
 | 5 | [SAP HANA DB in Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-about) |   Recovery Services コンテナー|する|
-| 6 | [Azure ファイル共有バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview) |   Recovery Services コンテナー|**しない**|
-| 7 | [Azure Blob バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview)  |   バックアップ コンテナー|**しない**|
+| 6 | [Azure ファイル共有バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview) |   Recovery Services コンテナー|**しない(注1)**|
+| 7 | [Azure Blob バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview)  |   バックアップ コンテナー|**しない(注12)**|
 | 8 | [Azure ディスク バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview)  |   バックアップ コンテナー|**しない**|
 | 9 | [Azure PosgreSQL バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview)  |   バックアップ コンテナー|する|
 
++ (注1) 2023年3月現在  Azure Files Backup のコンテナー層へのBackup機能がPrivate Preview となりました。
+・Private Preview: Azure Backup enables vaulted backups for Azure Files for comprehensive data protection.
+https://azure.microsoft.com/ja-JP/updates/azurefilesvaultedbackups-2/
 
-
++ (注2) 2023年3月現在  Azure Blob バックアップのコンテナー層へのBackup機能がPrivate Preview となりました。
+・Public Preview: Azure Backup enables vaulted backups for Azure Blob for comprehensive data protection.
+https://azure.microsoft.com/ja-JP/updates/azureblobvaultedbackups/
 
 ### <a id="2"></a>2.コンテナーにバックアップデータが保存されないもの
 上述のとおり、Azure ファイル共有バックアップ、Azure Blob バックアップ、Azure ディスク バックアップは各コンテナーにはバックアップデータは転送されません。
