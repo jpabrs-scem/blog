@@ -39,15 +39,15 @@ disableDisclaimer: false
 | 4 | [SQL in Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database) |   Recovery Services コンテナー|する|
 | 5 | [SAP HANA DB in Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-about) |   Recovery Services コンテナー|する|
 | 6 | [Azure ファイル共有バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview) |   Recovery Services コンテナー|**しない(注1)**|
-| 7 | [Azure Blob バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview)  |   バックアップ コンテナー|**しない(注12)**|
+| 7 | [Azure Blob バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview)  |   バックアップ コンテナー|**しない(注2)**|
 | 8 | [Azure ディスク バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview)  |   バックアップ コンテナー|**しない**|
 | 9 | [Azure PosgreSQL バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview)  |   バックアップ コンテナー|する|
 
-+ (注1) 2023年3月現在  Azure Files Backup のコンテナー層へのBackup機能が Private Preview となりました。
++ **(注1) 2023年3月現在  Azure Files Backup のコンテナー層へのBackup機能が Private Preview となりました。**
 ・Private Preview: Azure Backup enables vaulted backups for Azure Files for comprehensive data protection.
 https://azure.microsoft.com/ja-JP/updates/azurefilesvaultedbackups-2/
 
-+ (注2) 2023年3月現在  Azure Blob バックアップのコンテナー層へのBackup機能が Public Preview となりました。
++ **(注2) 2023年3月現在  Azure Blob バックアップのコンテナー層へのBackup機能が Public Preview となりました。**
 ・Public Preview: Azure Backup enables vaulted backups for Azure Blob for comprehensive data protection.
 https://azure.microsoft.com/ja-JP/updates/azureblobvaultedbackups/
 
