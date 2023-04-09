@@ -1,6 +1,6 @@
 ---
-title: 「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例
-date: 2022-01-24 12:00:00
+title: QL4L-5D8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について
+date: 2023-04-10 12:00:00
 tags:
   - Azure Backup General
   - how to
@@ -8,65 +8,85 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-皆様こんにちは、Azure Backup サポートです。
-今回は、**「Azure Monitor を使用した組み込みのアラート」を利用して、Recovery Services コンテナーにてバックアップ構成済のバックアップ ジョブが失敗した際にメール通知を出すよう、アラート処理ルールを作成する例** をご紹介します。
+こんにちは、Azure Backup サポートです。
+今回は、2023 年 3 月末より弊社から発行されている、アラート追跡 ID 「QL4L-5D8」について説明いたします。
 
-## 概要
-・「Azure Monitor を使用した組み込みのアラート」を利用
-・アラート処理ルールには、バックアップを構成している対象のRecovery Services コンテナーをスコープとして指定し、バックアップ ジョブが失敗した際に、指定のメールアドレスへ通知メールを送信させる
+## 目次
+-----------------------------------------------------------
+[Q1. 「QL4L-5D8」このアラートは何ですか？](#Q1)
+[Q2. どのRecovery Services コンテナーが「クラシック アラート設定」になっていますか？](#Q2)
+[Q3. クラシック アラートから Azure Monitor を使用した組み込みのアラートへと移行した場合のコストはどうなりますか？](#Q3)
+[Q4. クラシック アラートの「通知の構成」をしているかどうかは 1 つ 1 つの Recovery Services コンテナーを確認する必要がありますか？](#Q4)
+-----------------------------------------------------------
+
+## <a id="Q1"></a>Q1. 「QL4L-5D8」このアラートは何ですか？
+**A1** クラシック アラートから、Azure Monitor を使用した組み込みのアラートへと移行するよう、お知らせするためのものです。
+Recovery Services コンテナーでは、クラシック アラートが<span style="color: red; ">既定</span>で存在しており、かつ、利用可能な状態となっております。
+後述 「Q2. どのRecovery Services コンテナーが「クラシック アラート設定」になっていますか？」 をご参照いただき、クラシック アラートを利用した通知の設定有無をまずはご確認くださいますようお願いいたします。
+
+### ・クラシック アラート機能用いて、現在メールへのアラート通知を構成している場合
+クラシック アラートは、2026 年 3 月 31 日をもって廃止する予定です。
+監視設定を継続してご利用になられる場合は、お手数ではございますが、「Azure Monitor を使用した組み込みのアラート」への切り替えを事前にご検討くださいますようお願いいたします。
+
+### ・クラシック アラート機能用いて、現在メールへのアラート通知を構成していないが、今後はバックアップ ジョブ失敗時にメール通知などのアラートをご希望の場合
+クラシック アラートから、「Azure Monitor を使用した組み込みのアラート」へと切り替え設定することをご検討ください。
+
+### ・クラシック アラート機能用いて、現在メールへのアラート通知を構成していない、かつ今後もバックアップ ジョブ失敗時にメール通知などのアラートをご希望でない場合
+<span style="color: red; ">特段ユーザー様にて追加作業は不要です。</span>
+
+・監視とレポートのシナリオ
+　https://learn.microsoft.com/ja-jp/azure/backup/monitoring-and-alerts-overview#monitoring-and-reporting-scenarios
+
+![image01](https://user-images.githubusercontent.com/96324317/230756428-28f8085a-16bf-49ab-aa50-8659f342b81e.png)
+
+![image02](https://user-images.githubusercontent.com/96324317/230756444-3a95a6b5-dd4d-47e0-b3d1-ea3ffe54fa49.png)
+
+![image03](https://user-images.githubusercontent.com/96324317/230756450-5d78ebd9-19e0-455b-9ba6-6f079f9cf65d.png)
+
+## <a id="Q2"></a>Q2.どの Recovery Services コンテナーが「クラシック アラート設定」になっていますか？ 
+**A2**
+・既定ですべての Recovery Services コンテナーにおいて、「Azure Monitor を使用した組み込みのアラート」へと移行していない Recovery Services コンテナーは、「クラシック アラート」が有効になっており、今回の正常性アラート対象となっております
+・実際に「クラシック アラート」を用いてメールへの通知構成をしているかどうかは、ユーザー様の設定次第です
+
+### 【どの Recovery Services コンテナーが「Azure Monitor を使用した組み込みのアラート」へと移行しておらず、クラシック アラートが有効になっているのか　確認方法】
+ [バックアップ センター] ブレードの[概要] タブより、”アクティブなアラート” 項目に[以前のアラート ソリューションであるクラシック アラートを使用しているコンテナーがxx 個あります。] 
+と表示されている場合、クラシック アラートが有効・利用可能となっているRecovery Services コンテナーが存在しています。
+
+この記述がある場合は、後述される [アクションを起こすには、ここをクリック] をクリックします。
+
+![image04](https://user-images.githubusercontent.com/96324317/230756521-74ec97f7-1147-4799-aa66-59b789ab3f69.png)
+
+![image05](https://user-images.githubusercontent.com/96324317/230756529-fbb23335-c992-4b39-b4b9-071e280168f8.png)
+
+[Azure Monitor アラートのみの使用をオプトイン] 画面にて、リストされているRecovery Services コンテナーを確認します。
+![image06](https://user-images.githubusercontent.com/96324317/230756537-0108ce69-1a21-4052-8984-cb5833ee69f6.png)
+
+### 【どの Recovery Services コンテナーが、クラシック アラートの「通知の構成」を行っているのか　確認方法】
+
+リストされた Recovery Services コンテナーが実際に通知の構成をしているかどうかは、上記でリストされたRecovery Services コンテナー＞[バックアップ アラート] ＞ ”通知の構成” ＞「メールの通知：オン」となっているかどうかで確認可能です。
+![image07](https://user-images.githubusercontent.com/96324317/230756566-faba366c-1f68-4034-8f4e-bbc1f9e7bc2f.png)
+
+通知の構成をしている Recovery Services コンテナーがある場合、[Azure Monitor アラートのみの使用をオプトイン] 画面にて、アラートの設定の更新を行います。
+”通知の構成” ＞「メールの通知：オン」をしている Recovery Services コンテナーが無い場合、かつ、今後バックアップジョブの監視設定をする必要が無い場合は、下記対応は不要です。
+![image08](https://user-images.githubusercontent.com/96324317/230756596-d48ec392-d5c3-4a6b-9b84-73a7e7db4b49.png)
+
+なお、[Azure Monitor アラートのみの使用をオプトイン] 画面より、アラート設定の更新をする場合、下記の赤枠に記載されているように、メールなどの通知が必要な場合は、別途設定していただく必要があります。
+
+詳細は下記のドキュメントを参照いただければと存じます。
+・クラシック アラートから組み込みのAzure Monitor アラートに移行する
+　https://learn.microsoft.com/ja-jp/azure/backup/move-to-azure-monitor-alerts#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts
+
+![image09](https://user-images.githubusercontent.com/96324317/230756610-2254377b-37ea-4205-a6e2-f6b04e959ced.png)
+
+## <a id="Q3"></a>Q3.クラシック アラートから Azure Monitor を使用した組み込みのアラートへと移行した場合のコストはどうなりますか？ 
+**A3** 「Azure Monitor を使用した組み込みのアラートが生成されること」自体に料金は発生しません。
+　　一方、メールなどへアラートを通知させる場合は、少額の料金が発生いたします。
+　　詳細は下記ドキュメントよりご参照ください。
+ 
+・クラシック アラートから組み込みの Azure Monitor アラートに移行する
+　 https://learn.microsoft.com/ja-jp/azure/backup/move-to-azure-monitor-alerts#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts
+
+![image10](https://user-images.githubusercontent.com/96324317/230756632-22b2968e-d899-44f4-8472-c0c5db56f0c9.png)
 
 
-## アラート処理ルール 作成手順
-Azure Backup にて、バックアップ ジョブが失敗した際にアラート通知を出す手段は、下記ドキュメントの通り複数種類ございます。
-今回は **「Azure Monitor を使用した組み込みのアラート」** を利用します。
-・Azure Backup の監視とレポートのソリューション
-https://docs.microsoft.com/ja-jp/azure/backup/monitoring-and-alerts-overview#monitoring-and-reporting-scenarios
-
-![How_to_set_Backup_Alert_01](https://user-images.githubusercontent.com/96324317/205475179-202669bf-2a8b-48bc-8702-20739561daff.png)
-
-「Azure Monitor を使用した組み込みのアラート」を利用した、アラート ルールの作成手順の公開ドキュメントは下記にございます。
-・ジョブの失敗のシナリオに対して Azure Monitor のアラートを有効にする
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#turning-on-azure-monitor-alerts-for-job-failure-scenarios
-
-・アラートの通知を構成する
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#configuring-notifications-for-alerts
-
-バックアップ センター ＞ アラート処理ルール にて、新しいアラート処理ルールを作成することができます。
-
-![How_to_set_Backup_Alert_02](https://user-images.githubusercontent.com/96324317/205475247-3c6c2195-4eac-4d0e-b1b7-91ca7b8f6f83.png)
-
-![How_to_set_Backup_Alert_03](https://user-images.githubusercontent.com/96324317/205475279-c6bbffff-1b22-482f-9052-478362ba48b4.png)
-
-今回は、Recovery Services コンテナー「RSV-JPE-LRS」にて Azure Files をバックアップ構成しているため、スコープを「Recovery Services コンテナー：RSV-JPE-LRS」としています。
-
-![How_to_set_Backup_Alert_05](https://user-images.githubusercontent.com/71251920/151009992-071f529c-b069-4e95-b579-57e41d858db5.png)
-
-また、バックアップ ジョブのエラーを検知した際にアラート通知を発報したいため、「フィルター：重要度」とし、「階層：１ - エラー」を選択します。
-・Azure Backup で保護されたワークロードの監視
-　https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#azure-monitor-alerts-for-azure-backup-preview
-
-![How_to_set_Backup_Alert_06](https://user-images.githubusercontent.com/71251920/151009994-805f0f47-4085-4c6b-b1e0-5453f242f62f.png)
-
-![How_to_set_Backup_Alert_07](https://user-images.githubusercontent.com/71251920/151009996-9dc217c3-e7ed-43dd-b777-a7f82bf9081b.png)
-
-![How_to_set_Backup_Alert_08](https://user-images.githubusercontent.com/71251920/151009999-50e00252-c95e-47df-b6c9-60fb7255e24a.png)
-
-「アクション グループ」には、送信したいメールアドレスを設定しているアクション グループを追加する、もしくは新規作成します。
-今回はあらかじめ作成済のアクション グループを選択しています。
-
-
-![How_to_set_Backup_Alert_09](https://user-images.githubusercontent.com/71251920/151010003-78799d24-3c6a-4ff6-a8ff-39c7c7c95e90.png)
-
- （補足）アクショングループには、下図のように電子メールへの通知を設定済となっています
-
-![How_to_set_Backup_Alert_10](https://user-images.githubusercontent.com/71251920/151010005-e0d96c25-d7cc-4789-9b1e-6be5458b86f6.png)
-
-![How_to_set_Backup_Alert_11](https://user-images.githubusercontent.com/71251920/151010009-0b53d0c3-1d15-4902-9059-ad96f54cb6e6.png)
-
-![How_to_set_Backup_Alert_12](https://user-images.githubusercontent.com/71251920/151010014-e76647b0-3eb5-4cc8-8558-b38636996f48.png)
-
-上図のように設定することで、Recovery Services コンテナー「RSV-JPE-LRS」にてバックアップ構成済のバックアップ ジョブが失敗した際に、指定した電子メール宛先へ、通知メールが送信されるようになります。
-**Subscription 全体を指定指定していただくことで Subscription 全体の Recovery Services コンテナーに対するバックアップアラートを設定することもできます。**
-
-![How_to_set_Backup_Alert_13](https://user-images.githubusercontent.com/71251920/151009979-8f6868a8-2edd-4d08-86a5-ef843a877bda.png)
 
