@@ -101,7 +101,6 @@ Recovery Services コンテナーでは、クラシック アラートが<span s
 ```
 ### クラシックアラートのメール通知が有効化されているかを確認する 
 ### ※ (前提) Connect-AzAccount コマンドにて、 Azure に接続可能な状態で実行すること
-
 # Recovery Services コンテナーのリストを作成
 $RSVList = Get-AzRecoveryServicesVault | Select-Object Name, ResourceGroupName, SubscriptionId
 
