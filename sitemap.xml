@@ -65,34 +65,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
-    
-    <lastmod>2023-04-10</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</loc>
     
     <lastmod>2023-04-10</lastmod>
@@ -206,6 +178,34 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
+    
+    <lastmod>2023-04-10</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
     
     <lastmod>2023-04-10</lastmod>
     
