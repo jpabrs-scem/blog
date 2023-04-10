@@ -88,5 +88,76 @@ Recovery Services コンテナーでは、クラシック アラートが<span s
 
 ![image10](https://user-images.githubusercontent.com/96324317/230756632-22b2968e-d899-44f4-8472-c0c5db56f0c9.png)
 
+## <a id="Q4"></a>Q4.クラシック アラートの「通知の構成」をしているかどうかは 1 つ 1 つの Recovery Services コンテナーを確認する必要がありますか？ 
+**A4** 恐縮ながら、現状はクラシック アラートの「通知の構成」部分を照会するような Azure PowerShell ・Azure CLI コマンドのご用意が無いため、ユーザー様には Azure ポータル画面の Recovery Services コンテナーを 1 つ 1 つ確認いただく必要がございます。
+※　前提としてクラシック アラートの「通知の構成」をされているのであれば、ユーザー様が設定されたメールアドレスの宛先へと、バックアップ ジョブ失敗時などに通知がなされています。
+
+その他確認手段の 1 つとして、以下のような REST API を発行することで確認が可能ですので、参考として紹介いたします。
+※　以下 REST API は、本ブログ発行時点で確認可能な手段であり、事前予告なく返却値が変わる可能性がありますこと、ご了承ください。
+　　以下 REST API は、あくまで参考としてご連携するサンプル コマンドでございます。
+　　コマンド実装をされる場合は貴社にて検証のうえ、実施いただきますようご留意ください。
+　　また、Azure サポートでは主に Post Production の Break & Fix を担当しており、スクリプトのコードレビューのサポートは承っておりませんので、ご理解をいただけますと幸いです。
+
+```
+### クラシックアラートのメール通知が有効化されているかを確認する 
+### ※ (前提) Connect-AzAccount コマンドにて、 Azure に接続可能な状態で実行すること
+
+# Recovery Services コンテナーのリストを作成
+$RSVList = Get-AzRecoveryServicesVault | Select-Object Name, ResourceGroupName, SubscriptionId
+
+# リクエスト ヘッダーを作成
+$headers = @{
+    'Content-type'  = 'application/json'
+    'Authorization' = 'Bearer ' + (Get-AzAccessToken).Token
+}
+
+# 結果出力先のオブジェクトを作成
+$results = @()
+
+# Recovery Services コンテナーごとに API へリクエストを送り、結果を取得する ※1
+foreach ( $rsv in $RSVList ) {
+    $uri = "https://management.azure.com/subscriptions/$($rsv.SubscriptionId)/resourceGroups/$($rsv.ResourceGroupName)/providers/Microsoft.RecoveryServices/vaults/$($rsv.Name)/monitoringConfigurations/notificationConfiguration?api-version=2017-07-01-preview"
+    $response = (Invoke-RestMethod -Uri $uri -Method Get -Headers $headers).properties
+    $results += @([pscustomobject]@{subscriptionID = $rsv.SubscriptionId; resourceGroupName = $rsv.ResourceGroupName; recoveryServicesContainerName = $rsv.Name; isClassicAlertNotificationEnabled = $response.areNotificationsEnabled; mailRecipients = $response.additionalRecipients -join '; ' })
+}
+
+# 全ての結果をコンソール出力
+$results | Sort-Object isClassicAlertNotificationEnabled -Descending | ForEach-Object { Write-Output $_ | Format-Table }
+```
+上記 REST API を発行した場合、「isClassicAlertNotificationEnabled：True」となっている Recovery Services コンテナーが「通知の構成：オン」となっているものとなります。
+![image11](https://user-images.githubusercontent.com/96324317/230820217-777e48c3-f704-4e83-9aeb-1a5b107633af.png)
+
+![image12](https://user-images.githubusercontent.com/96324317/230820265-bcb0a6df-eae6-4946-b0f9-c1f905a539d4.png)
+
+![image13](https://user-images.githubusercontent.com/96324317/230820287-06940bef-a423-4202-a016-e3ec7bd79489.png)
+
+![image14](https://user-images.githubusercontent.com/96324317/230820315-3f9dc117-bfac-4e73-b0aa-d37a12503390.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
