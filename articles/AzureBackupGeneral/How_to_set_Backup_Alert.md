@@ -66,7 +66,6 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-m
 ![How_to_set_Backup_Alert_12](https://user-images.githubusercontent.com/71251920/151010014-e76647b0-3eb5-4cc8-8558-b38636996f48.png)
 
 上図のように設定することで、Recovery Services コンテナー「RSV-JPE-LRS」にてバックアップ構成済のバックアップ ジョブが失敗した際に、指定した電子メール宛先へ、通知メールが送信されるようになります。
-**Subscription 全体を指定指定していただくことで Subscription 全体の Recovery Services コンテナーに対するバックアップアラートを設定することもできます。**
 
 ![How_to_set_Backup_Alert_13](https://user-images.githubusercontent.com/71251920/151009979-8f6868a8-2edd-4d08-86a5-ef843a877bda.png)
 

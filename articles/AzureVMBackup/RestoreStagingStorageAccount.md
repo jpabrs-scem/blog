@@ -34,7 +34,6 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#stor
 選択できるストレージ アカウントは下記の条件を満たすものです。
 ・リストア先 (=ターゲット) のサブスクリプション内およびコンテナーと同じリージョンにある
 ・ZRS 以外の冗長性(LRS・GRS)
-・アフィニティ グループにアタッチされていない
 ・Premium Storage アカウントではない
 
 ### <a id="3"></a>3.リストアされた後にストレージ アカウントに残るファイルについて
