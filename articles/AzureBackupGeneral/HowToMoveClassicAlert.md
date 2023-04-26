@@ -88,6 +88,14 @@ Recovery Services コンテナーでは、クラシック アラートが<span s
 
 ![image10](https://user-images.githubusercontent.com/96324317/230756632-22b2968e-d899-44f4-8472-c0c5db56f0c9.png)
 
+Free レベル (1 か月あたり 1,000 メール) を超える通知に対しては、下記の料金が発生します。
+
+・価格 - Azure Monitor | Microsoft Azure
+https://azure.microsoft.com/ja-jp/pricing/details/monitor/
+“メール            1 か月あたりメール 1,000 通         メール 100,000 通につき $2”
+![image10-1](https://user-images.githubusercontent.com/96324317/234444128-ca0d6690-a6a8-4bcf-9e9e-7e63cf44ce49.png)
+
+
 ## <a id="Q4"></a>Q4.クラシック アラートの「通知の構成」をしているかどうかは 1 つ 1 つの Recovery Services コンテナーを確認する必要がありますか？ 
 **A4** 恐縮ながら、現状はクラシック アラートの「通知の構成」部分を照会するような Azure PowerShell ・Azure CLI コマンドのご用意が無いため、ユーザー様には Azure ポータル画面の Recovery Services コンテナーを 1 つ 1 つ確認いただく必要がございます。
 ※　前提としてクラシック アラートの「通知の構成」をされているのであれば、ユーザー様が設定されたメールアドレスの宛先へと、バックアップ ジョブ失敗時などに通知がなされています。

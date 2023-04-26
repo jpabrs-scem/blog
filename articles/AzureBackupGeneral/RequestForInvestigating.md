@@ -129,7 +129,7 @@ zip などにまとめてご提供いただけますと幸いです。
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/backint.log
 	・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_<DB名>/backint.log
  
-*上記パスに該当のログが無い場合は以下を試し、コマンド実行結果に表示されディレクトリの場所の log をアップロードしてください。
+*上記パスに該当のログが無い場合は以下を試し、コマンド実行結果に表示されるディレクトリの場所の log をアップロードしてください。
 >	sudo -i (rootユーザーに切り替えます)
 	cd / (ディレクトリの最上層に移動します)
 	find ./ -name "backup.log" (findコマンドにより該当のログの場所を特定します)
