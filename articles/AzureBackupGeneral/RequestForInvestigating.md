@@ -119,7 +119,8 @@ zip などにまとめてご提供いただけますと幸いです。
 ![「vm02kensho-20220212151619」ディレクトリの中身,および作成されたディレクトリの Scripts ディレクトリの中身](https://user-images.githubusercontent.com/71251920/153714814-a652e630-b1c8-4e43-a96f-4d974c9d7cf4.png)
 
 ## 3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ<a id="3"></a>
- [1. Azure VM バックアップの障害調査に必要なログ](#1) の **環境情報** ならびに **ログ情報 - Linuxの場合** に加えて下記もご対応お願いします。
+<span style="color: red; "> [1. Azure VM バックアップの障害調査に必要なログ](#1) の **環境情報** ならびに **ログ情報 - Linuxの場合** に加えて</span>下記もご対応お願いします。
+
 *お手数ですが、全ての DB の backup.log 及び backint.log の採取をお願いします。
 
 ### SAP HANAのbackup.log 及び backint.log 
@@ -134,6 +135,9 @@ zip などにまとめてご提供いただけますと幸いです。
 	cd / (ディレクトリの最上層に移動します)
 	find ./ -name "backup.log" (findコマンドにより該当のログの場所を特定します)
 	find ./ -name "backint.log" (findコマンドにより該当のログの場所を特定します)
+
+### opt 配下の log 
+・/opt/msawb/var/log ディレクトリ配下のファイルを zip 等におまとめのうえで、アップロードしてください。
 
 ## 4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ<a id="4"></a>
 
