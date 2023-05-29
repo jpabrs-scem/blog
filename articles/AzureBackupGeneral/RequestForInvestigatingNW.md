@@ -24,7 +24,7 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/
 
 ## 1. Windows VM における Azure Backup 疎通確認<a id="1"></a>
 まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。
-[Check_Backup_NW_ver1.6.zip](https://github.com/jpabrs-scem/blog/files/9391344/Check_Backup_NW_ver1.6.zip)
+[Check_Backup_NW_ver1.7.zip](https://github.com/jpabrs-scem/blog/files/11563694/Check_Backup_NW_ver1.7.zip)
  
 
 (スクリプト実行手順)
@@ -41,7 +41,7 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/
  
 4. 以下コマンドを実行し、スクリプトを実行してください。
 (現在画像とバージョンが異なりますが、同様の手順でございます。)
->.\Check_Backup_NW_ver1.4.ps1
+>.\Check_Backup_NW_ver1.3.ps1
 ![](https://user-images.githubusercontent.com/71251920/175529518-afd3ab91-e450-42b9-b7b6-310c6633cca1.png)
 * 上記スクリプト実施時に実行ポリシーの制限によりスクリプトが実行できない場合はPowerShell を管理者権限で起動し、下記コマンドを実行し実行ポリシーを変更後、再度実行していただければ幸いでございます。
 >Set-ExecutionPolicy Unrestricted
@@ -61,7 +61,7 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/
 ## 2. Linux VM における Azure Backup 疎通確認<a id="2"></a>
 
 まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。
-[Check_Backup_NW_Linux_ver1.3.zip](https://github.com/jpabrs-scem/blog/files/9387864/Check_Backup_NW_Linux_ver1.3.zip)
+[Check_Backup_NW_Linux_ver1.4.zip](https://github.com/jpabrs-scem/blog/files/11563695/Check_Backup_NW_Linux_ver1.4.zip)
 
 (スクリプト実行手順)
 1. 疎通確認スクリプトをダウンロードし、展開してください。
@@ -69,10 +69,10 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/
 
 2. 対象の Linux マシンにスクリプトを移動し実行します。
 必要に応じて chmod コマンドなどを用いてパーミッションを変更してください。
->chmod 777 Check_Backup_NW_Linux_ver1.3.sh 
+>chmod 777 Check_Backup_NW_Linux_ver1.4.sh 
 
 下記のように実行します。
->./Check_Backup_NW_Linux_ver1.3.sh
+>./Check_Backup_NW_Linux_ver1.4.sh
 
 3. 実行完了
 実行が完了すれば下記のファイルが作成されます。
