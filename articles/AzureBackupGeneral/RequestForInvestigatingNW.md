@@ -24,7 +24,7 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/
 
 ## 1. Windows VM における Azure Backup 疎通確認<a id="1"></a>
 まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。
-[Check_Backup_NW_ver1.7.zip](https://github.com/jpabrs-scem/blog/files/11563694/Check_Backup_NW_ver1.7.zip)
+[Check_Backup_NW_ver1.7.zip](https://github.com/jpabrs-scem/blog/files/11648460/Check_Backup_NW_ver1.7.zip)
  
 
 (スクリプト実行手順)
@@ -61,7 +61,7 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/
 ## 2. Linux VM における Azure Backup 疎通確認<a id="2"></a>
 
 まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。
-[Check_Backup_NW_Linux_ver1.4.zip](https://github.com/jpabrs-scem/blog/files/11563695/Check_Backup_NW_Linux_ver1.4.zip)
+[Check_Backup_NW_Linux_ver1.4.zip](https://github.com/jpabrs-scem/blog/files/11648461/Check_Backup_NW_Linux_ver1.4.zip)
 
 (スクリプト実行手順)
 1. 疎通確認スクリプトをダウンロードし、展開してください。
