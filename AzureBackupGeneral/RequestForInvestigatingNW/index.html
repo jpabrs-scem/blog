@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/175529523-b5004d01-f4cd-4879-9c48-b9de17a8c477.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/185762249-d5dbed3c-9bce-409e-8a88-a5b43a52fe95.png">
 <meta property="article:published_time" content="2022-06-24T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-05-14T05:34:40.612Z">
+<meta property="article:modified_time" content="2023-06-08T00:08:47.307Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="情報採取">
@@ -109,7 +109,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+a1da8866-92dc-57c9-87f2-2f7cc149be3d%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1+%28%E7%96%8E%E9%80%9A%E7%A2%BA%E8%AA%8D%29%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FRequestForInvestigatingNW%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FRequestForInvestigatingNW.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FRequestForInvestigatingNW.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/" data-id="clhmzf06100080nlc1rrg0t5x" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/" data-id="climds5gs00080nlieknw0aaw" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -119,7 +119,7 @@
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
 <p><a href="#1">1. Windows VM における Azure Backup 疎通確認</a><br><a href="#2">2. Linux VM における Azure Backup 疎通確認</a><br><a href="#3">3. プライベート エンドポイント環境における Azure Backup 疎通確認</a></p>
 <hr>
-<h2 id="1-Windows-VM-における-Azure-Backup-疎通確認"><a href="#1-Windows-VM-における-Azure-Backup-疎通確認" class="headerlink" title="1. Windows VM における Azure Backup 疎通確認"></a>1. Windows VM における Azure Backup 疎通確認<a id="1"></a></h2><p>まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。<br><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/9391344/Check_Backup_NW_ver1.6.zip">Check_Backup_NW_ver1.6.zip</a></p>
+<h2 id="1-Windows-VM-における-Azure-Backup-疎通確認"><a href="#1-Windows-VM-における-Azure-Backup-疎通確認" class="headerlink" title="1. Windows VM における Azure Backup 疎通確認"></a>1. Windows VM における Azure Backup 疎通確認<a id="1"></a></h2><p>まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。<br><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/11648460/Check_Backup_NW_ver1.7.zip">Check_Backup_NW_ver1.7.zip</a></p>
 <p>(スクリプト実行手順)</p>
 <ol>
 <li>疎通確認スクリプトをダウンロードし、展開してください。<br>※ ファイルの解凍パスワードは <strong>“AzureBackup”</strong> となります。</li>
@@ -132,7 +132,7 @@
 </blockquote>
 </li>
 <li>以下コマンドを実行し、スクリプトを実行してください。<br>(現在画像とバージョンが異なりますが、同様の手順でございます。)<blockquote>
-<p>.\Check_Backup_NW_ver1.4.ps1<br><img src="https://user-images.githubusercontent.com/71251920/175529518-afd3ab91-e450-42b9-b7b6-310c6633cca1.png"></p>
+<p>.\Check_Backup_NW_ver1.3.ps1<br><img src="https://user-images.githubusercontent.com/71251920/175529518-afd3ab91-e450-42b9-b7b6-310c6633cca1.png"></p>
 </blockquote>
 </li>
 </ol>
@@ -154,20 +154,20 @@
 <ul>
 <li>control + c にて強制終了した場合においても該当のログファイルが出力されますので、弊社までご提供お願いいたします。</li>
 </ul>
-<h2 id="2-Linux-VM-における-Azure-Backup-疎通確認"><a href="#2-Linux-VM-における-Azure-Backup-疎通確認" class="headerlink" title="2. Linux VM における Azure Backup 疎通確認"></a>2. Linux VM における Azure Backup 疎通確認<a id="2"></a></h2><p>まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。<br><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/9387864/Check_Backup_NW_Linux_ver1.3.zip">Check_Backup_NW_Linux_ver1.3.zip</a></p>
+<h2 id="2-Linux-VM-における-Azure-Backup-疎通確認"><a href="#2-Linux-VM-における-Azure-Backup-疎通確認" class="headerlink" title="2. Linux VM における Azure Backup 疎通確認"></a>2. Linux VM における Azure Backup 疎通確認<a id="2"></a></h2><p>まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。<br><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/11648461/Check_Backup_NW_Linux_ver1.4.zip">Check_Backup_NW_Linux_ver1.4.zip</a></p>
 <p>(スクリプト実行手順)</p>
 <ol>
 <li><p>疎通確認スクリプトをダウンロードし、展開してください。<br>※ ファイルの解凍パスワードは <strong>“AzureBackup”</strong> となります。</p>
 </li>
 <li><p>対象の Linux マシンにスクリプトを移動し実行します。<br>必要に応じて chmod コマンドなどを用いてパーミッションを変更してください。</p>
 <blockquote>
-<p>chmod 777 Check_Backup_NW_Linux_ver1.3.sh </p>
+<p>chmod 777 Check_Backup_NW_Linux_ver1.4.sh </p>
 </blockquote>
 </li>
 </ol>
 <p>下記のように実行します。</p>
 <blockquote>
-<p>./Check_Backup_NW_Linux_ver1.3.sh</p>
+<p>./Check_Backup_NW_Linux_ver1.4.sh</p>
 </blockquote>
 <ol start="3">
 <li>実行完了<br>実行が完了すれば下記のファイルが作成されます。<br>弊社までご提供お願いいたします。<blockquote>
