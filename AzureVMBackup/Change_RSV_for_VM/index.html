@@ -6,12 +6,12 @@
   
   <title>Azure VM BackupにおけるRecovery Services コンテナーの変更について | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、Azure VM Backup を取得している Recovery Services コンテナーを変更することは可能か？について説明させていただきます。 バックアップアイテムが保護されたあとは冗長性の変更をいただくことが出来ないので、 Recovery Services コンテナーを変更いただく必">
+  <meta name="description" content="皆様こんにちは。Azure Backup サポートです。今回はお問い合わせをいただくことが多い、Azure VM Backup を取得している Recovery Services コンテナーを変更することは可能か？について説明させていただきます。 なんらかのバックアップ構成を行ったあとは、Recovery Services コンテナー上の冗長性の変更をいただくことが出来ないため、 Recover">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure VM BackupにおけるRecovery Services コンテナーの変更について">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、Azure VM Backup を取得している Recovery Services コンテナーを変更することは可能か？について説明させていただきます。 バックアップアイテムが保護されたあとは冗長性の変更をいただくことが出来ないので、 Recovery Services コンテナーを変更いただく必">
+<meta property="og:description" content="皆様こんにちは。Azure Backup サポートです。今回はお問い合わせをいただくことが多い、Azure VM Backup を取得している Recovery Services コンテナーを変更することは可能か？について説明させていただきます。 なんらかのバックアップ構成を行ったあとは、Recovery Services コンテナー上の冗長性の変更をいただくことが出来ないため、 Recover">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033255-67f50490-d9e1-4da1-bd32-38b90169176f.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033252-b754f533-636e-48b7-954a-64d05b206926.jpg">
@@ -26,13 +26,13 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033227-2c45fbbd-0036-429a-8a33-9dbf06cce622.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033224-cee11ab5-892f-4ed0-b085-2222c859c83b.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033220-1a7bdbaa-c235-47c1-a999-04ecff700e92.jpg">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/15983e5f-acea-4970-974f-e8e722a23f70">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033219-95548634-88d5-4dd1-a6b1-f2a3287402c1.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033215-abe38422-30ba-450e-a27e-773957273cf8.jpg">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033211-44a0eab1-f6cf-41ba-908b-e83454025295.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033209-9d8daa07-6052-49e7-ae71-0ba5a7e3a15e.jpg">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/153033202-587b9bd3-bcd5-41a6-a10f-d6a1bffdbca4.jpg">
-<meta property="article:published_time" content="2022-02-09T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-06-08T00:08:47.339Z">
+<meta property="article:published_time" content="2023-06-08T03:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-08T01:58:31.105Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
@@ -116,83 +116,88 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-02-09T03:00:00.000Z" itemprop="datePublished">2022-02-09</time>
+  <time datetime="2023-06-08T03:00:00.000Z" itemprop="datePublished">2023-06-08</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6704c4a7-9762-507a-bd14-497b7c1b27cb%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8BRecovery+Services+%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%BC%E3%81%AE%E5%A4%89%E6%9B%B4%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FChange_RSV_for_VM%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FChange_RSV_for_VM.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FChange_RSV_for_VM.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="climds5ha000x0nlighlh2wm2" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="climhpb44004g0npvbt35amsq" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回はお問い合わせをいただくことが多い、<strong>Azure VM Backup を取得している Recovery Services コンテナーを変更することは可能か？</strong>について説明させていただきます。</p>
-<p>バックアップアイテムが保護されたあとは冗長性の変更をいただくことが出来ないので、 Recovery Services コンテナーを変更いただく必要がございます。<br>ただし、GRS 設定時、CRR 有効化のみ可能です。<br>・ストレージ冗長性の設定<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#set-storage-redundancy">https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#set-storage-redundancy</a></p>
+<p>皆様こんにちは。Azure Backup サポートです。<br>今回はお問い合わせをいただくことが多い、<strong>Azure VM Backup を取得している Recovery Services コンテナーを変更することは可能か？</strong>について説明させていただきます。</p>
+<p>なんらかのバックアップ構成を行ったあとは、Recovery Services コンテナー上の冗長性の変更をいただくことが出来ないため、 Recovery Services コンテナー自体を変更いただく必要がございます。<br>ただし、CRR の「無効化」→「有効化」への切り替えのみは、バックアップ アイテムを保護した後でも変更が可能です。</p>
+<p>・ストレージ冗長性の設定<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy">https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy</a></p>
 <blockquote>
 <p>コンテナーでバックアップを構成する前に、必ず Recovery Services コンテナーのストレージ レプリケーションの種類を変更してください。 バックアップを構成した後、変更するオプションは無効になります。</p>
 </blockquote>
 <p>結論から申し上げますと <strong>Recovery Services コンテナーを変更することは可能</strong>です。</p>
-<p>なお、本件に関連した公式ドキュメントは下記でございます。<br>・Recovery Services コンテナーを作成して構成する - 既定の設定を変更する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-default-settings">https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-default-settings</a></p>
+<p>なお、本件に関連した公式ドキュメントは下記でございます。<br>・Recovery Services コンテナーを作成して構成する - 既定の設定を変更する<br>  <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#modify-default-settings">https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#modify-default-settings</a></p>
 <p>すでにバックアップを構成している　VM に対して Recovery Services コンテナー を変更するには、VM と 既存のRecovery Services コンテナーとの紐づけを解除する必要がございます。<br>紐づけを解除することで、新たに別の Recovery Services コンテナーに紐づけることが可能です。</p>
-<p>紐づけを解除する方法としては 後述の通り２ 種類ございます。</p>
+<p>紐づけを解除する方法としては 後述の通り ２ 種類ございます。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. 既存のバックアップデータを [維持] する方法</a><br> <a href="#1-1"> 1.1 注意事項</a><br> <a href="#1-2"> 1.2 変更手順概要</a><br> <a href="#1-3"> 1.3 手順</a><br><a href="#2">2. 既存のバックアップデータを [削除] する方法</a><br> <a href="#2-1"> 2.1 注意事項</a><br> <a href="#2-2"> 2.2 変更手順概要</a><br> <a href="#2-3"> 2.3 手順</a><br> <a href="#2-3-1"> 2.3.1 論理削除状態について</a><br><a href="#3">3. バックアップデータを残しつつリソースグループを変更しない方法</a><br> <a href="#3-1"> 3.1 手順</a></p>
+<p><a href="#1">1. 既存のバックアップデータを [維持] する方法</a><br> <a href="#1-1"> 1.1 注意事項</a><br> <a href="#1-2"> 1.2 変更手順概要</a><br> <a href="#1-3"> 1.3 手順</a><br><a href="#2">2. 既存のバックアップデータを [削除] する方法</a><br> <a href="#2-1"> 2.1 注意事項</a><br> <a href="#2-2"> 2.2 変更手順概要</a><br> <a href="#2-3"> 2.3 手順</a><br> <a href="#2-3-1"> 2.3.1 論理削除状態について</a><br><a href="#3">3. (補足) バックアップデータを残しつつリソースグループを変更しない方法</a><br> <a href="#3-1"> 3.1 手順</a></p>
 <hr>
-<h2 id="1-既存のバックアップデータを-維持-する方法"><a href="#1-既存のバックアップデータを-維持-する方法" class="headerlink" title="1. 既存のバックアップデータを [維持] する方法"></a>1. 既存のバックアップデータを [維持] する方法<a id="1"></a></h2><p> Recovery Services コンテナーと VM の紐づけは VM のリソースグループ名と VM 名によって行っています。<br>この方法ではその仕組みを利用、つまり対象の VM のリソースグループを変更することにより、既存の Recovery Services コンテナーとの紐づけを解除します。<br>なお、リソースグループを変更し新しい Recovery Services コンテナーにてバックアップを構成した場合でも、VM のリソースグループ名を 元のリソースグループに戻した場合、既存の Recovery Services コンテナーと紐づいている状態になります。</p>
-<h3 id="1-1-注意事項"><a href="#1-1-注意事項" class="headerlink" title="1.1 注意事項"></a>1.1 注意事項<a id="1-1"></a></h3><p>こちらの方法では対象の VM のリソースグループの変更が必要です。<br>・Recovery Services コンテナーを作成して構成する<br>    <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data">https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data</a></p>
+<h2 id="1-既存のバックアップデータを-維持-する方法"><a href="#1-既存のバックアップデータを-維持-する方法" class="headerlink" title="1. 既存のバックアップデータを [維持] する方法"></a>1. 既存のバックアップデータを [維持] する方法<a id="1"></a></h2><p> Recovery Services コンテナーと VM の紐づけは VM のリソースグループ名と VM 名によって行っています。<br>この方法では対象の VM のリソースグループを変更することにより、既存の Recovery Services コンテナーとの紐づけを解除します。<br>なお、リソースグループを変更し新しい Recovery Services コンテナーにてバックアップを構成した場合でも、VM のリソースグループ名を 元のリソースグループに戻した場合、既存の Recovery Services コンテナーと紐づいている状態になります。</p>
+<h3 id="1-1-注意事項"><a href="#1-1-注意事項" class="headerlink" title="1.1 注意事項"></a>1.1 注意事項<a id="1-1"></a></h3><p>こちらの方法では対象の VM のリソースグループの変更が必要です。<br>・Recovery Services コンテナーを作成して構成する<br>    <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#must-preserve-previous-backed-up-data">https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#must-preserve-previous-backed-up-data</a></p>
 <blockquote>
 <p>Azure VM の場合は、GRS コンテナー内の VM に対して保護を停止してデータを保持し、VM を別のリソース グループに移動してから、LRS コンテナー内の VM を保護することができます。</p>
 </blockquote>
 <p>Recovery Services コンテナー変更のために、リソース グループの変更が必要なものは、「Azure VM」リソースのみで、VM にアタッチされているディスクや NIC のリソース グループを変更する必要はございません。<br>お客様の管理上、VM にアタッチされているディスクも含めてリソース グループを変更されたい場合、Azure VM Backup にて取得した復元ポイント コレクションが存在している状態では、アタッチされているディスクのリソース グループの変更がかないません。<br>もし、Azure VM Backup にてバックアップ構成している VM にアタッチされているディスクのリソース グループを変更されたい場合は、Azure ポータル画面 ＞ 復元ポイント コレクションへ移動し、対象 VM の復元ポイント コレクションを削除すれば、ディスクのリソース グループを変更することができます。<br>ただし、復元ポイント コレクションを削除した場合は、スナップショット層に格納されている復元ポイントを削除することになりますので、削除した復元ポイントについては、インスタント リストア機能による「復元」ができなくなります。（Recovery Services コンテナー層からの復元のみとなります。）<br>また、回復の種類が “スナップショット” のみの復元ポイントがある場合に復元ポイント コレクションを削除した場合には、該当の復元ポイントより復元ができなくなりますのでご留意ください。（回復の種類が “スナップショットと標準コンテナー”、”標準コンテナー” となっている復元ポイントに関しては、Recovery Services コンテナー層からの復元は可能でございます）</p>
 <h3 id="1-2-変更手順概要"><a href="#1-2-変更手順概要" class="headerlink" title="1.2 変更手順概要"></a>1.2 変更手順概要<a id="1-2"></a></h3><ol>
-<li>古いRecovery Service コンテナーでのバックアップ停止する</li>
+<li>古いRecovery Services コンテナーでのバックアップ停止する</li>
 <li>バックアップ対象の VM のリソースグループを変更する</li>
-<li>新しいRecovery Service コンテナーにてバックアップを構成する</li>
+<li>新しいRecovery Services コンテナーにてバックアップを構成する</li>
 </ol>
-<h3 id="1-3-手順"><a href="#1-3-手順" class="headerlink" title="1.3 手順"></a>1.3 手順<a id="1-3"></a></h3><p>0-1. Recovery Service コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )<br><img src="https://user-images.githubusercontent.com/71251920/153033255-67f50490-d9e1-4da1-bd32-38b90169176f.jpg" alt="Change_RSV_for_VM_01"></p>
-<p>0-2. Recovery Service コンテナー: rsv-1 にてバックアップ有効化、復旧ポイント作成済み<br><img src="https://user-images.githubusercontent.com/71251920/153033252-b754f533-636e-48b7-954a-64d05b206926.jpg" alt="Change_RSV_for_VM_02"></p>
+<h3 id="1-3-手順"><a href="#1-3-手順" class="headerlink" title="1.3 手順"></a>1.3 手順<a id="1-3"></a></h3><p>0-1. Recovery Services コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )<br><img src="https://user-images.githubusercontent.com/71251920/153033255-67f50490-d9e1-4da1-bd32-38b90169176f.jpg" alt="Change_RSV_for_VM_01"></p>
+<p>0-2. Recovery Services コンテナー: rsv-1 にてバックアップ有効化、復元ポイント作成済み<br><img src="https://user-images.githubusercontent.com/71251920/153033252-b754f533-636e-48b7-954a-64d05b206926.jpg" alt="Change_RSV_for_VM_02"></p>
 <p>1-1. VM のバックアップを停止<br><img src="https://user-images.githubusercontent.com/71251920/153033249-43853045-8fe5-45db-81f8-192f132642c6.jpg" alt="Change_RSV_for_VM_03"></p>
-<p>1-2. 停止の際、バックアップデータ (復旧ポイント) の保持を選択し、理由を記入してバックアップの停止をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033247-afd58826-d3ab-4a12-a97f-200aed5e8080.jpg" alt="Change_RSV_for_VM_04"></p>
+<p>1-2. 停止の際、バックアップデータ (復元ポイント) の保持を選択し、理由を記入してバックアップの停止をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033247-afd58826-d3ab-4a12-a97f-200aed5e8080.jpg" alt="Change_RSV_for_VM_04"></p>
 <p>1-3. バックアップの無効化完了を確認</p>
-<p>(1-4) この状態では別のRecovery Service コンテナーではまだ紐づけが解除されていないためバックアップを有効化できません。<br>(別のRecovery Service コンテナーでバックアップを有効化しようとしても対象に表示されません)<br><img src="https://user-images.githubusercontent.com/71251920/153033243-14e0e75a-aeee-4fa6-9e31-c2d74e63f494.jpg" alt="Change_RSV_for_VM_06"></p>
+<p>1-4. この状態ではまだ別のRecovery Services コンテナーにて「バックアップの有効化」を試みても、VM が対象として表示されません<br><img src="https://user-images.githubusercontent.com/71251920/153033243-14e0e75a-aeee-4fa6-9e31-c2d74e63f494.jpg" alt="Change_RSV_for_VM_06"></p>
 <p>2-1. VM &gt; 概要 &gt; リソースグループ 横の移動をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033242-3bec21b2-4884-49f0-b4a3-79f618e886c8.jpg" alt="Change_RSV_for_VM_07"></p>
 <p>2-2. 移動させたいリソースグループを選択し、次へ<br>2-3. 検証が完了するのを待ち、次へ<br>2-4. 内容を確認し、下部チェックを選択して、移動をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033238-2dd487ff-b8e1-44b9-af62-2ec16276a830.jpg" alt="Change_RSV_for_VM_08"></p>
 <p>2-5. リソースグループの移動完了を確認<br><img src="https://user-images.githubusercontent.com/71251920/153033235-749eb8ff-5a0e-4573-b736-01bb9232fd8e.jpg" alt="Change_RSV_for_VM_09"></p>
-<p>3-1. 新たにバックアップを取得したい別の Recovery Service コンテナーにて該当の VM のバックアップを有効化<br>    (この時点で別の Recovery Service コンテナーのバックアップ構成の仮想マシン選択欄に該当の VM が表示されるようになります)<br><img src="https://user-images.githubusercontent.com/71251920/153033232-ea02b8b6-f6a5-48d5-b59a-8cd6f20bd115.jpg" alt="Change_RSV_for_VM_10"></p>
-<p>3-2. 今すぐバックアップにてバックアップ完了。<br>新たなRecovery Service コンテナーにて問題なくバックアップできることを確認</p>
+<p>3-1. 新たにバックアップを取得したい別の Recovery Services コンテナーにて該当の VM のバックアップを有効化<br>    (この時点で別の Recovery Services コンテナーのバックアップ構成の仮想マシン選択欄に該当の VM が表示されるようになります)<br><img src="https://user-images.githubusercontent.com/71251920/153033232-ea02b8b6-f6a5-48d5-b59a-8cd6f20bd115.jpg" alt="Change_RSV_for_VM_10"></p>
+<p>3-2. 今すぐバックアップにてバックアップ完了。<br>新たなRecovery Services コンテナーにて問題なくバックアップできることを確認</p>
 <p><img src="https://user-images.githubusercontent.com/71251920/153033229-353621e5-0fa7-4ffc-9e24-23650542bc4e.jpg" alt="Change_RSV_for_VM_11"></p>
-<p>(3-3) 古いRecovery Service コンテナーには過去の復旧ポイントは残存したままで、この復旧ポイントからも VM を復元することが可能です。<br><img src="https://user-images.githubusercontent.com/71251920/153033227-2c45fbbd-0036-429a-8a33-9dbf06cce622.jpg" alt="Change_RSV_for_VM_12"></p>
-<h2 id="2-既存のバックアップデータを-削除-する方法"><a href="#2-既存のバックアップデータを-削除-する方法" class="headerlink" title="2. 既存のバックアップデータを [削除] する方法"></a>2. 既存のバックアップデータを [削除] する方法<a id="2"></a></h2><p> 既存のRecovery Services コンテナーに保存された対象 VM のバックアップデータを削除することによって、既存の Recovery Services コンテナーと対象の VM との紐づけを解除します。 </p>
-<h3 id="2-1-注意事項"><a href="#2-1-注意事項" class="headerlink" title="2.1 注意事項"></a>2.1 注意事項<a id="2-1"></a></h3><p>こちらの方法では対象VMの 既存のバックアップデータの削除が必要です。<br>・Recovery Services コンテナーを作成して構成する<br>    <a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#dont-need-to-preserve-previous-backed-up-data">https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#dont-need-to-preserve-previous-backed-up-data</a></p>
+<p>3-3. 古いRecovery Services コンテナーには過去の復元ポイントは残存したままで、この復元ポイントからも VM を復元することが可能です。<br><img src="https://user-images.githubusercontent.com/71251920/153033227-2c45fbbd-0036-429a-8a33-9dbf06cce622.jpg" alt="Change_RSV_for_VM_12"></p>
+<h2 id="2-既存のバックアップデータを-削除-する方法"><a href="#2-既存のバックアップデータを-削除-する方法" class="headerlink" title="2. 既存のバックアップデータを [削除] する方法"></a>2. 既存のバックアップデータを [削除] する方法<a id="2"></a></h2><p> 既存の Recovery Services コンテナーに保存された対象 VM のバックアップデータを削除することによって、既存の Recovery Services コンテナーと対象の VM との紐づけを解除します。 </p>
+<h3 id="2-1-注意事項"><a href="#2-1-注意事項" class="headerlink" title="2.1 注意事項"></a>2.1 注意事項<a id="2-1"></a></h3><p>こちらの方法では対象 VMの 既存のバックアップデータの削除が必要です。<br>・Recovery Services コンテナーを作成して構成する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#dont-need-to-preserve-previous-backed-up-data">https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#dont-need-to-preserve-previous-backed-up-data</a></p>
 <blockquote>
 <p>新しい LRS コンテナーのワークロードを保護するには、GRS コンテナー内の現在の保護とデータを削除し、バックアップを再構成する必要があります。</p>
 </blockquote>
-<p>また本作業を行う際、バックアップアラートを設定していない場合でも発砲されます。<br>詳細につきましては下記をご確認ください。<br>・バックアップ アラートの通知<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#notification-for-backup-alerts">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#notification-for-backup-alerts</a></p>
+<p>また本作業を行う際、バックアップアラートを設定していない場合でも発砲されます。<br>詳細につきましては下記をご確認ください。<br>・バックアップ アラートの通知<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#notification-for-backup-alerts">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#notification-for-backup-alerts</a></p>
 <blockquote>
 <p>“破壊的な操作 (データを削除して保護を停止など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。</p>
 </blockquote>
 <h3 id="2-2-変更手順概要"><a href="#2-2-変更手順概要" class="headerlink" title="2.2 変更手順概要"></a>2.2 変更手順概要<a id="2-2"></a></h3><ol>
-<li>古いRecovery Service コンテナーでのバックアップを停止し、バックアップデータを削除する</li>
-<li>新しいRecovery Service コンテナーにてバックアップを構成する</li>
+<li>古いRecovery Services コンテナーでのバックアップを停止し、バックアップ データを削除する</li>
+<li>新しいRecovery Services コンテナーにてバックアップを構成する</li>
 </ol>
-<h3 id="2-3-手順"><a href="#2-3-手順" class="headerlink" title="2.3 手順"></a>2.3 手順<a id="2-3"></a></h3><p>0-1. Recovery Service コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )<br><img src="https://user-images.githubusercontent.com/71251920/153033224-cee11ab5-892f-4ed0-b085-2222c859c83b.jpg" alt="Change_RSV_for_VM_13"></p>
-<p>0-2. Recovery Service コンテナー: rsv-1 にてバックアップ有効化、復旧ポイント作成済み<br><img src="https://user-images.githubusercontent.com/71251920/153033220-1a7bdbaa-c235-47c1-a999-04ecff700e92.jpg" alt="Change_RSV_for_VM_14"></p>
-<p>1-1. VM のバックアップを停止<br><img src="https://user-images.githubusercontent.com/71251920/153033219-95548634-88d5-4dd1-a6b1-f2a3287402c1.jpg" alt="Change_RSV_for_VM_15"></p>
-<p>1-2. 停止の際、バックアップデータ (復旧ポイント) の削除を選択し、理由を記入してバックアップの停止をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033215-abe38422-30ba-450e-a27e-773957273cf8.jpg" alt="Change_RSV_for_VM_16"></p>
-<p>1-3. この時、設定 – プロパティ &gt; セキュリティ設定 更新 &gt; 論理削除 が 無効 に設定されていることを確認してください。<br>    バックアップデータは完全に削除される必要があります。<br><img src="https://user-images.githubusercontent.com/71251920/153033211-44a0eab1-f6cf-41ba-908b-e83454025295.jpg" alt="Change_RSV_for_VM_17"></p>
+<h3 id="2-3-手順"><a href="#2-3-手順" class="headerlink" title="2.3 手順"></a>2.3 手順<a id="2-3"></a></h3><p>0-1. Recovery Services コンテナー変更対象の VM の状態を確認 (リソースグループ : rg-1 )<br><img src="https://user-images.githubusercontent.com/71251920/153033224-cee11ab5-892f-4ed0-b085-2222c859c83b.jpg" alt="Change_RSV_for_VM_13"></p>
+<p>0-2. Recovery Services コンテナー: rsv-1 にてバックアップ有効化、復元ポイント作成済み<br><img src="https://user-images.githubusercontent.com/71251920/153033220-1a7bdbaa-c235-47c1-a999-04ecff700e92.jpg" alt="Change_RSV_for_VM_14"></p>
+<p>1-1. 復元ポイントを即時に削除するために、一時的に「論理削除」設定を無効化します。<br>Recovery Services コンテナー &gt; プロパティ &gt; セキュリティ設定 更新 へと移動し<br>下記チェックボックスを一時的に「チェック OFF」へと変更しておきます。</p>
+<p>・クラウド ワークロードの論理的な削除を有効にする</p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/15983e5f-acea-4970-974f-e8e722a23f70" alt="Change_RSV_for_VM_17"></p>
 <ul>
-<li>注意事項： 論理削除状態について<a id="2-3-1"></a><br>論理削除状態(論理削除が有効な状態で削除した状態)では完全にバックアップデータが消えず、対象 VM と  Recovery Services コンテナーの紐づけが解除されません。その際は下記 URL を参考にして論理削除状態のバックアップアイテムを完全に削除してください。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items</a> </li>
+<li>注意事項： 論理削除状態について<a id="2-3-1"></a><br>論理削除状態 (論理削除が有効な状態で削除した状態) では完全にバックアップデータが消えず、対象 VM と  Recovery Services コンテナーの紐づけが解除されません。その際は下記 URL を参考にして論理削除状態のバックアップアイテムを完全に削除してください。</li>
 </ul>
-<p>1-4. バックアップデータの削除完了を”  Azure Portal  → 対象のRecovery Services コンテナー → バックアップアイテム → Azure Virtual Machines” から、対象のVMが表示されないことを確認します。</p>
-<p>2-1. 新たにバックアップを取得したい別の Recovery Service コンテナーにて該当の VM のバックアップを有効化<br>    (この時点で別の Recovery Service コンテナーのバックアップ構成の仮想マシン選択欄に該当の VM が表示されるようになります)<br><img src="https://user-images.githubusercontent.com/71251920/153033209-9d8daa07-6052-49e7-ae71-0ba5a7e3a15e.jpg" alt="Change_RSV_for_VM_18"></p>
-<p>2-2. 今すぐバックアップにてバックアップ完了。<br>新たなRecovery Service コンテナーにて問題なくバックアップできることを確認<br><img src="https://user-images.githubusercontent.com/71251920/153033202-587b9bd3-bcd5-41a6-a10f-d6a1bffdbca4.jpg" alt="Change_RSV_for_VM_19"></p>
-<h2 id="3-バックアップデータを残しつつリソースグループを変更しない方法"><a href="#3-バックアップデータを残しつつリソースグループを変更しない方法" class="headerlink" title="3. バックアップデータを残しつつリソースグループを変更しない方法"></a>3. バックアップデータを残しつつリソースグループを変更しない方法<a id="3"></a></h2><p><strong>Azure Backup のデータをそのまま保存し、VM のリソースグループを変更せずに新しい Recovery Services コンテナーに紐づけることは上述した通り、Recovery Services コンテナーと VM の紐づけは VM のリソースグループ名と VM 名によって行ってるためできません。</strong><br><a href="#1">1. 既存のバックアップデータを [維持] する方法</a> によって変更後、リソースグループを戻すと元の Recovery Services コンテナーが残っている場合にはもとの Recovery Services コンテナーに紐づいてしまいます。<br>また、もとの Recovery Services コンテナーが削除された場合には新しい Recovery Services コンテナーとの紐づけが切れ、 Azure VM のバックアップメニューからはバックアップが構成されていない状態になります。</p>
-<p>そのため方法としては、<strong>既存のバックアップデータを一度ディスクとして復元して保存いただくことで可能です</strong>。特定の復元ポイントだけを保存しておけばよいという場合はこちらの手順が利用可能です。<br>もちろん、すべての復元ポイントからディスクとして復元いただければ、すべての バックアップデータを保存することは可能です。</p>
+<p>・論理的に削除されたバックアップ項目を完全に削除する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items</a></p>
+<p>1-2. VM のバックアップを停止<br><img src="https://user-images.githubusercontent.com/71251920/153033219-95548634-88d5-4dd1-a6b1-f2a3287402c1.jpg" alt="Change_RSV_for_VM_15"></p>
+<p>1-3. 停止の際、バックアップデータ (復元ポイント) の削除を選択し、理由を記入してバックアップの停止をクリック<br><img src="https://user-images.githubusercontent.com/71251920/153033215-abe38422-30ba-450e-a27e-773957273cf8.jpg" alt="Change_RSV_for_VM_16"></p>
+<p>1-5. バックアップデータの削除完了を”  Azure Portal &gt; 対象のRecovery Services コンテナー &gt; バックアップアイテム &gt; Azure Virtual Machines” から、対象のVMが表示されないことを確認します。</p>
+<p>2-1. 新たにバックアップを取得したい別の Recovery Servics コンテナーにて該当の VM のバックアップを有効化<br>    (この時点で別の Recovery Services コンテナーのバックアップ構成の仮想マシン選択欄に該当の VM が表示されるようになります)<br><img src="https://user-images.githubusercontent.com/71251920/153033209-9d8daa07-6052-49e7-ae71-0ba5a7e3a15e.jpg" alt="Change_RSV_for_VM_18"></p>
+<p>2-2. 今すぐバックアップにてバックアップ完了。<br>新たなRecovery Services コンテナーにて問題なくバックアップできることを確認<br><img src="https://user-images.githubusercontent.com/71251920/153033202-587b9bd3-bcd5-41a6-a10f-d6a1bffdbca4.jpg" alt="Change_RSV_for_VM_19"></p>
+<p>2-3. 古い Recovery Services コンテナー上で「チェック OFF」としていた、下記項目をもとの設定値に戻します。<br>Recovery Services コンテナー &gt; プロパティ &gt; セキュリティ設定 更新 &gt; 「クラウド ワークロードの論理的な削除を有効にする」</p>
+<h2 id="3-補足-バックアップデータを残しつつリソースグループを変更しない方法"><a href="#3-補足-バックアップデータを残しつつリソースグループを変更しない方法" class="headerlink" title="3. (補足) バックアップデータを残しつつリソースグループを変更しない方法"></a>3. (補足) バックアップデータを残しつつリソースグループを変更しない方法<a id="3"></a></h2><p><strong>バックアップ データは残したまま＋ VM のリソースグループを変更しない ＋ 新しい Recovery Services コンテナーに紐づける　ということはこれまで説明した通りかないません</strong><br><a href="#1">1. 既存のバックアップデータを [維持] する方法</a> によって変更後、リソース グループを戻してしまうと、古い Recovery Services コンテナーが残っている場合には、古い Recovery Services コンテナー側にて再度紐づいてしまいます。<br>また、もとの Recovery Services コンテナーが削除された場合には新しい Recovery Services コンテナーとの紐づけが切れ、 Azure VM のバックアップメニューからはバックアップが構成されていない状態になります。</p>
+<p>そのため方法としては、<strong>既存のバックアップデータを一度ディスクとして復元して保存いただくことで可能です</strong>。<br>特定の復元ポイントだけを保存しておけばよいという場合はこちらの方法をご検討ください。<br>もちろん、すべての復元ポイントからディスクとして復元いただければ、すべての バックアップデータを保存することは可能です。</p>
 <p>具体的な手順としては下記です。</p>
 <h4 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順<a id="3-1"></a></h4><ol>
-<li>保存したい復元ポイントからディスクとしてリストアする。<br>詳細は下記をご覧ください<br>・代替案 - Azure VM Backup で取得した復旧ポイントの保持期間の延長について<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/#4">https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/#4</a></li>
+<li>保存したい復元ポイントからディスクとしてリストアする。<br>詳細は下記をご覧ください<br>・代替案 - Azure VM Backup で取得した復旧ポイントの保持期間の延長について<br>　<a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/#4">https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/#4</a></li>
 </ol>
 <ol start="2">
 <li>その後 上述の<a href="#2">2. 既存のバックアップデータを [削除] する方法</a>によって Recovery Services コンテナーを変更する。</li>
@@ -222,19 +227,19 @@
     
 <nav id="article-nav">
   
-    <a href="../Consistencies/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          Azure VM Backupにおける整合性について
+          Azure Backup の 保持期間について
         
       </div>
     </a>
   
   
-    <a href="../../MARSBackup/MARS_Proxy_Setting/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">プロキシを利用した MARS エージェントによるバックアップについて</div>
+      <div class="article-nav-title">QL4L-5D8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</div>
     </a>
   
 </nav>
@@ -253,6 +258,14 @@
       <ul>
         
           <li>
+            <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/">Azure Backup の 保持期間について</a>
+          </li>
+        
+          <li>
+            <a href="">Azure VM BackupにおけるRecovery Services コンテナーの変更について</a>
+          </li>
+        
+          <li>
             <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
           </li>
         
@@ -262,14 +275,6 @@
         
           <li>
             <a href="../../AzureSiteRecovery/HowToChangeAzureAutomationManagedId/">ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureDiskBackup/How_to_fail_Asure_Disk_backup/">Azure Disk Backup を意図的に失敗させる方法</a>
-          </li>
-        
-          <li>
-            <a href="../HowToConfigureOptionalProcess/">Azure VM Backup のジョブ前後で任意の処理を行いたい</a>
           </li>
         
       </ul>
@@ -292,7 +297,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/09/">2022 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
