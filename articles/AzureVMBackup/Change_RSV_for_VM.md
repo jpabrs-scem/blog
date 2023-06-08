@@ -15,7 +15,7 @@ disableDisclaimer: false
 ただし、CRR の「無効化」→「有効化」への切り替えのみは、バックアップ アイテムを保護した後でも変更が可能です。
 
 ・ストレージ冗長性の設定
-　https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#set-storage-redundancy
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy
 >コンテナーでバックアップを構成する前に、必ず Recovery Services コンテナーのストレージ レプリケーションの種類を変更してください。 バックアップを構成した後、変更するオプションは無効になります。
 
 
@@ -24,8 +24,7 @@ disableDisclaimer: false
 
 なお、本件に関連した公式ドキュメントは下記でございます。
 ・Recovery Services コンテナーを作成して構成する - 既定の設定を変更する
-　https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#modify-default-settings
-
+  https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#modify-default-settings
 
 すでにバックアップを構成している　VM に対して Recovery Services コンテナー を変更するには、VM と 既存のRecovery Services コンテナーとの紐づけを解除する必要がございます。
 紐づけを解除することで、新たに別の Recovery Services コンテナーに紐づけることが可能です。
@@ -55,7 +54,7 @@ disableDisclaimer: false
 ### 1.1 注意事項<a id="1-1"></a>
 こちらの方法では対象の VM のリソースグループの変更が必要です。
 ・Recovery Services コンテナーを作成して構成する
-	https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#must-preserve-previous-backed-up-data
+	https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#must-preserve-previous-backed-up-data
 > Azure VM の場合は、GRS コンテナー内の VM に対して保護を停止してデータを保持し、VM を別のリソース グループに移動してから、LRS コンテナー内の VM を保護することができます。
 
 Recovery Services コンテナー変更のために、リソース グループの変更が必要なものは、「Azure VM」リソースのみで、VM にアタッチされているディスクや NIC のリソース グループを変更する必要はございません。
@@ -127,13 +126,13 @@ Recovery Services コンテナー変更のために、リソース グループ�
 ### 2.1 注意事項<a id="2-1"></a>
 こちらの方法では対象 VMの 既存のバックアップデータの削除が必要です。
 ・Recovery Services コンテナーを作成して構成する
-	https://docs.microsoft.com/ja-jp/azure/backup/backup-create-rs-vault#dont-need-to-preserve-previous-backed-up-data
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#dont-need-to-preserve-previous-backed-up-data
 > 新しい LRS コンテナーのワークロードを保護するには、GRS コンテナー内の現在の保護とデータを削除し、バックアップを再構成する必要があります。
 
 また本作業を行う際、バックアップアラートを設定していない場合でも発砲されます。
 詳細につきましては下記をご確認ください。
 ・バックアップ アラートの通知
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#notification-for-backup-alerts
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#notification-for-backup-alerts
 > "破壊的な操作 (データを削除して保護を停止など) が実行されると、アラートが生成され、Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます。
 
 ### 2.2 変更手順概要<a id="2-2"></a>
@@ -157,7 +156,9 @@ Recovery Services コンテナー > プロパティ > セキュリティ設定 �
 
 * 注意事項： 論理削除状態について<a id="2-3-1"></a>
 論理削除状態 (論理削除が有効な状態で削除した状態) では完全にバックアップデータが消えず、対象 VM と  Recovery Services コンテナーの紐づけが解除されません。その際は下記 URL を参考にして論理削除状態のバックアップアイテムを完全に削除してください。
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items 
+
+・論理的に削除されたバックアップ項目を完全に削除する
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items
 
 1-2. VM のバックアップを停止
 ![Change_RSV_for_VM_15](https://user-images.githubusercontent.com/71251920/153033219-95548634-88d5-4dd1-a6b1-f2a3287402c1.jpg)

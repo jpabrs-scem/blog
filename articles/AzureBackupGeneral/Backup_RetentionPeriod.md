@@ -13,7 +13,7 @@ disableDisclaimer: false
 公開ドキュメント上では、下記のように「最大保有期間：バックアップ頻度次第」と記載が書かれており、実際に「毎日」「毎週」のバックアップを構成した場合の最大保有期間は、ポリシー作成画面で確認するのみとなっております。
 
 ・保有の制限
-https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits
 
 ![](https://user-images.githubusercontent.com/96324317/197381027-dcf0c231-950e-4b50-a14f-4f2d991c9616.png)
 
