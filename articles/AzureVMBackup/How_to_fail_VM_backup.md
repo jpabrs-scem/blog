@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup を意図的に失敗させる方法
-date: 2021-11-22 12:00:00
+date: 2023-06-22 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -22,7 +22,17 @@ disableDisclaimer: false
 ・Azure Files Backup を意図的に失敗させる方法
 　https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/
 
-## 意図的にAzure VM Backup エラーを発生させる仕組み
+## 目次
+-----------------------------------------------------------
+[1. Azure Guest Agent を停止して意図的にAzure VM Backup エラーを発生させる仕組み](#1)
+[2. Azure Guest Agent を停止してバックアップを故意に失敗させる方法 (手順概略) ](#2)
+[3. バックアップを故意に失敗させる方法 (Windows VM の場合)](#3)
+  [【補足】 Windows Firewall を用いた方法](#3-1)
+[4. バックアップを故意に失敗させる方法 (Linux VM の場合)](#4)
+[5. バックアップを故意に失敗させる方法 (共有ディスクをアタッチする)](#5)
+-----------------------------------------------------------
+
+## 1. Azure Guest Agent を停止して意図的にAzure VM Backup エラーを発生させる仕組み <a id="1"></a>
 VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Recovery Services コンテナー (Azure Backup service) との通信ができない状態を作ります。
 この状態で Backup 取得をしようとすると、VM agent と通信できないためにエラー (Error Code ”UserErrorGuestAgentStatusUnavailable”) が発生し、Backup が失敗となります。
 ![How_to_Backup_Fail](https://user-images.githubusercontent.com/71251920/142736316-5995d329-63d1-4b63-acd5-7f3da9f90cf9.png)
@@ -32,7 +42,7 @@ VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Re
 ・Azure VM Backup では オフライン バックアップができるのか
 https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
 
-## バックアップを故意に失敗させる方法 (手順概略)
+## 2. Azure Guest Agent を停止してバックアップを故意に失敗させる方法 (手順概略) <a id="2"></a>
 ・「バックアップを故意に失敗させる方法 (Windows VM の場合) 」
 >	1.Backup 対象の VM にリモート ログイン
 >	2.Services 内で "RdAgent" と "Windows Azure Guest Agent" の停止、スタートアップの無効化
@@ -59,22 +69,15 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
 >		　　` ` `sudo systemctl enable waagent` ` `
 >	　  　` ` `systemctl status waagent` ` `
 
-## 目次
------------------------------------------------------------
-[1. バックアップを故意に失敗させる方法 (Windows VM の場合)](#1)
-  [【補足】 Windows Firewall を用いた方法](#1-1)
-[2. バックアップを故意に失敗させる方法 (Linux VM の場合)](#2)
------------------------------------------------------------
-
-## 1. バックアップを故意に失敗させる方法 (Windows VM の場合)  (所要時間 : 2時間～6時間)<a id="1"></a>
-### 1.1. 環境
+## 3. バックアップを故意に失敗させる方法 (Windows VM の場合)  (所要時間 : 2時間～6時間)<a id="3"></a>
+### 3.1. 環境
 本項目では以下の環境で検証を実施しております。
 VM名 : vm-BackupFailTest-win2016
 OS : Windows (Windows Server 2016 Datacenter) Version 1607
 Recovery Service コンテナー名 : vault-BackupFailTest
 VM 電源状態 : オンライン (起動状態)
 
-### 1.2.手順概略 
+### 3.2.手順概略 
 "サービス" から プロセス "RdAgent"、"Windows Azure Guest Agent" を停止し、スタートアップを無効化しバックアップを実行します。
 バックアップが失敗したらそれぞれをもとに戻します。
 > 1. Backup 対象の VM にリモート ログイン
@@ -82,7 +85,7 @@ VM 電源状態 : オンライン (起動状態)
 > 3. Portal にて Backup を実施し、エラーの確認
 > 4. Agent の再起動
 
-### 1.3.詳細手順
+### 3.3.詳細手順
 Backup 対象の VM : Azure portal上で作成した、Backup 対象の VM
 Backup 対象の VM にリモートログインし、Services を開き、下記 2 つのサービスに対し設定を行います。
 
@@ -123,7 +126,7 @@ Backup 対象の VM にリモートログインし、Services を開き、下記
 ・エラーの発生確認完了後は、 VM に再度ログインして頂き、各 Agent の Service properties 画面で、Start up type を **"Automatic"** に、Service Status で **"Start"** を選択し、 Agent を再度起動させてください。
 
 
-## 【補足】 Windows Firewall を用いた方法 <a id="1-1"></a>
+## 【補足】 Windows Firewall を用いた方法 <a id="3-1"></a>
 なお、Windows 内部 のローカルファイアウォールから 宛先 168.63.129.16 宛の通信をブロックしていただくことでも同様にエラーを発生させることが可能です。
 
 >リモートアドレス (宛先 IP) :  168.63.129.16 
@@ -144,10 +147,8 @@ Windows Server　2016 をご利用の場合は虫眼鏡窓から "Firewall" と�
 https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1
 
 
-
-## 2．バックアップを故意に失敗させる方法 (Linux VM の場合) (所要時間 : 2時間～6時間) <a id="2"></a>
-
-### 2.1. 環境
+## 4．バックアップを故意に失敗させる方法 (Linux VM の場合) (所要時間 : 2時間～6時間) <a id="4"></a>
+### 4.1. 環境
 本項目では以下の環境で検証を実施しております。
 #### OS
 > VM名 : vm-BackupFailTest-linux-suse / OS : Linux (sles 15.2)
@@ -158,7 +159,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1
 ####  Recovery Services コンテナー
 > Recovery Service コンテナー名 : vault-BackupFailTest
 
-### 2.2手順概略 
+### 4.2. 手順概略 
 下記コマンドを実行しagent プロセスを停止しバックアップを失敗させます。
 失敗したのを確認したのち、Agent の再起動を行います。
 
@@ -186,7 +187,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1
 > 	systemctl status waagent
 
 
-### 2.3. 詳細手順
+### 4.3. 詳細手順
 Linux の場合、 OS により Agent のプロセス名が異なります。
 #### Agent プロセス名
 Ubuntu の場合
@@ -247,3 +248,28 @@ Status が Failed 、Error Code **”UserErrorGuestAgentStatusUnavailable”** �
 #### RHEL 環境の実行例　
 ![RHEL_agent_start](https://user-images.githubusercontent.com/71251920/142736923-43d72bbc-e3cb-46a4-825b-a4b71fe61d9a.png)
 
+## 5. バックアップを故意に失敗させる方法 (共有ディスクをアタッチする)<a id="5"></a>
+Guest Agent を手動で停止させる方法以外に「共有ディスクを一時的にアタッチしてバックアップ ジョブを失敗させる」方法もご紹介します。
+こちらはバックアップ ジョブ開始直後 ～ 30 分程度で「UserErrorSharedDiskBackupNotSupported」エラーで失敗する見込みです。
+
+### 5.1.詳細手順
+バックアップ 対象の VM に、Azure ポータル画面上で一時的に共有ディスクを追加アタッチします。
+・Azure マネージド ディスクに対して共有ディスクを有効にする - Azure Virtual Machines | Microsoft Learn
+　https://learn.microsoft.com/ja-jp/azure/virtual-machines/disks-shared-enable?tabs=azure-portal
+
+![image01](https://github.com/jpabrs-scem/blog/assets/96324317/cc0c7196-64d1-482d-9c7d-c8b4d959eedf)
+
+(「SharedDisk02」は、共有ディスクリソースになっています)
+![image02](https://github.com/jpabrs-scem/blog/assets/96324317/81a8a957-edca-4ef5-9858-ea29cacd4df5)
+
+「今すぐバックアップ」をトリガーします。
+![image03](https://github.com/jpabrs-scem/blog/assets/96324317/7d5e8fc1-7f76-4be0-9839-a1bd8c4ec62b)
+
+バックアップ ジョブ開始直後 ～ 30 分程度でバックアップ ジョブが「UserErrorSharedDiskBackupNotSupported」エラーにて失敗する見込みです。
+![image04](https://github.com/jpabrs-scem/blog/assets/96324317/682e85d2-1814-4ce8-84a4-6fc45dc98dcb)
+
+![image05](https://github.com/jpabrs-scem/blog/assets/96324317/464d5257-728b-4411-ac76-559b9b07c93a)
+
+バックアップ ジョブ エラーを確認した後は、一時的にアタッチしていた共有ディスクをデタッチします。
+
+Azure VM Backup を意図的に失敗させる方法について、ご案内は以上となります。
