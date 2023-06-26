@@ -32,7 +32,7 @@ disableDisclaimer: false
 [5. バックアップを故意に失敗させる方法 (共有ディスクをアタッチする)](#5)
 -----------------------------------------------------------
 
-## Azure Guest Agent を停止して意図的にAzure VM Backup エラーを発生させる仕組み <a id="1"></a>
+## 1. Azure Guest Agent を停止して意図的にAzure VM Backup エラーを発生させる仕組み <a id="1"></a>
 VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Recovery Services コンテナー (Azure Backup service) との通信ができない状態を作ります。
 この状態で Backup 取得をしようとすると、VM agent と通信できないためにエラー (Error Code ”UserErrorGuestAgentStatusUnavailable”) が発生し、Backup が失敗となります。
 ![How_to_Backup_Fail](https://user-images.githubusercontent.com/71251920/142736316-5995d329-63d1-4b63-acd5-7f3da9f90cf9.png)
@@ -42,7 +42,7 @@ VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Re
 ・Azure VM Backup では オフライン バックアップができるのか
 https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
 
-## Azure Guest Agent を停止してバックアップを故意に失敗させる方法 (手順概略) <a id="2"></a>
+## 2. Azure Guest Agent を停止してバックアップを故意に失敗させる方法 (手順概略) <a id="2"></a>
 ・「バックアップを故意に失敗させる方法 (Windows VM の場合) 」
 >	1.Backup 対象の VM にリモート ログイン
 >	2.Services 内で "RdAgent" と "Windows Azure Guest Agent" の停止、スタートアップの無効化
@@ -159,7 +159,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1
 ####  Recovery Services コンテナー
 > Recovery Service コンテナー名 : vault-BackupFailTest
 
-### 4.2手順概略 
+### 4.2. 手順概略 
 下記コマンドを実行しagent プロセスを停止しバックアップを失敗させます。
 失敗したのを確認したのち、Agent の再起動を行います。
 
@@ -250,19 +250,22 @@ Status が Failed 、Error Code **”UserErrorGuestAgentStatusUnavailable”** �
 
 ## 5. バックアップを故意に失敗させる方法 (共有ディスクをアタッチする)<a id="5"></a>
 Guest Agent を手動で停止させる方法以外に「共有ディスクを一時的にアタッチしてバックアップ ジョブを失敗させる」方法もご紹介します。
-こちらはバックアップ ジョブ開始後、およそ 30 分程度で「UserErrorSharedDiskBackupNotSupported」エラーで失敗する見込みです。
+こちらはバックアップ ジョブ開始直後 ～ 30 分程度で「UserErrorSharedDiskBackupNotSupported」エラーで失敗する見込みです。
 
 ### 5.1.詳細手順
 バックアップ 対象の VM に、Azure ポータル画面上で一時的に共有ディスクを追加アタッチします。
+・Azure マネージド ディスクに対して共有ディスクを有効にする - Azure Virtual Machines | Microsoft Learn
+　https://learn.microsoft.com/ja-jp/azure/virtual-machines/disks-shared-enable?tabs=azure-portal
+
 ![image01](https://github.com/jpabrs-scem/blog/assets/96324317/cc0c7196-64d1-482d-9c7d-c8b4d959eedf)
 
 (「SharedDisk02」は、共有ディスクリソースになっています)
-![image02](https://github.com/jpabrs-scem/blog/assets/96324317/d7532b83-594b-4e1b-b2c5-ad30da0bc3d5)
+![image02](https://github.com/jpabrs-scem/blog/assets/96324317/81a8a957-edca-4ef5-9858-ea29cacd4df5)
 
 「今すぐバックアップ」をトリガーします。
 ![image03](https://github.com/jpabrs-scem/blog/assets/96324317/7d5e8fc1-7f76-4be0-9839-a1bd8c4ec62b)
 
-バックアップ ジョブ開始直後～30 分程度でバックアップ ジョブが「UserErrorSharedDiskBackupNotSupported」エラーにて失敗する見込みです。
+バックアップ ジョブ開始直後 ～ 30 分程度でバックアップ ジョブが「UserErrorSharedDiskBackupNotSupported」エラーにて失敗する見込みです。
 ![image04](https://github.com/jpabrs-scem/blog/assets/96324317/682e85d2-1814-4ce8-84a4-6fc45dc98dcb)
 
 ![image05](https://github.com/jpabrs-scem/blog/assets/96324317/464d5257-728b-4411-ac76-559b9b07c93a)
