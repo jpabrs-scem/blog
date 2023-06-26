@@ -21,7 +21,7 @@ disableDisclaimer: false
    [  1.2 Recovery Time Objective (RTO)](#1-2) 
    [  1.3 Recovery Point Objective (RPO)](#1-3) 
 [2. Azure VM Backup と Azure Site Recovery の比較](#2)
-[3. 参考情報 : DR 大作のための Azure VM のディスクの冗長構成は非推奨](#2)
+[3. 参考情報 : DR 対策のための Azure VM のディスクの冗長構成は非推奨](#2)
 -----------------------------------------------------------
 
 
@@ -36,11 +36,15 @@ disableDisclaimer: false
 「目標復旧時間」のことで、大規模災害などの影響によりシステムやデータセンターが障害を受けシステムが停止した時に、その時点から復旧までにかかる時間のことを指します。どのくらいの時間がダウンタイムとして許容できるかをご確認いただくのが良いかと存じます。
 * ダウンタイムの許容時間は最大 24 時間。など
 
+・RTO (目標復旧時間)
+　https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#rto-recovery-time-objective
+
 ### <a id="1-3"></a> Recovery Point Objective (RPO)
 「目標復旧時点」のことで、大規模災害などの影響によりシステムやデータセンターが障害を受けシステムが停止した時に、過去のどの時点のデータまでを復旧できるかを指します。障害時点から復旧ポイントまでの間の時間のデータは復旧できないことになるため、データ復旧ができなくても許容できる時間をご確認いただくのが良いかと存じます。
 * データ損失の許容時間は直前 12 時間以内。など
 
-
+・RPO (復旧ポイントの目標)
+　https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#rpo-recovery-point-objective
  
 
 ## <a id="2"></a> 2. Azure VM Backup と Azure Site Recovery の比較
@@ -53,7 +57,7 @@ disableDisclaimer: false
 | 復旧ポイントの保持期間 | 最大 99 年保持することができます。 | Unmanaged Disk では最大 72 時間 (3 日) 保持することができます。<br>Managed Disk では最大 15 日保持することができます。 |
 | RTO に関する SLA | RTO について SLA はありません。 | SLA で 2 時間以内の RTO を保証します。<br> [ご参考] ・Azure Site Recovery の SLA<br>https://azure.microsoft.com/ja-jp/support/legal/sla/site-recovery/v1_2/<br>>オンプレミスと Azure 間の計画上および計画外のフェールオーバー用に構成された保護された各インスタンスにつき、マイクロソフトは、2 時間の目標復旧時間を保証します。|
 | Recovery Time Objective (RTO) | 24時間以内に完了する仕様となっております。<br> **大容量の VM では復元に 24 時間以上かかる場合がございます。**<br>[ご参考] ・1.1 Azure VM Backup のバックアップ時間について<br>Azure Backup の バックアップ / リストア 所要時間について　<br>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/#1-1 | 2 時間以内の RTO を提供します。 |
-| Recovery Point Objective (RPO)| スタンダードポリシーをご利用の場合、バックアップのスケジュールは 1 日 1 回となります。<br>その場合、最短の復元ポイント時点が 24 時間以上前となる場合がございます。<br>エンハンスド ポリシー(拡張ポリシー)をご利用の場合、バックアップのスケジュールは再頻 4 時間おきのバックアップが可能です。<br> [ご参考] ・拡張ポリシーを使用して Azure VM をバックアップする<br>https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy| クラッシュ整合性復旧ポイントは 5 分ごとに取得されます。<br>アプリ整合性復旧ポイントは、レプリケーション ポリシーにて設定でき最短で 1 時間ごとにスケジュールできます。|
+| Recovery Point Objective (RPO)| スタンダード バックアップ ポリシーをご利用の場合、バックアップのスケジュールは 1 日 1 回となります。<br>その場合、最短の復元ポイント時点が 24 時間以上前となる場合がございます。<br>拡張バックアップ ポリシーをご利用の場合、バックアップのスケジュールは最短 4 時間おきのバックアップが可能です。<br> [ご参考] ・拡張ポリシーを使用して Azure VM をバックアップする<br>https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy| クラッシュ整合性復旧ポイントは 5 分ごとに取得されます。<br>アプリ整合性復旧ポイントは、レプリケーション ポリシーにて設定でき最短で 1 時間ごとにスケジュールできます。|
 
 
 ## <a id="3"></a> 3. 参考情報 : DR 対策のための Azure VM のディスクの冗長構成は非推奨
