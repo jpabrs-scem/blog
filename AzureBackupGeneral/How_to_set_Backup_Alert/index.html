@@ -6,32 +6,34 @@
   
   <title>「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例 | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、「Azure Monitor を使用した組み込みのアラート」を利用して、Recovery Services コンテナーにてバックアップ構成済のバックアップ ジョブが失敗した際にメール通知を出すよう、アラート処理ルールを作成する例 をご紹介します。 概要・「Azure Monitor を使用した組み込みのアラート」を利用・アラート処理">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、「Azure Monitor を使用した組み込みのアラート」を利用して、Recovery Services コンテナーにてバックアップ構成済のバックアップ ジョブが失敗した際にメール通知を出すよう、アラート処理ルールを作成する例 をご紹介します。 概要 Azure Backup にてこれまで存在していた「クラシック アラート」は、今">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、「Azure Monitor を使用した組み込みのアラート」を利用して、Recovery Services コンテナーにてバックアップ構成済のバックアップ ジョブが失敗した際にメール通知を出すよう、アラート処理ルールを作成する例 をご紹介します。 概要・「Azure Monitor を使用した組み込みのアラート」を利用・アラート処理">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、「Azure Monitor を使用した組み込みのアラート」を利用して、Recovery Services コンテナーにてバックアップ構成済のバックアップ ジョブが失敗した際にメール通知を出すよう、アラート処理ルールを作成する例 をご紹介します。 概要 Azure Backup にてこれまで存在していた「クラシック アラート」は、今">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/205475179-202669bf-2a8b-48bc-8702-20739561daff.png">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/5ca76af3-d9f4-419f-80f8-3f6812b63764">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/e914c143-5391-43da-aea4-ce80006221fd">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/42c3d590-7452-456d-ae3e-4cde1a8803e4">
 <meta property="og:image" content="https://user-images.githubusercontent.com/96324317/205475247-3c6c2195-4eac-4d0e-b1b7-91ca7b8f6f83.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/96324317/205475279-c6bbffff-1b22-482f-9052-478362ba48b4.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151009992-071f529c-b069-4e95-b579-57e41d858db5.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151009994-805f0f47-4085-4c6b-b1e0-5453f242f62f.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151009996-9dc217c3-e7ed-43dd-b777-a7f82bf9081b.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151009999-50e00252-c95e-47df-b6c9-60fb7255e24a.png">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/afd34bb8-ccd9-458f-bc03-3b1f85fa85ef">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151010003-78799d24-3c6a-4ff6-a8ff-39c7c7c95e90.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151010005-e0d96c25-d7cc-4789-9b1e-6be5458b86f6.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151010009-0b53d0c3-1d15-4902-9059-ad96f54cb6e6.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151010014-e76647b0-3eb5-4cc8-8558-b38636996f48.png">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/7dfc8bb6-bf41-4135-a194-17a4063c3839">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/151009979-8f6868a8-2edd-4d08-86a5-ef843a877bda.png">
-<meta property="article:published_time" content="2022-01-24T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-06-26T06:57:03.244Z">
+<meta property="article:published_time" content="2023-06-30T03:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-29T04:37:49.725Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="how to">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/96324317/205475179-202669bf-2a8b-48bc-8702-20739561daff.png">
+<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/5ca76af3-d9f4-419f-80f8-3f6812b63764">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -110,41 +112,60 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-01-24T03:00:00.000Z" itemprop="datePublished">2022-01-24</time>
+  <time datetime="2023-06-30T03:00:00.000Z" itemprop="datePublished">2023-06-30</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+87afd841-2c9f-5811-bf5d-f204abc76aa2%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%80%8CAzure+Monitor+%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E3%81%AE%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E3%80%8D%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%E3%82%B8%E3%83%A7%E3%83%96%E5%A4%B1%E6%95%97%E3%81%AE%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E9%80%9A%E7%9F%A5%E4%BD%9C%E6%88%90%E4%BE%8B%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FHow_to_set_Backup_Alert%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FHow_to_set_Backup_Alert.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FHow_to_set_Backup_Alert.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/" data-id="cljciajc500050nqj4l7ff5fw" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/" data-id="cljgnn1cn00050opjgqh2cj2o" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
 <p>皆様こんにちは、Azure Backup サポートです。<br>今回は、<strong>「Azure Monitor を使用した組み込みのアラート」を利用して、Recovery Services コンテナーにてバックアップ構成済のバックアップ ジョブが失敗した際にメール通知を出すよう、アラート処理ルールを作成する例</strong> をご紹介します。</p>
-<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>・「Azure Monitor を使用した組み込みのアラート」を利用<br>・アラート処理ルールには、バックアップを構成している対象のRecovery Services コンテナーをスコープとして指定し、バックアップ ジョブが失敗した際に、指定のメールアドレスへ通知メールを送信させる</p>
-<h2 id="アラート処理ルール-作成手順"><a href="#アラート処理ルール-作成手順" class="headerlink" title="アラート処理ルール 作成手順"></a>アラート処理ルール 作成手順</h2><p>Azure Backup にて、バックアップ ジョブが失敗した際にアラート通知を出す手段は、下記ドキュメントの通り複数種類ございます。<br>今回は <strong>「Azure Monitor を使用した組み込みのアラート」</strong> を利用します。<br>・Azure Backup の監視とレポートのソリューション<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/monitoring-and-alerts-overview#monitoring-and-reporting-scenarios">https://docs.microsoft.com/ja-jp/azure/backup/monitoring-and-alerts-overview#monitoring-and-reporting-scenarios</a></p>
-<p><img src="https://user-images.githubusercontent.com/96324317/205475179-202669bf-2a8b-48bc-8702-20739561daff.png" alt="How_to_set_Backup_Alert_01"></p>
-<p>「Azure Monitor を使用した組み込みのアラート」を利用した、アラート ルールの作成手順の公開ドキュメントは下記にございます。<br>・ジョブの失敗のシナリオに対して Azure Monitor のアラートを有効にする<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#turning-on-azure-monitor-alerts-for-job-failure-scenarios">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#turning-on-azure-monitor-alerts-for-job-failure-scenarios</a></p>
-<p>・アラートの通知を構成する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#configuring-notifications-for-alerts">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#configuring-notifications-for-alerts</a></p>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><ul>
+<li><p>Azure Backup にてこれまで存在していた「クラシック アラート」は、今後廃止される見込みです</p>
+</li>
+<li><p>お客様にて「バックアップ ジョブ失敗のアラートを発生させたい」「発生したアラートをメール通知したい」といった場合<br>　今後は「クラシック アラート」ではなく<br>　「Azure Monitor を使用した組み込みのアラート」を利用してアラートを構成いただく必要があります</p>
+</li>
+<li><p>作成概要は公開ドキュメントでも説明しております<br>　・ジョブの失敗のシナリオに対して Azure Monitor のアラートを有効にする<br>　　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#turning-on-azure-monitor-alerts-for-job-failure-scenarios">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#turning-on-azure-monitor-alerts-for-job-failure-scenarios</a></p>
+</li>
+<li><p>アラート処理ルールの作成例として、今回はバックアップを構成している対象のRecovery Services コンテナーをスコープとして指定し、バックアップ ジョブが失敗した際に、指定のメールアドレスへ通知メールを送信させます</p>
+</li>
+</ul>
+<h2 id="アラート処理ルール-作成手順"><a href="#アラート処理ルール-作成手順" class="headerlink" title="アラート処理ルール 作成手順"></a>アラート処理ルール 作成手順</h2><p>Azure Backup にて、バックアップ ジョブが失敗した際にアラート通知を出す手段は、下記ドキュメントの通り複数種類ございます。<br>今回は「Azure Backup ジョブの失敗を検知したい」という要件である前提で、 <strong>「Azure Monitor を使用した組み込みのアラート」</strong> を利用します。<br>・Azure Backup の監視とレポートのソリューション<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/monitoring-and-alerts-overview#monitoring-and-reporting-scenarios">https://docs.microsoft.com/ja-jp/azure/backup/monitoring-and-alerts-overview#monitoring-and-reporting-scenarios</a></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/5ca76af3-d9f4-419f-80f8-3f6812b63764"></p>
+<p>作成手順の公開ドキュメントは下記ですので、基本的に下記ドキュメントの説明に従って設定いただければアラート構成・通知構成が可能です。<br>・ジョブの失敗のシナリオに対して Azure Monitor のアラートを有効にする<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#turning-on-azure-monitor-alerts-for-job-failure-scenarios">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#turning-on-azure-monitor-alerts-for-job-failure-scenarios</a></p>
+<h3 id="Azure-Monitor-を使用した組み込みのアラート構成-作業例"><a href="#Azure-Monitor-を使用した組み込みのアラート構成-作業例" class="headerlink" title="Azure Monitor を使用した組み込みのアラート構成　作業例"></a>Azure Monitor を使用した組み込みのアラート構成　作業例</h3><p>Recovery Services コンテナー上でアラートを有効化します。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/e914c143-5391-43da-aea4-ce80006221fd"></p>
+<p>有効化することで、バックアップ ジョブが失敗した場合などに、アラートが生成されます。</p>
+<p>・Azure portal 内で始動したアラートを確認<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#viewing-fired-alerts-in-the-azure-portal">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#viewing-fired-alerts-in-the-azure-portal</a></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/42c3d590-7452-456d-ae3e-4cde1a8803e4"></p>
 <p>バックアップ センター ＞ アラート処理ルール にて、新しいアラート処理ルールを作成することができます。</p>
-<p><img src="https://user-images.githubusercontent.com/96324317/205475247-3c6c2195-4eac-4d0e-b1b7-91ca7b8f6f83.png" alt="How_to_set_Backup_Alert_02"></p>
-<p><img src="https://user-images.githubusercontent.com/96324317/205475279-c6bbffff-1b22-482f-9052-478362ba48b4.png" alt="How_to_set_Backup_Alert_03"></p>
-<p>今回は、Recovery Services コンテナー「RSV-JPE-LRS」にて Azure Files をバックアップ構成しているため、スコープを「Recovery Services コンテナー：RSV-JPE-LRS」としています。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/151009992-071f529c-b069-4e95-b579-57e41d858db5.png" alt="How_to_set_Backup_Alert_05"></p>
+<p>・アラートの通知を構成する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#configuring-notifications-for-alerts">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#configuring-notifications-for-alerts</a></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/205475247-3c6c2195-4eac-4d0e-b1b7-91ca7b8f6f83.png"></p>
+<p><img src="https://user-images.githubusercontent.com/96324317/205475279-c6bbffff-1b22-482f-9052-478362ba48b4.png"></p>
+<p>今回は、Recovery Services コンテナー「RSV-JPE-LRS」にてバックアップ構成しているため、スコープを「Recovery Services コンテナー：RSV-JPE-LRS」としています。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/151009992-071f529c-b069-4e95-b579-57e41d858db5.png"></p>
 <p>また、バックアップ ジョブのエラーを検知した際にアラート通知を発報したいため、「フィルター：重要度」とし、「階層：１ - エラー」を選択します。<br>・Azure Backup で保護されたワークロードの監視<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#azure-monitor-alerts-for-azure-backup-preview">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor#azure-monitor-alerts-for-azure-backup-preview</a></p>
-<p><img src="https://user-images.githubusercontent.com/71251920/151009994-805f0f47-4085-4c6b-b1e0-5453f242f62f.png" alt="How_to_set_Backup_Alert_06"></p>
-<p><img src="https://user-images.githubusercontent.com/71251920/151009996-9dc217c3-e7ed-43dd-b777-a7f82bf9081b.png" alt="How_to_set_Backup_Alert_07"></p>
-<p><img src="https://user-images.githubusercontent.com/71251920/151009999-50e00252-c95e-47df-b6c9-60fb7255e24a.png" alt="How_to_set_Backup_Alert_08"></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/151009994-805f0f47-4085-4c6b-b1e0-5453f242f62f.png"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/afd34bb8-ccd9-458f-bc03-3b1f85fa85ef"></p>
 <p>「アクション グループ」には、送信したいメールアドレスを設定しているアクション グループを追加する、もしくは新規作成します。<br>今回はあらかじめ作成済のアクション グループを選択しています。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/151010003-78799d24-3c6a-4ff6-a8ff-39c7c7c95e90.png" alt="How_to_set_Backup_Alert_09"></p>
-<p> （補足）アクショングループには、下図のように電子メールへの通知を設定済となっています</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/151010005-e0d96c25-d7cc-4789-9b1e-6be5458b86f6.png" alt="How_to_set_Backup_Alert_10"></p>
-<p><img src="https://user-images.githubusercontent.com/71251920/151010009-0b53d0c3-1d15-4902-9059-ad96f54cb6e6.png" alt="How_to_set_Backup_Alert_11"></p>
-<p><img src="https://user-images.githubusercontent.com/71251920/151010014-e76647b0-3eb5-4cc8-8558-b38636996f48.png" alt="How_to_set_Backup_Alert_12"></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/151010003-78799d24-3c6a-4ff6-a8ff-39c7c7c95e90.png"></p>
+<p> （補足）アクショングループには、下図のように電子メールへの通知を設定済となっています。</p>
+<p><img src="https://user-images.githubusercontent.com/71251920/151010005-e0d96c25-d7cc-4789-9b1e-6be5458b86f6.png"></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/151010009-0b53d0c3-1d15-4902-9059-ad96f54cb6e6.png"></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/151010014-e76647b0-3eb5-4cc8-8558-b38636996f48.png"></p>
+<p>アクション グループも有効化されていることを確認しておきます。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/7dfc8bb6-bf41-4135-a194-17a4063c3839"></p>
 <p>上図のように設定することで、Recovery Services コンテナー「RSV-JPE-LRS」にてバックアップ構成済のバックアップ ジョブが失敗した際に、指定した電子メール宛先へ、通知メールが送信されるようになります。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/151009979-8f6868a8-2edd-4d08-86a5-ef843a877bda.png" alt="How_to_set_Backup_Alert_13"></p>
+<p><img src="https://user-images.githubusercontent.com/71251920/151009979-8f6868a8-2edd-4d08-86a5-ef843a877bda.png"></p>
+<p> （補足）Azure Backup を意図的に失敗させる手順は下記をご参照ください。</p>
+<p>・Azure VM Backup を意図的に失敗させる方法 | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br>　<a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/</a></p>
+<p>・Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法 | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br>　<a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/">https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/</a></p>
+<p>・MARS バックアップ を意図的に失敗させる方法 | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br>　<a href="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/">https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</a></p>
+<p>・Azure Files Backup を意図的に失敗させる方法 | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br>　<a href="https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/">https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/</a></p>
+<p>・Azure Disk Backup を意図的に失敗させる方法 | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br>　<a href="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/">https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/</a></p>
 
       
       
@@ -169,19 +190,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureFilesBackup/How_to_fail_AFS_backup/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../MARSBackup/How_to_fail_MARS_backup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure Files Backup を意図的に失敗させる方法</div>
+      <div class="article-nav-title">MARS バックアップ を意図的に失敗させる方法</div>
     </a>
   
 </nav>
@@ -200,6 +212,14 @@
       <ul>
         
           <li>
+            <a href="">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
+          </li>
+        
+          <li>
+            <a href="../../MARSBackup/How_to_fail_MARS_backup/">MARS バックアップ を意図的に失敗させる方法</a>
+          </li>
+        
+          <li>
             <a href="../../AzureVMBackup/How_to_fail_VM_backup/">Azure VM Backup を意図的に失敗させる方法</a>
           </li>
         
@@ -209,14 +229,6 @@
         
           <li>
             <a href="../../AzureVMBackup/Change_RSV_for_VM/">Azure VM BackupにおけるRecovery Services コンテナーの変更について</a>
-          </li>
-        
-          <li>
-            <a href="../HowToMoveClassicAlert/">QL4L-5D8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
-          </li>
-        
-          <li>
-            <a href="../RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
           </li>
         
       </ul>
