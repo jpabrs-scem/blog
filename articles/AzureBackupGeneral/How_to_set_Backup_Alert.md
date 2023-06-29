@@ -55,7 +55,7 @@ Recovery Services コンテナー上でアラートを有効化します。
 
 ![](https://user-images.githubusercontent.com/96324317/205475279-c6bbffff-1b22-482f-9052-478362ba48b4.png)
 
-今回は、Recovery Services コンテナー「RSV-JPE-LRS」にて Azure Files をバックアップ構成しているため、スコープを「Recovery Services コンテナー：RSV-JPE-LRS」としています。
+今回は、Recovery Services コンテナー「RSV-JPE-LRS」にてバックアップ構成しているため、スコープを「Recovery Services コンテナー：RSV-JPE-LRS」としています。
 
 ![](https://user-images.githubusercontent.com/71251920/151009992-071f529c-b069-4e95-b579-57e41d858db5.png)
 
