@@ -97,13 +97,13 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-AzureVMBackup/AV_ExcludeSetting" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MARSBackup/MARS_Proxy_Setting" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     <!-- post date -->
     <div class="article-meta">
-      <a href="../../AzureVMBackup/AV_ExcludeSetting/" class="article-date">
-  <time datetime="2022-02-06T03:00:00.000Z" itemprop="datePublished">2022-02-06</time>
+      <a href="../../MARSBackup/MARS_Proxy_Setting/" class="article-date">
+  <time datetime="2022-02-09T03:00:00.000Z" itemprop="datePublished">2022-02-09</time>
 </a>
       
     </div>
@@ -115,7 +115,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../AzureVMBackup/AV_ExcludeSetting/">Azure Backup におけるウイルス除外設定について</a>
+      <a class="article-title" href="../../MARSBackup/MARS_Proxy_Setting/">プロキシを利用した MARS エージェントによるバックアップについて</a>
     </h1>
   
 
@@ -126,22 +126,24 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、 Azure Backup を利用する際のウイルス検知の除外設定  について、Azure VM Backup と MARS バックアップの場合それぞれについてご説明させていただきます。
-目次
-1. Azure VM Backup の場合のウイルス検知除外設定 1-1. Windows OS の場合 1-2. Linux OS の場合2. MARS バックアップの場合のウイルス検知除外設定
+皆様こんにちは、Azure Backup サポートの荘司です。今回は、プロキシを利用した MARS  エージェントによるバックアップの設定例及び挙動について、認証が必要な場合や pac ファイルをご利用の場合も含めてご案内します。
+MARS エージェント によるバックアップはマシン内のファイルやフォルダーやシステム状態のバックアップを行い Azure 上に保存するバックアップサービスです。対象のバックアップ環境はオンプレミスでも Azure でも可能です。
 
-1. Azure VM Backup の場合のウイルス検知除外設定Azure VM Backup とは Azure 上の VM に対するバックアップサービスです。・Azure VM バックアップの概要https://docs.microsoft.com/ja-jp/azure/backup/backu...
+参考・Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックスhttps://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent
+
+目次
+1. MARS エージ...
         <p class="article-readmore">
-          <a href="../../AzureVMBackup/AV_ExcludeSetting/">Read more</a>
+          <a href="../../MARSBackup/MARS_Proxy_Setting/">Read more</a>
         </p>
       
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/" data-id="cljxywimv000k0no20kiwbrvm" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/" data-id="clkyxe2ly00250nms572597qp" class="article-share-link">共有</a-->
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
     </footer>
   </div>
@@ -195,7 +197,7 @@ Azure VM Backup 関連のお問い合わせで、以下のようなお問い合�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/" data-id="cljxywinq00140no250691pgk" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/" data-id="clkyxe2lg00140nmsddbj08pp" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -249,7 +251,7 @@ Azure VM Backup 関連のお問い合わせで、以下のようなお問い合�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/" data-id="cljxywio2001n0no25udi119w" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/" data-id="clkyxe2lq001n0nms7y0edyqh" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
@@ -303,7 +305,7 @@ Recovery Se...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/" data-id="cljxywin5000z0no2cvmr9qrh" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/" data-id="clkyxe2lb000z0nms2den4g08" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -356,7 +358,7 @@ Azure Files のAzure Backup ジョブを意図的に失敗させる方法
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/" data-id="cljxywimq000d0no2b3rs064n" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/" data-id="clkyxe2kz000d0nmscyl489gt" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li></ul>
@@ -409,7 +411,7 @@ Azure VM Backup ではバックアップ ジョブのスケジュールを日時
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/" data-id="cljxywio1001l0no2ebf5cmgw" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/" data-id="clkyxe2lp001l0nms6te4drci" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -465,7 +467,7 @@ Azure VM Backup ではバックアップ ジョブのスケジュールを日時
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/" data-id="cljxywimx000m0no2b5x91tem" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/" data-id="clkyxe2l4000m0nms8o5e6b7t" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -515,7 +517,7 @@ Azure VM Backup ではバックアップ ジョブのスケジュールを日時
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/" data-id="cljxywin2000u0no23yjobins" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR_UserErrorVmProvisioningFailedDueToLackOfResources/" data-id="clkyxe2l9000u0nmsa4e88w64" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
@@ -565,7 +567,7 @@ Azure VM Backup では オフライン バックアップができるのか皆�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/" data-id="cljxywimz000q0no27kh1e4f1" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/" data-id="clkyxe2l6000q0nms5l3vbufb" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -615,7 +617,7 @@ Azure VM Backup では オフライン バックアップができるのか皆�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/" data-id="cljxywinz001j0no23t5v5ub2" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/" data-id="clkyxe2ln001j0nms9wki0sch" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -644,23 +646,23 @@ Azure VM Backup では オフライン バックアップができるのか皆�
       <ul>
         
           <li>
+            <a href="../../AzureBackupGeneral/DR_ASR_or_VMBackup/">Azure VM Backup と Azure Site Recovery による DR 要件について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/AV_ExcludeSetting/">Azure Backup におけるウイルス除外設定について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/ActiveDirectory_backup/">ドメインに参加しているVMのAzure VM Backupリストアについて</a>
+          </li>
+        
+          <li>
             <a href="../../AzureVMBackup/restore_swapdsik/">Azure VM Backup [既存を置換] リストア について</a>
           </li>
         
           <li>
             <a href="../../AzureBackupGeneral/How_to_set_Backup_Alert/">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
-          </li>
-        
-          <li>
-            <a href="../../MARSBackup/How_to_fail_MARS_backup/">MARS バックアップ を意図的に失敗させる方法</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureVMBackup/How_to_fail_VM_backup/">Azure VM Backup を意図的に失敗させる方法</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/">Azure Backup の 保持期間について</a>
           </li>
         
       </ul>
@@ -683,7 +685,7 @@ Azure VM Backup では オフライン バックアップができるのか皆�
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 

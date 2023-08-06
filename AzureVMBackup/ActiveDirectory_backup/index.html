@@ -14,8 +14,8 @@
 <meta property="og:description" content="みなさんこんにちは、Azure Backup サポートです。今回は、Active Directory ( 以下、AD ) のドメインに参加している Azure 仮想マシンを、Azure VM Backup にて保護する場合に、よくお問い合わせいただく内容についてご案内いたします。 前提Azure VM Backupにて保護することを前提とすると、「ドメインに参加している Azure 仮想マシンを">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/96324317/204124178-ccfee87e-1cf2-4de9-8cb9-4a1053847bf9.png">
-<meta property="article:published_time" content="2022-11-28T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-07-11T07:25:11.218Z">
+<meta property="article:published_time" content="2023-08-04T03:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-06T04:10:21.313Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
@@ -99,13 +99,13 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-11-28T03:00:00.000Z" itemprop="datePublished">2022-11-28</time>
+  <time datetime="2023-08-04T03:00:00.000Z" itemprop="datePublished">2023-08-04</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8177be42-263a-5b17-b018-c24caceb0c02%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%A6%E3%81%84%E3%82%8BVM%E3%81%AEAzure+VM+Backup%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FActiveDirectory_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FActiveDirectory_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FActiveDirectory_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/" data-id="cljxywimy000p0no2dk312gk6" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/" data-id="clkyxe2l5000p0nmsdjitbayr" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -114,10 +114,10 @@
 <p>みなさんこんにちは、Azure Backup サポートです。<br>今回は、Active Directory ( 以下、AD ) のドメインに参加している Azure 仮想マシンを、Azure VM Backup にて保護する場合に、よくお問い合わせいただく内容についてご案内いたします。</p>
 <h4 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h4><p>Azure VM Backupにて保護することを前提とすると、「ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項」というのは特にございません。<br>ただし、リストア (=復元) 後は Active Directory の観点で、環境に合わせた考慮事項が発生いたします。<br>Widnows OS 上の作業詳細についてご不明点がございます場合は、恐縮ながら Azure Backup チームではなく、 Active Directory を取り扱う部署にて対応いたしております。<br>Active Directory 観点でのサポートについては、お客様の契約次第ではオンプレミス チームでの有償対応が必要となることがございます。<br>また、お客様のご契約が Azure 製品のサポート契約のみの場合は、オンプレミス範囲のサポート契約がないために、詳細なサポート対応・調査が行えない可能性がございます。<br>お客様にてご契約内容をご確認の上で、「復元」ジョブ完了後の Active Directory 観点の考慮点・作業詳細については、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#Q1">Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？</a><br><a href="#Q2">Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？</a><br><a href="#Q3">Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？</a><br><a href="#Q4">Q4. ドメインコントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください</a><br><a href="#Q5">Q5. ドメイン内のひとつの ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</a><br><a href="#Q6">Q6. ドメイン内のすべての ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</a><br><a href="#Q7">Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。</a></p>
+<p><a href="#Q1">Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？</a><br><a href="#Q2">Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？</a><br><a href="#Q3">Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？</a><br><a href="#Q4">Q4. ドメイン コントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください</a><br><a href="#Q5">Q5. ドメイン内のひとつの ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？</a><br><a href="#Q6">Q6. ドメイン内のすべての ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？</a><br><a href="#Q7">Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。</a></p>
 <hr>
 <h2 id="Q1-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合の考慮事項はありますか？"><a href="#Q1-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合の考慮事項はありますか？" class="headerlink" title="Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？"></a><a id="Q1"></a>Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？</h2><h4 id="「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？"><a href="#「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？" class="headerlink" title="「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？"></a>「構成の復元：新規作成」「構成の復元：既存を置換」など、どの復元オプションで復元すべきですか？</h4><p><strong>A1</strong> Azure VM Backupにて保護することを前提とすると、「バックアップ取得する際」「復元時」について、Azure Backup 観点では特に注意点、考慮事項はございません。<br>復元オプションには以下いずれかを選択いただいて構いませんので、お客様のご要件に従って決定ください。<br>（復元オプション）<br>・「構成の復元：新規作成」「復元の種類：新しい仮想マシンの作成」<br>・「構成の復元：新規作成」「復元の種類：ディスクの復元」<br>・「構成の復元：既存を置換」「復元の種類：ディスクの置換」</p>
-<p>・Azure portal で Azure VM データを復元する方法<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations</a></p>
+<p>・Azure portal で Azure VM データを復元する方法<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations</a></p>
 <p>ただし、〈前提〉に記載の通り、「復元」ジョブ完了後の Windows OS 上での作業詳細や考慮事項については、Azure サポートではなく、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。</p>
 <h5 id="「復元の種類：新しい仮想マシンの作成」にて復元する場合の考慮点"><a href="#「復元の種類：新しい仮想マシンの作成」にて復元する場合の考慮点" class="headerlink" title="「復元の種類：新しい仮想マシンの作成」にて復元する場合の考慮点"></a>「復元の種類：新しい仮想マシンの作成」にて復元する場合の考慮点</h5><p>この場合、復元される Azure 仮想マシンのホスト名や、SID識別子は復元もとと同一となります。<br>SID 識別子やユーザ固有の情報が重複する為、同一のネットワーク上に「復元の種類：新しい仮想マシンの作成」での復元を行った場合、なんらかの問題が起こる可能性、懸念が考えられます。<br>そのため、復元もとの Azure 仮想マシンが破損などにより起動できない状態などでの復元シナリオでは、重複トラブルは避けられますが、それ以外の目的で復元する場合は、この状態を避けるため、通常は一般化の上利用いただく必要がございます。</p>
 <p>一般化に関しては下記ブログ記事をご覧のうえ、下記の詳細については、新規サービスリクエストを起票の上、Azure VM 担当部署までご相談いただくようお願いいたします。<br>・VM 複製方法について part.1/3 2 つの方法の紹介<br>　<a target="_blank" rel="noopener" href="https://jpaztech.github.io/blog/vm/vm-replica-1/">https://jpaztech.github.io/blog/vm/vm-replica-1/</a></p>
@@ -125,11 +125,11 @@
 <h5 id="「復元の種類：新しい仮想マシンの作成」かつ、復元した-Azure-仮想マシンはネットワーク的に元の環境と疎通がとれる場合"><a href="#「復元の種類：新しい仮想マシンの作成」かつ、復元した-Azure-仮想マシンはネットワーク的に元の環境と疎通がとれる場合" class="headerlink" title="「復元の種類：新しい仮想マシンの作成」かつ、復元した Azure 仮想マシンはネットワーク的に元の環境と疎通がとれる場合"></a>「復元の種類：新しい仮想マシンの作成」かつ、復元した Azure 仮想マシンはネットワーク的に元の環境と疎通がとれる場合</h5><p>「復元」指示時に、Azure 仮想マシン名を復元もと とは異なる名前にしていても、ホスト名・SID は復元もと と同一ですので、既存ドメインのドメインアカウントを有した状態で、ドメイン上に戻されることとなります。<br>仮に復元時、復元もとの Azure 仮想マシンも「実行中」の状態で、「復元」してしまうと、ドメイン上に戻される＆同一のホスト/ SID 名のマシンがドメインネットワーク内に 2 つ存在することとなるため、予期せぬトラブルを招く恐れがあるかと存じます。<br>同一のドメインネットワーク上に「復元」を希望される場合は、一度 ネットワーク 的に分離された環境でリストアしていただき、一般化  ( AD 観点では少なくともホスト名の変更 ) を した上で元のネットワークに参加させる、もとのVM を停止した状態にするなどの方法が考えられます。</p>
 <h5 id="「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した-Azure-仮想マシンはネットワーク的に元の環境と疎通ができない場合"><a href="#「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した-Azure-仮想マシンはネットワーク的に元の環境と疎通ができない場合" class="headerlink" title="「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した Azure 仮想マシンはネットワーク的に元の環境と疎通ができない場合"></a>「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した Azure 仮想マシンはネットワーク的に元の環境と疎通ができない場合</h5><p>既存ドメインのドメインアカウントを有した状態にて復元されますが、ネットワークが異なることによってドメイン コントローラーとの疎通ができないため、同じドメイン上には戻されません。</p>
 <h5 id="「復元の種類：ディスクの置換」の場合"><a href="#「復元の種類：ディスクの置換」の場合" class="headerlink" title="「復元の種類：ディスクの置換」の場合"></a>「復元の種類：ディスクの置換」の場合</h5><p>IP アドレスや NSG の設定は、「復元」ジョブ指示前と同じものを利用できます。<br>また、可用性セットを設定していた場合も、再び可用性セットの構成を利用することが可能です。</p>
-<h2 id="Q2-「復元」ジョブ完了後は、ドメインの再参加は必要ですか？"><a href="#Q2-「復元」ジョブ完了後は、ドメインの再参加は必要ですか？" class="headerlink" title="Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？"></a><a id="Q2"></a>Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？</h2><p><strong>A2</strong>  下記ドキュメントの通り、復元によってセキュア チャネルが破損する可能性もございますので、基本的には再度ドメイン参加を実施ください。<br>・ドメインにログオンできない ～ セキュア チャネルの破損 ～ | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/archive/blogs/jpntsblog/256">https://docs.microsoft.com/en-us/archive/blogs/jpntsblog/256</a></p>
+<h2 id="Q2-「復元」ジョブ完了後は、ドメインの再参加は必要ですか？"><a href="#Q2-「復元」ジョブ完了後は、ドメインの再参加は必要ですか？" class="headerlink" title="Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？"></a><a id="Q2"></a>Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？</h2><p><strong>A2</strong>  下記ドキュメントの通り、復元によってセキュア チャネルが破損する可能性もございますので、基本的には再度ドメイン参加を実施ください。<br>・ドメインにログオンできない ～ セキュア チャネルの破損 ～ | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/archive/blogs/jpntsblog/256">https://learn.microsoft.com/en-us/archive/blogs/jpntsblog/256</a></p>
 <h2 id="Q3-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合、「復元」後は-ドメイン-ID-は変わってしまいますか？"><a href="#Q3-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合、「復元」後は-ドメイン-ID-は変わってしまいますか？" class="headerlink" title="Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？"></a><a id="Q3"></a>Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？</h2><p><strong>A3</strong> 「復元」を指示する際に、ユーザーにて選択した「復元ポイント」時点のドメイン ID にて復元されます。<br><img src="https://user-images.githubusercontent.com/96324317/204124178-ccfee87e-1cf2-4de9-8cb9-4a1053847bf9.png" alt="RestoreVM"></p>
-<h2 id="Q4-ドメインコントローラー-DC-自体の-Azure-VM-Backup-におけるバックアップ・復元について詳細を教えてください"><a href="#Q4-ドメインコントローラー-DC-自体の-Azure-VM-Backup-におけるバックアップ・復元について詳細を教えてください" class="headerlink" title="Q4. ドメインコントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください"></a><a id="Q4"></a>Q4. ドメインコントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください</h2><p><strong>A4</strong> 詳細は下記公開ドキュメントに取りまとめていますので、こちらをご参照ください。<br>・Active Directory ドメイン コントローラーのバックアップおよび復元<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/active-directory-backup-restore">https://learn.microsoft.com/ja-jp/azure/backup/active-directory-backup-restore</a></p>
-<h2 id="Q5-ドメイン内のひとつの-ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？"><a href="#Q5-ドメイン内のひとつの-ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？" class="headerlink" title="Q5. ドメイン内のひとつの ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？"></a><a id="Q5"></a>Q5. ドメイン内のひとつの ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</h2><p><strong>A5</strong> ドメイン内に生存している DC が存在している場合、ひとつの DC を復元する方法に配慮は不要です。<br>例えば同一ドメイン内に DC が 2 台存在する構成の場合には、片方の DC だけ障害が発生する分には Azure Portal からの復元を実施できます。</p>
-<h2 id="Q6-ドメイン内のすべての-ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？"><a href="#Q6-ドメイン内のすべての-ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？" class="headerlink" title="Q6. ドメイン内のすべての ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？"></a><a id="Q6"></a>Q6. ドメイン内のすべての ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？</h2><p><strong>A6</strong> 考慮が必要です。<br>下記は必要な作業として記載しておりますが、その他に必要な作業は、お客様の環境によって異なってまいりますので、お手数をおかけしますが Azure サポートではなく、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。<br>===<br>すべての DC を復元する場合、グループ ポリシー オブジェクトに関する情報が格納されている SYSVOL 共有の複製において、SYSVOL 共有の　“親” を定義する必要がございます。<br>生存した DC が存在する場合は、生存した DC が自動的に “親” となりますが、すべての DC を復元した場合は、すべての DC が “子” として復元されるため、明示的に “親” を定義する作業が必要になります。<br>簡単ではございますが、手順を作成いたしましたので、ご案内させていただきます。</p>
+<h2 id="Q4-ドメイン-コントローラー-DC-自体の-Azure-VM-Backup-におけるバックアップ・復元について詳細を教えてください"><a href="#Q4-ドメイン-コントローラー-DC-自体の-Azure-VM-Backup-におけるバックアップ・復元について詳細を教えてください" class="headerlink" title="Q4. ドメイン コントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください"></a><a id="Q4"></a>Q4. ドメイン コントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください</h2><p><strong>A4</strong> 詳細は下記公開ドキュメントに取りまとめていますので、こちらをご参照ください。<br>・Active Directory ドメイン コントローラーのバックアップおよび復元<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/active-directory-backup-restore">https://learn.microsoft.com/ja-jp/azure/backup/active-directory-backup-restore</a></p>
+<h2 id="Q5-ドメイン内のひとつの-ドメイン-コントローラーを復元する場合、何らかの考慮が必要になりますか？"><a href="#Q5-ドメイン内のひとつの-ドメイン-コントローラーを復元する場合、何らかの考慮が必要になりますか？" class="headerlink" title="Q5. ドメイン内のひとつの ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？"></a><a id="Q5"></a>Q5. ドメイン内のひとつの ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？</h2><p><strong>A5</strong> ドメイン内に生存している DC が存在している場合、ひとつの DC を復元する方法に配慮は不要です。<br>例えば同一ドメイン内に DC が 2 台存在する構成の場合には、片方の DC だけ障害が発生する分には Azure Portal からの復元を実施できます。</p>
+<h2 id="Q6-ドメイン内のすべての-ドメイン-コントローラーを復元する場合、何らかの考慮が必要になりますか？"><a href="#Q6-ドメイン内のすべての-ドメイン-コントローラーを復元する場合、何らかの考慮が必要になりますか？" class="headerlink" title="Q6. ドメイン内のすべての ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？"></a><a id="Q6"></a>Q6. ドメイン内のすべての ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？</h2><p><strong>A6</strong> 考慮が必要です。<br>下記は必要な作業として記載しておりますが、その他に必要な作業は、お客様の環境によって異なってまいりますので、お手数をおかけしますが Azure サポートではなく、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。<br>===<br>すべての DC を復元する場合、グループ ポリシー オブジェクトに関する情報が格納されている SYSVOL 共有の複製において、SYSVOL 共有の　“親” を定義する必要がございます。<br>生存した DC が存在する場合は、生存した DC が自動的に “親” となりますが、すべての DC を復元した場合は、すべての DC が “子” として復元されるため、明示的に “親” を定義する作業が必要になります。<br>簡単ではございますが、手順を作成いたしましたので、ご案内させていただきます。</p>
 <h5 id="留意事項"><a href="#留意事項" class="headerlink" title="留意事項"></a>留意事項</h5><p>最初の DC を Azure VM Backup から復元した後に、SYSVOL を複製しているオブジェクトを<br>編集することによって、SYSVOL のマスターを定義する必要があります。<br>なお、SYSVOL 複製方式は、一般的である DFSR を使用していることを前提とします。</p>
 <h5 id="手順"><a href="#手順" class="headerlink" title="手順"></a>手順</h5><ol>
 <li>1 台目のドメイン コントローラーをバックアップから復元します。</li>
@@ -148,7 +148,7 @@
 <li>[管理者として実行] からコマンド プロンプトを起動します。</li>
 <li>下記のコマンドを実行し、DFS Replication サービスを再起動します。<br>net stop dfsr &amp;&amp; net start dfsr</li>
 </ol>
-<p>・AD フォレストの回復-DFSR によってレプリケートされた SYSVOL の権限のある同期を実行する<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/windows-server/identity/ad-ds/manage/ad-forest-recovery-authoritative-recovery-sysvol">https://docs.microsoft.com/ja-jp/windows-server/identity/ad-ds/manage/ad-forest-recovery-authoritative-recovery-sysvol</a></p>
+<p>・AD フォレストの回復-DFSR によってレプリケートされた SYSVOL の権限のある同期を実行する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-authoritative-recovery-sysvol">https://learn.microsoft.com/ja-jp/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-authoritative-recovery-sysvol</a></p>
 <h2 id="Q7-Azure-AD-Connect-AADC-をインストールして使用している-Azure-仮想マシンがあります。AADC-の復旧手順を教えてください。"><a href="#Q7-Azure-AD-Connect-AADC-をインストールして使用している-Azure-仮想マシンがあります。AADC-の復旧手順を教えてください。" class="headerlink" title="Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。"></a><a id="Q7"></a>Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。</h2><p><strong>A7</strong> AADC に対しては、「Azure VM Backup」機能を利用したバックアップ・リストアではなく、AADC における Export/Import での再構築が必要となります。<br>AADC に対するバックアップ運用については、下記をご参照ください。</p>
 <p>・Azure AD Connect 設定の Export / Import | Japan Azure Identity Support Blog (jpazureid.github.io)<br>　<a target="_blank" rel="noopener" href="https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/">https://jpazureid.github.io/blog/azure-active-directory-connect/aadc-import-export-config/</a></p>
 <p>なお、AADC に対するバックアップ/復旧手順について詳細を確認なされたい場合は、Azure Identity 宛へお問い合わせを起票いただきますよう、よろしくお願い申し上げます。<br>（補足）<br>Azure AD Connect をドメイン コントローラー上にインストールすることは推奨しておりません。</p>
@@ -178,19 +178,19 @@
     
 <nav id="article-nav">
   
-    <a href="../HowToConfigureOptionalProcess/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../AV_ExcludeSetting/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          Azure VM Backup のジョブ前後で任意の処理を行いたい
+          Azure Backup におけるウイルス除外設定について
         
       </div>
     </a>
   
   
-    <a href="../How_to_check_VM_backup_Subtask/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../restore_swapdsik/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure VM Backup における Take Snapshot フェーズの確認方法</div>
+      <div class="article-nav-title">Azure VM Backup [既存を置換] リストア について</div>
     </a>
   
 </nav>
@@ -209,23 +209,23 @@
       <ul>
         
           <li>
+            <a href="../../AzureBackupGeneral/DR_ASR_or_VMBackup/">Azure VM Backup と Azure Site Recovery による DR 要件について</a>
+          </li>
+        
+          <li>
+            <a href="../AV_ExcludeSetting/">Azure Backup におけるウイルス除外設定について</a>
+          </li>
+        
+          <li>
+            <a href="">ドメインに参加しているVMのAzure VM Backupリストアについて</a>
+          </li>
+        
+          <li>
             <a href="../restore_swapdsik/">Azure VM Backup [既存を置換] リストア について</a>
           </li>
         
           <li>
             <a href="../../AzureBackupGeneral/How_to_set_Backup_Alert/">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
-          </li>
-        
-          <li>
-            <a href="../../MARSBackup/How_to_fail_MARS_backup/">MARS バックアップ を意図的に失敗させる方法</a>
-          </li>
-        
-          <li>
-            <a href="../How_to_fail_VM_backup/">Azure VM Backup を意図的に失敗させる方法</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/">Azure Backup の 保持期間について</a>
           </li>
         
       </ul>
@@ -248,7 +248,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
