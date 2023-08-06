@@ -1,6 +1,6 @@
 ---
 title: Azure Backup におけるウイルス除外設定について
-date: 2022-02-06 12:00:00
+date: 2023-08-04 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -22,7 +22,7 @@ disableDisclaimer: false
 ## 1. Azure VM Backup の場合のウイルス検知除外設定<a id="1"></a>
 Azure VM Backup とは Azure 上の VM に対するバックアップサービスです。
 ・Azure VM バックアップの概要
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction
 
 Windows OS と Linux OS に場合分けしてお伝えします。
 
@@ -34,10 +34,10 @@ Windows OS の場合、下記をアンチウイルス ソフトの除外設定�
 
 なお、上記は下記の公式ドキュメントにも記載されております。
 ・Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題 - 手順 4:Azure Backup VM 拡張機能の正常性を確認する
-https://docs.microsoft.com/ja-jp/azure/backup/https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#step-4-check-azure-backup-extension-health
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#step-4-check-azure-backup-extension-health
 
 ・VMRestorePointInternalError - VM で構成されているウイルス対策により、バックアップ拡張機能の実行が制限されています
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#vmrestorepointinternalerror---antivirus-configured-in-the-vm-is-restricting-the-execution-of-backup-extension
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#vmrestorepointinternalerror---antivirus-configured-in-the-vm-is-restricting-the-execution-of-backup-extension
 
 
 ### 1-2. Linux OS の場合<a id="1-2"></a>
@@ -50,7 +50,7 @@ Linux OS の場合、下記をアンチウイルス ソフトの除外設定に�
 MARS バックアップ (Azure MARS Backup エージェントを利用したバックアップ) とはクラウドかオンプレミス環境かを問わず、Windows OS において、ファイルとフォルダー単位のバックアップやシステム状態のバックアップを 取得し Azure 上に保存するバックアップサービスです。
 
 ・Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
-https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent
 
 
 MARS バックアップをお使いの場合、下記をアンチウイルス ソフトの除外設定にいれてください。
@@ -60,5 +60,5 @@ MARS バックアップをお使いの場合、下記をアンチウイルス �
 
 なお、上記は下記の公式ドキュメントにも記載されております。
 ・Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング - 原因: Azure Backup の妨げになっている別のプロセスまたはウイルス対策ソフトウェア
-  https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup
 

@@ -1,6 +1,6 @@
 ---
 title: ドメインに参加しているVMのAzure VM Backupリストアについて
-date: 2022-11-28 12:00:00
+date: 2023-08-04 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -24,9 +24,9 @@ Active Directory 観点でのサポートについては、お客様の契約次
 [Q1. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合の考慮事項はありますか？](#Q1)
 [Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？](#Q2)
 [Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？](#Q3)
-[Q4. ドメインコントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください](#Q4)
-[Q5. ドメイン内のひとつの ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？](#Q5)
-[Q6. ドメイン内のすべての ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？](#Q6)
+[Q4. ドメイン コントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください](#Q4)
+[Q5. ドメイン内のひとつの ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？](#Q5)
+[Q6. ドメイン内のすべての ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？](#Q6)
 [Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。](#Q7)
 -----------------------------------------------------------
 
@@ -40,7 +40,7 @@ Active Directory 観点でのサポートについては、お客様の契約次
 ・「構成の復元：既存を置換」「復元の種類：ディスクの置換」
 
 ・Azure portal で Azure VM データを復元する方法
-　https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations
 
 ただし、〈前提〉に記載の通り、「復元」ジョブ完了後の Windows OS 上での作業詳細や考慮事項については、Azure サポートではなく、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。
 
@@ -73,22 +73,22 @@ IP アドレスや NSG の設定は、「復元」ジョブ指示前と同じも
 ## <a id="Q2"></a>Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？
 **A2**  下記ドキュメントの通り、復元によってセキュア チャネルが破損する可能性もございますので、基本的には再度ドメイン参加を実施ください。
 ・ドメインにログオンできない ～ セキュア チャネルの破損 ～ | Microsoft Docs
-　https://docs.microsoft.com/en-us/archive/blogs/jpntsblog/256
+　https://learn.microsoft.com/en-us/archive/blogs/jpntsblog/256
 
 ## <a id="Q3"></a>Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？
 **A3** 「復元」を指示する際に、ユーザーにて選択した「復元ポイント」時点のドメイン ID にて復元されます。
 ![RestoreVM](https://user-images.githubusercontent.com/96324317/204124178-ccfee87e-1cf2-4de9-8cb9-4a1053847bf9.png)
 
-## <a id="Q4"></a>Q4. ドメインコントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください
+## <a id="Q4"></a>Q4. ドメイン コントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください
 **A4** 詳細は下記公開ドキュメントに取りまとめていますので、こちらをご参照ください。
 ・Active Directory ドメイン コントローラーのバックアップおよび復元
 　https://learn.microsoft.com/ja-jp/azure/backup/active-directory-backup-restore
 
-## <a id="Q5"></a>Q5. ドメイン内のひとつの ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？
+## <a id="Q5"></a>Q5. ドメイン内のひとつの ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？
 **A5** ドメイン内に生存している DC が存在している場合、ひとつの DC を復元する方法に配慮は不要です。
 例えば同一ドメイン内に DC が 2 台存在する構成の場合には、片方の DC だけ障害が発生する分には Azure Portal からの復元を実施できます。
 
-## <a id="Q6"></a>Q6. ドメイン内のすべての ドメインコントローラーを復元する場合、何らかの考慮が必要になりますか？
+## <a id="Q6"></a>Q6. ドメイン内のすべての ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？
 **A6** 考慮が必要です。
 下記は必要な作業として記載しておりますが、その他に必要な作業は、お客様の環境によって異なってまいりますので、お手数をおかけしますが Azure サポートではなく、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。
 ===
@@ -121,7 +121,7 @@ IP アドレスや NSG の設定は、「復元」ジョブ指示前と同じも
 net stop dfsr && net start dfsr
  
 ・AD フォレストの回復-DFSR によってレプリケートされた SYSVOL の権限のある同期を実行する
-　https://docs.microsoft.com/ja-jp/windows-server/identity/ad-ds/manage/ad-forest-recovery-authoritative-recovery-sysvol
+　https://learn.microsoft.com/ja-jp/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-authoritative-recovery-sysvol
 
 
 ## <a id="Q7"></a>Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。
