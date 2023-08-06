@@ -40,7 +40,7 @@ Active Directory 観点でのサポートについては、お客様の契約次
 ・「構成の復元：既存を置換」「復元の種類：ディスクの置換」
 
 ・Azure portal で Azure VM データを復元する方法
-　https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-vms-with-special-configurations
 
 ただし、〈前提〉に記載の通り、「復元」ジョブ完了後の Windows OS 上での作業詳細や考慮事項については、Azure サポートではなく、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。
 
@@ -73,7 +73,7 @@ IP アドレスや NSG の設定は、「復元」ジョブ指示前と同じも
 ## <a id="Q2"></a>Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？
 **A2**  下記ドキュメントの通り、復元によってセキュア チャネルが破損する可能性もございますので、基本的には再度ドメイン参加を実施ください。
 ・ドメインにログオンできない ～ セキュア チャネルの破損 ～ | Microsoft Docs
-　https://docs.microsoft.com/en-us/archive/blogs/jpntsblog/256
+　https://learn.microsoft.com/en-us/archive/blogs/jpntsblog/256
 
 ## <a id="Q3"></a>Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？
 **A3** 「復元」を指示する際に、ユーザーにて選択した「復元ポイント」時点のドメイン ID にて復元されます。
@@ -121,7 +121,7 @@ IP アドレスや NSG の設定は、「復元」ジョブ指示前と同じも
 net stop dfsr && net start dfsr
  
 ・AD フォレストの回復-DFSR によってレプリケートされた SYSVOL の権限のある同期を実行する
-　https://docs.microsoft.com/ja-jp/windows-server/identity/ad-ds/manage/ad-forest-recovery-authoritative-recovery-sysvol
+　https://learn.microsoft.com/ja-jp/windows-server/identity/ad-ds/manage/forest-recovery-guide/ad-forest-recovery-authoritative-recovery-sysvol
 
 
 ## <a id="Q7"></a>Q7. Azure AD Connect (=AADC) をインストールして使用している Azure 仮想マシンがあります。AADC の復旧手順を教えてください。
