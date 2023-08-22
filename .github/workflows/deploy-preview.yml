@@ -25,4 +25,4 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         azure-storage-connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-        preview-base-url: "https://{{ Your Static Web URL }}.z11.web.core.windows.net/"
+        preview-base-url: "https://oktstandardwus.z22.web.core.windows.net/"
