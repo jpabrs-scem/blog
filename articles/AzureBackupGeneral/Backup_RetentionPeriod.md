@@ -1,6 +1,6 @@
 ---
 title: Azure Backup の 保持期間について
-date: 2023-06-08 12:00:00
+date: 2023-08-24 12:00:00
 tags:
   - Azure Backup General
   - how to
@@ -27,17 +27,57 @@ disableDisclaimer: false
 [3. SQL Server DB に対する Azure Backup の場合](#3)
 [4. SAP HANA DB に対する Azure Backup の場合](#4)
 [5. Microsoft Azure Recovery Services (MARS) の場合](#5)
-[6. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合](#6)
+[6. Azure ディスク バックアップの場合](#6)
+[7. Azure BLOB バックアップ の場合](#7)
+[8. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合](#8)
 
 -----------------------------------------------------------
 ## <a id="1"></a> 1. Azure VM Backup の場合
-|  Azure VM に対するバックアップの頻度  |  最小保持期間  |  最大保持期間  |
+### ポリシーのサブタイプ：Standard の場合
+|  バックアップの頻度  |  最小保持期間  |  最大保持期間  |
 | ---- | ---- | ---- |
-|  インスタント回復スナップショットの保有期間  |  1 日  |  ポリシーのサブタイプ：Standard の場合： 5<br>ポリシーのサブタイプ：Enhanced の場合： 30 日  |
+|  インスタント回復スナップショットの保有期間  |  1 日  |  5 日  |
 |  毎日  |  7 日  |  9999 日  |
 |  毎週  |  1 週  |  5163 週  |
 |  毎月  |  1 ヶ月  |  1188 ヶ月  |
 |  毎年  |  1 年  |  99 年  |
+
+### ポリシーのサブタイプ：Enhanced の場合
+#### インスタント回復スナップショットの保持期間
+|  バックアップの頻度  |  最小保持期間  |  最大保持期間  |
+| ---- | ---- | ---- |
+|  4 時間ごと  |  1 日  |  11 日  |
+|  6 時間ごと  |  1 日  |  17 日  |
+|  8 時間ごと  |  1 日  |  22 日  |
+|  12 時間ごと  |  1 日  |  30 日  |
+|  毎日  |  1 日  |  30 日  |
+
+#### Recovery Services コンテナー層上の保持期間
+|  バックアップの頻度  |  最小保持期間  |  最大保持期間  |
+| ---- | ---- | ---- |
+|  毎日  |  7 日  |  9999 日  |
+|  毎週  |  1 週  |  5163 週  |
+|  毎月  |  1 ヶ月  |  1188 ヶ月  |
+|  毎年  |  1 年  |  99 年  |
+
+（補足）Enhanced バックアップ ポリシーの場合、「〇時間ごと」というような頻度を選択可能です。
+　1 日に複数回のバックアップ取得を設定した場合、バックアップ ポリシー上の周期から計算して「その日の最後のバックアップ」のみが Recovery Services コンテナー層に保管されます。
+
+・拡張ポリシーを使用して Azure VM をバックアップする - Azure Backup | Microsoft Learn
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal#create-an-enhanced-policy-and-configure-vm-backup
+　"毎時間のバックアップの場合、その日の最後のバックアップがコンテナーに転送されます。 バックアップが失敗すると、次の日の最初のバックアップがコンテナーに転送されます。"
+
+(Enhanced バックアップ ポリシー の設定例)
+開始時刻：JST 16時
+スケジュール：4時間ごと
+バックアップ期間：24時間
+
+スナップショット① = JST 6/27 16:00 ごろ取得 → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される
+スナップショット② = JST 6/27 20:00 ごろ取得 → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される
+スナップショット③ = JST 6/28 0:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される
+スナップショット④ = JST 6/28 4:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される
+スナップショット⑤ = JST 6/28 8:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される
+スナップショット⑥ = JST 6/28 12:00 ごろ取得  → <font color="OrangeRed">Recovery Services コンテナーへ転送される</font>
 
 （補足）オンデマンド バックアップの場合、最大 99 年まで保持期間を指定可能です。
 ![](https://user-images.githubusercontent.com/96324317/197448093-5b532557-b4e6-44de-b837-01993756862a.png)
@@ -94,7 +134,36 @@ disableDisclaimer: false
 |  毎月  |  3 ヶ月  |  1316 ヶ月  |
 |  毎年  |  1 年  |  100 年  |
 
-## <a id="6"></a> 6. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合
+## <a id="6"></a> 6. Azure ディスク バックアップの場合
+|  Azure ディスク バックアップの頻度  |  最小保持期間  |  最大保持期間  |
+| ---- | ---- | ---- |
+|  1 時間ごと  |  1 日  |  18 日  |
+|  2 時間ごと  |  1 日  |  37 日  |
+|  4 時間ごと  |  1 日  |  75 日  |
+|  6 時間ごと  |  1 日  |  112 日  |
+|  8 時間ごと  |  1 日  |  150 日  |
+|  12 時間ごと  |  1 日  |  225 日  |
+|  毎日  |  1 日  |  450 日  |
+
+(補足) Azure ディスク バックアップでは、ディスクあたりのスナップショット合計数が 500 までとなるよう、バックアップ ポリシー上で制限されています。
+・ディスク バックアップのスケジュールと保持期間はどのように機能しますか?
+　https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-does-the-disk-backup-scheduling-and-retention-period-work
+　"スナップショットの保持期間は、ディスクのスナップショット制限によって制御されます。"
+
+## <a id="7"></a> 7. Azure BLOB バックアップ の場合
+### 運用バックアップの場合
+バックアップ対象ストレージ アカウント上にのみバックアップ データを保管します。
+「1 日に 1 回のバックアップ」などではなく、継続的なバックアップ取得となるため、「バックアップ頻度」というものはございません。
+最大保持期間は 360 日です。
+
+### 保管済みバックアップの場合
+バックアップ対象ストレージ アカウント上および バックアップ コンテナー上にバックアップ データを保管します。
+|  保管済みバックアップの頻度  |  最小保持期間  |  最大保持期間  |
+| ---- | ---- | ---- |
+|  毎日  |  7 日  |  3650 日  |
+|  毎週  |  7 日  |  3650 日  |
+
+## <a id="8"></a> 8. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合
 
 ### (DPM / MABS) ローカルディスクへのバックアップ
 | バックアップの頻度  |  最小保持期間  |  最大保持期間  |
