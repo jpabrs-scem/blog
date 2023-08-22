@@ -1,4 +1,4 @@
-File: blog/.github/workflows/pull-request-target.yml
+#File: blog/.github/workflows/pull-request-target.yml
 
 name: pull-request-target
 

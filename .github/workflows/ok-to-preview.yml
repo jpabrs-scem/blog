@@ -1,4 +1,4 @@
-File: blog/.github/workflows/ok-to-preview.yml
+#File: blog/.github/workflows/ok-to-preview.yml
 
 name: ok-to-preview
 

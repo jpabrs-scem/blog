@@ -1,4 +1,4 @@
-File: blog/.github/workflows/deploy-preview.yml
+#File: blog/.github/workflows/deploy-preview.yml
 
 name: deploy-preview
 
