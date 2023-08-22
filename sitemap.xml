@@ -65,6 +65,41 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</loc>
+    
+    <lastmod>2023-08-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
+    
+    <lastmod>2023-08-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
+    
+    <lastmod>2023-08-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/</loc>
+    
+    <lastmod>2023-08-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
+    
+    <lastmod>2023-08-22</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/</loc>
     
     <lastmod>2023-08-22</lastmod>
@@ -170,6 +205,13 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/</loc>
+    
+    <lastmod>2023-08-22</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/</loc>
     
     <lastmod>2023-08-22</lastmod>
@@ -178,48 +220,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
-    
-    <lastmod>2023-08-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</loc>
-    
-    <lastmod>2023-08-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
-    
-    <lastmod>2023-08-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
-    
-    <lastmod>2023-08-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/</loc>
-    
-    <lastmod>2023-08-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
-    
-    <lastmod>2023-08-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/</loc>
     
     <lastmod>2023-08-22</lastmod>
     
@@ -241,13 +241,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/</loc>
-    
-    <lastmod>2023-08-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/</loc>
     
     <lastmod>2023-08-22</lastmod>
     
@@ -290,6 +283,13 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/</loc>
+    
+    <lastmod>2023-08-22</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/</loc>
     
     <lastmod>2023-08-22</lastmod>
     
