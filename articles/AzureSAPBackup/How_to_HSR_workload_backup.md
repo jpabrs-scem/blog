@@ -14,7 +14,10 @@ disableDisclaimer: false
 #### ポイント
 - HANA システム レプリケーション (HSR) データベースの仕様上、HANA DB のユーザー名とパスワードは、Primary → Secondary へレプリケートされますが、hdbuserstore の情報（＝つまり、作成したキー情報）はレプリケートされません。
 - Azure Backup では、Primary/Seconday すべての Node 上に対してバックアップ操作をさせるために、ユーザー名/パスワード 入力での操作ではなく、hdbuserstore キーの入力での操作を行う仕組みになっています。
-このため、Azure Backup の事前登録スクリプトを実行する前に、2 種類のキーを Azure Backup 対象となる<font color="DeepPink">全ての</font>ノード上でも作成する必要があります。
+このため、Azure Backup の事前登録スクリプト (msawb-plugin-config-com-sap-hana.sh) を実行する前に、2 種類のキーを Azure Backup 対象となる<font color="DeepPink">全ての</font> Azure 仮想マシン上 (ノード上) でも作成する必要があります。
+- 下記の公開ドキュメントは必ずご一読の上で、作業ください。
+・Azure VM 上の SAP HANA システム レプリケーション データベースをバックアップする
+　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup
 
 #### 環境構成
 今回は、同一 リージョン・サブスクリプション・VNET 上に 2 つの Azure 仮想マシンを作成し、それぞれ Primary ノード・Secondary ノードとします。
@@ -26,11 +29,12 @@ disableDisclaimer: false
 
 SAP HANA SID： hxe
 SAP HANA インスタンス番号： 90
+マルチデータベースコンテナー (MDC)
 
 | ユーザー | 概要 | 作成するキー名 |
 |--|--|--|
 | SYSTEM | システムユーザー | SYSTEM |
-| OKTBK | カスタム バックアップ ユーザー<br>新規で手動作成が必要| OKTBKKEY |
+| OKTBK | カスタム バックアップ ユーザー<br>新規で手動作成が必要<br>任意のユーザーを指定可能| OKTBKKEY |
 
 ## 目次 - 手順概略
 -----------------------------------------------------------
@@ -50,15 +54,17 @@ SAP HANA インスタンス番号： 90
 　　記事内の<font color="Red">赤文字</font>・<font color="MediumBlue">青文字</font>などは、ユーザーの環境に依って異なります。
 
 ## <a id="1"></a> 1. (Primary マシン上) SYSTEM ユーザーに対してキーを設定する
+(参考) 公開ドキュメント - 事前登録スクリプトで実行される処理
+https://learn.microsoft.com/ja-jp/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does
+![image](https://github.com/jpabrs-scem/blog/assets/96324317/45d9f60f-7f1d-4b16-83a2-dd234aed1a45)
+
+※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してキーを作成してください。
+　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。
+
 HANA DB を立ち上げ、設定します。
 (Primary マシン上で実行するコマンド 例)
 su <font color="Red">hxe</font>adm -
 HDB start
-
-(参考) 公開ドキュメント - 事前登録スクリプトで実行される処理
-https://learn.microsoft.com/ja-jp/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/fa4d600b-e14c-4e22-ba45-4af9e78cbd2e)
-
 hdbuserstore list
 この時点では何もキーはありません。
 ![image](https://github.com/jpabrs-scem/blog/assets/96324317/29659ca7-f81f-405e-8814-f116bbf83e81)
@@ -73,7 +79,7 @@ hdbuserstore list
 
 
 ## <a id="2"></a> 2. (Primary マシン上) カスタム バックアップ ユーザーを作成・パスワード管理・ロールなどの設定を行う
-・事前登録スクリプトを実行する
+・(参考) 事前登録スクリプトを実行する
 　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script
 ![image](https://github.com/jpabrs-scem/blog/assets/96324317/974231ad-cf09-45e5-8e37-ef96d3cb017d)
 
@@ -95,7 +101,7 @@ hdbsql -t -U <font color="Red">SYSTEM</font> CREATE USER <font color="MediumBlue
 〇　カスタム バックアップ ユーザー「OKTBK」のパスワードの期限を無効化する
 hdbsql -t -U <font color="Red">SYSTEM</font> "ALTER USER <font color="Red">OKTBK</font> DISABLE PASSWORD LIFETIME"
 
-・事前登録スクリプトを実行する
+・(参考) 事前登録スクリプトを実行する
 　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script
 　"このカスタム バックアップ キーのパスワード有効期限が切れると、バックアップと復元操作は失敗します。"
 
@@ -103,10 +109,10 @@ hdbsql -t -U <font color="Red">SYSTEM</font> "ALTER USER <font color="Red">OKTBK
 hdbsql -t -U <font color="Red">SYSTEM</font> "ALTER USER <font color="Red">OKTBK</font> ACTIVATE USER NOW"
 
 〇　カスタム バックアップ ユーザー「OKTBK」に対して「データベース管理者」ロールを付与する
-hdbsql -t -U <font color="Red">SYSTEM</font> "GRANT <font color="DeepPink">DATABASE ADMIN</font> TO <font color="Red">OKTBK</font>"
+hdbsql -t -U <font color="Red">SYSTEM</font> "GRANT <font color="Green">DATABASE ADMIN</font> TO <font color="Red">OKTBK</font>"
 
 〇　カスタム バックアップ ユーザー「OKTBK」に対して「CATALOG READ（＝バックアップ カタログを読み取れる）」ロールを付与する
-hdbsql -t -U <font color="Red">SYSTEM</font> "GRANT <font color="DeepPink">CATALOG READ</font> TO <font color="Red">OKTBK</font>"
+hdbsql -t -U <font color="Red">SYSTEM</font> "GRANT <font color="Green">CATALOG READ</font> TO <font color="Red">OKTBK</font>"
 ![image](https://github.com/jpabrs-scem/blog/assets/96324317/b52f7628-7558-4d72-a09c-64db67794836)
 
 〇　カスタム バックアップ ユーザー「OKTBK」に対して「バックアップ管理者」ロールを付与する
@@ -119,7 +125,7 @@ HDB version
 ・(外部サイト 参考) GRANT Statement (Access Control) | SAP Help Portal
 　https://help.sap.com/docs/SAP_HANA_PLATFORM/4fe29514fd584807ac9f2a04f6754767/20f674e1751910148a8b990d33efbdc5.html 
 
-hdbsql -t -U <font color="Red">SYSTEM</font> "GRANT <font color="DeepPink">BACKUP ADMIN</font> TO <font color="Red">OKTBK</font>"
+hdbsql -t -U <font color="Red">SYSTEM</font> "GRANT <font color="Green">BACKUP ADMIN</font> TO <font color="Red">OKTBK</font>"
 ![image](https://github.com/jpabrs-scem/blog/assets/96324317/65fe75f1-d9f8-4ae5-b26c-117603f154e2)
 
 念のためカスタム バックアップ ユーザー「OKTBK」に、現時点で付与されているロールを「GRANTED_PRIVILEGES」テーブルから確認してみます。
@@ -127,11 +133,15 @@ hdbsql -t -U <font color="Red">SYSTEM</font> "GRANT <font color="DeepPink">BACKU
 
 
 ## <a id="3"></a> 3. (Primary マシン上) カスタム バックアップ ユーザーに対してキーを設定する
-・事前登録スクリプトを実行する
+・(参考) 事前登録スクリプトを実行する
 　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script
 　"カスタム バックアップ ユーザーの hdbuserstore にキーを追加します。これにより、HANA バックアップ プラグインですべての操作 (データベース クエリ、復元操作、構成、バックアップの実行) を管理できるようになります。"
 
+(実行するコマンド)
 hdbuserstore Set <作成するキー名> <作成先HANA DB のホスト名>:3<インスタンス番号>13 <カスタム バックアップ ユーザー名> <カスタム バックアップ ユーザーのパスワード>
+
+※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください。
+　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。
 
 (Primary マシン上で実行するコマンド 例)
 hdbuserstore Set <font color="Red">OKTBKKEY</font> <font color="MediumBlue">saphana23</font>:3<font color="Red">90</font>13 <font color="MediumBlue">OKTBK</font> <font color="Red"><パスワード></font>
@@ -144,6 +154,9 @@ hdbuserstore list
 ## <a id="4"></a> 4. (Secondary マシン上) SYSTEM ユーザーに対してキーを設定する
 Primary マシン上で、SYSTEM ユーザーに対して設定したものと同じキー名のキーを作成・設定します。
 
+※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してキーを作成してください。
+　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。
+
 (Secondary マシン上で実行するコマンド 例)
 hdbuserstore Set <font color="Red">SYSTEM</font> <font color="MediumBlue">saphana24</font>:3<font color="Red">90</font>13 SYSTEM <font color="MediumBlue"><パスワード></font>
 hdbuserstore list
@@ -152,10 +165,14 @@ hdbuserstore list
 
 ## <a id="5"></a> 5. (Secondary マシン上) カスタム バックアップ ユーザーに対してキーを設定する
 （補足）
-Primary マシン上で作成したカスタム バックアップ ユーザーとそのパスワードは、HSR の機能によって、自動的に Secondary へレプリケートされる想定です。
+Primary マシン上で作成したカスタム バックアップ ユーザーとそのパスワードは、HSR の機能によって、自動的に Secondary マシンへレプリケートされます。
 このためすでに HSR 設定済であれば Secondary マシン上では再度「カスタム バックアップ ユーザーの作成」を行う必要はありませんが、この段階でもし HSR 設定が完了しておらず、レプリケートしていない場合は、ユーザーにて Secondary マシン上にも再度「カスタム バックアップ ユーザーの作成」から作業ください。
-ここでは、すでに HSR 機能にてカスタム バックアップ ユーザーはレプリケートされている前提で、Secondary 上での「カスタム バックアップ ユーザーの作成」部分はスキップします。
+ここでは、すでに HSR 機能にてカスタム バックアップ ユーザーはレプリケートされている前提で、Secondary マシン上での「カスタム バックアップ ユーザーの作成」部分はスキップします。
 
+※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください。
+　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。
+
+(実行するコマンド)
 hdbuserstore Set <作成するキー名> <作成先HANA DB のホスト名>:3<インスタンス番号>13 <カスタム バックアップ ユーザー名> <カスタム バックアップ ユーザーのパスワード>
 
 (Secondary マシン上で実行するコマンド 例)
@@ -170,7 +187,7 @@ hdbuserstore list
 このため、一度、これまでバックアップ取得していたスタンドアロンの SAP HANA DB に対しては
 「バックアップ データの保持」・「バックアップの停止」を行ってください。
 
-・(手順) 2 つのスタンドアロン VM/1 つのスタンドアロン VM が Azure VM 上の SAP HANA Database バックアップを使用して既に保護されている
+・(参考 「バックアップの停止」部分まで) 2 つのスタンドアロン VM/1 つのスタンドアロン VM が Azure VM 上の SAP HANA Database バックアップを使用して既に保護されている
 　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#two-standalone-vms-one-standalone-vm-already-protected-using-sap-hana-database-backup-on-azure-vm
 
 『これまで一度も、対象 DB に対して Azure Workload Backup を構成したことが無い』
@@ -179,22 +196,21 @@ hdbuserstore list
 
 
 ## <a id="7"></a> 7. (Primary マシン上) 事前登録スクリプトをダウンロード・実行する
-・事前登録スクリプトを実行する
+・(参考) 事前登録スクリプトを実行する
 　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/0af9bfa6-5add-42b4-af59-a2a1c5e3573e)
 
-(ルートユーザーで実行)
-./msawb-plugin-config-com-sap-hana.sh -sn -bk <カスタム バックアップ ユーザー向けに作成したキー名> -hn HSR ID
+(ルートユーザーで実行するコマンド)
+./msawb-plugin-config-com-sap-hana.sh -sn -bk <カスタム バックアップ ユーザー向けに作成したキー名> -hn (HSR ID)
 
 【引数の説明】
--sn ( --skip-network-checks )： ネットワーク要件を満たしているかどうかのチェック処理をスキップしたい場合、追加ください
--bk ( -backup-key )：カスタム バックアップ ユーザー向けに作成したキー名を引数として渡してください
-・事前登録スクリプトを実行する
+■　-sn ( --skip-network-checks )： ネットワーク要件を満たしているかどうかのチェック処理をスキップしたい場合、追加ください
+■　-bk ( -backup-key )：カスタム バックアップ ユーザー向けに作成したキー名を引数として渡してください
+■　-hn (--hsr-unique-value)：HSR ID。Recovery Services コンテナー上での論理名を引数として渡します。この値はユーザーにて自由に決定ください
+
+・(コマンド引数の参考) 事前登録スクリプトを実行する
 　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script 
 　"このカスタム バックアップ ユーザー キーを、パラメーターとしてスクリプトに渡します。
 　 -bk CUSTOM_BACKUP_KEY_NAME または -backup-key CUSTOM_BACKUP_KEY_NAME"
-
--hn (--hsr-unique-value)：HSR ID。Recovery Services コンテナー上での論理名を引数として渡します。この値はユーザーにて自由に決定ください
 
 そのほか引数の説明は、事前登録スクリプト内に詳しく記載されています。
 
@@ -224,10 +240,10 @@ Primary 側で事前登録スクリプトを実行後、カスタム バック�
 ## <a id="8"></a> 8. (Secondary マシン上) 事前登録スクリプトをダウンロード・実行する
 <font color="DeepPink">「-hn」引数に渡す、一意の HSR ID は、必ず Primary 側にて設定したものとおなじ HSR ID にしてください。</font>
 
-(ルートユーザーで実行)
-./msawb-plugin-config-com-sap-hana.sh -sn -bk <カスタム バックアップ ユーザー向けに作成したキー名> -hn HSR ID -p <ポート番号>
+(ルートユーザーで実行するコマンド)
+./msawb-plugin-config-com-sap-hana.sh -sn -bk <カスタム バックアップ ユーザー向けに作成したキー名> -hn (HSR ID) -p <ポート番号>
 
-・事前登録スクリプトを実行する
+・(参考) 事前登録スクリプトを実行する
 　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script 
 ![image](https://github.com/jpabrs-scem/blog/assets/96324317/c445fc40-5f3a-4c44-8c73-ac7767c3fada)
 
@@ -251,13 +267,13 @@ cat /opt/msawb/etc/config/SAPHana/config.json
 (英語版となり恐縮ですが) Azure ポータル画面上の作業例です
 ![image](https://github.com/jpabrs-scem/blog/assets/96324317/89d246f6-aac6-4661-87d4-5116106dcbab)
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/fca9f3da-342c-462b-a0d3-dfaf4eba51ce)
+![image](https://github.com/jpabrs-scem/blog/assets/96324317/4e1b441f-7332-4acd-b270-a4684ce6ca4e)
 
 ![image](https://github.com/jpabrs-scem/blog/assets/96324317/cc0c270e-7e33-472d-b45c-a200b80c73dc)
 
 ![image](https://github.com/jpabrs-scem/blog/assets/96324317/1150d3f1-9cc6-479d-90f0-ef7c6f3ef27e)
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/36d23d4a-3138-4b89-8d60-e15e9ce3fa05)
+![image](https://github.com/jpabrs-scem/blog/assets/96324317/e2871c2f-6764-4eba-b746-1090a7a32130)
 
 ![image](https://github.com/jpabrs-scem/blog/assets/96324317/2f1e1dd0-d9af-4b3c-b07c-33948640c43e)
 
@@ -280,6 +296,15 @@ A2. いいえ、下記順序でも構いません。
 
 ・Azure Backup のデータベースで SAP HANA ネイティブ クライアント バックアップを実行する
 　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-sap-hana-native-clients-backup-on-a-database-with-azure-backup
+
+### Q3. HANA Studio からバックアップ・復元操作はできますか？
+A3. いいえ、HSR に対する Azure Workload Backup 構成をしている場合は、HANA Studio からの操作はサポートいたしておりません。
+
+・(参考) SAP HANA ネイティブ クライアントを使用して操作を管理する
+　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-manage#manage-operations-using-sap-hana-native-clients
+　"HANA ネイティブ クライアントは、Backint ベースの操作用のみに統合されています。 
+　　スナップショットと HANA システム レプリケーション モードに関連する操作は、現在サポートされていません。"
+
 
 
 HSR に対する Azure Workload Backup の設定方法は以上となります。
