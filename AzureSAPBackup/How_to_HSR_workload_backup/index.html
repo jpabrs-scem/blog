@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>HSR に対する Azure Workload Backup | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、HSR に対する Azure Workload Backup を構成するにあたって、実際のバックアップ構成手順を作業例交えてお伝えします。 ポイント HANA システム レプリケーション (HSR) データベースの仕様上、HANA DB のユーザー名とパスワードは、Primary → Secondary へレプリケートされますが、h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HSR に対する Azure Workload Backup">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、HSR に対する Azure Workload Backup を構成するにあたって、実際のバックアップ構成手順を作業例交えてお伝えします。 ポイント HANA システム レプリケーション (HSR) データベースの仕様上、HANA DB のユーザー名とパスワードは、Primary → Secondary へレプリケートされますが、h">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/45d9f60f-7f1d-4b16-83a2-dd234aed1a45">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/29659ca7-f81f-405e-8814-f116bbf83e81">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/ee9d49f2-9d62-4bb3-9078-be1a472c4d4c">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/974231ad-cf09-45e5-8e37-ef96d3cb017d">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/7bd38d80-df7a-403a-bb9f-7cc65d684231">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/ef87b2da-d2b9-4c26-bc62-f445e3cdcbb6">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/b52f7628-7558-4d72-a09c-64db67794836">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/14efaed5-afbf-4c04-acef-ad85e7eed4e3">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/65fe75f1-d9f8-4ae5-b26c-117603f154e2">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/bd59f7c4-e1d3-4c2d-aa30-97da40675eff">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/5d2bd215-f82a-4d53-b6b3-78f31d202a9c">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/93a9a515-bcc4-4081-8c01-1ef1c9f54e19">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/0de489dd-2806-41b0-9b74-22426fe82993">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/8be08d61-6df3-48b3-9fdc-dc37402af1e5">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/e57524ee-f9b2-4e47-8e57-1f9760fb2a7b">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/e2d81c4c-fbc9-4cd2-a80f-9e425a3f7ecb">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/25d5e330-8e88-492c-a9ae-f77eeda8f497">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/bd501b56-4d45-452e-8008-a8314e711c5a">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/c445fc40-5f3a-4c44-8c73-ac7767c3fada">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/f5d3b4f3-8d3e-40e3-82a7-592a2f8dfead">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/2bf1b252-b022-450f-adf1-61017a25bf15">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/f724da83-be23-480c-9e2a-4340f8523bda">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/89d246f6-aac6-4661-87d4-5116106dcbab">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/4e1b441f-7332-4acd-b270-a4684ce6ca4e">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/cc0c270e-7e33-472d-b45c-a200b80c73dc">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/1150d3f1-9cc6-479d-90f0-ef7c6f3ef27e">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/e2871c2f-6764-4eba-b746-1090a7a32130">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/2f1e1dd0-d9af-4b3c-b07c-33948640c43e">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/9140d011-8bf5-45ef-838a-49c1dfed10ce">
+<meta property="article:published_time" content="2023-09-13T03:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-20T02:33:49.721Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Azure SAPHANA Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/45d9f60f-7f1d-4b16-83a2-dd234aed1a45">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureSAPBackup/How_to_HSR_workload_backup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HSR に対する Azure Workload Backup
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2023-09-13T03:00:00.000Z" itemprop="datePublished">2023-09-13</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9a9528b6-73e9-5fb7-908e-ed68bc06d216%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BHSR+%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B+Azure+Workload+Backup%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSAPBackup%2FHow_to_HSR_workload_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSAPBackup%2FHow_to_HSR_workload_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSAPBackup%2FHow_to_HSR_workload_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/" data-id="clmr4ra6p004e0nn04fqr9f74" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは、Azure Backup サポートです。<br>今回は、HSR に対する Azure Workload Backup を構成するにあたって、実際のバックアップ構成手順を作業例交えてお伝えします。</p>
+<h4 id="ポイント"><a href="#ポイント" class="headerlink" title="ポイント"></a>ポイント</h4><ul>
+<li>HANA システム レプリケーション (HSR) データベースの仕様上、HANA DB のユーザー名とパスワードは、Primary → Secondary へレプリケートされますが、hdbuserstore の情報（＝つまり、作成したキー情報）はレプリケートされません。</li>
+<li>Azure Backup では、Primary/Seconday すべての ノード 上に対してバックアップ操作をさせるために、ユーザー名/パスワード 入力での操作ではなく、hdbuserstore キーの入力での操作を行う仕組みになっています。<br>このため、Azure Backup の事前登録スクリプト (msawb-plugin-config-com-sap-hana.sh) を実行する前に、2 種類のキーを Azure Backup 対象となる<font color="DeepPink">全ての</font> Azure 仮想マシン上 (ノード上) でも作成する必要があります。</li>
+<li>下記の公開ドキュメントは必ずご一読の上で、作業ください。<br>・Azure VM 上の SAP HANA システム レプリケーション データベースをバックアップする<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup</a></li>
+</ul>
+<h4 id="環境構成"><a href="#環境構成" class="headerlink" title="環境構成"></a>環境構成</h4><p>今回は、同一 リージョン・サブスクリプション・VNET 上に 2 つの Azure 仮想マシンを作成し、それぞれ Primary ノード・Secondary ノードとします。</p>
+<table>
+<thead>
+<tr>
+<th>Azure 仮想マシン名</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SAPHANA23</td>
+<td>HSR Primary</td>
+</tr>
+<tr>
+<td>SAPHANA24</td>
+<td>HSR Secondary</td>
+</tr>
+</tbody></table>
+<p>SAP HANA SID： hxe<br>SAP HANA インスタンス番号： 90<br>マルチデータベースコンテナー (MDC)</p>
+<table>
+<thead>
+<tr>
+<th>ユーザー</th>
+<th>概要</th>
+<th>作成するキー名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SYSTEM</td>
+<td>システムユーザー</td>
+<td>SYSTEM</td>
+</tr>
+<tr>
+<td>OKTBK</td>
+<td>カスタム バックアップ ユーザー<br>新規で手動作成が必要<br>任意のユーザーを指定可能</td>
+<td>OKTBKKEY</td>
+</tr>
+</tbody></table>
+<h2 id="目次-手順概略"><a href="#目次-手順概略" class="headerlink" title="目次 - 手順概略"></a>目次 - 手順概略</h2><hr>
+<p><a href="#1">1. (Primary マシン上) SYSTEM ユーザーに対してキーを設定する</a><br><a href="#2">2. (Primary マシン上) カスタム バックアップ ユーザーを作成・パスワード管理・ロールなどの設定を行う</a><br><a href="#3">3. (Primary マシン上) カスタム バックアップ ユーザーに対してキーを設定する</a><br><a href="#4">4. (Secondary マシン上) SYSTEM ユーザーに対してキーを設定する</a><br><a href="#5">5. (Secondary マシン上) カスタム バックアップ ユーザーに対してキーを設定する</a><br><a href="#6">6. (これまで Azure Backup 構成していた場合)「バックアップの停止」を行う</a><br><a href="#7">7. (Primary マシン上) 事前登録スクリプトをダウンロード・実行する</a><br><a href="#8">8. (Secondary マシン上) 事前登録スクリプトをダウンロード・実行する</a><br><a href="#9">9. Recovery Services コンテナー上で「データベースを検出」「バックアップの有効化」「今すぐバックアップ」を行う</a><br><a href="#10">10. FAQ</a></p>
+<hr>
+<p>※　SAP HANA 自体の環境構築・HSR の設定は、Azure Backup とは関りが無いため、すでに HSR 設定が完了している前提で本記事では説明を開始します。<br>　　記事内の<font color="Red">赤文字</font>・<font color="MediumBlue">青文字</font>などは、ユーザーの環境に依って異なります。</p>
+<h2 id="1-Primary-マシン上-SYSTEM-ユーザーに対してキーを設定する"><a href="#1-Primary-マシン上-SYSTEM-ユーザーに対してキーを設定する" class="headerlink" title=" 1. (Primary マシン上) SYSTEM ユーザーに対してキーを設定する"></a><a id="1"></a> 1. (Primary マシン上) SYSTEM ユーザーに対してキーを設定する</h2><p>(参考) 公開ドキュメント - 事前登録スクリプトで実行される処理<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does">https://learn.microsoft.com/ja-jp/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does</a><br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/45d9f60f-7f1d-4b16-83a2-dd234aed1a45" alt="image"></p>
+<p>※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してキーを作成してください。<br>　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。</p>
+<p>HANA DB を立ち上げ、設定します。<br>(Primary マシン上で実行するコマンド 例)<br>su <font color="Red">hxe</font>adm -<br>HDB start<br>hdbuserstore list<br>この時点では何もキーはありません。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/29659ca7-f81f-405e-8814-f116bbf83e81" alt="image"></p>
+<p>(Primary マシン上で実行するコマンド 例)<br>hdbuserstore Set <font color="Red">SYSTEM</font> <font color="MediumBlue">saphana23</font>:3<font color="Red">90</font>13 <font color="MediumBlue">&lt;キー名&gt;</font> <font color="Red">&lt;パスワード&gt;</font><br>hdbuserstore list</p>
+<p>今回は、SYSTEM ユーザーに対して設定するキーの名前も「SYSTEM」としています。<br>下図の通り、「SYSTEM」という名前のキーが作成されていることを確認します。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/ee9d49f2-9d62-4bb3-9078-be1a472c4d4c" alt="image"></p>
+<h2 id="2-Primary-マシン上-カスタム-バックアップ-ユーザーを作成・パスワード管理・ロールなどの設定を行う"><a href="#2-Primary-マシン上-カスタム-バックアップ-ユーザーを作成・パスワード管理・ロールなどの設定を行う" class="headerlink" title=" 2. (Primary マシン上) カスタム バックアップ ユーザーを作成・パスワード管理・ロールなどの設定を行う"></a><a id="2"></a> 2. (Primary マシン上) カスタム バックアップ ユーザーを作成・パスワード管理・ロールなどの設定を行う</h2><p>・(参考) 事前登録スクリプトを実行する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script</a><br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/974231ad-cf09-45e5-8e37-ef96d3cb017d" alt="image"></p>
+<p>カスタム バックアップ ユーザー名は、特に名前の制約はありません。<br>今回は例として「OKTBK」という名前のカスタム バックアップ ユーザーを作成します。</p>
+<p>(Primary マシン上で実行するコマンド 例)<br>hdbsql -t -U <font color="Red">SYSTEM</font> CREATE USER <font color="MediumBlue">OKTBK</font> PASSWORD <font color="Red">&lt;パスワード&gt;</font> NO FORCE_FIRST_PASSWORD_CHANGE</p>
+<p>「-U」の引数として、前段で作成済のキー「SYSTEM」を渡すことで、新しいユーザーをキーを使って作成することができます。<br>「NO FORCE_FIRST_PASSWORD_CHANGE」句は必須ではありませんが、設定することで、ユーザー「OKTBK」が初めてログインした際に、パスワード変更を求められることが無くなります。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/7bd38d80-df7a-403a-bb9f-7cc65d684231" alt="image"></p>
+<p>下図は念のため、「USERS」テーブル上にカスタム バックアップ ユーザー「OKTBK」が作成されたことを確認しています。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/ef87b2da-d2b9-4c26-bc62-f445e3cdcbb6" alt="image"></p>
+<p>付与すべきロールは公開ドキュメントに記載があるので、今回は SQL を使用してロールを付与していきます。</p>
+<p>〇　カスタム バックアップ ユーザー「OKTBK」のパスワードの期限を無効化する<br>hdbsql -t -U <font color="Red">SYSTEM</font> “ALTER USER <font color="Red">OKTBK</font> DISABLE PASSWORD LIFETIME”</p>
+<p>・(参考) 事前登録スクリプトを実行する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script</a><br>　“このカスタム バックアップ キーのパスワード有効期限が切れると、バックアップと復元操作は失敗します。”</p>
+<p>〇　カスタム バックアップ ユーザー「OKTBK」を Activate する<br>hdbsql -t -U <font color="Red">SYSTEM</font> “ALTER USER <font color="Red">OKTBK</font> ACTIVATE USER NOW”</p>
+<p>〇　カスタム バックアップ ユーザー「OKTBK」に対して「データベース管理者」ロールを付与する<br>hdbsql -t -U <font color="Red">SYSTEM</font> “GRANT <font color="Green">DATABASE ADMIN</font> TO <font color="Red">OKTBK</font>“</p>
+<p>〇　カスタム バックアップ ユーザー「OKTBK」に対して「CATALOG READ（＝バックアップ カタログを読み取れる）」ロールを付与する<br>hdbsql -t -U <font color="Red">SYSTEM</font> “GRANT <font color="Green">CATALOG READ</font> TO <font color="Red">OKTBK</font>“<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/b52f7628-7558-4d72-a09c-64db67794836" alt="image"></p>
+<p>〇　カスタム バックアップ ユーザー「OKTBK」に対して「バックアップ管理者」ロールを付与する<br>HANA の SPS バージョンが「05」以上であれば「バックアップ管理者」ロールの付与も必要です。<br>今回の環境だと「SPS ：06」のため、「バックアップ管理者」ロールの付与も必要です。</p>
+<p>HDB version<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/14efaed5-afbf-4c04-acef-ad85e7eed4e3" alt="image"></p>
+<p>・(外部サイト 参考) GRANT Statement (Access Control) | SAP Help Portal<br>　<a target="_blank" rel="noopener" href="https://help.sap.com/docs/SAP_HANA_PLATFORM/4fe29514fd584807ac9f2a04f6754767/20f674e1751910148a8b990d33efbdc5.html">https://help.sap.com/docs/SAP_HANA_PLATFORM/4fe29514fd584807ac9f2a04f6754767/20f674e1751910148a8b990d33efbdc5.html</a> </p>
+<p>hdbsql -t -U <font color="Red">SYSTEM</font> “GRANT <font color="Green">BACKUP ADMIN</font> TO <font color="Red">OKTBK</font>“<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/65fe75f1-d9f8-4ae5-b26c-117603f154e2" alt="image"></p>
+<p>念のためカスタム バックアップ ユーザー「OKTBK」に、現時点で付与されているロールを「GRANTED_PRIVILEGES」テーブルから確認してみます。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/bd59f7c4-e1d3-4c2d-aa30-97da40675eff" alt="image"></p>
+<h2 id="3-Primary-マシン上-カスタム-バックアップ-ユーザーに対してキーを設定する"><a href="#3-Primary-マシン上-カスタム-バックアップ-ユーザーに対してキーを設定する" class="headerlink" title=" 3. (Primary マシン上) カスタム バックアップ ユーザーに対してキーを設定する"></a><a id="3"></a> 3. (Primary マシン上) カスタム バックアップ ユーザーに対してキーを設定する</h2><p>・(参考) 事前登録スクリプトを実行する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script</a><br>　“カスタム バックアップ ユーザーの hdbuserstore にキーを追加します。これにより、HANA バックアップ プラグインですべての操作 (データベース クエリ、復元操作、構成、バックアップの実行) を管理できるようになります。”</p>
+<p>(実行するコマンド)<br>hdbuserstore Set &lt;作成するキー名&gt; &lt;作成先HANA DB のホスト名&gt;:3&lt;インスタンス番号&gt;13 &lt;カスタム バックアップ ユーザー名&gt; &lt;カスタム バックアップ ユーザーのパスワード&gt;</p>
+<p>※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください。<br>　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。</p>
+<p>(Primary マシン上で実行するコマンド 例)<br>hdbuserstore Set <font color="Red">OKTBKKEY</font> <font color="MediumBlue">saphana23</font>:3<font color="Red">90</font>13 <font color="MediumBlue">OKTBK</font> <font color="Red">&lt;パスワード&gt;</font></p>
+<p>キーが作成されているかどうかを確認します。<br>hdbuserstore list<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/5d2bd215-f82a-4d53-b6b3-78f31d202a9c" alt="image"></p>
+<h2 id="4-Secondary-マシン上-SYSTEM-ユーザーに対してキーを設定する"><a href="#4-Secondary-マシン上-SYSTEM-ユーザーに対してキーを設定する" class="headerlink" title=" 4. (Secondary マシン上) SYSTEM ユーザーに対してキーを設定する"></a><a id="4"></a> 4. (Secondary マシン上) SYSTEM ユーザーに対してキーを設定する</h2><p>Primary マシン上で、SYSTEM ユーザーに対して設定したものと同じキー名のキーを作成・設定します。</p>
+<p>※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してキーを作成してください。<br>　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。</p>
+<p>(Secondary マシン上で実行するコマンド 例)<br>hdbuserstore Set <font color="Red">SYSTEM</font> <font color="MediumBlue">saphana24</font>:3<font color="Red">90</font>13 SYSTEM <font color="MediumBlue">&lt;パスワード&gt;</font><br>hdbuserstore list<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/93a9a515-bcc4-4081-8c01-1ef1c9f54e19" alt="image"></p>
+<h2 id="5-Secondary-マシン上-カスタム-バックアップ-ユーザーに対してキーを設定する"><a href="#5-Secondary-マシン上-カスタム-バックアップ-ユーザーに対してキーを設定する" class="headerlink" title=" 5. (Secondary マシン上) カスタム バックアップ ユーザーに対してキーを設定する"></a><a id="5"></a> 5. (Secondary マシン上) カスタム バックアップ ユーザーに対してキーを設定する</h2><p>（補足）<br>Primary マシン上で作成したカスタム バックアップ ユーザーとそのパスワードは、HSR の機能によって、自動的に Secondary マシンへレプリケートされます。<br>このためすでに HSR 設定済であれば Secondary マシン上では再度「カスタム バックアップ ユーザーの作成」を行う必要はありませんが、この段階でもし HSR 設定が完了しておらず、レプリケートしていない場合は、ユーザーにて Secondary マシン上にも再度「カスタム バックアップ ユーザーの作成」から作業ください。<br>ここでは、すでに HSR 機能にてカスタム バックアップ ユーザーはレプリケートされている前提で、Secondary マシン上での「カスタム バックアップ ユーザーの作成」部分はスキップします。</p>
+<p>※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください。<br>　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。</p>
+<p>(実行するコマンド)<br>hdbuserstore Set &lt;作成するキー名&gt; &lt;作成先HANA DB のホスト名&gt;:3&lt;インスタンス番号&gt;13 &lt;カスタム バックアップ ユーザー名&gt; &lt;カスタム バックアップ ユーザーのパスワード&gt;</p>
+<p>(Secondary マシン上で実行するコマンド 例)<br>hdbuserstore Set <font color="Red">OKTBKKEY</font> <font color="MediumBlue">saphana24</font>:3<font color="Red">90</font>13 <font color="MediumBlue">OKTBK</font> <font color="Red">&lt;パスワード&gt;</font><br>hdbuserstore list<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/0de489dd-2806-41b0-9b74-22426fe82993" alt="image"></p>
+<h2 id="6-これまで-Azure-Backup-構成していた場合-「バックアップの停止」を行う"><a href="#6-これまで-Azure-Backup-構成していた場合-「バックアップの停止」を行う" class="headerlink" title=" 6. (これまで Azure Backup 構成していた場合)「バックアップの停止」を行う"></a><a id="6"></a> 6. (これまで Azure Backup 構成していた場合)「バックアップの停止」を行う</h2><p>『これまで スタンドアロンの SAP HANA DB として、Azure workload Backup を構成していた』<br>という場合、対象の SAP HANA DB は今後「HSR に対する Azure Workload Backup」としてバックアップ構成しなおすことになります。<br>このため、一度、これまでバックアップ取得していたスタンドアロンの SAP HANA DB に対しては<br>「バックアップ データの保持」・「バックアップの停止」を行ってください。</p>
+<p>・(参考 「バックアップの停止」部分まで) 2 つのスタンドアロン VM/1 つのスタンドアロン VM が Azure VM 上の SAP HANA Database バックアップを使用して既に保護されている<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#two-standalone-vms-one-standalone-vm-already-protected-using-sap-hana-database-backup-on-azure-vm">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#two-standalone-vms-one-standalone-vm-already-protected-using-sap-hana-database-backup-on-azure-vm</a></p>
+<p>『これまで一度も、対象 DB に対して Azure Workload Backup を構成したことが無い』<br>『今回初めて HSR 構成・HSR に対する Azure Workload Backup を行う』<br>という場合は、「6」手順はスキップし、「7. (Primary マシン上) 事前登録スクリプトをダウンロード・実行する」より作業を再開ください。</p>
+<h2 id="7-Primary-マシン上-事前登録スクリプトをダウンロード・実行する"><a href="#7-Primary-マシン上-事前登録スクリプトをダウンロード・実行する" class="headerlink" title=" 7. (Primary マシン上) 事前登録スクリプトをダウンロード・実行する"></a><a id="7"></a> 7. (Primary マシン上) 事前登録スクリプトをダウンロード・実行する</h2><p>・(参考) 事前登録スクリプトを実行する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script</a></p>
+<p>(ルートユーザーで実行するコマンド)<br>./msawb-plugin-config-com-sap-hana.sh -sn -bk &lt;カスタム バックアップ ユーザー向けに作成したキー名&gt; -hn (HSR ID)</p>
+<p>【引数の説明】<br>■　-sn ( –skip-network-checks )： ネットワーク要件を満たしているかどうかのチェック処理をスキップしたい場合、追加ください<br>■　-bk ( -backup-key )：カスタム バックアップ ユーザー向けに作成したキー名を引数として渡してください<br>■　-hn (–hsr-unique-value)：HSR ID。Recovery Services コンテナー上での論理名を引数として渡します。この値はユーザーにて自由に決定ください</p>
+<p>・(コマンド引数の参考) 事前登録スクリプトを実行する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script</a><br>　“このカスタム バックアップ ユーザー キーを、パラメーターとしてスクリプトに渡します。<br>　 -bk CUSTOM_BACKUP_KEY_NAME または -backup-key CUSTOM_BACKUP_KEY_NAME”</p>
+<p>そのほか引数の説明は、事前登録スクリプト内に詳しく記載されています。</p>
+<p>今回は例として「Hana2324LC」を HSR ID として、バックアップ構成します。</p>
+<p>(Primary マシン上で実行するコマンド 例)<br>sudo su -<br>chmod 755 msawb-plugin-config-com-sap-hana.sh<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/8be08d61-6df3-48b3-9fdc-dc37402af1e5" alt="image"></p>
+<p>./msawb-plugin-config-com-sap-hana.sh -sn -bk <font color="Red">OKTBKKEY</font> -hn <font color="Red">Hana2324LC</font><br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/e57524ee-f9b2-4e47-8e57-1f9760fb2a7b" alt="image"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/e2d81c4c-fbc9-4cd2-a80f-9e425a3f7ecb" alt="image"></p>
+<p>事前登録スクリプト実行完了後、下記 ファイル上で、Azure Backup 構成における HSR ID やカスタム バックアップ ユーザーの設定値を確認できます。</p>
+<p>(Primary マシン上で実行するコマンド 例)<br>cat /opt/msawb/etc/config/SAPHana/config.json<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/25d5e330-8e88-492c-a9ae-f77eeda8f497" alt="image"></p>
+<p>Primary 側で事前登録スクリプトを実行後、カスタム バックアップ ユーザーに対して、「INIFILE ADMIN」ロールなどが追加付与されていることが分かります。<br>(事前登録スクリプトにて追加付与されました)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/bd501b56-4d45-452e-8008-a8314e711c5a" alt="image"></p>
+<h2 id="8-Secondary-マシン上-事前登録スクリプトをダウンロード・実行する"><a href="#8-Secondary-マシン上-事前登録スクリプトをダウンロード・実行する" class="headerlink" title=" 8. (Secondary マシン上) 事前登録スクリプトをダウンロード・実行する"></a><a id="8"></a> 8. (Secondary マシン上) 事前登録スクリプトをダウンロード・実行する</h2><p><font color="DeepPink">「-hn」引数に渡す、一意の HSR ID は、必ず Primary 側にて設定したものとおなじ HSR ID にしてください。</font></p>
+<p>(ルートユーザーで実行するコマンド)<br>./msawb-plugin-config-com-sap-hana.sh -sn -bk &lt;カスタム バックアップ ユーザー向けに作成したキー名&gt; -hn (HSR ID) -p &lt;ポート番号&gt;</p>
+<p>・(参考) 事前登録スクリプトを実行する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script</a><br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/c445fc40-5f3a-4c44-8c73-ac7767c3fada" alt="image"></p>
+<p>(Secondary マシン上で実行するコマンド 例)<br>sudo su -<br>./msawb-plugin-config-com-sap-hana.sh -sn -bk <font color="Red">OKTBKKEY</font> -hn <font color="MediumBlue">Hana2324LC</font> -p 3<font color="Red">90</font>13<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/f5d3b4f3-8d3e-40e3-82a7-592a2f8dfead" alt="image"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/2bf1b252-b022-450f-adf1-61017a25bf15" alt="image"></p>
+<p>cat /opt/msawb/etc/config/SAPHana/config.json<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/f724da83-be23-480c-9e2a-4340f8523bda" alt="image"></p>
+<h2 id="9-Recovery-Services-コンテナー上で「データベースを検出」「バックアップの有効化」「今すぐバックアップ」を行う"><a href="#9-Recovery-Services-コンテナー上で「データベースを検出」「バックアップの有効化」「今すぐバックアップ」を行う" class="headerlink" title=" 9. Recovery Services コンテナー上で「データベースを検出」「バックアップの有効化」「今すぐバックアップ」を行う"></a><a id="9"></a> 9. Recovery Services コンテナー上で「データベースを検出」「バックアップの有効化」「今すぐバックアップ」を行う</h2><p>ここからは下記公開ドキュメントに沿って、Azure ポータル画面上で操作ください。</p>
+<p>・データベースを検出する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#discover-the-databases">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#discover-the-databases</a></p>
+<p>(英語版となり恐縮ですが) Azure ポータル画面上の作業例です<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/89d246f6-aac6-4661-87d4-5116106dcbab" alt="image"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/4e1b441f-7332-4acd-b270-a4684ce6ca4e" alt="image"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/cc0c270e-7e33-472d-b45c-a200b80c73dc" alt="image"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/1150d3f1-9cc6-479d-90f0-ef7c6f3ef27e" alt="image"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/e2871c2f-6764-4eba-b746-1090a7a32130" alt="image"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/2f1e1dd0-d9af-4b3c-b07c-33948640c43e" alt="image"></p>
+<p>(バックアップ取得後)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/9140d011-8bf5-45ef-838a-49c1dfed10ce" alt="image"></p>
+<h2 id="10-FAQ"><a href="#10-FAQ" class="headerlink" title=" 10. FAQ"></a><a id="10"></a> 10. FAQ</h2><h3 id="Q1-HSR-構成に伴い、クラスタ-ソフトウェアは-Pacemaker-Lifekeeper-など制限はありますか？"><a href="#Q1-HSR-構成に伴い、クラスタ-ソフトウェアは-Pacemaker-Lifekeeper-など制限はありますか？" class="headerlink" title="Q1. HSR 構成に伴い、クラスタ ソフトウェアは Pacemaker, Lifekeeper など制限はありますか？"></a>Q1. HSR 構成に伴い、クラスタ ソフトウェアは Pacemaker, Lifekeeper など制限はありますか？</h3><p>A1. 「HSR に対する Azure Workload Backup」の観点においては、クラスタ ソフトウェアの制限はありません。<br>ユーザー側にて HSR を構成し、HSR が機能しているのであれば、 Azure Backup としてはバックアップ取得が可能です。</p>
+<h3 id="Q2-事前登録スクリプトを実行する前に、HANA-側で-HSR-設定を完了しておく必要はありますか？"><a href="#Q2-事前登録スクリプトを実行する前に、HANA-側で-HSR-設定を完了しておく必要はありますか？" class="headerlink" title="Q2. 事前登録スクリプトを実行する前に、HANA 側で HSR 設定を完了しておく必要はありますか？"></a>Q2. 事前登録スクリプトを実行する前に、HANA 側で HSR 設定を完了しておく必要はありますか？</h3><p>A2. いいえ、下記順序でも構いません。<br>　事前登録スクリプト実行<br>　　↓<br>　HSR 構成<br>　　↓<br>　「データベースを検出」「バックアップの有効化」バックアップ取得</p>
+<p>・Azure Backup のデータベースで SAP HANA ネイティブ クライアント バックアップを実行する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-sap-hana-native-clients-backup-on-a-database-with-azure-backup">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-sap-hana-native-clients-backup-on-a-database-with-azure-backup</a></p>
+<h3 id="Q3-HANA-Studio-からバックアップ・復元操作はできますか？"><a href="#Q3-HANA-Studio-からバックアップ・復元操作はできますか？" class="headerlink" title="Q3. HANA Studio からバックアップ・復元操作はできますか？"></a>Q3. HANA Studio からバックアップ・復元操作はできますか？</h3><p>A3. いいえ、HSR に対する Azure Workload Backup 構成をしている場合は、HANA Studio からの操作はサポートいたしておりません。</p>
+<p>・(参考) SAP HANA ネイティブ クライアントを使用して操作を管理する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-manage#manage-operations-using-sap-hana-native-clients">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-manage#manage-operations-using-sap-hana-native-clients</a><br>　“HANA ネイティブ クライアントは、Backint ベースの操作用のみに統合されています。<br>　　スナップショットと HANA システム レプリケーション モードに関連する操作は、現在サポートされていません。”</p>
+<p>HSR に対する Azure Workload Backup の設定方法は以上となります。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSAPBackup/How_to_HSR_workload_backup.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Azure Backup の 保持期間について</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">HSR に対する Azure Workload Backup</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/">Azure Backup の 保持期間について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/DR_ASR_or_VMBackup/">Azure VM Backup と Azure Site Recovery による DR 要件について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/AV_ExcludeSetting/">Azure Backup におけるウイルス除外設定について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/ActiveDirectory_backup/">ドメインに参加しているVMのAzure VM Backupリストアについて</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">23</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">20</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SAPHANA-Backup/" style="font-size: 10px;">Azure SAPHANA Backup</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 10px;">Azure SQL Backup</a> <a href="../../tags/Azure-Site-Recovery/" style="font-size: 10px;">Azure Site Recovery</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 11.67px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
