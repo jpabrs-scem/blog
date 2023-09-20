@@ -4,23 +4,21 @@
   <meta charset="utf-8">
   
   
-  <title>Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて | Japan CSS ABRS  Support Blog !!</title>
+  <title>バックアップしているクラシック VM を ARM VM へ移行する際の注意点 | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、Azure Backup サポートの山本です。今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。 目次 1. 公開情報 (Docs)2. 利用できるストレージ アカウント3. リストアされた後にストレージ アカウントに残るファイルについて4. 参考画面ショット  1. 公開情報 (">
+  <meta name="description" content="みなさんこんにちは、Azure Backup サポートです。今回は、Azure VM Backup にて、もともとクラシック VM ( &#x3D; Azure Service Manager (ASM) を介した IaaS 仮想マシン) をバックアップしている場合に、ARM (Azure Resource Manager) VM へと移行する場合の注意点をお伝えします。 目次 1. はじめに : Azu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/index.html">
+<meta property="og:title" content="バックアップしているクラシック VM を ARM VM へ移行する際の注意点">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="こんにちは、Azure Backup サポートの山本です。今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。 目次 1. 公開情報 (Docs)2. 利用できるストレージ アカウント3. リストアされた後にストレージ アカウントに残るファイルについて4. 参考画面ショット  1. 公開情報 (">
+<meta property="og:description" content="みなさんこんにちは、Azure Backup サポートです。今回は、Azure VM Backup にて、もともとクラシック VM ( &#x3D; Azure Service Manager (ASM) を介した IaaS 仮想マシン) をバックアップしている場合に、ARM (Azure Resource Manager) VM へと移行する場合の注意点をお伝えします。 目次 1. はじめに : Azu">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/198330594-30a09f02-cb39-41c8-ae39-1ab9a21779ac.png">
-<meta property="article:published_time" content="2022-10-28T03:00:00.000Z">
+<meta property="article:published_time" content="2023-09-27T03:00:00.000Z">
 <meta property="article:modified_time" content="2023-09-20T02:38:02.553Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/198330594-30a09f02-cb39-41c8-ae39-1ab9a21779ac.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -82,7 +80,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureVMBackup/RestoreStagingStorageAccount" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureVMBackup/ClassicVm_to_ARM" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -91,7 +89,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて
+      バックアップしているクラシック VM を ARM VM へ移行する際の注意点
     </h1>
   
 
@@ -99,121 +97,38 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-10-28T03:00:00.000Z" itemprop="datePublished">2022-10-28</time>
+  <time datetime="2023-09-27T03:00:00.000Z" itemprop="datePublished">2023-09-27</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+cbc94782-03f5-5d22-b491-10da57e8164d%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%A7%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AB%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%81%AE%E5%A0%B4%E6%89%80%E3%81%A8%E3%81%97%E3%81%A6%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8+%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FRestoreStagingStorageAccount%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FRestoreStagingStorageAccount.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FRestoreStagingStorageAccount.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+1cd17f35-755c-56bc-a8ea-7ced4bef4b05%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%82%AF%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF+VM+%E3%82%92+ARM+VM+%E3%81%B8%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FClassicVm_to_ARM%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FClassicVm_to_ARM.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FClassicVm_to_ARM.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/" data-id="clmr4wor1001j0oqo3kck18vj" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/" data-id="clmr4woqp000x0oqo63s9b1fe" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>こんにちは、Azure Backup サポートの山本です。<br>今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。</p>
+<p>みなさんこんにちは、Azure Backup サポートです。<br>今回は、Azure VM Backup にて、もともとクラシック VM ( = Azure Service Manager (ASM) を介した IaaS 仮想マシン) をバックアップしている場合に、ARM (Azure Resource Manager) VM へと移行する場合の注意点をお伝えします。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. 公開情報 (Docs)</a><br><a href="#2">2. 利用できるストレージ アカウント</a><br><a href="#3">3. リストアされた後にストレージ アカウントに残るファイルについて</a><br><a href="#4">4. 参考画面ショット</a></p>
+<p><a href="#1">1. はじめに : Azure のクラシック VM は 2023 年 9 月 6 日を持ちまして廃止となりました</a><br><a href="#2">2. バックアップしているクラシック VM を ARM VM へ移行する際の注意点</a></p>
 <hr>
-<h3 id="1-公開情報-Docs"><a href="#1-公開情報-Docs" class="headerlink" title="1. 公開情報 (Docs)"></a><a id="1"></a>1. 公開情報 (Docs)</h3><p>まず最初に、本件に関する Docs は下記でございます。<br>・ストレージ アカウント- Azure portal で Azure VM データを復元する方法<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#storage-accounts">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#storage-accounts</a></p>
-<blockquote>
-<p>抜粋:”Vault-Standard 復元ポイントからマネージド VM のディスクを復元するときに、マネージド ディスクと Azure Resource Manager (ARM) テンプレートが、ステージング場所にあるディスクの VHD ファイルと共に復元されます。 インスタント復元ポイントからディスクを復元する場合、マネージド ディスクと ARM テンプレートのみが復元されます。”</p>
-</blockquote>
-<blockquote>
-<p>抜粋:リージョン間復元では、 ステージング場所 (ストレージ アカウントの場所) は、Recovery Services コンテナーが セカンダリ リージョンとして扱うリージョンに存在する必要があります。 たとえば、Recovery Services コンテナーは米国東部 2 リージョンにあります (geo 冗長性とリージョン間復元が有効になっています)。 これは、セカンダリ リージョンは米国中部であることを意味します。 そのため、VM のリージョン間復元を行なうには、米国中部でストレージ アカウントを作成する必要があります。<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/availability-zones/cross-region-replication-azure">すべての地域の Azure リージョン間レプリケーションのペアリングに関する記事</a>をご覧ください。</p>
-</blockquote>
-<h3 id="2-利用できるストレージ-アカウント"><a href="#2-利用できるストレージ-アカウント" class="headerlink" title="2. 利用できるストレージ アカウント"></a><a id="2"></a>2. 利用できるストレージ アカウント</h3><p>選択できるストレージ アカウントは下記の条件を満たすものです。<br>・リストア先 (=ターゲット) のサブスクリプション内およびコンテナーと同じリージョンにある<br>・ZRS 以外の冗長性(LRS・GRS)<br>・Premium Storage アカウントではない</p>
-<h3 id="3-リストアされた後にストレージ-アカウントに残るファイルについて"><a href="#3-リストアされた後にストレージ-アカウントに残るファイルについて" class="headerlink" title="3.リストアされた後にストレージ アカウントに残るファイルについて"></a><a id="3"></a>3.リストアされた後にストレージ アカウントに残るファイルについて</h3><p>マネージドディスクの Azure VM の復元が完了しますと対象のストレージ アカウントの中に下記のファイルが残ります。<br>下記の通り、ストレージ アカウントにファイルが残るかおよび、どのファイルが残るかはリストア シナリオによって異なります。</p>
-<table>
-<thead>
-<tr>
-<th align="left">#</th>
-<th align="left"></th>
-<th align="left">リストアシナリオ</th>
-<th align="left">ステージングのストレージ アカウントに残るファイル</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><strong>Recovery Services コンテナー (vault-standrd) 層からのリストア</strong></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">1</td>
-<td align="left"></td>
-<td align="left">新規 VM 作成</td>
-<td align="left">無し</td>
-</tr>
-<tr>
-<td align="left">2</td>
-<td align="left"></td>
-<td align="left">ディスクの復元</td>
-<td align="left">VHD ファイルと json ファイル</td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left"></td>
-<td align="left">既存の置換え</td>
-<td align="left">VHD ファイル</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><strong>スナップショット 層からのリストア(インスタントリストア)</strong></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">4</td>
-<td align="left"></td>
-<td align="left">新規 VM 作成</td>
-<td align="left">無し</td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left"></td>
-<td align="left">ディスクの復元</td>
-<td align="left">json ファイル</td>
-</tr>
-<tr>
-<td align="left">6</td>
-<td align="left"></td>
-<td align="left">既存の置換え</td>
-<td align="left">無し</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"><strong>クロスリージョン リストア</strong></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">7</td>
-<td align="left"></td>
-<td align="left">新規 VM 作成</td>
-<td align="left">無し</td>
-</tr>
-<tr>
-<td align="left">8</td>
-<td align="left"></td>
-<td align="left">ディスクの復元</td>
-<td align="left">VHD ファイルと json ファイル</td>
-</tr>
-</tbody></table>
-<p>これらのファイルはリストア後自動では削除されませんが、手動で削除することが可能です。</p>
-<h3 id="4-参考画面ショット"><a href="#4-参考画面ショット" class="headerlink" title="4.参考画面ショット"></a><a id="4"></a>4.参考画面ショット</h3><p> VM 名：VM-RHEL-PE という Azure VM (OS ディスク 1 つ、データディスク 2 つ) を (2) の既存の置換えにてリストアしたあとのストレージ アカウントです。</p>
-<p> <img src="https://user-images.githubusercontent.com/71251920/198330594-30a09f02-cb39-41c8-ae39-1ab9a21779ac.png"></p>
-<blockquote>
-<p>コンテナー名：<br> vmrhelpe-51f2bd236a2e479a95cfc2bdd53b986c<br> 上記の通り、Azure VM 名にランダムな文字列のコンテナー名のコンテナーが作成されます。</p>
-</blockquote>
-<blockquote>
-<p>VHD：<br> vmrhelpe-datadisk-000-20220319-233028.vhd<br> vmrhelpe-datadisk-001-20220319-233028.vhd<br> vmrhelpe-osdisk-20220319-233028.vhd<br> 上記の通り、Azure VM 名にディスク種別および LUN 番号リストア日時 (UTC表記) が付加された vhd ファイルが作成されます。</p>
-</blockquote>
-<blockquote>
-<p>json：<br> azuredeployf08911fe-654a-49e1-9baa-41ca15cbb272.json<br> config-sqlvm13-f08911fe-654a-49e1-9baa-41ca15cbb272.json<br> parameterf08911fe-654a-49e1-9baa-41ca15cbb272.json<br> 上記の通り、<br> 「azuredeploy&lt;リストア ジョブで使用されるJob ID&gt;」<br> 「config-&lt;VM 名&gt;-&lt;リストア ジョブで使用されるJob ID&gt;」<br> 「parameter&lt;リストア ジョブで使用されるJob ID&gt;」の名前から始まるファイルが 3 つ作成されます。</p>
-</blockquote>
-<p>「Job ID」は、コマンドからの確認や、Recovery Services コンテナー &gt; バックアップ ジョブ &gt; 「ジョブのエクスポート」より確認ができます。</p>
-<p>・ジョブをエクスポートする<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-manage-windows-server#export-jobs">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-manage-windows-server#export-jobs</a></p>
+<h3 id="1-はじめに-Azure-のクラシック-VM-は-2023-年-9-月-6-日を持ちまして廃止となりました"><a href="#1-はじめに-Azure-のクラシック-VM-は-2023-年-9-月-6-日を持ちまして廃止となりました" class="headerlink" title="1. はじめに : Azure のクラシック VM は 2023 年 9 月 6 日を持ちまして廃止となりました"></a><a id="1"></a>1. はじめに : Azure のクラシック VM は 2023 年 9 月 6 日を持ちまして廃止となりました</h3><p>Azure のクラシック VM は 2023 年 9 月 6 日を持ちまして廃止となりました。<br>そのためこれ以降サポートされる VM は ARM の Azure VM となります。<br>クラシック VM の ARM VM への移行詳細については以下の通りドキュメント等がございます。</p>
+<p>・(参考 公開ドキュメント) 2023 年 9 月 6 日までに IaaS リソースを Azure Resource Manager に移行する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/virtual-machines/classic-vm-deprecation">https://learn.microsoft.com/ja-jp/azure/virtual-machines/classic-vm-deprecation</a></p>
+<p>・(参考 弊社ブログ) Classic VM から ARM への移行についての注意事項 (VM、ストレージ編) | Japan Azure IaaS Core Support Blog (jpaztech.github.io)<br>　<a target="_blank" rel="noopener" href="https://jpaztech.github.io/blog/vm/migrate_classic_vm_and_storage/">https://jpaztech.github.io/blog/vm/migrate_classic_vm_and_storage/</a></p>
+<p>・(参考 弊社ブログ) クラシック VM で使用していた VHD から ARM VM を作成する手順 | Japan Azure IaaS Core Support Blog (jpaztech.github.io)<br>　<a target="_blank" rel="noopener" href="https://jpaztech.github.io/blog/vm/classic-vhd-to-arm-vm/">https://jpaztech.github.io/blog/vm/classic-vhd-to-arm-vm/</a></p>
+<h3 id="2-バックアップしているクラシック-VM-を-ARM-VM-へ移行する際の注意点"><a href="#2-バックアップしているクラシック-VM-を-ARM-VM-へ移行する際の注意点" class="headerlink" title="2. バックアップしているクラシック VM を ARM VM へ移行する際の注意点"></a><a id="2"></a>2. バックアップしているクラシック VM を ARM VM へ移行する際の注意点</h3><h3 id="ポイント"><a href="#ポイント" class="headerlink" title="ポイント"></a>ポイント</h3><ul>
+<li>ARM 移行作業を行う前に、一度「バックアップ データの保持」「バックアップの停止」を行ってください</li>
+<li>ARM 移行後、再度「バックアップの有効化」を行ってください</li>
+<li>クラシック VM にこれまで対応していたストレージとネットワークの情報も ARM へと移行ください</li>
+</ul>
+<p>下記ドキュメントの説明もご一読ください。</p>
+<p>・クラシック VM をコンテナーにバックアップしてあります。 クラシック モードから Resource Manager モードに VM を移行して、Recovery Services コンテナーで保護することはできますか。<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/virtual-machines/migration-classic-resource-manager-faq#------vm----------------------------------resource-manager------vm-------recovery-services--------------------">https://learn.microsoft.com/ja-jp/azure/virtual-machines/migration-classic-resource-manager-faq#------vm----------------------------------resource-manager------vm-------recovery-services--------------------</a></p>
+<p>・クラシック VM とクラシック ストレージ アカウントが廃止されたら、クラシック VM のバックアップはどのように復元できますか?<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/virtual-machines/migration-classic-resource-manager-faq#------vm---------------------------------vm----------------------">https://learn.microsoft.com/ja-jp/azure/virtual-machines/migration-classic-resource-manager-faq#------vm---------------------------------vm----------------------</a></p>
+<h4 id="事例-Azure-VM-自体は-ARM-へ移行したが、VM-にアタッチされているディスクのストレージ-アカウントがクラシック-ストレージ-アカウントのままである"><a href="#事例-Azure-VM-自体は-ARM-へ移行したが、VM-にアタッチされているディスクのストレージ-アカウントがクラシック-ストレージ-アカウントのままである" class="headerlink" title="(事例) Azure VM 自体は ARM へ移行したが、VM にアタッチされているディスクのストレージ アカウントがクラシック ストレージ アカウントのままである"></a>(事例) Azure VM 自体は ARM へ移行したが、VM にアタッチされているディスクのストレージ アカウントがクラシック ストレージ アカウントのままである</h4><p>このような場合、Azure VM を再度「バックアップの有効化」しようとしても、失敗します。</p>
+<p>(「バックアップの有効化」デプロイ エラー メッセージ例)<br>‘The resource write operation failed to complete successfully, because it reached terminal provisioning state ‘Failed’.’</p>
+<p>Azure VM Backup では、クラシック デプロイ モデルのストレージ アカウントで構成された ARM Azure VM のバックアップをサポートしておりませんので、ストレージ アカウントを ARM へ移行ください。<br>・ストレージ アカウントの移行<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/virtual-machines/migration-classic-resource-manager-overview#migration-of-storage-accounts">https://learn.microsoft.com/ja-jp/azure/virtual-machines/migration-classic-resource-manager-overview#migration-of-storage-accounts</a></p>
+<p>バックアップしているクラシック VM を ARM VM へ移行する際の注意点について、ご案内は以上となります。</p>
 
       
       
@@ -230,7 +145,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/RestoreStagingStorageAccount.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/ClassicVm_to_ARM.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -238,19 +153,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../DPM&MABS/Error_58_NoDiskSpace/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          空き領域があるのに、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する場合の対処方法
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureSAPBackup/How_to_HSR_workload_backup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定</div>
+      <div class="article-nav-title">HSR に対する Azure Workload Backup</div>
     </a>
   
 </nav>
@@ -269,7 +175,7 @@
       <ul>
         
           <li>
-            <a href="../ClassicVm_to_ARM/">バックアップしているクラシック VM を ARM VM へ移行する際の注意点</a>
+            <a href="">バックアップしているクラシック VM を ARM VM へ移行する際の注意点</a>
           </li>
         
           <li>
