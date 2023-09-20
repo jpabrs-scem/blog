@@ -1,6 +1,6 @@
 ---
 title:  Azure Backup の障害調査に必要な情報
-date: 2022-02-11 12:00:00
+date: 2023-09-27 12:00:00
 tags:
   - Azure Backup General
   - 情報採取
@@ -125,16 +125,18 @@ zip などにまとめてご提供いただけますと幸いです。
 
 ### SAP HANAのbackup.log 及び backint.log 
 >* xxにはインスタンスナンバーが入ります。
-	・/hana/shared/HXE/HDBxx/<hostname>/trace/backup.log
-	・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_<DB名>/backup.log
-	・/hana/shared/HXE/HDBxx/<hostname>/trace/backint.log
-	・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_<DB名>/backint.log
+	・/hana/shared/HXE/HDBxx/(hostname)/trace/backup.log
+	・/hana/shared/HXE/HDBxx/(hostname)/trace/DB_<DB名>/backup.log
+	・/hana/shared/HXE/HDBxx/(hostname)/trace/backint.log
+	・/hana/shared/HXE/HDBxx/(hostname)/trace/DB_<DB名>/backint.log
  
 *上記パスに該当のログが無い場合は以下を試し、コマンド実行結果に表示されるディレクトリの場所の log をアップロードしてください。
->	sudo -i (rootユーザーに切り替えます)
-	cd / (ディレクトリの最上層に移動します)
-	find ./ -name "backup.log" (findコマンドにより該当のログの場所を特定します)
-	find ./ -name "backint.log" (findコマンドにより該当のログの場所を特定します)
+``` shell
+sudo -i (rootユーザーに切り替えます)
+cd / (ディレクトリの最上層に移動します)
+find ./ -name "backup.log" (findコマンドにより該当のログの場所を特定します)
+find ./ -name "backint.log" (findコマンドにより該当のログの場所を特定します)
+```
 
 ### opt 配下の log 
 ・/opt/msawb/var/log ディレクトリ配下のファイルを zip 等におまとめのうえで、アップロードしてください。
