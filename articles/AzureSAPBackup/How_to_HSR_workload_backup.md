@@ -13,7 +13,7 @@ disableDisclaimer: false
 
 #### ポイント
 - HANA システム レプリケーション (HSR) データベースの仕様上、HANA DB のユーザー名とパスワードは、Primary → Secondary へレプリケートされますが、hdbuserstore の情報（＝つまり、作成したキー情報）はレプリケートされません。
-- Azure Backup では、Primary/Seconday すべての Node 上に対してバックアップ操作をさせるために、ユーザー名/パスワード 入力での操作ではなく、hdbuserstore キーの入力での操作を行う仕組みになっています。
+- Azure Backup では、Primary/Seconday すべての ノード 上に対してバックアップ操作をさせるために、ユーザー名/パスワード 入力での操作ではなく、hdbuserstore キーの入力での操作を行う仕組みになっています。
 このため、Azure Backup の事前登録スクリプト (msawb-plugin-config-com-sap-hana.sh) を実行する前に、2 種類のキーを Azure Backup 対象となる<font color="DeepPink">全ての</font> Azure 仮想マシン上 (ノード上) でも作成する必要があります。
 - 下記の公開ドキュメントは必ずご一読の上で、作業ください。
 ・Azure VM 上の SAP HANA システム レプリケーション データベースをバックアップする
