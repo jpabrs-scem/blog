@@ -41,6 +41,7 @@ root_tag_generator:
     - Azure Backup General
     - Azure VM Backup
     - Azure SQL Backup
+    - Azure SAPHANA Backup
     - Azure Files Backup
     - Azure Disk Backup
     - System Center
