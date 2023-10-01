@@ -29,7 +29,7 @@ disableDisclaimer: false
 >    <VM名> - osdisk - yyyymmdd - hhmmss
 >    <VM名> - datadisk - <lun 番号> - yyyymmdd – hhmmss
 
-
+「yyyymmdd - hhmmss」部分は、実際に復元を実行した日時を UTC 表記で表しております。
 なお、VM 名に - が入っている場合には省略されます。
 例えば、Windows2019-Disk-Test という VM 名の場合は下記のディスク名で復元されます。
 　　　
