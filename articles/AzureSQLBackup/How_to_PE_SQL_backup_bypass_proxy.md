@@ -1,6 +1,6 @@
 ---
 title: SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定
-date: 2022-10-27 12:00:00
+date: 2023-10-01 12:00:00
 tags:
   - Azure SQL Backup
   - how to
@@ -37,8 +37,6 @@ Poxyを経由させてSQL Server DB に対する Azure Backupを行いたい場�
 [3. 「データベースの検出」「バックアップの有効化」](#3)
 [4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービスアカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、 SQL Server DB に対する Azure Backup サービスがバイパスされるよう、設定](#4)
 [5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行](#5)
-
-
 -----------------------------------------------------------
 
 ## <a id="1"></a> 1. Recovery Services コンテナー上にプライベート エンドポイントを作成
@@ -139,19 +137,23 @@ passwordreset.microsoftonline.com;provisioningapi.microsoftonline.com;20.190.128
 
 ![](https://user-images.githubusercontent.com/96324317/197693971-4fcf367e-2685-4284-b0f4-4e8c0c457e38.png)
 
-カレントユーザーに対して、Proxy Server のバイパス設定を保存した後に、PowerShell を立ち上げ、以下コマンドを実行します。
-下記コマンドを実行することで、カレントユーザーに対して行った設定が、「NT Service\AzureWLBackupPluginSvc」アカウントへ引き継がれます。
+カレントユーザーに対して、Proxy Server のバイパス設定を保存した後に、下記リンク先から、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシを設定するスクリプトをダウンロードします。  
+    - [SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip](https://github.com/jpabrs-scem/blog/files/12788965/SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip)
 
-（実行コマンド）
-  >$obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
-  >Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-80-1631947889-4033244730-3205203906-53534054-4184208151\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
-  >Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-80-1631947889-4033244730-3205203906-53534054-4184208151\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
-  >$obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"  
-  >Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-80-1631947889-4033244730-3205203906-53534054-4184208151\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
-  >Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-80-1631947889-4033244730-3205203906-53534054-4184208151\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
-  >Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-80-1631947889-4033244730-3205203906-53534054-4184208151\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyOverride -Value $obj.ProxyOverride
+バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上に、ダウンロードしたスクリプトを配置し、展開します。  
+    - ファイルの解凍パスワードは **``AzureBackup``** です
 
-![](https://user-images.githubusercontent.com/96324317/197694217-0ac20679-c842-419b-a6f4-a68bf609eccb.png)
+管理者特権の PowerShell から、ダウンロードしたファイルを解凍したフォルダに移動し、次のコマンドを実行します。
+    - (実行コマンド)  
+      ``.\SetProxyforAzureWLBackupPluginSvcfromCurrentUser.ps1``  
+    - スクリプトを実行すると、以下ログファイルが作成されます。  
+      ``<スクリプトを実行したフォルダ>/AzureBackup_Set_Proxy_For_AzureWLBackup_PluginSvc_yyyyMMdd_HHmmss.log``
+![image](https://github.com/jpabrs-scem/blog/assets/96324317/2a4e5a11-313e-4d91-bdf2-0557f68c46d1)
+
+> [!NOTE]
+> サービス アカウントのプロキシ設定は、サービス アカウントのレジストリ キーを編集することで設定しますが、
+> 設定する一部の値の型が "REG_BINARY" となり、バイナリ データを登録する必要がございます。  
+> 設定の簡易化のため、本手順では、現在ログインしているユーザー (カレント ユーザー) のプロキシ設定を継承する 上記のPowerShell コマンド (スクリプト) を用いて、サービス アカウントのプロキシ設定を行います。
 
 上記コマンド実行後、カレントユーザーに対する Proxy Server 設定を、元の状態に戻します。
 念のため、以下スクリプトを実行いただき、Local System アカウントとNT Service\AzureWLBackupPluginSvcアカウントに対して、Proxy Server バイパス設定が正しく設定されているかを確認します。
