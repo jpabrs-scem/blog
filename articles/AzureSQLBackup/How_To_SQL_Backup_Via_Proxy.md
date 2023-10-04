@@ -10,6 +10,12 @@ disableDisclaimer: false
 皆様こんにちは、Azure Backup サポートです。
 今回は、Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法についてお伝えします。
 
+> [!TIP]
+> SQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しております。
+> ---
+> ・ SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定
+> 　 https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/
+
 ## 目次 - 手順概略
 -----------------------------------------------------------
 [1. 認証なしの Proxy Server を用意する](#1)  
@@ -17,8 +23,6 @@ disableDisclaimer: false
 [3. 「データベースの検出」「バックアップの有効化」を実施する](#3)  
 [4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、プロキシを設定する](#4)  
 [5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行](#5)  
-
-
 -----------------------------------------------------------
 
 ## <a id="1"></a> 1. 認証なしの Proxy Server を用意する
@@ -93,7 +97,7 @@ Azure ポータル上から、バックアップ対象の SQL Server DB に対�
 > [!NOTE]
 > サービス アカウントのプロキシ設定は、サービス アカウントのレジストリ キーを編集することで設定しますが、
 > 設定する一部の値の型が "REG_BINARY" となり、バイナリ データを登録する必要がございます。  
-> 設定の簡易化のため、本手順では、現在ログインしているユーザー (カレント ユーザー) のプロキシ設定を継承する PowerShell コマンドを用いて、サービス アカウントのプロキシ設定を行います。
+> 設定の簡易化のため、本手順では、現在ログインしているユーザー (カレント ユーザー) のプロキシ設定を継承する PowerShell コマンド (スクリプト) を用いて、サービス アカウントのプロキシ設定を行います。  
 
 
 ### サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシ設定手順の詳細
@@ -122,6 +126,9 @@ Azure ポータル上から、バックアップ対象の SQL Server DB に対�
 
     <img src="https://github.com/jpabrs-scem/blog/assets/124880886/898d1c2e-7c84-48a6-9818-d159883e64ae" width="900">
 
+    > [!WARNING]
+    > 本手順でご案内しているスクリプトについては、お客様の責任のもと、ご利用いただきますようお願い申し上げます。  
+    > スクリプト実行時のエラーや、想定外の問題について、当社は責任を負いかねますのでご了承ください。
 1. 現在ログインしているユーザー (カレント ユーザー) で、``[設定] > [ネットワークとインターネット] > [プロキシ]`` を開き、Proxy Server の設定を元に戻します。
 
 ### サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシ設定の確認手順
