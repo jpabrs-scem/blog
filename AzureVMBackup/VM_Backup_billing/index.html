@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、Azure VM Backup において、「Standard バックアップ ポリシー (標準ポリシー) 」でバックアップを取得した場合と「Enhanced バックアップ ポリシー (拡張ポリシー) 」でバックアップを取得した場合の、それぞれの料金の違いについて説明します。※　料金の違いは、現在公開ドキュメント上にも明記するよう、計画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、Azure VM Backup において、「Standard バックアップ ポリシー (標準ポリシー) 」でバックアップを取得した場合と「Enhanced バックアップ ポリシー (拡張ポリシー) 」でバックアップを取得した場合の、それぞれの料金の違いについて説明します。※　料金の違いは、現在公開ドキュメント上にも明記するよう、計画">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/8ccd86d4-3e8e-4f19-9155-27ae50c50b9a">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/c614385e-2489-40c9-9f2f-9a6a2e7c9b19">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/727481b0-cbab-4f49-976a-2b8428d5f209">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/69d004e5-cef6-4930-a777-43a986c713ec">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/1d5da2f1-93a6-4b35-9a9e-2d806c9c6450">
+<meta property="article:published_time" content="2023-09-27T03:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-09T03:04:30.717Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Azure VM Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/8ccd86d4-3e8e-4f19-9155-27ae50c50b9a">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureVMBackup/VM_Backup_billing" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2023-09-27T03:00:00.000Z" itemprop="datePublished">2023-09-27</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+5a722954-09d1-510a-891f-cb46255f0370%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BStandard+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%A8+Enhanced+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E6%96%99%E9%87%91%E3%81%AE%E9%81%95%E3%81%84%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FVM_Backup_billing%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FVM_Backup_billing.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FVM_Backup_billing.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/" data-id="clnib7wv5001n0oo25ztodz98" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは、Azure Backup サポートです。<br>今回は、Azure VM Backup において、<br>「Standard バックアップ ポリシー (標準ポリシー) 」でバックアップを取得した場合と<br>「Enhanced バックアップ ポリシー (拡張ポリシー) 」でバックアップを取得した場合の、それぞれの料金の違いについて説明します。<br>※　料金の違いは、現在公開ドキュメント上にも明記するよう、計画中です。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/8ccd86d4-3e8e-4f19-9155-27ae50c50b9a" alt="image"></p>
+<p>(参考 関連ブログ記事)<br>・料金計算ツールを用いた Azure VM Backup の料金見積もりについて | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br>　<a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/">https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</a></p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. はじめに : Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの機能の違いについて</a><br><a href="#2">2. Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</a><br><a href="#3">3. Enhanced バックアップ ポリシー利用時の料金算出方法</a></p>
+<hr>
+<h2 id="1-はじめに-Standard-バックアップ-ポリシーと-Enhanced-バックアップ-ポリシーの機能の違いについて"><a href="#1-はじめに-Standard-バックアップ-ポリシーと-Enhanced-バックアップ-ポリシーの機能の違いについて" class="headerlink" title="1. はじめに : Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの機能の違いについて"></a>1. はじめに : Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの機能の違いについて<a id="1"></a></h2><p>それぞれのバックアップ ポリシーで Azure VM Backup を取得する場合の、機能の違いは下記公開ドキュメントをご参照ください。<br>・拡張ポリシーを使用して Azure VM をバックアップする - Azure Backup | Microsoft Learn<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal</a></p>
+<h2 id="2-Standard-バックアップ-ポリシーと-Enhanced-バックアップ-ポリシーの料金の違い"><a href="#2-Standard-バックアップ-ポリシーと-Enhanced-バックアップ-ポリシーの料金の違い" class="headerlink" title="2. Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い"></a>2. Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い<a id="2"></a></h2><h3 id="Azure-VM-Backup-の料金"><a href="#Azure-VM-Backup-の料金" class="headerlink" title="Azure VM Backup の料金"></a>Azure VM Backup の料金</h3><p>Azure VM Backup を利用する場合、その料金を見積もる際には以下 3 点が課金項目となります。<br>(1) Azure 仮想マシンのインスタンスに対する課金<br>(2) Recovery Services コンテナーに保管されるバックアップ データに対する課金<br>(3) Azure VM Backup の機能で取得されるスナップショットに対する課金</p>
+<p>(1) と (2) の課金は、「Standard バックアップ ポリシー」でバックアップ取得しても、「Enhanced バックアップ ポリシー」でバックアップ取得しても、どちらも同じ料金計算方式となります。</p>
+<p>この 2 項目は、下記公開ドキュメント上で説明している「保護されたインスタンス サイズ (1) 」「バックアップ ストレージの課金 (2) 」箇所に相当します。</p>
+<p>・バックアップのコスト<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-costs">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-costs</a><br>　“保護されたインスタンス サイズの計算は、”実際の” VM のサイズに基づきます。”<br>　“同様に、バックアップ ストレージの課金は、Azure Backup に格納されているデータ量 (各回復ポイントの実際のデータの合計) に基づきます。”</p>
+<p>いっぽう (3) の課金は、「Standard バックアップ ポリシー」でバックアップ取得する場合と、「Enhanced バックアップ ポリシー」でバックアップ取得する場合とで、料金の加算方法が変わってきます。</p>
+<h3 id="「Azure-VM-Backup-の機能で取得されるスナップショットに対する課金」の加算方法の違い"><a href="#「Azure-VM-Backup-の機能で取得されるスナップショットに対する課金」の加算方法の違い" class="headerlink" title="「Azure VM Backup の機能で取得されるスナップショットに対する課金」の加算方法の違い"></a>「Azure VM Backup の機能で取得されるスナップショットに対する課金」の加算方法の違い</h3><p>「Standard バックアップ ポリシー」では、最初に取得されるスナップショットに対して料金はかかりません。<br>「Enhanced バックアップ ポリシー」では、初回のスナップショット取得時点で、使用データ量分のスナップショットに対して料金が発生します。</p>
+<p>また、1 GB あたりの課金額は以下の通りそれぞれ違いがあります。</p>
+<p>標準ポリシー:  0.12 ドル/ 1 GB<br>拡張ポリシー:  0.05 ドル/ 1 GB</p>
+<ul>
+<li>リージョンにより料金が異なる場合がございます。(上記 および 以下の参考例は、USEast2 の価格となります。)</li>
+</ul>
+<p>下記の表は 100 GB の容量をもつ Azure 仮想マシンに対して、毎日 1 GB の増分が発生するケースにおいて、スナップショットを 4 日間保管した場合の比較表となります。<br>*表中の料金は月額を示しており、実際の料金は保存期間によって変動する場合があります。<br>(参考例)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/c614385e-2489-40c9-9f2f-9a6a2e7c9b19" alt="image"></p>
+<p>上記サンプルケースでは Enhanced バックアップ ポリシー 利用時の方が費用は高くなりますが、初回のバックアップデータ量が減った場合や、翌日以降の増分データ量が増加する場合は、Standard バックアップ ポリシー利用時の方が割高となるシナリオも考えられます。</p>
+<p>「(3) Azure VM Backup の機能で取得されるスナップショットに対する課金」における<br>リージョン毎のスナップショット料金詳細は下記をご参照ください。</p>
+<h4 id="Standard-バックアップ-ポリシー-スナップショットに対する料金"><a href="#Standard-バックアップ-ポリシー-スナップショットに対する料金" class="headerlink" title="Standard バックアップ ポリシー - スナップショットに対する料金"></a>Standard バックアップ ポリシー - スナップショットに対する料金</h4><p>下記リンクから、リージョン・通貨をご希望のものへと設定変更いただければ、スナップショットに対する料金を確認できます。<br>・Azure ページ BLOB Storage の価格 | Microsoft Azure<br>　<a target="_blank" rel="noopener" href="https://azure.microsoft.com/ja-jp/pricing/details/storage/page-blobs/">https://azure.microsoft.com/ja-jp/pricing/details/storage/page-blobs/</a></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/727481b0-cbab-4f49-976a-2b8428d5f209" alt="image"></p>
+<h4 id="Enhanced-バックアップ-ポリシー-スナップショットに対する料金"><a href="#Enhanced-バックアップ-ポリシー-スナップショットに対する料金" class="headerlink" title="Enhanced バックアップ ポリシー - スナップショットに対する料金"></a>Enhanced バックアップ ポリシー - スナップショットに対する料金</h4><p>下記リンクから、リージョン・通貨をご希望のものへと設定変更いただければ、スナップショットに対する料金を確認できます。<br>・料金 - Managed Disks | Microsoft Azure<br>　<a target="_blank" rel="noopener" href="https://azure.microsoft.com/ja-jp/pricing/details/managed-disks/">https://azure.microsoft.com/ja-jp/pricing/details/managed-disks/</a></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/69d004e5-cef6-4930-a777-43a986c713ec" alt="image"></p>
+<h2 id="3-Enhanced-バックアップ-ポリシー利用時の料金算出方法"><a href="#3-Enhanced-バックアップ-ポリシー利用時の料金算出方法" class="headerlink" title="3. Enhanced バックアップ ポリシー利用時の料金算出方法"></a>3. Enhanced バックアップ ポリシー利用時の料金算出方法<a id="3"></a></h2><p>現時点では、料金計算ツールは「Standard バックアップ ポリシー」利用時の料金計算見積もりとなっており<br>「Enhanced バックアップ ポリシー」利用時の料金計算ツールの用意がございません。</p>
+<p>このため、「Enhanced バックアップ ポリシー」を利用して Azure VM Backup を取得する場合の料金見積もりは、下記のようにお見積りください。</p>
+<p>(算出方法)<br>1 . 以下料金計算ツールにて、毎日 1 回バックアップをスケジュールする場合の金額を見積もる。(-&gt; これを A とします)<br>料金計算ツール<br><a target="_blank" rel="noopener" href="https://azure.microsoft.com/ja-jp/pricing/calculator/">https://azure.microsoft.com/ja-jp/pricing/calculator/</a></p>
+<p>2 . 初回バックアップ時の VM のインスタンスサイズに対し、スナップショット料金の加算分を計算する。<br>100 GB であれば 0.05($) を乗算し、5$ (-&gt; これを B とします) 。</p>
+<p>3 . 日次の変更データ量に対するスナップショット料金の減額分を計算する。<br>「Standard バックアップ ポリシー」利用時の料金との差額は 1GB あたり 0.12 - 0.05 = 0.07 $ である為、日次で想定される変更データ量が 1GB の場合、毎日 0.07 $ x 1GB = 0.07$ の減額が発生する。<br>月間 31 日では、0.07 $ x 31 = 2.17 $ 発生。(-&gt; これを C とします)<br>※料金計算ツールの「平均日次データ チャーン」項目について、100 GB のインスタンスサイズに対し、1 GB の変更が生じる場合、一般的なチャーンレートとしては1% となる為、平均日次チャーンは “低” となります。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/1d5da2f1-93a6-4b35-9a9e-2d806c9c6450" alt="image"></p>
+<p>4 . 料金計算ツールにて、A に、BならびにC を加え、概算費用を計算します。<br>・初月 A - C + B (「Azure VM Backup の機能で取得されるスナップショットに対する課金」部分が反映されることになります)<br>・2 か月目以降 A - C</p>
+<p>本記事の内容は以上となります。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/VM_Backup_billing.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../ClassicVm_to_ARM/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          バックアップしているクラシック VM を ARM VM へ移行する際の注意点
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../AzureSAPBackup/How_to_HSR_workload_backup/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">HSR に対する Azure Workload Backup</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../ClassicVm_to_ARM/">バックアップしているクラシック VM を ARM VM へ移行する際の注意点</a>
+          </li>
+        
+          <li>
+            <a href="">Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureSAPBackup/How_to_HSR_workload_backup/">HSR に対する Azure Workload Backup</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/">Azure Backup の 保持期間について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/DR_ASR_or_VMBackup/">Azure VM Backup と Azure Site Recovery による DR 要件について</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">25</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">22</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SAPHANA-Backup/" style="font-size: 10px;">Azure SAPHANA Backup</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 10px;">Azure SQL Backup</a> <a href="../../tags/Azure-Site-Recovery/" style="font-size: 10px;">Azure Site Recovery</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 11.67px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
