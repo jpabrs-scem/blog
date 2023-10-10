@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法 | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法についてお伝えします。 ヒントSQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しております。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法についてお伝えします。 ヒントSQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しております。">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/4baf88bf-216c-42ad-aef4-aca75108afb1">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/e3f1e1d4-f3eb-41db-a07f-59a7c8e59399">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/cd475c7f-a266-475d-a76a-47da64b1b7e4">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/451d67c3-07df-44e0-9521-165773004f78">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/3992f893-17fa-4629-bd3d-e87713c61db5">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/cdad2f29-f7aa-4e07-a8c9-0a10b57a2e64">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/66d6c303-da57-403c-a2d6-1db766ff2c03">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/93c32f74-2bcc-42ee-a57c-8c142d7dfa04">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/898d1c2e-7c84-48a6-9818-d159883e64ae">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/23248c75-35d3-4453-84f6-dab43917f7d8">
+<meta property="article:published_time" content="2023-10-01T03:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-10T08:05:31.868Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Azure SQL Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/4baf88bf-216c-42ad-aef4-aca75108afb1">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureSQLBackup/How_To_SQL_Backup_Via_Proxy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2023-10-01T03:00:00.000Z" itemprop="datePublished">2023-10-01</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ac54bbf9-1798-52e5-927f-d3fffcc94774%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BProxy+Server+%E3%82%92%E7%B5%8C%E7%94%B1%E3%81%97%E3%81%9F%E3%80%81SQL+Server+DB+%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B+Azure+Backup+%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSQLBackup%2FHow_To_SQL_Backup_Via_Proxy%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSQLBackup%2FHow_To_SQL_Backup_Via_Proxy.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSQLBackup%2FHow_To_SQL_Backup_Via_Proxy.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/" data-id="clnk1ewlq000i0moda0kf2c4x" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>皆様こんにちは、Azure Backup サポートです。<br>今回は、Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法についてお伝えします。</p>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>SQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しております。</p>
+<hr>
+<p>・ SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定</p><p>　 <a href="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/">https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/</a></p></div>
+<h2 id="目次-手順概略"><a href="#目次-手順概略" class="headerlink" title="目次 - 手順概略"></a>目次 - 手順概略</h2><hr>
+<p><a href="#1">1. 認証なしの Proxy Server を用意する</a><br><a href="#2">2. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、Local System アカウントに対して、プロキシを設定する</a><br><a href="#3">3. 「データベースの検出」「バックアップの有効化」を実施する</a><br><a href="#4">4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、プロキシを設定する</a><br><a href="#5">5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行</a>  </p>
+<hr>
+<h2 id="1-認証なしの-Proxy-Server-を用意する"><a href="#1-認証なしの-Proxy-Server-を用意する" class="headerlink" title=" 1. 認証なしの Proxy Server を用意する"></a><a id="1"></a> 1. 認証なしの Proxy Server を用意する</h2><p>認証を要求しない Proxy Server をご用意ください。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>認証付きの Proxy Server はご利用いただけませんので、ご注意ください。</p></div>
+<h2 id="2-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、Local-System-アカウントに対して、プロキシを設定する"><a href="#2-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、Local-System-アカウントに対して、プロキシを設定する" class="headerlink" title=" 2. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、Local System アカウントに対して、プロキシを設定する"></a><a id="2"></a> 2. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、Local System アカウントに対して、プロキシを設定する</h2><h4 id="Local-System-アカウントに対するプロキシ設定手順の詳細"><a href="#Local-System-アカウントに対するプロキシ設定手順の詳細" class="headerlink" title="Local System アカウントに対するプロキシ設定手順の詳細"></a>Local System アカウントに対するプロキシ設定手順の詳細</h4><ol>
+<li><p>以下より PsExec をダウンロードします。​  </p>
+<ul>
+<li>PsExec v2.2<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/sysinternals/downloads/psexec">https://docs.microsoft.com/ja-jp/sysinternals/downloads/psexec</a>  </li>
+</ul>
+</li>
+<li><p>管理者特権のコマンド プロンプトから、ダウンロードしたファイルを解凍したフォルダに移動し、次のコマンドを実行して Internet Explorer を開きます。​  </p>
+<ul>
+<li>(実行コマンド)<br><code>psexec -i -s &quot;c:\Program Files\Internet Explorer\iexplore.exe&quot;​</code></li>
+</ul>
+</li>
+<li><p>以下の画面が出た場合には、<code>Agree</code> を選択します。<br> <img src="https://github.com/jpabrs-scem/blog/assets/124880886/4baf88bf-216c-42ad-aef4-aca75108afb1" alt="PsExec License Agreement"></p>
+</li>
+<li><p>Internet Explorer が起動されるため、<code>[Tools] &gt; [Internet Options] &gt; [Connections] &gt; [LAN settings]</code>の順に移動します。  </p>
+ <img src="https://github.com/jpabrs-scem/blog/assets/124880886/e3f1e1d4-f3eb-41db-a07f-59a7c8e59399" width="400"></li>
+<li><p><code>Proxy Server</code> 欄の以下項目のチェックを有効化し、Proxy Server の IP およびポート番号を入力します。<br><code>Use a proxy server for your LAN …</code></p>
+ <img src="https://github.com/jpabrs-scem/blog/assets/124880886/cd475c7f-a266-475d-a76a-47da64b1b7e4" width="400"></li>
+<li><p><code>Proxy Server</code> 欄の以下項目のチェックを有効化します。<br> <code>Bypass proxy server for local addresses</code></p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>VM 内の localhost 通信はプロキシから除外します。  </p></div>
+ <img src="https://github.com/jpabrs-scem/blog/assets/124880886/451d67c3-07df-44e0-9521-165773004f78" width="400"></li>
+<li><p><code>Proxy Server</code> 欄の <code>[Advanced]</code> を選択します。</p>
+ <img src="https://github.com/jpabrs-scem/blog/assets/124880886/3992f893-17fa-4629-bd3d-e87713c61db5" width="400"></li>
+<li><p><code>Exceptions</code> 欄に、プロキシから除外する IP アドレスおよび FQDN を入力します。<br> Azure VM においては、以下の 3 項目を入力ください。  </p>
+<ul>
+<li>localhost</li>
+<li>168.63.129.16 (Wire Server)</li>
+<li>169.254.169.254 (Azure Instance Metadata Service)<img src="https://github.com/jpabrs-scem/blog/assets/124880886/cdad2f29-f7aa-4e07-a8c9-0a10b57a2e64" width="400"></li>
+</ul>
+</li>
+<li><p>各設定を <code>OK</code> ボタンを押下して保存してください。プロキシ設定は完了です。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>バックアップ対象の SQL Server DB が存在する Azure 仮想マシンで、</p><p>ネットワーク セキュリティ グループや Firewall によって、Proxy Server に対するアウトバウンド通信が制限されていないことを、あらかじめご確認ください。  </p></div>
+</li>
+</ol>
+<h2 id="3-「データベースの検出」「バックアップの有効化」を実施する"><a href="#3-「データベースの検出」「バックアップの有効化」を実施する" class="headerlink" title=" 3. 「データベースの検出」「バックアップの有効化」を実施する"></a><a id="3"></a> 3. 「データベースの検出」「バックアップの有効化」を実施する</h2><p>Azure ポータル上から、バックアップ対象の SQL Server DB に対して「データベースの検出」「バックアップの有効化」を行います。<br>以下手順に沿って実施してください。  </p>
+<ul>
+<li><p>SQL Server データベースを検出する<br>コンテナーから複数の SQL Server VM をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases">https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases</a></p>
+</li>
+<li><p>バックアップの構成<br>コンテナーから複数の SQL Server VM をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#configure-backup">https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#configure-backup</a></p>
+</li>
+</ul>
+<h2 id="4-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対して、プロキシを設定する"><a href="#4-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対して、プロキシを設定する" class="headerlink" title=" 4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、プロキシを設定する"></a><a id="4"></a> 4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、プロキシを設定する</h2><p>項目 3 にて実施した「データベースの検出」によって、VM 上にサービス アカウント ( NT Service\AzureWLBackupPluginSvc ) が作成されるため、このサービス アカウントに対してもプロキシ設定を行います。  </p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>サービス アカウントのプロキシ設定は、サービス アカウントのレジストリ キーを編集することで設定しますが、</p><p>設定する一部の値の型が “REG_BINARY” となり、バイナリ データを登録する必要がございます。</p><p>設定の簡易化のため、本手順では、現在ログインしているユーザー (カレント ユーザー) のプロキシ設定を継承する PowerShell コマンド (スクリプト) を用いて、サービス アカウントのプロキシ設定を行います。  </p></div>
+<h3 id="サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対するプロキシ設定手順の詳細"><a href="#サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対するプロキシ設定手順の詳細" class="headerlink" title="サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシ設定手順の詳細"></a>サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシ設定手順の詳細</h3><ol>
+<li><p>レジストリ エディターを開き、以下パスに遷移し、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) が作成されていることを確認します。<br><code>HKEY_USERS\S-1-5-80-1631947889-4033244730-3205203906-53534054-4184208151</code>  </p>
+<img src="https://github.com/jpabrs-scem/blog/assets/124880886/66d6c303-da57-403c-a2d6-1db766ff2c03" width="500">
+
+<div class="alert is-warning"><p class="alert-title">警告</p><p>もし上記レジストリ キーが存在していない場合、上記項目 3 の「データベースの検出」「バックアップの有効化」が正常に完了していない可能性がございます。</p><p>あらためて、「データベースの検出」「バックアップの有効化」操作が成功していることをご確認ください。</p></div>
+</li>
+<li><p>現在ログインしているユーザー (カレント ユーザー) で、<code>[設定] &gt; [ネットワークとインターネット] &gt; [プロキシ]</code> を開き、一時的に Proxy Server を設定します。<br>上記項目 2 と同じプロキシ設定を行ってください。  </p>
+ <img src="https://github.com/jpabrs-scem/blog/assets/124880886/93c32f74-2bcc-42ee-a57c-8c142d7dfa04" width="500"></li>
+<li><p>下記リンク先から、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシを設定するスクリプトをダウンロードします。  </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/12788965/SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip">SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip</a></li>
+</ul>
+</li>
+<li><p>バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上に、ダウンロードしたスクリプトを配置し、展開します。  </p>
+<ul>
+<li>ファイルの解凍パスワードは <strong><code>AzureBackup</code></strong> です</li>
+</ul>
+</li>
+<li><p>管理者特権の PowerShell から、ダウンロードしたファイルを解凍したフォルダに移動し、次のコマンドを実行します。</p>
+<ul>
+<li>(実行コマンド)<br><code>.\SetProxyforAzureWLBackupPluginSvcfromCurrentUser.ps1</code>  </li>
+<li>スクリプトを実行すると、以下ログファイルが作成されます。<br><code>&lt;スクリプトを実行したフォルダ&gt;/AzureBackup_Set_Proxy_For_AzureWLBackup_PluginSvc_yyyyMMdd_HHmmss.log</code></li>
+</ul>
+ <img src="https://github.com/jpabrs-scem/blog/assets/124880886/898d1c2e-7c84-48a6-9818-d159883e64ae" width="900">
+
+<div class="alert is-warning"><p class="alert-title">警告</p><p>本手順でご案内しているスクリプトについては、お客様の責任のもと、ご利用いただきますようお願い申し上げます。</p><p>スクリプト実行時のエラーや、想定外の問題について、当社は責任を負いかねますのでご了承ください。</p></div>
+</li>
+<li><p>現在ログインしているユーザー (カレント ユーザー) で、<code>[設定] &gt; [ネットワークとインターネット] &gt; [プロキシ]</code> を開き、Proxy Server の設定を元に戻します。</p>
+</li>
+</ol>
+<h3 id="サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対するプロキシ設定の確認手順"><a href="#サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対するプロキシ設定の確認手順" class="headerlink" title="サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシ設定の確認手順"></a>サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシ設定の確認手順</h3><ol>
+<li><p>以下ドキュメントにある「Azure Backup 接続テスト スクリプト (AzureBackupConnectivityTestScriptsForWindows.zip) 」を対象 Azure 仮想マシン上にダウンロードし、 zip ファイルを展開します。</p>
+<ul>
+<li>Azure Backup 接続テスト スクリプト<br>コンテナーから複数の SQL Server VM をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity">https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity</a></li>
+</ul>
+</li>
+<li><p>展開した zip ファイル内の「Start-ConnectivityTests.ps1」を、対象 Azure 仮想マシン上で実行します。</p>
+<ul>
+<li>(実行コマンド)<br><code>.\Start-ConnectivityTests.ps1</code>  </li>
+</ul>
+</li>
+<li><p>「Start-ConnectivityTests.ps1」を実行した後、ターミナル上に出力された結果に問題が無いことを確認します。</p>
+<ul>
+<li><ol>
+<li><code>WinInet settings for NT Authority\System (used by Azure Workload Backup Coordinator service)</code> の以下項目の値が、以下のとおりであることを確認します。</li>
+</ol>
+<ul>
+<li>ProxyEnable : 1</li>
+<li>ProxyServer : 利用する Proxy Server とそのポート番号</li>
+<li>ProxyOverride : プロキシから除外した接続先<br>例) <code>localhost, 168.63.129.16 (Wire Server), 169.254.169.254 (Azure Instance Metadata Service)</code></li>
+</ul>
+</li>
+<li><ol start="2">
+<li><code>WinInet settings for NT Service\AzureWLBackupPluginSvc (used by Azure Workload Backup Plugin service)</code> の以下項目の値が、以下のとおりであることを確認します。</li>
+</ol>
+<ul>
+<li>ProxyEnable : 1</li>
+<li>ProxyServer : 利用する Proxy Server とそのポート番号</li>
+<li>ProxyOverride : プロキシから除外した接続先<br>例) <code>localhost, 168.63.129.16 (Wire Server), 169.254.169.254 (Azure Instance Metadata Service)</code></li>
+</ul>
+</li>
+</ul>
+ <img src="https://github.com/jpabrs-scem/blog/assets/124880886/23248c75-35d3-4453-84f6-dab43917f7d8" width="800"></li>
+</ol>
+<h2 id="5-SQL-Server-DB-に対する-Azure-Backup「今すぐバックアップ」を実行"><a href="#5-SQL-Server-DB-に対する-Azure-Backup「今すぐバックアップ」を実行" class="headerlink" title=" 5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行"></a><a id="5"></a> 5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行</h2><p>Azure ポータル画面上で設定した、バックアップ ポリシーに従った次回の スケジュールバックアップが成功することを確認いただく、もしくは「今すぐバックアップ」を実行してオンデマンド バックアップが成功することをご確認ください。  </p>
+<ul>
+<li>オンデマンド バックアップを実行する<br>チュートリアル - Azure への SQL Server データベースのバックアップ - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/tutorial-sql-backup#run-an-on-demand-backup">https://learn.microsoft.com/ja-jp/azure/backup/tutorial-sql-backup#run-an-on-demand-backup</a></li>
+</ul>
+<p>Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法は以上となります。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../How_to_PE_SQL_backup_bypass_proxy/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法</a>
+          </li>
+        
+          <li>
+            <a href="../How_to_PE_SQL_backup_bypass_proxy/">SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/ClassicVm_to_ARM/">バックアップしているクラシック VM を ARM VM へ移行する際の注意点</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/VM_Backup_billing/">Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureSAPBackup/How_to_HSR_workload_backup/">HSR に対する Azure Workload Backup</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">25</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">22</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SAPHANA-Backup/" style="font-size: 10px;">Azure SAPHANA Backup</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 11.67px;">Azure SQL Backup</a> <a href="../../tags/Azure-Site-Recovery/" style="font-size: 10px;">Azure Site Recovery</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 11.67px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
