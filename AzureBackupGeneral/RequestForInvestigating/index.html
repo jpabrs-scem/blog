@@ -27,8 +27,8 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/182520772-59ba76df-31cf-488d-bfec-066830b44698.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/182520776-8f30a8f5-67d5-4bfd-a264-590ca251689d.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/182520778-a9e6e160-5830-4cf5-a6c3-00acf7ce0941.png">
-<meta property="article:published_time" content="2022-02-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-18T09:51:42.332Z">
+<meta property="article:published_time" content="2023-09-27T03:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-19T00:01:06.480Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="情報採取">
@@ -112,13 +112,13 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-02-11T03:00:00.000Z" itemprop="datePublished">2022-02-11</time>
+  <time datetime="2023-09-27T03:00:00.000Z" itemprop="datePublished">2023-09-27</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+15f2109c-51a4-528d-96f3-e49aeae52b9f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FRequestForInvestigating%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FRequestForInvestigating.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FRequestForInvestigating.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/" data-id="clnvkq8on004p0npnhbl9dosh" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/" data-id="clnwf2kx5004p0nr3eet24mgg" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -173,13 +173,12 @@
 <p>*お手数ですが、全ての DB の backup.log 及び backint.log の採取をお願いします。</p>
 <h3 id="SAP-HANAのbackup-log-及び-backint-log"><a href="#SAP-HANAのbackup-log-及び-backint-log" class="headerlink" title="SAP HANAのbackup.log 及び backint.log"></a>SAP HANAのbackup.log 及び backint.log</h3><blockquote>
 <ul>
-<li>xxにはインスタンスナンバーが入ります。<br>  ・/hana/shared/HXE/HDBxx/<hostname>/trace/backup.log<br>  ・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_&lt;DB名&gt;/backup.log<br>  ・/hana/shared/HXE/HDBxx/<hostname>/trace/backint.log<br>  ・/hana/shared/HXE/HDBxx/<hostname>/trace/DB_&lt;DB名&gt;/backint.log</li>
+<li>xxにはインスタンスナンバーが入ります。<br>  ・/hana/shared/HXE/HDBxx/(hostname)/trace/backup.log<br>  ・/hana/shared/HXE/HDBxx/(hostname)/trace/DB_&lt;DB名&gt;/backup.log<br>  ・/hana/shared/HXE/HDBxx/(hostname)/trace/backint.log<br>  ・/hana/shared/HXE/HDBxx/(hostname)/trace/DB_&lt;DB名&gt;/backint.log</li>
 </ul>
 </blockquote>
 <p>*上記パスに該当のログが無い場合は以下を試し、コマンド実行結果に表示されるディレクトリの場所の log をアップロードしてください。</p>
-<blockquote>
-<p>   sudo -i (rootユーザーに切り替えます)<br>    cd / (ディレクトリの最上層に移動します)<br>    find ./ -name “backup.log” (findコマンドにより該当のログの場所を特定します)<br>    find ./ -name “backint.log” (findコマンドにより該当のログの場所を特定します)</p>
-</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo -i (rootユーザーに切り替えます)</span><br><span class="line">cd / (ディレクトリの最上層に移動します)</span><br><span class="line">find ./ -name &quot;backup.log&quot; (findコマンドにより該当のログの場所を特定します)</span><br><span class="line">find ./ -name &quot;backint.log&quot; (findコマンドにより該当のログの場所を特定します)</span><br></pre></td></tr></table></figure>
+
 <h3 id="opt-配下の-log"><a href="#opt-配下の-log" class="headerlink" title="opt 配下の log"></a>opt 配下の log</h3><p>・/opt/msawb/var/log ディレクトリ配下のファイルを zip 等におまとめのうえで、アップロードしてください。</p>
 <h2 id="4-MARS-Backup-エージェントを利用したバックアップ-の障害調査に必要なログ"><a href="#4-MARS-Backup-エージェントを利用したバックアップ-の障害調査に必要なログ" class="headerlink" title="4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ"></a>4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ<a id="4"></a></h2><h2 id="4-0-環境情報とWindowsログ"><a href="#4-0-環境情報とWindowsログ" class="headerlink" title="4.0 環境情報とWindowsログ"></a>4.0 環境情報とWindowsログ</h2><p><a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> の <strong>環境情報</strong> ならびに <strong>ログ情報 - Windows の場合</strong> の取得をお願いします。<br>*MARS バックアップ のバックアップ対象の環境が Azure VM でない場合は Azure VM 名 / VM リソース グループ名は不要です。</p>
 <p>上記に加えて下記もご対応お願いします。</p>
@@ -278,19 +277,19 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureVMBackup/CRR/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/VM_Backup_billing/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          Azure VM Backup における CRR (クロスリージョン リストア) について
+          Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い
         
       </div>
     </a>
   
   
-    <a href="../../AzureVMBackup/Consistencies/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureSAPBackup/How_to_HSR_workload_backup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure VM Backupにおける整合性について</div>
+      <div class="article-nav-title">HSR に対する Azure Workload Backup</div>
     </a>
   
 </nav>
@@ -325,7 +324,7 @@
           </li>
         
           <li>
-            <a href="../../AzureSAPBackup/How_to_HSR_workload_backup/">HSR に対する Azure Workload Backup</a>
+            <a href="">Azure Backup の障害調査に必要な情報</a>
           </li>
         
       </ul>

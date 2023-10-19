@@ -97,6 +97,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-AzureVMBackup/NVA_backup" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../AzureVMBackup/NVA_backup/" class="article-date">
+  <time datetime="2022-02-22T03:00:00.000Z" itemprop="datePublished">2022-02-22</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../AzureVMBackup/NVA_backup/">NVA のバックアップについて</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+みなさんこんにちは、Azure Backup サポートです。今回は、「Azure VM Backup にてネットワーク仮想アプライアンス (NVA) をバックアップ可能か？」というお問い合わせについて回答します。
+目次
+1. 仮想アプライアンスはバックアップできない可能性がある2. VM エージェント の状態の確認3. 代替案 - Azure Disk Backup を利用する
+
+1. 仮想アプライアンスはバックアップできない可能性が高い結論から申し上げますと、残念ながら NVA として機能する仮想マシンについては、Azure VM Backup サポート対象外の カスタム OS となる可能性が高いです。*NVA 以外の仮想アプライアンス、カスタム OS などにおいても同様です。
+Azure Marketplace より、NVA として機能する仮想マシンを作成した場合も同様に、Azure...
+        <p class="article-readmore">
+          <a href="../../AzureVMBackup/NVA_backup/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/" data-id="clnwf2kw0001i0nr38ghk1wy2" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-AzureVMBackup/NWRequirementAndProcess" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -138,7 +192,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="clnvkq8nj001j0npndtjofmb0" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="clnwf2kw1001j0nr33qedb4dg" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -189,61 +243,10 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/" data-id="clnvkq8n4000u0npn71y62fos" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/" data-id="clnwf2kvj000u0nr37ckjc6bu" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-AzureBackupGeneral/RequestForInvestigating" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../AzureBackupGeneral/RequestForInvestigating/" class="article-date">
-  <time datetime="2022-02-11T03:00:00.000Z" itemprop="datePublished">2022-02-11</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../AzureBackupGeneral/RequestForInvestigating/">Azure Backup の障害調査に必要な情報</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-皆様こんにちは。Azure Backup サポートの山本です。今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。なお、 Azure Backup の障害調査にあたり NW 観点で取得いただきたいログに関しては下記をご覧ください・Azure Backup の障害調査に必要な情報 (疎通確認)https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/
-目次
-1. Azure VM バックアップの障害調査に必要なログ    1-1. Azure VM Backup の VSS 障害調査に追加で必要なログ2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ...
-        <p class="article-readmore">
-          <a href="../../AzureBackupGeneral/RequestForInvestigating/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/" data-id="clnvkq8on004p0npnhbl9dosh" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>
 
     </footer>
   </div>
@@ -295,7 +298,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="clnvkq8ot004x0npngqmzgzu8" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="clnwf2kxc004x0nr31io62b0t" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -350,7 +353,7 @@ MARS エージェント によるバックアップはマシン内のファイ�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/" data-id="clnvkq8nw002c0npnhk54331n" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/" data-id="clnwf2kwf002c0nr35u6l5n41" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -407,7 +410,7 @@ Azure VM Backup 関連のお問い合わせで、以下のようなお問い合�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/" data-id="clnvkq8nd00190npnfkstho8m" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/" data-id="clnwf2kvw00190nr38b0x1p53" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -461,7 +464,7 @@ Azure VM Backup 関連のお問い合わせで、以下のようなお問い合�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/" data-id="clnvkq8no001v0npn8k46dp1w" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/" data-id="clnwf2kw6001v0nr32v2sh1r3" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
@@ -515,7 +518,7 @@ Recovery Se...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/" data-id="clnvkq8nb00140npn3pwq84el" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/" data-id="clnwf2kvu00140nr38gri5j3d" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -568,7 +571,7 @@ Azure Files のAzure Backup ジョブを意図的に失敗させる方法
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/" data-id="clnvkq8mu000d0npn121ocyo6" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/" data-id="clnwf2kva000d0nr36mwn9qks" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li></ul>
@@ -621,7 +624,7 @@ Azure VM Backup ではバックアップ ジョブのスケジュールを日時
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/" data-id="clnvkq8nn001s0npn8f0k68a3" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/" data-id="clnwf2kw5001s0nr3fsvw44tz" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -666,7 +669,7 @@ Azure VM Backup ではバックアップ ジョブのスケジュールを日時
           </li>
         
           <li>
-            <a href="../../AzureSAPBackup/How_to_HSR_workload_backup/">HSR に対する Azure Workload Backup</a>
+            <a href="../../AzureBackupGeneral/RequestForInvestigating/">Azure Backup の障害調査に必要な情報</a>
           </li>
         
       </ul>
