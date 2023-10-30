@@ -65,6 +65,34 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/</loc>
     
     <lastmod>2023-10-30</lastmod>
@@ -163,6 +191,13 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Oracle_vm_backup/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/</loc>
     
     <lastmod>2023-10-30</lastmod>
@@ -198,48 +233,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/</loc>
-    
-    <lastmod>2023-10-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
-    
-    <lastmod>2023-10-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/</loc>
-    
-    <lastmod>2023-10-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</loc>
-    
-    <lastmod>2023-10-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
-    
-    <lastmod>2023-10-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
-    
-    <lastmod>2023-10-30</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/</loc>
     
     <lastmod>2023-10-30</lastmod>
@@ -248,6 +241,20 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
     
     <lastmod>2023-10-30</lastmod>
     
@@ -269,6 +276,27 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/</loc>
     
     <lastmod>2023-10-30</lastmod>
     
@@ -304,27 +332,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/</loc>
-    
-    <lastmod>2023-10-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/</loc>
-    
-    <lastmod>2023-10-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/</loc>
-    
-    <lastmod>2023-10-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/</loc>
     
     <lastmod>2023-10-30</lastmod>
     
