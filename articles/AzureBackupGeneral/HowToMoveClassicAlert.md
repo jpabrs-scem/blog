@@ -67,16 +67,24 @@ Recovery Services コンテナーでは、クラシック アラートが<span s
 ![image07](https://user-images.githubusercontent.com/96324317/230756566-faba366c-1f68-4034-8f4e-bbc1f9e7bc2f.png)
 
 通知の構成をしている Recovery Services コンテナーがある場合、[Azure Monitor アラートのみの使用をオプトイン] 画面にて、アラートの設定の更新を行います。
-”通知の構成” ＞「メールの通知：オン」をしている Recovery Services コンテナーが無い場合、かつ、今後バックアップジョブの監視設定をする必要が無い場合は、下記対応は不要です。
+※  ”通知の構成” ＞「メールの通知：オン」をしている Recovery Services コンテナーが無い場合、かつ、今後バックアップジョブの監視設定をする必要が無い場合は、下記対応は不要です。
+
+まず、対象 Recovery Services コンテナーを選択して、"アラートの設定" 列の "更新" を押下してください。
 ![image08](https://user-images.githubusercontent.com/96324317/230756596-d48ec392-d5c3-4a6b-9b84-73a7e7db4b49.png)
 
-なお、[Azure Monitor アラートのみの使用をオプトイン] 画面より、アラート設定の更新をする場合、下記の赤枠に記載されているように、メールなどの通知が必要な場合は、別途設定していただく必要があります。
+表示された [監視の設定] 画面にて "Azure Monitor アラートのみを使用" にチェックを入れてください。
+また "ジョブ エラーに関する組み込みの Azure Monitor アラート" も有効化してください。
+![image09](https://user-images.githubusercontent.com/96324317/230756610-2254377b-37ea-4205-a6e2-f6b04e959ced.png)
+※ "ジョブ エラーに関する組み込みの Azure Monitor アラート" が無効化されていると、バックアップセンターの下記概要画面上ではクラシックアラートを使用しているコンテナーとしてカウントされたままとなりますのでご注意ください。
+![image09-1](https://github.com/jpabrs-scem/blog/assets/141192952/9518f95f-bbea-4edb-bb60-4410fa0441db)
 
+最後に画面下部の "更新" ボタンを押下していただければ、クラシックアラートの廃止は完了いたします。
+
+なお、 [監視の設定] 画面に記載されているように、メールなどの通知が必要な場合は、別途設定していただく必要があります。
 詳細は下記のドキュメントを参照いただければと存じます。
 ・クラシック アラートから組み込みのAzure Monitor アラートに移行する
 　https://learn.microsoft.com/ja-jp/azure/backup/move-to-azure-monitor-alerts#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts
 
-![image09](https://user-images.githubusercontent.com/96324317/230756610-2254377b-37ea-4205-a6e2-f6b04e959ced.png)
 
 ## <a id="Q3"></a>Q3.クラシック アラートから Azure Monitor を使用した組み込みのアラートへと移行した場合のコストはどうなりますか？ 
 **A3** 「Azure Monitor を使用した組み込みのアラートが生成されること」自体に料金は発生しません。
