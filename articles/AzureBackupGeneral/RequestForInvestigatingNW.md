@@ -120,7 +120,7 @@ https://learn.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0
 
 **Linux**
 > nslookup(ping) \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
-> nc -vz \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+> nc -vz \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com 443
 > nc -vz  10.12.0.15　443
 > curl -I https://\<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > curl -I https://10.12.0.15 
