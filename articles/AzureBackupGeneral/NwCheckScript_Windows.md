@@ -1,6 +1,6 @@
 ---
 title: 疎通確認スクリプトの実行結果について (Windows)
-date: 2023-11-23 12:00:00
+date: 2023-12-12 12:00:00
 tags:
   - Azure Backup General
   - how to
@@ -19,7 +19,7 @@ disableDisclaimer: false
 > 疎通確認スクリプトを実行いただいた後は、専任エンジニアが詳細なトラブルシューティングを行いますので、お問い合わせチケット上へ添付ください。
 > マシンの環境によっては本スクリプトでは確認しきれないネットワーク構成もあるため、お問い合わせチケットにて、お客様とどのようなネットワーク通信経路となっているかをすり合わせることとなります。
 > 本ブログ記事は、お客様側でご参考までに、疎通確認スクリプトからどのようなことが判断できるのかを説明する記事となります。
-> 「tnc」コマンドや「curl」コマンドの戻り値については、全てを網羅した情報ではなく、Azure Backup 観点にてチェックすべきものをまとめた記事となります。
+> 「tnc」コマンドや「Invoke-webRequest」コマンドの戻り値については、全てを網羅した情報ではなく、Azure Backup 観点にてチェックすべきものをまとめた記事となります。
 
 ## 目次
 -----------------------------------------------------------
@@ -28,6 +28,7 @@ disableDisclaimer: false
 [3. 疎通確認スクリプト結果を確認する際のポイント](#3)  
 [4. tnc コマンド結果について](#4)  
 [5. Invoke-webRequest コマンド結果について](#5)
+[6. SSL, TLS 設定を確認する](#6)
 -----------------------------------------------------------
 
 ## <a id="1"></a> 1. 疎通確認スクリプトの構成
@@ -40,7 +41,7 @@ disableDisclaimer: false
 (2) プロキシ設定を確認する
 (3) Azure Backup サービスで使用される代表的な FQDN 2 種に対する「tnc」「Invoke-webRequest」コマンド実行結果
 (4) Azure Backup 処理時に使用される、代表的な Azure Storage の FQDN 3 種に対する「tnc」「Invoke-webRequest」コマンド実行結果
-(5) Azure Backup 処理時に使用される、代表的な Azure Active Directory (以下、AAD) の FQDN 3 種に対する「tnc」「Invoke-webRequest」コマンド実行結果
+(5) Azure Backup 処理時に使用される、代表的な Microsoft Entra ID の FQDN 3 種に対する「tnc」「Invoke-webRequest」コマンド実行結果
 (6) Azure VM Backup 「ファイルの回復」時に必要な宛先への「tnc」「Invoke-webRequest」コマンド実行結果
 (7) SSL, TLS 設定 情報の出力
 
@@ -59,15 +60,15 @@ Windows OS のマシン上で、プロキシ サーバーを経由するよう�
  <font color="DodgerBlue">WinHttp プロキシ設定が行われているかどうかを確認します</font>
 
 下図のように「ProxyEnable」「ProxyServer」「ProxyOverride」箇所が「0」やブランク表示となっていれば「プロキシ設定は行われいない」と判断します。
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/6b46ce77-6136-4f75-9aef-1166ab864ff5)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/79f511c3-9e4e-4f46-9365-e3ee0519161e)
 
 下図のように「ProxyEnable: 1」となっていれば、プロキシ設定がされていると判断できます。
 「ProxyServer」箇所が経由しているプロキシ サーバーです。
 「ProxyOverride」箇所には、プロキシ バイパス設定内容が確認できます。
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/8c67e8c3-289f-46a0-9a0d-ccf41c8b5d1b)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/6d30b9e4-0cfc-4285-b1b7-9de7f07d94b3)
 
 (マシン上の設定例)
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/26b8cd0a-bdce-45b0-8fb8-35ac66892571)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/26b8cd0a-bdce-45b0-8fb8-35ac66892571)
 
 
 ## <a id="3"></a> 3. 疎通確認スクリプト結果を確認する際のポイント
@@ -82,6 +83,7 @@ Azure Backup 処理時に、シナリオによっては必要となる 下記 3 
 「jpe」と記載されている通り、疎通確認スクリプトでは、例として東日本リージョンで使用されている Azure Backup サービスとの通信を確認しています。
 お客様が利用するリージョンによって、通信確立が必要な FQDN は変更されます。
 これは Azure Storage サービスにおいても同様です。
+
 (参考) MARSエージェントを使ったバックアップで必要な通信要件
 https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent#url-and-ip-access
 また、疎通確認スクリプト上で確認している FQDN は、不定期で変更する場合がございます。
@@ -90,6 +92,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent#
 プライベート エンドポイント経由で Azure Backup を利用する場合、
 確認すべき Azure Backup ・ Azure Storage サービスの FQDN は、疎通確認スクリプト上で確認しているパブリックな FQDN ではなく、お客様毎にそれぞれ異なる FQDN の通信を確認する必要があります。
 この場合は下記ブログ記事に従って、ご確認ください。
+
 (確認方法) 3. プライベート エンドポイント環境における Azure Backup 疎通確認
 https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/#3
 
@@ -102,7 +105,7 @@ Result of tnc - 443 / from 10.8.0.6 /To URL  pod01-manag1.jpe.backup.windowsazur
 
 ``nslookup pod01-manag1.jpe.backup.windowsazure.com``
 と実行いただければ、「pod01-manag1.jpe.backup.windowsazure.com」の IP アドレスを確認可能です。
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/80dbbee4-57a2-4160-86a2-ea7c7bb56563)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/80dbbee4-57a2-4160-86a2-ea7c7bb56563)
 
 Result of tnc - 443 / from 10.2.0.23 /To URL  pod01-manag1.jpe.backup.windowsazure.com <font color="DarkTurquoise">IPaddress 20.191.166.134</font> / <font color="DeepPink">TcpTestSucceeded: False</font>
 
@@ -164,6 +167,33 @@ PS>TerminatingError(Invoke-WebRequest): <font color="DeepPink">"リモート サ
 下図例：
 (前段)　「-Proxy」引数無しで実行し、プロキシ サーバーを経由せずに通信確立できていない結果
 (後段)　「-Proxy」引数有りで実行し、プロキシ サーバー (10.2.0.16) を経由して (404 エラー返却による) 通信が確立できている結果
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/35455b53-c66e-4025-9b86-68b49af4d3cb)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/35455b53-c66e-4025-9b86-68b49af4d3cb)
+
+
+## <a id="6"></a> 6. SSL, TLS 設定を確認する
+ログ上の後方「TLS CHECK」部分は、SSL/TLS のレジストリキー設定を出力しています。
+Azure Backup においては、TLS 1.2 が無効化されているマシンの場合、バックアップ構成・バックアップ処理が失敗する可能性があるため確認しております。
+
+・(参考) TLS 1.2 を有効にしないと、どのような影響がありますか?
+　https://learn.microsoft.com/ja-jp/azure/backup/transport-layer-security#what-is-the-impact-of-not-enabling-tls-12
+
+スクリプトでは、マシン上のレジストリキー 
+(HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols 配下)
+の値を出力しています。
+
+(画面例)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/0990e2f3-b319-4da1-96c6-7e6e4834d820)
+
+なお、「TLS 1.2」のレジストリキーが明示的に設定されていなくでも、「Windows Server 2012 R2」以降では TLS 1.2 は規定で有効化されています。
+
+・Azure Backup でのトランスポート層セキュリティ
+　https://learn.microsoft.com/ja-jp/azure/backup/transport-layer-security#verify-windows-registry
+　"ここに示す値は、Windows Server 2012 R2 以降のバージョンでは既定で設定されています。 これらのバージョンの Windows では、レジストリ キーが存在しない場合、作成する必要はありません。"
+
+Azure Backup の失敗において、TLS 1.2 プロトコルに関わる懸念がある場合は、対象マシン上のその他の設定箇所も確認しながら、トラブルシューティングを進めていくこととなります。
+
+・.NET Framework で TLS 1.1 および TLS 1.2 を有効化する方法 - まとめ - | Japan Developer Support Internet Team Blog (jpdsi.github.io)
+　https://jpdsi.github.io/blog/internet-explorer-microsoft-edge/dotnet-framework-tls12/
+
 
 説明は以上となります。
