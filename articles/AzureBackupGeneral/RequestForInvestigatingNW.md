@@ -1,6 +1,6 @@
 ---
 title: Azure Backup の障害調査に必要な情報 (疎通確認)
-date: 2022-06-24 12:00:00
+date: 2023-12-04 12:00:00
 tags:
   - Azure Backup General
   - 情報採取
@@ -120,7 +120,7 @@ https://learn.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0
 
 **Linux**
 > nslookup(ping) \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
-> nc -vz \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+> nc -vz \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com 443
 > nc -vz  10.12.0.15　443
 > curl -I https://\<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > curl -I https://10.12.0.15 
