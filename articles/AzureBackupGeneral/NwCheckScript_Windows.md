@@ -76,7 +76,7 @@ Windows OS のマシン上で、プロキシ サーバーを経由するよう�
 Azure Backup 処理時に、シナリオによっては必要となる 下記 3 つの Azure サービスとの通信を「tnc」「Invoke-webRequest」コマンドで確認していきます。
 ・Azure Backup サービス
 ・Azure Storage サービス
-・Azure Active Directory サービス
+・Microsoft Entra ID サービス
 
 #### (Point 1) リージョンによって確認すべき FQDN が変わる可能性があります
 疎通確認スクリプト上の FQDN (例：pod01-manag1.<font color="DeepPink">jpe</font>.backup.windowsazure.com) はあくまで、Azure Backup サービスで使用される FQDN のうちの 1 つです。
