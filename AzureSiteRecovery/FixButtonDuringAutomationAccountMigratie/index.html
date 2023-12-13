@@ -4,28 +4,23 @@
   <meta charset="utf-8">
   
   
-  <title>プロキシを利用した MARS エージェントによるバックアップについて | Japan CSS ABRS  Support Blog !!</title>
+  <title>ASR モビリティ サービス自動更新用 Automation アカウントの認証をマネージド ID へ移行する際、[修復] といったボタンが表示される | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、Azure Backup サポートの荘司です。今回は、プロキシを利用した MARS  エージェントによるバックアップの設定例及び挙動について、認証が必要な場合や pac ファイルをご利用の場合も含めてご案内します。 MARS エージェント によるバックアップはマシン内のファイルやフォルダーやシステム状態のバックアップを行い Azure 上に保存するバックアップサービスです。対象の">
+  <meta name="description" content="みなさんこんにちは、Azure Site Recovery サポートです。今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。 ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが">
 <meta property="og:type" content="article">
-<meta property="og:title" content="プロキシを利用した MARS エージェントによるバックアップについて">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/index.html">
+<meta property="og:title" content="ASR モビリティ サービス自動更新用 Automation アカウントの認証をマネージド ID へ移行する際、[修復] といったボタンが表示される">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、Azure Backup サポートの荘司です。今回は、プロキシを利用した MARS  エージェントによるバックアップの設定例及び挙動について、認証が必要な場合や pac ファイルをご利用の場合も含めてご案内します。 MARS エージェント によるバックアップはマシン内のファイルやフォルダーやシステム状態のバックアップを行い Azure 上に保存するバックアップサービスです。対象の">
+<meta property="og:description" content="みなさんこんにちは、Azure Site Recovery サポートです。今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。 ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/152903682-258c22e6-793d-4c62-82d4-20f293c8d330.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/152903684-37a1b7d4-8e85-4e6a-92df-7f5cb0faba7a.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/152903686-eadf5857-01e8-40fa-89a6-6d8337c4be12.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/152904399-0e4149d2-2911-4516-bcdd-938ea9fbaa0c.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/152903691-9d2000f4-2f9f-4748-b2e1-442de641449e.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/152903692-27e268c0-7e89-44a4-ab36-1430047dde2e.png">
-<meta property="article:published_time" content="2022-02-09T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-13T05:31:09.090Z">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/140866391/7dec6094-e35e-4952-b1db-7ca64ea3e337">
+<meta property="article:published_time" content="2023-12-13T00:00:00.000Z">
+<meta property="article:modified_time" content="2023-12-13T05:31:09.042Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
-<meta property="article:tag" content="MARS Backup">
+<meta property="article:tag" content="Azure Site Recovery">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/152903682-258c22e6-793d-4c62-82d4-20f293c8d330.png">
+<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/140866391/7dec6094-e35e-4952-b1db-7ca64ea3e337">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -87,7 +82,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-MARSBackup/MARS_Proxy_Setting" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -96,7 +91,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      プロキシを利用した MARS エージェントによるバックアップについて
+      ASR モビリティ サービス自動更新用 Automation アカウントの認証をマネージド ID へ移行する際、[修復] といったボタンが表示される
     </h1>
   
 
@@ -104,61 +99,26 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-02-09T03:00:00.000Z" itemprop="datePublished">2022-02-09</time>
+  <time datetime="2023-12-13T00:00:00.000Z" itemprop="datePublished">2023-12-13</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9f3932cb-3403-53ea-8967-bc5bc420a11e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F+MARS+%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AB%E3%82%88%E3%82%8B%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FMARSBackup%2FMARS_Proxy_Setting%2F%29%0A*+Content+Source%3A+%5Barticles%2FMARSBackup%2FMARS_Proxy_Setting.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FMARSBackup%2FMARS_Proxy_Setting.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+02f411f3-4e22-52db-b6d5-ffee1c188a69%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BASR+%E3%83%A2%E3%83%93%E3%83%AA%E3%83%86%E3%82%A3+%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0%E7%94%A8+Automation+%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AE%E8%AA%8D%E8%A8%BC%E3%82%92%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89+ID+%E3%81%B8%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E9%9A%9B%E3%80%81%5B%E4%BF%AE%E5%BE%A9%5D+%E3%81%A8%E3%81%84%E3%81%A3%E3%81%9F%E3%83%9C%E3%82%BF%E3%83%B3%E3%81%8C%E8%A1%A8%E7%A4%BA%E3%81%95%E3%82%8C%E3%82%8B%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2FFixButtonDuringAutomationAccountMigratie%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2FFixButtonDuringAutomationAccountMigratie.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2FFixButtonDuringAutomationAccountMigratie.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/MARS_Proxy_Setting/" data-id="clq3c2uxq002h0mp80kko9su1" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/" data-id="clq3c2uww000k0mp80l4vabz2" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは、Azure Backup サポートの荘司です。<br>今回は、<strong>プロキシを利用した MARS  エージェントによるバックアップの設定例及び挙動</strong>について、認証が必要な場合や pac ファイルをご利用の場合も含めてご案内します。</p>
-<p>MARS エージェント によるバックアップはマシン内のファイルやフォルダーやシステム状態のバックアップを行い Azure 上に保存するバックアップサービスです。<br>対象のバックアップ環境はオンプレミスでも Azure でも可能です。</p>
-<ul>
-<li>参考<br>・Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent">https://docs.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent</a></li>
-</ul>
-<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. MARS エージェントのプロパティ設定を利用したプロキシ設定例</a><br><a href="#2">2. Windows のシステムアカウントプロキシ設定を利用した設定例</a><br><a href="#3">3. 認証プロキシを利用する際の設定例</a><br><a href="#4">4. PAC ファイルを利用したプロキシ設定を適用する場合の設定例</a><br><a href="#5">5. MARS Backup と Windows (システムアカウント) の両方にプロキシ設定がある場合の挙動</a><br><a href="#6">6. まとめ</a></p>
-<hr>
-<h2 id="1-MARS-エージェントのプロパティ設定を利用したプロキシ設定例"><a href="#1-MARS-エージェントのプロパティ設定を利用したプロキシ設定例" class="headerlink" title="1. MARS エージェントのプロパティ設定を利用したプロキシ設定例"></a>1. MARS エージェントのプロパティ設定を利用したプロキシ設定例<a id="1"></a></h2><p>本設定に関連した公式ドキュメントは下記でございます。</p>
-<ul>
-<li>参考<br>・Azure Backup MARS エージェントをインストールする - エージェントをインストールして登録する<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/install-mars-agent#install-and-register-the-agent">https://docs.microsoft.com/ja-jp/azure/backup/install-mars-agent#install-and-register-the-agent</a></li>
-</ul>
-<p>MARS のインストール時の下記プロキシ設定に、プロキシ サーバーの IP アドレス及びポートを記入することで、プロキシを利用したバックアップが可能です。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/152903682-258c22e6-793d-4c62-82d4-20f293c8d330.png" alt="MARS_Proxy_01"></p>
-<ul>
-<li>MARS Backup エージェントのプロキシ設定では PAC ファイルによるプロキシの設定はできません。後述のシステムアカウントを用いたプロキシ設定により可能です。</li>
-</ul>
-<h2 id="2-Windows-のシステムアカウントプロキシ設定を利用した設定例"><a href="#2-Windows-のシステムアカウントプロキシ設定を利用した設定例" class="headerlink" title="2. Windows のシステムアカウントプロキシ設定を利用した設定例 "></a>2. Windows のシステムアカウントプロキシ設定を利用した設定例 <a id="2"></a></h2><p>本設定に関連した公式ドキュメントは下記でございます。</p>
-<ul>
-<li>参考<br>・Windows のプロキシ設定を確認する<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-mars-troubleshoot#verifying-proxy-settings-for-windows">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-mars-troubleshoot#verifying-proxy-settings-for-windows</a></li>
-</ul>
-<p>MARS エージェントが参照する Windows のプロキシ設定はシステムアカウントにて設定する必要がございます。<br>PsExec を用いることにより、設定可能でございます。<br>下記手順は PsExec にて Windows のプロキシ設定する手順をご紹介しております。</p>
-<ol>
-<li><p>下記 URL より PsExec をダウンロードします。<br>・PsExec - Windows Sysinternals | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/sysinternals/downloads/psexec">https://docs.microsoft.com/ja-jp/sysinternals/downloads/psexec</a></p>
-</li>
-<li><p>コマンドプロンプトを開き、PsExec のあるフォルダまで移動した後、以下コマンドを実行します。<br>psexec -i -s “c:\Program Files\Internet Explorer\iexplore.exe”</p>
-</li>
-<li><p>以下画面が出た場合は Agree をクリックしてください。<br><img src="https://user-images.githubusercontent.com/71251920/152903684-37a1b7d4-8e85-4e6a-92df-7f5cb0faba7a.png" alt="MARS_Proxy_02"></p>
-</li>
-<li><p>Internet Explorerが起動されますので、[ツール] &gt; [インターネット オプション] &gt; [接続] &gt; [ LAN の設定] より、プロキシサーバーの IP アドレス及びポートを記入します。<br><img src="https://user-images.githubusercontent.com/71251920/152903686-eadf5857-01e8-40fa-89a6-6d8337c4be12.png" alt="MARS_Proxy_03"></p>
-</li>
-<li><p>Windows のプロキシ設定がされている場合、MARS インストール時にプロキシ設定をしなくても、プロキシを利用したバックアップが可能です。</p>
-</li>
-</ol>
-<h2 id="3-認証プロキシを利用する際の設定例"><a href="#3-認証プロキシを利用する際の設定例" class="headerlink" title="3. 認証プロキシを利用する際の設定例 "></a>3. 認証プロキシを利用する際の設定例 <a id="3"></a></h2><p>MARS のインストール時に下記プロキシ設定に、プロキシサーバーの IP アドレス及びポート、認証の際のユーザーネーム、パスワードを記入することで、認証プロキシを利用したバックアップが可能です。<br>*<a href="#2">2. の Windows のシステムアカウントプロキシ設定</a>だけでは認証が通らないため、認証プロキシの設定はできません。<br><img src="https://user-images.githubusercontent.com/71251920/152904399-0e4149d2-2911-4516-bcdd-938ea9fbaa0c.png" alt="MARS_Proxy_04"></p>
-<h2 id="4-PAC-ファイルを利用したプロキシ設定を適用する場合の設定例"><a href="#4-PAC-ファイルを利用したプロキシ設定を適用する場合の設定例" class="headerlink" title="4. PAC ファイルを利用したプロキシ設定を適用する場合の設定例 "></a>4. PAC ファイルを利用したプロキシ設定を適用する場合の設定例 <a id="4"></a></h2><ol>
-<li><p> <a href="#2">2. の Windows のシステムアカウントプロキシ設定</a>の 1 から 3 の手順によって Internet Explorer を起動します。</p>
-</li>
-<li><p>[ツール] &gt; [インターネット オプション] &gt; [接続] &gt; [ LAN の設定] より、PAC ファイルの URL を記入することで、PAC ファイルの設定によるプロキシを利用したバックアップが可能です。<br><img src="https://user-images.githubusercontent.com/71251920/152903691-9d2000f4-2f9f-4748-b2e1-442de641449e.png" alt="MARS_Proxy_05"></p>
-</li>
-</ol>
-<h2 id="5-MARS-Backup-と-Windows-システムアカウント-の両方にプロキシ設定がある場合の挙動"><a href="#5-MARS-Backup-と-Windows-システムアカウント-の両方にプロキシ設定がある場合の挙動" class="headerlink" title="5.  MARS Backup と Windows (システムアカウント) の両方にプロキシ設定がある場合の挙動 "></a>5.  MARS Backup と Windows (システムアカウント) の両方にプロキシ設定がある場合の挙動 <a id="5"></a></h2><p>MARS Backup エージェントのプロパティと Windows の両方にプロキシの設定がされている場合は、MARS Backup エージェントに設定されている内容が優先されます。</p>
-<h2 id="6-まとめ"><a href="#6-まとめ" class="headerlink" title="6.  まとめ "></a>6.  まとめ <a id="6"></a></h2><p>各シナリオと設定例、及び優先される設定を以下の表にまとめますので、プロキシ設定の際のご参考にしていただければ幸いです。<br> ① MARS のプロキシ設定とは<a href="#1">1. MARS エージェントのプロパティ設定を利用したプロキシ設定</a>です。<br> ② Windows のプロキシ設定とは<a href="#2">2. Windows のシステムアカウントプロキシ設定</a>です。<br><img src="https://user-images.githubusercontent.com/71251920/152903692-27e268c0-7e89-44a4-ab36-1430047dde2e.png" alt="MARS_Proxy_06"><br>① はプロキシサーバーの IP アドレス、プロキシサーバーのポート、認証プロキシのユーザーネーム、認証プロキシのユーザーのパスワードを設定可能<br>② はプロキシサーバーの IP アドレス、プロキシサーバーのポート又は PAC ファイルの URL 設定を設定可能</p>
+<p>みなさんこんにちは、Azure Site Recovery サポートです。<br>今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。</p>
+<p>ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが決まっており、マネージド ID へ移行する必要がございます。<br>具体的な移行手順については公開情報にご案内がある他、本ブログ内でも手動で移行する方法についてご案内がございます。</p>
+<p>・既存の実行アカウントからマネージド ID に移行する<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/how-to-migrate-run-as-accounts-managed-identity#migrate-from-an-existing-run-as-account-to-a-managed-identity">https://learn.microsoft.com/ja-jp/azure/site-recovery/how-to-migrate-run-as-accounts-managed-identity#migrate-from-an-existing-run-as-account-to-a-managed-identity</a></p>
+<p>・ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について<br><a href="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/">https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</a></p>
+<p>移行手順については、上記公開情報にもご案内ある通り、基本的に [Site Recovery インフラストラクチャ] &gt; [拡張機能の更新の設定] から [移行] ボタンをクリックいただくのみとなります。<br>ただし、[移行] ボタンの他に、[修復] といったボタンが表示される場合がございます。<br>それは、Site Recovery のインフラストラクチャ＞拡張機能の更新の設定 画面に表示される “自動更新の設定が異常です” のエラー メッセージが発生している、つまり、一般的にモビリティ サービス自動更新用 Automation アカウントの認証に使用する実行アカウントの証明書がまもなく期限切れとなる場合などに表示されます。</p>
+<h3 id="対処策"><a href="#対処策" class="headerlink" title="対処策"></a>対処策</h3><p>この問題を解決するには、[修復] ボタンを押下後に対象 Automation アカウントの実行アカウントの画面に遷移しますので、遷移後の画面で [証明書の更新] ボタンを押下することで証明書を更新できます。<br>なお、こちらマネージド ID へ移行済みである場合は、特段対応は不要になります。</p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/140866391/7dec6094-e35e-4952-b1db-7ca64ea3e337" alt="Image"></p>
+<p>・一般的な問題とトラブルシューティング<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/azure-to-azure-autoupdate#common-issues-and-troubleshooting">https://learn.microsoft.com/ja-jp/azure/site-recovery/azure-to-azure-autoupdate#common-issues-and-troubleshooting</a></p>
 
       
       
@@ -172,10 +132,10 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/MARSBackup/MARS_Proxy_Setting.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -183,19 +143,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureVMBackup/Consistencies/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Azure VM Backupにおける整合性について
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureVMBackup/HowToExtendVMRetentionPeriod/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureBackupGeneral/RequestForInvestigatingNW/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure VM Backup で取得した復旧ポイントの保持期間の延長について</div>
+      <div class="article-nav-title">Azure Backup の障害調査に必要な情報 (疎通確認)</div>
     </a>
   
 </nav>
@@ -214,7 +165,7 @@
       <ul>
         
           <li>
-            <a href="../../AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/">ASR モビリティ サービス自動更新用 Automation アカウントの認証をマネージド ID へ移行する際、[修復] といったボタンが表示される</a>
+            <a href="">ASR モビリティ サービス自動更新用 Automation アカウントの認証をマネージド ID へ移行する際、[修復] といったボタンが表示される</a>
           </li>
         
           <li>
