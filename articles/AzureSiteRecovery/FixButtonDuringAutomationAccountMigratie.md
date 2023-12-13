@@ -1,6 +1,6 @@
 ---
 title: ASR モビリティ サービス自動更新用 Automation アカウントの認証をマネージド ID へ移行する際、[修復] といったボタンが表示される
-date: 2023-09-12 19:00:00
+date: 2023-12-13 9:00:00
 tags:
   - Azure Site Recovery
   - how to
