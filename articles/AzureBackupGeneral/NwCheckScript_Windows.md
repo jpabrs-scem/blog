@@ -17,14 +17,13 @@ disableDisclaimer: false
 > [!NOTE]
 > 上記ブログ リンクでご案内している疎通確認スクリプトは、あくまで Azure Backup に関わる通信要件を満たしているかを調査するために、弊社よりご案内・実行いただいているものです。
 > 疎通確認スクリプトを実行いただいた後は、専任エンジニアが詳細なトラブルシューティングを行いますので、お問い合わせチケット上へ添付ください。
-> マシンの環境によっては本スクリプトでは確認しきれないネットワーク構成もあるため、お問い合わせチケットにて、お客様とどのようなネットワーク通信経路となっているかをすり合わせることとなります。
-> 本ブログ記事は、お客様側でご参考までに、疎通確認スクリプトからどのようなことが判断できるのかを説明する記事となります。
-> 「tnc」コマンドや「Invoke-webRequest」コマンドの戻り値については、全てを網羅した情報ではなく、Azure Backup 観点にてチェックすべきものをまとめた記事となります。
+> マシンの環境によっては本スクリプトでは確認しきれないネットワーク構成もあるため、お問い合わせチケットにて、お客様とどのようなネットワーク通信経路となっているかをすり合わせることがございます。
+> 「tnc」コマンドや「Invoke-webRequest」コマンドの戻り値については、全てを網羅した情報ではなく、Azure Backup 観点にてチェックすべきものをまとめております。
 
 ## 目次
 -----------------------------------------------------------
 [1. 疎通確認スクリプトの構成](#1)  
-[2. プロキシ設定を確認する](#2)  
+[2. プロキシ設定の確認](#2)  
 [3. 疎通確認スクリプト結果を確認する際のポイント](#3)  
 [4. tnc コマンド結果について](#4)  
 [5. Invoke-webRequest コマンド結果について](#5)
@@ -38,7 +37,7 @@ disableDisclaimer: false
 　https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/#1
 
 (1) 疎通確認スクリプトを実行したマシン情報の出力
-(2) プロキシ設定を確認する
+(2) プロキシ設定の確認
 (3) Azure Backup サービスで使用される代表的な FQDN 2 種に対する「tnc」「Invoke-webRequest」コマンド実行結果
 (4) Azure Backup 処理時に使用される、代表的な Azure Storage の FQDN 3 種に対する「tnc」「Invoke-webRequest」コマンド実行結果
 (5) Azure Backup 処理時に使用される、代表的な Microsoft Entra ID の FQDN 3 種に対する「tnc」「Invoke-webRequest」コマンド実行結果
@@ -47,7 +46,7 @@ disableDisclaimer: false
 
 それでは疎通確認スクリプト結果ログ (AzureBackup_Check_NW_yyyymmdd_hhmmss.log) 上で確認すべきポイントを説明します。
 
-## <a id="2"></a> 2. プロキシ設定を確認する
+## <a id="2"></a> 2. プロキシ設定の確認
 Windows OS のマシン上で、プロキシ サーバーを経由するよう設定しているかどうかを確認しています。
 
 - WinInet settings for current user (used by ILR but not supported ,not used by Azure SQL / MARS Backup)
@@ -98,19 +97,23 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/
 
 
 ## <a id="4"></a> 4. tnc コマンド結果について
+<コマンド成功例>
+下記のように「TcpTestSucceeded: True」と出力されていれば「pod01-manag1.jpe.backup.windowsazure.com」という Azure Backup で使用される FQDN の 1 つとは、 tnc コマンド (Test-NetConnection コマンド) による通信は確立できていると判断できます。
+また、「IPaddress」の後に IP アドレスが出力されていれば、「名前解決はできている」と判断できます。
+
 Result of tnc - 443 / from 10.8.0.6 /To URL  pod01-manag1.jpe.backup.windowsazure.com <font color="DarkTurquoise">IPaddress 20.191.166.134</font> / <font color="DeepPink">TcpTestSucceeded: True</font>
 
-上記のように「TcpTestSucceeded: True」と出力されていれば「pod01-manag1.jpe.backup.windowsazure.com」という Azure Backup で使用される FQDN の 1 つとは、 tnc コマンド (Test-NetConnection コマンド) による通信は確立できていると判断できます。
-また、「IPaddress」の後に IP アドレスが出力されていれば、「名前解決はできている」と判断できます。
+---
+<コマンド失敗例>
+下記のように「TcpTestSucceeded: False」と出力されていれば「pod01-manag1.jpe.backup.windowsazure.com」とは、 tnc コマンドによる通信は確立できていないと判断できます。
+いっぽう「IPaddress」の後に IP アドレスが出力されているため「名前解決はできている」と判断できます。
+
+Result of tnc - 443 / from 10.2.0.23 /To URL  pod01-manag1.jpe.backup.windowsazure.com <font color="DarkTurquoise">IPaddress 20.191.166.134</font> / <font color="DeepPink">TcpTestSucceeded: False</font>
 
 ``nslookup pod01-manag1.jpe.backup.windowsazure.com``
 と実行いただければ、「pod01-manag1.jpe.backup.windowsazure.com」の IP アドレスを確認可能です。
 ![](https://github.com/jpabrs-scem/blog/assets/96324317/80dbbee4-57a2-4160-86a2-ea7c7bb56563)
 
-Result of tnc - 443 / from 10.2.0.23 /To URL  pod01-manag1.jpe.backup.windowsazure.com <font color="DarkTurquoise">IPaddress 20.191.166.134</font> / <font color="DeepPink">TcpTestSucceeded: False</font>
-
-上記のように「TcpTestSucceeded: False」と出力されていれば「pod01-manag1.jpe.backup.windowsazure.com」とは、 tnc コマンドによる通信は確立できていないと判断できます。
-いっぽう「IPaddress」の後に IP アドレスが出力されているため「名前解決はできている」と判断できます。
 
 #### (Point 3) プロキシ サーバーを経由するマシンの場合 tnc コマンドだけでは判断できません
 弊チームの疎通確認スクリプト上の tnc コマンドでは、プロキシを経由した通信確認を行えないため
@@ -119,43 +122,46 @@ Result of tnc - 443 / from 10.2.0.23 /To URL  pod01-manag1.jpe.backup.windowsazu
 
 
 ## <a id="5"></a> 5. Invoke-webRequest コマンド結果について
+<コマンド成功例>
+下記のように「StatusCode: 200」と返却されていれば「通信疎通できている」と判断できます。
+
 #TRY!! Invoke-webRequest login.microsoft.com
 Result of Invoke-webRequest  / <font color="DeepPink">StatusCode: 200</font>/ StatusDescription: OK
 
-上記のように「StatusCode: 200」と返却されていれば「通信疎通できている」と判断できます。
-
 ---
-#TRY!! Invoke-webRequest pod01-manag1.jpe.backup.windowsazure.com
-PS>TerminatingError(Invoke-WebRequest): <font color="DeepPink">"リモート サーバーがエラーを返しました: (404) 見つかりません"</font>
-
 404 エラー・403 エラーについては、一度「pod01-manag1.jpe.backup.windowsazure.com」とは通信でき、その後「pod01-manag1.jpe.backup.windowsazure.com」からエラーが返却されているので
 Azure Backup の通信確認観点では「通信疎通できている」と判断できます。
 
----
-#TRY!! Invoke-webRequest ceuswatcab01.blob.core.windows.net
-PS>TerminatingError(Invoke-WebRequest): <font color="DeepPink">"InvalidQueryParameterValueValue for one of the query parameters specified in the request URI is invalid. </font>RequestId:3549fc2a-201e-0069-07eb-0edf28000000 Time:2023-11-04T06:52:24.8125809Zcomp"
+#TRY!! Invoke-webRequest pod01-manag1.jpe.backup.windowsazure.com
+PS>TerminatingError(Invoke-WebRequest): <font color="DeepPink">"リモート サーバーがエラーを返しました: (404) 見つかりません"</font>
 
+---
 「InvalidQueryParameterValueValue」エラーは、一度「ceuswatcab01.blob.core.windows.net」とは通信でき、その後「ceuswatcab01.blob.core.windows.net」からエラーが返却されているので
 Azure Backup の通信確認観点では「通信疎通できている」と判断できます。
 
----
-#TRY!! Invoke-webRequest md-dlbrhcw4gn5r.z33.blob.storage.azure.net
-PS>TerminatingError(Invoke-WebRequest): <font color="DeepPink">"AuthenticationFailedServer failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature. </font>RequestId:2a4e4e9a-001c-00bc-34eb-0e8bd7000000 Time:2023-11-04T06:52:28.3332912Z"
+#TRY!! Invoke-webRequest ceuswatcab01.blob.core.windows.net
+PS>TerminatingError(Invoke-WebRequest): <font color="DeepPink">"InvalidQueryParameterValueValue for one of the query parameters specified in the request URI is invalid. </font>RequestId:3549fc2a-201e-0069-07eb-0edf28000000 Time:2023-11-04T06:52:24.8125809Zcomp"
 
+---
 「AuthenticationFailedServer」エラーは、一度「md-dlbrhcw4gn5r.z33.blob.storage.azure.net」とは通信でき、その後「md-dlbrhcw4gn5r.z33.blob.storage.azure.net」からエラーが返却されているので
 Azure Backup の通信確認観点では「通信疎通できている」と判断できます。
 
+#TRY!! Invoke-webRequest md-dlbrhcw4gn5r.z33.blob.storage.azure.net
+PS>TerminatingError(Invoke-WebRequest): <font color="DeepPink">"AuthenticationFailedServer failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature. </font>RequestId:2a4e4e9a-001c-00bc-34eb-0e8bd7000000 Time:2023-11-04T06:52:28.3332912Z"
+
 ---
+<コマンド失敗例>
+下記のように
+・Unable to connect to the remote server
+・リモート サーバーに接続できません。
+が返却された場合、「Invoke-webRequest」コマンドによる該当 FQDN への通信は失敗しており「通信が確立できていない」といえます。
+
 #TRY!! Invoke-webRequest pod01-manag1.jpe.backup.windowsazure.com
 PS>TerminatingError(Invoke-WebRequest): <font color="DeepPink">"Unable to connect to the remote server"</font>
 
 #TRY!! Invoke-webRequest weus2watcab01.blob.core.windows.net
 PS>TerminatingError(Invoke-WebRequest): <font color="DeepPink">"リモート サーバーに接続できません。"</font>
 
-上記のように
-・Unable to connect to the remote server
-・リモート サーバーに接続できません。
-が返却された場合、「Invoke-webRequest」コマンドによる該当 FQDN への通信は失敗しており「通信が確立できていない」といえます。
 
 #### (Point 4) Invoke-webRequest コマンドにてプロキシ サーバーを経由した通信の確認が可能
 疎通確認スクリプト上の「Invoke-webRequest」コマンドは、「-proxy」引数ありのコマンド実行には*なっておりません*。

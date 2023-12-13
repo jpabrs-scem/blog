@@ -17,14 +17,13 @@ disableDisclaimer: false
 > [!NOTE]
 > 上記ブログ リンクでご案内している疎通確認スクリプトは、あくまで Azure Backup に関わる通信要件を満たしているかを調査するために、弊社よりご案内・実行いただいているものです。
 > 疎通確認スクリプトを実行いただいた後は、専任エンジニアが詳細なトラブルシューティングを行いますので、お問い合わせチケット上へ添付ください。
-> マシンの環境によっては本スクリプトでは確認しきれないネットワーク構成もあるため、お問い合わせチケットにて、お客様とどのようなネットワーク通信経路となっているかをすり合わせることとなります。
-> 本ブログ記事は、お客様側でご参考までに、疎通確認スクリプトからどのようなことが判断できるのかを説明する記事となります。
-> 「nc」コマンドや「curl」コマンドの戻り値については、全てを網羅した情報ではなく、Azure Backup 観点にてチェックすべきものをまとめた記事となります。
+> マシンの環境によっては本スクリプトでは確認しきれないネットワーク構成もあるため、お問い合わせチケットにて、お客様とどのようなネットワーク通信経路となっているかをすり合わせることがございます。
+> 「nc」コマンドや「curl」コマンドの戻り値については、全てを網羅した情報ではなく、Azure Backup 観点にてチェックすべきものをまとめております。
 
 ## 目次
 -----------------------------------------------------------
 [1. 疎通確認スクリプトの構成](#1)  
-[2. プロキシ設定を確認する](#2)  
+[2. プロキシ設定の確認](#2)  
 [3. 疎通確認スクリプト結果を確認する際のポイント](#3)  
 [4. nslookup コマンド結果について](#4)  
 [5. nc コマンド結果について](#5)
@@ -38,7 +37,7 @@ disableDisclaimer: false
 　https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/#2
 
 (1) 疎通確認スクリプトを実行したマシン情報の出力
-(2) プロキシ設定を確認する
+(2) プロキシ設定の確認
 (3) Azure VM Backup 「ファイルの回復」時に必要な宛先への「nslookup」「nc」コマンド実行結果
 (4) Azure Backup サービスで使用される代表的な FQDN に対する「nslookup」「nc」「curl」コマンド実行結果
 (5) Azure Backup 処理時に使用される、代表的な Azure Storage の FQDN に対する「nslookup」「nc」「curl」コマンド実行結果
@@ -46,7 +45,7 @@ disableDisclaimer: false
 
 それでは疎通確認スクリプト結果ログ (CheckNWResult_(ホスト名)_(YYYYMMDDHHMM).log) 上で確認すべきポイントを説明します。
 
-## <a id="2"></a> 2. プロキシ設定を確認する
+## <a id="2"></a> 2. プロキシ設定の確認
 Linux OS のマシン上で、プロキシ サーバーを経由するよう設定しているかどうかを確認しています。
 下図のように、空白行の場合は「http_proxy」「https_proxy」のプロキシ設定は無いと判断します。
 ![](https://github.com/jpabrs-scem/blog/assets/96324317/9f9b597d-6a5f-4180-9d8e-141d11eb5e34)
@@ -82,6 +81,9 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/
 
 
 ## <a id="4"></a> 4. nslookup コマンド結果について
+<コマンド成功例>
+下記のように 末尾「Address」欄に IP アドレスが表示されていれば「pod01-rec2.jpe.backup.windowsazure.com」という Azure Backup で使用される FQDN の 1 つとは、 nslookup コマンドによる「名前解決はできている」と判断できます。
+
 ##TRY!! nslookup  pod01-rec2.jpe.backup.windowsazure.com ##
 Server:		168.63.129.16
 Address:	168.63.129.16#53
@@ -92,20 +94,26 @@ jpe-pod01-rec2-s2j8q.ext.trafficmanager.net	canonical name = jpe-pod01-rec-01.ja
 Name:	jpe-pod01-rec-01.japaneast.cloudapp.azure.com
 <font color="DeepPink">Address: 20.191.166.150</font>
 
-上記のように 末尾「Address」欄に IP アドレスが表示されていれば「pod01-rec2.jpe.backup.windowsazure.com」という Azure Backup で使用される FQDN の 1 つとは、 nslookup コマンドによる「名前解決はできている」と判断できます。
+---
+<コマンド失敗例>
+下記「connection timed out」のような出力の場合、名前解決できていないことが懸念されるため、お客様にてマシン上の名前解決手段を確認いただくことがございます。
 
 ##TRY!! nslookup  pod01-rec2.jpe.backup.windowsazure.com ##
 ;; connection timed out; no servers could be reached
 
-上記「connection timed out」のような出力の場合、名前解決できていないことが懸念されるため、お客様にてマシン上の名前解決手段を確認いただくことがございます。
 
 ## <a id="5"></a> 5. nc コマンド結果について
+<コマンド成功例>
+下記のように 「Connected to <宛先の IP アドレス>」が表示されていれば対象のアドレスと nc コマンドによる通信は確立できていると判断できます。
+
 ##TRY!! nc -vz pod01-manag1.jpe.backup.windowsazure.com 443 ##
 Ncat: Version 7.50 ( https://nmap.org/ncat )
 Ncat: <font color="DeepPink">Connected to </font>20.191.166.134:443.
 Ncat: 0 bytes sent, 0 bytes received in 0.06 seconds.
 
-上記のように 「Connected to <宛先の IP アドレス>」が表示されていれば対象のアドレスと nc コマンドによる通信は確立できていると判断できます。
+---
+<コマンド失敗例>
+下記のように「failed」「Connection timed out.」と出力されている場合、 nc コマンドによる通信は確立できていないと判断できます。
 
 ##TRY!! nc -vz pod01-rec2.jpe.backup.windowsazure.com 3260 ##
 Ncat: Version 7.50 ( https://nmap.org/ncat )
@@ -114,7 +122,6 @@ Ncat: <font color="DeepPink">Connection timed out.</font>
 ##TRY!! nc -vz pod01-prot1.jpe.backup.windowsazure.com 443 ##
 nc: connect to pod01-prot1.jpe.backup.windowsazure.com port 443 <font color="DeepPink">(tcp) failed: Connection timed out</font>
 
-上記のように「failed」「Connection timed out.」と出力されている場合、 nc コマンドによる通信は確立できていないと判断できます。
 
 #### (Point 3) プロキシ サーバーを経由するマシンの場合 nc コマンドだけでは判断できません
 弊チームの疎通確認スクリプト上の nc コマンドでは、プロキシを経由した通信確認を行えないため
@@ -122,6 +129,9 @@ nc: connect to pod01-prot1.jpe.backup.windowsazure.com port 443 <font color="Dee
 別途「curl」コマンドにて確認する必要があります。
 
 ## <a id="6"></a> 6. curl コマンド結果について
+<コマンド成功例>
+下記のように「200 OK」と返却されていれば「通信疎通できている」と判断できます。
+
 ##TRY!! curl -I https://login.microsoft.com ##
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -130,7 +140,9 @@ nc: connect to pod01-prot1.jpe.backup.windowsazure.com port 443 <font color="Dee
   0 20001    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
 HTTP/1.1 <font color="DeepPink">200 OK</font>
 
-上記のように「200 OK」と返却されていれば「通信疎通できている」と判断できます。
+---
+下記 400・403・404 エラーについては、一度対象の宛先とは通信でき、その後 対象の宛先からエラーが返却されているので
+Azure Backup の通信確認観点では「通信疎通できている」と判断できます。
 
 ##TRY!! curl -I https://ceuswatcab01.blob.core.windows.net ##
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -158,8 +170,9 @@ HTTP/1.1 <font color="DeepPink">403 Server failed to authenticate the request. M
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
 HTTP/1.1 <font color="DeepPink">404 Not Found</font>
 
-400・403・404 エラーについては、一度対象の宛先とは通信でき、その後 対象の宛先からエラーが返却されているので
-Azure Backup の通信確認観点では「通信疎通できている」と判断できます。
+---
+<コマンド失敗例>
+下記のように「Failed to connect」や「Connection timed out」と出力されている場合、 curl コマンドによる通信は確立できていないと判断できます。
 
 ##TRY!! curl -I https://pod01-manag1.jpe.backup.windowsazure.com ##
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -181,9 +194,6 @@ curl: (7) <font color="DeepPink">Failed to connect to pod01-manag1.jpe.backup.wi
   （中略）
   0     0    0     0    0     0      0      0 --:--:--  0:05:00 --:--:--     0
 curl: (28) <font color="DeepPink">Connection timed out </font>after 300001 milliseconds
-
-上記のように「Failed to connect」や「Connection timed out」と出力されている場合、 curl コマンドによる通信は確立できていないと判断できます。
-
 
 
 説明は以上となります。
