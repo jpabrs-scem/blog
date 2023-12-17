@@ -1,6 +1,6 @@
 ---
 title: Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い
-date: 2023-09-27 12:00:00
+date: 2023-12-28 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -23,7 +23,8 @@ disableDisclaimer: false
 -----------------------------------------------------------
 [1. はじめに : Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの機能の違いについて](#1)
 [2. Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い](#2)
-[3. Enhanced バックアップ ポリシー利用時の料金算出方法](#3)
+[3. スナップショット料金の請求先について](#3)
+[4. Enhanced バックアップ ポリシー利用時の料金算出方法](#4)
 -----------------------------------------------------------
 
 ## 1. はじめに : Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの機能の違いについて<a id="1"></a>
@@ -64,7 +65,7 @@ Azure VM Backup を利用する場合、その料金を見積もる際には以�
 下記の表は 100 GB の容量をもつ Azure 仮想マシンに対して、毎日 1 GB の増分が発生するケースにおいて、スナップショットを 4 日間保管した場合の比較表となります。
 *表中の料金は月額を示しており、実際の料金は保存期間によって変動する場合があります。
 (参考例)
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/c614385e-2489-40c9-9f2f-9a6a2e7c9b19)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/c614385e-2489-40c9-9f2f-9a6a2e7c9b19)
 
 上記サンプルケースでは Enhanced バックアップ ポリシー 利用時の方が費用は高くなりますが、初回のバックアップデータ量が減った場合や、翌日以降の増分データ量が増加する場合は、Standard バックアップ ポリシー利用時の方が割高となるシナリオも考えられます。
 
@@ -76,16 +77,67 @@ Azure VM Backup を利用する場合、その料金を見積もる際には以�
 ・Azure ページ BLOB Storage の価格 | Microsoft Azure
 　https://azure.microsoft.com/ja-jp/pricing/details/storage/page-blobs/
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/727481b0-cbab-4f49-976a-2b8428d5f209)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/727481b0-cbab-4f49-976a-2b8428d5f209)
 
 #### Enhanced バックアップ ポリシー - スナップショットに対する料金
 下記リンクから、リージョン・通貨をご希望のものへと設定変更いただければ、スナップショットに対する料金を確認できます。
 ・料金 - Managed Disks | Microsoft Azure
 　https://azure.microsoft.com/ja-jp/pricing/details/managed-disks/
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/69d004e5-cef6-4930-a777-43a986c713ec)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/69d004e5-cef6-4930-a777-43a986c713ec)
 
-## 3. Enhanced バックアップ ポリシー利用時の料金算出方法<a id="3"></a>
+## 3. スナップショット料金の請求先について<a id="3"></a>
+(1) Azure 仮想マシンのインスタンスに対する課金
+(2) Recovery Services コンテナーに保管されるバックアップ データに対する課金
+(3) Azure VM Backup の機能で取得されるスナップショットに対する課金
+
+上述の通り、Azure VM Backup を利用する場合、その料金を見積もる際には上記 3 点が課金項目となることを説明しましたが
+実際に「Azure VM Backup 料金」として請求される項目は (1) (2) のみであり、
+(3) は「Azure VM Backup」ではなく、「スナップショットにかかった料金」として別途請求されることとなります。
+そして、(3) については請求書上で確認する際、「Standard バックアップ ポリシー」か「Enhanced バックアップ ポリシー」かによって、確認する箇所が変わります。
+
+### 「コスト分析」画面から見る Azure VM Backup の請求項目
+例えば、Recovery Services コンテナー「RSV-EUS-LRS」上に 2 つの Azure 仮想マシンをそれぞれ「Standard バックアップ ポリシー」「Enhanced バックアップ ポリシー」にてバックアップ構成しているとします。
+![](https://github.com/jpabrs-scem/blog/assets/96324317/516b7f6d-7d1a-4868-a5a7-a55cf4f32f8d)
+
+![](https://github.com/jpabrs-scem/blog/assets/96324317/23b5a7ca-57e1-4c6f-b78a-2634a261cc1e)
+
+#### (1) Azure 仮想マシンのインスタンスに対する課金
+→ 「Meter：Azure VM Protected Instances」として表示されます
+
+#### (2) Recovery Services コンテナーに保管されるバックアップ データに対する課金
+→ 「Meter：<span style="color: red; ">LRS</span> Data Stored」として表示されます
+　(赤文字部分は、対象 Recovery Services コンテナーの「ストレージ レプリケーションの種類」によって変わります)
+　今回例としている Recovery Services コンテナー「RSV-EUS-LRS」の「ストレージ レプリケーションの種類」は「ローカル冗長 (LRS) 」であるために、「LRS Data Stored」と表示されています。
+![image](https://github.com/jpabrs-scem/blog/assets/96324317/15934c3e-91c3-4315-961f-36a787f4ce91)
+
+![image](https://github.com/jpabrs-scem/blog/assets/96324317/d086273d-b86f-4458-aa1c-5aac0dd7bd6e)
+
+#### (3) Azure VM Backup の機能で取得されるスナップショットに対する課金
+→　「Standard バックアップ ポリシー」の場合
+　　Azure 仮想マシンの Azure Managed Disk のリソース グループに紐づいて
+　　<font color="HotPink">「Meter：LRS snapshots」</font>として表示されます。
+![](https://github.com/jpabrs-scem/blog/assets/96324317/26c88cfc-4732-47a6-9dc5-08c280459db3)
+
+![](https://github.com/jpabrs-scem/blog/assets/96324317/7ecffa2f-913d-462e-90e0-cf98963f3ca9)
+
+→　「Enhanced バックアップ ポリシー」の場合
+　　Azure VM Backup によって作成された復元ポイント コレクションのリソース グループに紐づいて
+　　<font color="HotPink">「Meter：Snapshots ZRS Snapshots」</font>として表示されます。
+
+![](https://github.com/jpabrs-scem/blog/assets/96324317/a7f76856-66de-4f37-add4-ec9a4b91690d)
+
+![](https://github.com/jpabrs-scem/blog/assets/96324317/ed02d045-2044-4124-a3c0-3028e4e50f59)
+
+(補足)
+・Standard バックアップ ポリシーの場合、取得されるスナップショットは LRS のスナップショット層へ格納されます。
+・Enhanced バックアップ ポリシーの場合、取得されるスナップショットは ZRS のスナップショット層へ格納されます。
+
+・拡張ポリシーを使用して Azure VM をバックアップする
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal
+　"インスタント復元層では、ゾーン冗長ストレージ (ZRS) の回復性を使用してゾーン冗長性が確保されています。"
+
+## 4. Enhanced バックアップ ポリシー利用時の料金算出方法<a id="4"></a>
 現時点では、料金計算ツールは「Standard バックアップ ポリシー」利用時の料金計算見積もりとなっており
 「Enhanced バックアップ ポリシー」利用時の料金計算ツールの用意がございません。
 
