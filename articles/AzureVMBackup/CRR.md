@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup における CRR (クロスリージョン リストア) について
-date: 2023-12-29 12:00:00
+date: 2022-02-13 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -42,20 +42,12 @@ Recovery Services コンテナー「RSV-JPE-GRS-CRR」は「ストレージ レ�
 
 ![CRR_02](https://user-images.githubusercontent.com/71251920/153718069-e91606c7-4001-40d7-8ec1-4596719263c5.gif)
 
-CRR 機能が有効になっている場合、「バックアップ アイテム」画面上では「プライマリ リージョン」のほかに「セカンダリ リージョン」も選択できるよう、活性化されます。
-![CRR_03](https://github.com/jpabrs-scem/blog/assets/141192952/8181f3a0-5004-4a26-bf96-45434e9ab5e4)
-![CRR_04](https://github.com/jpabrs-scem/blog/assets/141192952/1af2d796-f098-465e-9ab0-1f0362056c06)
+CRR 機能が有効になっている場合、「バックアップ アイテム」画面上では「主要領域」のほかに「2 次領域」も選択できるよう、活性化されます。
+![CRR_03](https://user-images.githubusercontent.com/71251920/153718068-75b83793-921b-41ce-a330-4d957fd9e11f.gif)
+![CRR_04](https://user-images.githubusercontent.com/71251920/153718067-585d2fb5-242b-4352-87e9-efbb5ba0984e.gif)
 
- 一方でRecovery Services コンテナー「リージョンをまたがる復元：無効にする」の場合は、下図のように「プライマリ リージョン」がデフォルトで選択されており、かつ非活性表示となっているため「セカンダリ リージョン」への切り替えが不可能となっております。
- ![CRR_05](https://github.com/jpabrs-scem/blog/assets/141192952/a716e9db-a396-4ec8-9d22-60cf8afab3eb)
-
->[!WARNING]
-> CRR 機能が有効にされてから上記「セカンダリ リージョン」の項目が活性化されるまで**最大で 48 時間**かかりますのでご注意ください。
-> ---
-> ・ Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Learn  : リージョンをまたがる復元の設定
-> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-cross-region-restore
-
-
+ 一方でRecovery Services コンテナー「リージョンをまたがる復元：無効にする」の場合は、下図のように「主要領域」のみが選択となり、かつ非活性表示となります。
+ ![CRR_05](https://user-images.githubusercontent.com/71251920/153718066-3ecee4e8-f824-49c1-bd0c-8e9fed23b2f1.png)
 
  ### <a id="1-2"></a> 1-2. GRS と RA-GRS (CRR有効化時) の違い
  Recovery Services コンテナーの冗長性が GRS であっても、RA-GRS (CRR有効化時) であってもセカンダリ リージョンにバックアップデータはレプリケーションされ保持されます。
