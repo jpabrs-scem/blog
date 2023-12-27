@@ -8,7 +8,7 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-こんにちは。Azure VM 、Azure Site Recovery 担当です。
+こんにちは。Azure Backup 、Azure Site Recovery 担当です。
 今回は Azure のリージョン障害などを想定した Azure VM の Disaster Recovery (DR) 対策を検討中のお客様よりお問合せをいただきます「Azure VM Backup と Azure Site Recovery どちらを利用すればいいのか？」について解説させていただきます。
 
 結論としては、お客様の DR 要件である RTO, RPO をクリアにしていただく必要があり、ここがクリアになれば Azure VM Backup と Azure Site Recovery どちらを選択すればいいか判断できるようになると存じます。
