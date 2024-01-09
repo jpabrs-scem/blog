@@ -1,6 +1,6 @@
 ---
 title: 疎通確認スクリプトの実行結果について (Linux)
-date: 2023-12-12 12:00:00
+date: 2024-01-10 12:00:00
 tags:
   - Azure Backup General
   - how to
@@ -38,12 +38,13 @@ disableDisclaimer: false
 
 (1) 疎通確認スクリプトを実行したマシン情報の出力
 (2) プロキシ設定の確認
-(3) Azure VM Backup 「ファイルの回復」時に必要な宛先への「nslookup」「nc」コマンド実行結果
-(4) Azure Backup サービスで使用される代表的な FQDN に対する「nslookup」「nc」「curl」コマンド実行結果
-(5) Azure Backup 処理時に使用される、代表的な Azure Storage の FQDN に対する「nslookup」「nc」「curl」コマンド実行結果
-(6) Azure Backup 処理時に使用される、代表的な Microsoft Entra ID の FQDN に対する「nslookup」「nc」「curl」コマンド実行結果
+(3) 「ファイルの回復」時に必要な宛先への「nslookup」「nc」コマンド結果
+(4) Azure Backup への「nslookup」「nc」「curl」コマンド結果
+(5) Azure Storage への「nslookup」「nc」「curl」コマンド結果
+(6) Microsoft Entra ID への「nslookup」「nc」「curl」コマンド結果
 
 それでは疎通確認スクリプト結果ログ (CheckNWResult_(ホスト名)_(YYYYMMDDHHMM).log) 上で確認すべきポイントを説明します。
+
 
 ## <a id="2"></a> 2. プロキシ設定の確認
 Linux OS のマシン上で、プロキシ サーバーを経由するよう設定しているかどうかを確認しています。
@@ -53,14 +54,15 @@ Linux OS のマシン上で、プロキシ サーバーを経由するよう設�
 いっぽう 下図のように出力されている場合は、プロキシ設定を行っていると判断します。
 ![](https://github.com/jpabrs-scem/blog/assets/96324317/f4a0cdbc-8d19-497e-93cd-3d5872f68534)
 
+
 ## <a id="3"></a> 3. 疎通確認スクリプト結果を確認する際のポイント
 プロキシ設定情報を出力した後は
 Azure Backup 処理時に、シナリオによっては必要となる 下記 3 つの Azure サービスとの通信を、おもに「nslookup」「nc」「curl」コマンドで確認していきます。
-・Azure Backup サービス
-・Azure Storage サービス
-・Microsoft Entra ID サービス
+　・Azure Backup サービス
+　・Azure Storage サービス
+　・Microsoft Entra ID サービス
 
-#### (Point 1) リージョンによって確認すべき FQDN が変わる可能性があります
+#### (ポイント) リージョンによって確認すべき FQDN が変わる可能性があります
 疎通確認スクリプト上の FQDN (例：pod01-rec2.<font color="DeepPink">jpw</font>.backup.windowsazure.com) はあくまで、Azure Backup サービスで使用される FQDN のうちの 1 つです。
 「jpw」と記載されている通り、疎通確認スクリプトでは、例として西日本リージョンや東日本リージョンで使用されている Azure Backup サービスとの通信を確認しています。
 お客様が利用するリージョンによって、通信確立が必要な FQDN は変更されます。
@@ -71,7 +73,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent#
 
 また、疎通確認スクリプト上で確認している FQDN は、不定期で変更する場合がございます。
 
-#### (Point 2) 確認している FQDN はパブリックな Azure サービスです
+#### (ポイント) 確認している FQDN はパブリックな Azure サービスです
 プライベート エンドポイント経由で Azure Backup を利用する場合、
 確認すべき Azure Backup ・ Azure Storage サービスの FQDN は、疎通確認スクリプト上で確認しているパブリックな FQDN ではなく、お客様毎にそれぞれ異なる FQDN の通信を確認する必要があります。
 この場合は下記ブログ記事に従って、ご確認ください。
@@ -81,119 +83,101 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/
 
 
 ## <a id="4"></a> 4. nslookup コマンド結果について
-<コマンド成功例>
-下記のように 末尾「Address」欄に IP アドレスが表示されていれば「pod01-rec2.jpe.backup.windowsazure.com」という Azure Backup で使用される FQDN の 1 つとは、 nslookup コマンドによる「名前解決はできている」と判断できます。
+コマンド実行によって得られた代表的な出力結果における、疎通の成否の判断方法をご説明します。 
 
-##TRY!! nslookup  pod01-rec2.jpe.backup.windowsazure.com ##
-Server:		168.63.129.16
-Address:	168.63.129.16#53
+**<コマンド成功例>**
+__
+　##TRY!! nslookup  pod01-rec2.jpe.backup.windowsazure.com ##
+　Server:		168.63.129.16
+　Address:	168.63.129.16#53
 
-Non-authoritative answer:
-pod01-rec2.jpe.backup.windowsazure.com	canonical name = jpe-pod01-rec2-s2j8q.ext.trafficmanager.net.
-jpe-pod01-rec2-s2j8q.ext.trafficmanager.net	canonical name = jpe-pod01-rec-01.japaneast.cloudapp.azure.com.
-Name:	jpe-pod01-rec-01.japaneast.cloudapp.azure.com
-<font color="DeepPink">Address: 20.191.166.150</font>
+　Non-authoritative answer:
+　pod01-rec2.jpe.backup.windowsazure.com	canonical name = jpe-pod01-rec2-s2j8q.ext.trafficmanager.net.
+　jpe-pod01-rec2-s2j8q.ext.trafficmanager.net	canonical name = jpe-pod01-rec-01.japaneast.cloudapp.azure.com.
+　Name:	jpe-pod01-rec-01.japaneast.cloudapp.azure.com
+　<font color="DeepPink">Address: 20.191.166.150</font>
+__
 
----
-<コマンド失敗例>
-下記「connection timed out」のような出力の場合、名前解決できていないことが懸念されるため、お客様にてマシン上の名前解決手段を確認いただくことがございます。
+上記のように 末尾「Address」欄に IP アドレスが表示されていれば「pod01-rec2.jpe.backup.windowsazure.com」という Azure Backup で使用される FQDN の 1 つとは、 nslookup コマンドによる「名前解決はできている」と判断できます。
 
-##TRY!! nslookup  pod01-rec2.jpe.backup.windowsazure.com ##
-;; connection timed out; no servers could be reached
+**<コマンド失敗例>**
+__
+　##TRY!! nslookup  pod01-rec2.jpe.backup.windowsazure.com ##
+　;; connection timed out; no servers could be reached
+__
+上記に「connection timed out」のような出力の場合、名前解決できていないことが懸念されるため、お客様にてマシン上の名前解決手段を確認いただくことがございます。
 
 
 ## <a id="5"></a> 5. nc コマンド結果について
-<コマンド成功例>
-下記のように 「Connected to <宛先の IP アドレス>」が表示されていれば対象のアドレスと nc コマンドによる通信は確立できていると判断できます。
 
-##TRY!! nc -vz pod01-manag1.jpe.backup.windowsazure.com 443 ##
-Ncat: Version 7.50 ( https://nmap.org/ncat )
-Ncat: <font color="DeepPink">Connected to </font>20.191.166.134:443.
-Ncat: 0 bytes sent, 0 bytes received in 0.06 seconds.
+**<コマンド成功例>**
+__
+　##TRY!! nc -vz pod01-manag1.jpe.backup.windowsazure.com 443 ##
+　Ncat: Version 7.50 ( https://nmap.org/ncat )
+　Ncat: <font color="DeepPink">Connected to </font>20.191.166.134:443.
+　Ncat: 0 bytes sent, 0 bytes received in 0.06 seconds.
+__
 
----
-<コマンド失敗例>
-下記のように「failed」「Connection timed out.」と出力されている場合、 nc コマンドによる通信は確立できていないと判断できます。
+上記のように 「Connected to <宛先の IP アドレス>」が表示されていれば対象のアドレスと nc コマンドによる通信は確立できていると判断できます。
 
-##TRY!! nc -vz pod01-rec2.jpe.backup.windowsazure.com 3260 ##
-Ncat: Version 7.50 ( https://nmap.org/ncat )
-Ncat: <font color="DeepPink">Connection timed out.</font>
+**<コマンド失敗例>**
+__
+　##TRY!! nc -vz pod01-rec2.jpe.backup.windowsazure.com 3260 ##
+　Ncat: Version 7.50 ( https://nmap.org/ncat )
+　Ncat: <font color="DeepPink">Connection timed out.</font>
 
-##TRY!! nc -vz pod01-prot1.jpe.backup.windowsazure.com 443 ##
-nc: connect to pod01-prot1.jpe.backup.windowsazure.com port 443 <font color="DeepPink">(tcp) failed: Connection timed out</font>
+　##TRY!! nc -vz pod01-prot1.jpe.backup.windowsazure.com 443 ##
+　nc: connect to pod01-prot1.jpe.backup.windowsazure.com port 443 <font color="DeepPink">(tcp) failed: Connection timed out</font>
+__
+
+上記のように「failed」「Connection timed out.」と出力されている場合、 nc コマンドによる通信は確立できていないと判断できます。
 
 
-#### (Point 3) プロキシ サーバーを経由するマシンの場合 nc コマンドだけでは判断できません
+#### (ポイント) プロキシ サーバーを経由するマシンの場合 nc コマンドだけでは判断できません
 弊チームの疎通確認スクリプト上の nc コマンドでは、プロキシを経由した通信確認を行えないため
 プロキシを経由しているマシン上で実行している場合、たとえ「Connected to <宛先の IP アドレス>」と出力されていても「プロキシを経由して通信確立できている」とはいえません。
 別途「curl」コマンドにて確認する必要があります。
 
+
 ## <a id="6"></a> 6. curl コマンド結果について
-<コマンド成功例>
-下記のように「200 OK」と返却されていれば「通信疎通できている」と判断できます。
+**<コマンド成功例>**
+__
+　##TRY!! curl -I https://login.microsoft.com ##
+　(中略)
+　HTTP/1.1 <font color="DeepPink">200 OK</font>
+__
+　##TRY!! curl -I https://ceuswatcab01.blob.core.windows.net ##
+　(中略)
+　HTTP/1.1 <font color="DeepPink">400 Value for one of the query parameters specified in the request URI is invalid.</font>
+__
+　##TRY!! curl -I https://md-dlbrhcw4gn5r.z33.blob.storage.azure.net ##
+　(中略)
+　HTTP/1.1 <font color="DeepPink">403 Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.</font>
+__
+　##TRY!! curl -I https://pod01-manag1.jpe.backup.windowsazure.com ##
+　(中略)
+　HTTP/1.1 <font color="DeepPink">404 Not Found</font>
+__
 
-##TRY!! curl -I https://login.microsoft.com ##
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
+上記のように
+・200 OK
+・400
+・403
+・404
+が返却された場合、対象の疎通先より応答 (エラーを含む) が返却されているため、Azure Backup 観点では「疎通ができている」と判断できます。 
 
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0 20001    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-HTTP/1.1 <font color="DeepPink">200 OK</font>
+**<コマンド失敗例>**
+__
+　##TRY!! curl -I https://pod01-manag1.jpe.backup.windowsazure.com ##
+　(中略)
+　curl: (7) <font color="DeepPink">Failed to connect to pod01-manag1.jpe.backup.windowsazure.com port 443: Connection timed out</font>
+__
+　##TRY!! curl -I https://loginex.microsoftonline.com ##
+　（中略）
+　curl: (28) <font color="DeepPink">Connection timed out </font>after 300001 milliseconds
+__
 
----
-下記 400・403・404 エラーについては、一度対象の宛先とは通信でき、その後 対象の宛先からエラーが返却されているので
-Azure Backup の通信確認観点では「通信疎通できている」と判断できます。
-
-##TRY!! curl -I https://ceuswatcab01.blob.core.windows.net ##
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-HTTP/1.1 <font color="DeepPink">400 Value for one of the query parameters specified in the request URI is invalid.</font>
-
-##TRY!! curl -I https://md-dlbrhcw4gn5r.z33.blob.storage.azure.net ##
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0
-HTTP/1.1 <font color="DeepPink">403 Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.</font>
-
-##TRY!! curl -I https://pod01-manag1.jpe.backup.windowsazure.com ##
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-HTTP/1.1 <font color="DeepPink">404 Not Found</font>
-
----
-<コマンド失敗例>
-下記のように「Failed to connect」や「Connection timed out」と出力されている場合、 curl コマンドによる通信は確立できていないと判断できます。
-
-##TRY!! curl -I https://pod01-manag1.jpe.backup.windowsazure.com ##
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0
-  (中略)
-  0     0    0     0    0     0      0      0 --:--:--  0:02:11 --:--:--     0
-curl: (7) <font color="DeepPink">Failed to connect to pod01-manag1.jpe.backup.windowsazure.com port 443: Connection timed out</font>
-
-##TRY!! curl -I https://loginex.microsoftonline.com ##
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0
-  （中略）
-  0     0    0     0    0     0      0      0 --:--:--  0:05:00 --:--:--     0
-curl: (28) <font color="DeepPink">Connection timed out </font>after 300001 milliseconds
+上記のように「Failed to connect」や「Connection timed out」と出力されている場合、 curl コマンドによる通信は確立できていないと判断できます。
 
 
 説明は以上となります。
