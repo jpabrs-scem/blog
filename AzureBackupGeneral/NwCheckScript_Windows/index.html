@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>疎通確認スクリプトの実行結果について (Windows) | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、下記ブログにてご案内している「1. Windows VM における Azure Backup 疎通確認」スクリプトの実行結果について、実行結果の見方・Azure Backup において確認すべきポイントなどをご紹介いたします。 ・1. Windows VM における Azure Backup 疎通確認　https:&#x2F;&#x2F;jpabrs-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="疎通確認スクリプトの実行結果について (Windows)">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/NwCheckScript_Windows/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、下記ブログにてご案内している「1. Windows VM における Azure Backup 疎通確認」スクリプトの実行結果について、実行結果の見方・Azure Backup において確認すべきポイントなどをご紹介いたします。 ・1. Windows VM における Azure Backup 疎通確認　https:&#x2F;&#x2F;jpabrs-">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/79f511c3-9e4e-4f46-9365-e3ee0519161e">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/6d30b9e4-0cfc-4285-b1b7-9de7f07d94b3">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/26b8cd0a-bdce-45b0-8fb8-35ac66892571">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/80dbbee4-57a2-4160-86a2-ea7c7bb56563">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/0990e2f3-b319-4da1-96c6-7e6e4834d820">
+<meta property="article:published_time" content="2024-01-10T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-09T04:43:08.490Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure Backup General">
+<meta property="article:tag" content="how to">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/79f511c3-9e4e-4f46-9365-e3ee0519161e">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureBackupGeneral/NwCheckScript_Windows" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      疎通確認スクリプトの実行結果について (Windows)
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2024-01-10T03:00:00.000Z" itemprop="datePublished">2024-01-10</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+4ccae9dc-419d-5999-b88a-d9cc8f770907%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E7%96%8E%E9%80%9A%E7%A2%BA%E8%AA%8D%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C%E7%B5%90%E6%9E%9C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+%28Windows%29%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FNwCheckScript_Windows%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FNwCheckScript_Windows.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FNwCheckScript_Windows.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/NwCheckScript_Windows/" data-id="clr5v94jn00080nmq1mszc56g" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは、Azure Backup サポートです。<br>今回は、下記ブログにてご案内している「1. Windows VM における Azure Backup 疎通確認」スクリプトの実行結果について、実行結果の見方・Azure Backup において確認すべきポイントなどをご紹介いたします。</p>
+<p>・1. Windows VM における Azure Backup 疎通確認<br>　<a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/#1">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/#1</a></p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>上記ブログ リンクでご案内している疎通確認スクリプトは、あくまで Azure Backup に関わる通信要件を満たしているかを調査するために、弊社よりご案内・実行いただいているものです。</p><p>疎通確認スクリプトを実行いただいた後は、専任エンジニアが詳細なトラブルシューティングを行いますので、お問い合わせチケット上へ添付ください。</p><p>マシンの環境によっては本スクリプトでは確認しきれないネットワーク構成もあるため、お問い合わせチケットにて、お客様とどのようなネットワーク通信経路となっているかをすり合わせることがございます。</p><p>「tnc」コマンドや「Invoke-webRequest」コマンドの戻り値については、全てを網羅した情報ではなく、Azure Backup 観点にてチェックすべきものをまとめております。</p></div>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. 疎通確認スクリプトの構成</a><br><a href="#2">2. プロキシ設定の確認</a><br><a href="#3">3. 疎通確認スクリプト結果を確認する際のポイント</a><br><a href="#4">4. tnc コマンド結果について</a><br><a href="#5">5. Invoke-webRequest コマンド結果について</a><br><a href="#6">6. SSL, TLS 設定を確認する</a></p>
+<hr>
+<h2 id="1-疎通確認スクリプトの構成"><a href="#1-疎通確認スクリプトの構成" class="headerlink" title=" 1. 疎通確認スクリプトの構成"></a><a id="1"></a> 1. 疎通確認スクリプトの構成</h2><p>はじめに、下記ブログ記事でご案内している疎通確認スクリプト (Check_Backup_NW_verX.X.ps1) の、全体的な構成を説明します。</p>
+<p>・1. Windows VM における Azure Backup 疎通確認<br>　<a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/#1">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/#1</a></p>
+<p>(1) 疎通確認スクリプトを実行したマシン情報の出力<br>(2) プロキシ設定の確認<br>(3) Azure Backup への「tnc」「Invoke-webRequest」コマンド結果<br>(4) Azure Storage への「tnc」「Invoke-webRequest」コマンド結果<br>(5) Microsoft Entra ID への「tnc」「Invoke-webRequest」コマンド結果<br>(6) 「ファイルの回復」時に必要な宛先への「tnc」「Invoke-webRequest」コマンド結果<br>(7) SSL, TLS 設定 情報の出力</p>
+<p>それでは疎通確認スクリプト結果ログ (AzureBackup_Check_NW_yyyymmdd_hhmmss.log) 上で確認すべきポイントを説明します。</p>
+<h2 id="2-プロキシ設定の確認"><a href="#2-プロキシ設定の確認" class="headerlink" title=" 2. プロキシ設定の確認"></a><a id="2"></a> 2. プロキシ設定の確認</h2><p>Windows OS のマシン上で、プロキシ サーバーを経由するよう設定しているかどうかを確認しています。</p>
+<ul>
+<li><p>WinInet settings for current user (used by ILR but not supported ,not used by Azure SQL / MARS Backup)<br><font color="DodgerBlue">→マシン上のカレント ユーザーに対するプロキシ設定が行われているかどうかを確認します</font></p>
+</li>
+<li><p>WinInet settings for NT Authority\System (used by Azure SQL / MARS Backup)<br><font color="DodgerBlue">→マシン上のシステム ユーザーに対するプロキシ設定が行われているかどうかを確認します</font></p>
+</li>
+<li><p>WinInet settings for NT Service\AzureWLBackupPluginSv (used by Azure Workload Backup Plugin service)<br><font color="DodgerBlue">→「SQL Server DB に対する Azure Workload Backup」や「SAP HANA DB に対する Azure Workload Backup」にて作成・使用される「AzureWLBackupPluginSv」ユーザーに対するプロキシ設定が行われているかどうかを確認します</font></p>
+</li>
+<li><p>##Check WinHttpProxy<br><font color="DodgerBlue">→WinHttp プロキシ設定が行われているかどうかを確認します</font></p>
+</li>
+</ul>
+<p>下図のように「ProxyEnable」「ProxyServer」「ProxyOverride」箇所が「0」やブランク表示となっていれば「プロキシ設定は行われいない」と判断します。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/79f511c3-9e4e-4f46-9365-e3ee0519161e"></p>
+<p>下図のように「ProxyEnable: 1」となっていれば、プロキシ設定がされていると判断できます。<br>「ProxyServer」箇所が経由しているプロキシ サーバーです。<br>「ProxyOverride」箇所には、プロキシ バイパス設定内容が確認できます。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/6d30b9e4-0cfc-4285-b1b7-9de7f07d94b3"></p>
+<p>(マシン上の設定例)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/26b8cd0a-bdce-45b0-8fb8-35ac66892571"></p>
+<h2 id="3-疎通確認スクリプト結果を確認する際のポイント"><a href="#3-疎通確認スクリプト結果を確認する際のポイント" class="headerlink" title=" 3. 疎通確認スクリプト結果を確認する際のポイント"></a><a id="3"></a> 3. 疎通確認スクリプト結果を確認する際のポイント</h2><p>プロキシ設定情報を出力した後は<br>Azure Backup 処理時に、シナリオによっては必要となる 下記 3 つの Azure サービスとの通信を「tnc」「Invoke-webRequest」コマンドで確認していきます。<br>　・Azure Backup サービス<br>　・Azure Storage サービス<br>　・Microsoft Entra ID サービス</p>
+<h4 id="ポイント-リージョンによって確認すべき-FQDN-が変わる可能性があります"><a href="#ポイント-リージョンによって確認すべき-FQDN-が変わる可能性があります" class="headerlink" title="(ポイント) リージョンによって確認すべき FQDN が変わる可能性があります"></a>(ポイント) リージョンによって確認すべき FQDN が変わる可能性があります</h4><p>疎通確認スクリプト上の FQDN (例：pod01-manag1.<font color="DeepPink">jpe</font>.backup.windowsazure.com) はあくまで、Azure Backup サービスで使用される FQDN のうちの 1 つです。<br>「jpe」と記載されている通り、疎通確認スクリプトでは、例として東日本リージョンで使用されている Azure Backup サービスとの通信を確認しています。<br>お客様が利用するリージョンによって、通信確立が必要な FQDN は変更されます。<br>これは Azure Storage サービスにおいても同様です。</p>
+<p>(参考) MARSエージェントを使ったバックアップで必要な通信要件<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent#url-and-ip-access">https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent#url-and-ip-access</a></p>
+<p>また、疎通確認スクリプト上で確認している FQDN は、不定期で変更する場合がございます。</p>
+<h4 id="ポイント-確認している-FQDN-はパブリックな-Azure-サービスです"><a href="#ポイント-確認している-FQDN-はパブリックな-Azure-サービスです" class="headerlink" title="(ポイント) 確認している FQDN はパブリックな Azure サービスです"></a>(ポイント) 確認している FQDN はパブリックな Azure サービスです</h4><p>プライベート エンドポイント経由で Azure Backup を利用する場合、<br>確認すべき Azure Backup ・ Azure Storage サービスの FQDN は、疎通確認スクリプト上で確認しているパブリックな FQDN ではなく、お客様毎にそれぞれ異なる FQDN の通信を確認する必要があります。<br>この場合は下記ブログ記事に従って、ご確認ください。</p>
+<p>(確認方法) 3. プライベート エンドポイント環境における Azure Backup 疎通確認<br><a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/#3">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/#3</a></p>
+<h2 id="4-tnc-コマンド結果について"><a href="#4-tnc-コマンド結果について" class="headerlink" title=" 4. tnc コマンド結果について"></a><a id="4"></a> 4. tnc コマンド結果について</h2><p>コマンド実行によって得られた代表的な出力結果における、疎通の成否の判断方法をご説明します。 </p>
+<p><strong>&lt;コマンド成功例&gt;</strong><br>__<br>　Result of tnc - 443 / from 10.8.0.6 /To URL  pod01-manag1.jpe.backup.windowsazure.com <font color="DarkTurquoise">IPaddress 20.191.166.134</font> / <font color="DeepPink">TcpTestSucceeded: True</font><br>__</p>
+<p>上記のように「TcpTestSucceeded: True」と出力されていれば「pod01-manag1.jpe.backup.windowsazure.com」という Azure Backup で使用される FQDN の 1 つとは、 tnc コマンド (Test-NetConnection コマンド) による通信は確立できていると判断できます。<br>また、「IPaddress」の後に IP アドレスが出力されていれば、「名前解決はできている」と判断できます。</p>
+<p><strong>&lt;コマンド失敗例&gt;</strong><br>__<br>　Result of tnc - 443 / from 10.2.0.23 /To URL  pod01-manag1.jpe.backup.windowsazure.com <font color="DarkTurquoise">IPaddress 20.191.166.134</font> / <font color="DeepPink">TcpTestSucceeded: False</font><br>__</p>
+<p>上記のように「TcpTestSucceeded: False」と出力されていれば「pod01-manag1.jpe.backup.windowsazure.com」とは、 tnc コマンドによる通信は確立できていないと判断できます。<br>いっぽう「IPaddress」の後に IP アドレスが出力されているため「名前解決はできている」と判断できます。</p>
+<p><code>nslookup pod01-manag1.jpe.backup.windowsazure.com</code><br>と実行いただければ、「pod01-manag1.jpe.backup.windowsazure.com」の IP アドレスを確認可能です。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/80dbbee4-57a2-4160-86a2-ea7c7bb56563"></p>
+<h4 id="ポイント-プロキシ-サーバーを経由するマシンの場合-tnc-コマンドだけでは判断できません"><a href="#ポイント-プロキシ-サーバーを経由するマシンの場合-tnc-コマンドだけでは判断できません" class="headerlink" title="(ポイント) プロキシ サーバーを経由するマシンの場合 tnc コマンドだけでは判断できません"></a>(ポイント) プロキシ サーバーを経由するマシンの場合 tnc コマンドだけでは判断できません</h4><p>弊チームの疎通確認スクリプト上の tnc コマンドでは、プロキシを経由した通信確認を行えないため<br>プロキシを経由しているマシン上で実行している場合、たとえ「TcpTestSucceeded: True」と出力されていても「プロキシを経由して通信確立できている」とはいえません。<br>別途「Invoke-webRequest」コマンドにて確認する必要があります。</p>
+<h2 id="5-Invoke-webRequest-コマンド結果について"><a href="#5-Invoke-webRequest-コマンド結果について" class="headerlink" title=" 5. Invoke-webRequest コマンド結果について"></a><a id="5"></a> 5. Invoke-webRequest コマンド結果について</h2><p>コマンド実行によって得られた代表的な出力結果における、疎通の成否の判断方法をご説明します。 </p>
+<p><strong>&lt;コマンド成功例&gt;</strong><br>__<br>　#TRY!! Invoke-webRequest login.microsoft.com<br>　Result of Invoke-webRequest  / <font color="DeepPink">StatusCode: 200</font>/ StatusDescription: OK<br>__<br>　#TRY!! Invoke-webRequest pod01-manag1.jpe.backup.windowsazure.com<br>　PS&gt;TerminatingError(Invoke-WebRequest): <font color="DeepPink">“リモート サーバーがエラーを返しました: (404) 見つかりません”</font><br>__<br>　#TRY!! Invoke-webRequest ceuswatcab01.blob.core.windows.net<br>　PS&gt;TerminatingError(Invoke-WebRequest): <font color="DeepPink">“InvalidQueryParameterValueValue for one of the query parameters specified in the request URI is invalid. </font>RequestId:3549fc2a-201e-0069-07eb-0edf28000000 Time:2023-11-04T06:52:24.8125809Zcomp”<br>__<br>　#TRY!! Invoke-webRequest md-dlbrhcw4gn5r.z33.blob.storage.azure.net<br>　PS&gt;TerminatingError(Invoke-WebRequest): <font color="DeepPink">“AuthenticationFailedServer failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature. </font>RequestId:2a4e4e9a-001c-00bc-34eb-0e8bd7000000 Time:2023-11-04T06:52:28.3332912Z”<br>__</p>
+<p>上記のように<br>　・StatusCode: 200<br>　・404 エラー・403 エラー<br>　・InvalidQueryParameterValueValue<br>　・AuthenticationFailedServer<br>が返却された場合、対象の疎通先より応答 (エラーを含む) が返却されているため、Azure Backup 観点では「疎通ができている」と判断できます。 </p>
+<p><strong>&lt;コマンド失敗例&gt;</strong><br>__<br>　#TRY!! Invoke-webRequest pod01-manag1.jpe.backup.windowsazure.com<br>　PS&gt;TerminatingError(Invoke-WebRequest): <font color="DeepPink">“Unable to connect to the remote server”</font><br>__<br>　#TRY!! Invoke-webRequest weus2watcab01.blob.core.windows.net<br>　PS&gt;TerminatingError(Invoke-WebRequest): <font color="DeepPink">“リモート サーバーに接続できません。”</font><br>__</p>
+<p>上記のように<br>・Unable to connect to the remote server<br>・リモート サーバーに接続できません。<br>が返却された場合、「Invoke-webRequest」コマンドによる該当 FQDN への通信は失敗しており「通信が確立できていない」といえます。</p>
+<h2 id="6-SSL-TLS-設定を確認する"><a href="#6-SSL-TLS-設定を確認する" class="headerlink" title=" 6. SSL, TLS 設定を確認する"></a><a id="6"></a> 6. SSL, TLS 設定を確認する</h2><p>ログ上の後方「TLS CHECK」部分は、SSL/TLS のレジストリキー設定を出力しています。<br>Azure Backup においては、TLS 1.2 が無効化されているマシンの場合、バックアップ構成・バックアップ処理が失敗する可能性があるため確認しております。</p>
+<p>・(参考) TLS 1.2 を有効にしないと、どのような影響がありますか?<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/transport-layer-security#what-is-the-impact-of-not-enabling-tls-12">https://learn.microsoft.com/ja-jp/azure/backup/transport-layer-security#what-is-the-impact-of-not-enabling-tls-12</a></p>
+<p>スクリプトでは、マシン上のレジストリキー<br>(HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols 配下)<br>の値を出力しています。</p>
+<p>(画面例)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/0990e2f3-b319-4da1-96c6-7e6e4834d820"></p>
+<p>なお、「TLS 1.2」のレジストリキーが明示的に設定されていなくでも、「Windows Server 2012 R2」以降では TLS 1.2 は規定で有効化されています。</p>
+<p>・Azure Backup でのトランスポート層セキュリティ<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/transport-layer-security#verify-windows-registry">https://learn.microsoft.com/ja-jp/azure/backup/transport-layer-security#verify-windows-registry</a><br>　引用：”ここに示す値は、Windows Server 2012 R2 以降のバージョンでは既定で設定されています。 これらのバージョンの Windows では、レジストリ キーが存在しない場合、作成する必要はありません。”</p>
+<p>Azure Backup の失敗において、TLS 1.2 プロトコルに関わる懸念がある場合は、対象マシン上のその他の設定箇所も確認しながら、トラブルシューティングを進めていくこととなります。</p>
+<p>・.NET Framework で TLS 1.1 および TLS 1.2 を有効化する方法 - まとめ - | Japan Developer Support Internet Team Blog (jpdsi.github.io)<br>　<a target="_blank" rel="noopener" href="https://jpdsi.github.io/blog/internet-explorer-microsoft-edge/dotnet-framework-tls12/">https://jpdsi.github.io/blog/internet-explorer-microsoft-edge/dotnet-framework-tls12/</a></p>
+<p>説明は以上となります。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureBackupGeneral/NwCheckScript_Windows.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="../NwCheckScript_Linux/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          疎通確認スクリプトの実行結果について (Linux)
+        
+      </div>
+    </a>
+  
+  
+    <a href="../../AzureVMBackup/CRR/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Azure VM Backup における CRR (クロスリージョン リストア) について</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="../NwCheckScript_Linux/">疎通確認スクリプトの実行結果について (Linux)</a>
+          </li>
+        
+          <li>
+            <a href="">疎通確認スクリプトの実行結果について (Windows)</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/CRR/">Azure VM Backup における CRR (クロスリージョン リストア) について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/">ASR モビリティ サービス自動更新用 Automation アカウントの認証をマネージド ID へ移行する際、[修復] といったボタンが表示される</a>
+          </li>
+        
+          <li>
+            <a href="../RequestForInvestigatingNW/">Azure Backup の障害調査に必要な情報 (疎通確認)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">10</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">8</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">26</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">23</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SAPHANA-Backup/" style="font-size: 10px;">Azure SAPHANA Backup</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 11.67px;">Azure SQL Backup</a> <a href="../../tags/Azure-Site-Recovery/" style="font-size: 11.67px;">Azure Site Recovery</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 11.67px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
