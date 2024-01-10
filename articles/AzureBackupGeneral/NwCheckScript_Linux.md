@@ -85,7 +85,7 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/
 ## <a id="4"></a> 4. nslookup コマンド結果について
 コマンド実行によって得られた代表的な出力結果における、疎通の成否の判断方法をご説明します。 
 
-**<コマンド成功例>**
+**<疎通が成功しているコマンド結果 例>**
 __
 　##TRY!! nslookup  pod01-rec2.jpe.backup.windowsazure.com ##
 　Server:		168.63.129.16
@@ -100,7 +100,7 @@ __
 
 上記のように 末尾「Address」欄に IP アドレスが表示されていれば「pod01-rec2.jpe.backup.windowsazure.com」という Azure Backup で使用される FQDN の 1 つとは、 nslookup コマンドによる「名前解決はできている」と判断できます。
 
-**<コマンド失敗例>**
+**<疎通が失敗しているコマンド結果 例>**
 __
 　##TRY!! nslookup  pod01-rec2.jpe.backup.windowsazure.com ##
 　;; connection timed out; no servers could be reached
@@ -109,8 +109,7 @@ __
 
 
 ## <a id="5"></a> 5. nc コマンド結果について
-
-**<コマンド成功例>**
+**<疎通が成功しているコマンド結果 例>**
 __
 　##TRY!! nc -vz pod01-manag1.jpe.backup.windowsazure.com 443 ##
 　Ncat: Version 7.50 ( https://nmap.org/ncat )
@@ -120,7 +119,7 @@ __
 
 上記のように 「Connected to <宛先の IP アドレス>」が表示されていれば対象のアドレスと nc コマンドによる通信は確立できていると判断できます。
 
-**<コマンド失敗例>**
+**<疎通が失敗しているコマンド結果 例>**
 __
 　##TRY!! nc -vz pod01-rec2.jpe.backup.windowsazure.com 3260 ##
 　Ncat: Version 7.50 ( https://nmap.org/ncat )
@@ -140,7 +139,7 @@ __
 
 
 ## <a id="6"></a> 6. curl コマンド結果について
-**<コマンド成功例>**
+**<疎通が成功しているコマンド結果 例>**
 __
 　##TRY!! curl -I https://login.microsoft.com ##
 　(中略)
@@ -166,7 +165,7 @@ __
 ・404
 が返却された場合、対象の疎通先より応答 (エラーを含む) が返却されているため、Azure Backup 観点では「疎通ができている」と判断できます。 
 
-**<コマンド失敗例>**
+**<疎通が失敗しているコマンド結果 例>**
 __
 　##TRY!! curl -I https://pod01-manag1.jpe.backup.windowsazure.com ##
 　(中略)
