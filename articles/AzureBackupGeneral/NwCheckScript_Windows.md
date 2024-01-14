@@ -106,7 +106,7 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/
 ## <a id="4"></a> 4. tnc コマンド結果について
 コマンド実行によって得られた代表的な出力結果における、疎通の成否の判断方法をご説明します。 
 
-**<コマンド成功例>**
+**<疎通が成功しているコマンド結果 例>**
 __
 　Result of tnc - 443 / from 10.8.0.6 /To URL  pod01-manag1.jpe.backup.windowsazure.com <font color="DarkTurquoise">IPaddress 20.191.166.134</font> / <font color="DeepPink">TcpTestSucceeded: True</font>
 __
@@ -114,7 +114,7 @@ __
 上記のように「TcpTestSucceeded: True」と出力されていれば「pod01-manag1.jpe.backup.windowsazure.com」という Azure Backup で使用される FQDN の 1 つとは、 tnc コマンド (Test-NetConnection コマンド) による通信は確立できていると判断できます。
 また、「IPaddress」の後に IP アドレスが出力されていれば、「名前解決はできている」と判断できます。
 
-**<コマンド失敗例>**
+**<疎通が失敗しているコマンド結果 例>**
 __
 　Result of tnc - 443 / from 10.2.0.23 /To URL  pod01-manag1.jpe.backup.windowsazure.com <font color="DarkTurquoise">IPaddress 20.191.166.134</font> / <font color="DeepPink">TcpTestSucceeded: False</font>
 __
@@ -136,7 +136,7 @@ __
 ## <a id="5"></a> 5. Invoke-webRequest コマンド結果について
 コマンド実行によって得られた代表的な出力結果における、疎通の成否の判断方法をご説明します。 
 
-**<コマンド成功例>**
+**<疎通が成功しているコマンド結果 例>**
 __
 　#TRY!! Invoke-webRequest login.microsoft.com
 　Result of Invoke-webRequest  / <font color="DeepPink">StatusCode: 200</font>/ StatusDescription: OK
@@ -159,7 +159,7 @@ __
 が返却された場合、対象の疎通先より応答 (エラーを含む) が返却されているため、Azure Backup 観点では「疎通ができている」と判断できます。 
 
 
-**<コマンド失敗例>**
+**<疎通が失敗しているコマンド結果 例>**
 __
 　#TRY!! Invoke-webRequest pod01-manag1.jpe.backup.windowsazure.com
 　PS>TerminatingError(Invoke-WebRequest): <font color="DeepPink">"Unable to connect to the remote server"</font>
