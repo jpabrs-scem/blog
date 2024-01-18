@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup における CRR (クロスリージョン リストア) について
-date: 2022-02-13 12:00:00
+date: 2023-12-28 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -42,12 +42,20 @@ Recovery Services コンテナー「RSV-JPE-GRS-CRR」は「ストレージ レ�
 
 ![CRR_02](https://user-images.githubusercontent.com/71251920/153718069-e91606c7-4001-40d7-8ec1-4596719263c5.gif)
 
-CRR 機能が有効になっている場合、「バックアップ アイテム」画面上では「主要領域」のほかに「2 次領域」も選択できるよう、活性化されます。
-![CRR_03](https://user-images.githubusercontent.com/71251920/153718068-75b83793-921b-41ce-a330-4d957fd9e11f.gif)
-![CRR_04](https://user-images.githubusercontent.com/71251920/153718067-585d2fb5-242b-4352-87e9-efbb5ba0984e.gif)
+CRR 機能が有効になっている場合、「バックアップ アイテム」画面上では「プライマリ リージョン」のほかに「セカンダリ リージョン」も選択できるよう、活性化されます。
+![CRR_03](https://github.com/jpabrs-scem/blog/assets/141192952/8181f3a0-5004-4a26-bf96-45434e9ab5e4)
+![CRR_04](https://github.com/jpabrs-scem/blog/assets/141192952/1af2d796-f098-465e-9ab0-1f0362056c06)
 
- 一方でRecovery Services コンテナー「リージョンをまたがる復元：無効にする」の場合は、下図のように「主要領域」のみが選択となり、かつ非活性表示となります。
- ![CRR_05](https://user-images.githubusercontent.com/71251920/153718066-3ecee4e8-f824-49c1-bd0c-8e9fed23b2f1.png)
+ 一方でRecovery Services コンテナー上で「リージョンをまたがる復元：無効にする」を選択されている場合は、下図のように「プライマリ リージョン」がデフォルトで選択されており、かつ非活性表示となっているため「セカンダリ リージョン」への切り替えが不可能となっております。
+ ![CRR_05](https://github.com/jpabrs-scem/blog/assets/141192952/a716e9db-a396-4ec8-9d22-60cf8afab3eb)
+
+>[!WARNING]
+> CRR 機能が有効にされてから上記「セカンダリ リージョン」の項目が活性化されるまで**最大で 48 時間**かかりますのでご注意ください。
+> ---
+> ・ Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Learn  : リージョンをまたがる復元の設定
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-cross-region-restore
+
+
 
  ### <a id="1-2"></a> 1-2. GRS と RA-GRS (CRR有効化時) の違い
  Recovery Services コンテナーの冗長性が GRS であっても、RA-GRS (CRR有効化時) であってもセカンダリ リージョンにバックアップデータはレプリケーションされ保持されます。
@@ -77,26 +85,26 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#resto
 > 現在、セカンダリ リージョンの RPO は "36 時間" です。 これは、プライマリ リージョンの RPO が "24 時間" であり、プライマリからセカンダリ リージョンへのバックアップ データのレプリケーションに最大 "12 時間" かかることがあるためです。
 
 ## <a id="3"></a> 3. セカンダリ リージョンへ復元ポイントがいつレプリケート完了したか、Azure ポータル画面上でどのように確認すればよいのか？
-Recovery Services コンテナー ＞ バックアップ アイテム ＞ 2 次領域 ＞ Azure Virtual Machine ＞ 対象の仮想マシンを選択し、「復元ポイント」欄に、対象の復元ポイントが表示されていれば、 2 次領域へのレプリケートは完了していると判断できます。
-![CRR_08](https://user-images.githubusercontent.com/71251920/153718060-4b01fca7-5815-4b8a-b2e8-3eb2f32ffa17.png)
-作業例）主要領域に配置されている仮想マシン「SAPHANA03」を「今すぐバックアップ」を実施し、取得された復元ポイントが 2 次領域に複製されているかを確認する
+Recovery Services コンテナー ＞ バックアップ アイテム ＞ セカンダリ リージョン ＞ Azure Virtual Machine ＞ 対象の仮想マシンを選択し、「復元ポイント」欄に、対象の復元ポイントが表示されていれば、セカンダリ リージョンへのレプリケートは完了していると判断できます。
 
+作業例）プライマリ リージョンに配置されている仮想マシン「SAPHANA03」を「今すぐバックアップ」を実施し、取得された復元ポイントがセカンダリ リージョンに複製されているかを確認する
+![CRR_08](https://user-images.githubusercontent.com/71251920/153718060-4b01fca7-5815-4b8a-b2e8-3eb2f32ffa17.png)
 
 
 下図画面の黄色罫線部分が、「今すぐバックアップ」にてトリガーし、バックアップが完了したバックアップ ジョブです。
 ***2021/12/9 17:50 に「今すぐバックアップ」のバックアップ ジョブがトリガーされ、18:21 ごろにバックアップが完了しております。***
-![CRR_09](https://user-images.githubusercontent.com/71251920/153718059-212e67d8-e43b-483f-9f18-19906a8b0805.gif)
+![CRR_09](https://github.com/jpabrs-scem/blog/assets/141192952/088ad480-35c7-4706-bd1a-9891d27ddf6c)
 
-バックアップ アイテム ＞ 主要領域 ＞ Azure Virtual Machine 画面上の「最新の復元ポイント」に表示されている時刻は、バックアップが実行開始された時刻となります。
+バックアップ アイテム ＞ プライマリ リージョン ＞ Azure Virtual Machine 画面上の「最新の復元ポイント」に表示されている時刻は、バックアップが実行開始された時刻となります。
 ![CRR_10](https://user-images.githubusercontent.com/71251920/153718057-67e701d6-4f7b-44e7-bbfc-add77d52be00.jpg)
 
-「主要領域」側のバックアップ項目画面では、「復元ポイント」欄に、取得済の復元ポイントが表示されています。
-![CRR_11](https://user-images.githubusercontent.com/71251920/153718056-ffaa1520-c74a-424e-a0ed-b58585c6235d.png)
+「プライマリ リージョン」側のバックアップ項目画面では、「復元ポイント」欄に、取得済の復元ポイントが表示されています。
+![CRR_11](https://github.com/jpabrs-scem/blog/assets/141192952/5010fbae-bf29-4b86-a52c-c5f0b1a34e7d)
 
-一方で、バックアップ アイテム ＞ 2 次領域 ＞ Azure Virtual Machine ＞ 対象の仮想マシンをクリックします。
-バックアップ項目画面では、***「復元ポイント」欄に、12/09 18:32 時点では、12/09 に主要領域側にて取得済の復元ポイントはまだ表示されておらず、2 次領域側に復元ポイントが複製されていないことが分かります。***
+一方で、バックアップ アイテム ＞ セカンダリ リージョン ＞ Azure Virtual Machine ＞ 対象の仮想マシンをクリックします。
+バックアップ項目画面では、***「復元ポイント」欄に、12/09 18:32 時点では、12/09 にプライマリ リージョン側にて取得済の復元ポイントはまだ表示されておらず、セカンダリ リージョン側に復元ポイントが複製されていないことが分かります。***
 （2021/12/09 24時ごろも確認しましたが、復元ポイントは表示されておりませんでした）
-![CRR_12](https://user-images.githubusercontent.com/71251920/153718055-f4e602c6-942e-4542-bc68-1105e1e595d2.png)
+![CRR_12](https://github.com/jpabrs-scem/blog/assets/141192952/a65099c1-2452-4090-b88a-d6b49161cece)
 
 
 同じく、「セカンダリ リージョンへの復元」をクリックし、「復元ポイントの選択」欄を表示しても、***12/09 17:50 に開始・取得済の復元ポイントは表示されていないことが確認できます。***
@@ -106,15 +114,15 @@ Recovery Services コンテナー ＞ バックアップ アイテム ＞ 2 次�
 
 ![CRR_14](https://user-images.githubusercontent.com/71251920/153718052-24c17913-41e2-4936-bb36-39735f087e94.png)
 
-### <a id="3-1"></a> 補足：バックアップ ジョブについて
-Recovery Services コンテナー ＞ バックアップ ジョブ ＞「View jobs in secondary region」をクリックすると、2 次領域のバックアップ ジョブを確認可能です。
-しかし、主要領域に配置されている仮想マシン「SAPHANA03」の「今すぐバックアップ」のバックアップ ジョブは、 2 次領域のバックアップ ジョブ上には表示されません。
-![CRR_15](https://user-images.githubusercontent.com/71251920/153718051-58d3846a-cb16-4509-982d-f9034093cf3d.gif)
+### <a id="3-1"></a> 補足：セカンダリ リージョンのジョブについて
+Recovery Services コンテナー ＞ バックアップ ジョブ ＞「セカンダリ リージョンのジョブを表示する」をクリックすると、セカンダリ リージョンのリストア ジョブを確認可能です。
+しかし、プライマリ リージョンに配置されている仮想マシンのバックアップ ジョブは、 セカンダリ リージョンのバックアップ ジョブ上には表示されません。
+![CRR_15](https://github.com/jpabrs-scem/blog/assets/141192952/3d017558-fd4b-49e8-92c2-c43b2967a3a5)
 
-![CRR_16](https://user-images.githubusercontent.com/71251920/153718050-bf4b2841-6c14-40fa-8c21-94d806c47872.jpg)
+![CRR_16](https://github.com/jpabrs-scem/blog/assets/141192952/215c24ca-e692-4898-a41f-c713f0567b8a)
  
 ## <a id="4"></a> 災害復旧後のレプリケーションに関するFAQ
->Q. プライマリリージョンが復旧したあとに プライマリリージョンに VM を復旧できるか、またその方法
+>Q. プライマリリージョンが復旧したあとに プライマリリージョンに VM を復旧できるか
 >>A. こちらは可能ですが、Azure VM Backup の機能で実現するにはクロスリージョン リストアを実施いただく必要がございます。
 具体的には一度セカンダリリージョンに VM をリストア いただき、復元した VM をセカンダリリージョンの Recovery Services コンテナーで保護しプライマリリージョンにクロスリージョン リストアを行う必要がございます。
 これはセカンダリリージョンにあるバックアップデータからはセカンダリリージョンにしか、プライマリリージョンにあるバックアップデータからはプライマリリージョンにしかリストアができないためです。

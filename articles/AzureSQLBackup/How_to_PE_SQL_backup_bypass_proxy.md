@@ -69,16 +69,22 @@ Proxy の IP アドレスとポートを設定します。​
 　LocalHost 、Wire Server （168.63.129.16）、169.254.169.254、上記ドキュメント記載のAzure Backup、Azure Storage、AAD
 
 (実際の入力値)
-localhost;168.63.129.16;169.254.169.254;*.backup.windowsazure.com;*.queue.core.windows.net;*.blob.core.windows.net;
-*.blob.storage.azure.net;*.msftidentity.com;*.msidentity.com;account.activedirectory.windowsazure.com;
-accounts.accesscontrol.windows.net;adminwebservice.microsoftonline.com;api.passwordreset.microsoftonline.com;
-autologon.microsoftazuread-sso.com;becws.microsoftonline.com;clientconfig.microsoftonline-p.net;
-companymanager.microsoftonline.com;device.login.microsoftonline.com;graph.microsoft.com;graph.windows.net;
-login.microsoft.com;login.microsoftonline.com;login.microsoftonline-p.com;login.windows.net;
-logincert.microsoftonline.com;loginex.microsoftonline.com;login-us.microsoftonline.com;nexus.microsoftonline-p.com;
-passwordreset.microsoftonline.com;provisioningapi.microsoftonline.com;20.190.128.*;40.126.*;*.hip.live.com;
-*.microsoftonline.com;*.microsoftonline-p.com;*.msauth.net;*.msauthimages.net;*.msecnd.net;*.msftauth.net;
-*.msftauthimages.net;*.phonefactor.net;enterpriseregistration.windows.net;management.azure.com;policykeyservice.dc.ad.msft.net
+```
+localhost;168.63.129.16;169.254.169.254;*.backup.windowsazure.com;*.queue.core.windows.net;
+*.blob.core.windows.net;*.blob.storage.azure.net;*.msftidentity.com;
+*.msidentity.com;account.activedirectory.windowsazure.com;accounts.accesscontrol.windows.net;
+adminwebservice.microsoftonline.com;api.passwordreset.microsoftonline.com;
+autologon.microsoftazuread-sso.com;becws.microsoftonline.com;
+clientconfig.microsoftonline-p.net;companymanager.microsoftonline.com;
+device.login.microsoftonline.com;graph.microsoft.com;graph.windows.net;login.microsoft.com;
+login.microsoftonline.com;login.microsoftonline-p.com;login.windows.net;
+logincert.microsoftonline.com;loginex.microsoftonline.com;login-us.microsoftonline.com;
+nexus.microsoftonline-p.com;passwordreset.microsoftonline.com;
+provisioningapi.microsoftonline.com;20.190.128.*;40.126.*;*.hip.live.com;*.microsoftonline.com;
+*.microsoftonline-p.com;*.msauth.net;*.msauthimages.net;*.msecnd.net;*.msftauth.net;
+*.msftauthimages.net;*.phonefactor.net;nterpriseregistration.windows.net;management.azure.com;
+policykeyservice.dc.ad.msft.net
+```
 
 ![](https://user-images.githubusercontent.com/96324317/197693453-7e4e98b9-a52b-4965-bd0a-f5751bfd4c90.png)
 	
@@ -124,16 +130,22 @@ Azure ポータル画面上から、対象の SQL Server DB に対して「デ�
 　LocalHost 、Wire Server （168.63.129.16）、169.254.169.254、上記ドキュメント記載のAzure Backup、Azure Storage、AAD
 
 (実際の入力値)
-localhost;168.63.129.16;169.254.169.254;*.backup.windowsazure.com;*.queue.core.windows.net;*.blob.core.windows.net;
-*.blob.storage.azure.net;*.msftidentity.com;*.msidentity.com;account.activedirectory.windowsazure.com;
-accounts.accesscontrol.windows.net;adminwebservice.microsoftonline.com;api.passwordreset.microsoftonline.com;
-autologon.microsoftazuread-sso.com;becws.microsoftonline.com;clientconfig.microsoftonline-p.net;
-companymanager.microsoftonline.com;device.login.microsoftonline.com;graph.microsoft.com;graph.windows.net;
-login.microsoft.com;login.microsoftonline.com;login.microsoftonline-p.com;login.windows.net;
-logincert.microsoftonline.com;loginex.microsoftonline.com;login-us.microsoftonline.com;nexus.microsoftonline-p.com;
-passwordreset.microsoftonline.com;provisioningapi.microsoftonline.com;20.190.128.*;40.126.*;*.hip.live.com;
-*.microsoftonline.com;*.microsoftonline-p.com;*.msauth.net;*.msauthimages.net;*.msecnd.net;*.msftauth.net;
-*.msftauthimages.net;*.phonefactor.net;enterpriseregistration.windows.net;management.azure.com;policykeyservice.dc.ad.msft.net
+```
+localhost;168.63.129.16;169.254.169.254;*.backup.windowsazure.com;*.queue.core.windows.net;
+*.blob.core.windows.net;*.blob.storage.azure.net;*.msftidentity.com;
+*.msidentity.com;account.activedirectory.windowsazure.com;accounts.accesscontrol.windows.net;
+adminwebservice.microsoftonline.com;api.passwordreset.microsoftonline.com;
+autologon.microsoftazuread-sso.com;becws.microsoftonline.com;
+clientconfig.microsoftonline-p.net;companymanager.microsoftonline.com;
+device.login.microsoftonline.com;graph.microsoft.com;graph.windows.net;login.microsoft.com;
+login.microsoftonline.com;login.microsoftonline-p.com;login.windows.net;
+logincert.microsoftonline.com;loginex.microsoftonline.com;login-us.microsoftonline.com;
+nexus.microsoftonline-p.com;passwordreset.microsoftonline.com;
+provisioningapi.microsoftonline.com;20.190.128.*;40.126.*;*.hip.live.com;*.microsoftonline.com;
+*.microsoftonline-p.com;*.msauth.net;*.msauthimages.net;*.msecnd.net;*.msftauth.net;
+*.msftauthimages.net;*.phonefactor.net;nterpriseregistration.windows.net;management.azure.com;
+policykeyservice.dc.ad.msft.net
+```
 
 ![](https://user-images.githubusercontent.com/96324317/197693971-4fcf367e-2685-4284-b0f4-4e8c0c457e38.png)
 

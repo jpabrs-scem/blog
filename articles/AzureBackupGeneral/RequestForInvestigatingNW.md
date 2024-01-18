@@ -1,6 +1,6 @@
 ---
 title: Azure Backup の障害調査に必要な情報 (疎通確認)
-date: 2022-06-24 12:00:00
+date: 2023-12-12 12:00:00
 tags:
   - Azure Backup General
   - 情報採取
@@ -61,7 +61,7 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/
 ## 2. Linux VM における Azure Backup 疎通確認<a id="2"></a>
 
 まず、下記 リンク先から疎通確認スクリプトのダウンロードをお願いします。
-[Check_Backup_NW_Linux_ver1.4.zip](https://github.com/jpabrs-scem/blog/files/11648461/Check_Backup_NW_Linux_ver1.4.zip)
+[Check_Backup_NW_Linux_ver1.5.zip](https://github.com/jpabrs-scem/blog/files/13433813/Check_Backup_NW_Linux_ver1.5.zip)
 
 (スクリプト実行手順)
 1. 疎通確認スクリプトをダウンロードし、展開してください。
@@ -120,7 +120,7 @@ https://learn.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-8.3.0
 
 **Linux**
 > nslookup(ping) \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
-> nc -vz \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
+> nc -vz \<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com 443
 > nc -vz  10.12.0.15　443
 > curl -I https://\<vaultId>-ab-pod01-fc1.**privatelink**.eus.backup.windowsazure.com
 > curl -I https://10.12.0.15 
