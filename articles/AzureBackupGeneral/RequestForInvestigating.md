@@ -68,7 +68,7 @@ Azure VM Backupの下記のようなエラーが出ることがございます�
 >Error Code ：Snapshot operation failed due to VSS Writers in bad state.
 Error Message ：ExtensionFailedVssWriterInBadState
 
-その場合には VSS 観点での調査が必要であるため、そのため上記 [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記 URL 先のログの採取をお願いします。
+その場合には VSS 観点での調査が必要であるため、上記 [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記 URL 先のログの採取をお願いします。
  **可能な限り "[A]"が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。**
 ・VSS エラーが発生している事象の調査 
 https://jpwinsup.github.io/mslog/storage/vss/vss-error/
