@@ -64,16 +64,14 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/
 
 ### 1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ<a id="1-1"></a>
 Azure VM Backupの下記のようなエラーが出ることがございます。
-その場合には VSS 観点での調査が必要であるため、そのため上記 [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記のログの採取もお願いします。
 
 >Error Code ：Snapshot operation failed due to VSS Writers in bad state.
 Error Message ：ExtensionFailedVssWriterInBadState
 
-VSS 観点での調査のためには下記 URL 先のログの採取をお願いします。
+その場合には VSS 観点での調査が必要であるため、上記 [1. Azure VM バックアップの障害調査に必要なログ](#1) に加えて下記 URL 先のログの採取をお願いします。
  **可能な限り "[A]"が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。**
 ・VSS エラーが発生している事象の調査 
-https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
-
+https://jpwinsup.github.io/mslog/storage/vss/vss-error/
 
 また合わせて下記も関連するブログでございます。
 ・Azure VM Backupにおける整合性について
