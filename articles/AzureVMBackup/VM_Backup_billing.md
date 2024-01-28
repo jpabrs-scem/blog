@@ -98,8 +98,8 @@ Azure Backup の 料金として請求される項目は (1) (2) であり、(3)
 | :----- | :----- | :----- | :----- | :----- |
 |  (1)  |  Standard / Enhanced バックアップ ポリシー  |  Backup  |  Azure VM Protected Instances  |  Recovery Services コンテナーのリソース グループ  |
 |  (2)  |  Standard / Enhanced バックアップ ポリシー  |  Backup  |  <span style="color: red; ">LRS</span> Data Stored   |  Recovery Services コンテナーのリソース グループ  |
-|  (3)  |  Standard バックアップ ポリシー  |  Storage  |  LRS snapshots   |  Recovery Services コンテナーのリソース グループ  |
-|  (3)  |  Enhanced バックアップ ポリシー  |  Storage  |  Snapshots ZRS Snapshots   |  Recovery Services コンテナーのリソース グループ  |
+|  (3)  |  Standard バックアップ ポリシー  |  Storage  |  LRS snapshots   |  Managed Disk のリソース グループ  |
+|  (3)  |  Enhanced バックアップ ポリシー  |  Storage  |  Snapshots ZRS Snapshots   |  復元ポイント コレクションのリソース グループ  |
 
 　(赤文字部分は、対象 Recovery Services コンテナーの「ストレージ レプリケーションの種類」によって変わります)
 
