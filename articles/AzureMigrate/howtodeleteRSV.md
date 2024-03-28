@@ -1,6 +1,6 @@
 ---
 title: Migrate 移行後の Recovery Services コンテナー削除のチェックポイント
-date: 2022-08-11 12:00:00
+date: 2023-08-11 12:00:00
 tags:
   - Azure Migrate
   - how to
