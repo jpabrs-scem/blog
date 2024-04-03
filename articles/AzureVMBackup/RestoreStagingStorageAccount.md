@@ -22,7 +22,7 @@ disableDisclaimer: false
 
 ### <a id="1"></a>1. 公開情報 (Docs)
 まず最初に、本件に関する Docs は下記でございます。
-・ストレージ アカウント- Azure portal で Azure VM データを復元する方法
+・ストレージ アカウント - Azure portal で Azure VM データを復元する方法
 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#storage-accounts
 >抜粋:"Vault-Standard 復元ポイントからマネージド VM のディスクを復元するときに、マネージド ディスクと Azure Resource Manager (ARM) テンプレートが、ステージング場所にあるディスクの VHD ファイルと共に復元されます。 インスタント復元ポイントからディスクを復元する場合、マネージド ディスクと ARM テンプレートのみが復元されます。"
 
@@ -33,7 +33,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#stor
 ### <a id="2"></a>2. 利用できるストレージ アカウント
 選択できるストレージ アカウントは下記の条件を満たすものです。
 ・リストア先 (=ターゲット) のサブスクリプション内およびコンテナーと同じリージョンにある
-・ZRS 以外の冗長性(LRS・GRS)
+・ZRS 以外の冗長性 (LRS・GRS)
 ・Premium Storage アカウントではない
 
 ### <a id="3"></a>3.リストアされた後にストレージ アカウントに残るファイルについて
@@ -47,7 +47,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#stor
 | 1 | |新規 VM 作成| 無し |
 | 2  || ディスクの復元| VHD ファイルと json ファイル |
 | 3 | | 既存の置換え| VHD ファイル |
-|  | |**スナップショット 層からのリストア(インスタントリストア)**|  |
+|  | |**スナップショット 層からのリストア (インスタントリストア)**|  |
 | 4 |  |新規 VM 作成| 無し |
 | 5 | | ディスクの復元|  json ファイル |
 | 6 |  |既存の置換え| 無し |
