@@ -1,6 +1,6 @@
 ---
 title:  Recovery Services コンテナーとバックアップ コンテナーについて
-date: 2023-03-23 12:00:00
+date: 2024-04-30 12:00:00
 tags:
   - Azure Backup General
   - how to
@@ -8,15 +8,12 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-こんにちは、Azure Backup サポートの山本です。
-今回は、 Azure バックアップソリューションので利用する Recovery Services コンテナーとバックアップ コンテナーのバックアップ対象の違いについてご説明させていただきます。
- Recovery Services コンテナーとバックアップ コンテナーはバックアップ対象(バックアップソリューション)の違いにより使い分ける必要がございます。
+こんにちは、Azure Backup サポートです。
+今回は、 Azure バックアップ ソリューションで利用する Recovery Services コンテナーとバックアップ コンテナーのバックアップ対象の違いについてご説明します。
+ Recovery Services コンテナーとバックアップ コンテナーはバックアップ対象 (バックアップソリューション) の違いにより使い分ける必要がございます。
  また、**バックアップセンターは サブスクリプション内の Recovery Services コンテナーやバックアップ コンテナー (およびそれぞれのコンテナーでバックアップしているバックアップアイテム) を統合管理するための管理画面です。**
 
 ![ Azure Backup 関連のリソース](https://user-images.githubusercontent.com/71251920/216895782-33a2539d-b199-466a-ba15-1184b2ad0552.png)
-
-
-
 
 ## 目次
 -----------------------------------------------------------
@@ -28,10 +25,10 @@ disableDisclaimer: false
 -----------------------------------------------------------
 
 ### <a id="1"></a>1. バックアップソリューションとコンテナー、およびデータ保存先の比較表
- 各 Azure バックアップのソリューションがどのコンテナーを利用するか、またデータの保存先についても下記の通りおまとめいたしました。
- また、各ソリューションには各ソリューションの Docs へのリンクも付けております。
+ 各 Azure バックアップのソリューションがどのコンテナーを利用するか、またデータの保存先については下記の通りです。
+ また、各ソリューションには各公開ドキュメントへのリンクを付けています。
 
-| # | バックアップソリューション | 利用するコンテナー | コンテナーにバックアップデータを保存するか|
+| # | バックアップ ソリューション | 利用するコンテナー | コンテナーにバックアップデータを保存するか|
 | :--- | :--- | :--- |:---|
 | 1 | [Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction) |  Recovery Services コンテナー |する|
 | 2 | [MARS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-about-mars) |  Recovery Services コンテナー |する|
@@ -42,14 +39,15 @@ disableDisclaimer: false
 | 7 | [Azure Blob バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview)  |   バックアップ コンテナー|**しない(注2)**|
 | 8 | [Azure ディスク バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview)  |   バックアップ コンテナー|**しない**|
 | 9 | [Azure PosgreSQL バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview)  |   バックアップ コンテナー|する|
+| 10 | [Azure Kubernetes Service バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview)  |   バックアップ コンテナー|する|
 
-+ **(注1) 2023年3月現在  Azure ファイル共有バックアップ のコンテナー層へのBackup機能が Private Preview となりました。**
-・Private Preview: Azure Backup enables vaulted backups for Azure Files for comprehensive data protection.
-https://azure.microsoft.com/ja-JP/updates/azurefilesvaultedbackups-2/
++ **(注1) 2024年4月現在  Azure ファイル共有バックアップ のコンテナー層へのバックアップ機能が Public Preview となっています**
+・Public Preview: Azure Backup enables vaulted backups for Azure Files for comprehensive data protection. | Azure updates | Microsoft Azure
+  https://azure.microsoft.com/en-US/updates/azurefiles-vaultedbackups/
 
-+ **(注2) 2023年3月現在  Azure Blob バックアップのコンテナー層へのBackup機能が Public Preview となりました。**
++ **(注2) 2024年4月現在  Azure Blob バックアップのコンテナー層へのバックアップ機能が Public Preview となっています**
 ・Public Preview: Azure Backup enables vaulted backups for Azure Blob for comprehensive data protection.
-https://azure.microsoft.com/ja-JP/updates/azureblobvaultedbackups/
+  https://azure.microsoft.com/ja-JP/updates/azureblobvaultedbackups/
 
 ### <a id="2"></a>2.コンテナーにバックアップデータが保存されないもの
 上述のとおり、Azure ファイル共有バックアップ、Azure Blob バックアップ、Azure ディスク バックアップは各コンテナーにはバックアップデータは転送されません。
@@ -58,11 +56,11 @@ https://azure.microsoft.com/ja-JP/updates/azureblobvaultedbackups/
 
 
 #### <a id="2-1"></a>2-1. Azure ファイル共有バックアップ
-Azure ファイル共有 バックアップは Azure Files の共有スナップショットの機能をバックアップサービスと連携することによりスナップショット取得の自動化、スナップショットの削除の自動化を実現したバックアップソリューションです。
+Azure ファイル共有 バックアップは Azure Files の共有スナップショットの機能をバックアップ サービスと連携することによりスナップショット取得・削除の自動化を実現したバックアップ ソリューションです。
 
-そのため、バックアップデータ (スナップショットデータ) の保存先はAzure Files の共有スナップショットと同じく、そのストレージ アカウント自身 (のスナップショット領域)となります。
+そのため、バックアップ データ (スナップショットデータ) の保存先は Azure Files の共有スナップショットと同じく、そのストレージ アカウント自身 (のスナップショット領域)となります。
 そのため、 Recovery Services コンテナーには転送されません。
-下記のように**Azure ファイル共有のスナップショット リソースとしてよって、Azure ファイル共有バックアップにて取得されたスナップショットも確認可能です**。("発信側" が "AzureBackup" となっているものです)
+下記のように**Azure ファイル共有のスナップショット リソースとして、Azure ファイル共有バックアップにて取得されたスナップショットも確認可能です**。("発信側" が "AzureBackup" となっているものです)
 ![](https://user-images.githubusercontent.com/71251920/198350606-969ef3b9-0c2a-4744-9940-87c41936cb09.png)
 
 
@@ -76,7 +74,7 @@ https://learn.microsoft.com/ja-jp/azure/storage/files/storage-snapshots-files
 
 
 #### <a id="2-2"></a>2-2. Azure Blob バックアップ
-Azure Blob バックアップ は Azure Blob のポイントインタイムリストアの機能をバックアップサービスと連携することにより実現したバックアップソリューションです。
+Azure Blob バックアップ は Azure Blob のポイントインタイムリストアの機能をバックアップ サービスと連携することにより実現したバックアップソリューションです。
 
 そのため、バックアップデータ (リストアに必要なデータ) の保存先は Azure Blob のポイントインタイムリストアと同じく、そのストレージ アカウント自身となります。
 そのため、バックアップ コンテナーには転送されません。
@@ -91,7 +89,7 @@ https://learn.microsoft.com/ja-jp/azure/storage/blobs/point-in-time-restore-over
 
 #### <a id="2-3"></a>2-3. Azure ディスク バックアップ
 
-Azure ディスク バックアップ は マネージドディスクの増分スナップショットの機能とバックアップサービスと連携することによりスナップショット取得の自動化、スナップショットの削除の自動化を実現したバックアップソリューションです。
+Azure ディスク バックアップ は マネージド ディスクの増分スナップショットの機能とバックアップサービスと連携することによりスナップショット取得の自動化、スナップショットの削除の自動化を実現したバックアップ ソリューションです。
 
 そのため、バックアップデータ (スナップショット データ) の保存先は マネージドディスクのスナップショットと同じく、マネージドディスクのスナップショットの専用領域 (運用層) となります。そのため、 Recovery Services コンテナーには転送されません。
 また、下記のように**スナップショットリソースとして Azure ディスクのバックアップによって取得されたスナップショットも確認可能です**。(タグが "CreatedBy：AzureBackup" となっているものです)
