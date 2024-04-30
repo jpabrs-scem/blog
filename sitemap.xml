@@ -65,41 +65,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/</loc>
-    
-    <lastmod>2024-04-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToConfigureOptionalProcess/</loc>
-    
-    <lastmod>2024-04-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/</loc>
-    
-    <lastmod>2024-04-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/</loc>
-    
-    <lastmod>2024-04-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/</loc>
-    
-    <lastmod>2024-04-30</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/</loc>
     
     <lastmod>2024-04-30</lastmod>
@@ -241,6 +206,41 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
+    
+    <lastmod>2024-04-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/</loc>
+    
+    <lastmod>2024-04-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToConfigureOptionalProcess/</loc>
+    
+    <lastmod>2024-04-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/</loc>
+    
+    <lastmod>2024-04-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/</loc>
+    
+    <lastmod>2024-04-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/</loc>
     
     <lastmod>2024-04-30</lastmod>
     

@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   
   
-  <title>QL4L-5D8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について | Japan CSS ABRS  Support Blog !!</title>
+  <title>QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、Azure Backup サポートです。今回は、2023 年 3 月末より弊社から発行されている、アラート追跡 ID 「QL4L-5D8」について説明いたします。 目次 Q1. 「QL4L-5D8」このアラートは何ですか？Q2. どのRecovery Services コンテナーが「クラシック アラート設定」になっていますか？Q3. クラシック アラートから Azure Monito">
+  <meta name="description" content="こんにちは、Azure Backup サポートです。今回は、2023 年 3 月末より弊社から発行されている、アラート追跡 ID 「QL4L-5D8」、「XNV5-HTZ」について説明いたします。 目次 Q1. 「QL4L-5D8」「XNV5-HTZ」このアラートは何ですか？Q2. どのRecovery Services コンテナーが「クラシック アラート設定」になっていますか？Q3. クラシッ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="QL4L-5D8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について">
+<meta property="og:title" content="QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="こんにちは、Azure Backup サポートです。今回は、2023 年 3 月末より弊社から発行されている、アラート追跡 ID 「QL4L-5D8」について説明いたします。 目次 Q1. 「QL4L-5D8」このアラートは何ですか？Q2. どのRecovery Services コンテナーが「クラシック アラート設定」になっていますか？Q3. クラシック アラートから Azure Monito">
+<meta property="og:description" content="こんにちは、Azure Backup サポートです。今回は、2023 年 3 月末より弊社から発行されている、アラート追跡 ID 「QL4L-5D8」、「XNV5-HTZ」について説明いたします。 目次 Q1. 「QL4L-5D8」「XNV5-HTZ」このアラートは何ですか？Q2. どのRecovery Services コンテナーが「クラシック アラート設定」になっていますか？Q3. クラシッ">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/96324317/230756428-28f8085a-16bf-49ab-aa50-8659f342b81e.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/96324317/230756444-3a95a6b5-dd4d-47e0-b3d1-ea3ffe54fa49.png">
@@ -29,8 +29,8 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/96324317/230820265-bcb0a6df-eae6-4946-b0f9-c1f905a539d4.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/96324317/230820287-06940bef-a423-4202-a016-e3ec7bd79489.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/96324317/230820315-3f9dc117-bfac-4e73-b0aa-d37a12503390.png">
-<meta property="article:published_time" content="2023-04-10T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-04-30T04:30:04.875Z">
+<meta property="article:published_time" content="2024-04-30T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-30T05:25:56.133Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="how to">
@@ -106,7 +106,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      QL4L-5D8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について
+      QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について
     </h1>
   
 
@@ -114,23 +114,23 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2023-04-10T03:00:00.000Z" itemprop="datePublished">2023-04-10</time>
+  <time datetime="2024-04-30T03:00:00.000Z" itemprop="datePublished">2024-04-30</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+66a9b93a-e7d6-5d59-935c-8e4d535b6993%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BQL4L-5D8+%E3%82%AF%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF+%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E3%81%8B%E3%82%89+Azure+Monitor+%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E3%81%AE%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FHowToMoveClassicAlert%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FHowToMoveClassicAlert.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FHowToMoveClassicAlert.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+66a9b93a-e7d6-5d59-935c-8e4d535b6993%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BQL4L-5D8+XNV5-HTZ+%E3%82%AF%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF+%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E3%81%8B%E3%82%89+Azure+Monitor+%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E3%81%AE%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FHowToMoveClassicAlert%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FHowToMoveClassicAlert.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FHowToMoveClassicAlert.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/" data-id="clvlw3qkm00040nl00sub1of0" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/" data-id="clvly3kvm00040nod3cup02sl" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>こんにちは、Azure Backup サポートです。<br>今回は、2023 年 3 月末より弊社から発行されている、アラート追跡 ID 「QL4L-5D8」について説明いたします。</p>
+<p>こんにちは、Azure Backup サポートです。<br>今回は、2023 年 3 月末より弊社から発行されている、アラート追跡 ID 「QL4L-5D8」、「XNV5-HTZ」について説明いたします。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#Q1">Q1. 「QL4L-5D8」このアラートは何ですか？</a><br><a href="#Q2">Q2. どのRecovery Services コンテナーが「クラシック アラート設定」になっていますか？</a><br><a href="#Q3">Q3. クラシック アラートから Azure Monitor を使用した組み込みのアラートへと移行した場合のコストはどうなりますか？</a><br><a href="#Q4">Q4. クラシック アラートの「通知の構成」をしているかどうかは 1 つ 1 つの Recovery Services コンテナーを確認する必要がありますか？</a></p>
+<p><a href="#Q1">Q1. 「QL4L-5D8」「XNV5-HTZ」このアラートは何ですか？</a><br><a href="#Q2">Q2. どのRecovery Services コンテナーが「クラシック アラート設定」になっていますか？</a><br><a href="#Q3">Q3. クラシック アラートから Azure Monitor を使用した組み込みのアラートへと移行した場合のコストはどうなりますか？</a><br><a href="#Q4">Q4. クラシック アラートの「通知の構成」をしているかどうかは 1 つ 1 つの Recovery Services コンテナーを確認する必要がありますか？</a></p>
 <hr>
-<h2 id="Q1-「QL4L-5D8」このアラートは何ですか？"><a href="#Q1-「QL4L-5D8」このアラートは何ですか？" class="headerlink" title="Q1. 「QL4L-5D8」このアラートは何ですか？"></a><a id="Q1"></a>Q1. 「QL4L-5D8」このアラートは何ですか？</h2><p><strong>A1</strong> クラシック アラートから、Azure Monitor を使用した組み込みのアラートへと移行するよう、お知らせするためのものです。<br>Recovery Services コンテナーでは、クラシック アラートが<span style="color: red; ">既定</span>で存在しており、かつ、利用可能な状態となっております。<br>後述 「Q2. どのRecovery Services コンテナーが「クラシック アラート設定」になっていますか？」 をご参照いただき、クラシック アラートを利用した通知の設定有無をまずはご確認くださいますようお願いいたします。</p>
+<h2 id="Q1-「QL4L-5D8」「XNV5-HTZ」このアラートは何ですか？"><a href="#Q1-「QL4L-5D8」「XNV5-HTZ」このアラートは何ですか？" class="headerlink" title="Q1. 「QL4L-5D8」「XNV5-HTZ」このアラートは何ですか？"></a><a id="Q1"></a>Q1. 「QL4L-5D8」「XNV5-HTZ」このアラートは何ですか？</h2><p><strong>A1</strong> クラシック アラートから、Azure Monitor を使用した組み込みのアラートへと移行するよう、お知らせするためのものです。<br>Recovery Services コンテナーでは、クラシック アラートが<span style="color: red; ">既定</span>で存在しており、かつ、利用可能な状態となっております。<br>後述 「Q2. どのRecovery Services コンテナーが「クラシック アラート設定」になっていますか？」 をご参照いただき、クラシック アラートを利用した通知の設定有無をまずはご確認くださいますようお願いいたします。</p>
 <h4 id="・クラシック-アラート機能用いて、現在メールへのアラート通知を構成している場合"><a href="#・クラシック-アラート機能用いて、現在メールへのアラート通知を構成している場合" class="headerlink" title="・クラシック アラート機能用いて、現在メールへのアラート通知を構成している場合"></a>・クラシック アラート機能用いて、現在メールへのアラート通知を構成している場合</h4><p>クラシック アラートは、2026 年 3 月 31 日をもって廃止する予定です。<br>監視設定を継続してご利用になられる場合は、お手数ではございますが、「Azure Monitor を使用した組み込みのアラート」への切り替えを事前にご検討くださいますようお願いいたします。</p>
 <h4 id="・クラシック-アラート機能用いて、現在メールへのアラート通知を構成していないが、今後はバックアップ-ジョブ失敗時にメール通知などのアラートをご希望の場合"><a href="#・クラシック-アラート機能用いて、現在メールへのアラート通知を構成していないが、今後はバックアップ-ジョブ失敗時にメール通知などのアラートをご希望の場合" class="headerlink" title="・クラシック アラート機能用いて、現在メールへのアラート通知を構成していないが、今後はバックアップ ジョブ失敗時にメール通知などのアラートをご希望の場合"></a>・クラシック アラート機能用いて、現在メールへのアラート通知を構成していないが、今後はバックアップ ジョブ失敗時にメール通知などのアラートをご希望の場合</h4><p>クラシック アラートから、「Azure Monitor を使用した組み込みのアラート」へと切り替え設定することをご検討ください。</p>
 <h4 id="・クラシック-アラート機能用いて、現在メールへのアラート通知を構成していない、かつ今後もバックアップ-ジョブ失敗時にメール通知などのアラートをご希望でない場合"><a href="#・クラシック-アラート機能用いて、現在メールへのアラート通知を構成していない、かつ今後もバックアップ-ジョブ失敗時にメール通知などのアラートをご希望でない場合" class="headerlink" title="・クラシック アラート機能用いて、現在メールへのアラート通知を構成していない、かつ今後もバックアップ ジョブ失敗時にメール通知などのアラートをご希望でない場合"></a>・クラシック アラート機能用いて、現在メールへのアラート通知を構成していない、かつ今後もバックアップ ジョブ失敗時にメール通知などのアラートをご希望でない場合</h4><p><span style="color: red; ">特段ユーザー様にて追加作業は不要です。</span></p>
@@ -186,19 +186,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureVMBackup/Change_RSV_for_VM/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Azure VM BackupにおけるRecovery Services コンテナーの変更について
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../RSV_BV/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について</div>
+      <div class="article-nav-title">Recovery Services コンテナーとバックアップ コンテナーについて</div>
     </a>
   
 </nav>
@@ -217,6 +208,10 @@
       <ul>
         
           <li>
+            <a href="">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+          </li>
+        
+          <li>
             <a href="../RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
           </li>
         
@@ -230,10 +225,6 @@
         
           <li>
             <a href="../NwCheckScript_Linux/">疎通確認スクリプトの実行結果について (Linux)</a>
-          </li>
-        
-          <li>
-            <a href="../NwCheckScript_Windows/">疎通確認スクリプトの実行結果について (Windows)</a>
           </li>
         
       </ul>
@@ -256,7 +247,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">2023 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
