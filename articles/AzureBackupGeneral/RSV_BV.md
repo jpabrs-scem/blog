@@ -19,8 +19,8 @@ disableDisclaimer: false
 -----------------------------------------------------------
 [1. バックアップソリューションとコンテナー、およびデータ保存先の比較表](#1)
 [2. コンテナーにバックアップデータが保存されないもの](#2)
-[2-1. Azure ファイル共有バックアップ](#2-1)
-[2-2. Azure Blob バックアップ](#2-2)
+[2-1. Azure ファイル共有バックアップ (スナップショット レベル)](#2-1)
+[2-2. Azure Blob バックアップ (運用バックアップ)](#2-2)
 [2-3. Azure ディスク バックアップ](#2-3)
 -----------------------------------------------------------
 
@@ -35,8 +35,8 @@ disableDisclaimer: false
 | 3 | [MABS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-microsoft-azure-backup) |   Recovery Services コンテナー|する|
 | 4 | [SQL in Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database) |   Recovery Services コンテナー|する|
 | 5 | [SAP HANA DB in Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-about) |   Recovery Services コンテナー|する|
-| 6 | [Azure ファイル共有バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview) |   Recovery Services コンテナー|**しない(注1)**|
-| 7 | [Azure Blob バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview)  |   バックアップ コンテナー|**しない(注2)**|
+| 6 | [Azure ファイル共有バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview) |   Recovery Services コンテナー|「スナップショット レベル」のバックアップ：しない<br>「Vault-Standard レベル」のバックアップ：する (注1)|
+| 7 | [Azure Blob バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview)  |   バックアップ コンテナー|運用バックアップ：しない<br>保管済みバックアップ：する (注2)|
 | 8 | [Azure ディスク バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview)  |   バックアップ コンテナー|**しない**|
 | 9 | [Azure PosgreSQL バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview)  |   バックアップ コンテナー|する|
 | 10 | [Azure Kubernetes Service バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview)  |   バックアップ コンテナー|する|
@@ -50,13 +50,13 @@ disableDisclaimer: false
   https://azure.microsoft.com/ja-JP/updates/azureblobvaultedbackups/
 
 ### <a id="2"></a>2.コンテナーにバックアップデータが保存されないもの
-上述のとおり、Azure ファイル共有バックアップ、Azure Blob バックアップ、Azure ディスク バックアップは各コンテナーにはバックアップデータは転送されません。
+上述のとおり、現在 一般公開されている (プレビュー機能ではない) Azure ファイル共有バックアップ (スナップショット レベル) 、Azure Blob バックアップ (運用バックアップ)、Azure ディスク バックアップは各コンテナーにはバックアップデータは転送されません。
 それぞれについて簡単にご説明させていただきます。
 共通している点はそれぞれのソリューションはコアとなる別のソリューションをバックアップサービス側からトリガーし実現している点でございます。
 
 
-#### <a id="2-1"></a>2-1. Azure ファイル共有バックアップ
-Azure ファイル共有 バックアップは Azure Files の共有スナップショットの機能をバックアップ サービスと連携することによりスナップショット取得・削除の自動化を実現したバックアップ ソリューションです。
+#### <a id="2-1"></a>2-1. Azure ファイル共有バックアップ (スナップショット レベル)
+Azure ファイル共有 バックアップ (スナップショット レベル) は Azure Files の共有スナップショットの機能をバックアップ サービスと連携することによりスナップショット取得・削除の自動化を実現したバックアップ ソリューションです。
 
 そのため、バックアップ データ (スナップショットデータ) の保存先は Azure Files の共有スナップショットと同じく、そのストレージ アカウント自身 (のスナップショット領域)となります。
 そのため、 Recovery Services コンテナーには転送されません。
@@ -72,9 +72,8 @@ https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview
 https://learn.microsoft.com/ja-jp/azure/storage/files/storage-snapshots-files
 
 
-
-#### <a id="2-2"></a>2-2. Azure Blob バックアップ
-Azure Blob バックアップ は Azure Blob のポイントインタイムリストアの機能をバックアップ サービスと連携することにより実現したバックアップソリューションです。
+#### <a id="2-2"></a>2-2. Azure Blob バックアップ (運用バックアップ)
+Azure Blob バックアップ (運用バックアップ) は Azure Blob のポイントインタイムリストアの機能をバックアップ サービスと連携することにより実現したバックアップソリューションです。
 
 そのため、バックアップデータ (リストアに必要なデータ) の保存先は Azure Blob のポイントインタイムリストアと同じく、そのストレージ アカウント自身となります。
 そのため、バックアップ コンテナーには転送されません。
