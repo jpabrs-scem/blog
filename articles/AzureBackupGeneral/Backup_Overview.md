@@ -40,59 +40,63 @@ Azure Backup サービスでは、Micosoft Azure クラウド プラットフォ
 オンプレミスや Azure の様々なリソースを簡単にバックアップおよび復元を行うことができ、また一元化された監視と管理を行うためのソリューションを提供します。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/9c7ab400-ac12-41e3-9f06-445561de7e12" width="800px">
 
-Azure Backup についてより詳しく確認したい場合は以下のドキュメントを参照ください。  
-* Azure Backup とは - Azure Backup | Microsoft Learn  
-https://learn.microsoft.com/ja-jp/azure/backup/backup-overview
-* アーキテクチャの概要 - Azure Backup | Microsoft Learn  
-https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture
+> [!TIP]
+> Azure Backup についてより詳しく確認したい場合は以下のドキュメントを参照ください。  
+> ・Azure Backup とは - Azure Backup | Microsoft Learn  
+>   https://learn.microsoft.com/ja-jp/azure/backup/backup-overview
+> ・アーキテクチャの概要 - Azure Backup | Microsoft Learn  
+>   https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture
 
 ## <a id="1-1"></a> 1.1 Azure Backup のバックアップ ソリューション一覧表
-下記の表では Azure Backup で提供されている各バックアップソリューションとそれぞれでバックアップおよび復元できる対象をご紹介します。
+下記の表では Azure Backup で提供されている各バックアップソリューションとそれぞれでバックアップおよび復元できる対象をご紹介します。  
+また、各ソリューションには各公開ドキュメントへのリンクを付けています。
 
 |  バックアップの種類  |  バックアップ対象  |  復元方法  |
 | :---- | :---- |  :---- | 
-|  Azure VM バックアップ | Azure VM | <ul> <li>復元して新しい VM を作成</li> <li>VM のディスクを復元</li> <li>ディスクを復元して既存 (バックアップ元) の VM を置き換えて復元 </li> <li>VM 内の特定のファイルを復元</li> </ul> |
-|  Azure ディスク バックアップ | Azure Managed Disks  | <ul> <li>復元して新しいディスクを作成</li>  </ul> | 
-|  Azure ファイル共有バックアップ | ストレージ アカウントのファイル共有 | <ul> <li>Azure ファイル共有すべてを復元</li> <li>個々のファイルまたはフォルダーを復元</li> </ul> | 
-|  Azure BLOB バックアップ| ストレージ アカウントの BLOB Storage | <ul> <li>ストレージ アカウント内のすべての BLOB を復元</li> <li>選択したコンテナーを参照して復元</li> <li>プレフィックスの一致を使用して特定の BLOB を復元</li> </ul> |
-|  Azure VM 内の SQL Server をバックアップ | Azure VM 内の  SQL Server の データベース <br> ※ 完全バックアップ、差分バックアップ、ログ バックアップに対応 | <ul> <li>別のデータベースに復元</li> <li>元のデータベースを上書きして復元</li> <li>ファイルとして復元</li> </ul> |
-|  Azure VM 内の SAP HANA データベースをバックアップ | Azure VM 内の SAP HANA のデータベース <br> ※ 完全バックアップ、差分バックアップ、増分バックアップ、ログ バックアップ、スナップショット、レプリケーション データベースのバックアップに対応 | <ul> <li>別のデータベースに復元</li> <li>元のデータベースを上書きして復元</li> <li>ファイルとして復元</li> </ul> |
-|  Azure Database for PostgreSQL をバックアップ | Azure Database for PostgreSQL サーバーのデータベース | <ul> <li>データベースとして復元</li> <li>ファイルとして復元</li> </ul> |
-|  Azure Database for MySQL をバックアップ | Azure Database for MySQL サーバーのデータベース | <ul> <li>ファイルとして復元</li> </ul> |
-|  MARS バックアップ | オンプレミス / Azure VM の Windows OS マシン上 のファイル、フォルダーとシステム状態 | <ul> <li>ファイルとフォルダーの復元</li> <li>ボリューム レベルでの復元</li> <li>システム状態の復元</li> </ul> |
-|  DPM / MABS バックアップ  | オンプレミスの VM (Hyper-V と VMware) やオンプレミスのワークロード(SQL server や Exchange など) | // ここら辺はまだちゃんと理解できていない※あとで廣瀬さん、DAN さんに書いてもらう |
-|  Azure Kubernetes Service (AKS) バックアップ | AKS クラスター (クラスター リソースとクラスターにアタッチされている永続ボリューム) | <ul> <li> 既存の (バックアップ元) の AKS クラスターに復元</li> <li>別の AKS クラスターに復元</li> <li></li> </ul> |
-|  ディスクのスナップショット (注1) | Azure Managed Disks | <ul> <li>新しいマネージド ディスクとして復元</li> </ul> |
+|  [Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction) | Azure VM | <ul> <li>新しい VM として復元</li> <li>VM にアタッチされていたディスクの復元</li> <li>既存 (バックアップ元) VM のディスクを置き換えて復元 </li> <li>VM 内にある特定ファイルの復元</li> </ul> |
+|  [Azure ディスク バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview) | Azure Managed Disks  | <ul> <li>復元して新しいディスクとして作成</li>  </ul> | 
+|  [Azure ファイル共有バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview?tabs=snapshot) | ストレージ アカウントのファイル共有 | <ul> <li>Azure ファイル共有すべての復元</li> <li>個々のファイルまたはフォルダーの復元</li> </ul> | 
+|  [Azure BLOB バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview?tabs=operational-backup)  | ストレージ アカウントの BLOB Storage | <ul> <li>ストレージ アカウント内のすべての BLOB の復元</li> <li>選択したコンテナーの復元</li> <li>プレフィックスの一致を使用して特定の BLOB の復元</li> </ul> |
+|  [Azure VM 内の SQL Server をバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database)  | Azure VM 内の  SQL Server の データベース <br> ※ 完全バックアップ、差分バックアップ、ログ バックアップに対応 | <ul> <li>別のデータベースに復元</li> <li>元のデータベースを上書きして復元</li> <li>ファイルとして復元</li> </ul> |
+|  [Azure VM 内の SAP HANA データベースをバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-about)  | Azure VM 内の SAP HANA のデータベース <br> ※ 完全バックアップ、差分バックアップ、増分バックアップ、ログ バックアップ、スナップショット、レプリケーション データベースのバックアップに対応 | <ul> <li>別のデータベースとして復元</li> <li>元のデータベースを上書きしての復元</li> <li>ファイルとして復元</li> </ul> |
+|  [Azure Database for PostgreSQL をバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview)  | Azure Database for PostgreSQL サーバーのデータベース | <ul> <li>別のデータベースとして復元</li> <li>ファイルとして復元</li> </ul> |
+|  [Azure Database for MySQL をバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server-about)  | Azure Database for MySQL サーバーのデータベース | <ul> <li>ファイルとして復元</li> </ul> |
+|  [MARS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-about-mars)  | オンプレミス マシン / Azure VM の Windows OS マシン上 のファイル、フォルダーとシステム状態 | <ul> <li>ファイルとフォルダーの復元</li> <li>ボリューム レベルでの復元</li> <li>システム状態の復元</li> </ul> |
+|  [DPM / MABS バックアップ]()  | オンプレミスの VM (Hyper-V と VMware) やオンプレミスのワークロード(SQL server や Exchange など) | // ここら辺はまだちゃんと理解できていない※あとで廣瀬さん、DAN さんに書いてもらう |
+|  [Azure Kubernetes Service (AKS) バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview)  | AKS クラスター (クラスター リソースとクラスターにアタッチされている永続ボリューム) | <ul> <li> 既存の (バックアップ元) の AKS クラスターに復元</li> <li>別の AKS クラスターとして復元</li> <li></li> </ul> |
+|  [ディスクのスナップショット (注1)](https://learn.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal)  | Azure Managed Disks | <ul> <li>新しいマネージド ディスクとして復元</li> </ul> |
 
 (注1) Azure Managed Disks そのもののスナップショット取得機能であり、Azure Backup の機能ではありません。
 
 // TODO : DPM / MABS バックアップについて追記する
 
 ### <a id="1-2"></a> 1.2 Recovery Services コンテナー と バックアップ コンテナーについて
-Azure Backup を利用するためには、利用する Azure Backup の種類に依って、`Recovery Services コンテナー`もしくは`バックアップ コンテナー`をまず作成する必要があります。
+Azure Backup を利用するためには、利用する Azure Backup の種類に依って、**Recovery Services コンテナー**もしくは**バックアップ コンテナー**をまず作成する必要があります。
 この 2 種類のコンテナーはバックアップ データを格納する Azure のストレージ エンティティです。  
 バックアップ データの格納以外にも、バックアップ ポリシー、バックアップの構成、復旧ポイントなどを一元的に管理することができます。  
 
-Recovery Services コンテナーとバックアップ コンテナーについて詳細を確認したい場合は下記ドキュメントを参照ください。  
-* Recovery Services コンテナーの概要 - Azure Backup | Microsoft Learn  
-https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-recovery-services-vault-overview
-* バックアップ コンテナーの概要 - Azure Backup | Microsoft Learn  
-https://learn.microsoft.com/ja-jp/azure/backup/backup-vault-overview
-* Recovery Services コンテナーとバックアップ コンテナーについて | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
-https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/  
+> [!TIP]
+> Recovery Services コンテナーとバックアップ コンテナーについて詳細を確認したい場合は下記ドキュメントを参照ください。  
+> ・ Recovery Services コンテナーの概要 - Azure Backup | Microsoft Learn  
+>   https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-recovery-services-vault-overview
+> ・ バックアップ コンテナーの概要 - Azure Backup | Microsoft Learn  
+>   https://learn.microsoft.com/ja-jp/azure/backup/backup-vault-overview
+> ・ Recovery Services コンテナーとバックアップ コンテナーについて | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
+>   https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/  
 
 ### <a id="1-3"></a> 1.3 バックアップ ポリシーについて
-Azure Backup でバックアップをスケジュールするには、`バックアップ ポリシー`を利用します。  
+Azure Backup でバックアップをスケジュールするには、**バックアップ ポリシー**を利用します。  
 バックアップ ポリシーはコンテナーごとに管理され、各バックアップ ソリューション用に作成することができます。  
 バックアップ ポリシーではバックアップ ソリューションごとに設定できる内容は異なりますが、基本的に以下を設定します。  
 * スケジュール : いつバックアップをするか
 * 保有期間 : 復旧ポイントをどれだけの期間保有する必要があるか
 
-バックアップ ポリシーについて詳細を確認したい場合は下記ドキュメントを参照ください。
-* バックアップ ポリシーの基礎 | アーキテクチャの概要 - Azure Backup | Microsoft Learn  
-https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture#backup-policy-essentials
-* Azure Backup の 保持期間について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
-https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/
+> [!TIP]
+> バックアップ ポリシーについて詳細を確認したい場合は下記ドキュメントを参照ください。
+> ・バックアップ ポリシーの基礎 | アーキテクチャの概要 - Azure Backup | Microsoft Learn  
+>   https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture#backup-policy-essentials
+> ・Azure Backup の 保持期間について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
+>   https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/
 
 #### 利用方法
 バックアップ ポリシーは Recovery Services コンテナーとバックアップ コンテナーそれぞれで管理できます。
@@ -116,21 +120,19 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#sna
 
 #### 利用方法
 Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/2347bf37-dabc-4a61-b38b-f9ae66bf3ca0" width="400px">  
-
-ワークロードで`Azure`、バックアップ対象で`仮想マシン`を選択することでバックアップの設定を開始することができます。  
+次にワークロードで`Azure`、バックアップ対象で`仮想マシン`を選択することでバックアップの設定を開始することができます。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/2463356a-ac96-4c37-82ca-08efccaa5837" width="400px">
 
 #### 参照リンク
-* Azure VM バックアップについて - Azure Backup | Microsoft Learn
+このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
+* Azure VM バックアップについて - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction
 * Azure VM バックアップのサポート マトリックス - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas
 * Recovery Services コンテナーに Azure VM をバックアップする - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-vms-prepare
 * Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn  
-https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms
-
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms  
 
 ### <a id="2-2"></a> 2.2 Azure ディスク バックアップ
 Azure の マネージド ディスクをバックアップすることができます。  
@@ -139,12 +141,11 @@ Azure の マネージド ディスクをバックアップすることができ
 
 #### 利用方法
 Azure Portal にてバックアップ コンテナーを開き、`バックアップ`を選択、  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/535da04c-492f-44ef-853c-536a0f9fd8f8" width="400px">  
-
-データソースの種類で`Azure ディスク`を選択することでバックアップの設定を開始することができます。  
+次にデータソースの種類で`Azure ディスク`を選択することでバックアップの設定を開始することができます。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/5cc5719e-0bac-414e-9a9d-a5709af12f9b" width="400px">
 
 #### 参照リンク
+このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
 * Azure ディスク バックアップの概要 - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-JP/azure/backup/disk-backup-overview
 * Azure ディスク バックアップのサポート マトリックス - Azure Backup | Microsoft Learn  
@@ -161,12 +162,11 @@ Azure ストレージアカウントのファイル共有をバックアップ�
 
 #### 利用方法
 Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/2347bf37-dabc-4a61-b38b-f9ae66bf3ca0" width="400px">  
-
-ワークロードで`Azure`、バックアップ対象で`Azure ファイル共有`を選択することでバックアップの設定を開始することができます。  
+次にワークロードで`Azure`、バックアップ対象で`Azure ファイル共有`を選択することでバックアップの設定を開始することができます。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/8b6b5bc8-95b3-4097-8f1b-08f5016d43b7" width="400px">  
 
 #### 参照リンク
+このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
 * Azure ファイル共有のバックアップについて - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview?tabs=snapshot
 * Azure Backup を使用した Azure ファイル共有のバックアップのサポート マトリックス - Azure Backup | Microsoft Learn  
@@ -183,12 +183,11 @@ Azure ストレージアカウントの BLOB コンテナーをバックアッ�
 
 #### 利用方法
 Azure Portal にてバックアップ コンテナーを開き、`バックアップ`を選択、  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/535da04c-492f-44ef-853c-536a0f9fd8f8" width="400px">  
-
-データソースの種類で`Azure BLOB (Azure Storage)`を選択することでバックアップの設定を開始することができます。  
+次にデータソースの種類で`Azure BLOB (Azure Storage)`を選択することでバックアップの設定を開始することができます。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/a4e8ba67-a51a-4431-a60c-58e88854c2d6" width="400px">  
 
 #### 参照リンク
+このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
 * Azure BLOB バックアップの概要 - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview?tabs=operational-backup
 * Azure BLOB バックアップのサポート マトリックス - Azure Backup | Microsoft Learn  
@@ -210,12 +209,11 @@ Azure VM 内にある SQL Server をバックアップすることができま�
 
 #### 利用方法
 Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/2347bf37-dabc-4a61-b38b-f9ae66bf3ca0" width="400px">  
-
-ワークロードで`Azure`、バックアップ対象で`Azure VM 内の SQL Server`を選択することでバックアップの設定を開始することができます。  
+次にワークロードで`Azure`、バックアップ対象で`Azure VM 内の SQL Server`を選択することでバックアップの設定を開始することができます。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/cf06b38b-7a42-49cc-9d4f-8a6757936c93" width="400px">  
 
 #### 参照リンク
+このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
 * Azure への SQL Server データベースのバックアップ - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database  
 * Azure VM 内の SQL Server のバックアップに関する Azure Backup のサポート マトリックス - Azure Backup | Microsoft Learn  
@@ -238,12 +236,11 @@ Azure Backup は、SAP による Backint 認定がされており、SAP HANA の
 
 #### 利用方法
 Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/2347bf37-dabc-4a61-b38b-f9ae66bf3ca0" width="400px">  
-
-ワークロードで`Azure`、バックアップ対象で`Azure VM 内の SAP HANA`を選択することでバックアップの設定を開始することができます。  
+次にワークロードで`Azure`、バックアップ対象で`Azure VM 内の SAP HANA`を選択することでバックアップの設定を開始することができます。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/037e9907-9b8f-4259-b573-b8e5e0c02e08" width="400px"> 
 
 #### 参照リンク
+このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
 * Azure VM 上の SAP HANA データベース バックアップについて - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-about
 * SAP HANA バックアップのサポート マトリックス - Azure Backup | Microsoft Learn  
@@ -259,18 +256,13 @@ Azure Database for PostgreSQL をバックアップすることができます�
 Azure Database for PostgreSQL そのもののバックアップソリューションではデータ保有期間が最大 35 日間ですが、Azure Backup を利用することでデータを長期的(最大 10 年間)に保有することが可能になります。
 長期的な保有期間以外にも、バックアップの構成や復旧ポイントを一元的にバックアップ コンテナーにて管理できるメリットなどがあります。
 
-
-
-(注1) Azure Managed Disks そのもののスナップショット取得機能であり、Azure Backup の機能ではありません。
-
 #### 利用方法
 Azure Portal にてバックアップ コンテナーを開き、`バックアップ`を選択、  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/535da04c-492f-44ef-853c-536a0f9fd8f8" width="400px">  
-
-データソースの種類で`Azure Database for PostgreSQL サーバー`を選択することでバックアップの設定を開始することができます。  
+次にデータソースの種類で`Azure Database for PostgreSQL サーバー`を選択することでバックアップの設定を開始することができます。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/32a2e9ee-0a07-451c-8822-f6ed16edc4d7" width="400px">  
 
 #### 参照リンク
+このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
 * Azure Database for PostgreSQL のバックアップについて - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview
 * Azure Database for PostgreSQL サーバーのサポート マトリックス - Azure Backup | Microsoft Learn  
@@ -288,12 +280,11 @@ Azure Database for MySQL そのもののバックアップソリューション�
 
 #### 利用方法
 Azure Portal にてバックアップ コンテナーを開き、`バックアップ`を選択、  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/535da04c-492f-44ef-853c-536a0f9fd8f8" width="400px">  
-
-データソースの種類で`Azure Database for MySQL (プレビュー)`を選択することでバックアップの設定を開始することができます。  
+次にデータソースの種類で`Azure Database for MySQL (プレビュー)`を選択することでバックアップの設定を開始することができます。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/aa2621a6-3992-4712-afa1-4b5e791b7b5e" width="400px">  
 
 #### 参照リンク
+このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
 * 概要 - Azure Backup を使用した Azure Database for MySQL - フレキシブル サーバーの長期保有 - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server-about
 * Azure Backup を使用した Azure Database for MySQL - フレキシブル サーバーの長期保有のサポート マトリックス - Azure Backup | Microsoft Learn  
@@ -310,12 +301,11 @@ Microsoft Azure Recovery Services (MARS) エージェントを使用して、フ
 
 #### 利用方法
 Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/2347bf37-dabc-4a61-b38b-f9ae66bf3ca0" width="400px">  
-
-ワークロードで`オンプレミス`、バックアップ対象で`ファイルとフォルダー`を選択することでバックアップの設定を開始することができます。  
+次にワークロードで`オンプレミス`、バックアップ対象で`ファイルとフォルダー`を選択することでバックアップの設定を開始することができます。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/88985531-4431-4720-8c3c-b22e75a9abd6" width="300px">  
 
 #### 参照リンク
+このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
 * MARS エージェントについて - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-about-mars
 * MARS エージェントを使用したサポート マトリックス - Azure Backup | Microsoft Learn  
@@ -337,12 +327,11 @@ AKS クラスターにデプロイされている AKS ワークロードと永�
 
 #### 利用方法
 Azure Portal にてバックアップ コンテナーを開き、`バックアップ`を選択、  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/535da04c-492f-44ef-853c-536a0f9fd8f8" width="400px">  
-
-データソースの種類で`Kubernetes サービス`を選択することでバックアップの設定を開始することができます。  
+次にデータソースの種類で`Kubernetes サービス`を選択することでバックアップの設定を開始することができます。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/872e323b-f078-4840-9479-fe2772d8a477" width="400px">  
 
 #### 参照リンク
+このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
 * Azure Kubernetes Service (AKS) バックアップとは - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview
 * Azure Kubernetes Service (AKS) バックアップのサポート マトリックス - Azure Backup | Microsoft Learn  
@@ -371,38 +360,48 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/
 ## <a id="3"></a> 3. よくいただくお問合せ
 Azure Backup の各バックアップソリューションについてよくいただくお問い合わせと回答を記載させていただきます。
 
-### `Azure VM Backup` と `Azure ディスク バックアップ` と`ディスクのスナップショット`はどれを利用したらいいのか？
-「アプリケーション整合性を担保したバックアップを取得したい」や「Azure 仮想マシンをまるごと（マシンにアタッチされているディスクのデータを含めて）バックアップしたい」という用途であれば一般的に `Azure VM Backup` をご利用いただくことが多いです。  
-「Azure 仮想マシンをまるごとバックアップする必要は無い」であったり「とある Azure Managed Disk を定期的に単体でバックアップすればよい」という場合は、`Azure ディスク バックアップ` をご検討ください。  
-「定期的なバックアップは必要ない、とある時点のディスクの状態を、バックアップ用途でバックアップ取得したい」という場合は、手動での`ディスクのスナップショット`をご検討いただけます。
+### Q1. 「Azure VM Backup」 と 「Azure ディスク バックアップ」 と 「ディスクのスナップショット」 はどれを利用したらいいですか？
+「アプリケーション整合性を担保したバックアップを取得したい」や「Azure 仮想マシンをまるごと（マシンにアタッチされているディスクのデータを含めて）バックアップしたい」という用途であれば一般的に **Azure VM Backup** をご利用いただくことが多いです。  
 
-### 「共有ディスクのバックアップ」はできますか？
-【Azure VM Backup で共有ディスクを含めてバックアップしたい場合】
-`Azure VM Backup` では残念ながら共有ディスクをバックアップすることはサポートしておりません。  
-共有ディスクがアタッチされている Azure VM に対して「共有ディスク以外のディスクを Azure VM 単位でバックアップしたい」という場合は、選択的ディスクバックアップをご利用下さい。
- 
-【共有ディスクを「手動で任意のタイミングのみ」バックアップしたい場合】
-`ディスクのスナップショット`を利用して、お客様にて手動で Azure Managed Disk に対してスナップショットを取得いただく方法がございます。
+「Azure 仮想マシンをまるごとバックアップする必要は無い」であったり「とある Azure Managed Disk を定期的に単体でバックアップすればよい」という場合は、**Azure ディスク バックアップ** をご検討ください。  
+
+「定期的なバックアップは必要ない、とある時点のディスクの状態を、バックアップ用途でバックアップ取得したい」という場合は、手動での**ディスクのスナップショット**をご検討ください。
+
+### Q2. 「共有ディスクのバックアップ」はできますか？
+【Azure VM Backup で共有ディスクを含めてバックアップしたい場合】  
+**Azure VM Backup** では残念ながら共有ディスクをバックアップすることはサポートしておりません。
+
+ただし、共有ディスクがアタッチされている Azure VM に対して「共有ディスクを除外し、その他のディスクをバックアップする」ことは可能です。  
+この場合は、Azure VM Backup の「選択的ディスクバックアップ」を利用することで実現可能です。
+* Azure 仮想マシンの選択的なディスク バックアップと復元 - Azure Backup | Microsoft Learn
+https://learn.microsoft.com/ja-jp/azure/backup/selective-disk-backup-restore
+
+【共有ディスクを「手動で任意のタイミングのみ」バックアップしたい場合】  
+**ディスクのスナップショット**を利用して、お客様にて手動で Azure Managed Disk に対してスナップショットを取得いただく方法がございます。
  
 【共有ディスクを「定期的に」バックアップしたい場合】
-`Azure ディスク バックアップ` ソリューションを利用して、定期的なバックアップ取得 (=スナップショット取得) が可能です。
+**Azure ディスク バックアップ** ソリューションを利用して、定期的なバックアップ取得 (=スナップショット取得) が可能です。
  
-また、Windows OS の Azure VM であれば、共有ディスクに対する、「ローカル ディスク」としての `MARS バックアップ`は可能です。
+また、Windows OS の Azure VM であれば、共有ディスクに対する、「ローカル ディスク」としての **MARS バックアップ**は可能です。
 
->※MARS バックアップを利用して共有ディスクをバックアップする場合の注意点
->* 「共有ディスク」 が NTFS であり、「クラスター共有ボリューム」には割り当てられておらず、ファイル サーバーなどのロールに割り当てられたクラスター リソース ディスクである場合は、MARS バックアップとしてバックアップは可能です。  
->* MARS はクラスター リソースを識別することができませんが、ローカル ディスクとして識別されているボリュームであれば、バックアップが可能です。  
->* 「クラスター サポート」とは、共有ボリュームがオンラインになっている場所 (ノード) を気にすることなく継続的にバックアップが可能であるか、という意味になりますが、MARS バックアップにおいては、これをサポートしていません。
+> [!NOTE]
+> ※MARS バックアップを利用して共有ディスクをバックアップする場合の注意点 
+> * 「共有ディスク」 が NTFS であり、「クラスター共有ボリューム」には割り当てられておらず、ファイル サーバーなどのロールに割り当てられたクラスター リソース ディスクである場合は、MARS バックアップとしてバックアップは可能です。  
+> * MARS はクラスター リソースを識別することができませんが、ローカル ディスクとして識別されているボリュームであれば、バックアップが可能です。  
+> * 「クラスター サポート」とは、共有ボリュームがオンラインになっている場所 (ノード) を気にすることなく継続的にバックアップが可能であるか、という意味になりますが、MARS バックアップにおいては、これをサポートしていません。
 
-### `Azure VM 内の SQL Server バックアップ` (または Azure VM 内の SAP HANA) と `Azure VM バックアップ`の違いはなに？
-Azure VM にある SQL Server は `Azure VM Backup` ソリューションと `Azure VM 内の SQL Server をバックアップ` ソリューションの両方でバックアップが可能です。  
-`Azure VM 内の SQL Server をバックアップ` では データベースのみのバックアップであり、VM 自体がバックアップされません。  
-それに対して `Azure VM Backup` では VM 自体がバックアップされ、その中に SQL Server が存在していれば、それも含まれてバックアップされる形になります。  
-そのため、SQL Server だけでなく、VM 自体の復元が必要な場合は `Azure VM Backup` の利用をご検討ください。  
+### Q3. 「Azure VM 内の SQL Server バックアップ」 (または Azure VM 内の SAP HANA) と 「Azure VM バックアップ」の違いは何ですか？
+Azure VM にある SQL Server は **Azure VM Backup** ソリューションと **Azure VM 内の SQL Server をバックアップ** ソリューションの両方でバックアップが可能です。  
+**Azure VM 内の SQL Server をバックアップ** では データベースのみのバックアップであり、VM 自体がバックアップされません。  
+それに対して **Azure VM Backup** では VM 自体がバックアップされ、その中に SQL Server が存在していれば、それも含まれてバックアップされる形になります。  
+そのため、SQL Server だけでなく、VM 自体の復元が必要な場合は **Azure VM Backup** の利用をご検討ください。  
+**Azure VM Backup** における整合性についての詳細は下記ドキュメントをご参照ください。  
+* Azure VM Backupにおける整合性について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
+https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-2
 
-また、`Azure VM 内の SQL Server をバックアップ` はデータベース ワークロードに特化したワークロードであり、 `Azure VM Backup` にはない、15 分間の RPO (目標復旧時点) を提供し、個々のデータベースのバックアップと復元が可能です。
+また、**Azure VM 内の SQL Server をバックアップ** はデータベース ワークロードに特化したワークロードであり、 **Azure VM Backup** にはない、15 分間の RPO (目標復旧時点) を提供し、個々のデータベースのバックアップと復元が可能です。
 
-また、同じVM上で `Azure VM Backup` と `Azure VM 内の SQL Server をバックアップ` を共存させることも可能です。  
+また、同じVM上で **Azure VM Backup** と **Azure VM 内の SQL Server をバックアップ** を共存させることも可能です。  
 詳細については下記ドキュメントをご参照ください。  
 * FAQ - Azure VM 上の SQL Server データベースのバックアップ - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/faq-backup-sql-server#iaas-vm---azure---------sql-server-----------------    
