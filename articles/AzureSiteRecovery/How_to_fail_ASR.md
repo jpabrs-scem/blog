@@ -26,32 +26,20 @@ ASR を意図的に失敗させたい場合、主に下記 2 種類の方法に�
 -----------------------------------------------------------
 
 ## <a id="1"></a> 1. キャッシュ用ストレージ アカウントへの通信を切断しておく方法
-[Azure VM to Azure VM (ASR)] シナリオのため、ソース マシンは Azure 仮想マシンとなります。
-もっとも簡単な方法として、ソース マシンの ネットワーク セキュリティ グループ (以下、NSG) 上で下記のような送信規則を追加しておけば
-キャッシュ用ストレージ アカウントへの通信を行うことができず、後続の ASR レプリケーション処理が失敗します。
+もっとも簡単な方法として、キャッシュ用ストレージ アカウント側の「ネットワーク」設定にて
+「パブリック ネットワーク アクセス：無効」へと設定しておくことで
+ソース マシンからキャッシュ用ストレージ アカウントへの通信を行うことができず、後続の ASR レプリケーション処理が失敗します。
 
 ・(参考) アラートのシナリオ
 　https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-monitor-and-troubleshoot#alerts-scenarios
 　"Azure Site Recovery を使用してテスト VM のアラートの動作をテストするには、キャッシュ ストレージ アカウントのパブリック ネットワーク アクセスを無効にし、"レプリケーションの正常性に重大な問題があります" アラートが生成されるようにします。"
 
-【NSG 送信規則例】
-宛先 : Service Tag
-宛先サービス タグ : Storage
-サービス : HTTPS
-アクション : 拒否
+![](https://github.com/jpabrs-scem/blog/assets/96324317/afe22e08-e0f1-458a-992f-93c1b2801242)
 
-(画面例)
-![](https://github.com/jpabrs-scem/blog/assets/96324317/f0c1c8dd-4f66-49a7-b66b-709d05ca0068)
+(画面例 : ストレージ アカウントの「パブリック ネットワーク アクセス」を変更しておよそ 15 分経過後)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/4aeef23e-96de-448a-ae3c-b9ac0452d03d)
 
-![](https://github.com/jpabrs-scem/blog/assets/96324317/bd924838-dc59-4c26-8f64-266794c07459)
-
-(画面例 : NSG 設定前は「レプリケーション ヘルス：正常」)
-![](https://github.com/jpabrs-scem/blog/assets/96324317/02ab7387-f6e2-4f2d-8261-20751bbc9683)
-
-(画面例 : NSG 設定をしておよそ 15 分経過後)
-![](https://github.com/jpabrs-scem/blog/assets/96324317/4241b9e0-a5a4-450a-bf99-a7be97f9037d)
-
-![](https://github.com/jpabrs-scem/blog/assets/96324317/ce13af7f-75f0-4514-a606-9514ebcaeb54)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/4bf46334-3c31-4ba0-859e-a3e10cef60b4)
 
 今回は事前に下記 2 種類のアラートをどちらも構成していたため、2 種類のメールアラートが発報されました。
 
@@ -61,7 +49,7 @@ ASR を意図的に失敗させたい場合、主に下記 2 種類の方法に�
 ・Azure Site Recovery に関する組み込みの Azure Monitor アラート
 　https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-monitor-and-troubleshoot#built-in-azure-monitor-alerts-for-azure-site-recovery-preview
 
-![](https://github.com/jpabrs-scem/blog/assets/96324317/16faf592-6bed-4d3c-b51f-c2e6e8f3262c)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/0492797a-82f9-42d4-a964-84cfa9bc6283)
 
 ・(参考) Recovery Services コンテナーの Azure Site Recovery の現在の電子メール通知ソリューションは、引き続き動作しますか?
 　https://learn.microsoft.com/ja-jp/azure/site-recovery/monitoring-common-questions#will-the-current-email-notification-solution-for-azure-site-recovery-in-recovery-services-vault-continue-to-work
@@ -70,11 +58,12 @@ ASR を意図的に失敗させたい場合、主に下記 2 種類の方法に�
 
 (メール例 : アラートの電子メール通知)
 件名：Azure Site Recovery Critical Notification: Virtual machine health is in Critical state
-![](https://github.com/jpabrs-scem/blog/assets/96324317/07145a97-6ee7-4def-96fa-83371136fbf2)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/2ad19e58-cb8c-45cf-b319-05bbcf452c0a)
 
 (メール例 : 組み込みの Azure Monitor アラート)
-件名：Fired:Sev1 Azure Monitor Alert Replication health changed to Critical. on rsv-jpe-lrs ( microsoft.recoveryservices/vaults ) at 5/1/2024 6:15:35 AM
-![](https://github.com/jpabrs-scem/blog/assets/96324317/ebcda96b-3637-4668-bf5c-5b9f360b0a4d)
+件名：Fired:Sev1 Azure Monitor Alert Replication health changed to Critical. on rsv-jpe-lrs ( microsoft.recoveryservices/vaults ) at 5/2/2024 7:13:49 AM
+![](https://github.com/jpabrs-scem/blog/assets/96324317/e28912a0-d6e6-447b-94ac-b2a68199dda0)
+
 
 ## <a id="2"></a> 2. ASR レプリケーションに関わるサービスをソース マシン上で停止しておく方法
 【Windows OS の場合】
