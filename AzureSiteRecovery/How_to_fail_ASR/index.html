@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>ASR を意図的に失敗させる方法 | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="みなさんこんにちは、Azure Site Recovery サポートです。今回は、アラートをテスト目的で発報するために、意図的に Azure Site Recovery ( 以下、ASR ) を失敗させる方法をご紹介します。 ASR を意図的に失敗させたい場合、主に下記 2 種類の方法にて失敗させることができます。1 種類目：キャッシュ用ストレージ アカウントへの通信を切断しておく2 種類目：A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASR を意図的に失敗させる方法">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/How_to_fail_ASR/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="みなさんこんにちは、Azure Site Recovery サポートです。今回は、アラートをテスト目的で発報するために、意図的に Azure Site Recovery ( 以下、ASR ) を失敗させる方法をご紹介します。 ASR を意図的に失敗させたい場合、主に下記 2 種類の方法にて失敗させることができます。1 種類目：キャッシュ用ストレージ アカウントへの通信を切断しておく2 種類目：A">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/afe22e08-e0f1-458a-992f-93c1b2801242">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/4aeef23e-96de-448a-ae3c-b9ac0452d03d">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/4bf46334-3c31-4ba0-859e-a3e10cef60b4">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/0492797a-82f9-42d4-a964-84cfa9bc6283">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/2ad19e58-cb8c-45cf-b319-05bbcf452c0a">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/e28912a0-d6e6-447b-94ac-b2a68199dda0">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/eaccd3a8-bd09-472c-be4b-cf4f092ef063">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/5fb4fd79-d6b4-40ce-bfcf-23b6aa4939f8">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/f86d6864-9a4e-4d80-afa0-04747af1efe0">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/ac2c5b20-acbf-4ed8-bad9-029d54671ffd">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/5646e521-e505-4b60-b8f8-fc65e178d481">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/dcf49eb8-9cfb-40f5-81c9-c2427a0d2e90">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/39b38c4c-e570-42c7-bec6-ff11d9ce0675">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/02b07554-4630-44e2-a318-92bee9beffef">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/7310c3f1-6cc8-419c-87b4-7bfc8c52e0a7">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/f3591578-9a1d-4706-ac73-2cdf6eda9e06">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/324db4e7-aa8f-4219-a558-e20476f59f07">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/7a1faaa4-5d05-4183-9c89-bc844ae7e175">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/2cdaee3b-171e-467e-92d4-3bfc4035f2c3">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/f903603e-df14-4ebb-91cf-ca700c7b558e">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/34680ce3-f95a-417c-9e22-154834dddcfb">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/d028d22d-5e85-41dc-aa03-ba6e833d67b9">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/eb57c071-60b7-4ada-8c86-28aeca3403e8">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/04ba8b03-5db7-487a-b8de-fc6f99014356">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/04ae5d93-c899-4a89-a54a-34ccd0d43b1c">
+<meta property="article:published_time" content="2024-05-09T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-05T00:28:03.550Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Azure Site Recovery">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/afe22e08-e0f1-458a-992f-93c1b2801242">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureSiteRecovery/How_to_fail_ASR" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ASR を意図的に失敗させる方法
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2024-05-09T03:00:00.000Z" itemprop="datePublished">2024-05-09</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+38e1d939-54c7-5f87-8222-116ac103cf06%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BASR+%E3%82%92%E6%84%8F%E5%9B%B3%E7%9A%84%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2FHow_to_fail_ASR%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2FHow_to_fail_ASR.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2FHow_to_fail_ASR.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/How_to_fail_ASR/" data-id="clvssnr2m000v0nps29p94x3v" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>みなさんこんにちは、Azure Site Recovery サポートです。<br>今回は、アラートをテスト目的で発報するために、意図的に Azure Site Recovery ( 以下、ASR ) を失敗させる方法をご紹介します。</p>
+<p>ASR を意図的に失敗させたい場合、主に下記 2 種類の方法にて失敗させることができます。<br><font color="MediumBlue">1 種類目：</font>キャッシュ用ストレージ アカウントへの通信を切断しておく<br><font color="MediumBlue">2 種類目：</font>ASR レプリケーションに関わるサービスをソース マシン上で停止しておく</p>
+<p>本ブログ記事では [Azure VM to Azure VM (ASR)] シナリオを例として、上記の具体的な作業手順を説明します。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. キャッシュ用ストレージ アカウントへの通信を切断しておく方法</a><br><a href="#2">2. ASR レプリケーションに関わるサービスをソース マシン上で停止しておく方法</a><br><a href="#2-1">2-1. ASR レプリケーションに関わるサービスをソース マシン上で停止しておく方法 (Winodws OS 詳細)</a><br><a href="#2-2">2-2. ASR レプリケーションに関わるサービスをソース マシン上で停止しておく方法 (Linux OS 詳細)</a>  </p>
+<hr>
+<h2 id="1-キャッシュ用ストレージ-アカウントへの通信を切断しておく方法"><a href="#1-キャッシュ用ストレージ-アカウントへの通信を切断しておく方法" class="headerlink" title=" 1. キャッシュ用ストレージ アカウントへの通信を切断しておく方法"></a><a id="1"></a> 1. キャッシュ用ストレージ アカウントへの通信を切断しておく方法</h2><p>もっとも簡単な方法として、キャッシュ用ストレージ アカウント側の「ネットワーク」設定にて<br>「パブリック ネットワーク アクセス：無効」へと設定しておくことで<br>ソース マシンからキャッシュ用ストレージ アカウントへの通信を行うことができず、後続の ASR レプリケーション処理が失敗します。</p>
+<p>・(参考) アラートのシナリオ<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-monitor-and-troubleshoot#alerts-scenarios">https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-monitor-and-troubleshoot#alerts-scenarios</a><br>　“Azure Site Recovery を使用してテスト VM のアラートの動作をテストするには、キャッシュ ストレージ アカウントのパブリック ネットワーク アクセスを無効にし、”レプリケーションの正常性に重大な問題があります” アラートが生成されるようにします。”</p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/afe22e08-e0f1-458a-992f-93c1b2801242"></p>
+<p>(画面例 : ストレージ アカウントの「パブリック ネットワーク アクセス」を変更しておよそ 15 分経過後)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/4aeef23e-96de-448a-ae3c-b9ac0452d03d"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/4bf46334-3c31-4ba0-859e-a3e10cef60b4"></p>
+<p>今回は事前に下記 2 種類のアラートをどちらも構成していたため、2 種類のメールアラートが発報されました。</p>
+<p>・アラートの電子メール通知<br>　　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications">https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications</a></p>
+<p>・Azure Site Recovery に関する組み込みの Azure Monitor アラート<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-monitor-and-troubleshoot#built-in-azure-monitor-alerts-for-azure-site-recovery-preview">https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-monitor-and-troubleshoot#built-in-azure-monitor-alerts-for-azure-site-recovery-preview</a></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/0492797a-82f9-42d4-a964-84cfa9bc6283"></p>
+<p>・(参考) Recovery Services コンテナーの Azure Site Recovery の現在の電子メール通知ソリューションは、引き続き動作しますか?<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/monitoring-common-questions#will-the-current-email-notification-solution-for-azure-site-recovery-in-recovery-services-vault-continue-to-work">https://learn.microsoft.com/ja-jp/azure/site-recovery/monitoring-common-questions#will-the-current-email-notification-solution-for-azure-site-recovery-in-recovery-services-vault-continue-to-work</a><br>　“現在のところ、既存の電子メール通知ソリューションは、新しい組み込みの Azure Monitor アラート ソリューションと共存しています。<br>　　新しいエクスペリエンスに慣れ、その機能を活用するために、Azure Monitor ベースのアラートを試すことをお勧めします。”</p>
+<p>(メール例 : アラートの電子メール通知)<br>件名：Azure Site Recovery Critical Notification: Virtual machine health is in Critical state<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/2ad19e58-cb8c-45cf-b319-05bbcf452c0a"></p>
+<p>(メール例 : 組み込みの Azure Monitor アラート)<br>件名：Fired:Sev1 Azure Monitor Alert Replication health changed to Critical. on rsv-jpe-lrs ( microsoft.recoveryservices/vaults ) at 5/2/2024 7:13:49 AM<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/e28912a0-d6e6-447b-94ac-b2a68199dda0"></p>
+<h2 id="2-ASR-レプリケーションに関わるサービスをソース-マシン上で停止しておく方法"><a href="#2-ASR-レプリケーションに関わるサービスをソース-マシン上で停止しておく方法" class="headerlink" title=" 2. ASR レプリケーションに関わるサービスをソース マシン上で停止しておく方法"></a><a id="2"></a> 2. ASR レプリケーションに関わるサービスをソース マシン上で停止しておく方法</h2><p>【Windows OS の場合】<br>ソース マシン上の「サービス」画面にて、下記 2 つのサービスを停止することでレプリケーションができなくなり、アラートを発報可能です。<br>(1) InMage Scout Application Service<br>(2) InMage Scout VX Agent - Sentinel/Outpost</p>
+<p>【Linux OS の場合】<br>ソース マシン上で「vxagent」サービスを停止することでレプリケーションができなくなり、アラートを発報可能です。</p>
+<h2 id="2-1-ASR-レプリケーションに関わるサービスをソース-マシン上で停止しておく方法-Winodws-OS-詳細"><a href="#2-1-ASR-レプリケーションに関わるサービスをソース-マシン上で停止しておく方法-Winodws-OS-詳細" class="headerlink" title=" 2-1. ASR レプリケーションに関わるサービスをソース マシン上で停止しておく方法 (Winodws OS 詳細)"></a><a id="2-1"></a> 2-1. ASR レプリケーションに関わるサービスをソース マシン上で停止しておく方法 (Winodws OS 詳細)</h2><p>「サービス」画面を開きます。<br>Services.msc<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/eaccd3a8-bd09-472c-be4b-cf4f092ef063"></p>
+<p>下記 2 つのサービスを手動で停止します。<br>(1) InMage Scout Application Service<br>(2) InMage Scout VX Agent - Sentinel/Outpost<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/5fb4fd79-d6b4-40ce-bfcf-23b6aa4939f8"></p>
+<p>自動起動しないようスタートアップの種類を [無効] に変更しておきます。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/f86d6864-9a4e-4d80-afa0-04747af1efe0"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/ac2c5b20-acbf-4ed8-bad9-029d54671ffd"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/5646e521-e505-4b60-b8f8-fc65e178d481"></p>
+<p>(画面例 : サービスを停止しておよそ 15 分経過後)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/dcf49eb8-9cfb-40f5-81c9-c2427a0d2e90"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/39b38c4c-e570-42c7-bec6-ff11d9ce0675"></p>
+<p>(メール例 : 組み込みの Azure Monitor アラート)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/02b07554-4630-44e2-a318-92bee9beffef"></p>
+<p>テスト終了後は、2 つのサービスの状態を元に戻しておきます。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/7310c3f1-6cc8-419c-87b4-7bfc8c52e0a7"></p>
+<h2 id="2-2-ASR-レプリケーションに関わるサービスをソース-マシン上で停止しておく方法-Linux-OS-詳細"><a href="#2-2-ASR-レプリケーションに関わるサービスをソース-マシン上で停止しておく方法-Linux-OS-詳細" class="headerlink" title=" 2-2. ASR レプリケーションに関わるサービスをソース マシン上で停止しておく方法 (Linux OS 詳細)"></a><a id="2-2"></a> 2-2. ASR レプリケーションに関わるサービスをソース マシン上で停止しておく方法 (Linux OS 詳細)</h2><p>ソース マシン上で「vxagent」サービスを停止することでレプリケーションができなくなり、アラートを発報可能です。</p>
+<p>今回は例として SLES OS の マシン上で「vxagent」サービスを停止してみます。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/f3591578-9a1d-4706-ac73-2cdf6eda9e06"></p>
+<p>「vxagent」サービスの状態を確認します。<br>正常にレプリケーションできているマシンの場合、下図のように「active」と表示される見込みです。<br><code>systemctl status vxagent</code><br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/324db4e7-aa8f-4219-a558-e20476f59f07"></p>
+<p>「vxagent」サービスの状態を停止します。<br><code>systemctl stop vxagent</code><br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/7a1faaa4-5d05-4183-9c89-bc844ae7e175"></p>
+<p>「vxagent」サービスが「inactive」になったことを確認します。<br><code>systemctl status vxagent</code><br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/2cdaee3b-171e-467e-92d4-3bfc4035f2c3"></p>
+<p>(画面例 : サービスを停止しておよそ 15 分経過後)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/f903603e-df14-4ebb-91cf-ca700c7b558e"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/34680ce3-f95a-417c-9e22-154834dddcfb"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/d028d22d-5e85-41dc-aa03-ba6e833d67b9"></p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/eb57c071-60b7-4ada-8c86-28aeca3403e8"></p>
+<p>(メール例 : 組み込みの Azure Monitor アラート)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/04ba8b03-5db7-487a-b8de-fc6f99014356"></p>
+<p>テスト終了後は、「vxagent」サービスを元に戻しておきます。<br><code>systemctl start vxagent</code></p>
+<p><code>systemctl status vxagent</code><br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/04ae5d93-c899-4a89-a54a-34ccd0d43b1c"></p>
+<p>ASR を意図的に失敗させる方法の案内は、以上となります。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSiteRecovery/How_to_fail_ASR.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">ASR を意図的に失敗させる方法</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/VM_Backup_billing/">Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/HowToUninstallVMSnapshotExtension/">「VMSnapshot」拡張機能のアンインストール手順 (Windows)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">10</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">8</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">27</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">24</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SAPHANA-Backup/" style="font-size: 10px;">Azure SAPHANA Backup</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 11.67px;">Azure SQL Backup</a> <a href="../../tags/Azure-Site-Recovery/" style="font-size: 13.33px;">Azure Site Recovery</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 11.67px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
