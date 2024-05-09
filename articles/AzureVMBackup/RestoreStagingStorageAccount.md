@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて
-date: 2022-10-28 12:00:00
+date: 2024-05-09 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -8,7 +8,7 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-こんにちは、Azure Backup サポートの山本です。
+こんにちは、Azure Backup サポートです。
 今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。
 
 
@@ -35,6 +35,8 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#stor
 ・リストア先 (=ターゲット) のサブスクリプション内およびコンテナーと同じリージョンにある
 ・ZRS 以外の冗長性 (LRS・GRS)
 ・Premium Storage アカウントではない
+・(ストレージアカウントのネットワーク設定でパブリックアクセスが制限されている場合) 例外の "信頼されたサービスの一覧にある Azure サービスがこのストレージ アカウントにアクセスすることを許可します" をチェックしている
+・階層型名前空間 (HierarchicalNamespace) が有効化されていない
 
 ### <a id="3"></a>3.リストアされた後にストレージ アカウントに残るファイルについて
 マネージドディスクの Azure VM の復元が完了しますと対象のストレージ アカウントの中に下記のファイルが残ります。
