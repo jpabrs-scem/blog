@@ -6,16 +6,16 @@
   
   <title>Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="こんにちは、Azure Backup サポートの山本です。今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。 目次 1. 公開情報 (Docs)2. 利用できるストレージ アカウント3. リストアされた後にストレージ アカウントに残るファイルについて4. 参考画面ショット  1. 公開情報 (">
+  <meta name="description" content="こんにちは、Azure Backup サポートです。今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。 目次 1. 公開情報 (Docs)2. 利用できるストレージ アカウント3. リストアされた後にストレージ アカウントに残るファイルについて4. 参考画面ショット  1. 公開情報 (Doc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="こんにちは、Azure Backup サポートの山本です。今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。 目次 1. 公開情報 (Docs)2. 利用できるストレージ アカウント3. リストアされた後にストレージ アカウントに残るファイルについて4. 参考画面ショット  1. 公開情報 (">
+<meta property="og:description" content="こんにちは、Azure Backup サポートです。今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。 目次 1. 公開情報 (Docs)2. 利用できるストレージ アカウント3. リストアされた後にストレージ アカウントに残るファイルについて4. 参考画面ショット  1. 公開情報 (Doc">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/198330594-30a09f02-cb39-41c8-ae39-1ab9a21779ac.png">
-<meta property="article:published_time" content="2022-10-28T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-10T05:53:29.055Z">
+<meta property="article:published_time" content="2024-05-09T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-10T05:58:45.532Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
@@ -99,19 +99,19 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-10-28T03:00:00.000Z" itemprop="datePublished">2022-10-28</time>
+  <time datetime="2024-05-09T03:00:00.000Z" itemprop="datePublished">2024-05-09</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+cbc94782-03f5-5d22-b491-10da57e8164d%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%A7%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AB%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%81%AE%E5%A0%B4%E6%89%80%E3%81%A8%E3%81%97%E3%81%A6%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8+%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FRestoreStagingStorageAccount%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FRestoreStagingStorageAccount.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FRestoreStagingStorageAccount.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/" data-id="clw09hiic00240nqn512xgj70" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/" data-id="clw09obbq00240nogg4hqhul4" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>こんにちは、Azure Backup サポートの山本です。<br>今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。</p>
+<p>こんにちは、Azure Backup サポートです。<br>今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
 <p><a href="#1">1. 公開情報 (Docs)</a><br><a href="#2">2. 利用できるストレージ アカウント</a><br><a href="#3">3. リストアされた後にストレージ アカウントに残るファイルについて</a><br><a href="#4">4. 参考画面ショット</a></p>
 <hr>
@@ -122,7 +122,7 @@
 <blockquote>
 <p>抜粋:リージョン間復元では、 ステージング場所 (ストレージ アカウントの場所) は、Recovery Services コンテナーが セカンダリ リージョンとして扱うリージョンに存在する必要があります。 たとえば、Recovery Services コンテナーは米国東部 2 リージョンにあります (geo 冗長性とリージョン間復元が有効になっています)。 これは、セカンダリ リージョンは米国中部であることを意味します。 そのため、VM のリージョン間復元を行なうには、米国中部でストレージ アカウントを作成する必要があります。<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/availability-zones/cross-region-replication-azure">すべての地域の Azure リージョン間レプリケーションのペアリングに関する記事</a>をご覧ください。</p>
 </blockquote>
-<h3 id="2-利用できるストレージ-アカウント"><a href="#2-利用できるストレージ-アカウント" class="headerlink" title="2. 利用できるストレージ アカウント"></a><a id="2"></a>2. 利用できるストレージ アカウント</h3><p>選択できるストレージ アカウントは下記の条件を満たすものです。<br>・リストア先 (=ターゲット) のサブスクリプション内およびコンテナーと同じリージョンにある<br>・ZRS 以外の冗長性 (LRS・GRS)<br>・Premium Storage アカウントではない</p>
+<h3 id="2-利用できるストレージ-アカウント"><a href="#2-利用できるストレージ-アカウント" class="headerlink" title="2. 利用できるストレージ アカウント"></a><a id="2"></a>2. 利用できるストレージ アカウント</h3><p>選択できるストレージ アカウントは下記の条件を満たすものです。<br>・リストア先 (=ターゲット) のサブスクリプション内およびコンテナーと同じリージョンにある<br>・ZRS 以外の冗長性 (LRS・GRS)<br>・Premium Storage アカウントではない<br>・(ストレージアカウントのネットワーク設定でパブリックアクセスが制限されている場合) 例外の “信頼されたサービスの一覧にある Azure サービスがこのストレージ アカウントにアクセスすることを許可します” をチェックしている<br>・階層型名前空間 (HierarchicalNamespace) が有効化されていない</p>
 <h3 id="3-リストアされた後にストレージ-アカウントに残るファイルについて"><a href="#3-リストアされた後にストレージ-アカウントに残るファイルについて" class="headerlink" title="3.リストアされた後にストレージ アカウントに残るファイルについて"></a><a id="3"></a>3.リストアされた後にストレージ アカウントに残るファイルについて</h3><p>マネージドディスクの Azure VM の復元が完了しますと対象のストレージ アカウントの中に下記のファイルが残ります。<br>下記の通り、ストレージ アカウントにファイルが残るかおよび、どのファイルが残るかはリストア シナリオによって異なります。</p>
 <table>
 <thead>
@@ -238,19 +238,19 @@
     
 <nav id="article-nav">
   
-    <a href="../../DPM&MABS/Error_58_NoDiskSpace/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureSiteRecovery/How_to_fail_ASR/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          空き領域があるのに、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する場合の対処方法
+          ASR を意図的に失敗させる方法
         
       </div>
     </a>
   
   
-    <a href="../../AzureMigrate/RegisterApplianceFromOVA/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../HowToCheckRetentionPeriodForVMBackup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure Migrate で PE プロジェクトに ova からデプロイしたアプライアンスを登録する手順</div>
+      <div class="article-nav-title">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</div>
     </a>
   
 </nav>
@@ -273,6 +273,10 @@
           </li>
         
           <li>
+            <a href="">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
+          </li>
+        
+          <li>
             <a href="../HowToCheckRetentionPeriodForVMBackup/">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</a>
           </li>
         
@@ -282,10 +286,6 @@
         
           <li>
             <a href="../../AzureBackupGeneral/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
-          </li>
-        
-          <li>
-            <a href="../VM_Backup_billing/">Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</a>
           </li>
         
       </ul>
@@ -308,7 +308,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/10/">2022 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
