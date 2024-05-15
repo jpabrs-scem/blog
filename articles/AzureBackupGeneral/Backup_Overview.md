@@ -42,9 +42,9 @@ Azure Backup サービスでは、Micosoft Azure クラウド プラットフォ
 
 > [!TIP]
 > Azure Backup についてより詳しく確認したい場合は以下のドキュメントを参照ください。  
+> ---
 > ・ Azure Backup とは - Azure Backup | Microsoft Learn  
-> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-overview
->  
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-overview  
 > ・アーキテクチャの概要 - Azure Backup | Microsoft Learn  
 > 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture
 
@@ -55,7 +55,7 @@ Azure Backup サービスでは、Micosoft Azure クラウド プラットフォ
 |  バックアップの種類  |  バックアップ対象  |  復元方法  |
 | :---- | :---- |  :---- | 
 |  [Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction) | Azure VM | <ul> <li>新しい VM として復元</li> <li>VM にアタッチされていたディスクの復元</li> <li>既存 (バックアップ元) VM のディスクを置き換えて復元 </li> <li>VM 内にある特定ファイルの復元</li> </ul> |
-|  [Azure ディスク バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview) | Azure Managed Disks  | <ul> <li>復元して新しいディスクとして作成</li>  </ul> | 
+|  [Azure ディスク バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview) | Azure Managed Disks  | <ul> <li>新しいディスクとして復元</li>  </ul> | 
 |  [Azure ファイル共有バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview?tabs=snapshot) | ストレージ アカウントのファイル共有 | <ul> <li>Azure ファイル共有すべての復元</li> <li>個々のファイルまたはフォルダーの復元</li> </ul> | 
 |  [Azure BLOB バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview?tabs=operational-backup)  | ストレージ アカウントの BLOB Storage | <ul> <li>ストレージ アカウント内のすべての BLOB の復元</li> <li>選択したコンテナーの復元</li> <li>プレフィックスの一致を使用して特定の BLOB の復元</li> </ul> |
 |  [Azure VM 内の SQL Server をバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database)  | Azure VM 内の  SQL Server の データベース <br> ※ 完全バックアップ、差分バックアップ、ログ バックアップに対応 <br> ※ Always On 可用性グループのバックアップに対応 | <ul> <li>別のデータベースに復元</li> <li>元のデータベースを上書きして復元</li> <li>ファイルとして復元</li> </ul> |
@@ -68,6 +68,7 @@ Azure Backup サービスでは、Micosoft Azure クラウド プラットフォ
 
 > [!NOTE]
 > (注1) 2024年5月現在 Azure Database for MySQL のバックアップ機能が Public Preview となっています。  
+> ---
 > ・ Public preview: Azure Backup supports long term retention for backup of Azure Database for MySQL– Flexible Server | Azure updates | Microsoft Azure  
 > 　 https://azure.microsoft.com/en-US/updates/mysql-flexibleserverlongtermretenttion/
 
@@ -86,7 +87,8 @@ Azure portal にて`バックアップ センター`ダッシュボードに移�
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/85d52605-3642-47c2-b8bd-321ebbf4791c" width="600px">
 
 > [!TIP]
-> Recovery Services コンテナーとバックアップ コンテナーについて詳細を確認したい場合は下記ドキュメントを参照ください。  
+> Recovery Services コンテナーとバックアップ コンテナーについて詳細を確認したい場合は下記ドキュメントを参照ください。
+> ---  
 > ・Recovery Services コンテナーの概要 - Azure Backup | Microsoft Learn  
 > 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-recovery-services-vault-overview  
 > ・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Learn  
@@ -95,8 +97,10 @@ Azure portal にて`バックアップ センター`ダッシュボードに移�
 > 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-vault-overview  
 > ・バックアップ コンテナーの作成と管理 - Azure Backup | Microsoft Learn  
 > 　 https://learn.microsoft.com/ja-jp/azure/backup/create-manage-backup-vault  
-> ---
+
+> [!TIP]
 > バックアップ データの保存先については下記ドキュメントを参照ください。  
+> ---  
 > ・Recovery Services コンテナーとバックアップ コンテナーについて | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
 > 　 https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/  
 
@@ -109,10 +113,13 @@ Azure Backup でバックアップをスケジュールするには、**バッ�
 
 > [!TIP]
 > バックアップ ポリシーについて詳細を確認したい場合は下記ドキュメントを参照ください。  
+> ---  
 > ・バックアップ ポリシーの基礎 | アーキテクチャの概要 - Azure Backup | Microsoft Learn  
 > 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture#backup-policy-essentials  
-> ---
+
+> [!TIP]
 > バックアップの頻度とバックアップデータの保持期間については下記ドキュメントを参照ください。  
+> ---
 > ・Azure Backup の 保持期間について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
 > 　 https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/
 
@@ -127,17 +134,28 @@ Azure Backup でバックアップをスケジュールするには、**バッ�
 #### DR について
 Azure Backup では DR の一環として CRR (クロス リージョン リストア) の利用が可能です。  
 適用できるバックアップ ソリューションは以下です。  
-* Azure VM バックアップ
-* Azure VM 内の SQL Server のバックアップ
-* Azure VM 内の SAP HANA データベースのバックアップ
+* [Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#cross-region-restore)
+* [Azure VM 内の SQL Server のバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/restore-sql-database-azure-vm#cross-region-restore)
+* [Azure VM 内の SAP HANA データベースのバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-restore#cross-region-restore) 
+* [MARS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/about-restore-microsoft-azure-recovery-services#cross-region-restore)
+* [Azure Database for PostgreSQL をバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/restore-azure-database-postgresql#restore-databases-across-regions)
+* [Azure Kubernetes Service (AKS) バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-restore#restore-in-secondary-region-preview) 
+※当ソリューションでの CRR はプレビュー機能となっております。
 
 ただし CRR を利用するためには Recovery Service コンテナーの冗長性オプションが「GRS」かつ「リージョンをまたがる復元」が有効に設定されてある必要があります。
 > [!TIP]
 > CRR の詳細については下記ドキュメントをご参照ください。  
-> ・ Azure VM Backup における CRR (クロスリージョン リストア) について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)   
-> 　 https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/
 > ---
+> ・ Azure VM Backup における CRR (クロスリージョン リストア) について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
+> 　 https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/  
+> ・ リージョンをまたがる復元 | Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Learn  
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-cross-region-restore  
+> ・ Azure portal を使用してリージョン間復元を実行する | Backup コンテナーの作成と管理 - Azure Backup | Microsoft Learn   
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/create-manage-backup-vault#perform-cross-region-restore-using-azure-portal  
+
+> [!TIP]
 > Azure VM Backup と Azure Site Recovery それぞれの DR 要件について下記弊社ブログにて紹介しております。  
+> ---
 > ・Azure VM Backup と Azure Site Recovery による DR 要件について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
 > 　 https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/#2-Azure-VM-Backup-%E3%81%A8-Azure-Site-Recovery-%E3%81%AE%E6%AF%94%E8%BC%83
 
@@ -421,6 +439,13 @@ Azure Backup の各バックアップソリューションについてよくい�
 * Azure VM バックアップを任意のタイミングのみで取得したい | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
 https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/
 
+> [!NOTE]
+> 「Azure ディスク バックアップ」 と 「ディスクのスナップショット」は Azure VM Backup とは異なり整合性が常にクラッシュ整合性となります。
+> 詳細については下記をご覧ください。
+> ---
+> ・Azure VM Backupにおける整合性について - 3.クラッシュ整合性
+> 　 https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3
+
 ### Q2. 「共有ディスクのバックアップ」はできますか？
 【Azure VM Backup で共有ディスクを含めてバックアップしたい場合】  
 **Azure VM Backup** では残念ながら共有ディスクをバックアップすることはサポートしておりません。
@@ -440,12 +465,13 @@ https://learn.microsoft.com/ja-jp/azure/backup/selective-disk-backup-restore
 
 > [!NOTE]
 > MARS バックアップを利用して共有ディスクをバックアップする場合の注意点 
+> --- 
 > ・ 「共有ディスク」 が NTFS であり、「クラスター共有ボリューム」には割り当てられていなければ、MARS バックアップとしてバックアップは可能です。  
 > ・ MARS はクラスター リソースを識別することができませんが、ローカル ディスクとして識別されているボリュームであれば、バックアップが可能です。  
 > ・ 「クラスター サポート」とは、共有ボリュームがオンラインになっている場所 (ノード) を気にすることなく継続的にバックアップが可能であるか、という意味になりますが、MARS バックアップにおいては、これをサポートしていません。
 
 ### Q3. 「Azure VM 内の SQL Server バックアップ」 (または Azure VM 内の SAP HANA) と 「Azure VM バックアップ」の違いは何ですか？
-Azure VM にある SQL Serverに対し、「Azure Backup」として提供できるサービスとしては  **Azure VM Backup** ソリューションと **Azure VM 内の SQL Server をバックアップ** ソリューションの両方でバックアップが可能です。  
+Azure VM にある SQL Serverに対し、「Azure Backup」として提供できるサービスとしては  **Azure VM Backup** と **Azure VM 内の SQL Server をバックアップ** の両方でバックアップが可能です。  
 **Azure VM 内の SQL Server をバックアップ** では データベースのみのバックアップであり、VM 自体がバックアップされません。  
 それに対して **Azure VM Backup** では VM 自体がバックアップされ、その中に SQL Server が存在していれば、それも含まれてバックアップされる形になります。  
 そのため、SQL Server だけでなく、VM 自体の復元が必要な場合は **Azure VM Backup** の利用をご検討ください。  
