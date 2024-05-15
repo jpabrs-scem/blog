@@ -17,7 +17,9 @@ disableDisclaimer: false
 [1. Azure Backup の概要](#1)  
    [  1.1 Azure Backup のバックアップ ソリューション一覧表](#1-1)  
    [  1.2 Recovery Services コンテナー と バックアップ コンテナーについて](#1-2)  
-   [  1.3 バックアップ ポリシー](#1-3)  
+   [  1.3 バックアップ ポリシー](#1-3)
+   [  1.4 Azure Backup における DR / RTO / RPO について](#1-4)
+   [  1.5 Azure Backup の価格](#1-5)
 [2. Azure Backup のバックアップ ソリューションの詳細](#2)  
    [  2.1 Azure VM Backup](#2-1)  
    [  2.2 Azure ディスク バックアップ](#2-2)  
@@ -40,10 +42,11 @@ Azure Backup サービスでは、Micosoft Azure クラウド プラットフォ
 
 > [!TIP]
 > Azure Backup についてより詳しく確認したい場合は以下のドキュメントを参照ください。  
-> ・Azure Backup とは - Azure Backup | Microsoft Learn  
->   https://learn.microsoft.com/ja-jp/azure/backup/backup-overview
+> ・ Azure Backup とは - Azure Backup | Microsoft Learn  
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-overview
+>  
 > ・アーキテクチャの概要 - Azure Backup | Microsoft Learn  
->   https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture
 
 ## <a id="1-1"></a> 1.1 Azure Backup のバックアップ ソリューション一覧表
 下記の表では Azure Backup で提供されている各バックアップソリューションとそれぞれでバックアップおよび復元できる対象をご紹介します。  
@@ -63,9 +66,10 @@ Azure Backup サービスでは、Micosoft Azure クラウド プラットフォ
 |  [DPM / MABS バックアップ]()  | オンプレミスの VM (Hyper-V と VMware) やオンプレミスのワークロード(SQL server や Exchange など) | // ここら辺はまだちゃんと理解できていない※あとで廣瀬さん、DAN さんに書いてもらう |
 |  [Azure Kubernetes Service (AKS) バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview)  | AKS クラスター (クラスター リソースとクラスターにアタッチされている永続ボリューム) | <ul> <li> 既存の (バックアップ元) の AKS クラスターに復元</li> <li>別の AKS クラスターとして復元</li> </ul> |
 
-* (注1) 2024年5月現在 Azure Database for MySQL のバックアップ機能が Public Preview となっています。  
-Public preview: Azure Backup supports long term retention for backup of Azure Database for MySQL– Flexible Server | Azure updates | Microsoft Azure  
-https://azure.microsoft.com/en-US/updates/mysql-flexibleserverlongtermretenttion/
+> [!NOTE]
+> (注1) 2024年5月現在 Azure Database for MySQL のバックアップ機能が Public Preview となっています。  
+> ・ Public preview: Azure Backup supports long term retention for backup of Azure Database for MySQL– Flexible Server | Azure updates | Microsoft Azure  
+> 　 https://azure.microsoft.com/en-US/updates/mysql-flexibleserverlongtermretenttion/
 
 // TODO : DPM / MABS バックアップについて追記する
 
@@ -81,33 +85,36 @@ Azure portal にて`バックアップ センター`ダッシュボードに移�
 コンテナーの作成画面に移動したら、ここで利用したいコンテナーの種類を選択して作成を開始することができます。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/85d52605-3642-47c2-b8bd-321ebbf4791c" width="600px">
 
-
 > [!TIP]
 > Recovery Services コンテナーとバックアップ コンテナーについて詳細を確認したい場合は下記ドキュメントを参照ください。  
 > ・Recovery Services コンテナーの概要 - Azure Backup | Microsoft Learn  
->   https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-recovery-services-vault-overview  
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-recovery-services-vault-overview  
 > ・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Learn  
->   https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault  
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault  
 > ・バックアップ コンテナーの概要 - Azure Backup | Microsoft Learn  
->   https://learn.microsoft.com/ja-jp/azure/backup/backup-vault-overview  
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-vault-overview  
 > ・バックアップ コンテナーの作成と管理 - Azure Backup | Microsoft Learn  
->   https://learn.microsoft.com/ja-jp/azure/backup/create-manage-backup-vault  
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/create-manage-backup-vault  
+> ---
+> バックアップ データの保存先については下記ドキュメントを参照ください。  
 > ・Recovery Services コンテナーとバックアップ コンテナーについて | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
->   https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/  
+> 　 https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/  
 
 ### <a id="1-3"></a> 1.3 バックアップ ポリシーについて
 Azure Backup でバックアップをスケジュールするには、**バックアップ ポリシー**を利用します。  
 バックアップ ポリシーはコンテナーごとに管理され、各バックアップ ソリューション用に作成することができます。  
 バックアップ ポリシーではバックアップ ソリューションごとに設定できる内容は異なりますが、基本的に以下を設定します。  
 * スケジュール : いつバックアップをするか
-* 保有期間 : 復旧ポイントをどれだけの期間保有する必要があるか
+* 保持期間 : 復旧ポイントをどれだけの期間保有する必要があるか
 
 > [!TIP]
 > バックアップ ポリシーについて詳細を確認したい場合は下記ドキュメントを参照ください。  
 > ・バックアップ ポリシーの基礎 | アーキテクチャの概要 - Azure Backup | Microsoft Learn  
->   https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture#backup-policy-essentials  
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture#backup-policy-essentials  
+> ---
+> バックアップの頻度とバックアップデータの保持期間については下記ドキュメントを参照ください。  
 > ・Azure Backup の 保持期間について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
->   https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/
+> 　 https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/
 
 #### 利用方法
 バックアップ ポリシーは Recovery Services コンテナーとバックアップ コンテナーそれぞれで管理できます。
@@ -115,6 +122,48 @@ Azure Backup でバックアップをスケジュールするには、**バッ�
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/ccff1128-f976-49b6-bbf6-f8b8be8b7a7f" width="600px">
 * バックアップ コンテナーの場合  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/4725ec33-fc95-47d4-9c90-2c6cbe84167a" width="600px">
+
+### <a id="1-4"></a> 1.4 Azure Backup における DR / RTO / RPO について
+#### DR について
+Azure Backup では DR の一環として CRR (クロス リージョン リストア) の利用が可能です。  
+適用できるバックアップ ソリューションは以下です。  
+* Azure VM バックアップ
+* Azure VM 内の SQL Server のバックアップ
+* Azure VM 内の SAP HANA データベースのバックアップ
+
+ただし CRR を利用するためには Recovery Service コンテナーの冗長性オプションが「GRS」かつ「リージョンをまたがる復元」が有効に設定されてある必要があります。
+> [!TIP]
+> CRR の詳細については下記ドキュメントをご参照ください。  
+> ・ Azure VM Backup における CRR (クロスリージョン リストア) について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)   
+> 　 https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/
+> ---
+> Azure VM Backup と Azure Site Recovery それぞれの DR 要件について下記弊社ブログにて紹介しております。  
+> ・Azure VM Backup と Azure Site Recovery による DR 要件について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
+> 　 https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/#2-Azure-VM-Backup-%E3%81%A8-Azure-Site-Recovery-%E3%81%AE%E6%AF%94%E8%BC%83
+
+#### RTO について
+Azure Backup では RTO (Recovery Time Objective) については明確に定められておらず、またバックアップやリストアの時間を見積もることができません。
+これは Azure サービスがマルチテナント サービスであり、 Azure Backup サービスにおける所要時間はバックアップ / リストア対象のバックアップ アイテムの転送データサイズのみではなく、他のリソース、他のユーザー様の稼働状況、帯域の状況などにも処理時間は左右されるためです。  
+詳細については下記ドキュメントをご参照ください。  
+* Azure Backup の バックアップ / リストア 所要時間について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
+https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme
+
+#### RPO について
+RPO (Recovery Point Objective) は利用するバックアップ ソリューションによって異なります。  
+各バックアップ ソリューションによって指定できるバックアップ頻度が異なるためです。  
+例えば Azure ディスク バックアップの場合は最短 1 時間ごとのバックアップを指定することができますが、Azure VM バックアップでは最短でも 4 時間ごとのバックアップとなります。  
+バックアップ頻度については [ 1.3 バックアップ ポリシー](#1-3) の`ヒント`をご参照ください。
+
+### <a id="1-5"></a> 1.5 Azure Backup の価格
+
+Azure Backup の価格は利用するバックアップ ソリューション、バックアップするデータ量や保持期間など、多くの要素によって決定されます。
+下記ドキュメントにて説明されておりますため、詳細はそちらをご参照ください。
+* Azure Backup の価格 - Azure Backup | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-pricing
+* 料金計算ツールを用いた Azure VM Backup の料金見積もりについて | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
+https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/
+* Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
+https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/
 
 ## <a id="2"></a> 2. Azure Backup のバックアップ ソリューションの詳細
 ### <a id="2-1"></a> 2.1 Azure VM Backup 
@@ -208,6 +257,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-support-matrix?tabs=o
 https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-configure-manage?tabs=operational-backup
 * Azure の BLOB を復元する - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/blob-restore?tabs=operational-backup
+
 
 ### <a id="2-5"></a> 2.5 Azure VM 内の SQL Server をバックアップ
 Azure VM 内にある SQL Server をバックアップすることができます。  
@@ -333,6 +383,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-restore-windows-serv
 // TODO : 後で廣瀬さん、ダンさんに概要の記載だけお願いする。
 // 簡単な利用方法の記載も可能であれば、お願いする。
 
+
 ### <a id="2-11"></a> 2.11 Azure Kubernetes Service (AKS) バックアップ
 AKS クラスターにデプロイされている AKS ワークロードと永続ボリュームをバックアップすることができます。
 バックアップの構成や復旧ポイントの管理はバックアップ コンテナーにて行うことができます。  
@@ -352,6 +403,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-
 https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-backup?source=recommendations
 * Azure Backup を使用して Azure Kubernetes Service (AKS) を復元する - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-restore
+
 
 ## <a id="3"></a> 3. よくいただくお問合せ
 Azure Backup の各バックアップソリューションについてよくいただくお問い合わせと回答を記載させていただきます。
