@@ -137,10 +137,15 @@ Azure Backup では DR の一環として CRR (クロス リージョン リス�
 * [Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#cross-region-restore)
 * [Azure VM 内の SQL Server のバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/restore-sql-database-azure-vm#cross-region-restore)
 * [Azure VM 内の SAP HANA データベースのバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-restore#cross-region-restore) 
-* [MARS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/about-restore-microsoft-azure-recovery-services#cross-region-restore)
+* [MARS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/about-restore-microsoft-azure-recovery-services#cross-region-restore) (注1)
 * [Azure Database for PostgreSQL をバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/restore-azure-database-postgresql#restore-databases-across-regions)
-* [Azure Kubernetes Service (AKS) バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-restore#restore-in-secondary-region-preview) 
-※当ソリューションでの CRR はプレビュー機能となっております。
+* [Azure Kubernetes Service (AKS) バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-restore#restore-in-secondary-region-preview) (注1)
+
+> [!NOTE]
+> (注1) 2024年5月現在 MARS バックアップ と Azure Kubernetes Service (AKS) バックアップでの CRR 機能は Public Preview となっています。  
+> --- 
+> ・ Preview: Cross Region Restore (CRR) for Recovery Services Agent (MARS) using Azure Backup | Azure の更新情報 | Microsoft Azure   
+> 　 https://azure.microsoft.com/ja-jp/updates/preview-mars-crr/
 
 ただし CRR を利用するためには Recovery Service コンテナーの冗長性オプションが「GRS」かつ「リージョンをまたがる復元」が有効に設定されてある必要があります。
 > [!TIP]
