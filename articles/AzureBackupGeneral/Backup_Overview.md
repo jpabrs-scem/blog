@@ -1,6 +1,6 @@
 ---
 title: Azure Backup の 概要
-date: 2024-05-7 12:00:00
+date: 2024-05-31 12:00:00
 tags:
   - Information
   - Azure Backup General
@@ -63,7 +63,7 @@ Azure Backup サービスでは、Micosoft Azure クラウド プラットフォ
 |  [Azure Database for PostgreSQL をバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview)  | Azure Database for PostgreSQL サーバーのデータベース | <ul> <li>別のデータベースとして復元</li> <li>ファイルとして復元</li> </ul> |
 |  [Azure Database for MySQL をバックアップ (注1)](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server-about)  | Azure Database for MySQL サーバーのデータベース | <ul> <li>ファイルとして復元</li> </ul> |
 |  [MARS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-about-mars)  | オンプレミス マシン / Azure VM の Windows OS マシン上 のファイル、フォルダーとシステム状態 | <ul> <li>ファイルとフォルダーの復元</li> <li>ボリューム レベルでの復元</li> <li>システム状態の復元</li> </ul> |
-|  [DPM / MABS バックアップ]()  | オンプレミスの VM (Hyper-V と VMware) やオンプレミスのワークロード(SQL server や Exchange など) | // ここら辺はまだちゃんと理解できていない※あとで廣瀬さん、DAN さんに書いてもらう |
+|  [DPM / MABS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs)  | オンプレミスの VM (Hyper-V と VMware) やオンプレミスのワークロード(SQL server や Exchange など) | 復元できる方法については保護する各ワークロードによって異なります。 <br> 具体的な復元方法は [2.10 DPM / MABS バックアップ > 復元方法](#2-10-restore) をご参照ください |
 |  [Azure Kubernetes Service (AKS) バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview)  | AKS クラスター (クラスター リソースとクラスターにアタッチされている永続ボリューム) | <ul> <li> 既存の (バックアップ元) の AKS クラスターに復元</li> <li>別の AKS クラスターとして復元</li> </ul> |
 
 > [!NOTE]
@@ -72,12 +72,10 @@ Azure Backup サービスでは、Micosoft Azure クラウド プラットフォ
 > ・ Public preview: Azure Backup supports long term retention for backup of Azure Database for MySQL– Flexible Server | Azure updates | Microsoft Azure  
 > 　 https://azure.microsoft.com/en-US/updates/mysql-flexibleserverlongtermretenttion/
 
-// TODO : DPM / MABS バックアップについて追記する
-
 ### <a id="1-2"></a> 1.2 Recovery Services コンテナー と バックアップ コンテナーについて
-Azure Backup を利用するためには、利用する Azure Backup の種類によって、**Recovery Services コンテナー**もしくは**バックアップ コンテナー**をまず作成する必要があります。
-この 2 種類のコンテナーはバックアップ データを格納する Azure のストレージ エンティティです。  
-バックアップ データの格納以外にも、バックアップ ポリシー、バックアップの構成、復旧ポイントなどを一元的に管理することができます。  
+Azure Backup を利用するためには、最初に Azure 上にバックアップ データを保存するストレージを作成する必要があります。  
+このストレージは、**Recovery Services コンテナー**、もしくは**バックアップ コンテナー**と呼ばれ、利用する Azure Backup ソリューションの種類によって、いずれかを必ず作成します。  
+この 2 種類のコンテナーは、バックアップ データを格納する Azure のストレージ エンティティです。  
 
 #### 利用方法
 Azure portal にて`バックアップ センター`ダッシュボードに移動し、`概要`ペインで`コンテナー`を選択します。  
@@ -106,7 +104,7 @@ Azure portal にて`バックアップ センター`ダッシュボードに移�
 
 ### <a id="1-3"></a> 1.3 バックアップ ポリシーについて
 Azure Backup でバックアップをスケジュールするには、**バックアップ ポリシー**を利用します。  
-バックアップ ポリシーはコンテナーごとに管理され、各バックアップ ソリューション用に作成することができます。  
+バックアップ ポリシーは Recovery Services コンテナーもしくはバックアップ コンテナーごとに管理され、各バックアップ ソリューション用に作成することができます。  
 バックアップ ポリシーではバックアップ ソリューションごとに設定できる内容は異なりますが、基本的に以下を設定します。  
 * スケジュール : いつバックアップをするか
 * 保持期間 : 復旧ポイントをどれだけの期間保有する必要があるか
@@ -131,7 +129,8 @@ Azure Backup でバックアップをスケジュールするには、**バッ�
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/4725ec33-fc95-47d4-9c90-2c6cbe84167a" width="600px">
 
 ### <a id="1-4"></a> 1.4 Azure Backup における DR / RTO / RPO について
-#### DR について
+#### DR (Disaster recovery) について
+DR (=Disaster Recovery) は、災害時のシステムの復旧やデータロストを未然に防ぐ対策を指します。
 Azure Backup では DR の一環として CRR (クロス リージョン リストア) の利用が可能です。  
 適用できるバックアップ ソリューションは以下です。  
 * [Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#cross-region-restore)
@@ -164,23 +163,41 @@ Azure Backup では DR の一環として CRR (クロス リージョン リス�
 > ・Azure VM Backup と Azure Site Recovery による DR 要件について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
 > 　 https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/#2-Azure-VM-Backup-%E3%81%A8-Azure-Site-Recovery-%E3%81%AE%E6%AF%94%E8%BC%83
 
-#### RTO について
-Azure Backup では RTO (Recovery Time Objective) については明確に定められておらず、またバックアップやリストアの時間を見積もることができません。
+#### RTO (Recovery Time Objective) について
+RTO (=Recovery Time Objective) は「目標復旧時間」のことで、システム停止時点から復旧までに所要する目標時間を指します。
+Azure Backup では RTO については明確に定められておらず、またバックアップやリストアの所要時間を見積もることができません。
 これは Azure サービスがマルチテナント サービスであり、 Azure Backup サービスにおける所要時間はバックアップ / リストア対象のバックアップ アイテムの転送データサイズのみではなく、他のリソース、他のユーザー様の稼働状況、帯域の状況などにも処理時間は左右されるためです。  
 詳細については下記ドキュメントをご参照ください。  
 * Azure Backup の バックアップ / リストア 所要時間について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
 https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme
 
-#### RPO について
-RPO (Recovery Point Objective) は利用するバックアップ ソリューションによって異なります。  
+> [!TIP]
+> RTO と RPO について、より詳細な説明は下記の公開ドキュメントをご参照ください。  
+> ---
+> ・ Azure Backup 用語集 - Azure Backup | Microsoft Docs  
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#recovery-point-objective-rpo
+
+#### RPO (Recovery Point Objective) について
+RPO (=Recovery Point Objective) は「目標復旧時点」のことで、システムが停止した時に、過去のどの時点のデータまでを復旧できるかの目標時点を指します。
+RPO は利用するバックアップ ソリューションによって異なります。  
 各バックアップ ソリューションによって指定できるバックアップ頻度が異なるためです。  
 例えば Azure ディスク バックアップの場合は最短 1 時間ごとのバックアップを指定することができますが、Azure VM バックアップでは最短でも 4 時間ごとのバックアップとなります。  
 バックアップ頻度については [ 1.3 バックアップ ポリシー](#1-3) の`ヒント`をご参照ください。
 
-### <a id="1-5"></a> 1.5 Azure Backup の価格
+> [!WARNING]
+> セカンダリ リージョンへのデータのレプリケーションは、プライマリリージョンへのバックアップジョブが完了 (最大24時間) してから 12 時間以内にレプリケーションが完了するように動作します。
+> そのため、プライマリリージョンのバックアップジョブ完了とセカンダリ リージョンへのレプリケーションにはラグが生じます。
+> 詳細は下記の公開ドキュメントをご参照ください。
+> ・ Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region
 
-Azure Backup の価格は利用するバックアップ ソリューション、バックアップするデータ量や保持期間など、多くの要素によって決定されます。
-下記ドキュメントにて説明されておりますため、詳細はそちらをご参照ください。
+### <a id="1-5"></a> 1.5 Azure Backup の価格
+基本的には、保護対象のリソースのインスタンス数、保全データサイズなどに課金されます。  
+バックアップソリューションにより課金体系が異なる場合がありますので、詳しくは以下のドキュメントを参照いただくようお願いいたします。  
+* 料金 - クラウド バックアップ | Microsoft Azure  
+https://azure.microsoft.com/ja-jp/pricing/details/backup/
+* 料金計算ツール | Microsoft Azure  
+https://azure.microsoft.com/ja-jp/pricing/calculator/
 * Azure Backup の価格 - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-pricing
 * 料金計算ツールを用いた Azure VM Backup の料金見積もりについて | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
@@ -402,10 +419,58 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-restore-windows-serv
 
 
 ### <a id="2-10"></a> 2.10 DPM / MABS バックアップ
+System Center DPM は、エンタープライズ コンピューターおよびデータのバックアップと復旧を構成、促進、および管理するエンタープライズ ソリューションです。  
+MABS は、オンプレミスの物理サーバー、VM、およびそれらで実行されているアプリをバックアップするために使用できるサーバー製品です。  
+MABS は System Center DPM に基づいており、同様の機能を提供しますが、いくつかの違いがあります。
+詳細は、下記ドキュメントをご参照ください。
+* MABS と System Center DPM のサポート マトリックス - Azure Backup | Microsoft Learn
+https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs
 
-// TODO : 後で廣瀬さん、ダンさんに概要の記載だけお願いする。
-// 簡単な利用方法の記載も可能であれば、お願いする。
+#### 利用方法
+Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
+次にワークロードで`オンプレミス`、バックアップ対象で MABS を使用して保護するワークロードを選択することでバックアップの設定を開始することができます。  
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/2426fa06-df5b-4dc4-b400-657115f6def0" width="300px">  
 
+> [!NOTE]
+> ファイルとフォルダーだけをバックアップする場合は、MARS を使用すること、および下記記事のガイダンスに従って操作することをお勧めします。  
+> ・ MARS エージェントを使用して Windows マシンをバックアップする - Azure Backup | Microsoft Learn  
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-windows-with-mars-agent  
+
+#### <a id="2-10-restore"></a> 復元方法
+
+DPM / MABS を利用してバックアップしたデータの復元方法は保護したワークロードによって異なります。  
+詳細については下記ドキュメントをご参照ください。 
+* バックアップされた Hyper-V 仮想マシンを復旧する | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/back-up-hyper-v-virtual-machines-mabs#recover-backed-up-hyper-v-virtual-machines  
+* バックアップされた仮想マシンを回復する | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines#recover-backed-up-virtual-machines  
+* Azure Backup Server を使用して VMware VM を復元する - Azure Backup | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/restore-azure-backup-server-vmware  
+* Exchange データベースを回復する | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-exchange-mabs#recover-the-exchange-database  
+* MABS を使用して Azure から SharePoint データベースを復元する | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-backup-sharepoint-mabs#restore-a-sharepoint-database-from-azure-using-mabs  
+* Azure からの SQL Server データベースの回復 | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-mabs#recover-a-sql-server-database-from-azure  
+* システム状態または BMR の回復 | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/backup-mabs-system-state-and-bmr#recover-system-state-or-bmr  
+* バックアップされたファイル データの回復 | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/back-up-file-data#recover-backed-up-file-data  
+
+#### 参照リンク
+このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
+* Data Protection Manager | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/system-center/dpm/dpm-overview?view=sc-dpm-2022
+* DPM/MABS について | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs
+* DPM をインストールする | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/system-center/dpm/install-dpm?view=sc-dpm-2022
+* Azure Backup Server のインストールとアップグレード | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-microsoft-azure-backup
+* MABS (Azure Backup Server) V4 の保護マトリックス - Azure Backup | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/backup-mabs-protection-matrix
+* MABS と System Center DPM のサポート マトリックス - Azure Backup | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs
 
 ### <a id="2-11"></a> 2.11 Azure Kubernetes Service (AKS) バックアップ
 AKS クラスターにデプロイされている AKS ワークロードと永続ボリュームをバックアップすることができます。
