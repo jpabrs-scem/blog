@@ -38,7 +38,7 @@ disableDisclaimer: false
 ## <a id="1"></a> 1. Azure Backup の概要
 Azure Backup サービスでは、Micosoft Azure クラウド プラットフォームにデータをバックアップすることができます。  
 オンプレミスや Azure の様々なリソースを簡単にバックアップおよび復元を行うことができ、また一元化された監視と管理を行うためのソリューションを提供します。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/9c7ab400-ac12-41e3-9f06-445561de7e12" width="800px">
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/9c7ab400-ac12-41e3-9f06-445561de7e12">
 
 > [!TIP]
 > Azure Backup についてより詳しく確認したい場合は以下のドキュメントを参照ください。  
@@ -63,7 +63,7 @@ Azure Backup サービスでは、Micosoft Azure クラウド プラットフォ
 |  [Azure Database for PostgreSQL をバックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview)  | Azure Database for PostgreSQL サーバーのデータベース | <ul> <li>別のデータベースとして復元</li> <li>ファイルとして復元</li> </ul> |
 |  [Azure Database for MySQL をバックアップ (注1)](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server-about)  | Azure Database for MySQL サーバーのデータベース | <ul> <li>ファイルとして復元</li> </ul> |
 |  [MARS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-about-mars)  | オンプレミス マシン / Azure VM の Windows OS マシン上 のファイル、フォルダーとシステム状態 | <ul> <li>ファイルとフォルダーの復元</li> <li>ボリューム レベルでの復元</li> <li>システム状態の復元</li> </ul> |
-|  [DPM / MABS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs)  | オンプレミスの VM (Hyper-V と VMware) やオンプレミスのワークロード(SQL server や Exchange など) | 復元できる方法については保護する各ワークロードによって異なります。 <br> 具体的な復元方法は [2.10 DPM / MABS バックアップ > 復元方法](#2-10-restore) をご参照ください |
+|  [DPM / MABS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs)  | オンプレミス マシン / Azure の VM (Hyper-V と VMware など)、オンプレミスや Azure VM 上で実行されているワークロード (SQL server や Exchange など) <br> 具体的なバックアップ対象は [MABS (Azure Backup Server) V4 の保護マトリックス](https://learn.microsoft.com/ja-jp/azure/backup/backup-mabs-protection-matrix) をご参照ください。 | 復元できる方法については保護する各ワークロードによって異なります。 <br> 具体的な復元方法は [2.10 DPM / MABS バックアップ > 復元方法](#2-10-restore) をご参照ください |
 |  [Azure Kubernetes Service (AKS) バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview)  | AKS クラスター (クラスター リソースとクラスターにアタッチされている永続ボリューム) | <ul> <li> 既存の (バックアップ元) の AKS クラスターに復元</li> <li>別の AKS クラスターとして復元</li> </ul> |
 
 > [!NOTE]
@@ -79,10 +79,10 @@ Azure Backup を利用するためには、最初に Azure 上にバックアッ
 
 #### 利用方法
 Azure portal にて`バックアップ センター`ダッシュボードに移動し、`概要`ペインで`コンテナー`を選択します。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/0ef72d75-5962-46a2-805a-0d0a33941ca4" width="600px">
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/0ef72d75-5962-46a2-805a-0d0a33941ca4" width="700px">
 
 コンテナーの作成画面に移動したら、ここで利用したいコンテナーの種類を選択して作成を開始することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/85d52605-3642-47c2-b8bd-321ebbf4791c" width="600px">
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/85d52605-3642-47c2-b8bd-321ebbf4791c" width="700px">
 
 > [!TIP]
 > Recovery Services コンテナーとバックアップ コンテナーについて詳細を確認したい場合は下記ドキュメントを参照ください。
@@ -124,9 +124,9 @@ Azure Backup でバックアップをスケジュールするには、**バッ�
 #### 利用方法
 バックアップ ポリシーは Recovery Services コンテナーとバックアップ コンテナーそれぞれで管理できます。
 * Recovery Services コンテナーの場合  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/ccff1128-f976-49b6-bbf6-f8b8be8b7a7f" width="600px">
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/ccff1128-f976-49b6-bbf6-f8b8be8b7a7f" width="700px">
 * バックアップ コンテナーの場合  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/4725ec33-fc95-47d4-9c90-2c6cbe84167a" width="600px">
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/4725ec33-fc95-47d4-9c90-2c6cbe84167a" width="700px">
 
 ### <a id="1-4"></a> 1.4 Azure Backup における DR / RTO / RPO について
 #### DR (Disaster recovery) について
@@ -221,7 +221,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#sna
 #### 利用方法
 Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
 次にワークロードで`Azure`、バックアップ対象で`仮想マシン`を選択することでバックアップの設定を開始することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/2463356a-ac96-4c37-82ca-08efccaa5837" width="400px">
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/2463356a-ac96-4c37-82ca-08efccaa5837" width="600px">
 
 #### 参照リンク
 このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
@@ -243,7 +243,7 @@ Azure の マネージド ディスクをバックアップすることができ
 #### 利用方法
 Azure Portal にてバックアップ コンテナーを開き、`バックアップ`を選択、  
 次にデータソースの種類で`Azure ディスク`を選択することでバックアップの設定を開始することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/5cc5719e-0bac-414e-9a9d-a5709af12f9b" width="400px">
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/5cc5719e-0bac-414e-9a9d-a5709af12f9b" width="600px">
 
 #### 参照リンク
 このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
@@ -264,7 +264,7 @@ Azure ストレージアカウントのファイル共有をバックアップ�
 #### 利用方法
 Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
 次にワークロードで`Azure`、バックアップ対象で`Azure ファイル共有`を選択することでバックアップの設定を開始することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/8b6b5bc8-95b3-4097-8f1b-08f5016d43b7" width="400px">  
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/8b6b5bc8-95b3-4097-8f1b-08f5016d43b7" width="600px">  
 
 #### 参照リンク
 このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
@@ -285,7 +285,7 @@ Azure ストレージアカウントの BLOB コンテナーをバックアッ�
 #### 利用方法
 Azure Portal にてバックアップ コンテナーを開き、`バックアップ`を選択、  
 次にデータソースの種類で`Azure BLOB (Azure Storage)`を選択することでバックアップの設定を開始することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/a4e8ba67-a51a-4431-a60c-58e88854c2d6" width="400px">  
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/a4e8ba67-a51a-4431-a60c-58e88854c2d6" width="600px">  
 
 #### 参照リンク
 このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
@@ -312,7 +312,7 @@ Azure VM 内にある SQL Server をバックアップすることができま�
 #### 利用方法
 Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
 次にワークロードで`Azure`、バックアップ対象で`Azure VM 内の SQL Server`を選択することでバックアップの設定を開始することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/cf06b38b-7a42-49cc-9d4f-8a6757936c93" width="400px">  
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/cf06b38b-7a42-49cc-9d4f-8a6757936c93" width="600px">  
 
 #### 参照リンク
 このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
@@ -339,7 +339,7 @@ Azure Backup は、SAP による Backint 認定がされており、SAP HANA 側
 #### 利用方法
 Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
 次にワークロードで`Azure`、バックアップ対象で`Azure VM 内の SAP HANA`を選択することでバックアップの設定を開始することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/037e9907-9b8f-4259-b573-b8e5e0c02e08" width="400px"> 
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/037e9907-9b8f-4259-b573-b8e5e0c02e08" width="600px"> 
 
 #### 参照リンク
 このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
@@ -361,7 +361,7 @@ Azure Database for PostgreSQL そのもののバックアップソリューシ�
 #### 利用方法
 Azure Portal にてバックアップ コンテナーを開き、`バックアップ`を選択、  
 次にデータソースの種類で`Azure Database for PostgreSQL サーバー`を選択することでバックアップの設定を開始することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/32a2e9ee-0a07-451c-8822-f6ed16edc4d7" width="400px">  
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/32a2e9ee-0a07-451c-8822-f6ed16edc4d7" width="600px">  
 
 #### 参照リンク
 このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
@@ -383,7 +383,7 @@ Azure Database for MySQL そのもののバックアップソリューション�
 #### 利用方法
 Azure Portal にてバックアップ コンテナーを開き、`バックアップ`を選択、  
 次にデータソースの種類で`Azure Database for MySQL (プレビュー)`を選択することでバックアップの設定を開始することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/aa2621a6-3992-4712-afa1-4b5e791b7b5e" width="400px">  
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/aa2621a6-3992-4712-afa1-4b5e791b7b5e" width="600px">  
 
 #### 参照リンク
 このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
@@ -403,8 +403,12 @@ Microsoft Azure Recovery Services (MARS) エージェントを使用して、フ
 
 #### 利用方法
 Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
-次にワークロードで`オンプレミス`、バックアップ対象で`ファイルとフォルダー`を選択することでバックアップの設定を開始することができます。  
+次にワークロードで`オンプレミス`、バックアップ対象で`ファイルとフォルダー`を選択します。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/88985531-4431-4720-8c3c-b22e75a9abd6" width="300px">  
+
+続いての画面で`Windows Server または Windows クライアント用エージェントのダウンロード`のリンクを選択することで、Recovery Services エージェントをダウンロードできます。  
+インストールし、Recovery Services エージェント UI からバックアップの設定を開始します。  
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/ef1fbc8e-1f71-432b-9dc8-cbdbaa23a5ed" width="700px">  
 
 #### 参照リンク
 このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
@@ -417,7 +421,6 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-windows-with-mars-agent
 * MARS エージェントを使用して Windows Server にファイルを復元する - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-restore-windows-server
 
-
 ### <a id="2-10"></a> 2.10 DPM / MABS バックアップ
 System Center DPM は、エンタープライズ コンピューターおよびデータのバックアップと復旧を構成、促進、および管理するエンタープライズ ソリューションです。  
 MABS は、オンプレミスの物理サーバー、VM、およびそれらで実行されているアプリをバックアップするために使用できるサーバー製品です。  
@@ -428,8 +431,12 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#ab
 
 #### 利用方法
 Azure Portal にて Recovery Services コンテナーを開き、`バックアップ`を選択、  
-次にワークロードで`オンプレミス`、バックアップ対象で MABS を使用して保護するワークロードを選択することでバックアップの設定を開始することができます。  
+次にワークロードで`オンプレミス`、バックアップ対象で MABS を使用して保護するワークロードを選択します。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/2426fa06-df5b-4dc4-b400-657115f6def0" width="300px">  
+
+続いての画面で`ダウンロード`のリンクを選択することで、Microsoft Azure Backup Server (MABS) をダウンロードできます。  
+インストールし、Microsoft Azure Backup Server UI からバックアップの設定を開始します。  
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/db6de149-ec90-42ec-b048-f99f11076c6f" width="700px">  
 
 > [!NOTE]
 > ファイルとフォルダーだけをバックアップする場合は、MARS を使用すること、および下記記事のガイダンスに従って操作することをお勧めします。  
@@ -479,7 +486,7 @@ AKS クラスターにデプロイされている AKS ワークロードと永�
 #### 利用方法
 Azure Portal にてバックアップ コンテナーを開き、`バックアップ`を選択、  
 次にデータソースの種類で`Kubernetes サービス`を選択することでバックアップの設定を開始することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/872e323b-f078-4840-9479-fe2772d8a477" width="400px">  
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/872e323b-f078-4840-9479-fe2772d8a477" width="600px">  
 
 #### 参照リンク
 このバックアップ ソリューションについてさらに詳しく確認したい場合は下記ドキュメントをご参照ください。  
