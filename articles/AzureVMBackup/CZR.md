@@ -28,14 +28,14 @@ CZR を利用するために Recovery Services コンテナーおよび Azure VM
 
 ![image01](https://github.com/jpabrs-scem/blog/assets/109163295/020dae7d-6eca-4b60-b8ee-bec506556efc)
 > [!NOTE]
-> ※1 非ゾーン固定 VM に対して、Recovery Services コンテナー が ZRS の場合のみに CZR が行えて、GRS かつクロス リージョン リストアの場合は CZR が行えない  
-> ※2 Recovery Services コンテナーが GRS かつクロス リージョン リストアを行うとき、 セカンダリーリージョンへの復元を行う場合にのみ CZR が行えて、プライマリーリージョンへの復元を行う場合は CZR が行えない
+> ※1 非ゾーン固定 VM に対して、Recovery Services コンテナーのストレージ レプリケーションの種類が「ゾーン冗長」の場合にのみ、 CZR が行える
+> ※2 セカンダリーリージョンへの復元を行う場合にのみ CZR が行えて、プライマリーリージョンへの復元を行う場合は CZR が行えない
 
 ### <a id="1-1"></a>1-1. CZR が行える Azure VM の条件
 CZR を行うためには、Azure VM バックアップにより保護されている VM が次の条件を満たす必要があります。
 * マネージド VM であること
 * Azure VM がゾーン固定または非ゾーン固定は影響しない (どちらともサポートされている)  
-  ただし、Recovery Services コンテナーが GRS かつクロス リージョン リストアを行うときは、ゾーン固定 VM に対してのみ CZR が行えます。
+  ただし、Recovery Services コンテナーのストレージ レプリケーションの種類が「geo 冗長」かつ CRR (クロス リージョン リストア) を行うときは、ゾーン固定 VM に対してのみ CZR が行えます。
 * [暗号化された Azure VM](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#encryption-of-azure-vm-backups) ではないこと
 * [トラステッド起動の Azure VM](https://learn.microsoft.com/ja-jp/azure/virtual-machines/trusted-launch) ではないこと 
   
@@ -50,16 +50,15 @@ CZR を行うためには、Azure VM バックアップにより保護されて�
 
 ### <a id="1-2"></a>1-2. CZR が行える Recovery Services コンテナーの条件
 CZR は以下の条件を満たす Recovery Services コンテナーで行うことができます。  
-* Recovery Services コンテナーのストレージ レプリケーションの種類が ZRS (ゾーン冗長ストレージ) になっていること、または GRS (geo 冗長ストレージ) かつ [CRR (クロス リージョンリストア) 機能](https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-cross-region-restore) が有効になっていること  
-  なお、ストレージ レプリケーションの種類が GRS かつ CRR (クロス リージョンリストア) 機能が有効の場合、[セカンダリ リージョンへの復元](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region)を行う際に CZR を利用することができます。  
+* Recovery Services コンテナーのストレージ レプリケーションの種類が「ゾーン冗長」になっていること、または「geo 冗長」かつ [CRR](https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-cross-region-restore) が有効になっていること  
+  なお、ストレージ レプリケーションの種類が「geo 冗長」かつ CRR が有効の場合、[セカンダリ リージョンへの復元](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region)を行う際に CZR を利用することができます。  
   セカンダリーリージョンへの復元ではなくプライマリーリージョンへの復元を行う場合は CZR を利用することができません。  
-
 * 復旧ポイントが「コンテナー層」にのみ存在すること  
-  ただし、「スナップショット層」のみ、または「スナップショット層とコンテナー層」の場合は CZR がサポートされていません。
+「スナップショット層」のみ、または「スナップショット層とコンテナー層」の場合は CZR がサポートされていません。
 
 > [!TIP]
 > CRR については下記の弊社ブログにて紹介しております。  
-> ・ Azure VM Backup における CRR (クロスリージョン リストア) について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
+> ・ Azure VM Backup における CRR (クロス リージョン リストア) について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)  
 > 　 https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/  
 > ---
 > ペア リージョンについて、および可用性ゾーンをサポートしているリージョンについては下記ドキュメントをご覧ください。  
@@ -68,14 +67,14 @@ CZR は以下の条件を満たす Recovery Services コンテナーで行うこ
 > ・ Availability Zones をサポートする Azure サービス | Microsoft Learn  
 > 　 https://learn.microsoft.com/ja-jp/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support  
 
-#### Azure Portal で Recovery Services コンテナー の冗長設定を確認する方法
-ご参考までに、ZRS が有効になっている場合の Azure ポータル画面上の見え方を説明いたします。  
-下記画像の Recovery Services コンテナーでは ZRS (ゾーン冗長ストレージ) が設定されています。  
+#### Azure Portal で Recovery Services コンテナー のストレージ レプリケーションの種類を確認する方法
+ご参考までに、ストレージ レプリケーションの種類が「ゾーン冗長」に設定している場合の Azure ポータル画面上の見え方を説明いたします。  
+下記画像の Recovery Services コンテナーでは「ゾーン冗長」が設定されています。  
 <img src="https://github.com/jpabrs-scem/blog/assets/109163295/014f7a8d-8c30-4721-a339-be3856f4059b" width="800px">  
 
 > [!TIP]
-> コンテナーで既にバックアップを構成している場合は冗長設定を変更することができません。  
-> 冗長設定の変更が必要な場合は下記ドキュメントをご参照ください。  
+> コンテナーで既にバックアップを構成している場合はストレージ レプリケーションの種類を変更することができません。  
+> ストレージ レプリケーションの種類の変更が必要な場合は下記ドキュメントをご参照ください。  
 > ・ Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Learn  
 > 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy
 
