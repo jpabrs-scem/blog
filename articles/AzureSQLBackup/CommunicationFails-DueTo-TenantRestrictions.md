@@ -18,8 +18,9 @@ MARS バックアップや SQL Server バックアップなどのバックア�
 ## 目次 
 -----------------------------------------------------------
 [1. テナント制限とは](#1)
-[2. テナント制限がかかっている場合の判断方法について (Azure Portal でのログインでの確認)](#2)
-[3. 回避策について](#3)
+[2. テナント制限が設定されている場合の判断方法について (Azure Portal へのログインによる確認)](#2)
+[3. テナント制限が設定されている場合の判断方法について (Backup のログからの確認)](#3)
+[4. 回避策について](#4)
 -----------------------------------------------------------
 
 ## <a id="1"></a> 1.  テナント制限とは
@@ -31,8 +32,25 @@ MARS バックアップや SQL Server バックアップなどのバックア�
 https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90%E3%81%A8%E3%81%AF
 
 
-## <a id="2"></a> 2．テナント制限がかかっている場合の判断方法について (Azure Portal でのログインでの確認)
-バックアップ対象のサーバーのログから確認することができます。
+## <a id="2"></a> 2．テナント制限が設定されている場合の判断方法について (Azure Portal へのログインによる確認) 
+バックアップ対象のサーバーから Azure Potal を利用しテナント制限によって許可されていないテナントへアクセスを試行すると、 「ネットワーク管理者によってアクセスがブロックされました」という以下のようなエラーメッセージが表示されます。 (エラーコード: AADSTS500021) 
+このメッセージを確認できた場合、テナント制限によりサーバーからのテナントアクセスが制限されていると判断できます。
+
+![image](https://github.com/jpabrs-scem/blog/assets/141223502/f09cf41b-6620-4d25-841d-35cbe978f184)
+
+・テナント制限とは | テナント制限について
+https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90%E3%81%A8%E3%81%AF
+ 
+以下のドキュメントからもテナント制限が構成されている場合に出力されるエラーコードであることがわかります。
+
+![image](https://github.com/jpabrs-scem/blog/assets/141223502/0142a7c0-2226-44f8-b1c4-7e58c35bd4fb)
+
+・Microsoft Entra 認証と承認のエラー コード
+https://learn.microsoft.com/ja-jp/azure/active-directory/develop/reference-error-codes
+
+
+## <a id="3"></a> 3．テナント制限が設定されている場合の判断方法について (Backup のログからの確認))
+バックアップ対象のサーバーのログからもテナント制限されているか確認することができます。
 各ログに「AADSTS500021」の文字列がある場合、テナント制限がかかっていると判断できます。
 
 以下にログファイル名とログが格納されるディレクトリをご案内します。
@@ -44,7 +62,7 @@ https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%
 ・ディレクトリ 
 　WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBackupWindowsWorkload\バージョン\WorkloadExtnLogFolder 
 ・エラー出力例 
->---> (内部例外 #0) Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:
+>Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:
 　AADSTS500021: Access to 'IDMAADTenantjpepod01' tenant is denied.
 
 #### ＜Microsoft Azure Recovery Services (MARS) の場合＞
@@ -55,11 +73,11 @@ https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%
 ・ディレクトリ(MABS) 
 　C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\Temp\ 
 ・エラー出力例 
->02C4 02D8 08/19 04:36:31.844 79 CallerFileName(0) 816A55BE-5C1F-45C0-A77E-C991A8958DD9 WARNING Exception in GetAADToken | Params: {Data = }{Message = AADSTS500021: Access to 'IDMAADTenantjpepod01' tenant is denied.
+>WARNING Exception in GetAADToken | Params: {Data = }{Message = AADSTS500021: Access to 'IDMAADTenantjpepod01' tenant is denied.
 
-## <a id="3"></a> 3．回避策について
-ご利用のプロキシ環境でテナント制限しており「AADSTS500021」のメッセージを確認しましたらテナント制限によりバックアップが失敗している可能性が高いです。
-該当する場合、ご利用のプロキシで以下のテナントへのアクセスを許可していただきますようお願いいたします。
+## <a id="4"></a> 4．回避策について
+バックアップが失敗している対象サーバーから「AADSTS500021」のメッセージが出力されている場合、テナント制限が原因によりバックアップが失敗している可能性がございます。 
+ご利用のプロキシ環境において、以下テナントへのアクセス許可設定についてご確認ください。 
 
 Azure Backup では、O365 の以下のテナントに接続が必要です。
 以下は、バックアップ利用の際に使用されるテナントになります。
