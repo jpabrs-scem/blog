@@ -44,9 +44,11 @@ https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%
 ・テナント制限とは | テナント制限について
 https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90%E3%81%A8%E3%81%AF
  
-以下のドキュメントからもテナント制限されている場合に出力されるエラーコードであることがわかります。
+以下のドキュメント引用からもテナント制限されている場合に出力されるエラーコードであることがわかります。
 
-![image](https://github.com/jpabrs-scem/blog/assets/141223502/0142a7c0-2226-44f8-b1c4-7e58c35bd4fb)
+・ドキュメント引用
+>AADSTS500021 
+'{tenant}' テナントへのアクセスが拒否されました。 AADSTS500021 は、テナント制限機能が構成されており、ユーザーが、ヘッダー Restrict-Access-To-Tenant で指定されている許可されたテナントの一覧にないテナントにアクセスしようとしていることを示します。 
 
 ・Microsoft Entra 認証と承認のエラー コード
 https://learn.microsoft.com/ja-jp/azure/active-directory/develop/reference-error-codes
