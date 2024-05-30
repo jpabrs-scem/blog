@@ -31,7 +31,6 @@ CZR を行うためには、Azure VM バックアップにより保護されて�
 * マネージド VM であること
 * クロス リージョン リストア (CRR) を行う場合、ゾーン固定 VM であること
 * [暗号化された Azure VM](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#encryption-of-azure-vm-backups) ではないこと
-* [トラステッド起動の Azure VM](https://learn.microsoft.com/ja-jp/azure/virtual-machines/trusted-launch) ではないこと 
   
 #### Azure VM が特定の可用性ゾーンに固定されているかどうかを確認する方法
 ご参考までに、Azure VM が可用性ゾーンに固定されているかどうかの、Azure ポータル画面での確認方法を説明いたします。  
