@@ -118,24 +118,13 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#rest
 ## <a id="2"></a>2. 参考情報
 * 復元オプション | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn  
   https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-options  
-  <img src="https://github.com/jpabrs-scem/blog/assets/109163295/d07419b8-ee3f-44c0-a451-a6d60afa2e3e" width="600px">  
-
 * VM の作成 | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn  
   https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#create-a-vm  
-  <img src="https://github.com/jpabrs-scem/blog/assets/109163295/d1efa7d0-1b7f-4b45-b38e-f25775672ccd" width="600px">  
-
 * ディスクを復元する | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn  
   https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks  
-  <img src="https://github.com/jpabrs-scem/blog/assets/109163295/61e32cee-5a4b-4d5c-af1a-26fff662b13f" width="600px">  
-
 * セカンダリ リージョンに復元する | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn  
   https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region  
-  <img src="https://github.com/jpabrs-scem/blog/assets/109163295/54032b7a-47de-448a-9f76-7c97cd58a6f2" width="600px">  
-
 * サポートされる復元方法 | Azure VM バックアップのサポート マトリックス - Azure Backup | Microsoft Learn  
   https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#supported-restore-methods  
-  <img src="https://github.com/jpabrs-scem/blog/assets/109163295/7444f151-d694-484e-b2c1-f6a42b745a16" width="600px">  
-
 * FAQ-Azure VM をバックアップする - Azure Backup | Microsoft Learn  
   https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#azure-------------------------  
-  <img src="https://github.com/jpabrs-scem/blog/assets/109163295/aaacae5d-b7e4-4e8b-8627-878db9895b9c" width="600px">  
