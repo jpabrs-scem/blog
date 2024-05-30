@@ -4,21 +4,23 @@
   <meta charset="utf-8">
   
   
-  <title>Azure VM Backup [既存を置換] リストア について | Japan CSS ABRS  Support Blog !!</title>
+  <title>テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは。Azure Backup サポートです。今回は、Azure VM Backup で　[既存を置換] を用いる場合にいただくご質問について下記の通りご案内いたします。 目次 1. [既存を置換]の際、元のディスクはどうなるのか2. [既存を置換]の際、 バックアップが走る件について2.1. バックアップを走らせたくない場合の代替案    1. [既存を置換]の際、元のディスクはどう">
+  <meta name="description" content="みなさんこんにちは、Azure Backup サポートです。 MARS バックアップや SQL Server バックアップなどのバックアップにおいて、お客様によってはバックアップや復元で使用する通信がプロキシを経由する構成とされていることがあります。ご利用のプロキシでテナント制限の構成をしている場合、Microsoft Entra ID (旧称 Azure Active Directory) へ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Azure VM Backup [既存を置換] リストア について">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/index.html">
+<meta property="og:title" content="テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは。Azure Backup サポートです。今回は、Azure VM Backup で　[既存を置換] を用いる場合にいただくご質問について下記の通りご案内いたします。 目次 1. [既存を置換]の際、元のディスクはどうなるのか2. [既存を置換]の際、 バックアップが走る件について2.1. バックアップを走らせたくない場合の代替案    1. [既存を置換]の際、元のディスクはどう">
+<meta property="og:description" content="みなさんこんにちは、Azure Backup サポートです。 MARS バックアップや SQL Server バックアップなどのバックアップにおいて、お客様によってはバックアップや復元で使用する通信がプロキシを経由する構成とされていることがあります。ご利用のプロキシでテナント制限の構成をしている場合、Microsoft Entra ID (旧称 Azure Active Directory) へ">
 <meta property="og:locale" content="ja_JP">
-<meta property="article:published_time" content="2023-07-10T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-30T07:10:17.009Z">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/141223502/f09cf41b-6620-4d25-841d-35cbe978f184">
+<meta property="article:published_time" content="2024-05-08T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-30T07:10:16.957Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
-<meta property="article:tag" content="Azure VM Backup">
+<meta property="article:tag" content="Azure SQL Backup">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/141223502/f09cf41b-6620-4d25-841d-35cbe978f184">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -80,7 +82,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureVMBackup/restore_swapdsik" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -89,7 +91,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Azure VM Backup [既存を置換] リストア について
+      テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する
     </h1>
   
 
@@ -97,32 +99,58 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2023-07-10T03:00:00.000Z" itemprop="datePublished">2023-07-10</time>
+  <time datetime="2024-05-08T03:00:00.000Z" itemprop="datePublished">2024-05-08</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+3377f26d-79da-5ccd-87f8-684c2d2e5fa9%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%5B%E6%97%A2%E5%AD%98%E3%82%92%E7%BD%AE%E6%8F%9B%5D+%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2+%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2Frestore_swapdsik%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2Frestore_swapdsik.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2Frestore_swapdsik.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+a041e4f9-4ab3-5994-ab4d-eae877288bb5%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90%E3%81%AB%E3%82%88%E3%82%8A+Microsoft+Entra+ID+%28%E6%97%A7%E7%A7%B0+Azure+Active+Directory%29+%E5%90%91%E3%81%91%E3%81%AE%E9%80%9A%E4%BF%A1%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%99%E3%82%8B%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSQLBackup%2FCommunicationFails-DueTo-TenantRestrictions%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSQLBackup%2FCommunicationFails-DueTo-TenantRestrictions.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSQLBackup%2FCommunicationFails-DueTo-TenantRestrictions.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/" data-id="clwsx1b9y002l0nnneh3aelds" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/" data-id="clwsx1b95000n0nnn8thz71g2" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは。Azure Backup サポートです。<br>今回は、Azure VM Backup で　[既存を置換] を用いる場合にいただくご質問について下記の通りご案内いたします。</p>
+<p>みなさんこんにちは、Azure Backup サポートです。</p>
+<p>MARS バックアップや SQL Server バックアップなどのバックアップにおいて、お客様によってはバックアップや復元で使用する通信がプロキシを経由する構成とされていることがあります。<br>ご利用のプロキシでテナント制限の構成をしている場合、Microsoft Entra ID (旧称 Azure Active Directory) への通信ができず、バックアップ対象のサーバーからバックアップサービス利用のための Azure 認証が失敗することで、バックアップの有効化をはじめとした各種操作ができないことがあります。 </p>
+<p>このブログでは、バックアップ対象のサーバーのプロキシ環境でテナント制限をしている場合のバックアップの失敗について、テナント制限が原因でバックアップが失敗しているかの判断方法と対応方法について記載してます。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. [既存を置換]の際、元のディスクはどうなるのか</a><br><a href="#2">2. [既存を置換]の際、 バックアップが走る件について</a><br><a href="#2-1">2.1. バックアップを走らせたくない場合の代替案 </a></p>
+<p><a href="#1">1. テナント制限とは</a><br><a href="#2">2. テナント制限されている場合の判断方法について (Azure Portal へのログインによる確認)</a><br><a href="#3">3. テナント制限されている場合の判断方法について (Backup のログからの確認)</a><br><a href="#4">4. 回避策について</a></p>
 <hr>
-<h2 id="1-既存を置換-の際、元のディスクはどうなるのか"><a href="#1-既存を置換-の際、元のディスクはどうなるのか" class="headerlink" title=" 1. [既存を置換]の際、元のディスクはどうなるのか"></a><a id="1"></a> 1. [既存を置換]の際、元のディスクはどうなるのか</h2><p>結論から申し上げますと削除されずに残ります。<br>Azure VM Backup のリストアの [既存を置換] はバックアップ データよりディスクを復元し、 Azure VM のディスクを置き換えるまでを行います。<br>そのため、元の古いディスクは削除されずにディスク リソースとして残り続けます (課金も行われます)。そのため、不要な場合は手動で削除いただく必要がございます。</p>
-<p>なお、リストアによって復元されるディスクの命名規則に関しては下記をご覧ください。<br>・Azure VM Backupでリストアされるディスク名に関して<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/">https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</a></p>
-<p>下記公開情報にも記載されております。<br>・既存のものを置き換える - 復元オプション- Azure portal で Azure VM データを復元する方法<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms</a></p>
+<h2 id="1-テナント制限とは"><a href="#1-テナント制限とは" class="headerlink" title=" 1.  テナント制限とは"></a><a id="1"></a> 1.  テナント制限とは</h2><p>以下のブログ引用に記載がございますが、テナント制限をすることでプロキシを経由した通信について特定の Microsoft Entra ID テナント以外のアクセスが制限されます。　</p>
+<p>・ブログ引用</p>
 <blockquote>
-<p>ディスクの交換操作の後、元のディスクはリソース グループに保持されます。 元のディスクが必要ない場合は、それを手動で削除することを選択できます。</p>
+<p>テナント制限の機能では、ユーザーがアクセス可能な Azure AD テナントを制限することが可能です。<br>具体的には、クライアント端末から Azure AD に対する認証の通信をプロキシ経由させ、そのプロキシから送信されるデータに許可対象の Azure AD テナントの情報を付与します。その結果、それ以外の Azure AD テナントへのアクセスがブロックされる動作となります。</p>
 </blockquote>
-<h2 id="2-既存を置換-の際、-バックアップが走る件について"><a href="#2-既存を置換-の際、-バックアップが走る件について" class="headerlink" title=" 2. [既存を置換]の際、 バックアップが走る件について"></a><a id="2"></a> 2. [既存を置換]の際、 バックアップが走る件について</h2><p>現在の仕様として[既存を置換] のリストアを行う際にディスクを置き換える前の状態のバックアップを取得するために自動でリストアジョブと並行してバックアップ ジョブも実施されます。<br>このバックアップ ジョブを実施させない方法はございません。<br>またそのため、バックアップを無効にしている場合はバックアップ ジョブが失敗するためリストア ジョブも正常に完了しません。</p>
-<p>詳細については下記をご覧ください<br>・Azure VM のリストア (既存を置換) が失敗する<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/">https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</a></p>
-<h2 id="2-1-バックアップを走らせたくない場合の代替案"><a href="#2-1-バックアップを走らせたくない場合の代替案" class="headerlink" title=" 2.1. バックアップを走らせたくない場合の代替案"></a><a id="2-1"></a> 2.1. バックアップを走らせたくない場合の代替案</h2><p>なお、上記の自動で走るバックアップ ジョブを走らせたくない場合は [既存を置換] ではなく、[ディスクの復元] を実施いただき、復元したディスクを手動で Azure VM に対してスワップしていただくことが可能です。</p>
-<p>Azure Portal ＞ 対象の仮想マシン ＞ 左ペインのディスク からディスクのスワップ、デタッチ＆アタッチ が可能です。<br>※　本作業を行った場合も、元々アタッチされていた OS ディスク・ データ ディスクはディスク リソースとして残り続けます。<br>　　ディスクのスワップ・デタッチ＆アタッチ後、元々アタッチされていた OS ディスク・ データ ディスクに対しては、お客様にて不要であれば削除いただけます。</p>
+<p>・テナント制限とは | テナント制限について<br><a target="_blank" rel="noopener" href="https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90%E3%81%A8%E3%81%AF">https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90%E3%81%A8%E3%81%AF</a></p>
+<h2 id="2．テナント制限されている場合の判断方法について-Azure-Portal-へのログインによる確認"><a href="#2．テナント制限されている場合の判断方法について-Azure-Portal-へのログインによる確認" class="headerlink" title=" 2．テナント制限されている場合の判断方法について (Azure Portal へのログインによる確認)"></a><a id="2"></a> 2．テナント制限されている場合の判断方法について (Azure Portal へのログインによる確認)</h2><p>バックアップ対象のサーバーから Azure Potal を利用しテナント制限によって許可されていないテナントへアクセスを試行すると、 「ネットワーク管理者によってアクセスがブロックされました」という以下のようなエラーメッセージが表示されます。 (エラーコード: AADSTS500021)<br>このメッセージを確認できた場合、テナント制限によりサーバーからのテナントアクセスが制限されていると判断できます。</p>
+<p><img src="https://github.com/jpabrs-scem/blog/assets/141223502/f09cf41b-6620-4d25-841d-35cbe978f184" alt="image"></p>
+<p>・テナント制限とは | テナント制限について<br><a target="_blank" rel="noopener" href="https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90%E3%81%A8%E3%81%AF">https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90%E3%81%A8%E3%81%AF</a></p>
+<p>以下のドキュメント引用からもテナント制限されている場合に出力されるエラーコードであることがわかります。</p>
+<p>・ドキュメント引用</p>
+<blockquote>
+<p>AADSTS500021<br>‘{tenant}’ テナントへのアクセスが拒否されました。 AADSTS500021 は、テナント制限機能が構成されており、ユーザーが、ヘッダー Restrict-Access-To-Tenant で指定されている許可されたテナントの一覧にないテナントにアクセスしようとしていることを示します。 </p>
+</blockquote>
+<p>・Microsoft Entra 認証と承認のエラー コード<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/active-directory/develop/reference-error-codes">https://learn.microsoft.com/ja-jp/azure/active-directory/develop/reference-error-codes</a></p>
+<h2 id="3．テナント制限されている場合の判断方法について-Backup-のログからの確認"><a href="#3．テナント制限されている場合の判断方法について-Backup-のログからの確認" class="headerlink" title=" 3．テナント制限されている場合の判断方法について (Backup のログからの確認)"></a><a id="3"></a> 3．テナント制限されている場合の判断方法について (Backup のログからの確認)</h2><p>バックアップ対象のサーバーのログからもテナント制限されているか確認することができます。<br>各ログに「AADSTS500021」の文字列がある場合、テナント制限されていると判断できます。</p>
+<p>以下にログファイル名とログが格納されるディレクトリをご案内します。<br>(ログが格納されるディレクトリは既定の設定の場合を示しています)</p>
+<h4 id="＜Azure-Backup-for-SQL-in-VM-の場合＞"><a href="#＜Azure-Backup-for-SQL-in-VM-の場合＞" class="headerlink" title="＜Azure Backup for SQL in VM の場合＞"></a>＜Azure Backup for SQL in VM の場合＞</h4><p>・ログファイル名<br>　WorkloadExtensionHandlerXX.log<br>・ディレクトリ<br>　WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBackupWindowsWorkload\バージョン\WorkloadExtnLogFolder<br>・エラー出力例 </p>
+<blockquote>
+<p>Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException:<br>　AADSTS500021: Access to ‘IDMAADTenantjpepod01’ tenant is denied.</p>
+</blockquote>
+<h4 id="＜Microsoft-Azure-Recovery-Services-MARS-の場合＞"><a href="#＜Microsoft-Azure-Recovery-Services-MARS-の場合＞" class="headerlink" title="＜Microsoft Azure Recovery Services (MARS) の場合＞"></a>＜Microsoft Azure Recovery Services (MARS) の場合＞</h4><p>・ログファイル名<br>　CBEngine XX.errlog<br>・ディレクトリ<br>　C:\Program Files\Microsoft Azure Recovery Services Agent\Temp<br>・ディレクトリ(MABS)<br>　C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\Temp\<br>・エラー出力例 </p>
+<blockquote>
+<p>WARNING Exception in GetAADToken | Params: {Data = }{Message = AADSTS500021: Access to ‘IDMAADTenantjpepod01’ tenant is denied.</p>
+</blockquote>
+<h2 id="4．回避策について"><a href="#4．回避策について" class="headerlink" title=" 4．回避策について"></a><a id="4"></a> 4．回避策について</h2><p>バックアップが失敗している対象サーバーから「AADSTS500021」のメッセージが出力されている場合、テナント制限が原因でバックアップが失敗している可能性がございます。<br>ご利用のプロキシ環境において、以下テナントへのアクセス許可設定についてご確認ください。 </p>
+<p>Azure Backup では、O365 の以下のテナントに接続が必要です。<br>以下は、バックアップ利用の際に使用されるテナントになります。</p>
+<p>IDMServiceAADTenant&lt;リージョン&gt;pod01.onmicrosoft.com</p>
+<p>お客様の環境のリージョンに合わせて、以下テナントのアクセスを許可してください。<br>※現時点でテナント名やテナント ID の公開情報はないため、以下のリージョン以外のテナント名やテナント ID の確認がご希望の場合、Azure Backup の窓口へお問い合わせをお願いいたします。</p>
+<h4 id="＜東日本リージョンの-Azure-Backup-のテナント情報＞"><a href="#＜東日本リージョンの-Azure-Backup-のテナント情報＞" class="headerlink" title="＜東日本リージョンの Azure Backup のテナント情報＞"></a>＜東日本リージョンの Azure Backup のテナント情報＞</h4><p>テナント名 : IDMServiceAADTenantjpepod01.onmicrosoft.com<br>テナント ID : 6e92595a-0b9c-49e4-a1e9-884d0ab4f4f0</p>
+<h4 id="＜西日本リージョンの-Azure-Backup-のテナント情報＞"><a href="#＜西日本リージョンの-Azure-Backup-のテナント情報＞" class="headerlink" title="＜西日本リージョンの Azure Backup のテナント情報＞"></a>＜西日本リージョンの Azure Backup のテナント情報＞</h4><p>テナント名 : IDMAADTenantjpwpod01.onmicrosoft.com<br>テナント ID : 4617fbbe-e76e-4071-90cd-6f5e7f5d5244</p>
+<blockquote>
+<p>備考：<br>テナント制限の操作に関してご確認したい場合、Entra ID のお問合せをお願いいたします。<br>専門のエンジニアが対応することで円滑で正確な対応が可能となります。</p>
+</blockquote>
 
       
       
@@ -136,10 +164,10 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/restore_swapdsik.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -147,19 +175,19 @@
     
 <nav id="article-nav">
   
-    <a href="../ActiveDirectory_backup/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/RestoreStagingStorageAccount/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          ドメインに参加しているVMのAzure VM Backupリストアについて
+          Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて
         
       </div>
     </a>
   
   
-    <a href="../../AzureBackupGeneral/How_to_set_Backup_Alert/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</div>
+      <div class="article-nav-title">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</div>
     </a>
   
 </nav>
@@ -186,15 +214,15 @@
           </li>
         
           <li>
-            <a href="../RestoreStagingStorageAccount/">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
+            <a href="../../AzureVMBackup/RestoreStagingStorageAccount/">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
           </li>
         
           <li>
-            <a href="../../AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/">テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する</a>
+            <a href="">テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する</a>
           </li>
         
           <li>
-            <a href="../HowToCheckRetentionPeriodForVMBackup/">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</a>
+            <a href="../../AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</a>
           </li>
         
       </ul>
