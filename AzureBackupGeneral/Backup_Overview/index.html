@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Azure Backup の 概要 | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは。Azure Backup サポートです。今回はお問合せをいただくことが多い、Azure Backup サービスでどんなバックアップソリューションを提供しているのか、そしてそれぞれのソリューションで何をバックアップおよび復元できるのかをご紹介いたします。 目次 1. Azure Backup の概要     1.1 Azure Backup のバックアップ ソリューション一覧表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure Backup の 概要">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_Overview/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="皆様こんにちは。Azure Backup サポートです。今回はお問合せをいただくことが多い、Azure Backup サービスでどんなバックアップソリューションを提供しているのか、そしてそれぞれのソリューションで何をバックアップおよび復元できるのかをご紹介いたします。 目次 1. Azure Backup の概要     1.1 Azure Backup のバックアップ ソリューション一覧表">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/9c7ab400-ac12-41e3-9f06-445561de7e12">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/0ef72d75-5962-46a2-805a-0d0a33941ca4">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/85d52605-3642-47c2-b8bd-321ebbf4791c">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/f7394639-d63e-4f9b-8acb-b1c13fdfc3e5">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/b1f8b099-d1d7-4d46-830e-233df27e72e7">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/2463356a-ac96-4c37-82ca-08efccaa5837">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/5cc5719e-0bac-414e-9a9d-a5709af12f9b">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/8b6b5bc8-95b3-4097-8f1b-08f5016d43b7">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/a4e8ba67-a51a-4431-a60c-58e88854c2d6">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/cf06b38b-7a42-49cc-9d4f-8a6757936c93">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/037e9907-9b8f-4259-b573-b8e5e0c02e08">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/32a2e9ee-0a07-451c-8822-f6ed16edc4d7">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/aa2621a6-3992-4712-afa1-4b5e791b7b5e">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/88985531-4431-4720-8c3c-b22e75a9abd6">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/ef1fbc8e-1f71-432b-9dc8-cbdbaa23a5ed">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/2426fa06-df5b-4dc4-b400-657115f6def0">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/db6de149-ec90-42ec-b048-f99f11076c6f">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/872e323b-f078-4840-9479-fe2772d8a477">
+<meta property="article:published_time" content="2024-05-31T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-30T01:29:24.596Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure Backup General">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Information">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/9c7ab400-ac12-41e3-9f06-445561de7e12">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureBackupGeneral/Backup_Overview" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Azure Backup の 概要
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2024-05-31T03:00:00.000Z" itemprop="datePublished">2024-05-31</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+76f3d681-f874-55df-b28d-c2ee417ce795%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE+%E6%A6%82%E8%A6%81%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FBackup_Overview%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FBackup_Overview.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FBackup_Overview.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_Overview/" data-id="clwskuxva005p0nmhd3gzhk4o" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは。Azure Backup サポートです。<br>今回はお問合せをいただくことが多い、Azure Backup サービスでどんなバックアップソリューションを提供しているのか、そしてそれぞれのソリューションで何をバックアップおよび復元できるのかをご紹介いたします。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. Azure Backup の概要</a><br>   <a href="#1-1">  1.1 Azure Backup のバックアップ ソリューション一覧表</a><br>   <a href="#1-2">  1.2 Recovery Services コンテナー と バックアップ コンテナーについて</a><br>   <a href="#1-3">  1.3 バックアップ ポリシー</a><br>   <a href="#1-4">  1.4 Azure Backup における DR / RTO / RPO について</a><br>   <a href="#1-5">  1.5 Azure Backup の価格</a><br><a href="#2">2. Azure Backup のバックアップ ソリューションの詳細</a><br>   <a href="#2-1">  2.1 Azure VM Backup</a><br>   <a href="#2-2">  2.2 Azure ディスク バックアップ</a><br>   <a href="#2-3">  2.3 Azure ファイル共有バックアップ</a><br>   <a href="#2-4">  2.4 Azure BLOB バックアップ</a><br>   <a href="#2-5">  2.5 Azure VM 内の SQL Server バックアップ</a><br>   <a href="#2-6">  2.6 Azure VM 内の SAP HANA データベースバックアップ</a><br>   <a href="#2-7">  2.7 Azure Database for PostgreSQL バックアップ</a><br>   <a href="#2-8">  2.8 Azure Database for MySQL バックアップ</a><br>   <a href="#2-9">  2.9 MARS バックアップ</a><br>   <a href="#2-10">  2.10 DPM / MABS バックアップ</a><br>   <a href="#2-11">  2.11 Azure Kubernetes Service (AKS) バックアップ</a><br><a href="#3">3. よくいただくお問合せ</a></p>
+<hr>
+<h2 id="1-Azure-Backup-の概要"><a href="#1-Azure-Backup-の概要" class="headerlink" title=" 1. Azure Backup の概要"></a><a id="1"></a> 1. Azure Backup の概要</h2><p>Azure Backup サービスでは、Micosoft Azure クラウド プラットフォームにデータをバックアップすることができます。<br>オンプレミスや Azure の様々なリソースを簡単にバックアップおよび復元を行うことができ、また一元化された監視と管理を行うためのソリューションを提供します。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/9c7ab400-ac12-41e3-9f06-445561de7e12"></p>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>Azure Backup の詳細については以下のドキュメントを参照ください。  </p>
+<hr>
+<p>・ Azure Backup とは - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-overview">https://learn.microsoft.com/ja-jp/azure/backup/backup-overview</a></p><p>・アーキテクチャの概要 - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture">https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture</a></p></div>
+<h2 id="1-1-Azure-Backup-のバックアップ-ソリューション一覧表"><a href="#1-1-Azure-Backup-のバックアップ-ソリューション一覧表" class="headerlink" title=" 1.1 Azure Backup のバックアップ ソリューション一覧表"></a><a id="1-1"></a> 1.1 Azure Backup のバックアップ ソリューション一覧表</h2><p>下記の表では Azure Backup で提供されている各バックアップソリューションとそれぞれでバックアップおよび復元できる対象をご紹介します。<br>また、各ソリューションには各公開ドキュメントへのリンクを付けています。</p>
+<table>
+<thead>
+<tr>
+<th align="left">バックアップの種類</th>
+<th align="left">バックアップ対象</th>
+<th align="left">復元方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction">Azure VM バックアップ</a></td>
+<td align="left">Azure VM</td>
+<td align="left"><ul> <li>新しい VM として復元</li> <li>VM にアタッチされていたディスクの復元</li> <li>既存 (バックアップ元) VM のディスクを置き換えて復元 </li> <li>VM 内にある特定ファイルの復元</li> </ul></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview">Azure ディスク バックアップ</a></td>
+<td align="left">Azure Managed Disks</td>
+<td align="left"><ul> <li>新しいディスクとして復元</li>  </ul></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview?tabs=snapshot">Azure ファイル共有バックアップ</a></td>
+<td align="left">ストレージ アカウントのファイル共有</td>
+<td align="left"><ul> <li>Azure ファイル共有の復元</li> <li>個々のファイルまたはフォルダーの復元</li> </ul></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview?tabs=operational-backup">Azure BLOB バックアップ</a></td>
+<td align="left">ストレージ アカウントの BLOB Storage</td>
+<td align="left"><ul> <li>ストレージ アカウント内のすべての BLOB の復元</li> <li>選択したコンテナーの復元</li> <li>プレフィックスの一致を使用して特定の BLOB の復元</li> </ul></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database">Azure VM 内の SQL Server バックアップ</a></td>
+<td align="left">Azure VM 内の  SQL Server の データベース <br> ※ 完全バックアップ、差分バックアップ、ログ バックアップに対応 <br> ※ Always On 可用性グループのバックアップに対応</td>
+<td align="left"><ul> <li>別のデータベースに復元</li> <li>元のデータベースを上書きして復元</li> <li>ファイルとして復元</li> </ul></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-about">Azure VM 内の SAP HANA データベースバックアップ</a></td>
+<td align="left">Azure VM 内の SAP HANA のデータベース <br> ※ 完全バックアップ、差分バックアップ、増分バックアップ、ログ バックアップ、インスタンス スナップショットのバックアップに対応 <br> ※ HANA システム レプリケーション (HSR) データベースのバックアップに対応</td>
+<td align="left"><ul> <li>別のデータベースとして復元</li> <li>元のデータベースを上書きしての復元</li> <li>ファイルとして復元</li> </ul></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview">Azure Database for PostgreSQL バックアップ</a></td>
+<td align="left">Azure Database for PostgreSQL サーバーのデータベース</td>
+<td align="left"><ul> <li>別のデータベースとして復元</li> <li>ファイルとして復元</li> </ul></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server-about">Azure Database for MySQL バックアップ (注1)</a></td>
+<td align="left">Azure Database for MySQL サーバーのデータベース</td>
+<td align="left"><ul> <li>ファイルとして復元</li> </ul></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-about-mars">MARS バックアップ</a></td>
+<td align="left">オンプレミス マシン / Azure VM の Windows OS マシン上 のファイル、フォルダーとシステム状態</td>
+<td align="left"><ul> <li>ファイルとフォルダーの復元</li> <li>ボリューム レベルでの復元</li> <li>システム状態ファイルの復元</li> </ul></td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs">DPM / MABS バックアップ</a></td>
+<td align="left">オンプレミス マシン / Azure VM 上で実行されているワークロード (SQL server や Exchange など)、仮想マシン (Hyper-V、 VMware) <br> 具体的なバックアップ対象は <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-mabs-protection-matrix">MABS (Azure Backup Server) V4 の保護マトリックス</a> をご参照ください。</td>
+<td align="left">復元できる方法については保護する各ワークロードによって異なります。 <br> 具体的な復元方法は <a href="#2-10-restore">2.10 DPM / MABS バックアップ &gt; 復元方法</a> をご参照ください</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview">Azure Kubernetes Service (AKS) バックアップ</a></td>
+<td align="left">AKS クラスター (クラスター リソースとクラスターにアタッチされている永続ボリューム)</td>
+<td align="left"><ul> <li> 既存の (バックアップ元) の AKS クラスターに復元</li> <li>別の AKS クラスターとして復元</li> </ul></td>
+</tr>
+</tbody></table>
+<div class="alert is-info"><p class="alert-title">Note</p><p>(注1) 2024年5月現在 Azure Database for MySQL のバックアップ機能が Public Preview となっています。  </p>
+<hr>
+<p>・ Public preview: Azure Backup supports long term retention for backup of Azure Database for MySQL– Flexible Server | Azure updates | Microsoft Azure</p><p>　 <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-US/updates/mysql-flexibleserverlongtermretenttion/">https://azure.microsoft.com/en-US/updates/mysql-flexibleserverlongtermretenttion/</a></p></div>
+<h3 id="1-2-Recovery-Services-コンテナー-と-バックアップ-コンテナーについて"><a href="#1-2-Recovery-Services-コンテナー-と-バックアップ-コンテナーについて" class="headerlink" title=" 1.2 Recovery Services コンテナー と バックアップ コンテナーについて"></a><a id="1-2"></a> 1.2 Recovery Services コンテナー と バックアップ コンテナーについて</h3><p>Azure Backup を利用するためには、最初に Azure 上にバックアップ データを保存するストレージを作成する必要があります。<br>このストレージは、<strong>Recovery Services コンテナー</strong>、もしくは<strong>バックアップ コンテナー</strong>と呼ばれ、利用する Azure Backup ソリューションの種類によって、いずれかを必ず作成します。<br>この 2 種類のコンテナーは、バックアップ データを格納する Azure のストレージです。  </p>
+<h4 id="利用方法"><a href="#利用方法" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure portal にて<code>バックアップ センター</code>ダッシュボードに移動し、<code>概要</code>ペインで<code>コンテナー</code>を選択します。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/0ef72d75-5962-46a2-805a-0d0a33941ca4" width="700px"></p>
+<p>コンテナーの作成画面に移動し、利用したいコンテナーの種類を選択して作成を開始することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/85d52605-3642-47c2-b8bd-321ebbf4791c" width="700px"></p>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>Recovery Services コンテナーとバックアップ コンテナーの詳細については下記ドキュメントを参照ください。</p>
+<hr>
+<p>・Recovery Services コンテナーの概要 - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-recovery-services-vault-overview">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-recovery-services-vault-overview</a></p><p>・Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault">https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault</a></p><p>・バックアップ コンテナーの概要 - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-vault-overview">https://learn.microsoft.com/ja-jp/azure/backup/backup-vault-overview</a></p><p>・バックアップ コンテナーの作成と管理 - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/create-manage-backup-vault">https://learn.microsoft.com/ja-jp/azure/backup/create-manage-backup-vault</a>  </p></div>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>バックアップ データの保存先については下記ドキュメントを参照ください。  </p>
+<hr>
+<p>・Recovery Services コンテナーとバックアップ コンテナーについて | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)</p><p>　 <a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/</a>  </p></div>
+<h3 id="1-3-バックアップ-ポリシーについて"><a href="#1-3-バックアップ-ポリシーについて" class="headerlink" title=" 1.3 バックアップ ポリシーについて"></a><a id="1-3"></a> 1.3 バックアップ ポリシーについて</h3><p>Azure Backup でバックアップをスケジュールするには、<strong>バックアップ ポリシー</strong>を利用します。<br>バックアップ ポリシーは Recovery Services コンテナーもしくはバックアップ コンテナーごとに管理され、各バックアップ ソリューション用に作成することができます。<br>バックアップ ポリシーではバックアップ ソリューションごとに設定できる内容は異なりますが、基本的に以下項目を設定します。  </p>
+<ul>
+<li>スケジュール : いつバックアップをするか</li>
+<li>保持期間 : 復旧ポイントをどれだけの期間保有する必要があるか</li>
+</ul>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>バックアップ ポリシーの詳細については下記ドキュメントを参照ください。  </p>
+<hr>
+<p>・バックアップ ポリシーの基礎 | アーキテクチャの概要 - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture#backup-policy-essentials">https://learn.microsoft.com/ja-jp/azure/backup/backup-architecture#backup-policy-essentials</a>  </p></div>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>バックアップの頻度とバックアップデータの保持期間については下記ドキュメントを参照ください。  </p>
+<hr>
+<p>・Azure Backup の 保持期間について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)</p><p>　 <a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/</a></p></div>
+<h4 id="利用方法-1"><a href="#利用方法-1" class="headerlink" title="利用方法"></a>利用方法</h4><p>バックアップ ポリシーは Recovery Services コンテナーとバックアップ コンテナーそれぞれで管理できます。</p>
+<ul>
+<li>Recovery Services コンテナーの場合  <img src="https://github.com/jpabrs-scem/blog/assets/109163295/f7394639-d63e-4f9b-8acb-b1c13fdfc3e5" width="700px"></li>
+<li>バックアップ コンテナーの場合  <img src="https://github.com/jpabrs-scem/blog/assets/109163295/b1f8b099-d1d7-4d46-830e-233df27e72e7" width="700px"></li>
+</ul>
+<h3 id="1-4-Azure-Backup-における-DR-RTO-RPO-について"><a href="#1-4-Azure-Backup-における-DR-RTO-RPO-について" class="headerlink" title=" 1.4 Azure Backup における DR / RTO / RPO について"></a><a id="1-4"></a> 1.4 Azure Backup における DR / RTO / RPO について</h3><h4 id="Disaster-recovery-DR-について"><a href="#Disaster-recovery-DR-について" class="headerlink" title="Disaster recovery (DR) について"></a>Disaster recovery (DR) について</h4><p>Disaster recovery (DR) は、災害時のシステムの復旧やデータロストを未然に防ぐ対策を指します。<br>Azure Backup では DR の一環として クロス リージョン リストア (CRR) の利用が可能です。<br>適用できるバックアップ ソリューションは以下です。  </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#cross-region-restore">Azure VM バックアップ</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/restore-sql-database-azure-vm#cross-region-restore">Azure VM 内の SQL Server バックアップ</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-restore#cross-region-restore">Azure VM 内の SAP HANA データベースバックアップ</a> </li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/about-restore-microsoft-azure-recovery-services#cross-region-restore">MARS バックアップ</a> (注1)</li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/restore-azure-database-postgresql#restore-databases-across-regions">Azure Database for PostgreSQL バックアップ</a></li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-restore#restore-in-secondary-region-preview">Azure Kubernetes Service (AKS) バックアップ</a> (注1)</li>
+</ul>
+<div class="alert is-info"><p class="alert-title">Note</p><p>(注1) 2024年5月現在 MARS バックアップ と Azure Kubernetes Service (AKS) バックアップでの CRR 機能は Public Preview となっています。  </p>
+<hr>
+<p>・ Preview: Cross Region Restore (CRR) for Recovery Services Agent (MARS) using Azure Backup | Azure の更新情報 | Microsoft Azure</p><p>　 <a target="_blank" rel="noopener" href="https://azure.microsoft.com/ja-jp/updates/preview-mars-crr/">https://azure.microsoft.com/ja-jp/updates/preview-mars-crr/</a></p></div>
+<p>ただし CRR を利用するためには Recovery Service コンテナーの冗長性オプションが「GRS」かつ「リージョンをまたがる復元」が有効である必要があります。</p>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>CRR の詳細については下記ドキュメントをご参照ください。  </p>
+<hr>
+<p>・ Azure VM Backup における クロス リージョン リストア (CRR) について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)</p><p>　 <a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/">https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/</a></p><p>・ リージョンをまたがる復元 | Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-cross-region-restore">https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-cross-region-restore</a></p><p>・ Azure portal を使用してリージョン間復元を実行する | Backup コンテナーの作成と管理 - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/create-manage-backup-vault#perform-cross-region-restore-using-azure-portal">https://learn.microsoft.com/ja-jp/azure/backup/create-manage-backup-vault#perform-cross-region-restore-using-azure-portal</a>  </p></div>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>Azure VM Backup と Azure Site Recovery それぞれの DR 要件について下記弊社ブログにて紹介しております。  </p>
+<hr>
+<p>・Azure VM Backup と Azure Site Recovery による DR 要件について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)</p><p>　 <a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/#2">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/#2</a></p></div>
+<h4 id="Recovery-Time-Objective-RTO-について"><a href="#Recovery-Time-Objective-RTO-について" class="headerlink" title="Recovery Time Objective (RTO) について"></a>Recovery Time Objective (RTO) について</h4><p>Recovery Time Objective (RTO) は「目標復旧時間」のことで、システム停止時点から復旧までに所要する目標時間を指します。<br>Azure Backup では RTO については明確に定められておらず、またバックアップやリストアの所要時間を見積もることができません。<br>これは Azure サービスがマルチテナント サービスであり、 Azure Backup サービスにおける所要時間はバックアップ / リストア対象のバックアップ アイテムの転送データサイズのみではなく、他のリソース、他のユーザー様の稼働状況、帯域の状況などにも処理時間は左右されるためです。<br>詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Azure Backup の バックアップ / リストア 所要時間について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br><a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme</a></li>
+</ul>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>RTO と RPO について、より詳細な説明は下記の公開ドキュメントをご参照ください。  </p>
+<hr>
+<p>・ Azure Backup 用語集 - Azure Backup | Microsoft Docs</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#recovery-point-objective-rpo">https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#recovery-point-objective-rpo</a></p></div>
+<h4 id="Recovery-Point-Objective-RPO-について"><a href="#Recovery-Point-Objective-RPO-について" class="headerlink" title="Recovery Point Objective (RPO) について"></a>Recovery Point Objective (RPO) について</h4><p>Recovery Point Objective (RPO) は「目標復旧時点」のことで、システムが停止した時に、過去のどの時点のデータまでを復旧できるかの目標時点を指します。<br>RPO は利用するバックアップ ソリューションによって異なります。<br>各バックアップ ソリューションによって指定できるバックアップ頻度が異なるためです。<br>例えば Azure ディスク バックアップの場合は最短 1 時間ごとのバックアップを指定することができますが、Azure VM バックアップでは最短でも 4 時間ごとのバックアップとなります。<br>バックアップ頻度については <a href="#1-3"> 1.3 バックアップ ポリシー</a> の<code>ヒント</code>をご参照ください。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>セカンダリ リージョンへのデータのレプリケーションは、プライマリリージョンへのバックアップジョブが完了 (最大24時間) してから 12 時間以内にレプリケーションが完了するように動作します。</p><p>そのため、プライマリリージョンのバックアップジョブ完了とセカンダリ リージョンへのレプリケーションにはラグが生じます。</p><p>詳細は下記の公開ドキュメントをご参照ください。</p><p>・ Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region</a></p></div>
+<h3 id="1-5-Azure-Backup-の価格"><a href="#1-5-Azure-Backup-の価格" class="headerlink" title=" 1.5 Azure Backup の価格"></a><a id="1-5"></a> 1.5 Azure Backup の価格</h3><p>基本的には、保護対象のリソースのインスタンス数、保全データサイズなどに課金されます。<br>バックアップソリューションにより課金体系が異なる場合がありますので、詳しくは以下のドキュメントを参照いただくようお願いいたします。  </p>
+<ul>
+<li>料金 - クラウド バックアップ | Microsoft Azure<br><a target="_blank" rel="noopener" href="https://azure.microsoft.com/ja-jp/pricing/details/backup/">https://azure.microsoft.com/ja-jp/pricing/details/backup/</a></li>
+<li>料金計算ツール | Microsoft Azure<br><a target="_blank" rel="noopener" href="https://azure.microsoft.com/ja-jp/pricing/calculator/">https://azure.microsoft.com/ja-jp/pricing/calculator/</a></li>
+<li>Azure Backup の価格 - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-pricing">https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-pricing</a></li>
+<li>料金計算ツールを用いた Azure VM Backup の料金見積もりについて | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/">https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</a></li>
+<li>Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/">https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/</a></li>
+</ul>
+<h2 id="2-Azure-Backup-のバックアップ-ソリューションの詳細"><a href="#2-Azure-Backup-のバックアップ-ソリューションの詳細" class="headerlink" title=" 2. Azure Backup のバックアップ ソリューションの詳細"></a><a id="2"></a> 2. Azure Backup のバックアップ ソリューションの詳細</h2><h3 id="2-1-Azure-VM-Backup"><a href="#2-1-Azure-VM-Backup" class="headerlink" title=" 2.1 Azure VM Backup"></a><a id="2-1"></a> 2.1 Azure VM Backup</h3><p>Azure VM 全体、Azure VM 単位でのバックアップを行うことができます。<br>バックアップの構成や復旧ポイントの管理は Recovery Services コンテナーにて行うことができます。<br>バックアップ対象として Windows OS, Linux OS 共に対象となり、オンライン / オフラインどちらでもバックアップ可能です。  </p>
+<p>バックアップできるバックアップ データの整合性はアプリケーション整合性、ファイルシステム整合性とクラッシュ整合性の 3 種類がございます。<br>整合性の詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Azure VM Backupにおける整合性について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/">https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</a></li>
+<li>スナップショットの整合性 | Azure VM バックアップについて - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency</a></li>
+</ul>
+<h4 id="利用方法-2"><a href="#利用方法-2" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure Portal にて Recovery Services コンテナーを開き、<code>バックアップ</code>を選択、<br>次にワークロードで<code>Azure</code>、バックアップ対象で<code>仮想マシン</code>を選択することでバックアップの設定を開始することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/2463356a-ac96-4c37-82ca-08efccaa5837" width="600px"></p>
+<h4 id="参照リンク"><a href="#参照リンク" class="headerlink" title="参照リンク"></a>参照リンク</h4><p>このバックアップ ソリューションの詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Azure VM バックアップについて - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction</a></li>
+<li>Azure VM バックアップのサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas">https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas</a></li>
+<li>Recovery Services コンテナーに Azure VM をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-vms-prepare">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-vms-prepare</a></li>
+<li>Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms</a>  </li>
+</ul>
+<h3 id="2-2-Azure-ディスク-バックアップ"><a href="#2-2-Azure-ディスク-バックアップ" class="headerlink" title=" 2.2 Azure ディスク バックアップ"></a><a id="2-2"></a> 2.2 Azure ディスク バックアップ</h3><p>Azure の マネージド ディスクをバックアップすることができます。<br>また、ディスクが Azure VM に接続されている場合でもバックアップ可能です。<br>ただし、VM が起動中であっても取得されるバックアップはクラッシュ整合性となります。<br>バックアップの構成や復旧ポイントの管理はバックアップ コンテナーにて行うことができます。 </p>
+<h4 id="利用方法-3"><a href="#利用方法-3" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure Portal にてバックアップ コンテナーを開き、<code>バックアップ</code>を選択、<br>次にデータソースの種類で<code>Azure ディスク</code>を選択することでバックアップの設定を開始することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/5cc5719e-0bac-414e-9a9d-a5709af12f9b" width="600px"></p>
+<h4 id="参照リンク-1"><a href="#参照リンク-1" class="headerlink" title="参照リンク"></a>参照リンク</h4><p>このバックアップ ソリューションの詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Azure ディスク バックアップの概要 - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-JP/azure/backup/disk-backup-overview">https://learn.microsoft.com/ja-JP/azure/backup/disk-backup-overview</a></li>
+<li>Azure ディスク バックアップのサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-support-matrix">https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-support-matrix</a></li>
+<li>Azure Managed Disks のバックアップ - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks">https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks</a></li>
+<li>Azure Managed Disks を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/restore-managed-disks">https://learn.microsoft.com/ja-jp/azure/backup/restore-managed-disks</a></li>
+</ul>
+<h3 id="2-3-Azure-ファイル共有バックアップ"><a href="#2-3-Azure-ファイル共有バックアップ" class="headerlink" title=" 2.3 Azure ファイル共有バックアップ"></a><a id="2-3"></a> 2.3 Azure ファイル共有バックアップ</h3><p>Azure ストレージアカウントのファイル共有をバックアップすることができます。<br>バックアップの構成や復旧ポイントの管理は Recovery Services コンテナーにて行うことができます。  </p>
+<h4 id="利用方法-4"><a href="#利用方法-4" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure Portal にて Recovery Services コンテナーを開き、<code>バックアップ</code>を選択、<br>次にワークロードで<code>Azure</code>、バックアップ対象で<code>Azure ファイル共有</code>を選択することでバックアップの設定を開始することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/8b6b5bc8-95b3-4097-8f1b-08f5016d43b7" width="600px">  </p>
+<h4 id="参照リンク-2"><a href="#参照リンク-2" class="headerlink" title="参照リンク"></a>参照リンク</h4><p>このバックアップ ソリューションの詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Azure ファイル共有のバックアップについて - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview?tabs=snapshot">https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview?tabs=snapshot</a></li>
+<li>Azure Backup を使用した Azure ファイル共有のバックアップのサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-support-matrix?tabs=snapshot-tier">https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-support-matrix?tabs=snapshot-tier</a></li>
+<li>Azure portal で Azure ファイル共有をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files?tabs=backup-center">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files?tabs=backup-center</a></li>
+<li>Azure ファイル共有を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/restore-afs?tabs=full-share-recovery">https://learn.microsoft.com/ja-jp/azure/backup/restore-afs?tabs=full-share-recovery</a></li>
+</ul>
+<h3 id="2-4-Azure-BLOB-バックアップ"><a href="#2-4-Azure-BLOB-バックアップ" class="headerlink" title=" 2.4 Azure BLOB バックアップ"></a><a id="2-4"></a> 2.4 Azure BLOB バックアップ</h3><p>Azure ストレージアカウントの BLOB コンテナーをバックアップすることができます。<br>バックアップの構成や復旧ポイントの管理はバックアップ コンテナーにて行うことができます。  </p>
+<h4 id="利用方法-5"><a href="#利用方法-5" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure Portal にてバックアップ コンテナーを開き、<code>バックアップ</code>を選択、<br>次にデータソースの種類で<code>Azure BLOB (Azure Storage)</code>を選択することでバックアップの設定を開始することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/a4e8ba67-a51a-4431-a60c-58e88854c2d6" width="600px">  </p>
+<h4 id="参照リンク-3"><a href="#参照リンク-3" class="headerlink" title="参照リンク"></a>参照リンク</h4><p>このバックアップ ソリューションの詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Azure BLOB バックアップの概要 - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview?tabs=operational-backup">https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview?tabs=operational-backup</a></li>
+<li>Azure BLOB バックアップのサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-support-matrix?tabs=operational-backup">https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-support-matrix?tabs=operational-backup</a></li>
+<li>Azure Backup を使用して Azure BLOB のバックアップを構成および管理する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-configure-manage?tabs=operational-backup">https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-configure-manage?tabs=operational-backup</a></li>
+<li>Azure の BLOB を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/blob-restore?tabs=operational-backup">https://learn.microsoft.com/ja-jp/azure/backup/blob-restore?tabs=operational-backup</a></li>
+</ul>
+<h3 id="2-5-Azure-VM-内の-SQL-Server-バックアップ"><a href="#2-5-Azure-VM-内の-SQL-Server-バックアップ" class="headerlink" title=" 2.5 Azure VM 内の SQL Server バックアップ"></a><a id="2-5"></a> 2.5 Azure VM 内の SQL Server バックアップ</h3><p>Azure VM 内にある SQL Server をバックアップすることができます。<br>バックアップの構成や復旧ポイントの管理は Recovery Services コンテナーにて行うことができます。<br>このソリューションでは、SQL Server 側のバックアップ機能と連携して、SQL データベースのバックアップを作成しています。<br>そのため、Azure VM Backup にはない以下の特徴があります。</p>
+<ul>
+<li>完全、差分、ログバックアップに対応</li>
+<li>頻繁に行われるログバックアップによる 最短 15 分間の RPO (目標復旧時点)</li>
+<li>特定時点への復元</li>
+<li>個々のデータベース レベルのバックアップと復元</li>
+</ul>
+<h4 id="利用方法-6"><a href="#利用方法-6" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure Portal にて Recovery Services コンテナーを開き、<code>バックアップ</code>を選択、<br>次にワークロードで<code>Azure</code>、バックアップ対象で<code>Azure VM 内の SQL Server</code>を選択することでバックアップの設定を開始することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/cf06b38b-7a42-49cc-9d4f-8a6757936c93" width="600px">  </p>
+<h4 id="参照リンク-4"><a href="#参照リンク-4" class="headerlink" title="参照リンク"></a>参照リンク</h4><p>このバックアップ ソリューションの詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Azure への SQL Server データベースのバックアップ - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database</a>  </li>
+<li>Azure VM 内の SQL Server のバックアップに関する Azure Backup のサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sql-support-matrix">https://learn.microsoft.com/ja-jp/azure/backup/sql-support-matrix</a>  </li>
+<li>コンテナーから複数の SQL Server VM をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms">https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms</a></li>
+<li>Azure VM 上の SQL Server データベースを復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/restore-sql-database-azure-vm">https://learn.microsoft.com/ja-jp/azure/backup/restore-sql-database-azure-vm</a></li>
+</ul>
+<h3 id="2-6-Azure-VM-内の-SAP-HANA-データベースバックアップ"><a href="#2-6-Azure-VM-内の-SAP-HANA-データベースバックアップ" class="headerlink" title=" 2.6 Azure VM 内の SAP HANA データベースバックアップ"></a><a id="2-6"></a> 2.6 Azure VM 内の SAP HANA データベースバックアップ</h3><p>Azure VM 内にある SAP HANA データベースをバックアップすることができます。<br>バックアップの構成や復旧ポイントの管理は Recovery Services コンテナーにて行うことができます。<br>Azure Backup は、SAP による Backint 認定がされており、SAP HANA 側のバックアップ機能と連携してバックアップを作成しています。<br>そのため、Azure VM Backup にはない以下の特徴があります。</p>
+<ul>
+<li>完全、差分、ログバックアップに対応</li>
+<li>頻繁に行われるログバックアップによる 最短 15 分間の RPO (目標復旧時点)</li>
+<li>特定時点への復元</li>
+<li>個々のデータベース レベルのバックアップと復元</li>
+</ul>
+<h4 id="利用方法-7"><a href="#利用方法-7" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure Portal にて Recovery Services コンテナーを開き、<code>バックアップ</code>を選択、<br>次にワークロードで<code>Azure</code>、バックアップ対象で<code>Azure VM 内の SAP HANA</code>を選択することでバックアップの設定を開始することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/037e9907-9b8f-4259-b573-b8e5e0c02e08" width="600px"> </p>
+<h4 id="参照リンク-5"><a href="#参照リンク-5" class="headerlink" title="参照リンク"></a>参照リンク</h4><p>このバックアップ ソリューションの詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Azure VM 上の SAP HANA データベース バックアップについて - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-about">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-about</a></li>
+<li>SAP HANA バックアップのサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-backup-support-matrix">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-backup-support-matrix</a></li>
+<li>Azure Backup を使用して Azure に SAP HANA データベースをバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sap-hana-database">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sap-hana-database</a></li>
+<li>Azure VM 上の SAP HANA データベースの復元 - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-restore">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-restore</a></li>
+</ul>
+<h3 id="2-7-Azure-Database-for-PostgreSQL-バックアップ"><a href="#2-7-Azure-Database-for-PostgreSQL-バックアップ" class="headerlink" title=" 2.7 Azure Database for PostgreSQL バックアップ"></a><a id="2-7"></a> 2.7 Azure Database for PostgreSQL バックアップ</h3><p>Azure Database for PostgreSQL をバックアップすることができます。<br>Azure Database for PostgreSQL そのもののバックアップソリューションではデータ保有期間が最大 35 日間ですが、Azure Backup を利用することでデータを長期的 (最大 10 年間) に保有することが可能になります。<br>長期的な保有期間以外にも、バックアップの構成や復旧ポイントを一元的にバックアップ コンテナーにて管理できるメリットなどがあります。</p>
+<h4 id="利用方法-8"><a href="#利用方法-8" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure Portal にてバックアップ コンテナーを開き、<code>バックアップ</code>を選択、<br>次にデータソースの種類で<code>Azure Database for PostgreSQL サーバー</code>を選択することでバックアップの設定を開始することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/32a2e9ee-0a07-451c-8822-f6ed16edc4d7" width="600px">  </p>
+<h4 id="参照リンク-6"><a href="#参照リンク-6" class="headerlink" title="参照リンク"></a>参照リンク</h4><p>このバックアップ ソリューションの詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Azure Database for PostgreSQL のバックアップについて - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview</a></li>
+<li>Azure Database for PostgreSQL サーバーのサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-support-matrix">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-support-matrix</a></li>
+<li>Azure Database for PostgreSQL のバックアップ - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql</a></li>
+<li>Azure Database for PostgreSQL を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/restore-azure-database-postgresql">https://learn.microsoft.com/ja-jp/azure/backup/restore-azure-database-postgresql</a></li>
+</ul>
+<h3 id="2-8-Azure-Database-for-MySQL-バックアップ"><a href="#2-8-Azure-Database-for-MySQL-バックアップ" class="headerlink" title=" 2.8 Azure Database for MySQL バックアップ"></a><a id="2-8"></a> 2.8 Azure Database for MySQL バックアップ</h3><p>Azure Database for MySQL をバックアップすることができます。<br>Azure Database for MySQL そのもののバックアップソリューションではデータ保有期間が最大 35 日間ですが、Azure Backup を利用することでデータを長期的 (最大 10 年間) に保有することが可能になります。<br>長期的な保有期間以外にも、バックアップの構成や復旧ポイントを一元的にバックアップ コンテナーにて管理できるメリットなどがあります。</p>
+<h4 id="利用方法-9"><a href="#利用方法-9" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure Portal にてバックアップ コンテナーを開き、<code>バックアップ</code>を選択、<br>次にデータソースの種類で<code>Azure Database for MySQL (プレビュー)</code>を選択することでバックアップの設定を開始することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/aa2621a6-3992-4712-afa1-4b5e791b7b5e" width="600px">  </p>
+<h4 id="参照リンク-7"><a href="#参照リンク-7" class="headerlink" title="参照リンク"></a>参照リンク</h4><p>このバックアップ ソリューションの詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>概要 - Azure Backup を使用した Azure Database for MySQL - フレキシブル サーバーの長期保有 - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server-about">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server-about</a></li>
+<li>Azure Backup を使用した Azure Database for MySQL - フレキシブル サーバーの長期保有のサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server-support-matrix">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server-support-matrix</a></li>
+<li>Azure Backup を使用して Azure Database for MySQL - フレキシブル サーバーをバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server</a></li>
+<li>Azure Backup を使用して Azure Database for MySQL - フレキシブル サーバーを復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server-restore">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-mysql-flexible-server-restore</a></li>
+</ul>
+<h3 id="2-9-MARS-バックアップ"><a href="#2-9-MARS-バックアップ" class="headerlink" title=" 2.9 MARS バックアップ"></a><a id="2-9"></a> 2.9 MARS バックアップ</h3><p>Microsoft Azure Recovery Services (MARS) エージェントを使用して、ファイル、フォルダー、およびボリュームまたはシステム状態をオンプレミスの仮想マシンまたは Azure VM から Azure にバックアップできます。<br>サポートしている OS は Windows OS のみで、Linux OS では利用いただけません。</p>
+<h4 id="利用方法-10"><a href="#利用方法-10" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure Portal にて Recovery Services コンテナーを開き、<code>バックアップ</code>を選択、<br>次にワークロードで<code>オンプレミス</code>、バックアップ対象で<code>ファイルとフォルダー</code>を選択します。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/88985531-4431-4720-8c3c-b22e75a9abd6" width="300px">  </p>
+<p>続いての画面で<code>Windows Server または Windows クライアント用エージェントのダウンロード</code>のリンクを選択することで、MARS エージェントをダウンロードできます。<br>インストール完了後、MARS エージェント UI からバックアップの設定を開始します。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/ef1fbc8e-1f71-432b-9dc8-cbdbaa23a5ed" width="700px">  </p>
+<h4 id="参照リンク-8"><a href="#参照リンク-8" class="headerlink" title="参照リンク"></a>参照リンク</h4><p>このバックアップ ソリューションの詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>MARS エージェントについて - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-about-mars">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-about-mars</a></li>
+<li>MARS エージェントを使用したサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent">https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent</a></li>
+<li>MARS エージェントを使用して Windows マシンをバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-windows-with-mars-agent">https://learn.microsoft.com/ja-jp/azure/backup/backup-windows-with-mars-agent</a></li>
+<li>MARS エージェントを使用して Windows Server にファイルを復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-restore-windows-server">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-restore-windows-server</a></li>
+</ul>
+<h3 id="2-10-DPM-MABS-バックアップ"><a href="#2-10-DPM-MABS-バックアップ" class="headerlink" title=" 2.10 DPM / MABS バックアップ"></a><a id="2-10"></a> 2.10 DPM / MABS バックアップ</h3><p>System Center DPM は、エンタープライズ コンピューターおよびデータのバックアップと復旧を構成、促進、および管理するエンタープライズ ソリューションです。<br>MABS は、オンプレミスの物理サーバー、VM、およびそれらで実行されているアプリをバックアップするために使用できるサーバー製品です。<br>MABS は System Center DPM に基づいており、同様の機能を提供しますが、いくつかの違いがあります。<br>詳細は、下記ドキュメントをご参照ください。</p>
+<ul>
+<li>MABS と System Center DPM のサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs">https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs</a></li>
+</ul>
+<h4 id="利用方法-11"><a href="#利用方法-11" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure Portal にて Recovery Services コンテナーを開き、<code>バックアップ</code>を選択、<br>次にワークロードで<code>オンプレミス</code>、バックアップ対象で MABS を使用して保護するワークロードを選択します。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/2426fa06-df5b-4dc4-b400-657115f6def0" width="300px">  </p>
+<p>続いての画面で<code>ダウンロード</code>のリンクを選択することで、Microsoft Azure Backup Server (MABS) をダウンロードできます。<br>インストール完了後、Microsoft Azure Backup Server UI からバックアップの設定を開始します。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/db6de149-ec90-42ec-b048-f99f11076c6f" width="700px">  </p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>ファイルとフォルダーだけをバックアップする場合は、MARS を使用すること、および下記記事のガイダンスに従って操作することをお勧めします。</p><p>・ MARS エージェントを使用して Windows マシンをバックアップする - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-windows-with-mars-agent">https://learn.microsoft.com/ja-jp/azure/backup/backup-windows-with-mars-agent</a>  </p></div>
+<h4 id="復元方法"><a href="#復元方法" class="headerlink" title=" 復元方法"></a><a id="2-10-restore"></a> 復元方法</h4><p>DPM / MABS を利用してバックアップしたデータの復元方法は保護したワークロードによって異なります。<br>詳細については下記ドキュメントをご参照ください。 </p>
+<ul>
+<li>バックアップされた Hyper-V 仮想マシンを復旧する | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/back-up-hyper-v-virtual-machines-mabs#recover-backed-up-hyper-v-virtual-machines">https://learn.microsoft.com/ja-jp/azure/backup/back-up-hyper-v-virtual-machines-mabs#recover-backed-up-hyper-v-virtual-machines</a>  </li>
+<li>バックアップされた仮想マシンを回復する | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines#recover-backed-up-virtual-machines">https://learn.microsoft.com/ja-jp/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines#recover-backed-up-virtual-machines</a>  </li>
+<li>Azure Backup Server を使用して VMware VM を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/restore-azure-backup-server-vmware">https://learn.microsoft.com/ja-jp/azure/backup/restore-azure-backup-server-vmware</a>  </li>
+<li>Exchange データベースを回復する | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-exchange-mabs#recover-the-exchange-database">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-exchange-mabs#recover-the-exchange-database</a>  </li>
+<li>MABS を使用して Azure から SharePoint データベースを復元する | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-backup-sharepoint-mabs#restore-a-sharepoint-database-from-azure-using-mabs">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-backup-sharepoint-mabs#restore-a-sharepoint-database-from-azure-using-mabs</a>  </li>
+<li>Azure からの SQL Server データベースの回復 | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-mabs#recover-a-sql-server-database-from-azure">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-mabs#recover-a-sql-server-database-from-azure</a>  </li>
+<li>システム状態または BMR の回復 | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-mabs-system-state-and-bmr#recover-system-state-or-bmr">https://learn.microsoft.com/ja-jp/azure/backup/backup-mabs-system-state-and-bmr#recover-system-state-or-bmr</a>  </li>
+<li>バックアップされたファイル データの回復 | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/back-up-file-data#recover-backed-up-file-data">https://learn.microsoft.com/ja-jp/azure/backup/back-up-file-data#recover-backed-up-file-data</a>  </li>
+</ul>
+<h4 id="参照リンク-9"><a href="#参照リンク-9" class="headerlink" title="参照リンク"></a>参照リンク</h4><p>このバックアップ ソリューションの詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Data Protection Manager | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/system-center/dpm/dpm-overview?view=sc-dpm-2022">https://learn.microsoft.com/ja-jp/system-center/dpm/dpm-overview?view=sc-dpm-2022</a></li>
+<li>DPM/MABS について | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs">https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs</a></li>
+<li>DPM をインストールする | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/system-center/dpm/install-dpm?view=sc-dpm-2022">https://learn.microsoft.com/ja-jp/system-center/dpm/install-dpm?view=sc-dpm-2022</a></li>
+<li>Azure Backup Server のインストールとアップグレード | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-microsoft-azure-backup">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-microsoft-azure-backup</a></li>
+<li>MABS (Azure Backup Server) V4 の保護マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-mabs-protection-matrix">https://learn.microsoft.com/ja-jp/azure/backup/backup-mabs-protection-matrix</a></li>
+<li>MABS と System Center DPM のサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs">https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mabs-dpm#about-dpmmabs</a></li>
+</ul>
+<h3 id="2-11-Azure-Kubernetes-Service-AKS-バックアップ"><a href="#2-11-Azure-Kubernetes-Service-AKS-バックアップ" class="headerlink" title=" 2.11 Azure Kubernetes Service (AKS) バックアップ"></a><a id="2-11"></a> 2.11 Azure Kubernetes Service (AKS) バックアップ</h3><p>AKS クラスターにデプロイされている AKS ワークロードと永続ボリュームをバックアップすることができます。<br>バックアップの構成や復旧ポイントの管理はバックアップ コンテナーにて行うことができます。  </p>
+<h4 id="利用方法-12"><a href="#利用方法-12" class="headerlink" title="利用方法"></a>利用方法</h4><p>Azure Portal にてバックアップ コンテナーを開き、<code>バックアップ</code>を選択、<br>次にデータソースの種類で<code>Kubernetes サービス</code>を選択することでバックアップの設定を開始することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/872e323b-f078-4840-9479-fe2772d8a477" width="600px">  </p>
+<h4 id="参照リンク-10"><a href="#参照リンク-10" class="headerlink" title="参照リンク"></a>参照リンク</h4><p>このバックアップ ソリューションの詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Azure Kubernetes Service (AKS) バックアップとは - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview">https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview</a></li>
+<li>Azure Kubernetes Service (AKS) バックアップのサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-backup-support-matrix?source=recommendations">https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-backup-support-matrix?source=recommendations</a></li>
+<li>Azure Backup を使用して Azure Kubernetes Service をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-backup?source=recommendations">https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-backup?source=recommendations</a></li>
+<li>Azure Backup を使用して Azure Kubernetes Service (AKS) を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-restore">https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-cluster-restore</a></li>
+</ul>
+<h2 id="3-よくいただくお問合せ"><a href="#3-よくいただくお問合せ" class="headerlink" title=" 3. よくいただくお問合せ"></a><a id="3"></a> 3. よくいただくお問合せ</h2><p>Azure Backup の各バックアップソリューションについてよくいただくお問い合わせと回答を記載させていただきます。</p>
+<h3 id="Q1-「Azure-VM-Backup」-と-「Azure-ディスク-バックアップ」-と-「ディスクのスナップショット」-はどれを利用したらいいですか？"><a href="#Q1-「Azure-VM-Backup」-と-「Azure-ディスク-バックアップ」-と-「ディスクのスナップショット」-はどれを利用したらいいですか？" class="headerlink" title="Q1. 「Azure VM Backup」 と 「Azure ディスク バックアップ」 と 「ディスクのスナップショット」 はどれを利用したらいいですか？"></a>Q1. 「Azure VM Backup」 と 「Azure ディスク バックアップ」 と 「ディスクのスナップショット」 はどれを利用したらいいですか？</h3><p>「アプリケーション整合性を担保したバックアップを取得したい」や「Azure 仮想マシンをまるごと（マシンにアタッチされているディスクのデータを含めて）バックアップしたい」という用途であれば一般的に <strong>Azure VM Backup</strong> をご利用いただくことが多くございます。  </p>
+<p>「Azure 仮想マシンをまるごとバックアップする必要は無い」であったり「とある Azure Managed Disk をディスク単体で定期的にバックアップすればよい」という場合は、<strong>Azure ディスク バックアップ</strong> をご検討ください。  </p>
+<p>「1 度きりのバックアップ用途で取得しておきたい」というご要望をいただくこともあります。<br>しかし Azure VM Backup ではバックアップ ポリシーを利用しスケジュールされたバックアップを取得する運用を想定した製品仕様となっております。<br>そのため、任意のタイミングのみでバックアップを行う場合は懸念点がございますため、弊社としてはこの運用を推奨しておりません。<br>この場合、Azure Backup ではなく、ディスク側の機能である<strong>ディスクのスナップショット</strong>の利用をご検討ください。<br>詳細については下記ドキュメントにて紹介しております。</p>
+<ul>
+<li>Azure VM バックアップを任意のタイミングのみで取得したい | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/">https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</a></li>
+</ul>
+<div class="alert is-info"><p class="alert-title">Note</p><p>「Azure ディスク バックアップ」 と 「ディスクのスナップショット」は Azure VM Backup とは異なり整合性が常にクラッシュ整合性となります。</p><p>詳細については下記をご覧ください。</p>
+<hr>
+<p>・Azure VM Backupにおける整合性について - 3.クラッシュ整合性</p><p>　 <a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3">https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3</a></p></div>
+<h3 id="Q2-「共有ディスクのバックアップ」はできますか？"><a href="#Q2-「共有ディスクのバックアップ」はできますか？" class="headerlink" title="Q2. 「共有ディスクのバックアップ」はできますか？"></a>Q2. 「共有ディスクのバックアップ」はできますか？</h3><p>【Azure VM Backup で共有ディスクを含めてバックアップしたい場合】<br><strong>Azure VM Backup</strong> では残念ながら共有ディスクをバックアップすることはサポートしておりません。</p>
+<p>ただし、共有ディスクがアタッチされている Azure VM に対して「共有ディスクを除外し、その他のディスクをバックアップする」ことは可能です。<br>この場合は、Azure VM Backup の「選択的ディスクバックアップ」を「Enhanced バックアップ ポリシー」を指定して利用することで実現可能です。</p>
+<ul>
+<li>Azure 仮想マシンの選択的なディスク バックアップと復元 - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/selective-disk-backup-restore">https://learn.microsoft.com/ja-jp/azure/backup/selective-disk-backup-restore</a></li>
+</ul>
+<p>【共有ディスクを「手動で任意のタイミングのみ」バックアップしたい場合】<br><strong>ディスクのスナップショット</strong>を利用して、お客様にて手動で Azure Managed Disk に対してスナップショットを取得いただく方法がございます。</p>
+<p>【共有ディスクを「定期的に」バックアップしたい場合】<br><strong>Azure ディスク バックアップ</strong> ソリューションを利用して、定期的なバックアップ取得 (=スナップショット取得) が可能です。</p>
+<p>また、Windows OS の Azure VM であれば、共有ディスクに対する、「ローカル ディスク」としての <strong>MARS バックアップ</strong>は可能です。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>MARS バックアップを利用して共有ディスクをバックアップする場合の注意点 </p>
+<hr>
+<p>・ 「共有ディスク」 が NTFS であり、「クラスター共有ボリューム」には割り当てられていなければ、MARS バックアップとしてバックアップは可能です。</p><p>・ MARS はクラスター リソースを識別することができませんが、ローカル ディスクとして識別されているボリュームであれば、バックアップが可能です。</p><p>・ 「クラスター サポート」とは、共有ボリュームがオンラインになっている場所 (ノード) を気にすることなく継続的にバックアップが可能であるか、という意味になりますが、MARS バックアップにおいては、これをサポートしていません。</p></div>
+<h3 id="Q3-「Azure-VM-内の-SQL-Server-バックアップ」-または-Azure-VM-内の-SAP-HANA-と-「Azure-VM-バックアップ」の違いは何ですか？"><a href="#Q3-「Azure-VM-内の-SQL-Server-バックアップ」-または-Azure-VM-内の-SAP-HANA-と-「Azure-VM-バックアップ」の違いは何ですか？" class="headerlink" title="Q3. 「Azure VM 内の SQL Server バックアップ」 (または Azure VM 内の SAP HANA) と 「Azure VM バックアップ」の違いは何ですか？"></a>Q3. 「Azure VM 内の SQL Server バックアップ」 (または Azure VM 内の SAP HANA) と 「Azure VM バックアップ」の違いは何ですか？</h3><p>Azure VM にある SQL Serverに対し、「Azure Backup」として提供できるサービスとしては  <strong>Azure VM Backup</strong> と <strong>Azure VM 内の SQL Server をバックアップ</strong> の両方でバックアップが可能です。<br><strong>Azure VM 内の SQL Server バックアップ</strong> では データベースのみのバックアップであり、VM 自体がバックアップされません。<br>それに対して <strong>Azure VM Backup</strong> では VM 自体がバックアップされ、その中に SQL Server が存在していれば、それも含まれてバックアップされる形になります。<br>そのため、SQL Server だけでなく、VM 自体の復元が必要な場合は <strong>Azure VM Backup</strong> の利用をご検討ください。<br><strong>Azure VM Backup</strong> における整合性についての詳細は下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>Azure VM Backupにおける整合性について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-2">https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-2</a></li>
+</ul>
+<p>また、<strong>Azure VM 内の SQL Server バックアップ</strong> はデータベース ワークロードに特化したワークロードであり、 <strong>Azure VM Backup</strong> にはない、最短 15 分間の RPO (目標復旧時点) を提供し、個々のデータベースのバックアップと復元が可能です。</p>
+<p>また、同じVM上で <strong>Azure VM Backup</strong> と <strong>Azure VM 内の SQL Server バックアップ</strong> を共存させることも可能です。<br>詳細については下記ドキュメントをご参照ください。  </p>
+<ul>
+<li>FAQ - Azure VM 上の SQL Server データベースのバックアップ - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/faq-backup-sql-server#iaas-vm---azure---------sql-server-----------------">https://learn.microsoft.com/ja-jp/azure/backup/faq-backup-sql-server#iaas-vm---azure---------sql-server-----------------</a>    </li>
+</ul>
+<h3 id="Q4-バックアップ失敗時にメールを通知するようにできますか？"><a href="#Q4-バックアップ失敗時にメールを通知するようにできますか？" class="headerlink" title="Q4. バックアップ失敗時にメールを通知するようにできますか？"></a>Q4. バックアップ失敗時にメールを通知するようにできますか？</h3><p>Azure Backup でバックアップ ジョブが失敗した際、Azure Monitor を利用してメール通知を行うように構成できます。<br>詳細は下記ドキュメントをご参照ください。</p>
+<ul>
+<li>「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例 | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br><a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/</a></li>
+</ul>
+<p>お客様のお役に立てれば幸いです。<br>本記事は以上です。</p>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureBackupGeneral/Backup_Overview.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../AzureSiteRecovery/How_to_fail_ASR/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">ASR を意図的に失敗させる方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">Azure Backup の 概要</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureSiteRecovery/How_to_fail_ASR/">ASR を意図的に失敗させる方法</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/RestoreStagingStorageAccount/">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</a>
+          </li>
+        
+          <li>
+            <a href="../HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">11</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">9</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">27</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">24</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SAPHANA-Backup/" style="font-size: 10px;">Azure SAPHANA Backup</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 11.67px;">Azure SQL Backup</a> <a href="../../tags/Azure-Site-Recovery/" style="font-size: 13.33px;">Azure Site Recovery</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 13.33px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
