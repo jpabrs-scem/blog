@@ -108,11 +108,11 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#crea
 
 #### ディスクの復元
 復旧ポイントから ディスクの復元を行う際、前述の条件を満たしている場合に、復元先の可用性ゾーンを指定することができます。  
-  <img src="https://github.com/jpabrs-scem/blog/assets/109163295/c9b22d52-6058-4b94-b498-e67892d7150f" width="600px">  
+<img src="https://github.com/jpabrs-scem/blog/assets/109163295/c9b22d52-6058-4b94-b498-e67892d7150f" width="600px">  
 
 具体的な復元の手順は下記の公開情報をご覧ください。  
-* セカンダリ リージョンに復元する | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn  
-https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region
+* ディスクを復元する | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks
 
 ## <a id="2"></a>2. 参考情報
 * 復元オプション | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn  
