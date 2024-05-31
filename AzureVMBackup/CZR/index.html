@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Azure VM Backup におけるクロス ゾーン リストア (CZR) について | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="こんにちは、Azure Backup サポートです。今回は Azure Backup での異なる可用性ゾーンへの復元 ( &#x3D; クロス ゾーン リストア &#x2F; CZR ) についてご紹介します。今回ご紹介する内容は、それぞれの公開情報に掲載されておりますが、一つのページに集約されておりません。よくお問い合わせいただく内容ですので、本記事では情報を集約化してお伝えします。 目次 1. CZR を行うた">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure VM Backup におけるクロス ゾーン リストア (CZR) について">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="こんにちは、Azure Backup サポートです。今回は Azure Backup での異なる可用性ゾーンへの復元 ( &#x3D; クロス ゾーン リストア &#x2F; CZR ) についてご紹介します。今回ご紹介する内容は、それぞれの公開情報に掲載されておりますが、一つのページに集約されておりません。よくお問い合わせいただく内容ですので、本記事では情報を集約化してお伝えします。 目次 1. CZR を行うた">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/4a433214-3f04-4212-994c-c21851896d71">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/63cfa831-c538-456c-8804-cf8bc24edaec">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/014f7a8d-8c30-4721-a339-be3856f4059b">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/98ef24ee-50eb-4fc4-8c7b-af5035a18a7d">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/0d293ccf-94ac-4553-b938-3712bd2703a0">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/5979f86a-2f54-49ff-b783-3590e52fe4ea">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/c3448a33-c9de-4aa3-86f3-90600f6aa8a5">
+<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/c9b22d52-6058-4b94-b498-e67892d7150f">
+<meta property="article:published_time" content="2024-05-31T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-31T00:07:03.111Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Azure VM Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/4a433214-3f04-4212-994c-c21851896d71">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureVMBackup/CZR" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Azure VM Backup におけるクロス ゾーン リストア (CZR) について
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2024-05-31T03:00:00.000Z" itemprop="datePublished">2024-05-31</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+c78e928b-f85e-58cd-bdc9-83594fd11dc9%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%82%AF%E3%83%AD%E3%82%B9+%E3%82%BE%E3%83%BC%E3%83%B3+%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2+%28CZR%29+%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FCZR%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FCZR.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FCZR.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/" data-id="clwtxcwe1001f0npch29hghv0" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>こんにちは、Azure Backup サポートです。<br>今回は Azure Backup での異なる可用性ゾーンへの復元 ( = クロス ゾーン リストア / CZR ) についてご紹介します。<br>今回ご紹介する内容は、それぞれの公開情報に掲載されておりますが、一つのページに集約されておりません。<br>よくお問い合わせいただく内容ですので、本記事では情報を集約化してお伝えします。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. CZR を行うための各条件</a><br>  <a href="#1-1">1-1. Azure VM の条件</a><br>  <a href="#1-2">1-2. Recovery Services コンテナーの条件</a><br>  <a href="#1-3">1-3. 利用できる復元オプション</a><br><a href="#2">2. 参考情報</a></p>
+<hr>
+<h2 id="1-CZR-を行うための各条件"><a href="#1-CZR-を行うための各条件" class="headerlink" title="1. CZR を行うための各条件"></a><a id="1"></a>1. CZR を行うための各条件</h2><p>CZR を利用することで、Azure VM バックアップによって保護されている VM またはディスクを、復旧ポイントから別のゾーンに復元することができます。<br>CZR を利用するために Recovery Services コンテナーおよび Azure VM バックアップにより保護されている VM が満たすべき条件を下記にまとめました。  </p>
+<h3 id="1-1-Azure-VM-の条件"><a href="#1-1-Azure-VM-の条件" class="headerlink" title="1-1. Azure VM の条件"></a><a id="1-1"></a>1-1. Azure VM の条件</h3><p>CZR を行うためには、Azure VM バックアップにより保護されている VM が次の条件を満たす必要があります。</p>
+<ul>
+<li>マネージド VM であること</li>
+<li>クロス リージョン リストア (CRR) を行う場合、ゾーン固定 VM であること</li>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#encryption-of-azure-vm-backups">暗号化された Azure VM</a> ではないこと</li>
+</ul>
+<h4 id="Azure-VM-が特定の可用性ゾーンに固定されているかどうかを確認する方法"><a href="#Azure-VM-が特定の可用性ゾーンに固定されているかどうかを確認する方法" class="headerlink" title="Azure VM が特定の可用性ゾーンに固定されているかどうかを確認する方法"></a>Azure VM が特定の可用性ゾーンに固定されているかどうかを確認する方法</h4><p>ご参考までに、Azure VM が可用性ゾーンに固定されているかどうかの、Azure ポータル画面での確認方法を説明いたします。<br>VMの概要欄に「可用性ゾーン xxx」 と表示されていれば、表示されているゾーンに固定されており、「可用性ゾーン xxx」 といった表示がない場合はゾーン固定されていないと判断できます。<br>たとえば、下記画像の VM 「CZR-stand-z1」は可用性ゾーン「ゾーン1」に固定されている状態です。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/4a433214-3f04-4212-994c-c21851896d71" width="600px"></p>
+<p>一方で下記画像の VM 「CZR-standard」はどのゾーンにも固定されていない状態となります。<br>(この場合は可用性ゾーンは空欄になります。)<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/63cfa831-c538-456c-8804-cf8bc24edaec" width="600px"></p>
+<h3 id="1-2-Recovery-Services-コンテナーの条件"><a href="#1-2-Recovery-Services-コンテナーの条件" class="headerlink" title="1-2. Recovery Services コンテナーの条件"></a><a id="1-2"></a>1-2. Recovery Services コンテナーの条件</h3><p>CZR は以下の条件を満たす Recovery Services コンテナーで行うことができます。  </p>
+<ul>
+<li>Recovery Services コンテナーのストレージ レプリケーションの種類が「ゾーン冗長」、または「geo 冗長」かつ <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-cross-region-restore">CRR</a> が有効になっていること  </li>
+<li>ただし、ストレージ レプリケーションの種類が「geo 冗長」かつ CRR が有効の場合は、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region">セカンダリ リージョンへの復元</a>を行う際にのみゾーン指定して復元可能<br>※ <a href="#1-1">1-1. Azure VM の条件</a> で説明の通り、ゾーン固定 VM である必要有<br>※ プライマリ リージョンへは CRR を有効化していてもゾーン指定して復元することは不可能  </li>
+<li>復旧ポイントの「回復の種類」が「Vault-Standard」であること<br>「スナップショット」のみ、または「スナップショットと Vault-Standard」の場合はゾーン指定して復元することは不可能  </li>
+</ul>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>CRR については下記の弊社ブログにて紹介しております。</p><p>・ Azure VM Backup におけるクロス リージョン リストア (CRR) について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)</p><p>　 <a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/">https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/</a>  </p>
+<hr>
+<p>セカンダリ リージョン (ペア リージョン) について、および可用性ゾーンをサポートしているリージョンについては下記ドキュメントをご覧ください。</p><p>・ Azure のリージョン間レプリケーション | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/reliability/cross-region-replication-azure#azure-paired-regions">https://learn.microsoft.com/ja-jp/azure/reliability/cross-region-replication-azure#azure-paired-regions</a></p><p>・ Availability Zones をサポートする Azure サービス | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support">https://learn.microsoft.com/ja-jp/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support</a>  </p></div>
+<h4 id="Azure-Portal-で-Recovery-Services-コンテナー-の「ストレージ-レプリケーションの種類」を確認する方法"><a href="#Azure-Portal-で-Recovery-Services-コンテナー-の「ストレージ-レプリケーションの種類」を確認する方法" class="headerlink" title="Azure Portal で Recovery Services コンテナー の「ストレージ レプリケーションの種類」を確認する方法"></a>Azure Portal で Recovery Services コンテナー の「ストレージ レプリケーションの種類」を確認する方法</h4><p>ご参考までに、「ストレージ レプリケーションの種類」が「ゾーン冗長」に設定している場合の Azure ポータル画面上の見え方を説明いたします。<br>該当の Recovery Services コンテナー &gt; 設定 - プロパティ &gt; バックアップ構成 - 更新 ボタン から「ストレージ レプリケーションの種類」が確認できます。<br>たとえば、下記画像の Recovery Services コンテナーでは「ゾーン冗長」が設定されています。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/014f7a8d-8c30-4721-a339-be3856f4059b" width="800px">  </p>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>Recovery Services コンテナーで既にバックアップを構成している場合は「ストレージ レプリケーションの種類」を変更することができません。</p><p>「ストレージ レプリケーションの種類」の変更が必要な場合は下記ドキュメントをご参照ください。</p><p>・ Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy">https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy</a></p></div>
+<h4 id="Azure-Portal-で-復旧ポイントの「回復の種類」を確認する方法"><a href="#Azure-Portal-で-復旧ポイントの「回復の種類」を確認する方法" class="headerlink" title="Azure Portal で 復旧ポイントの「回復の種類」を確認する方法"></a>Azure Portal で 復旧ポイントの「回復の種類」を確認する方法</h4><p>ご参考までに、復旧ポイントの「回復の種類」を Azure ポータル画面にて確認する方法を説明いたします。  </p>
+<p>まずは該当の Recovery Services コンテナー &gt; 保護されたアイテム - バックアップ アイテム &gt; Azure Virtual Machine ボタンを選択します。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/98ef24ee-50eb-4fc4-8c7b-af5035a18a7d" width="800px">  </p>
+<p>続いて確認したい VM の行にて、詳細 - View details ボタンを選択します。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/0d293ccf-94ac-4553-b938-3712bd2703a0"> </p>
+<p>すると選択した VM の復旧ポイント一覧が表示され、ここから「回復の種類」を確認できます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/5979f86a-2f54-49ff-b783-3590e52fe4ea"> </p>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>「スナップショット」「Vault-Standard」についての説明は下記ドキュメントをご参照ください。</p><p>・ レベル | Azure Backup 用語集 - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#tier">https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#tier</a></p></div>
+<h3 id="1-3-利用できる復元オプション"><a href="#1-3-利用できる復元オプション" class="headerlink" title=" 1-3. 利用できる復元オプション"></a><a id="1-3"></a> 1-3. 利用できる復元オプション</h3><p>CZR は次の復元を行う場合にのみ利用できます。</p>
+<ul>
+<li>VM の作成</li>
+<li>ディスクの復元</li>
+</ul>
+<p>なお、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#replace-existing-disks">既存のディスクの置き換え</a> はサポートされていません。</p>
+<h4 id="VM-の作成"><a href="#VM-の作成" class="headerlink" title="VM の作成"></a>VM の作成</h4><p>復旧ポイントから VM の新規作成を行う際、前述の条件を満たしている場合に、復元先の可用性ゾーンを指定することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/c3448a33-c9de-4aa3-86f3-90600f6aa8a5" width="600px"> </p>
+<p>具体的な復元の手順は下記の公開情報をご覧ください。  </p>
+<ul>
+<li>VM の作成 | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#create-a-vm">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#create-a-vm</a></li>
+</ul>
+<h4 id="ディスクの復元"><a href="#ディスクの復元" class="headerlink" title="ディスクの復元"></a>ディスクの復元</h4><p>復旧ポイントから ディスクの復元を行う際、前述の条件を満たしている場合に、復元先の可用性ゾーンを指定することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/c9b22d52-6058-4b94-b498-e67892d7150f" width="600px">  </p>
+<p>具体的な復元の手順は下記の公開情報をご覧ください。  </p>
+<ul>
+<li>ディスクを復元する | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks</a></li>
+</ul>
+<h2 id="2-参考情報"><a href="#2-参考情報" class="headerlink" title="2. 参考情報"></a><a id="2"></a>2. 参考情報</h2><ul>
+<li>復元オプション | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-options">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-options</a>  </li>
+<li>VM の作成 | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#create-a-vm">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#create-a-vm</a>  </li>
+<li>ディスクを復元する | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks</a>  </li>
+<li>セカンダリ リージョンに復元する | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-in-secondary-region</a>  </li>
+<li>サポートされる復元方法 | Azure VM バックアップのサポート マトリックス - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#supported-restore-methods">https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#supported-restore-methods</a>  </li>
+<li>FAQ-Azure VM をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#azure-------------------------">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#azure-------------------------</a>  </li>
+</ul>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/CZR.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../AzureBackupGeneral/Backup_Overview/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Azure Backup の 概要</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">Azure VM Backup におけるクロス ゾーン リストア (CZR) について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/Backup_Overview/">Azure Backup の 概要</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureSiteRecovery/How_to_fail_ASR/">ASR を意図的に失敗させる方法</a>
+          </li>
+        
+          <li>
+            <a href="../RestoreStagingStorageAccount/">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/">テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">11</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">9</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">28</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">25</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SAPHANA-Backup/" style="font-size: 10px;">Azure SAPHANA Backup</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 13.33px;">Azure SQL Backup</a> <a href="../../tags/Azure-Site-Recovery/" style="font-size: 13.33px;">Azure Site Recovery</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 13.33px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

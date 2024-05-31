@@ -97,6 +97,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-AzureSAPBackup/How_to_HSR_workload_backup" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../AzureSAPBackup/How_to_HSR_workload_backup/" class="article-date">
+  <time datetime="2023-09-13T03:00:00.000Z" itemprop="datePublished">2023-09-13</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../AzureSAPBackup/How_to_HSR_workload_backup/">HSR に対する Azure Workload Backup</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+皆様こんにちは、Azure Backup サポートです。今回は、HSR に対する Azure Workload Backup を構成するにあたって、実際のバックアップ構成手順を作業例交えてお伝えします。
+ポイント
+HANA システム レプリケーション (HSR) データベースの仕様上、HANA DB のユーザー名とパスワードは、Primary → Secondary へレプリケートされますが、hdbuserstore の情報（＝つまり、作成したキー情報）はレプリケートされません。
+Azure Backup では、Primary/Seconday すべての ノード 上に対してバックアップ操作をさせるために、ユーザー名/パスワード 入力での操作ではなく、hdbuserstore キーの入力での操作を行う仕組みになっています。このため、Azure Backup の事前登録スクリプト (msaw...
+        <p class="article-readmore">
+          <a href="../../AzureSAPBackup/How_to_HSR_workload_backup/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/" data-id="clwtxcwf8005i0npc2eq940tc" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-AzureBackupGeneral/Backup_RetentionPeriod" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -139,7 +191,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/" data-id="clwsx1b8q00010nnna2j6byww" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/" data-id="clwtxcwdc00010npchuf87nb3" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -191,7 +243,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/" data-id="clwsx1b8s00030nnn68883spn" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/" data-id="clwtxcwde00030npc2a73dxay" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -244,7 +296,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/" data-id="clwsx1b9a00100nnn762n9idg" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/" data-id="clwtxcwdu00100npc6q0370t5" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -294,7 +346,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/" data-id="clwsx1b9d00150nnne4s5e4u6" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/" data-id="clwtxcwdx00150npc8hfedy6l" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -348,7 +400,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/" data-id="clwsx1b9y002l0nnneh3aelds" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/" data-id="clwtxcweh002n0npc3jb7gdjt" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -403,7 +455,7 @@ Azure Backup にてこれまで存在していた「クラシック アラート
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/" data-id="clwsx1b8u00050nnndpingg47" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/" data-id="clwtxcwdg00050npc7svt46sz" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -457,7 +509,7 @@ MARS バックアップ を失敗させる方法(手順)
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/" data-id="clwsx1ba3002s0nnn1p31ai3d" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/" data-id="clwtxcwek002v0npc3hjbggoz" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -509,7 +561,7 @@ MARS バックアップ を失敗させる方法(手順)
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="clwsx1b9q001u0nnndje58lwl" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="clwtxcwe8001w0npc8xhlfbjy" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -560,61 +612,10 @@ MARS バックアップ を失敗させる方法(手順)
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="clwsx1bav005k0nnnemmx3eva" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="clwtxcwfa005n0npcb3an3snf" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-AzureSiteRecovery/HowToChangeAzureAutomationManagedId" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" class="article-date">
-  <time datetime="2023-03-14T03:00:00.000Z" itemprop="datePublished">2023-03-14</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../AzureSiteRecovery/HowToChangeAzureAutomationManagedId/">ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-みなさんこんにちは、Azure Site Recovery サポートです。今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。
-ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが決まっており、マネージド ID へ移行する必要がございます。2023/3/14 時点では ASR の自動更新に利用する Azure Automation を手動でマネージド ID へ移行する必要がございますので、その移行手順についてご案内いたします。
-なお、今後は ASR 有効化時に自動でマネージド ID の Azure Automation が作成されるように開発部門と対応を継続しておりますので...
-        <p class="article-readmore">
-          <a href="../../AzureSiteRecovery/HowToChangeAzureAutomationManagedId/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" data-id="clwsx1b98000v0nnn9m247jch" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
     </footer>
   </div>
@@ -640,6 +641,10 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
       <ul>
         
           <li>
+            <a href="../../AzureVMBackup/CZR/">Azure VM Backup におけるクロス ゾーン リストア (CZR) について</a>
+          </li>
+        
+          <li>
             <a href="../../AzureBackupGeneral/Backup_Overview/">Azure Backup の 概要</a>
           </li>
         
@@ -655,10 +660,6 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
             <a href="../../AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/">テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する</a>
           </li>
         
-          <li>
-            <a href="../../AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -669,7 +670,7 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
     <h3 class="widget-title">タグ</h3>
     <div class="widget">
       <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">11</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">9</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">27</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">24</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">11</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">9</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">28</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">25</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
