@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup における CRR (クロスリージョン リストア) について
-date: 2023-12-28 12:00:00
+date: 2024-06-17 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -32,19 +32,17 @@ disableDisclaimer: false
 ・Azure Backup 用語集 - Azure Backup | Microsoft Docs
 https://docs.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#grs
 
- 
-
-
 ### <a id="1-1"></a> 1-1. Azure Portal での CRR 有効時の確認方法
 ご参考までに、CRR 機能を有効にした場合の Azure ポータル画面上の見え方を説明いたします。 
-Recovery Services コンテナー「RSV-JPE-GRS-CRR」は「ストレージ レプリケーションの種類：geo 冗長」かつ「リージョンをまたがる復元：有効にする」となっております。
+下図の Recovery Services コンテナーは「ストレージ レプリケーションの種類：geo 冗長」かつ「クロス リージョン 復元：有効」となっております。
 これによって CRR 機能が有効 (=RA-GRS) となります。
+![](https://github.com/jpabrs-scem/blog/assets/96324317/6b7b2f75-b435-4d38-a760-e4cbe8fe169d)
 
-![CRR_02](https://user-images.githubusercontent.com/71251920/153718069-e91606c7-4001-40d7-8ec1-4596719263c5.gif)
 
 CRR 機能が有効になっている場合、「バックアップ アイテム」画面上では「プライマリ リージョン」のほかに「セカンダリ リージョン」も選択できるよう、活性化されます。
-![CRR_03](https://github.com/jpabrs-scem/blog/assets/141192952/8181f3a0-5004-4a26-bf96-45434e9ab5e4)
-![CRR_04](https://github.com/jpabrs-scem/blog/assets/141192952/1af2d796-f098-465e-9ab0-1f0362056c06)
+![](https://github.com/jpabrs-scem/blog/assets/96324317/3cd63704-557a-4754-a248-82b4e48e93a4)
+
+![](https://github.com/jpabrs-scem/blog/assets/96324317/932d588b-8e7f-4fe8-be03-267bd984cd68)
 
  一方でRecovery Services コンテナー上で「リージョンをまたがる復元：無効にする」を選択されている場合は、下図のように「プライマリ リージョン」がデフォルトで選択されており、かつ非活性表示となっているため「セカンダリ リージョン」への切り替えが不可能となっております。
  ![CRR_05](https://github.com/jpabrs-scem/blog/assets/141192952/a716e9db-a396-4ec8-9d22-60cf8afab3eb)
