@@ -1,6 +1,6 @@
 ---
 title: Azure Backup におけるウイルス除外設定について
-date: 2023-08-04 12:00:00
+date: 2024-06-19 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -53,12 +53,22 @@ MARS バックアップ (Azure MARS Backup エージェントを利用したバ�
 　https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent
 
 
-MARS バックアップをお使いの場合、下記をアンチウイルス ソフトの除外設定にいれてください。
-> C:\Program Files\Microsoft Azure Recovery Services Agent\bin\cbengine.exe (プロセスとして除外)
-> C:\Program Files\Microsoft Azure Recovery Services Agent\ 
->スクラッチ場所 (標準的の場所を使用していない場合)
+MARS バックアップをお使いの場合、MARS のインストール フォルダ配下をアンチウイルス ソフトのスキャン除外設定にいれてください。
+デフォルトでは以下のパスに MARS はインストールが行われます。
+> C:\Program Files\Microsoft Azure Recovery Services Agent
 
-なお、上記は下記の公式ドキュメントにも記載されております。
+もし MARS のインストール時に以下のように "インストール フォルダ" とは異なるフォルダに "キャッシュの場所" を指定していた場合は、指定した "キャッシュの場所" のフォルダもスキャン除外対象に別途ご指定ください。
+![MARS インストール画面](https://github.com/jpabrs-scem/blog/assets/141192952/c6390ca3-00d5-413b-af1a-cd1f3dda6c42)
+
+また、上記に加えて MARS のインストール フォルダ配下の以下プロセスもスキャン除外の対象としてご設定ください。
+> [Install Path]\bin\cbengine.exe
+
+参考までに弊社検証環境にて Windows Defender で除外設定を行った場合のサンプル イメージを以下に記載いたします。
+※ 指定しているフォルダ パスは前述の MARS インストール画面での設定例をベースにしております。
+![除外設定例](https://github.com/jpabrs-scem/blog/assets/141192952/0b8cb085-71f5-432c-a10c-5f0ba94c8f3f)
+あくまで参考イメージでございますので、実際に指定する除外パスや指定方法については、お客様のご要件あるいはアンチウイルス ソフトの仕様に依存いたしますことにご留意ください。
+
+なお、上記 MARS のウイルス スキャン除外設定は下記の公式ドキュメントにも記載されております。
 ・Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング - 原因: Azure Backup の妨げになっている別のプロセスまたはウイルス対策ソフトウェア
 　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup
 
