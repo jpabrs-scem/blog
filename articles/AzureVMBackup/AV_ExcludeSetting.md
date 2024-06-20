@@ -66,9 +66,9 @@ MARS バックアップをお使いの場合、MARS のインストール フォ
 参考までに弊社検証環境にて Windows Defender で除外設定を行った場合のサンプル イメージを以下に記載いたします。
 ※ 指定しているフォルダ パスは前述の MARS インストール画面での設定例をベースにしております。
 ![除外設定例](https://github.com/jpabrs-scem/blog/assets/141192952/0b8cb085-71f5-432c-a10c-5f0ba94c8f3f)
-あくまで参考イメージでございますので、実際に指定する除外パスや指定方法については、お客様のご要件あるいはウィルス対策ソフト ベンダーの仕様に依存いたしますことご留意ください。
+あくまで参考イメージでございますので、実際に指定する除外パスや指定方法については、お客様のご要件あるいはアンチウイルス ソフトの仕様に依存いたしますことにご留意ください。
 
-なお、上記 MARS のウィルス スキャン除外設定は下記の公式ドキュメントにも記載されております。
+なお、上記 MARS のウイルス スキャン除外設定は下記の公式ドキュメントにも記載されております。
 ・Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング - 原因: Azure Backup の妨げになっている別のプロセスまたはウイルス対策ソフトウェア
 　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup
 
