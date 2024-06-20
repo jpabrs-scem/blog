@@ -25,4 +25,4 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         azure-storage-connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-        preview-base-url: "https://okteastussa.z13.web.core.windows.net/"
+        preview-base-url: ${{ secrets.AZURE_STORAGE_PREVIEW_URL }}
