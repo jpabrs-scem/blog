@@ -4,30 +4,21 @@
   <meta charset="utf-8">
   
   
-  <title>Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法 | Japan CSS ABRS  Support Blog !!</title>
+  <title>Azure Site Recovery レプリケーション中にディスクを削除した場合 | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、Azure Backup サポートの 荘司 です。今回は、Azure VM Backup における転送フェーズを意図的に失敗させる方法について、ご案内いたします。*転送フェーズとは Transfer data to vault フェーズを指します。詳細については幣ブログの関連のページをご覧ください・Transfer data to vault フェーズ - Azure VM Ba">
+  <meta name="description" content="みなさんこんにちは、Azure Site Recovery サポートです。今回は、Azure Site Recovery ( 以下、ASR ) レプリケーション中に、ディスクを削除した場合についてお話します。 ASR レプリケーション中に以下のディスクを削除すると、レプリケーション エラーが発生し、ASR の運用に不具合が発生する場合がございます。 ・レプリケーション中の保護対象サーバーに接続さ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/index.html">
+<meta property="og:title" content="Azure Site Recovery レプリケーション中にディスクを削除した場合">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RemoveDiskASR/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、Azure Backup サポートの 荘司 です。今回は、Azure VM Backup における転送フェーズを意図的に失敗させる方法について、ご案内いたします。*転送フェーズとは Transfer data to vault フェーズを指します。詳細については幣ブログの関連のページをご覧ください・Transfer data to vault フェーズ - Azure VM Ba">
+<meta property="og:description" content="みなさんこんにちは、Azure Site Recovery サポートです。今回は、Azure Site Recovery ( 以下、ASR ) レプリケーション中に、ディスクを削除した場合についてお話します。 ASR レプリケーション中に以下のディスクを削除すると、レプリケーション エラーが発生し、ASR の運用に不具合が発生する場合がございます。 ・レプリケーション中の保護対象サーバーに接続さ">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157503085-0d5ff930-b877-444f-83ab-7637015cbfeb.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502733-09a19fbb-23f5-430a-a334-55591de41b52.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502744-47f216d0-2f8a-4fa4-a72c-79f78a80a546.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502743-dd6c88d7-a959-47e1-b3cd-8cded953ceb0.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502742-73239758-d52f-4230-96ba-005cb7e411f6.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502740-150a8c21-19e4-4bdd-89ea-28e1f9db93fd.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502739-4d1655cc-2ee2-4eb2-ba22-d8cb9d73d4af.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/157502737-ba0b8cda-001e-421e-a6d7-e3648c2c38fa.png">
-<meta property="article:published_time" content="2022-03-10T03:00:00.000Z">
+<meta property="article:published_time" content="2024-06-04T03:00:00.000Z">
 <meta property="article:modified_time" content="2024-07-24T06:54:55.097Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
-<meta property="article:tag" content="Azure VM Backup">
+<meta property="article:tag" content="Azure Site Recovery">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/157503085-0d5ff930-b877-444f-83ab-7637015cbfeb.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -89,7 +80,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureVMBackup/How_to_fail_ttv" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureSiteRecovery/RemoveDiskASR" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -98,7 +89,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法
+      Azure Site Recovery レプリケーション中にディスクを削除した場合
     </h1>
   
 
@@ -106,45 +97,30 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-03-10T03:00:00.000Z" itemprop="datePublished">2022-03-10</time>
+  <time datetime="2024-06-04T03:00:00.000Z" itemprop="datePublished">2024-06-04</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+4ad56f32-d22d-5ef2-8355-ad1a67bdda88%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E8%BB%A2%E9%80%81%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA%E3%82%92%E6%84%8F%E5%9B%B3%E7%9A%84%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHow_to_fail_ttv%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHow_to_fail_ttv.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHow_to_fail_ttv.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+76d280d5-9f24-5007-8e94-8b0cd5c1a0b3%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Site+Recovery+%E3%83%AC%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E4%B8%AD%E3%81%AB%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%82%92%E5%89%8A%E9%99%A4%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2FRemoveDiskASR%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2FRemoveDiskASR.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2FRemoveDiskASR.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/" data-id="clyzhpf2o00210npa1cr5a0kl" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RemoveDiskASR/" data-id="clyzhpf2900100npah3ylf3mp" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは、Azure Backup サポートの 荘司 です。<br>今回は、<strong>Azure VM Backup における転送フェーズを意図的に失敗させる方法</strong>について、ご案内いたします。<br>*転送フェーズとは Transfer data to vault フェーズを指します。<br>詳細については幣ブログの関連のページをご覧ください<br>・Transfer data to vault フェーズ - Azure VM Backup の通信要件や処理の流れについて<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-2">https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-2</a></p>
-<p>また下記幣ブログの記事では Take Snapshot フェーズを失敗させる方法をご案内しております。<br>・Azure VM Backup を意図的に失敗させる方法<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/</a></p>
-<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. Transfer data to vault を失敗させる方法概略</a><br><a href="#2">2. Transfer data to vault を失敗させる方法の注意点</a><br><a href="#3">3. Transfer data to vault を失敗させる手順</a></p>
-<hr>
-<h2 id="1-Transfer-data-to-vault-を失敗させる方法概略"><a href="#1-Transfer-data-to-vault-を失敗させる方法概略" class="headerlink" title="1. Transfer data to vault を失敗させる方法概略"></a>1. Transfer data to vault を失敗させる方法概略<a id="1"></a></h2><p>Azure VM Backup を実行し、Take Snapshot 完了後に該当の Azure VM のリストアポイントコレクション (ローカルスナップショットのメタデータ) を削除します。<br>そうすることで Transfer data to vault が失敗し、バックアップストレージ(標準コンテナー/ Recovery Services コンテナー)への転送が失敗します。</p>
-<h2 id="2-Transfer-data-to-vault-を失敗させる方法の注意点"><a href="#2-Transfer-data-to-vault-を失敗させる方法の注意点" class="headerlink" title="2. Transfer data to vault を失敗させる方法の注意点"></a>2. Transfer data to vault を失敗させる方法の注意点<a id="2"></a></h2><ol>
-<li>この方法ではリストアポイントコレクションを削除するため、リストアポイントコレクションを削除する前に取得された復元ポイントおよび該当のバックアップ ジョブで作成された復元ポイントではインスタントリストアが出来なくなります。<br>つまり、回復の種類が “スナップショット” のものは下記のように <em><strong>“UserErrorInstantRpNotFound” と復元するためのリソースがない旨のエラーメッセージがでて復元ができなくなります</strong></em>。<br>“スナップショットと標準コンテナー” のものは バックアップストレージ からの復元が可能です。<br><img src="https://user-images.githubusercontent.com/71251920/157503085-0d5ff930-b877-444f-83ab-7637015cbfeb.png"></li>
-<li>この方法を実施したあと下記のようなエラーが発生しますが、再度バックアップを実行することにより解消されます。<br><img src="https://user-images.githubusercontent.com/71251920/157502733-09a19fbb-23f5-430a-a334-55591de41b52.png"></li>
-</ol>
-<p>その場合、復元した際に <strong>“UserErrorInstantRpNotFound”</strong> となっていた復元ポイントは <strong>無効/Invalid</strong> と表示されます。<br><img src="https://user-images.githubusercontent.com/71251920/157502744-47f216d0-2f8a-4fa4-a72c-79f78a80a546.png"></p>
-<h2 id="3-Transfer-data-to-vault-を失敗させる手順"><a href="#3-Transfer-data-to-vault-を失敗させる手順" class="headerlink" title="3. Transfer data to vault を失敗させる手順"></a>3. Transfer data to vault を失敗させる手順<a id="3"></a></h2><ol>
-<li><p>失敗させたい VM にて今すぐバックアップを実行します。</p>
-</li>
-<li><p>バックアップ ジョブより該当のジョブの詳細を開き、サブタスクが以下の状態となっていることを確認します。(この状態になるのに通常 5 ~ 10 分程度かかります)<br>　・Take Snapshot：Completed<br>　・Transfer data to vault：In progress<br><img src="https://user-images.githubusercontent.com/71251920/157502743-dd6c88d7-a959-47e1-b3cd-8cded953ceb0.png"></p>
-</li>
-<li><p>ポータルのホーム画面にて “Restore Point Celloctions” と検索し、サービス欄に出てきた Restore Point Celloctions をクリックします。<br><img src="https://user-images.githubusercontent.com/71251920/157502742-73239758-d52f-4230-96ba-005cb7e411f6.png"></p>
-</li>
-<li><p>検索欄に該当の VM 名を入力し、出てきた RestorePoint Collection をクリックします。<br>　RestorePoint Collection は “AzureBackup_&lt;VM 名&gt;_xxxxxxxxxxxxx” といった命名規則にて存在しております。<br><img src="https://user-images.githubusercontent.com/71251920/157502740-150a8c21-19e4-4bdd-89ea-28e1f9db93fd.png"></p>
-</li>
-<li><p>Delete をクリックし、出現したメッセージの OK をクリックして RestorePoint Collection を削除します。<br><img src="https://user-images.githubusercontent.com/71251920/157502739-4d1655cc-2ee2-4eb2-ba22-d8cb9d73d4af.png"></p>
-</li>
-<li><p>バックアップ ジョブが完了するのを待ちます。(状況によって数十分から数時間要する場合があります)</p>
-</li>
-<li><p>時間が経過すると、以下のように Transfer data to vault プロセスが失敗したことを確認できます。<br><img src="https://user-images.githubusercontent.com/71251920/157502737-ba0b8cda-001e-421e-a6d7-e3648c2c38fa.png"></p>
-</li>
-</ol>
+<p>みなさんこんにちは、Azure Site Recovery サポートです。<br>今回は、Azure Site Recovery ( 以下、ASR ) レプリケーション中に、ディスクを削除した場合についてお話します。</p>
+<p>ASR レプリケーション中に以下のディスクを削除すると、レプリケーション エラーが発生し、ASR の運用に不具合が発生する場合がございます。</p>
+<p>・レプリケーション中の保護対象サーバーに接続されているディスク (ソース ディスク)<br>・レプリカ マネージド ディスク (本記事の下部に詳細を記載いたします)</p>
+<p><strong>そのため、ASR レプリケーション運用中は、該当ディスクを削除されないようご留意いただけますと幸いです。</strong></p>
+<h3 id="ASR-レプリケーション中にソース-VM-からディスクを削除されたい場合"><a href="#ASR-レプリケーション中にソース-VM-からディスクを削除されたい場合" class="headerlink" title="ASR レプリケーション中にソース VM からディスクを削除されたい場合"></a>ASR レプリケーション中にソース VM からディスクを削除されたい場合</h3><p>ASR レプリケーション中に、ソース VM からディスクを削除されたい場合、一度レプリケーションを無効化いただき、ディスク削除後に、再度レプリケーションを有効化いただく必要がございます。<br>また、ASR レプリケーション中に特定のディスクをレプリケーションから除外されたい場合も、一度レプリケーションを無効化いただき、以下公開情報をご参考いただき ASR 除外構成を実施いただけますと幸いです。</p>
+<p>・ディザスター リカバリーからディスクを除外する<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/exclude-disks-replication">https://learn.microsoft.com/ja-jp/azure/site-recovery/exclude-disks-replication</a></p>
+<h3 id="レプリカ-マネージド-ディスクとは"><a href="#レプリカ-マネージド-ディスクとは" class="headerlink" title="レプリカ マネージド ディスクとは"></a>レプリカ マネージド ディスクとは</h3><p>ASR レプリケーションでは、すべてのソース ディスクで、データは Azure 上のマネージド ディスクにレプリケートされます。<br>このコピー先のマネージド ディスクがレプリカ マネージド ディスクです。ここには、ソース ディスクのコピーとすべての回復ポイントのスナップショットが格納されます。<br>レプリカ マネージド ディスクは、ディスク名に ASRReplica や asrseeddisk といった文字列が含まれておりますので、見分けることができます。</p>
+<p>Azure ポータルの ASR 管理画面よりご確認いただくことも可能です。<br>ホーム &gt; バックアップ センター | インスタンスのバックアップ &gt; レプリケートされた項目 &gt; (対象の VM) | ディスク と移動し、[レプリカ ディスク名] の欄からご確認いただけます。</p>
+<p>・ターゲット リソース<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/azure-to-azure-architecture#target-resources">https://learn.microsoft.com/ja-jp/azure/site-recovery/azure-to-azure-architecture#target-resources</a></p>
+<p>・asrseeddisk とは何ですか?<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/vmware-azure-common-questions#what-is-asrseeddisk">https://learn.microsoft.com/ja-jp/azure/site-recovery/vmware-azure-common-questions#what-is-asrseeddisk</a></p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>レプリケートされるマシン - ストレージ<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage">https://learn.microsoft.com/ja-jp/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage</a><br><em>“ディスクのホット リムーブ - サポートされていません - VM 上でデータ ディスクを削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。”</em></p>
+<p>Azure Site Recovery レプリケーション中にディスクを削除した場合の案内は、以上となります。</p>
 
       
       
@@ -158,10 +134,10 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/How_to_fail_ttv.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSiteRecovery/RemoveDiskASR.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -169,19 +145,19 @@
     
 <nav id="article-nav">
   
-    <a href="../../DPM&MABS/VMware_Error_332623/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/CRR/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          DPMとMABSを使用しvCenter Serverに接続する時に、「VMWare Serverと通信できない」Error 33623 が発生した場合の対処方法
+          Azure VM Backup における CRR (クロスリージョン リストア) について
         
       </div>
     </a>
   
   
-    <a href="../../information/team-introduction_2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/CZR/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">ABRS チームについて ~リモートワークでの働きかた~</div>
+      <div class="article-nav-title">Azure VM Backup におけるクロス ゾーン リストア (CZR) について</div>
     </a>
   
 </nav>
@@ -200,19 +176,19 @@
       <ul>
         
           <li>
-            <a href="../AV_ExcludeSetting/">Azure Backup におけるウイルス除外設定について</a>
+            <a href="../../AzureVMBackup/AV_ExcludeSetting/">Azure Backup におけるウイルス除外設定について</a>
           </li>
         
           <li>
-            <a href="../CRR/">Azure VM Backup における CRR (クロスリージョン リストア) について</a>
+            <a href="../../AzureVMBackup/CRR/">Azure VM Backup における CRR (クロスリージョン リストア) について</a>
           </li>
         
           <li>
-            <a href="../../AzureSiteRecovery/RemoveDiskASR/">Azure Site Recovery レプリケーション中にディスクを削除した場合</a>
+            <a href="">Azure Site Recovery レプリケーション中にディスクを削除した場合</a>
           </li>
         
           <li>
-            <a href="../CZR/">Azure VM Backup におけるクロス ゾーン リストア (CZR) について</a>
+            <a href="../../AzureVMBackup/CZR/">Azure VM Backup におけるクロス ゾーン リストア (CZR) について</a>
           </li>
         
           <li>
