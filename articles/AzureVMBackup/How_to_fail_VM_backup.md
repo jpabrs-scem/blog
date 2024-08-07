@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup を意図的に失敗させる方法
-date: 2023-06-22 12:00:00
+date: 2024-08-08 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -41,6 +41,10 @@ VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Re
 下記ご参考になれば幸いです。
 ・Azure VM Backup では オフライン バックアップができるのか
 https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
+
+> [!WARNING]
+> VM agent を停止させる方法は標準 (Standard) ポリシーでバックアップ保護されている VM のみ有効となります。
+> もし拡張 (Enhanced) ポリシーで保護されている VM で意図的に VM バックアップを失敗させる場合は [5. バックアップを故意に失敗させる方法 (共有ディスクをアタッチする)](#5)をご参照ください。
 
 ## 2. Azure Guest Agent を停止してバックアップを故意に失敗させる方法 (手順概略) <a id="2"></a>
 ・「バックアップを故意に失敗させる方法 (Windows VM の場合) 」
