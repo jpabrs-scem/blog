@@ -8,7 +8,7 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-皆様こんにちは、Azure Backup サポートの 相田 です。
+皆様こんにちは、Azure Backup サポートです。
 アラートのテスト等のため "Azure VM Backup を失敗させたい" というお問い合わせをよくいただきます。
 今回は、**Azure VM Backup を意図的に失敗させる方法**について、ご案内いたします。
 
