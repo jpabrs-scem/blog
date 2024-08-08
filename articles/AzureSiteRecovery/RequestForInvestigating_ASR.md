@@ -8,7 +8,7 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-皆様こんにちは、Azure Site Recovery サポートの 佐藤 です。  
+皆様こんにちは、Azure Site Recovery サポートです。  
 Azure Site Recovery (以下、ASR ) に関する調査をスムーズに進める為に、お客様側で確認して頂く箇所と、調査に必要な環境情報とログ情報を取得して頂き、サポートへ送付して頂く場合がございます。  
 今回は、ASR の障害調査に必要な **環境情報** と **ログ情報** について、ご案内いたします。
 
@@ -31,12 +31,12 @@ Azure Site Recovery (以下、ASR ) に関する調査をスムーズに進め�
 
 1. 問題が発生しているサブスクリプション ID  
 1. ASR のシナリオ詳細 (以下の内のどれか)  
-   1. Azure to Azure  
-   1. VMware to Azure モダン化  
-   1. VMware to Azure クラシック  
-   1.  物理マシン to Azure モダン化  
-   1.  物理マシン to Azure クラシック  
-   1.  Hyper-V to Azure
+　a. Azure to Azure  
+　b. VMware to Azure モダン化  
+　c. VMware to Azure クラシック  
+　d. 物理マシン to Azure モダン化  
+　e. 物理マシン to Azure クラシック  
+　f. Hyper-V to Azure
 1. 問題が発生している Recovery Service コンテナー名 
 1. 問題が発生している Recovery Service コンテナーのリソース グループ名 
 1. 対象の マシン名
@@ -294,7 +294,10 @@ ASRDiagnosticTool  を利用する前に、下記の各要件を満たしてい�
 https://learn.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed#net-framework-45-and-later-versions
 * C:\ ドライブにログを収集するための空き容量があること
 
-下記の手順に沿って <span style="color: red; ">「構成サーバーとして機能するマシン (クラシック)」 または 「ASR レプリケーション アプライアンス として機能するマシン (モダン化)」 と 「ソース マシン」 の 2 つから</span>、それぞれにて本ツールを実行してログをご収集ください。
+下記の手順に沿って、   <span style="color: red; ">「構成サーバーとして機能するマシン (クラシック)」  
+または  
+「ASR レプリケーション アプライアンス として機能するマシン (モダン化)」 と 「ソース マシン」 の 2 つから</span>、  
+それぞれにて本ツールを実行してログをご収集ください。
 
 #### ステップ 1 :
 対象の VM にサインインします。
@@ -311,6 +314,8 @@ https://learn.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-determ
 
 
 #### ステップ 3 :
+(ソース マシン上でツールを実行する場合はスキップください)   
+
 構成サーバー (クラシック) または ASR レプリケーション アプライアンス (モダン化) のキャッシュ ドライブのインストール先が E ドライブ以外の場合は、下記の設定変更を行います。  
 
 1. `<ASRDiagnosticToolのインストール先>\ASRDiagnosticTool\Config` に移動し、ApplianceLogs.json ファイルを開きます。
@@ -336,7 +341,7 @@ https://learn.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-determ
 
 #### ステップ 5 :
 
-コマンド プロンプトに下記のようなメッセージが表示されているば、ログの収集成功となります。
+コマンド プロンプトに下記のようなメッセージが表示されていれば、ログの収集成功となります。
 `Please collect the archive at` に圧縮されたログが生成されますので、本ログをご提供いただけますと幸いです。
 ```
 Log collection completed successfully.
