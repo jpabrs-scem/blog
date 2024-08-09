@@ -51,9 +51,6 @@ Azure Site Recovery (以下、ASR ) に関する調査をスムーズに進め�
 ASR の VMware to Azure シナリオ / 物理マシン to Azure シナリオ では 「モダン化」 と 「クラシック」 の 2 つの構成があります。  
 「モダン化」 と 「クラシック」 のどちらを利用しているかは、以下の画面から確認いただけます。
 
-Azure Portal にて Recovery Services コンテナーを開き、バックアップを選択、
-次にワークロードでAzure、バックアップ対象でAzure VM 内の SQL Serverを選択することでバックアップの設定を開始することができます。
-
 Azure Portal にて Recovery Services コンテナーを開き > はじめに - Site Recovery > 「VMware マシンを Azure に」 の下にある 1. の末尾に `(従来)` が、  
 付与されている場合は、**「クラシック」の Recovery Services コンテナー** となります。  
 付与されて**いない**場合は、**「モダン化」の Recovery Services コンテナー** となります。
