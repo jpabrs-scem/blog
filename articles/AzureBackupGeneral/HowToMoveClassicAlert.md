@@ -17,6 +17,7 @@ disableDisclaimer: false
 [Q2. どの Recovery Services コンテナーが「クラシック アラート設定」になっていますか？](#Q2)
 [Q3. クラシック アラートから Azure Monitor を使用した組み込みのアラートへと移行した場合のコストはどうなりますか？](#Q3)
 [Q4. クラシック アラートの「通知の構成」をしているかどうかは 1 つ 1 つの Recovery Services コンテナーを確認する必要がありますか？](#Q4)
+[Q5. Azure Monitor を使用した組み込みのアラートで、クラシック アラートと同じ重要度のアラート メールを通知するには？](#Q5)
 -----------------------------------------------------------
 
 ## <a id="Q1"></a>Q1. 「QL4L-5D8」「XNV5-HTZ」このアラートは何ですか？
@@ -162,31 +163,90 @@ $results | Sort-Object isClassicAlertNotificationEnabled -Descending | ForEach-O
 
 ![](https://user-images.githubusercontent.com/96324317/230820315-3f9dc117-bfac-4e73-b0aa-d37a12503390.png)
 
+## <a id="Q5"></a>Q5. Azure Monitor を使用した組み込みのアラートで、クラシック アラートと同じ重要度のアラート メールを通知するには？
+**A5**  
+まず、クラシック アラートと Azure Monitor アラートの重要度につきまして、以下にご案内いたします。
+
+> [!NOTE]
+> お急ぎの方は、下記各アラートの重要度に関する説明は省略いただいて問題ございません。設定方法をご案内している [【Azure Monitor を使用した組み込みのアラートで、クラシック アラートと同じ重要度のアラート メールを通知する　設定方法】](#Q5.1) をご確認ください。
+
+#### クラシック アラートの重要度について
+クラシック アラートでは、「重大」、「警告」の 2 種のアラートが以下のタイミングで発報されます。  
+- 「重大」 : バックアップやリストアの失敗、バックアップ データの削除などの破壊的操作が行われたとき  
+- 「警告」 : MARS エージェントでのバックアップ操作で警告が発生したとき  
+
+参考)  
+Azure Backup で保護されたワークロードの監視 - Azure Backup | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#alert-types  
+抜粋 :
+  > **重大**: 原則として、(スケジュールされたかユーザーがトリガーしたかを問わず) バックアップまたは回復が失敗すると、アラートが生成されて "重大" アラートとして表示されます。 アラートは、バックアップの削除などの破壊的な操作でも生成されます。  
+  > **警告**: バックアップ操作が成功したもののいくつかの警告を伴う場合、これらは "警告" アラートとして表示されます。 警告アラートは現在、Azure Backup エージェントのバックアップにのみ使用できます。  
+  > **情報**: 現時点では、Azure Backup サービスで "情報" アラートは生成されません。  
+
+#### Azure Monitor の組み込みアラートの重要度について
+Azure Monitor の組み込みアラートでは、主に「セキュリティ アラート」、「ジョブの失敗のアラート」の 2 種のアラートが以下のタイミングで発報されます。  
+- 「セキュリティ アラート」(重要度 : 0 - 重大) : バックアップ データの削除や、コンテナーの論理的な削除機能が無効化されたとき  
+- 「ジョブの失敗のアラート」(重要度 : 1 - エラー) : バックアップやリストアが失敗したとき  
+
+また、MARS エージェントでのバックアップ操作で警告が発生したときや、SQL Server バックアップでサポートされていないバックアップ タイプが設定されていたときには、警告 (重要度 : 2 - 警告) アラートが発報されます。  
+
+参考)  
+・ Azure Backup で保護されたワークロードの監視 - Azure Backup | Microsoft Learn  
+　 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#azure-monitor-alerts-for-azure-backup  
+　 抜粋 :  
+   > **セキュリティ アラート**: バックアップ データの削除や、コンテナーの論理的な削除機能の無効化などのシナリオの場合、セキュリティ アラート (重大度 0) が発生し、Azure portal に表示されるか、他のクライアント (PowerShell、CLI、REST API) で使用されます。  
+   > **ジョブの失敗のアラート**: バックアップ エラーや復元エラーなどのシナリオの場合、Azure Backup は、Azure Monitor 経由で組み込みアラート (重大度 1) を提供します。  
+
+・ SQL Server のデータベース バックアップに関するトラブルシューティング - Azure Backup | Microsoft Learn  
+　 https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-azure-troubleshoot#backup-type-unsupported  
+
+#### クラシック アラートと Azure Monitor を利用した組み込みのアラートの重要度の関係性について
+クラシック アラートと Azure Monitor を利用した組み込みのアラートの重要度は、おおよそ以下の関係性がございます。
+- クラシック アラートの 「重大」 ≒  Azure Monitor を利用した組み込みのアラートの 「重大」 + 「エラー」  
+- クラシック アラートの 「警告」 ≒  Azure Monitor を利用した組み込みのアラートの 「警告」  
+
+### <a id="Q5.1"></a>【Azure Monitor を使用した組み込みのアラートで、クラシック アラートと同じ重要度のアラート メールを通知する　設定方法】
+Azure Monitor を使用した組み込みのアラートで、クラシック アラートと同じ重要度のアラート メールを通知する設定方法を、以下にご案内いたします。
+
+> [!WARNING]
+> 下記ドキュメントに従って、クラシック アラートから組み込みの Azure Monnitor アラートへ移行する設定が完了していることが前提となります。  
+> もし未設定である場合には、事前に下記ドキュメントの手順 1 ~ 7 を実行してください。
+> ・ Azure Backup 用の Azure Monitor ベースのアラートに切り替える - Azure Backup | Microsoft Learn  
+> 　 https://learn.microsoft.com/ja-jp/azure/backup/move-to-azure-monitor-alerts#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts  
 
 
+#### クラシック アラートのメール通知設定を確認する
+Recovery Services コンテナーの ``監視 > バックアップ アラート > 通知の構成`` を表示し、項目「重要度」の設定内容を確認します。  
 
+![](https://github.com/user-attachments/assets/1f6da508-4c61-4639-b9d7-d9432c3089ef)
 
+#### Azure Backup 用のアラート処理ルールの設定を変更する
+バックアップ センターの ``監視とレポート > アラート > アラート処理ルール`` を表示し、Azure Monitor アラートへ切り替えるときに作成したアラート処理ルールを編集します。  
 
+![](https://github.com/user-attachments/assets/f4dddc70-d2ec-47cc-ba55-60400d1e1d32)
+![](https://github.com/user-attachments/assets/cdb94c4e-0192-4e46-a749-57930e2b3003)
 
+項目 フィルター に、「重要度」フィルターを追加し、値として "0 - 重大", "1 - エラー", "2 - 警告" のいずれかを選択し、設定を保存します。  
+(下記例においては、クラシック アラートの重要度設定が "クリティカル, 警告" となっていたため、"0 - 重大", "1 - エラー", "2 - 警告" の 3 点を選択しております。)  
+![](https://github.com/user-attachments/assets/f0161061-6b96-494a-93be-eff08d556e17)
 
+以上で設定は完了です。  
 
+### <a id="Q5.2"></a>クラシック アラートと Azure Monitor を使用した組み込みのアラートの通知メールのサンプル
+クラシック アラートと Azure Monitor を使用した組み込みのアラートの通知メールのサンプルを、以下のとおりご案内いたします。
 
+> [!WARNING]
+> こちらのサンプル メールは 2023/3 ~ 4 頃に受信したものとなりますので、あくまで参考程度に留めてくださいますようお願い申し上げます。
+> より正確な内容をご確認いただくためにも、お客様ご自身で、アラート メールの受信検証を行っていただき、内容をご確認ください。
 
+- バックアップ ジョブ失敗に関するアラート メール  
+  - クラシック アラート  
+    ![](https://github.com/user-attachments/assets/3b3ec1a7-578b-4315-b62a-e322f853505b)  
+  - Azure Monitor を使用した組み込みのアラート  
+    ![](https://github.com/user-attachments/assets/2cb3f7df-5f3a-4199-b1cf-fc20ade47279)  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- セキュリティ アラート メール  
+  - クラシック アラート  
+    ![](https://github.com/user-attachments/assets/a47cf52e-e42a-4030-9081-ff0c6e5c95e8)  
+  - Azure Monitor を使用した組み込みのアラート  
+    ![](https://github.com/user-attachments/assets/4dfd68e9-ce9c-46a0-8fae-c8c94e8645f6)  
