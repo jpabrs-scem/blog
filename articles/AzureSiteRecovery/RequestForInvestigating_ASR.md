@@ -1,6 +1,6 @@
 ---
 title: ASR の障害調査に必要な情報
-date: 2024-08-08 9:00:00
+date: 2024-08-13 12:00:00
 tags:
   - Azure Site Recovery
   - how to
