@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>ASR の障害調査に必要な情報 | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは、Azure Site Recovery サポートです。Azure Site Recovery (以下、ASR ) に関する調査をスムーズに進める為に、お客様側で確認して頂く箇所と、調査に必要な環境情報とログ情報を取得して頂き、サポートへ送付して頂く場合がございます。今回は、ASR の障害調査に必要な 環境情報 と ログ情報 について、ご案内いたします。 目次 1. 調査に必要な環">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASR の障害調査に必要な情報">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="皆様こんにちは、Azure Site Recovery サポートです。Azure Site Recovery (以下、ASR ) に関する調査をスムーズに進める為に、お客様側で確認して頂く箇所と、調査に必要な環境情報とログ情報を取得して頂き、サポートへ送付して頂く場合がございます。今回は、ASR の障害調査に必要な 環境情報 と ログ情報 について、ご案内いたします。 目次 1. 調査に必要な環">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://github.com/user-attachments/assets/74f7a3aa-a3e9-41c9-b85f-a82c903fc74e">
+<meta property="og:image" content="https://github.com/user-attachments/assets/a0c74364-8566-49a2-b8a7-be6efe9cf247">
+<meta property="og:image" content="https://github.com/user-attachments/assets/50ab3587-7945-4d7a-8465-60183c850a4b">
+<meta property="article:published_time" content="2024-08-13T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-13T05:49:28.553Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Azure Site Recovery">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/user-attachments/assets/74f7a3aa-a3e9-41c9-b85f-a82c903fc74e">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureSiteRecovery/RequestForInvestigating_ASR" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ASR の障害調査に必要な情報
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2024-08-13T03:00:00.000Z" itemprop="datePublished">2024-08-13</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+4e1fe235-d2a8-51a5-95f9-6eafa38d40c7%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BASR+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2FRequestForInvestigating_ASR%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2FRequestForInvestigating_ASR.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2FRequestForInvestigating_ASR.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/" data-id="clzs069y0005s0nqhg2wf5sir" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは、Azure Site Recovery サポートです。<br>Azure Site Recovery (以下、ASR ) に関する調査をスムーズに進める為に、お客様側で確認して頂く箇所と、調査に必要な環境情報とログ情報を取得して頂き、サポートへ送付して頂く場合がございます。<br>今回は、ASR の障害調査に必要な <strong>環境情報</strong> と <strong>ログ情報</strong> について、ご案内いたします。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. 調査に必要な環境情報</a><br><a href="#2">2. ログの取得方法</a><br><a href="#2-1">2-1. Azure to Azure シナリオの障害調査に必要なログ</a><br><a href="#2-2">2-2. VMware to Azure / 物理マシン to Azure クラシック シナリオの障害調査に必要なログ</a><br><a href="#2-3">2-3. VMware to Azure / 物理マシン to Azure モダン化シナリオの障害調査に必要なログ</a><br><a href="#2-4">2-4. Hyper-V to Azure シナリオの障害調査に必要なログ</a><br><a href="#3">3. ログ収集ツールの使用方法</a><br><a href="#3-1">3-1. ASRDiagnosticTool の使用方法</a><br><a href="#3-2">3-2. collect_support_materials の使用方法</a>  </p>
+<hr>
+<h2 id="1-調査に必要な環境情報"><a href="#1-調査に必要な環境情報" class="headerlink" title=" 1. 調査に必要な環境情報"></a><a id="1"></a> 1. 調査に必要な環境情報</h2><p>※既にお問い合わせチケット上に起票頂いている場合は、記載は不要になります。</p>
+<ol>
+<li>問題が発生しているサブスクリプション ID  </li>
+<li>ASR のシナリオ詳細 (以下の内のどれか)<br>　a. Azure to Azure<br>　b. VMware to Azure モダン化<br>　c. VMware to Azure クラシック<br>　d. 物理マシン to Azure モダン化<br>　e. 物理マシン to Azure クラシック<br>　f. Hyper-V to Azure</li>
+<li>問題が発生している Recovery Service コンテナー名 </li>
+<li>問題が発生している Recovery Service コンテナーのリソース グループ名 </li>
+<li>対象の マシン名</li>
+<li>対象の Azure 仮想マシンのリソース グループ名</li>
+<li>対象の OS </li>
+<li>Proxy 設定の有無</li>
+<li>ASR プライベート エンドポイント 設定の有無</li>
+<li>Express Route 使用の有無</li>
+</ol>
+<h3 id="「モダン化」と「クラシック」を見分ける方法"><a href="#「モダン化」と「クラシック」を見分ける方法" class="headerlink" title="「モダン化」と「クラシック」を見分ける方法"></a>「モダン化」と「クラシック」を見分ける方法</h3><p>ASR の VMware to Azure シナリオ / 物理マシン to Azure シナリオ では 「モダン化」 と 「クラシック」 の 2 つの構成があります。<br>「モダン化」 と 「クラシック」 のどちらを利用しているかは、以下の画面から確認いただけます。</p>
+<p>Azure Portal にて Recovery Services コンテナーを開き &gt; はじめに - Site Recovery &gt; 「VMware マシンを Azure に」 の下にある 1. の末尾に <code>(従来)</code> が、<br>付与されている場合は、<strong>「クラシック」の Recovery Services コンテナー</strong> となります。<br>付与されて<strong>いない</strong>場合は、<strong>「モダン化」の Recovery Services コンテナー</strong> となります。</p>
+<img src="https://github.com/user-attachments/assets/74f7a3aa-a3e9-41c9-b85f-a82c903fc74e">
+
+<h2 id="2-ログの取得方法"><a href="#2-ログの取得方法" class="headerlink" title=" 2. ログの取得方法"></a><a id="2"></a> 2. ログの取得方法</h2><h3 id="2-1-Azure-to-Azure-シナリオの障害調査に必要なログ"><a href="#2-1-Azure-to-Azure-シナリオの障害調査に必要なログ" class="headerlink" title=" 2-1. Azure to Azure シナリオの障害調査に必要なログ"></a><a id="2-1"></a> 2-1. Azure to Azure シナリオの障害調査に必要なログ</h3><p>本シナリオではログを収集する方法が 2 つありますので、下記いずれかの方法にてログを収集ください。  </p>
+<ul>
+<li>方法 1 : ツールを使用してログを収集する</li>
+<li>方法 2 : 手動でログを収集する  </li>
+</ul>
+<h4 id="方法-1-ツールを使用してログを収集する"><a href="#方法-1-ツールを使用してログを収集する" class="headerlink" title="(方法 1) ツールを使用してログを収集する"></a>(方法 1) ツールを使用してログを収集する</h4><p><u>&lt; Windows の場合 &gt;</u><br>下記の手順に沿って ASRDiagnosticTool  を実行し、ログをご収集ください。<br><a href="#3-1">3-1 ASRDiagnosticTool の使用方法</a></p>
+<p><span style="color: red; ">またツール取得に加えて下記ファイルを手動で収集し、ご提供ください。</span>  </p>
+<blockquote>
+<p>C:\WindowsAzure\Logs</p>
+</blockquote>
+<p><u>&lt; Linux の場合 &gt;</u><br>下記の手順に沿って collect_support_materials.sh を実行し、ログをご収集ください。<br><a href="#3-2">3-2 collect_support_materials の使用方法</a>  </p>
+<p><span style="color: red; ">またツール取得に加えて下記ファイルを手動で収集し、ご提供ください。</span>  </p>
+<blockquote>
+<p>/var/log/<br>  - evtcollforw.log<br>  - InstallerError.json<br>  - tagTelemetry_*.log<br>  - uarespawnd.log<br>  - Waagent.log<br>  - azure<br>  - ASRsetuptelemetry  </p>
+</blockquote>
+<h4 id="方法-2-手動でログを収集する"><a href="#方法-2-手動でログを収集する" class="headerlink" title="(方法 2 ) 手動でログを収集する"></a>(方法 2 ) 手動でログを収集する</h4><p><u>&lt; Windows の場合 &gt;</u>  </p>
+<blockquote>
+<p>C:\ProgramData\ASRSetupLogs<br>C:\ProgramData\Microsoft Azure Site Recovery<br>C:\Program Files\Microsoft Azure Recovery Services Agent\Temp<br>C:\Windows\System32\winevt\logs<br>C:\WindowsAzure\Logs<br>C:\Program Files (x86)\Microsoft Azure Site Recovery\agent <strong>(※1)</strong> </p>
+</blockquote>
+<p><strong>(※1)</strong> 全量いただけることが望ましいですが、全量が困難な場合は下記をご提供ください。  </p>
+<blockquote>
+<p>C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\<br>  - AzureRcmCli.log<br>  - evtcollforw.log<br>  - s2*.log<br>  - svagent*.log<br>  - vacp.log<br>  - Application Data\ApplicationPolicyLogs<br>  - vxlogs  </p>
+</blockquote>
+<p><u>&lt; Linux の場合 &gt;</u>  </p>
+<blockquote>
+<p>/var/log/  <strong>(※1)</strong></p>
+</blockquote>
+<p><strong>(※1)</strong> 全量いただけることが望ましいですが、全量が困難な場合は下記をご提供ください。     </p>
+<blockquote>
+<p>/var/log/<br>  - ApplicationPolicyLogs/vacp.log<br>  - appservice*.log<br>  - AzureRcmCli.log<br>  - cdpcli.log<br>  - evtcollforw.log<br>  - InMage*.log<br>  - InstallerError.json<br>  - involflt*.log<br>  - s2*.log<br>  - svagent*.log<br>  - tagTelemetry_*.log<br>  - ua_install.log<br>  - uarespawnd.log<br>  - Waagent.log<br>  - azure<br>  - vxlogs<br>  - ApplicationData<br>  - ASRsetuptelemetry  </p>
+</blockquote>
+<h3 id="2-2-VMware-to-Azure-物理マシン-to-Azure-クラシック-シナリオの障害調査に必要なログ"><a href="#2-2-VMware-to-Azure-物理マシン-to-Azure-クラシック-シナリオの障害調査に必要なログ" class="headerlink" title=" 2-2. VMware to Azure / 物理マシン to Azure クラシック シナリオの障害調査に必要なログ"></a><a id="2-2"></a> 2-2. VMware to Azure / 物理マシン to Azure クラシック シナリオの障害調査に必要なログ</h3><p>ログ取得対象は下記マシン両方となります。</p>
+<ul>
+<li>構成サーバーとして機能するマシン</li>
+<li>ソース マシン (保護対象マシン)</li>
+</ul>
+<p>本シナリオではログを収集する方法が 2 つありますので、下記いずれかの方法にてログを収集ください。</p>
+<ul>
+<li>方法 1 : ツールを使用してログを収集する</li>
+<li>方法 2 : 手動でログを収集する</li>
+</ul>
+<p><span style="color: red; ">「構成サーバーとして機能するマシン」 と 「ソース マシン (保護対象マシン)」 両方から</span> 、 それぞれのログを収集ください。</p>
+<h4 id="方法-1-ツールを使用してログを収集する-1"><a href="#方法-1-ツールを使用してログを収集する-1" class="headerlink" title="(方法 1) ツールを使用してログを収集する"></a>(方法 1) ツールを使用してログを収集する</h4><p><u>&lt; 構成サーバーおよび ソース マシンが Windows の場合 &gt;</u><br>下記の手順に沿ってASRDiagnosticTool  を実行し、ログをご収集ください。<br><a href="#3-1">3-1 ASRDiagnosticTool の使用方法</a></p>
+<p><u>&lt; ソース マシンが Linux の場合 &gt;</u><br>下記の手順に沿って collect_support_materials.sh を実行し、ログをご収集ください。<br><a href="#3-2">3-2 collect_support_materials の使用方法</a></p>
+<h4 id="方法-2-手動でログを収集する-1"><a href="#方法-2-手動でログを収集する-1" class="headerlink" title="(方法 2 ) 手動でログを収集する"></a>(方法 2 ) 手動でログを収集する</h4><p><u>&lt; 構成サーバー &gt;</u>  </p>
+<blockquote>
+<p>C:\ProgramData\ASRLogs<br>C:\ProgramData\ASRSetupLogs<br>C:\Windows\System32\winevt\logs<br>&lt;Cache InstallDir&gt;\home\svsystems\pushinstallsvc\temporaryfiles\  </p>
+</blockquote>
+<p><u>&lt; ソース マシン (Windows) &gt;</u>  </p>
+<blockquote>
+<p>C:\ProgramData\ASRSetupLogs</p>
+</blockquote>
+<p><u>&lt; ソース マシン (Linux) &gt;</u></p>
+<blockquote>
+<p>var/log/ua_install.log </p>
+</blockquote>
+<h3 id="2-3-VMware-to-Azure-物理マシン-to-Azure-モダン化シナリオの障害調査に必要なログ"><a href="#2-3-VMware-to-Azure-物理マシン-to-Azure-モダン化シナリオの障害調査に必要なログ" class="headerlink" title=" 2-3. VMware to Azure / 物理マシン to Azure モダン化シナリオの障害調査に必要なログ"></a><a id="2-3"></a> 2-3. VMware to Azure / 物理マシン to Azure モダン化シナリオの障害調査に必要なログ</h3><p>ログ取得対象は下記マシン両方となります。</p>
+<ul>
+<li>レプリケーション アプライアンスとして機能するマシン</li>
+<li>ソース マシン (保護対象マシン)</li>
+</ul>
+<p>本シナリオではログを収集する方法が 2 つありますので、下記いずれかの方法にてログを収集ください。</p>
+<ul>
+<li>方法 1 : ツールを使用してログを収集する</li>
+<li>方法 2 : 手動でログを収集する</li>
+</ul>
+<p><span style="color: red; ">「構成サーバーとして機能するマシン」 と 「ソース マシン (保護対象マシン)」 両方から</span> 、 それぞれのログを収集ください。</p>
+<h4 id="方法-1-ツールを使用してログを収集する-2"><a href="#方法-1-ツールを使用してログを収集する-2" class="headerlink" title="(方法 1) ツールを使用してログを収集する"></a>(方法 1) ツールを使用してログを収集する</h4><p><u>&lt; レプリケーション アプライアンス および ソース マシンが Windows の場合 &gt;</u><br>下記の手順に沿ってASRDiagnosticTool  を実行し、ログをご収集ください。<br><a href="#3-1">3-1 ASRDiagnosticTool の使用方法</a></p>
+<p><u>&lt; ソース マシンが Linux の場合 &gt;</u><br>下記の手順に沿って collect_support_materials.sh を実行し、ログをご収集ください。<br><a href="#3-2">3-2 collect_support_materials の使用方法</a></p>
+<p><span style="color: red; ">またツール取得に加えて下記ファイルを手動で収集し、ご提供ください。</span>  </p>
+<blockquote>
+<p>/var/log/<br> - evtcollforw.log<br> - InstallerError.json<br> - tagTelemetry_*.log<br> - uarespawnd.log<br> - Waagent.log<br> - azure<br> - ASRsetuptelemetry  </p>
+</blockquote>
+<h4 id="方法-2-手動でログを収集する-2"><a href="#方法-2-手動でログを収集する-2" class="headerlink" title="(方法 2 ) 手動でログを収集する"></a>(方法 2 ) 手動でログを収集する</h4><p><u>&lt; レプリケーション アプライアンス &gt;</u><br>※ ファイルが存在しなければ取得不要です<br>※ <code>&lt;Cache InstallDir&gt;</code> はアプライアンス構築時に指定したキャッシュ ディスクとなり、デフォルトでは <code>E:\</code> ドライブとなります。 </p>
+<blockquote>
+<p>C:\Program Files\Microsoft Azure Recovery Services Agent\Temp<br>C:\Program Files\Microsoft Azure Recovery Services On-Premise Agent\logs<br>C:\Program Files\Microsoft Azure Site Recovery Process Server\home\svsystems<br>C:\ProgramData\MicrosoftAzureDRApplianceConfigurationManager.log<br>C:\ProgramData\Microsoft Azure\Logs<br>C:\ProgramData\ASRLogs<br>C:\ProgramData\AutoUpdateInstaller.log<br>C:\ProgramData\DiscoveryServiceServerInstall.log<br>C:\ProgramData\DiscoveryServiceVmwareInstall.log<br>C:\ProgramData\InstallDra.log<br>C:\ProgramData\PushInstallAgentSetup.log<br>C:\ProgramData\RcmProxyAgentSetup.log<br>C:\ProgramData\RcmReplicationAgentSetup.log<br>C:\ProgramData\RcmReprotectAgentSetup.log<br>C:\ProgramData\ProcessServerSetup.log<br>C:\ProgramData\Install Log<br>C:\Windows\Temp\OBInstaller0Curr.errlog<br>C:\Windows\Temp\OBManagedlog.LOGCurr.errlog<br>C:\Windows\Temp\OBMsi.log<br>&lt;Cache InstallDir&gt;\MarsAgent<br>&lt;Cache InstallDir&gt;\PSTelemetry<br>&lt;Cache InstallDir&gt;\PushInstallAgent<br>&lt;Cache InstallDir&gt;\RcmProxyAgent<br>&lt;Cache InstallDir&gt;\RcmReplicationAgent<br>&lt;Cache InstallDir&gt;\RcmReprotectAgent  </p>
+</blockquote>
+<p><u>&lt; ソース マシン (Windows) &gt;</u></p>
+<blockquote>
+<p>C:\ProgramData\ASRSetupLogs<br>&lt;Mobility service agent InstallDir&gt;\agent <strong>(※1)</strong> </p>
+</blockquote>
+<p><strong>(※1)</strong> 全量いただけることが望ましいですが、全量が困難な場合は下記をご提供ください。   </p>
+<blockquote>
+<p>&lt;Mobility service agent InstallDir&gt;\agent\<br> - AzureRcmCli.log<br> - evtcollforw.log<br> - s2*.log<br> - svagent*.log<br> - vacp.log<br> - Application Data\ApplicationPolicyLogs<br> - vxlogs  </p>
+</blockquote>
+<p><u>&lt; ソース マシン (Linux) &gt;</u></p>
+<blockquote>
+<p>/tmp/MobilityAgentAutoUpgrade/logs/ua_upgrader.log<br>/var/log/ <strong>(※1)</strong></p>
+</blockquote>
+<p><strong>(※1)</strong> 全量いただけることが望ましいですが、全量が困難な場合は下記をご提供ください。  </p>
+<blockquote>
+<p>/var/log/<br> - ApplicationPolicyLogs/vacp.log<br> - appservice*.log<br> - AzureRcmCli.log<br> - cdpcli.log<br> - evtcollforw.log<br> - InMage*.log<br> - InstallerError.json<br> - involflt*.log<br> - s2*.log<br> - svagent*.log<br> - tagTelemetry_*.log<br> - ua_install.log<br> - uarespawnd.log<br> - Waagent.log<br> - azure<br> - vxlogs<br> - ApplicationData<br> - ASRsetuptelemetry  </p>
+</blockquote>
+<h3 id="2-4-Hyper-V-to-Azure-シナリオの障害調査に必要なログ"><a href="#2-4-Hyper-V-to-Azure-シナリオの障害調査に必要なログ" class="headerlink" title=" 2-4. Hyper-V to Azure シナリオの障害調査に必要なログ"></a><a id="2-4"></a> 2-4. Hyper-V to Azure シナリオの障害調査に必要なログ</h3><p>本シナリオではログを収集する方法は手動収集のみとなります。</p>
+<p><u>&lt; Hyper-V ホスト マシン &gt;</u>  </p>
+<blockquote>
+<p>C:\ProgramData\ASRLogs<br>C:\WindowsAzure\Logs<br>C:\Windows\System32\winevt\logs<br>C:\Program Files\Microsoft Azure Recovery Services Agent\Temp </p>
+</blockquote>
+<p><u>&lt; Hyper-V ゲスト マシン &gt;</u><br>収集が必要なログはございません。</p>
+<h2 id="3-ログ収集ツールの使用方法"><a href="#3-ログ収集ツールの使用方法" class="headerlink" title=" 3. ログ収集ツールの使用方法"></a><a id="3"></a> 3. ログ収集ツールの使用方法</h2><h3 id="3-1-ASRDiagnosticTool-の使用方法"><a href="#3-1-ASRDiagnosticTool-の使用方法" class="headerlink" title=" 3-1. ASRDiagnosticTool の使用方法"></a><a id="3-1"></a> 3-1. ASRDiagnosticTool の使用方法</h3><p>ログ収集対象マシンが <strong>Windows マシン</strong> である場合、本ツールを利用して下記シナリオのログを収集できます。</p>
+<ul>
+<li>Azure to Azure</li>
+<li>VMware to Azure</li>
+<li>物理マシン to Azure</li>
+</ul>
+<p>ASRDiagnosticTool  を利用する前に、下記の各要件を満たしていることを確認してください。</p>
+<ul>
+<li>ツールを実行するマシンに .NET Framework 4.6.2 以上がインストールされていること<br>（参考）方法: インストールされている .NET Framework バージョンを確認する<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed#net-framework-45-and-later-versions">https://learn.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed#net-framework-45-and-later-versions</a></li>
+<li>C:\ ドライブにログを収集するための空き容量があること</li>
+</ul>
+<p>下記の手順に沿って、<br><span style="color: red; ">「構成サーバーとして機能するマシン (クラシック)」 または 「ASR レプリケーション アプライアンス として機能するマシン (モダン化)」 と</span><br><span style="color: red; ">「ソース マシン (保護対象マシン)」 の 2 つから、</span><br>それぞれにて本ツールを実行してログをご収集ください。</p>
+<h4 id="ステップ-1"><a href="#ステップ-1" class="headerlink" title="ステップ 1 :"></a>ステップ 1 :</h4><p>対象の VM にサインインします。</p>
+<h4 id="ステップ-2"><a href="#ステップ-2" class="headerlink" title="ステップ 2 :"></a>ステップ 2 :</h4><p>構成サーバー (クラシック) または ASR レプリケーション アプライアンス (モダン化) とソース マシンの下記ディレクトリに、 ASRDiagnosticTool  が配置されているか確認します。</p>
+<ul>
+<li>構成サーバー (クラシック) : <code>&lt;Cache InstallDir&gt;\agent\ASRDiagnosticTool</code></li>
+<li>ASR レプリケーション アプライアンス  (モダン化)  : <code>&lt;Cache InstallDir&gt;\ProgramData\Microsoft Azure\Tools\ASRDiagnosticTool</code></li>
+<li>ソース マシン : <code>C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\ASRDiagnosticTool</code></li>
+</ul>
+<p>配置されていない場合は下記の手順に従って配置します。  </p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://aka.ms/ASRDiagnosticTool">https://aka.ms/ASRDiagnosticTool</a> から ASRDiagnosticTool.zip ファイルをダウンロードします。</li>
+<li>zip ファイルを解凍し、ログを取得したいマシン上に配置します。</li>
+</ol>
+<h4 id="ステップ-3"><a href="#ステップ-3" class="headerlink" title="ステップ 3 :"></a>ステップ 3 :</h4><p>(ソース マシン (保護対象マシン) 上でツールを実行する場合はスキップください)   </p>
+<p>構成サーバー (クラシック) または ASR レプリケーション アプライアンス (モダン化) のキャッシュ ドライブのインストール先が E ドライブ以外の場合は、下記の設定変更を行います。  </p>
+<ol>
+<li><code>&lt;ASRDiagnosticToolのインストール先&gt;\ASRDiagnosticTool\Config</code> に移動し、ApplianceLogs.json ファイルを開きます。</li>
+<li><code>E:\</code> となっているすべての文字列を検索し、構成サーバーのキャッシュ ドライブのインストール先に変更します。<br> 例えば、<code>M:\</code> ドライブにインストールしている場合は、<code>E:\\MarsAgent\\logs</code> を <code>M:\\MarsAgent\\logs</code> に変更します。</li>
+</ol>
+<h4 id="ステップ-4"><a href="#ステップ-4" class="headerlink" title="ステップ 4 :"></a>ステップ 4 :</h4><p>下記手順に従って ASRDiagnosticTool を実行します。</p>
+<ol>
+<li>管理者モードでコマンド プロンプトを開きます。</li>
+<li>次のコマンドで ASRDiagnosticTool  の配置先に移動します。<br> ※ <code>&lt;ASRDiagnosticToolのインストール先&gt;</code> はインストール先のディレクトリに書き換えてください。　   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &quot;&lt;ASRDiagnosticToolのインストール先&gt;\ASRDiagnosticTool&quot;</span><br></pre></td></tr></table></figure></li>
+<li>次のコマンドで ASRDiagnosticTool  を実行します。 (完了まで5 ~ 30 分 かかります。また、かかる時間は実行している環境によって異なります) <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ASRDiagnosticTool.exe</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>(実行例)<br><img src="https://github.com/user-attachments/assets/a0c74364-8566-49a2-b8a7-be6efe9cf247"></p>
+<h4 id="ステップ-5"><a href="#ステップ-5" class="headerlink" title="ステップ 5 :"></a>ステップ 5 :</h4><p>コマンド プロンプトに下記のようなメッセージが表示されていれば、ログの収集成功となります。<br><code>Please collect the archive at</code> に圧縮されたログが生成されますので、本ログをご提供いただけますと幸いです。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Log collection completed successfully.</span><br><span class="line">Please collect the archive at C:\Users\Administrator\AppData\Roaming\ASRDiagnosticLogs-WIN-C381N1BJK2T-25-07-15-14-57.zip.</span><br></pre></td></tr></table></figure>
+
+<h4 id="ツール利用時の影響について"><a href="#ツール利用時の影響について" class="headerlink" title="ツール利用時の影響について"></a>ツール利用時の影響について</h4><p>当ツールは、単純なログ収集ツールとなっております。これまで「高負荷となった」、「サーバーのリブート」や「特定のサービスが再起動する」といった事例の報告はございません。  </p>
+<p>実際に CPU/メモリがどれくらい消費されるか・ログファイル量は、お客様の環境に依存しますので明確な指標をお出しすることは難しくございますが、弊社検証環境 (Azure 仮想マシン (Standard D8as v5 (8 vcpu 数、32 GiB メモリ))) で当該スクリプトを実行した場合、<span style="color: green; "><strong>ツール実行～終了までのおよそ 3 分 20 秒間</strong></span>では下記結果となり、「非常に大きな負荷がかかった」等の数値は確認しておりません。<br>しかしながら、こちらの結果はあくまでも弊社環境での検証となりますため、必要に応じてお客様ご自身の環境にて検証いただきますようお願い申し上げます。</p>
+<details>
+
+<summary>ツール利用時のパフォーマンス検証結果</summary>
+
+<p>下記表は <code>パフォーマンス モニター</code> を使ったパフォーマンスの検証結果となります。</p>
+<table>
+<thead>
+<tr>
+<th align="left">-</th>
+<th align="left">CPU</th>
+<th align="left">-</th>
+<th align="left">-</th>
+<th align="left">-</th>
+<th align="left">Disk</th>
+<th align="left">-</th>
+<th align="left">-</th>
+<th align="left">-</th>
+<th align="left">Memory</th>
+<th align="left">-</th>
+<th align="left">-</th>
+<th align="left">-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Time</td>
+<td align="left"><strong>Processor Time</strong></td>
+<td align="left"><strong>User Time</strong></td>
+<td align="left"><strong>Privileged Time</strong></td>
+<td align="left"><strong>Interrupt Time</strong></td>
+<td align="left"><strong>Disk Time</strong></td>
+<td align="left"><strong>Current Disk Queue Length</strong></td>
+<td align="left"><strong>Avg. Disk sec/Write</strong></td>
+<td align="left"><strong>Avg. Disk sec/Read</strong></td>
+<td align="left"><strong>Available MBytes</strong></td>
+<td align="left"><strong>Pages/sec</strong></td>
+<td align="left"><strong>Committed Bytes In Use</strong></td>
+<td align="left"><strong>Committed Bytes</strong></td>
+</tr>
+<tr>
+<td align="left">08/05/2024 19:56:22</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">0</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">29303</td>
+<td align="left"></td>
+<td align="left">8.95</td>
+<td align="left">3533012992</td>
+</tr>
+<tr>
+<td align="left">08/05/2024 19:56:52</td>
+<td align="left">0.05</td>
+<td align="left">0.03</td>
+<td align="left">0.03</td>
+<td align="left">0.00</td>
+<td align="left">0.14</td>
+<td align="left">0</td>
+<td align="left">0.00</td>
+<td align="left">0.01</td>
+<td align="left">29303</td>
+<td align="left">2.80</td>
+<td align="left">8.94</td>
+<td align="left">3528171520</td>
+</tr>
+<tr>
+<td align="left">08/05/2024 19:57:22</td>
+<td align="left">3.95</td>
+<td align="left">2.41</td>
+<td align="left">1.51</td>
+<td align="left">0.01</td>
+<td align="left">0.14</td>
+<td align="left">0</td>
+<td align="left">0.00</td>
+<td align="left">0.01</td>
+<td align="left">29312</td>
+<td align="left">0.73</td>
+<td align="left">8.97</td>
+<td align="left">3538006016</td>
+</tr>
+<tr>
+<td align="left">08/05/2024 19:57:52</td>
+<td align="left">0.60</td>
+<td align="left">0.27</td>
+<td align="left">0.30</td>
+<td align="left">0.01</td>
+<td align="left">0.19</td>
+<td align="left">0</td>
+<td align="left">0.00</td>
+<td align="left">0.01</td>
+<td align="left">29236</td>
+<td align="left">1.20</td>
+<td align="left">9.23</td>
+<td align="left">3641659392</td>
+</tr>
+<tr>
+<td align="left">08/05/2024 19:58:22</td>
+<td align="left">0.13</td>
+<td align="left">0.08</td>
+<td align="left">0.04</td>
+<td align="left">0.00</td>
+<td align="left">0.10</td>
+<td align="left">0</td>
+<td align="left">0.00</td>
+<td align="left">0.00</td>
+<td align="left">29241</td>
+<td align="left">0.13</td>
+<td align="left">9.22</td>
+<td align="left">3636760576</td>
+</tr>
+<tr>
+<td align="left">08/05/2024 19:58:52</td>
+<td align="left">0.90</td>
+<td align="left">0.30</td>
+<td align="left">0.57</td>
+<td align="left">0.00</td>
+<td align="left">32.52</td>
+<td align="left">1</td>
+<td align="left">0.00</td>
+<td align="left">0.01</td>
+<td align="left">28870</td>
+<td align="left">0.13</td>
+<td align="left">10.13</td>
+<td align="left">3995738112</td>
+</tr>
+<tr>
+<td align="left">08/05/2024 19:59:22</td>
+<td align="left">0.96</td>
+<td align="left">0.38</td>
+<td align="left">0.59</td>
+<td align="left">0.03</td>
+<td align="left">33.07</td>
+<td align="left">1</td>
+<td align="left">0.00</td>
+<td align="left">0.01</td>
+<td align="left">28541</td>
+<td align="left">0.13</td>
+<td align="left">10.98</td>
+<td align="left">4331937792</td>
+</tr>
+<tr>
+<td align="left">08/05/2024 19:59:52</td>
+<td align="left">4.94</td>
+<td align="left">3.35</td>
+<td align="left">1.55</td>
+<td align="left">0.00</td>
+<td align="left">29.31</td>
+<td align="left">1</td>
+<td align="left">0.00</td>
+<td align="left">0.01</td>
+<td align="left">29189</td>
+<td align="left">350.56</td>
+<td align="left">9.23</td>
+<td align="left">3644022784</td>
+</tr>
+<tr>
+<td align="left">08/05/2024 20:00:22</td>
+<td align="left">28.85</td>
+<td align="left">24.40</td>
+<td align="left">4.45</td>
+<td align="left">0.04</td>
+<td align="left">39.55</td>
+<td align="left">10</td>
+<td align="left">0.05</td>
+<td align="left">0.00</td>
+<td align="left">29083</td>
+<td align="left">34.47</td>
+<td align="left">9.20</td>
+<td align="left">3631489024</td>
+</tr>
+<tr>
+<td align="left">08/05/2024 20:00:52</td>
+<td align="left">2.01</td>
+<td align="left">1.24</td>
+<td align="left">0.74</td>
+<td align="left">0.00</td>
+<td align="left">55.49</td>
+<td align="left">0</td>
+<td align="left">0.02</td>
+<td align="left">0.00</td>
+<td align="left">29232</td>
+<td align="left">38.91</td>
+<td align="left">8.99</td>
+<td align="left">3547832320</td>
+</tr>
+<tr>
+<td align="left">08/05/2024 20:01:22</td>
+<td align="left">0.04</td>
+<td align="left">0.05</td>
+<td align="left">0.04</td>
+<td align="left">0.00</td>
+<td align="left">0.07</td>
+<td align="left">0</td>
+<td align="left">0.00</td>
+<td align="left">0.00</td>
+<td align="left">29236</td>
+<td align="left">0.13</td>
+<td align="left">8.98</td>
+<td align="left">3544920064</td>
+</tr>
+<tr>
+<td align="left">08/05/2024 20:01:52</td>
+<td align="left">0.12</td>
+<td align="left">0.04</td>
+<td align="left">0.01</td>
+<td align="left">0.00</td>
+<td align="left">0.09</td>
+<td align="left">0</td>
+<td align="left">0.00</td>
+<td align="left">0.00</td>
+<td align="left">29236</td>
+<td align="left">0.13</td>
+<td align="left">8.98</td>
+<td align="left">3542532096</td>
+</tr>
+</tbody></table>
+</details>
+
+<h3 id="3-2-collect-support-materials-の使用方法"><a href="#3-2-collect-support-materials-の使用方法" class="headerlink" title=" 3-2. collect_support_materials の使用方法"></a><a id="3-2"></a> 3-2. collect_support_materials の使用方法</h3><p>ログ収集対象マシンが <strong>Linux マシン</strong> である場合、本ツールを利用して下記シナリオのログを収集できます。</p>
+<ul>
+<li>Azure to Azure</li>
+<li>VMware to Azure</li>
+<li>物理マシン to Azure</li>
+</ul>
+<p>下記の手順にそって本ツールを実行して、ログを収集してください。</p>
+<h4 id="ステップ-1-1"><a href="#ステップ-1-1" class="headerlink" title="ステップ 1 :"></a>ステップ 1 :</h4><p>対象の VM にサインインします。</p>
+<h4 id="ステップ-2-1"><a href="#ステップ-2-1" class="headerlink" title="ステップ 2 :"></a>ステップ 2 :</h4><p>スクリプト <code>/usr/local/ASR/Vx/bin/collect_support_materials.sh</code> を管理者権限で実行します</p>
+<h4 id="ステップ-3-1"><a href="#ステップ-3-1" class="headerlink" title="ステップ 3 :"></a>ステップ 3 :</h4><p>以下のように出力されますので、<code>support store location</code> の <code>free space</code> が十分であることをご確認いただき、<code>Y</code> または <code>y</code> を入力してください。  </p>
+<p>(出力例)<br><img src="https://github.com/user-attachments/assets/50ab3587-7945-4d7a-8465-60183c850a4b"></p>
+<h4 id="ステップ-4-1"><a href="#ステップ-4-1" class="headerlink" title="ステップ 4 :"></a>ステップ 4 :</h4><p>上記 <code>support store location</code> に圧縮されたログが生成されますので、本ログをご提供いただけますと幸いです。</p>
+<h4 id="ツール利用時の影響について-1"><a href="#ツール利用時の影響について-1" class="headerlink" title="ツール利用時の影響について"></a>ツール利用時の影響について</h4><p>当ツールは、単純なログ収集ツールとなっております。これまで「高負荷となった」、「サーバーのリブート」や「特定のサービスが再起動する」といった事例の報告はございません。<br>出力されるログファイルの量は環境毎、およびシナリオ毎で異なりますが、弊社検証環境での動作確認ではログ ファイルのサイズは 700 KB 程度でございました。</p>
+<p>実際に CPU/メモリがどれくらい消費されるかは、お客様の環境に依存しますので明確な指標をお出しすることは難しくございますが、弊社検証環境 (Azure 仮想マシン (Standard D8as v5 (8 vcpu 数、32 GiB メモリ))) で当該スクリプトを実行した場合、<span style="color: green; "><strong>スクリプト実行～終了までのおよそ 20 秒間</strong></span>では下記結果となり、「非常に大きな負荷がかかった」 等の数値は確認しておりません。<br>しかしながら、こちらの結果はあくまでも弊社環境での検証となりますため、必要に応じてお客様ご自身の環境にて検証いただきますようお願い申し上げます。</p>
+<details>
+
+<summary>ツール利用時のパフォーマンス検証結果</summary>
+
+<p>下記表は <code>vmstat</code> コマンドを使ったパフォーマンスの検証結果となります。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vmstat 5 | awk &#x27;&#123; print strftime(&quot;%Y/%m/%d %H:%M:%S&quot;), $0 &#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">-</th>
+<th align="left">procs</th>
+<th align="left">-</th>
+<th align="left">memory</th>
+<th align="left">-</th>
+<th align="left">-</th>
+<th align="left">-</th>
+<th align="left">swap</th>
+<th align="left">-</th>
+<th align="left">io</th>
+<th align="left">-</th>
+<th align="left">system</th>
+<th align="left">-</th>
+<th align="left">cpu</th>
+<th align="left">-</th>
+<th align="left">-</th>
+<th align="left">-</th>
+<th align="left">-</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Time</strong></td>
+<td align="left"><strong>r</strong></td>
+<td align="left"><strong>b</strong></td>
+<td align="left"><strong>swpd</strong></td>
+<td align="left"><strong>free</strong></td>
+<td align="left"><strong>buff</strong></td>
+<td align="left"><strong>cache</strong></td>
+<td align="left"><strong>si</strong></td>
+<td align="left"><strong>so</strong></td>
+<td align="left"><strong>bi</strong></td>
+<td align="left"><strong>bo</strong></td>
+<td align="left"><strong>in</strong></td>
+<td align="left"><strong>cs</strong></td>
+<td align="left"><strong>us</strong></td>
+<td align="left"><strong>sy</strong></td>
+<td align="left"><strong>id</strong></td>
+<td align="left"><strong>wa</strong></td>
+<td align="left"><strong>st</strong></td>
+</tr>
+<tr>
+<td align="left">2024/6/3 8:38:04</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">459724</td>
+<td align="left">4184</td>
+<td align="left">15316156</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">2544</td>
+<td align="left">1481</td>
+<td align="left">308</td>
+<td align="left">811</td>
+<td align="left">5</td>
+<td align="left">1</td>
+<td align="left">72</td>
+<td align="left">22</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">2024/6/3 8:38:09</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">0</td>
+<td align="left">524152</td>
+<td align="left">4184</td>
+<td align="left">15248072</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">21636</td>
+<td align="left">5809</td>
+<td align="left">2451</td>
+<td align="left">6335</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">79</td>
+<td align="left">19</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">2024/6/3 8:38:14</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">511444</td>
+<td align="left">4184</td>
+<td align="left">15260096</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">18309</td>
+<td align="left">67</td>
+<td align="left">2960</td>
+<td align="left">7064</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">89</td>
+<td align="left">9</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">2024/6/3 8:38:19</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">495660</td>
+<td align="left">4184</td>
+<td align="left">15271268</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">17027</td>
+<td align="left">328</td>
+<td align="left">2542</td>
+<td align="left">6767</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">89</td>
+<td align="left">9</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">2024/6/3 8:38:24</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">448740</td>
+<td align="left">4184</td>
+<td align="left">15311520</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">29925</td>
+<td align="left">115</td>
+<td align="left">6789</td>
+<td align="left">13947</td>
+<td align="left">7</td>
+<td align="left">2</td>
+<td align="left">79</td>
+<td align="left">12</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left"><span style="color: green; ">2024/6/3 8:38:29</td>
+<td align="left">5</td>
+<td align="left">3</td>
+<td align="left">0</td>
+<td align="left">374476</td>
+<td align="left">4184</td>
+<td align="left">15384444</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">36440</td>
+<td align="left">73</td>
+<td align="left">9115</td>
+<td align="left">18576</td>
+<td align="left">12</td>
+<td align="left">2</td>
+<td align="left">76</td>
+<td align="left">9</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left"><span style="color: green; ">2024/6/3 8:38:34</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">413664</td>
+<td align="left">4184</td>
+<td align="left">15346216</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">29338</td>
+<td align="left">588</td>
+<td align="left">3365</td>
+<td align="left">6832</td>
+<td align="left">1</td>
+<td align="left">1</td>
+<td align="left">88</td>
+<td align="left">10</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left"><span style="color: green; ">2024/6/3 8:38:39</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">394872</td>
+<td align="left">4184</td>
+<td align="left">15364684</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">25054</td>
+<td align="left">3479</td>
+<td align="left">3219</td>
+<td align="left">6826</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">78</td>
+<td align="left">19</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left"><span style="color: green; ">2024/6/3 8:38:44</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">376320</td>
+<td align="left">4184</td>
+<td align="left">15383056</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">43755</td>
+<td align="left">75</td>
+<td align="left">4825</td>
+<td align="left">7378</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">88</td>
+<td align="left">9</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left"><span style="color: green; ">2024/6/3 8:38:49</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">0</td>
+<td align="left">331164</td>
+<td align="left">4184</td>
+<td align="left">15416172</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">43115</td>
+<td align="left">332</td>
+<td align="left">4878</td>
+<td align="left">7463</td>
+<td align="left">3</td>
+<td align="left">1</td>
+<td align="left">82</td>
+<td align="left">13</td>
+<td align="left">0</td>
+</tr>
+</tbody></table>
+</details>
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSiteRecovery/RequestForInvestigating_ASR.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../AzureVMBackup/How_to_fail_VM_backup/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Azure VM Backup を意図的に失敗させる方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">ASR の障害調査に必要な情報</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/How_to_fail_VM_backup/">Azure VM Backup を意図的に失敗させる方法</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/AV_ExcludeSetting/">Azure Backup におけるウイルス除外設定について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/CRR/">Azure VM Backup における CRR (クロスリージョン リストア) について</a>
+          </li>
+        
+          <li>
+            <a href="../RemoveDiskASR/">Azure Site Recovery レプリケーション中にディスクを削除した場合</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">11</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">9</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">5</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">28</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">25</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 10px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SAPHANA-Backup/" style="font-size: 10px;">Azure SAPHANA Backup</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 13.33px;">Azure SQL Backup</a> <a href="../../tags/Azure-Site-Recovery/" style="font-size: 15px;">Azure Site Recovery</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 13.33px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
