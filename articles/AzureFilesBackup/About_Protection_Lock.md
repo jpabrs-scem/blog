@@ -8,13 +8,13 @@ disableDisclaimer: false
 
 <!-- more -->
 皆様こんにちは、Azure Backup サポートです。  
-Azure ファイル共有のバックアップを構成すると、バックアップ データやストレージ アカウントが誤って削除されないように、削除ロック 「AzureBackupProtectionLock」 をストレージ アカウントに設定いたします。  
-今回は、Azure ファイル共有のバックアップによって、ストレージ アカウントに設定される削除ロック 「AzureBackupProtectionLock」 についてご案内します。
+Azure ファイル共有のバックアップを構成すると、バックアップ データやストレージ アカウントが誤って削除されないように、削除ロック 「AzureBackupProtectionLock」 がストレージ アカウントに設定されます。 
+今回は、Azure ファイル共有のバックアップによって、ストレージ アカウントに設定される削除ロック 「AzureBackupProtectionLock」 についてご案内します。  
 
 ## 目次
 -----------------------------------------------------------
 [AzureBackupProtectionLock とは](#1)  
-[AzureBackupProtectionLock が付与されるタイミング](#2)
+[AzureBackupProtectionLock が付与されるタイミング](#2)  
 [AzureBackupProtectionLock を一時的に削除する方法](#3)  
 [AzureBackupProtectionLock を付与させない方法](#4)  
 -----------------------------------------------------------
@@ -30,7 +30,7 @@ Azure ファイル共有のバックアップでは、Azure ファイル共有�
 
 > ストレージ アカウントが削除されると、すべてのスナップショットが失われます。 **誤って削除されないようにアカウントを保護するため、Azure Backup によってストレージ アカウントに削除ロックが設定されます。** つまり、許可されているユーザーはリソースを読んだり変更したりできますが、削除することはできません。 また、このロックにより、ストレージ アカウントの下にあるファイル共有の削除も制限されます。 そのため、ストレージ アカウントとファイル共有の両方が不注意による削除から保護されます。  
 
-例)  
+(例)  
 - ロック名 : ``AzureBackupProtectionLock``  
 - ロックの種類 : 削除  
 - スコープ : ストレージ アカウント  
@@ -50,7 +50,7 @@ Azure ファイル共有のバックアップでは、Azure ファイル共有�
 ## <a id="3"></a>AzureBackupProtectionLock を一時的に削除する方法
 ファイル共有にアップロードしている一部ファイルを削除したいなどのシナリオにおいては、削除ロック 「AzureBackupProtectionLock」 を手動で削除してください。  
 
-前提条件)  
+前提条件 :  
 削除ロックを削除するには、作業を行うユーザーが対象のストレージ アカウントに対して、``Microsoft.Authorization/*`` または ``Microsoft.Authorization/locks/*`` アクションにアクセス可能である必要がございます。 (組み込みロールでは、**所有者**と**ユーザー アクセス管理者ロール** の割り当てが必要となります。)  
 削除ロックの作業を行う前に、予め上記アクセス許可を行ってください。  
 
@@ -61,7 +61,7 @@ Azure ファイル共有のバックアップでは、Azure ファイル共有�
 > 管理ロックを作成または削除するには、``Microsoft.Authorization/*`` または ``Microsoft.Authorization/locks/*`` アクションにアクセスする必要があります。**所有者**と**ユーザー アクセス管理者ロール**に割り当てられているユーザーには、必要なアクセス権があります。  
 
 
-手順)  
+手順 :  
 1. 削除ロック 「AzureBackupProtectionLock」 を削除する  
 ストレージ アカウントの ``設定 > ロック`` へアクセスし、削除ロック 「AzureBackupProtectionLock」 を削除します  
 ![](https://github.com/user-attachments/assets/5b358e3c-edfc-4a9c-90c4-71a540581f69)
@@ -70,7 +70,7 @@ Azure ファイル共有のバックアップでは、Azure ファイル共有�
    - ストレージ アカウントの ``設定 > ロック`` へアクセスし、削除ロックを追加します  
      ![](https://github.com/user-attachments/assets/a736e344-22d9-4009-86be-c357f3392602)  
    - もしくは、Azure ファイル共有のオンデマンド バックアップを手動で実行します (自動的に、削除ロック 「AzureBackupProtectionLock」 が付与されます)  
-     詳細な手順につきましては、下記ドキュメントをご確認ください。 
+     詳細な手順につきましては、下記ドキュメントをご確認ください。  
      - オンデマンド バックアップの実行手順 :  
        オンデマンド バックアップ ジョブを実行する / Azure portal で Azure ファイル共有をバックアップする - Azure Backup | Microsoft Learn  
        https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files?tabs=backup-center#run-an-on-demand-backup-job  
@@ -83,7 +83,7 @@ Azure ファイル共有のバックアップ構成時に、ストレージ ア�
 > Azure Backup サービスといたしましては、**削除ロック 「AzureBackupProtectionLock」 を有効化していただくことを推奨**いたします。  
 > もし削除ロック 「AzureBackupProtectionLock」 を付与せずにバックアップを構成し、意図せずスナップショットが消失したとしても、基本的には弊社側での復旧対応は致しかねますこと、予めご了承ください。  
 
-手順)
+手順 :  
 - Recovery Services コンテナーからバックアップを構成する場合  
   Recovery Services コンテナーの ``はじめに > バックアップ > Azure ファイル共有のバックアップ構成`` にアクセスします。  
   ![](https://github.com/user-attachments/assets/d0ab1a1b-fa35-4c44-b371-1bde80209c07)  
