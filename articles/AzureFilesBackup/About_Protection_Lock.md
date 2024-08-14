@@ -20,15 +20,14 @@ disableDisclaimer: false
 
 ## <a id="1"></a>AzureBackupProtectionLock とは
 Azure ファイル共有のバックアップでは、Azure ファイル共有のスナップショット機能を利用し、バックアップを取得しておりますが、Azure ファイル共有のスナップショットは、ストレージ アカウントが削除されると、全てのスナップショットが併せて削除されます。  
-
 そのため、Azure ファイル共有のバックアップでは、Azure Backup サービスによって取得されたバックアップ (スナップショット) が誤って削除されないように、バックアップ対象の Azure ファイル共有がデプロイされているストレージ アカウントに対して、削除ロック 「AzureBackupProtectionLock」 を設定いたします。  
 
-参考)  
 - ストレージ アカウントのロックを有効にすることが推奨されるのはなぜですか?  
   Azure Files のバックアップに関する FAQ - Azure Backup | Microsoft Learn  
   https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files-faq#-------------------------------------  
   抜粋 :
-  > ストレージ アカウントが削除されると、すべてのスナップショットが失われます。 **誤って削除されないようにアカウントを保護するため、Azure Backup によってストレージ アカウントに削除ロックが設定されます。** つまり、許可されているユーザーはリソースを読んだり変更したりできますが、削除することはできません。 また、このロックにより、ストレージ アカウントの下にあるファイル共有の削除も制限されます。 そのため、ストレージ アカウントとファイル共有の両方が不注意による削除から保護されます。  
+
+> ストレージ アカウントが削除されると、すべてのスナップショットが失われます。 **誤って削除されないようにアカウントを保護するため、Azure Backup によってストレージ アカウントに削除ロックが設定されます。** つまり、許可されているユーザーはリソースを読んだり変更したりできますが、削除することはできません。 また、このロックにより、ストレージ アカウントの下にあるファイル共有の削除も制限されます。 そのため、ストレージ アカウントとファイル共有の両方が不注意による削除から保護されます。  
 
 例)  
 - ロック名 : ``AzureBackupProtectionLock``  
@@ -67,12 +66,10 @@ Azure ファイル共有のバックアップでは、Azure ファイル共有�
      ![](https://github.com/user-attachments/assets/a736e344-22d9-4009-86be-c357f3392602)  
    - もしくは、Azure ファイル共有のオンデマンド バックアップを手動で実行します (自動的に、削除ロック 「AzureBackupProtectionLock」 が付与されます)  
      詳細な手順につきましては、下記ドキュメントをご確認ください。 
-     - オンデマンド バックアップ ジョブを実行する  
-       Azure portal で Azure ファイル共有をバックアップする - Azure Backup | Microsoft Learn  
+     - オンデマンド バックアップの実行手順 :  
+       オンデマンド バックアップ ジョブを実行する / Azure portal で Azure ファイル共有をバックアップする - Azure Backup | Microsoft Learn  
        https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files?tabs=backup-center#run-an-on-demand-backup-job  
 
-
-参考)
 - 誰がロックを作成または削除できるか / ロックを使って Azure リソースを保護する - Azure Resource Manager | Microsoft Learn  
   https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/management/lock-resources?tabs=json#who-can-create-or-delete-locks  
   抜粋 :
@@ -96,11 +93,6 @@ Azure ファイル共有のバックアップ構成時に、ストレージ ア�
 - Azure ファイル共有からバックアップを構成する場合  
   Azure ファイル共有の ``操作 > バックアップ`` へアクセスし、**「Storage account lock」のトグル ボタンを無効にしてください**。
   ![](https://github.com/user-attachments/assets/9535dd6e-f3b9-41c5-bfc6-a6fc4cfe0d45)
-
-参考)
-- Azure portal で Azure ファイル共有をバックアップする - Azure Backup | Microsoft Learn  
-  https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files?tabs=backup-center#configure-the-backup
-
 
 > [!WARNING]  
 > Azure ファイル共有を新規作成する際に表示される Azure Backup 構成画面では、ストレージ アカウントのロックを無効化させる設定は行えません。  
