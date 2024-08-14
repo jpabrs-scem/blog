@@ -7,7 +7,8 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-皆様こんにちは、Azure Backup サポートです。
+皆様こんにちは、Azure Backup サポートです。  
+Azure ファイル共有のバックアップを構成すると、バックアップ データやストレージ アカウントが誤って削除されないように、削除ロック 「AzureBackupProtectionLock」 をストレージ アカウントに設定いたします。  
 今回は、Azure ファイル共有のバックアップによって、ストレージ アカウントに設定される削除ロック 「AzureBackupProtectionLock」 についてご案内します。
 
 ## 目次
