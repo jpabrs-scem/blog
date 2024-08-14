@@ -49,15 +49,19 @@ Azure ファイル共有のバックアップでは、Azure ファイル共有�
 ## <a id="3"></a>AzureBackupProtectionLock を一時的に削除する方法
 ファイル共有にアップロードしている一部ファイルを削除したいなどのシナリオにおいては、削除ロック 「AzureBackupProtectionLock」 を手動で削除してください。  
 
-手順)  
-1. リソース ロックを削除するために必要なアクセス許可を設定する
-  - 作業を行うユーザーにて、ストレージ アカウントの ``アクセス制御 (IAM) > マイ アクセスの表示`` へアクセスし、**所有者** もしくは **ユーザー アクセス管理者ロール** 等のロールが割り当てられているかを確認します  
-    ![](https://github.com/user-attachments/assets/012c046a-a19c-4289-bf3b-4a662df1504c)  
-    > [!NOTE]
-    > ``Microsoft.Authorization/*`` または ``Microsoft.Authorization/locks/*`` アクションにアクセス可能であれば、組み込みロール / カスタム ロールのどちらを利用いただいても構いません。  
-  - アクセス許可が不足している場合には、ストレージ アカウントに対して、ロール "所有者" や "Role Based Access Control Administrator" "ユーザー アクセス管理者" 等のアクセス許可が付与されているユーザーへ、ストレージ アカウントへのアクセス許可 (**所有者** もしくは **ユーザー アクセス管理者ロール** 等のロール付与) を依頼してください。
+前提条件)  
+削除ロックを削除するには、作業を行うユーザーが対象のストレージ アカウントに対して、``Microsoft.Authorization/*`` または ``Microsoft.Authorization/locks/*`` アクションにアクセス可能である必要がございます。 (組み込みロールでは、**所有者**と**ユーザー アクセス管理者ロール** の割り当てが必要となります。)  
+削除ロックの作業を行う前に、予め上記アクセス許可を行ってください。  
 
-2. 削除ロック 「AzureBackupProtectionLock」 を削除する
+- 誰がロックを作成または削除できるか / ロックを使って Azure リソースを保護する - Azure Resource Manager | Microsoft Learn  
+  https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/management/lock-resources?tabs=json#who-can-create-or-delete-locks  
+  抜粋 :
+
+> 管理ロックを作成または削除するには、``Microsoft.Authorization/*`` または ``Microsoft.Authorization/locks/*`` アクションにアクセスする必要があります。**所有者**と**ユーザー アクセス管理者ロール**に割り当てられているユーザーには、必要なアクセス権があります。  
+
+
+手順)  
+1. 削除ロック 「AzureBackupProtectionLock」 を削除する  
 ストレージ アカウントの ``設定 > ロック`` へアクセスし、削除ロック 「AzureBackupProtectionLock」 を削除します  
 ![](https://github.com/user-attachments/assets/5b358e3c-edfc-4a9c-90c4-71a540581f69)
 
@@ -69,11 +73,6 @@ Azure ファイル共有のバックアップでは、Azure ファイル共有�
      - オンデマンド バックアップの実行手順 :  
        オンデマンド バックアップ ジョブを実行する / Azure portal で Azure ファイル共有をバックアップする - Azure Backup | Microsoft Learn  
        https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files?tabs=backup-center#run-an-on-demand-backup-job  
-
-- 誰がロックを作成または削除できるか / ロックを使って Azure リソースを保護する - Azure Resource Manager | Microsoft Learn  
-  https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/management/lock-resources?tabs=json#who-can-create-or-delete-locks  
-  抜粋 :
-  > 管理ロックを作成または削除するには、``Microsoft.Authorization/*`` または ``Microsoft.Authorization/locks/*`` アクションにアクセスする必要があります。**所有者**と**ユーザー アクセス管理者ロール**に割り当てられているユーザーには、必要なアクセス権があります。
 
 
 ## <a id="4"></a>AzureBackupProtectionLock を付与させない方法
