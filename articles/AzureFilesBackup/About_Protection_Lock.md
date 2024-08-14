@@ -14,9 +14,9 @@ Azure ファイル共有のバックアップを構成すると、バックア�
 ## 目次
 -----------------------------------------------------------
 [AzureBackupProtectionLock とは](#1)  
-[AzureBackupProtectionLock が付与されるタイミング](#2)  
+[AzureBackupProtectionLock が設定されるタイミング](#2)  
 [AzureBackupProtectionLock を一時的に削除する方法](#3)  
-[AzureBackupProtectionLock を付与させない方法](#4)  
+[AzureBackupProtectionLock を設定させない方法](#4)  
 -----------------------------------------------------------
 
 ## <a id="1"></a>AzureBackupProtectionLock とは
@@ -38,13 +38,13 @@ Azure ファイル共有のバックアップでは、Azure ファイル共有�
 ![](https://github.com/user-attachments/assets/6521b8f8-67f1-4b48-863f-41afb943fbd3)
 
 
-## <a id="2"></a>AzureBackupProtectionLock が付与されるタイミング
-削除ロック 「AzureBackupProtectionLock」 は、主に下記のタイミングで付与されます。  
+## <a id="2"></a>AzureBackupProtectionLock が設定されるタイミング
+削除ロック 「AzureBackupProtectionLock」 は、主に下記のタイミングで設定されます。  
 - Azure ファイル共有のバックアップが構成されたとき  
   (より正確には、ストレージ アカウントが Recovery Services コンテナーのバックアップ インフラストラクチャとして登録されたとき)  
 - Azure ファイル共有のバックアップが実行されたとき  
 
-削除ロック 「AzureBackupProtectionLock」 を手動削除したとしても、Azure ファイル共有のバックアップが実行されると、削除ロック 「AzureBackupProtectionLock」 が自動付与されます。  
+削除ロック 「AzureBackupProtectionLock」 を手動削除したとしても、Azure ファイル共有のバックアップが実行されると、削除ロック 「AzureBackupProtectionLock」 が自動設定されます。  
 
 
 ## <a id="3"></a>AzureBackupProtectionLock を一時的に削除する方法
@@ -69,19 +69,19 @@ Azure ファイル共有のバックアップでは、Azure ファイル共有�
 1. (不要なファイル削除などの作業完了後) 削除ロック 「AzureBackupProtectionLock」 を再設定する  
    - ストレージ アカウントの ``設定 > ロック`` へアクセスし、削除ロックを追加します  
      ![](https://github.com/user-attachments/assets/a736e344-22d9-4009-86be-c357f3392602)  
-   - もしくは、Azure ファイル共有のオンデマンド バックアップを手動で実行します (自動的に、削除ロック 「AzureBackupProtectionLock」 が付与されます)  
+   - もしくは、Azure ファイル共有のオンデマンド バックアップを手動で実行します (自動的に、削除ロック 「AzureBackupProtectionLock」 が設定されます)  
      詳細な手順につきましては、下記ドキュメントをご確認ください。  
      - オンデマンド バックアップの実行手順 :  
        オンデマンド バックアップ ジョブを実行する / Azure portal で Azure ファイル共有をバックアップする - Azure Backup | Microsoft Learn  
        https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files?tabs=backup-center#run-an-on-demand-backup-job  
 
 
-## <a id="4"></a>AzureBackupProtectionLock を付与させない方法
-Azure ファイル共有のバックアップ構成時に、ストレージ アカウントのロック無効化設定を行うことで、削除ロック 「AzureBackupProtectionLock」 を付与せずに、Azure ファイル共有のバックアップを構成 / 取得いただくことが可能となります。  
+## <a id="4"></a>AzureBackupProtectionLock を設定させない方法
+Azure ファイル共有のバックアップ構成時に、ストレージ アカウントのロック無効化設定を行うことで、削除ロック 「AzureBackupProtectionLock」 を設定せずに、Azure ファイル共有のバックアップを構成 / 取得いただくことが可能となります。  
 
 > [!IMPORTANT]  
 > Azure Backup サービスといたしましては、**削除ロック 「AzureBackupProtectionLock」 を有効化していただくことを推奨**いたします。  
-> もし削除ロック 「AzureBackupProtectionLock」 を付与せずにバックアップを構成し、意図せずスナップショットが消失したとしても、基本的には弊社側での復旧対応は致しかねますこと、予めご了承ください。  
+> もし削除ロック 「AzureBackupProtectionLock」 を設定せずにバックアップを構成し、意図せずスナップショットが消失したとしても、基本的には弊社側での復旧対応は致しかねますこと、予めご了承ください。  
 
 手順 :  
 - Recovery Services コンテナーからバックアップを構成する場合  
