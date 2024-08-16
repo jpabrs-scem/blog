@@ -11,7 +11,7 @@ disableDisclaimer: false
 皆様こんにちは、Azure Backup サポートです。
 今回は、Azure VM Backup において、
 「Standard バックアップ ポリシー (標準ポリシー) 」でバックアップを取得した場合と
-「Enhanced バックアップ ポリシー (拡張ポリシー) 」でバックアップを取得した場合の、それぞれの料金の違いについて説明します。 
+「Enhanced バックアップ ポリシー (拡張ポリシー) 」でバックアップを取得した場合のそれぞれの料金の違いについて説明します。 
 ![image](https://github.com/jpabrs-scem/blog/assets/96324317/8ccd86d4-3e8e-4f19-9155-27ae50c50b9a)
 
 (参考 関連ブログ記事)
@@ -26,7 +26,7 @@ disableDisclaimer: false
 -----------------------------------------------------------
 
 ## 1. Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの機能の違いについて<a id="1"></a>
-それぞれのバックアップ ポリシーで Azure VM Backup を取得する場合の、機能の違いは下記公開ドキュメントをご参照ください。
+それぞれのバックアップ ポリシーで Azure VM Backup を取得する場合の機能の違いは下記公開ドキュメントをご参照ください。
 ・拡張ポリシーを使用して Azure VM をバックアップする - Azure Backup | Microsoft Learn
 　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal
 
