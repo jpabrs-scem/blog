@@ -8,7 +8,7 @@ disableDisclaimer: false
 
 <!-- more -->
 こんにちは、Azure Backup サポートです。  
-今回は、Azure VM Backup での、クラスターの共有ボリューム (Cluster Shared Volume : CSV) を利用している VM のサポート状況およびバックアップ方法についてご案内いたします。  
+今回は、Azure VM Backup での、クラスターの共有ボリューム (Cluster Shared Volume : CSV) を利用している VM のサポート状況、および Azure Backup でのバックアップ方法についてご案内いたします。  
 
 ## 目次  
 -----------------------------------------------------------
