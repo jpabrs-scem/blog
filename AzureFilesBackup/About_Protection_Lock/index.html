@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>AzureBackupProtectionLock について | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。Azure ファイル共有のバックアップを構成すると、バックアップ データやストレージ アカウントが誤って削除されないように、削除ロック 「AzureBackupProtectionLock」 がストレージ アカウントに設定されます。今回は、Azure ファイル共有のバックアップによって、ストレージ アカウントに設定される削除ロック 「Azu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AzureBackupProtectionLock について">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。Azure ファイル共有のバックアップを構成すると、バックアップ データやストレージ アカウントが誤って削除されないように、削除ロック 「AzureBackupProtectionLock」 がストレージ アカウントに設定されます。今回は、Azure ファイル共有のバックアップによって、ストレージ アカウントに設定される削除ロック 「Azu">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://github.com/user-attachments/assets/6521b8f8-67f1-4b48-863f-41afb943fbd3">
+<meta property="og:image" content="https://github.com/user-attachments/assets/5b358e3c-edfc-4a9c-90c4-71a540581f69">
+<meta property="og:image" content="https://github.com/user-attachments/assets/a736e344-22d9-4009-86be-c357f3392602">
+<meta property="og:image" content="https://github.com/user-attachments/assets/d0ab1a1b-fa35-4c44-b371-1bde80209c07">
+<meta property="og:image" content="https://github.com/user-attachments/assets/65a4c4c8-c800-4d04-ab2a-ce8512be102a">
+<meta property="og:image" content="https://github.com/user-attachments/assets/9535dd6e-f3b9-41c5-bfc6-a6fc4cfe0d45">
+<meta property="og:image" content="https://github.com/user-attachments/assets/7df7d32c-6273-4e1f-9529-62e6afd16609">
+<meta property="article:published_time" content="2024-08-27T15:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-27T06:06:49.049Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure Files Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/user-attachments/assets/6521b8f8-67f1-4b48-863f-41afb943fbd3">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureFilesBackup/About_Protection_Lock" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AzureBackupProtectionLock について
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2024-08-27T15:00:00.000Z" itemprop="datePublished">2024-08-28</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+e914ce26-daca-5952-a40c-a582b6c67f01%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzureBackupProtectionLock+%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureFilesBackup%2FAbout_Protection_Lock%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureFilesBackup%2FAbout_Protection_Lock.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureFilesBackup%2FAbout_Protection_Lock.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/" data-id="cm0c0yi4u000g0np498gnbaoa" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは、Azure Backup サポートです。<br>Azure ファイル共有のバックアップを構成すると、バックアップ データやストレージ アカウントが誤って削除されないように、削除ロック 「AzureBackupProtectionLock」 がストレージ アカウントに設定されます。<br>今回は、Azure ファイル共有のバックアップによって、ストレージ アカウントに設定される削除ロック 「AzureBackupProtectionLock」 についてご案内します。  </p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">AzureBackupProtectionLock とは</a><br><a href="#2">AzureBackupProtectionLock が設定されるタイミング</a><br><a href="#3">AzureBackupProtectionLock を一時的に削除する方法</a><br><a href="#4">AzureBackupProtectionLock を設定させない方法</a>  </p>
+<hr>
+<h2 id="AzureBackupProtectionLock-とは"><a href="#AzureBackupProtectionLock-とは" class="headerlink" title="AzureBackupProtectionLock とは"></a><a id="1"></a>AzureBackupProtectionLock とは</h2><p>Azure ファイル共有のバックアップでは、Azure ファイル共有のスナップショット機能を利用し、バックアップを取得しておりますが、Azure ファイル共有のスナップショットは、ストレージ アカウントが削除されると、全てのスナップショットが併せて削除されます。<br>そのため、Azure ファイル共有のバックアップでは、Azure Backup サービスによって取得されたバックアップ (スナップショット) が誤って削除されないように、バックアップ対象の Azure ファイル共有がデプロイされているストレージ アカウントに対して、削除ロック 「AzureBackupProtectionLock」 を設定いたします。  </p>
+<ul>
+<li>ストレージ アカウントのロックを有効にすることが推奨されるのはなぜですか?<br>Azure Files のバックアップに関する FAQ - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files-faq#-------------------------------------">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files-faq#-------------------------------------</a><br>抜粋 :</li>
+</ul>
+<blockquote>
+<p>ストレージ アカウントが削除されると、すべてのスナップショットが失われます。 <strong>誤って削除されないようにアカウントを保護するため、Azure Backup によってストレージ アカウントに削除ロックが設定されます。</strong> つまり、許可されているユーザーはリソースを読んだり変更したりできますが、削除することはできません。 また、このロックにより、ストレージ アカウントの下にあるファイル共有の削除も制限されます。 そのため、ストレージ アカウントとファイル共有の両方が不注意による削除から保護されます。  </p>
+</blockquote>
+<p>(例)  </p>
+<ul>
+<li>ロック名 : <code>AzureBackupProtectionLock</code>  </li>
+<li>ロックの種類 : 削除  </li>
+<li>スコープ : ストレージ アカウント  </li>
+<li>メモ : <code>Auto-created by Azure Backup for storage accounts registered with a Recovery Services Vault. This lock is intended to guard against deletion of backups due to accidental deletion of the storage account. (Recovery Services Vaultに登録されているストレージアカウントに対してAzure Backupによって自動的に作成されます。このロックは、ストレージアカウントの誤った削除によるバックアップの削除を防ぐことを目的としています。)</code><br><img src="https://github.com/user-attachments/assets/6521b8f8-67f1-4b48-863f-41afb943fbd3"></li>
+</ul>
+<h2 id="AzureBackupProtectionLock-が設定されるタイミング"><a href="#AzureBackupProtectionLock-が設定されるタイミング" class="headerlink" title="AzureBackupProtectionLock が設定されるタイミング"></a><a id="2"></a>AzureBackupProtectionLock が設定されるタイミング</h2><p>削除ロック 「AzureBackupProtectionLock」 は、主に下記のタイミングで設定されます。  </p>
+<ul>
+<li>Azure ファイル共有のバックアップが構成されたとき<br>(より正確には、ストレージ アカウントが Recovery Services コンテナーのバックアップ インフラストラクチャとして登録されたとき)  </li>
+<li>Azure ファイル共有のバックアップが実行されたとき  </li>
+</ul>
+<p>削除ロック 「AzureBackupProtectionLock」 を手動削除したとしても、Azure ファイル共有のバックアップが実行されると、削除ロック 「AzureBackupProtectionLock」 が自動設定されます。  </p>
+<h2 id="AzureBackupProtectionLock-を一時的に削除する方法"><a href="#AzureBackupProtectionLock-を一時的に削除する方法" class="headerlink" title="AzureBackupProtectionLock を一時的に削除する方法"></a><a id="3"></a>AzureBackupProtectionLock を一時的に削除する方法</h2><p>ファイル共有にアップロードしている一部ファイルを削除したいなどのシナリオにおいては、削除ロック 「AzureBackupProtectionLock」 を手動で削除してください。  </p>
+<p>前提条件 :<br>削除ロックを削除するには、作業を行うユーザーが対象のストレージ アカウントに対して、<code>Microsoft.Authorization/*</code> または <code>Microsoft.Authorization/locks/*</code> アクションにアクセス可能である必要がございます。 (組み込みロールでは、<strong>所有者</strong> もしくは <strong>ユーザー アクセス管理者ロール</strong> の割り当てが必要となります。)<br>削除ロックの作業を行う前に、予め上記アクセス許可を行ってください。  </p>
+<ul>
+<li>誰がロックを作成または削除できるか / ロックを使って Azure リソースを保護する - Azure Resource Manager | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/management/lock-resources?tabs=json#who-can-create-or-delete-locks">https://learn.microsoft.com/ja-jp/azure/azure-resource-manager/management/lock-resources?tabs=json#who-can-create-or-delete-locks</a><br>抜粋 :</li>
+</ul>
+<blockquote>
+<p>管理ロックを作成または削除するには、<code>Microsoft.Authorization/*</code> または <code>Microsoft.Authorization/locks/*</code> アクションにアクセスする必要があります。<strong>所有者</strong>と<strong>ユーザー アクセス管理者ロール</strong>に割り当てられているユーザーには、必要なアクセス権があります。  </p>
+</blockquote>
+<p>手順 :  </p>
+<ol>
+<li><p>削除ロック 「AzureBackupProtectionLock」 を削除する<br>ストレージ アカウントの <code>設定 &gt; ロック</code> へアクセスし、削除ロック 「AzureBackupProtectionLock」 を削除します<br><img src="https://github.com/user-attachments/assets/5b358e3c-edfc-4a9c-90c4-71a540581f69"></p>
+</li>
+<li><p>(不要なファイル削除などの作業完了後) 削除ロック 「AzureBackupProtectionLock」 を再設定する  </p>
+<ul>
+<li>ストレージ アカウントの <code>設定 &gt; ロック</code> へアクセスし、削除ロックを追加します<br><img src="https://github.com/user-attachments/assets/a736e344-22d9-4009-86be-c357f3392602">  </li>
+<li>もしくは、Azure ファイル共有のオンデマンド バックアップを手動で実行します (自動的に、削除ロック 「AzureBackupProtectionLock」 が設定されます)<br>詳細な手順につきましては、下記ドキュメントをご確認ください。  <ul>
+<li>オンデマンド バックアップの実行手順 :<br>オンデマンド バックアップ ジョブを実行する / Azure portal で Azure ファイル共有をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files?tabs=backup-center#run-an-on-demand-backup-job">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files?tabs=backup-center#run-an-on-demand-backup-job</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="AzureBackupProtectionLock-を設定させない方法"><a href="#AzureBackupProtectionLock-を設定させない方法" class="headerlink" title="AzureBackupProtectionLock を設定させない方法"></a><a id="4"></a>AzureBackupProtectionLock を設定させない方法</h2><p>Azure ファイル共有のバックアップ構成時に、ストレージ アカウントのロック無効化設定を行うことで、削除ロック 「AzureBackupProtectionLock」 を設定せずに、Azure ファイル共有のバックアップを構成 / 取得いただくことが可能となります。  </p>
+<div class="alert is-important"><p class="alert-title">重要</p><p>Azure Backup サービスといたしましては、<strong>削除ロック 「AzureBackupProtectionLock」 を有効化していただくことを推奨</strong>いたします。</p><p>もし削除ロック 「AzureBackupProtectionLock」 を設定せずにバックアップを構成し、意図せずスナップショットが消失したとしても、基本的には弊社側での復旧対応は致しかねますこと、予めご了承ください。  </p></div>
+<p>手順 :  </p>
+<ul>
+<li><p>Recovery Services コンテナーからバックアップを構成する場合<br>Recovery Services コンテナーの <code>はじめに &gt; バックアップ &gt; Azure ファイル共有のバックアップ構成</code> にアクセスします。<br><img src="https://github.com/user-attachments/assets/d0ab1a1b-fa35-4c44-b371-1bde80209c07"><br>バックアップの構成画面のストレージ アカウントの選択時に、<strong>「ストレージ アカウントのロックを有効にする」のチェックを外してください</strong>。<br><img src="https://github.com/user-attachments/assets/65a4c4c8-c800-4d04-ab2a-ce8512be102a"></p>
+</li>
+<li><p>Azure ファイル共有からバックアップを構成する場合<br>Azure ファイル共有の <code>操作 &gt; バックアップ</code> へアクセスし、<strong>「Storage account lock」のトグル ボタンを無効にしてください</strong>。<br><img src="https://github.com/user-attachments/assets/9535dd6e-f3b9-41c5-bfc6-a6fc4cfe0d45"></p>
+</li>
+</ul>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>Azure ファイル共有を新規作成する際に表示される Azure Backup 構成画面では、ストレージ アカウントのロックを無効化させる設定は行えません。</p><p>もしストレージ アカウントのロックを無効化させたい場合には、<strong>バックアップを構成せずに</strong> Azure ファイル共有を作成し、その後に Azure Backup を構成してください。</p><p><img src="https://github.com/user-attachments/assets/7df7d32c-6273-4e1f-9529-62e6afd16609"></p></div>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>同じストレージ アカウントにデプロイされている、他の Azure ファイル共有で既に Azure Backup を構成している場合には、ストレージ アカウントが Recovery Services コンテナーのバックアップ インフラストラクチャとして既に登録されているため、ストレージ アカウントのロック無効化設定が行えません。</p><p>ストレージ アカウントのロック無効化設定が行えるのは、Recovery Services コンテナーのバックアップ インフラストラクチャに登録されていないストレージ アカウントにデプロイされている Azure ファイル共有のバックアップを構成する時のみ (ストレージ アカウント配下の Azure ファイル共有全てにおいて、Azure Backup が構成されていないとき) であることにご注意ください。  </p></div>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureFilesBackup/About_Protection_Lock.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../AzureVMBackup/VM_Backup_billing/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">AzureBackupProtectionLock について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/VM_Backup_billing/">Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureSiteRecovery/RequestForInvestigating_ASR/">ASR の障害調査に必要な情報</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/How_to_fail_VM_backup/">Azure VM Backup を意図的に失敗させる方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">11</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">9</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">5</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">28</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">3</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">25</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 16.67px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 11.67px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 10px;">Azure Migrate</a> <a href="../../tags/Azure-SAPHANA-Backup/" style="font-size: 10px;">Azure SAPHANA Backup</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 13.33px;">Azure SQL Backup</a> <a href="../../tags/Azure-Site-Recovery/" style="font-size: 15px;">Azure Site Recovery</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.33px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.67px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 13.33px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 13.33px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 15px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 11.67px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
