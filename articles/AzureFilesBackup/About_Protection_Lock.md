@@ -1,6 +1,6 @@
 ---
 title: AzureBackupProtectionLock について
-date: 2024-08-16 00:00:00
+date: 2024-08-28 00:00:00
 tags:
   - Azure Files Backup
 disableDisclaimer: false
