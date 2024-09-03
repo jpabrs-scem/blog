@@ -197,30 +197,39 @@ CSV ライターを無効化する手順を、以下のとおりご案内いた�
 
 ### <a id="5.2"></a> 5.2 CSV ライターの無効化を元に戻す方法  
 [5.1 CSV ライターの無効化手順](#5.1) で行った設定を元に戻す手順を、以下のとおりご案内いたします。  
+この手順を実施することで、無効化した CSV ライターを再度有効化することが可能となります。  
 
 - 0. 各クラスター ノードそれぞれで下記手順を実施します  
 - 1. 「ファイル名を指定して実行」 に ``regedit`` と入力して実行し、 レジストリ エディターを起動します  
     <img src="https://github.com/user-attachments/assets/de876918-4051-462a-b7bc-f872c48e659c" width="400">  
 
-- 2. 下記のキーを右クリックし、「アクセス許可」 を選択して、「Failover Clusters のアクセス許可」 の画面を開きます  
+- 2. 下記のキーを表示し、レジストリ 「EnableCsvVssWriter」 を右クリックし、「削除」を選択します  
+    ```text  
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Failover Clusters
+    ```  
+    <img src="https://github.com/user-attachments/assets/d3435117-680e-43b6-a4bd-38562987b256" width="700">  
+    - 「一部のレジストリ値を削除するとシステムが不安定になる場合があります。この値を完全に削除しますか？」というメッセージを含むポップアップが表示されますが、「はい」を選択してください  
+      <img src="https://github.com/user-attachments/assets/66602084-60f0-4f81-9716-33e486fd3c30" width="700">  
+
+- 3. 下記のキーを右クリックし、「アクセス許可」 を選択して、「Failover Clusters のアクセス許可」 の画面を開きます  
     ```text  
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Failover Clusters
     ```  
     <img src="https://github.com/user-attachments/assets/a3cf11a7-b6c4-414f-8965-3142fc6ce009" width="700">  
 
-- 3. 「Failover Clusters のアクセス許可」 画面で Administrator (管理者アカウント) または Administrators のフル コントロールのチェックを外し、「適用」 を選択します  
+- 4. 「Failover Clusters のアクセス許可」 画面で Administrator (管理者アカウント) または Administrators のフル コントロールのチェックを外し、「適用」 を選択します  
     <img src="https://github.com/user-attachments/assets/db167b78-1802-4150-9285-0518b840af58" width="400">  
 
-- 4. 「Failover Clusters のアクセス許可」 画面で 「詳細設定」 を押下し、「Failover Clusters のセキュリティの詳細設定」 の画面を開きます  
+- 5. 「Failover Clusters のアクセス許可」 画面で 「詳細設定」 を押下し、「Failover Clusters のセキュリティの詳細設定」 の画面を開きます  
     <img src="https://github.com/user-attachments/assets/3c2d0f12-e475-48c5-a4c8-313293877729" width="400">  
 
-- 5. 「所有者」 の隣の 「変更」 を選択し、「選択するオブジェクトを入力してください」 に  
+- 6. 「所有者」 の隣の 「変更」 を選択し、「選択するオブジェクトを入力してください」 に  
   ``NT Service\TrustedInstaller`` と入力して、「名前の確認」 > 「OK」 を選択します  
   ※ 「場所の指定」には、ローカル マシン名を指定してください  
     <img src="https://github.com/user-attachments/assets/73d1251d-fe6d-44de-8d58-ea6e7d2ea5ee" width="700">  
     <img src="https://github.com/user-attachments/assets/7918ce9d-3f4e-4523-904e-4dc0237281d2" width="500">  
 
-- 6. 「所有者」 が TrustedInstaller アカウントに変更されたことを確認し、「OK」 を押下して、「Failover Clusters のセキュリティの詳細設定」 および 「Failover Clusters のアクセス許可」 の画面を閉じます  
+- 7. 「所有者」 が TrustedInstaller アカウントに変更されたことを確認し、「OK」 を押下して、「Failover Clusters のセキュリティの詳細設定」 および 「Failover Clusters のアクセス許可」 の画面を閉じます  
     <img src="https://github.com/user-attachments/assets/e8cc43a1-52b8-41c9-954b-fbe5ce4a3599" width="700">  
 
 以上で CSV ライターの無効化の戻し作業は完了です。  
