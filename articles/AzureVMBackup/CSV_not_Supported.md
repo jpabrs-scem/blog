@@ -1,5 +1,5 @@
 title: Azure VM Backup における CSV のサポートについて
-date: 2024-08-30 12:00:00
+date: 2024-09-04 00:00:00
 tags:
   - Azure VM Backup
   - how to
