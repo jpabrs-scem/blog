@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて
-date: 2024-05-09 12:00:00
+date: 2024-09-05 12:00:00
 tags:
   - Azure VM Backup
   - how to
