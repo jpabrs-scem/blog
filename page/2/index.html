@@ -97,6 +97,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-AzureVMBackup/CZR" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../AzureVMBackup/CZR/" class="article-date">
+  <time datetime="2024-05-31T03:00:00.000Z" itemprop="datePublished">2024-05-31</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../AzureVMBackup/CZR/">Azure VM Backup におけるクロス ゾーン リストア (CZR) について</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+こんにちは、Azure Backup サポートです。今回は Azure Backup での異なる可用性ゾーンへの復元 ( = クロス ゾーン リストア / CZR ) についてご紹介します。今回ご紹介する内容は、それぞれの公開情報に掲載されておりますが、一つのページに集約されておりません。よくお問い合わせいただく内容ですので、本記事では情報を集約化してお伝えします。
+目次
+1. CZR を行うための各条件  1-1. Azure VM の条件  1-2. Recovery Services コンテナーの条件  1-3. 利用できる復元オプション2. 参考情報
+
+1. CZR を行うための各条件CZR を利用することで、Azure VM バックアップによって保護されている VM またはディスクを、復旧ポイントから別のゾーンに復元することができます。CZR を利用するために Recovery...
+        <p class="article-readmore">
+          <a href="../../AzureVMBackup/CZR/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/" data-id="cm0osyy43001g0nqz4u822d4a" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-AzureBackupGeneral/Backup_Overview" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -136,7 +189,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_Overview/" data-id="cm0n3htta006d0onu3g70c77c" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_Overview/" data-id="cm0osyy5n006d0nqz97kt4opc" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -189,65 +242,10 @@ ASR を意図的に失敗させたい場合、主に下記 2 種類の方法に�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/How_to_fail_ASR/" data-id="cm0n3htrf000w0onu728849y7" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/How_to_fail_ASR/" data-id="cm0osyy3u000w0nqz0lxr2cbc" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-AzureVMBackup/RestoreStagingStorageAccount" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../AzureVMBackup/RestoreStagingStorageAccount/" class="article-date">
-  <time datetime="2024-05-09T03:00:00.000Z" itemprop="datePublished">2024-05-09</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../AzureVMBackup/RestoreStagingStorageAccount/">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-こんにちは、Azure Backup サポートです。今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。
-目次
-1. 公開情報 (Docs)2. 利用できるストレージ アカウント3. リストアされた後にストレージ アカウントに残るファイルについて4. 参考画面ショット
-
-1. 公開情報 (Docs)まず最初に、本件に関する Docs は下記でございます。・ストレージ アカウント - Azure portal で Azure VM データを復元する方法https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#storage-accounts
-
-抜粋:”Vault-Standard 復元ポイントから...
-        <p class="article-readmore">
-          <a href="../../AzureVMBackup/RestoreStagingStorageAccount/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/" data-id="cm0n3hts200280onub1pe5h86" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
     </footer>
   </div>
@@ -297,7 +295,7 @@ MARS バックアップや SQL Server バックアップなどのバックア�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/" data-id="cm0n3htrb000n0onucvkw8pat" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/" data-id="cm0osyy3r000n0nqzbb02210a" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -351,7 +349,7 @@ Recovery Se...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/" data-id="cm0n3htru001l0onuhh7q748g" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/" data-id="cm0osyy46001l0nqz350feg8q" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -403,7 +401,7 @@ Recovery Se...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/" data-id="cm0n3htr400080onu69zr07rb" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/" data-id="cm0osyy3j00080nqz3dk3a5hb" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -454,7 +452,7 @@ Recovery Se...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/" data-id="cm0n3htrw001r0onu3xqd8iu1" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/" data-id="cm0osyy48001r0nqz35tj69cm" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -505,7 +503,7 @@ Note上記ブログ リンクでご案内している疎通確認スクリプト
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/NwCheckScript_Linux/" data-id="cm0n3htr200050onue7fl0orv" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/NwCheckScript_Linux/" data-id="cm0osyy3h00050nqzfxid8g3w" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -556,7 +554,7 @@ Note上記ブログ リンクでご案内している疎通確認スクリプト
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/NwCheckScript_Windows/" data-id="cm0n3htr300070onuf0gvas5s" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/NwCheckScript_Windows/" data-id="cm0osyy3i00070nqz4bqbgycn" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -607,7 +605,7 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/" data-id="cm0n3htrd000s0onuebs0ewsr" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/" data-id="cm0osyy3t000s0nqzdie6emad" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -636,6 +634,10 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
       <ul>
         
           <li>
+            <a href="../../AzureVMBackup/RestoreStagingStorageAccount/">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
+          </li>
+        
+          <li>
             <a href="../../AzureVMBackup/CSV_not_Supported/">Azure VM Backup における CSV のサポートについて</a>
           </li>
         
@@ -649,10 +651,6 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
         
           <li>
             <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureSiteRecovery/RequestForInvestigating_ASR/">ASR の障害調査に必要な情報</a>
           </li>
         
       </ul>

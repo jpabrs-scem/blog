@@ -14,8 +14,8 @@
 <meta property="og:description" content="こんにちは、Azure Backup サポートです。今回は、Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて、下記の通りお伝えします。 目次 1. 公開情報 (Docs)2. 利用できるストレージ アカウント3. リストアされた後にストレージ アカウントに残るファイルについて4. 参考画面ショット  1. 公開情報 (Doc">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://user-images.githubusercontent.com/71251920/198330594-30a09f02-cb39-41c8-ae39-1ab9a21779ac.png">
-<meta property="article:published_time" content="2024-05-09T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-04T00:03:16.906Z">
+<meta property="article:published_time" content="2024-09-05T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-05T04:44:12.747Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
@@ -99,13 +99,13 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2024-05-09T03:00:00.000Z" itemprop="datePublished">2024-05-09</time>
+  <time datetime="2024-09-05T03:00:00.000Z" itemprop="datePublished">2024-09-05</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+cbc94782-03f5-5d22-b491-10da57e8164d%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%A7%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AB%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%81%AE%E5%A0%B4%E6%89%80%E3%81%A8%E3%81%97%E3%81%A6%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8+%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FRestoreStagingStorageAccount%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FRestoreStagingStorageAccount.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FRestoreStagingStorageAccount.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/" data-id="cm0n3hts200280onub1pe5h86" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/" data-id="cm0osyy4f00280nqzhu50dqgs" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -200,7 +200,7 @@
 <td align="left">VHD ファイルと json ファイル</td>
 </tr>
 </tbody></table>
-<p>これらのファイルはリストア後自動では削除されませんが、手動で削除することが可能です。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>復元が正常に成功していることが確認でき次第、これらのファイルは削除いただいて問題ございません。</p><p>しかしながら、これらのファイルが自動で削除されることはございませんので、お手数ですがファイルが不要の場合手動での削除をお願いいたします。</p><p>また、ステージングの場所として使用したストレージ アカウントについても、復元が完了しましたら削除いただいて問題ございません。</p></div>
 <h3 id="4-参考画面ショット"><a href="#4-参考画面ショット" class="headerlink" title="4.参考画面ショット"></a><a id="4"></a>4.参考画面ショット</h3><p> VM 名：VM-RHEL-PE という Azure VM (OS ディスク 1 つ、データディスク 2 つ) を (2) の既存の置換えにてリストアしたあとのストレージ アカウントです。</p>
 <p> <img src="https://user-images.githubusercontent.com/71251920/198330594-30a09f02-cb39-41c8-ae39-1ab9a21779ac.png"></p>
 <blockquote>
@@ -238,19 +238,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureSiteRecovery/How_to_fail_ASR/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          ASR を意図的に失敗させる方法
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../CSV_not_Supported/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する</div>
+      <div class="article-nav-title">Azure VM Backup における CSV のサポートについて</div>
     </a>
   
 </nav>
@@ -269,6 +260,10 @@
       <ul>
         
           <li>
+            <a href="">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
+          </li>
+        
+          <li>
             <a href="../CSV_not_Supported/">Azure VM Backup における CSV のサポートについて</a>
           </li>
         
@@ -282,10 +277,6 @@
         
           <li>
             <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureSiteRecovery/RequestForInvestigating_ASR/">ASR の障害調査に必要な情報</a>
           </li>
         
       </ul>
