@@ -40,13 +40,13 @@ Azure Backup サービスでは、Micosoft Azure クラウド プラットフォ
 オンプレミスや Azure の様々なリソースを簡単にバックアップおよび復元を行うことができ、また一元化された監視と管理を行うためのソリューションを提供します。  
 
 ./img/Backup_Overview_01.png  
-<img src="./img/Backup_Overview_01.png">  
+![](./img/Backup_Overview_01.png)  
 
 ../img/Backup_Overview_01.png  
-<img src="../img/Backup_Overview_01.png">  
+![](../img/Backup_Overview_01.png)  
 
 ./Backup_Overview/Backup_Overview_01.png  
-<img src="./Backup_Overview/Backup_Overview_01.png">
+![](./Backup_Overview/Backup_Overview_01.png)
 
 > [!TIP]
 > Azure Backup の詳細については以下のドキュメントを参照ください。  
