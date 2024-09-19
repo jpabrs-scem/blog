@@ -38,7 +38,15 @@ disableDisclaimer: false
 ## <a id="1"></a> 1. Azure Backup の概要
 Azure Backup サービスでは、Micosoft Azure クラウド プラットフォームにデータをバックアップすることができます。  
 オンプレミスや Azure の様々なリソースを簡単にバックアップおよび復元を行うことができ、また一元化された監視と管理を行うためのソリューションを提供します。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/9c7ab400-ac12-41e3-9f06-445561de7e12">
+
+./img/Backup_Overview_01.png  
+<img src="./img/Backup_Overview_01.png">  
+
+../img/Backup_Overview_01.png  
+<img src="../img/Backup_Overview_01.png">  
+
+./Backup_Overview/Backup_Overview_01.png  
+<img src="./Backup_Overview/Backup_Overview_01.png">
 
 > [!TIP]
 > Azure Backup の詳細については以下のドキュメントを参照ください。  
