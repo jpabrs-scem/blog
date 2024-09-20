@@ -42,7 +42,7 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/
 バックアップ センター ＞ 概要 ＞ データソースの種類：Azure Files（Azure Storage）を選択します。
 「ジョブ(過去 24 時間)」欄に「スケジュールされたバックアップ 失敗」にカウントされていること、「アクティブなアラート(過去 24 時間)」欄に「Sev1」としてカウントされていることが確認できます。
 
-![](./How_to_fail_AFS_backup/How_to_fail_AFS_backup_9.png)
+![](./How_to_fail_AFS_backup/How_to_fail_AFS_backup_09.png)
 
 ![](./How_to_fail_AFS_backup/How_to_fail_AFS_backup_10.png)
 
