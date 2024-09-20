@@ -88,7 +88,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-1-VSS-%E8%A6%B
 ### ログ情報
 zip などにまとめてご提供いただけますと幸いです。
 #### ・(Windows の場合) "ディスクの管理" の画面の画面ショット
-![参考画像](https://user-images.githubusercontent.com/71251920/153464381-6ba8f9bf-56fd-48fd-9784-b819d8a4f79c.png)
+![参考画像](./RequestForInvestigating/RequestForInvestigating_01.png)
 
 #### ・実行したスクリプト、および実行後に作成されたフォルダ一式
  - **Windowsの場合**
@@ -96,25 +96,25 @@ zip などにまとめてご提供いただけますと幸いです。
 ・スクリプト実行後に作成されるフォルダー："仮想マシン名(小文字)"+"スクリプトファイル実行日時"
 
 　下記例では "okt-temp-win-20220212145642" が作成されています。
-![](https://user-images.githubusercontent.com/71251920/153714819-e9f24f63-75f0-4268-b0fc-ac6e43155cc1.png)
+![](./RequestForInvestigating/RequestForInvestigating_02.png)
 
 "okt-temp-win-20220212145642"の中身
-!["okt-temp-win-20220212145642"の中身](https://user-images.githubusercontent.com/71251920/153714818-906282be-7acc-4e9f-9d4e-62d5b2b369a0.png)
+!["okt-temp-win-20220212145642"の中身](./RequestForInvestigating/RequestForInvestigating_03.png)
 
 - **Linux の場合**
 ・ILRのスクリプトファイル：例)　**vm02kensho(小文字VM名)_1_jpe_6591639015130036692_802427195716_899298aac7c04bf094ad68bfc5b9584ed206b94b62d965.py**
 ・作成されたディレクトリの **Scripts ディレクトリ一式**：例） **vm02kensho-20220212151619/Script**
 スクリプトを実行後、「**vm02kensho-20220212151619**」ディレクトリが自動生成されていることがわかる。
-![](https://user-images.githubusercontent.com/71251920/153714817-892202e9-3df5-4377-9276-42b16eb82fd4.png)
+![](./RequestForInvestigating/RequestForInvestigating_04.png)
 
  >ls -all
 
-![「vm02kensho-20220212151619」ディレクトリが自動生成されている](https://user-images.githubusercontent.com/71251920/153714816-49b0446b-8728-498e-b51f-bff02f37f0a5.png)
+![「vm02kensho-20220212151619」ディレクトリが自動生成されている](./RequestForInvestigating/RequestForInvestigating_05.png)
 
 「vm02kensho-20220212151619」ディレクトリの中身、および作成されたディレクトリの **Scripts ディレクトリ**の中身は下記の通り
  >ls -allR
 
-![「vm02kensho-20220212151619」ディレクトリの中身,および作成されたディレクトリの Scripts ディレクトリの中身](https://user-images.githubusercontent.com/71251920/153714814-a652e630-b1c8-4e43-a96f-4d974c9d7cf4.png)
+![「vm02kensho-20220212151619」ディレクトリの中身,および作成されたディレクトリの Scripts ディレクトリの中身](./RequestForInvestigating/RequestForInvestigating_06.png)
 
 ## 3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ<a id="3"></a>
 <span style="color: red; "> [1. Azure VM バックアップの障害調査に必要なログ](#1) の **環境情報** ならびに **ログ情報 - Linuxの場合** に加えて</span>下記もご対応お願いします。
@@ -160,7 +160,7 @@ find ./ -name "backint.log" (findコマンドにより該当のログの場所�
  
    実行結果にファイル パスが無い旨のメッセージが表示される可能性がございますが、対象のファイル自体が無い事を示すメッセージとなりますので、無視していただいて問題ございません。
 
-![WABDiag.ps1出力ファイル](https://user-images.githubusercontent.com/96324317/198866368-03062da1-142c-47a6-8d36-aed1a2027d4a.png)
+![WABDiag.ps1出力ファイル](./RequestForInvestigating/RequestForInvestigating_07.png)
  
 #### PowerShell の実行ポリシーの制限によりスクリプトが実行できない場合
 PowerShellを管理者権限で起動し、下記コマンドを実行し実行ポリシーを変更後、再度実行していただけますでしょうか。
@@ -179,7 +179,7 @@ PowerShellを管理者権限で起動し、下記コマンドを実行し実行�
   > msinfo32 /nfo <出力ファイル名> 
   実行例)  > msinfo32 /nfo SVR_msinfo32.nfo
 3. 生成されたファイルをご提供ください。
-![システム情報](https://user-images.githubusercontent.com/96324317/198866419-6188fb3e-d260-44b5-87b9-18a0ec2ac927.png)
+![システム情報](./RequestForInvestigating/RequestForInvestigating_08.png)
 
 ### 4.3 イベント ログ<a id="4-3"></a>
 1. 対象のマシンに管理者権限を保持するユーザーでログオンします。
@@ -200,9 +200,9 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 **（※ Windows Server 2012 以前の OS の場合は、MMC スナップインより証明書スナップインを起動してください）**
 
 
-![](https://user-images.githubusercontent.com/71251920/182520764-1ed4e4ab-c925-4a87-b905-1414bab17e47.png)
+![](./RequestForInvestigating/RequestForInvestigating_09.png)
 
-![](https://user-images.githubusercontent.com/71251920/182520768-feacd580-7217-4148-af08-27cab663d93f.png)
+![](./RequestForInvestigating/RequestForInvestigating_10.png)
 
 
 ### 4.4.1 個人 ＞ 証明書<a id="4-4-1"></a>
@@ -210,7 +210,7 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 >・CB_<ホスト名>._xxxxxxxxxxxxxxxxxx
 ※　上記 2 が存在していることを確認の上、その画面スクリーンショットをご提供ください
 （存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）
-![](https://user-images.githubusercontent.com/71251920/182520770-6e2bac01-d72e-4a3a-b358-56f853538f5a.png)
+![](./RequestForInvestigating/RequestForInvestigating_11.png)
 
 "**・CB_<ホスト名>._xxxxxxxxxxxxxxxxxx** の期限がきれている場合は正常に MARS エージェントが正常に起動しないことがあります。
 下記を参考に再インストール をご実施ください。それにより証明書がインストールされます。
@@ -234,13 +234,13 @@ https://learn.microsoft.com/ja-jp/azure/security/fundamentals/tls-certificate-ch
 >[Microsoft RSA Root Certificate Authority2017	: 73a5e64a3bff8316ff0edccc618a906e4eae4d74](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
 >[Microsoft ECC Root Certificate Authority 2017	: 999a64c37ff47d9fab95f14769891460eec4c3c5](https://www.microsoft.com/pkiops/certs/Microsoft%20ECC%20Root%20Certificate%20Authority%202017.crt)
 
-![](https://user-images.githubusercontent.com/71251920/182520772-59ba76df-31cf-488d-bfec-066830b44698.png)
+![](./RequestForInvestigating/RequestForInvestigating_12.png)
 
 ※　上記 6 つすべての証明書が存在していること (存在していない場合もございます) 
 ・証明書をダブルクリックし、「詳細」タブ ＞ スクロールして下の方に「拇印」がありますので、値が上記と同一であることが確認し、その画面ショットをご提供ください。
 （存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）
 
-![](https://user-images.githubusercontent.com/71251920/182520776-8f30a8f5-67d5-4bfd-a264-590ca251689d.png)
+![](./RequestForInvestigating/RequestForInvestigating_13.png)
 
 ### 4.4.3 中間証明機関 ＞ 証明書 <a id="4-4-3"></a>
 [参考]
@@ -257,7 +257,7 @@ https://techcommunity.microsoft.com/t5/azure-storage-blog/azure-storage-tls-chan
 ※　上記 2 つすべての証明書が存在していること
 ・証明書をダブルクリックし、「詳細」タブ ＞ スクロールして下の方に「拇印」がありますので、値が上記と同一であることが確認できる画面スクリーンショットをご提供ください。
 
-![](https://user-images.githubusercontent.com/71251920/182520778-a9e6e160-5830-4cf5-a6c3-00acf7ce0941.png)
+![](./RequestForInvestigating/RequestForInvestigating_14.png)
 
 ### 4.4.4 証明書インポート手順 <a id="4-4-4"></a>
 
