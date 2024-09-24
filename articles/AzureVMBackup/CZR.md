@@ -36,11 +36,11 @@ CZR を行うためには、Azure VM バックアップにより保護されて�
 ご参考までに、Azure VM が可用性ゾーンに固定されているかどうかの、Azure ポータル画面での確認方法を説明いたします。  
 VMの概要欄に「可用性ゾーン xxx」 と表示されていれば、表示されているゾーンに固定されており、「可用性ゾーン xxx」 といった表示がない場合はゾーン固定されていないと判断できます。  
 たとえば、下記画像の VM 「CZR-stand-z1」は可用性ゾーン「ゾーン1」に固定されている状態です。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/4a433214-3f04-4212-994c-c21851896d71" width="600px">
+![](./CZR/CZR_01.png)
 
 一方で下記画像の VM 「CZR-standard」はどのゾーンにも固定されていない状態となります。  
 (この場合は可用性ゾーンは空欄になります。)  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/63cfa831-c538-456c-8804-cf8bc24edaec" width="600px">
+![](./CZR/CZR_02.png)
 
 ### <a id="1-2"></a>1-2. Recovery Services コンテナーの条件
 CZR は以下の条件を満たす Recovery Services コンテナーで行うことができます。  
@@ -66,7 +66,7 @@ CZR は以下の条件を満たす Recovery Services コンテナーで行うこ
 ご参考までに、「ストレージ レプリケーションの種類」が「ゾーン冗長」に設定している場合の Azure ポータル画面上の見え方を説明いたします。  
 該当の Recovery Services コンテナー > 設定 - プロパティ > バックアップ構成 - 更新 ボタン から「ストレージ レプリケーションの種類」が確認できます。
 たとえば、下記画像の Recovery Services コンテナーでは「ゾーン冗長」が設定されています。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/014f7a8d-8c30-4721-a339-be3856f4059b" width="800px">  
+![](./CZR/CZR_03.png)  
 
 > [!TIP]
 > Recovery Services コンテナーで既にバックアップを構成している場合は「ストレージ レプリケーションの種類」を変更することができません。  
@@ -78,13 +78,13 @@ CZR は以下の条件を満たす Recovery Services コンテナーで行うこ
 ご参考までに、復旧ポイントの「回復の種類」を Azure ポータル画面にて確認する方法を説明いたします。  
 
 まずは該当の Recovery Services コンテナー > 保護されたアイテム - バックアップ アイテム > Azure Virtual Machine ボタンを選択します。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/98ef24ee-50eb-4fc4-8c7b-af5035a18a7d" width="800px">  
+![](./CZR/CZR_04.png)  
 
 続いて確認したい VM の行にて、詳細 - View details ボタンを選択します。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/0d293ccf-94ac-4553-b938-3712bd2703a0"> 
+![](./CZR/CZR_05.png) 
 
 すると選択した VM の復旧ポイント一覧が表示され、ここから「回復の種類」を確認できます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/5979f86a-2f54-49ff-b783-3590e52fe4ea"> 
+![](./CZR/CZR_06.png) 
 
 > [!TIP]
 > 「スナップショット」「Vault-Standard」についての説明は下記ドキュメントをご参照ください。  
@@ -100,7 +100,7 @@ CZR は次の復元を行う場合にのみ利用できます。
 
 #### VM の作成
 復旧ポイントから VM の新規作成を行う際、前述の条件を満たしている場合に、復元先の可用性ゾーンを指定することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/c3448a33-c9de-4aa3-86f3-90600f6aa8a5" width="600px"> 
+![](./CZR/CZR_07.png) 
 
 具体的な復元の手順は下記の公開情報をご覧ください。  
 * VM の作成 | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn  
@@ -108,7 +108,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#crea
 
 #### ディスクの復元
 復旧ポイントから ディスクの復元を行う際、前述の条件を満たしている場合に、復元先の可用性ゾーンを指定することができます。  
-<img src="https://github.com/jpabrs-scem/blog/assets/109163295/c9b22d52-6058-4b94-b498-e67892d7150f" width="600px">  
+![](./CZR/CZR_08.png)  
 
 具体的な復元の手順は下記の公開情報をご覧ください。  
 * ディスクを復元する | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn

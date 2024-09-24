@@ -31,5 +31,5 @@ EventID : 0
 Message : グローバル アセンブリ キャッシュからのアセンブリの削除に失敗しました :  C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\1.0.70.0\iaasvmsnapshotmessage.dll iaasvmsnapshotmessage,Version=3.0.0.0
 
 
-![グローバル アセンブリ キャッシュのエラー](https://user-images.githubusercontent.com/71251920/135617775-6ac8b8e6-c1a7-4311-9375-8389248969fe.png)
+![グローバル アセンブリ キャッシュのエラー](./GAC/GAC_01.png)
 このエラーメッセージが発現することを抑止する方法はありませんが、正常にバックアップが取得できていましたら、上記の通り無視可能なエラーメッセージです。

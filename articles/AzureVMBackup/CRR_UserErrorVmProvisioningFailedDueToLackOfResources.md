@@ -42,7 +42,7 @@ Read more about improving likelihood of provisioning success at http://aka.ms/al
 ・Products available by region( Virtual Machines)
 https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtual-machines&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,japan-east,japan-west
  
-![VM Size_Region_Compatibility](https://user-images.githubusercontent.com/71251920/138295057-8819eb23-3029-403d-9d87-f764ce7b026c.jpg)
+![VM Size_Region_Compatibility](./CRR_UserErrorVmProvisioningFailedDueToLackOfResources/CRR_UserErrorVmProvisioningFailedDueToLackOfResources_01.png)
 
 
 
@@ -57,7 +57,7 @@ https://azure.microsoft.com/en-us/global-infrastructure/services/?products=virtu
 ディスクから作成することで、下記のように VM Size を変更することが可能です。
 また、ＶＭ Size に加えて NIC なども設定することが可能です。
 
-![DIskからのVM作成(VM Size Change)](https://user-images.githubusercontent.com/71251920/138295033-694d40b5-8e4e-4366-8f01-b91db652a38e.png)
+![DIskからのVM作成(VM Size Change)](./CRR_UserErrorVmProvisioningFailedDueToLackOfResources/CRR_UserErrorVmProvisioningFailedDueToLackOfResources_02.png)
 
  
 ### <リストアされたディスク命名規則について>

@@ -77,7 +77,7 @@ IP アドレスや NSG の設定は、「復元」ジョブ指示前と同じも
 
 ## <a id="Q3"></a>Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？
 **A3** 「復元」を指示する際に、ユーザーにて選択した「復元ポイント」時点のドメイン ID にて復元されます。
-![RestoreVM](https://user-images.githubusercontent.com/96324317/204124178-ccfee87e-1cf2-4de9-8cb9-4a1053847bf9.png)
+![RestoreVM](./ActiveDirectory_backup/ActiveDirectory_backup_01.png)
 
 ## <a id="Q4"></a>Q4. ドメイン コントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください
 **A4** 詳細は下記公開ドキュメントに取りまとめていますので、こちらをご参照ください。

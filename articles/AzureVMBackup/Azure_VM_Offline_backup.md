@@ -23,15 +23,15 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snap
 ・Azure Linux VM のアプリケーション整合性バックアップ
 https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent
 
-![Windows OS のオンラインバックアップ - アプリケーション整合性](https://user-images.githubusercontent.com/71251920/137937912-912a42c1-f750-4c8b-a157-6a3db50f11c7.png)
+![Windows OS のオンラインバックアップ - アプリケーション整合性](./Azure_VM_Offline_backup/Azure_VM_Offline_backup_01.png)
 
-![Linux OS のオンラインバックアップ - ファイルシステム整合性](https://user-images.githubusercontent.com/71251920/137937882-bb5ea0da-be8a-451c-bd3a-a24c4a8070c4.png)
+![Linux OS のオンラインバックアップ - ファイルシステム整合性](./Azure_VM_Offline_backup/Azure_VM_Offline_backup_02.png)
 
 
 ### オフラインバックアップについて
 次に、オフライン バックアップの場合、VM の電源が落ちているのでエージェントは動いていないため、VM との連携をせずにスナップショットを取得します。(VM 内部と連携しません。)
 その際の整合性は Windows VM / Linux VM を問わずクラッシュ整合性となります。
-![オフライン バックアップ - クラッシュ整合性](https://user-images.githubusercontent.com/71251920/137937936-0d85b5e6-7bb8-4131-9553-ec7c9e0e0d58.png)
+![オフライン バックアップ - クラッシュ整合性](./Azure_VM_Offline_backup/Azure_VM_Offline_backup_03.png)
 
 
 ### 留意点
