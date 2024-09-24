@@ -85,40 +85,40 @@ Coffee Break ミーティングでは、業務に関連のない雑談もして�
 実際のメンバーのデスクですので、こちらからメンバーがどのような環境で働いているのか参考になれば嬉しいです！
 
 ##### 本記事内唯一の縦置きディスプレイ配置！USキーボード！
-![](https://user-images.githubusercontent.com/71251920/156648350-f0e85a1e-fe54-4866-8268-8914bc880362.png)
+![](./team-introduction_2/team-introduction_2_01.png)
 
 ##### 女優ライトでミーティングもバッチリ！リアルフォースキーボード！メインPCは自作の光る Desk mini !
-![](https://user-images.githubusercontent.com/71251920/156648359-3bdc08e5-c0f5-4b50-ae94-7e0aef791006.jpg)
+![](./team-introduction_2/team-introduction_2_02.png)
 
 ##### トラックボールマウス！！
-![](https://user-images.githubusercontent.com/71251920/156648360-81024452-0551-4987-abb0-944fba099dcc.jpg)
+![](./team-introduction_2/team-introduction_2_03.png)
 
 ##### モニターの上のぬいぐるみは家族にミーティング中かどうかをお知らせする機能あり！！
-![](https://user-images.githubusercontent.com/71251920/156648362-65cc4352-b2bb-4108-a815-6ac80eeb1e13.jpg)
+![](./team-introduction_2/team-introduction_2_04.png)
 
 ##### ワーキングママ！！
-![](https://user-images.githubusercontent.com/71251920/156648364-0b6794a8-4dc9-49d6-b774-dddcc5e6cba2.png)
+![](./team-introduction_2/team-introduction_2_05.png)
 
 ##### シンプル is ベスト.
-![](https://user-images.githubusercontent.com/71251920/156648366-8a3639de-c478-4780-8db6-e7753b016415.jpg)
+![](./team-introduction_2/team-introduction_2_06.png)
 
 ##### キーボードは社割で買いました！カレンダーは星野道夫さんのです。はやくアラスカに行きたいです！
-![](https://user-images.githubusercontent.com/71251920/156648368-15eb0558-c2f4-49cb-a887-61e18cc76088.jpg)
+![](./team-introduction_2/team-introduction_2_07.png)
 
 ##### 保温機能がついた高性能マグカップ！！
-![](https://user-images.githubusercontent.com/71251920/156648370-3fbf5c3d-9022-49e5-a392-c061bb204052.jpg)
+![](./team-introduction_2/team-introduction_2_08.png)
 
 ##### ゲーミングな光が So Cool!
-![](https://user-images.githubusercontent.com/71251920/156648371-3c45e268-97bd-49ef-a84e-60695546a15f.jpg)
+![](./team-introduction_2/team-introduction_2_09.png)
 
 ##### チーム唯一の新卒・新入社員！デスクもまだまださらなる進化の可能性を秘めています！！
-![](https://user-images.githubusercontent.com/71251920/168879380-f0e93804-61b5-4f87-a02d-5d7e57ff17e4.png)
+![](./team-introduction_2/team-introduction_2_10.png)
 
 ##### タブレット端末も活用してトリプルモニタ環境。インフラエンジニア必携"パケットキャプチャの教科書"をデスク脇に備えています！
-![](https://user-images.githubusercontent.com/71251920/168879386-3526cd8d-a403-402f-a8e6-b434c9207302.png)
+![](./team-introduction_2/team-introduction_2_11.png)
 
 ##### いつも愛車を眺めて仕事しています！
-![](https://user-images.githubusercontent.com/71251920/196878695-383606ab-cc50-4460-8544-6de6c6c6b56e.png)
+![](./team-introduction_2/team-introduction_2_12.png)
 
 
 

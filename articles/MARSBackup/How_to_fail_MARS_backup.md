@@ -22,24 +22,24 @@ disableDisclaimer: false
 #### 1. MARSエージェントのスケジュール バックアップ設定よりテスト用のフォルダをバックアップ対象として選択し、設定します。
 その他の設定は任意の設定で問題ございません。
 (画像では Test1 フォルダを対象として選択しています)
-![](https://github.com/jpabrs-scem/blog/assets/96324317/7d411329-6157-496b-8e20-f4c4d6d405e7)
+![](./How_to_fail_MARS_backup/How_to_fail_MARS_backup_01.png)
 
 #### 2. 上記でバックアップ対象としたフォルダ名を変更します。
 (画像では Test1 フォルダを Test1<span style="color: red; ">Test1</span> フォルダと変更しました)
-![](https://github.com/jpabrs-scem/blog/assets/96324317/637e0e84-bb2f-4c06-b5a0-fb121e1d51bc)
+![](./How_to_fail_MARS_backup/How_to_fail_MARS_backup_02.png)
 
 #### 3. 今すぐバックアップを実行します。
 バックアップ期間は任意の期間で問題ありません。
 確認画面にて、手順 1 で設定した名前変更前のフォルダが指定されてることを確認し、バックアップを実施してください。
 
-![](https://github.com/jpabrs-scem/blog/assets/96324317/541354a9-8367-44d3-8672-7cec4c8a7b6c)
+![](./How_to_fail_MARS_backup/How_to_fail_MARS_backup_03.png)
 
 #### 4. バックアップの失敗のメッセージが現れることを確認してください。
-![](https://github.com/jpabrs-scem/blog/assets/96324317/9c74ce5b-b778-4976-a07c-0c917e10f939)
+![](./How_to_fail_MARS_backup/How_to_fail_MARS_backup_04.png)
 
-![](https://github.com/jpabrs-scem/blog/assets/96324317/1b09c4c6-3a9d-460f-abfd-f330215e834d)
+![](./How_to_fail_MARS_backup/How_to_fail_MARS_backup_05.png)
 
-![](https://github.com/jpabrs-scem/blog/assets/96324317/c079b915-e93d-46a9-8e55-3d49773e76cf)
+![](./How_to_fail_MARS_backup/How_to_fail_MARS_backup_06.png)
 
 ###　Azure Monitor を使用した組み込みのアラート メール通知例
 MARS バックアップを構成している Recovery Services コンテナーをスコープに含めた Azure Monitor を使用した組み込みのアラートを構成している場合、下図のようなメール通知が発報されます。
@@ -47,9 +47,9 @@ MARS バックアップを構成している Recovery Services コンテナー�
 ・ジョブの失敗のシナリオに対して Azure Monitor のアラートを有効にする
 　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#turning-on-azure-monitor-alerts-for-job-failure-scenarios
 
-![](https://github.com/jpabrs-scem/blog/assets/96324317/b2200f28-5b70-42ce-9dd8-12072a03261f)
+![](./How_to_fail_MARS_backup/How_to_fail_MARS_backup_07.png)
 
-![](https://github.com/jpabrs-scem/blog/assets/96324317/69860bc1-ec96-4e26-b2e2-72a000b81e8b)
+![](./How_to_fail_MARS_backup/How_to_fail_MARS_backup_08.png)
 
 以上で MARS バックアップ を意図的に失敗させる方法に関しましてのご説明は終了となります。
 ぜひお試しいただければと思います。

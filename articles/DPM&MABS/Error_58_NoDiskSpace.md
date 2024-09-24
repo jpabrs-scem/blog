@@ -12,7 +12,7 @@ DPM (Data Protection Manager) や MABS (Microsoft Azure Backup Server) を使用
 今回は、データサイズが 16 TB 前後の保護対象をバックアップした際に、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する事象が発生する場合の、その原因と対処方法についてお伝えします。 
 
 <エラーの抜粋> 
-![エラーの抜粋](https://user-images.githubusercontent.com/96324317/202888559-f4e44492-53ff-4b2c-930b-a2af9c15480e.png)
+![エラーの抜粋](./Error_58_NoDiskSpace/Error_58_NoDiskSpace_01.png)
 
 ## 目次
 -----------------------------------------------------------
@@ -22,7 +22,7 @@ DPM (Data Protection Manager) や MABS (Microsoft Azure Backup Server) を使用
 
 ## 1. 【原因】<a id="1"></a>
 データ保存先のディスク記憶域ボリュームの空き領域を確認したところ、十分な「未使用領域」があるのに、なぜ ID 58 にて「ディスクに十分な空き領域がありません」のエラーが発生することがあるのでしょうか。 
-![画面サンプル](https://user-images.githubusercontent.com/96324317/202888596-0a507b94-2a66-4956-b6b2-cbe7dd2e0a0b.png)
+![画面サンプル](./Error_58_NoDiskSpace/Error_58_NoDiskSpace_02.png)
 
 【原因】 
 原因として、DPM/MABS が作成するレプリカのサイズは、デフォルトで 16 TB までしか拡張することができないためです。
@@ -47,7 +47,7 @@ DPMサーバーにて、下記レジストリエントリを追加します。
 >0x00004000(16384) 
  
 ＜設定サンプル＞ 
-![設定サンプル](https://user-images.githubusercontent.com/96324317/202888754-c88a83bf-1fda-4461-b249-a06e58be7792.png)
+![設定サンプル](./Error_58_NoDiskSpace/Error_58_NoDiskSpace_03.png)
 
 0x00002000 (8192) に設定する場合、最大ボリュームのサイズ上限は 32 TB になります。 
 0x00004000 (16384) に設定する場合、最大ボリュームのサイズ上限は 64 TB になります。 

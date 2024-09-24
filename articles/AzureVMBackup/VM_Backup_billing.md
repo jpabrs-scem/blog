@@ -12,7 +12,7 @@ disableDisclaimer: false
 今回は、Azure VM Backup において、
 「Standard バックアップ ポリシー (標準ポリシー) 」でバックアップを取得した場合と
 「Enhanced バックアップ ポリシー (拡張ポリシー) 」でバックアップを取得した場合のそれぞれの料金の違いについて説明します。 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/8ccd86d4-3e8e-4f19-9155-27ae50c50b9a)
+![image](./VM_Backup_billing/VM_Backup_billing_01.png)
 
 (参考 関連ブログ記事)
 ・料金計算ツールを用いた Azure VM Backup の料金見積もりについて | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)
@@ -78,14 +78,14 @@ Azure VM Backup を利用する場合、その料金を見積もる際には以�
 ・Azure ページ BLOB Storage の価格 | Microsoft Azure
 　https://azure.microsoft.com/ja-jp/pricing/details/storage/page-blobs/
 
-![](https://github.com/jpabrs-scem/blog/assets/96324317/727481b0-cbab-4f49-976a-2b8428d5f209)
+![](./VM_Backup_billing/VM_Backup_billing_02.png)
 
 #### Enhanced バックアップ ポリシー - スナップショットに対する料金
 下記リンクから、リージョン・通貨をご希望のものへと設定変更いただければ、スナップショットに対する料金を確認できます。
 ・料金 - Managed Disks | Microsoft Azure
 　https://azure.microsoft.com/ja-jp/pricing/details/managed-disks/
 
-![](https://github.com/jpabrs-scem/blog/assets/96324317/69d004e5-cef6-4930-a777-43a986c713ec)
+![](./VM_Backup_billing/VM_Backup_billing_03.png)
 
 ## 3. スナップショット料金の請求先について<a id="3"></a>
 　(1) Azure 仮想マシンのインスタンスに対する課金
@@ -106,19 +106,19 @@ Azure Backup の 料金として請求される項目は (1) (2) であり、(3)
 
 ご参考までに、弊社検証環境にて確認した各項目の表示例を以下に示します。 
 画像 1：コスト分析画面にて確認した (1) および (2) の表示例（ストレージ レプリケーションの種類 ：ローカル冗長 (LRS)） 
-![画像 1](https://github.com/jpabrs-scem/blog/assets/96324317/d086273d-b86f-4458-aa1c-5aac0dd7bd6e)
+![画像 1](./VM_Backup_billing/VM_Backup_billing_04.png)
 
  画像 2：コスト分析画面にて確認した (3) の表示例 (Standard バックアップ ポリシー) 
-![画像 2](https://github.com/jpabrs-scem/blog/assets/96324317/7ecffa2f-913d-462e-90e0-cf98963f3ca9)
+![画像 2](./VM_Backup_billing/VM_Backup_billing_05.png)
 
 (参考) 画像 2 のバックアップ対象 の VM の Azure Managed Disk のリソース グループ名：rgsqlag 
-![参考](https://github.com/jpabrs-scem/blog/assets/96324317/baed21f1-4624-48ce-a1a0-19e24ddc99cc)
+![参考](./VM_Backup_billing/VM_Backup_billing_06.png)
 
 画像 3：コスト分析画面にて確認した (3) の表示例 (Enhanced バックアップ ポリシー) 
-![画像 3](https://github.com/jpabrs-scem/blog/assets/96324317/ed02d045-2044-4124-a3c0-3028e4e50f59)
+![画像 3](./VM_Backup_billing/VM_Backup_billing_07.png)
 
 (参考) 画像 3 の復元ポイント コレクションのリソース グループ名：azurebackuprg_eastus_1 
-![参考](https://github.com/jpabrs-scem/blog/assets/96324317/418c73c9-524c-4502-99ae-89d8ca17dc86)
+![参考](./VM_Backup_billing/VM_Backup_billing_08.png)
 
 (補足)
 各バックアップ ポリシーにて取得されるスナップショットはそれぞれ以下のスナップショット層へ格納されます。 
