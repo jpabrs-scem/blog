@@ -84,7 +84,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3
 
 
 Azure VM Backupでは バックアップ ジョブの画面で確認できるように、順番に Take Snapshot と Transfer data to vault の 2 つの大きなフェーズ  (Sub Task) がございます。これら 2 つのフェーズが完了して初めてバックアップ ジョブとして完了となります。
-![](https://user-images.githubusercontent.com/71251920/154117538-c4961564-fd9e-4e77-91ee-bff235da3704.png)
+![](./NWRequirementAndProcess/NWRequirementAndProcess_01.png)
 
 
 ### <a id="2-1"></a>2.1 Take Snapshot フェーズ

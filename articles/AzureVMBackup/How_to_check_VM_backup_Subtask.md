@@ -15,7 +15,7 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
 まず、はじめに前提知識として Azure VM Backup ではバックアップを取得する際に下記 2 つのサブタスクがございます。
 1.Take Snapshot (スナップショットの取得)
 2.Transfer data to vault (Recovery Services コンテナーへの転送)
-![Azure VM Backupの 2 つのサブタスク](https://user-images.githubusercontent.com/96324317/202889060-48865029-ab86-4ac5-aa2f-0c85ed6ee901.png)
+![Azure VM Backupの 2 つのサブタスク](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_01.png)
 
 ## 目次
 -----------------------------------------------------------
@@ -39,7 +39,7 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
 
 ###  1-1. Azure Portal を用いたサブタスク (Take Snapshot フェーズ) 確認方法<a id="1-1"></a>
 [対象の Recovery Services コンテナー] → 左ペインの [バックアップ ジョブ] → 対象のバックアップ ジョブの [View details] → [サブ タスク] の手順で確認いただくことが可能です。
-![Check_Subtask](https://user-images.githubusercontent.com/96324317/202889187-6a0f9005-1a2e-45f4-8738-d629b0aad991.png)
+![Check_Subtask](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_02.png)
 
 ### 1-2. Azure CLI を用いたサブタスク (Take Snapshot フェーズ) 確認方法<a id="1-2"></a>
 - 検証環境情報
@@ -64,7 +64,7 @@ Azure VM Backup では  **Take Snapshot フェーズ が終わっていれば VM
   >コマンド： ` ` `--backup-management-type AzureIaasVM` ` ` 
 
 　下記例 "name" : "2a8c96f8-c282-4f62-9286-fda08088047e"
-![Check_name_value](https://user-images.githubusercontent.com/71251920/142236195-c47b1fe8-73b0-401e-a050-43be7c4a35d6.png)
+![Check_name_value](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_03.png)
 
 #### 2.サブタスク (Take Snapshot フェーズ) のステータス確認
 name 値 を用いて下記のコマンドを実行することでサブタスクのステータスが確認できます。
@@ -74,13 +74,13 @@ name 値 を用いて下記のコマンドを実行することでサブタス�
 
 >コマンド例 :` ` `az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS --query properties.extendedInfo.tasksList -o table` ` `
 
-![Check_Subtask_Azure_CLI_1](https://user-images.githubusercontent.com/71251920/142236727-60dfeae5-4960-4f91-a96e-c9d223acaff2.png)
+![Check_Subtask_Azure_CLI_1](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_04.png)
 
 --query オプションを付けない場合は下記の部分から確認できます。
 >コマンド：` ` `az backup job show --name < name 値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名>` ` `
 >コマンド例：` ` `az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS` ` `
 
-![Check_Subtask_Azure_CLI_2](https://user-images.githubusercontent.com/71251920/142236740-9817d4cf-13a9-480b-816c-ba09e252aea6.png)
+![Check_Subtask_Azure_CLI_2](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_05.png)
 
 
 また、サブタスクのステータスだけを抜き出して確認したい場合は下記で可能です。
@@ -88,13 +88,13 @@ name 値 を用いて下記のコマンドを実行することでサブタス�
 >コマンド：` ` `az backup job show --name <name値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名> --query properties.extendedInfo..tasksList[0].status`` ` 
 
 >コマンド例 :` ` `az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS --query properties.extendedInfo.tasksList[0].status` ` `
-![](https://user-images.githubusercontent.com/71251920/185892018-c1278aee-66d5-4217-8701-274be03606d8.png)
+![](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_06.png)
  
 ##### Transfer data to vault 
 >コマンド：` ` `az backup job show --name <name値> --resource-group  < RSV リソースグループ名> --vault-name  < RSV 名> --query properties.extendedInfo..tasksList[1].status`` ` 
 
 >コマンド例 :` ` `az backup job show --name 2a8c96f8-c282-4f62-9286-fda08088047e --resource-group  RG-NormalTest --vault-name RSV-JPE-LRS --query properties.extendedInfo.tasksList[1].status` ` `
-![](https://user-images.githubusercontent.com/71251920/185892022-197514a7-92b6-4160-9bbb-b03a3b40a76e.png)
+![](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_07.png)
 
 
 - 参考：
@@ -121,7 +121,7 @@ https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli?tabs=concepts%2Cpower
 >コマンド：` ` `$VMName = "< VM 名>"` ` `
 >コマンド例：` ` `$VMName = "VM-Win10"` ` `
 
-![configure_const](https://user-images.githubusercontent.com/71251920/142237893-8c25f4e9-4db1-4da5-b27b-7f33160e893a.png)
+![configure_const](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_08.png)
 
 #### 2.バックアップ ジョブのステータス確認<a id="a"></a>　
 下記コマンドを実行することで、指定した VM の実行中のバックアップ ジョブの一覧が確認できます。
@@ -132,11 +132,11 @@ https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli?tabs=concepts%2Cpower
 >` ` `$Jobs = (Get-AzRecoveryservicesBackupJob -Status "InProgress" -VaultId $Vault.id | ? {$_.WorkloadName -eq $vmName})` ` `
 >` ` `$Jobs` ` `
 
-![Check_job_status_ps_1](https://user-images.githubusercontent.com/71251920/142238480-a33273d9-7e95-43e0-b23a-451b947fd4f3.png)
+![Check_job_status_ps_1](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_09.png)
 
 >コマンド：` ` `$Jobs[0]` ` `
 
-![Check_job_status_ps_2](https://user-images.githubusercontent.com/71251920/142238471-c9927a38-86e5-4a5d-9140-dee620472a93.png)
+![Check_job_status_ps_2](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_10.png)
 
 #### 3．実行中のバックアップ ジョブのサブタスクを取得・表示
 下記コマンドを実行することでサブタスクのステータスが確認できます。
@@ -146,7 +146,7 @@ https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli?tabs=concepts%2Cpower
 >` ` `$SubTasks = Get-AzRecoveryServicesBackupJobDetail -Job $Jobs[0]  -VaultId $Vault.id` ` `
 >` ` `$SubTasks.subtasks` ` `
 
-![Check_sub_task_ps_1](https://user-images.githubusercontent.com/71251920/142249583-ef423e62-9bef-4352-bc34-6a87edf18b4a.png)
+![Check_sub_task_ps_1](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_11.png)
 
 上記警告については、現在使用可能な ”Get-AzRecoveryServicesBackupJobDetail” のエイリアス ”Get-AzRecoveryServicesBackupJobDetails” が将来的に廃止されていることを示しますが、上記のコマンドであれば使用していないので無視していただいて構いません。
 
@@ -155,7 +155,7 @@ https://docs.microsoft.com/ja-jp/cli/azure/query-azure-cli?tabs=concepts%2Cpower
 
 上記のコマンドを実行したところ警告が出ていないことが分かります。
 
-![Check_sub_task_ps_2](https://user-images.githubusercontent.com/71251920/142249588-14b3aca1-3e4d-4948-81a9-b874ec1b5dc1.png)
+![Check_sub_task_ps_2](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_12.png)
 
 ・How do I get rid of the warnings? (警告の非表示について)
 https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/breaking-changes-messages-help.md#how-do-i-get-rid-of-the-warnings
@@ -167,7 +167,7 @@ https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-chang
 >` ` `$Jobs` ` `
 
 その際の $Jobs[0]、$Jobs[1] の値は次のようになります。
-![Check_job_status_ps_3](https://user-images.githubusercontent.com/71251920/142242086-55eda1c2-5509-4bac-9c5c-c7d1b64c3401.png)
+![Check_job_status_ps_3](./How_to_check_VM_backup_Subtask/How_to_check_VM_backup_Subtask_13.png)
 
 - 参考：
 ・APowerShell を使用して Azure VM をバックアップおよび復元する - バックアップ ジョブの監視

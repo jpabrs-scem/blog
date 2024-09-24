@@ -49,7 +49,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-faq#----------
 ・アーキテクチャの概要 -  復旧ポイントに対するポリシーの変更の影響
 　https://docs.microsoft.com/ja-jp/azure/backup/backup-architecture#impact-of-policy-change-on-recovery-points
 
-![HowToExtendVMRetentionPeriod_01](https://user-images.githubusercontent.com/71251920/151024656-f6589f03-6965-47ad-9848-36742f9e3e7e.png)
+![HowToExtendVMRetentionPeriod_01](./HowToExtendVMRetentionPeriod/HowToExtendVMRetentionPeriod_01.png)
 
 ## 2. バックアップ ポリシーに従って取得済の復元ポイントの中の、特定の復元ポイントのみの保持期間を延長して保持しておくことは可能か<a id="2"></a>
 ## 3. 「今すぐバックアップ」にて取得済の復元ポイントの保持期間を延長して保持しておくことは可能か<a id="3"></a>
@@ -66,7 +66,7 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-backup-faq#----------
 
 復元されたからディスクを既存の VM にアタッチすることや、既存の VM とディスクをスワップすること、および、復元されたディスクを使って新規 VM を作成することが可能です。
 
-![HowToExtendVMRetentionPeriod_02](https://user-images.githubusercontent.com/71251920/151024649-a76bd670-cc4c-4dc6-9b89-7849ca86f7e2.gif)
+![HowToExtendVMRetentionPeriod_02](./HowToExtendVMRetentionPeriod/HowToExtendVMRetentionPeriod_02.png)
 
  ## 参考<a id="5"></a>
 ・Azure VM Backupでリストアされるディスク名に関して
