@@ -86,7 +86,7 @@ provisioningapi.microsoftonline.com;20.190.128.*;40.126.*;*.hip.live.com;*.micro
 policykeyservice.dc.ad.msft.net
 ```
 
-![](https://user-images.githubusercontent.com/96324317/197693453-7e4e98b9-a52b-4965-bd0a-f5751bfd4c90.png)
+![](./How_to_PE_SQL_backup_bypass_proxy/How_to_PE_SQL_backup_bypass_proxy_01.png)
 	
 ## <a id="3"></a> 3．「データベースの検出」「バックアップの有効化」
 Azure ポータル画面上から、対象の SQL Server DB に対して「データベースの検出」「バックアップの有効化」を行います。
@@ -104,9 +104,9 @@ Azure ポータル画面上から、対象の SQL Server DB に対して「デ�
 ##### (一例) 「NT Service\AzureWLBackupPluginSvc」アカウントに対する Proxy バイパス設定 手順詳細
 まずは「NT Service\AzureWLBackupPluginSvc」アカウントが存在しているかを、念のため確認します。
 対象マシン上で、スタートボタンを右クリック ＞ ファイル名を指定して実行 ＞ 「regedit」を入力し「OK」をクリックします。
-![](https://user-images.githubusercontent.com/96324317/197693696-1df4ae35-e8c8-4afc-b4ff-cf21ab2f912d.png)
+![](./How_to_PE_SQL_backup_bypass_proxy/How_to_PE_SQL_backup_bypass_proxy_02.png)
 
-![](https://user-images.githubusercontent.com/96324317/197693727-6c4cef17-55b3-4865-be4d-660435ad3b4a.png)
+![](./How_to_PE_SQL_backup_bypass_proxy/How_to_PE_SQL_backup_bypass_proxy_03.png)
 
 レジストリ エディターが開きますので、以下パスへ遷移します。
 （対象パス）
@@ -114,7 +114,7 @@ Azure ポータル画面上から、対象の SQL Server DB に対して「デ�
 
 上記レジストリキー (フォルダー)「S-1-5-80-1631947889-4033244730-3205203906-53534054-4184208151」が、「NT Service\AzureWLBackupPluginSvc」アカウントを表しています。
 この時点で存在していない場合、「データベースの検出」「バックアップの有効化」もしくは「再登録」が正常完了していない可能性がありますので、「データベースの検出」「バックアップの有効化」「再登録」が成功しているかどうかを再度確認・再実行願います。
-![](https://user-images.githubusercontent.com/96324317/197693875-49891f05-2b67-4040-9641-1f99ca7b271a.png)
+![](./How_to_PE_SQL_backup_bypass_proxy/How_to_PE_SQL_backup_bypass_proxy_04.png)
 
 レジストリ エディター上でレジストリキー (フォルダー)「S-1-5-80-1631947889-4033244730-3205203906-53534054-4184208151」が存在していることを確認出来たら、一時的に カレントユーザーに対して Proxy Server の設定を行います。
 
@@ -147,7 +147,7 @@ provisioningapi.microsoftonline.com;20.190.128.*;40.126.*;*.hip.live.com;*.micro
 policykeyservice.dc.ad.msft.net
 ```
 
-![](https://user-images.githubusercontent.com/96324317/197693971-4fcf367e-2685-4284-b0f4-4e8c0c457e38.png)
+![](./How_to_PE_SQL_backup_bypass_proxy/How_to_PE_SQL_backup_bypass_proxy_05.png)
 
 カレントユーザーに対して、Proxy Server のバイパス設定を保存した後に、下記リンク先から、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシを設定するスクリプトをダウンロードします。  
     - [SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip](https://github.com/jpabrs-scem/blog/files/12788965/SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip)
@@ -160,7 +160,7 @@ policykeyservice.dc.ad.msft.net
       ``.\SetProxyforAzureWLBackupPluginSvcfromCurrentUser.ps1``  
     - スクリプトを実行すると、以下ログファイルが作成されます。  
       ``<スクリプトを実行したフォルダ>/AzureBackup_Set_Proxy_For_AzureWLBackup_PluginSvc_yyyyMMdd_HHmmss.log``
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/2a4e5a11-313e-4d91-bdf2-0557f68c46d1)
+![image](./How_to_PE_SQL_backup_bypass_proxy/How_to_PE_SQL_backup_bypass_proxy_06.png)
 
 > [!NOTE]
 > サービス アカウントのプロキシ設定は、サービス アカウントのレジストリ キーを編集することで設定しますが、
@@ -183,9 +183,9 @@ policykeyservice.dc.ad.msft.net
 （実行コマンド 例）
   >.\Start-ConnectivityTests.ps1 -IsPrivateEndpointEnabled
 
-![](https://user-images.githubusercontent.com/96324317/197697047-3663b672-184f-499b-b405-e95770135b27.png)
+![](./How_to_PE_SQL_backup_bypass_proxy/How_to_PE_SQL_backup_bypass_proxy_07.png)
 
-![](https://user-images.githubusercontent.com/96324317/197704009-4d226d75-3057-4439-88ae-b2a42af0f7e5.png)
+![](./How_to_PE_SQL_backup_bypass_proxy/How_to_PE_SQL_backup_bypass_proxy_08.png)
 
 「Start-ConnectivityTests.ps1」スクリプトを実行後、ターミナル上に結果が返却されます。
 
@@ -207,7 +207,7 @@ ProxyEnable: <span style="color: red; ">1</span>
 (4)
 WinInet settings for NT Service\AzureWLBackupPluginSv (used by Azure Workload Backup Plugin service)
 「ProxyOverride:」以降が、設定した例外リスト/バイパスリストの内容となっていること
-![](https://user-images.githubusercontent.com/96324317/197704402-d3ac2ec2-6778-4bfa-bf48-356c975f8d4a.png)
+![](./How_to_PE_SQL_backup_bypass_proxy/How_to_PE_SQL_backup_bypass_proxy_09.png)
 
 ## <a id="5"></a> 5．SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行
 Azure ポータル画面上で設定した、バックアップ ポリシーに従った次回の スケジュールバックアップが成功することを確認いただく、もしくは「今すぐバックアップ」を実行してオンデマンド バックアップが成功することをご確認ください。

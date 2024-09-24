@@ -39,7 +39,7 @@ https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%
 バックアップ対象のサーバーから Azure Potal を利用しテナント制限によって許可されていないテナントへアクセスを試行すると、 「ネットワーク管理者によってアクセスがブロックされました」という以下のようなエラーメッセージが表示されます。 (エラーコード: AADSTS500021) 
 このメッセージを確認できた場合、テナント制限によりサーバーからのテナントアクセスが制限されていると判断できます。
 
-![image](https://github.com/jpabrs-scem/blog/assets/141223502/f09cf41b-6620-4d25-841d-35cbe978f184)
+![image](./CommunicationFails-DueTo-TenantRestrictions/CommunicationFails-DueTo-TenantRestrictions_01.png)
 
 ・テナント制限とは | テナント制限について
 https://jpazureid.github.io/blog/azure-active-directory/tenant-restriction/#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E5%88%B6%E9%99%90%E3%81%A8%E3%81%AF
