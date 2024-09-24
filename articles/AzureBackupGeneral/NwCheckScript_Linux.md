@@ -49,10 +49,10 @@ disableDisclaimer: false
 ## <a id="2"></a> 2. プロキシ設定の確認
 Linux OS のマシン上で、プロキシ サーバーを経由するよう設定しているかどうかを確認しています。
 下図のように、空白行の場合は「http_proxy」「https_proxy」のプロキシ設定は無いと判断します。
-![](https://github.com/jpabrs-scem/blog/assets/96324317/9f9b597d-6a5f-4180-9d8e-141d11eb5e34)
+![](./NwCheckScript_Linux/NwCheckScript_Linux_01.png)
 
 いっぽう 下図のように出力されている場合は、プロキシ設定を行っていると判断します。
-![](https://github.com/jpabrs-scem/blog/assets/96324317/f4a0cdbc-8d19-497e-93cd-3d5872f68534)
+![](./NwCheckScript_Linux/NwCheckScript_Linux_02.png)
 
 
 ## <a id="3"></a> 3. 疎通確認スクリプト結果を確認する際のポイント

@@ -33,7 +33,7 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/
  
 2. PowerShell を右クリックし、管理者として実行をクリックしてください。
 
- ![](https://user-images.githubusercontent.com/71251920/175529513-5196c393-be7b-439e-aba3-063969d1ce26.png)
+ ![](./RequestForInvestigatingNW/RequestForInvestigatingNW_01.png)
 
 3. PowerShell にて手順 1 で展開したスクリプトの場所に移動してください。
 例 ) "Takato" というユーザーのデスクトップ上の PowerShell というフォルダ内にスクリプトをダウンロードしたときの移動コマンド
@@ -42,19 +42,19 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/
 4. 以下コマンドを実行し、スクリプトを実行してください。
 (現在画像とバージョンが異なりますが、同様の手順でございます。)
 >.\Check_Backup_NW_ver1.3.ps1
-![](https://user-images.githubusercontent.com/71251920/175529518-afd3ab91-e450-42b9-b7b6-310c6633cca1.png)
+![](./RequestForInvestigatingNW/RequestForInvestigatingNW_02.png)
 * 上記スクリプト実施時に実行ポリシーの制限によりスクリプトが実行できない場合はPowerShell を管理者権限で起動し、下記コマンドを実行し実行ポリシーを変更後、再度実行していただければ幸いでございます。
 >Set-ExecutionPolicy Unrestricted
  
 5. 以下のような “ScriptStart Completed” 出力がされるまで、お待ちください。
 *コマンドの実行には、環境によって 20 分ほど要する場合がございます。20 分経っても完了しない場合は、control + c を押下して強制終了してください。
 
-![](https://user-images.githubusercontent.com/71251920/175529520-b67e7eab-baef-4036-8c89-64ec9a86e40b.gif)
+![](./RequestForInvestigatingNW/RequestForInvestigatingNW_03.png)
  
 6. コマンド実行が完了すると、スクリプトと同じフォルダ内に以下のようなログファイルが出力されますので、弊社までご提供お願いいたします。
 ログファイル名: AzureBackup_Check_NW_yyyymmdd_hhmmss.log
 
-![](https://user-images.githubusercontent.com/71251920/175529523-b5004d01-f4cd-4879-9c48-b9de17a8c477.jpg)
+![](./RequestForInvestigatingNW/RequestForInvestigatingNW_04.png)
 * control + c にて強制終了した場合においても該当のログファイルが出力されますので、弊社までご提供お願いいたします。
 
 
@@ -80,7 +80,7 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/
 >ログファイルは CheckNWResult_(ホスト名)_(YYYYMMDDHHMM).log です。
 
 ### 2.1 参考画像
-![-参考画像-](https://user-images.githubusercontent.com/71251920/185762249-d5dbed3c-9bce-409e-8a88-a5b43a52fe95.png)
+![-参考画像-](./RequestForInvestigatingNW/RequestForInvestigatingNW_05.png)
 
 
 ## 3. プライベート エンドポイント環境における Azure Backup 疎通確認<a id="3"></a>

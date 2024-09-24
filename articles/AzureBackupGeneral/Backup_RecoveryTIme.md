@@ -49,7 +49,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/
 次に実際の Azure VM Backup の実際のデータより作成したグラフをご参考までにお伝えさせていただきます。
 ### <a id="1-2"></a> 1.2 Azure VM Backup におけるバックアップ タイムの実績値グラフ
 Azure VM Backup のバックアップにかかった時間と転送データ量の実績値をグラフにしたものになります。
-![](https://user-images.githubusercontent.com/71251920/175569827-32081c88-3b8a-4eca-abdc-471033b3d4b8.png)
+![](./Backup_RecoveryTIme/Backup_RecoveryTIme_01.png)
 
  Azure VM のバックアップにおいて **転送データ量とかかった時間に相関がない**ことがわかるかと存じます。
 
@@ -58,7 +58,7 @@ Azure VM Backup のバックアップにかかった時間と転送データ量�
 ### <a id="1-3"></a> 1.3 Azure VM Backup におけるリストア タイムの実績値グラフ
 こちら、**インスタント リストア**ではなく Recovery Services コンテナー (標準コンテナー / Vault-Standard) からのリストアでございます。
 Azure VM Backup のリストアにかかった時間と転送データ量の実績値をグラフにしたものになります。
-![](https://user-images.githubusercontent.com/71251920/175569833-99834c3c-46f3-4901-8014-5c0a6dc0cb22.png)
+![](./Backup_RecoveryTIme/Backup_RecoveryTIme_02.png)
 リストアにおいても**転送データ量とかかった時間に相関がない**ことがわかるかと存じます。
 
 
@@ -67,7 +67,7 @@ Azure VM Backup のリストアにかかった時間と転送データ量の実�
 
 下記のように回復の種類に "スナップショット" が含まれる場合は自動的にインスタント リストアとなります。
 
-![](https://user-images.githubusercontent.com/71251920/178863089-01be3556-bf72-472a-9e48-888f80dd7875.png)
+![](./Backup_RecoveryTIme/Backup_RecoveryTIme_03.png)
 
 
 ・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する

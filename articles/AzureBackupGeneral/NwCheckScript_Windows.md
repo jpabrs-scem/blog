@@ -65,15 +65,15 @@ Windows OS のマシン上で、プロキシ サーバーを経由するよう�
 
 
 下図のように「ProxyEnable」「ProxyServer」「ProxyOverride」箇所が「0」やブランク表示となっていれば「プロキシ設定は行われいない」と判断します。
-![](https://github.com/jpabrs-scem/blog/assets/96324317/79f511c3-9e4e-4f46-9365-e3ee0519161e)
+![](./NwCheckScript_Windows/NwCheckScript_Windows_01.png)
 
 下図のように「ProxyEnable: 1」となっていれば、プロキシ設定がされていると判断できます。
 「ProxyServer」箇所が経由しているプロキシ サーバーです。
 「ProxyOverride」箇所には、プロキシ バイパス設定内容が確認できます。
-![](https://github.com/jpabrs-scem/blog/assets/96324317/6d30b9e4-0cfc-4285-b1b7-9de7f07d94b3)
+![](./NwCheckScript_Windows/NwCheckScript_Windows_02.png)
 
 (マシン上の設定例)
-![](https://github.com/jpabrs-scem/blog/assets/96324317/26b8cd0a-bdce-45b0-8fb8-35ac66892571)
+![](./NwCheckScript_Windows/NwCheckScript_Windows_03.png)
 
 
 ## <a id="3"></a> 3. 疎通確認スクリプト結果を確認する際のポイント
@@ -124,7 +124,7 @@ __
 
 ``nslookup pod01-manag1.jpe.backup.windowsazure.com``
 と実行いただければ、「pod01-manag1.jpe.backup.windowsazure.com」の IP アドレスを確認可能です。
-![](https://github.com/jpabrs-scem/blog/assets/96324317/80dbbee4-57a2-4160-86a2-ea7c7bb56563)
+![](./NwCheckScript_Windows/NwCheckScript_Windows_04.png)
 
 
 #### (ポイント) プロキシ サーバーを経由するマシンの場合 tnc コマンドだけでは判断できません
@@ -187,7 +187,7 @@ Azure Backup においては、TLS 1.2 が無効化されているマシンの�
 の値を出力しています。
 
 (画面例)
-![](https://github.com/jpabrs-scem/blog/assets/96324317/0990e2f3-b319-4da1-96c6-7e6e4834d820)
+![](./NwCheckScript_Windows/NwCheckScript_Windows_05.png)
 
 なお、「TLS 1.2」のレジストリキーが明示的に設定されていなくでも、「Windows Server 2012 R2」以降では TLS 1.2 は規定で有効化されています。
 
