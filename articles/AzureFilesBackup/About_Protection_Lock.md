@@ -35,7 +35,7 @@ Azure ファイル共有のバックアップでは、Azure ファイル共有�
 - ロックの種類 : 削除  
 - スコープ : ストレージ アカウント  
 - メモ : ``Auto-created by Azure Backup for storage accounts registered with a Recovery Services Vault. This lock is intended to guard against deletion of backups due to accidental deletion of the storage account. (Recovery Services Vaultに登録されているストレージアカウントに対してAzure Backupによって自動的に作成されます。このロックは、ストレージアカウントの誤った削除によるバックアップの削除を防ぐことを目的としています。)``  
-![](https://github.com/user-attachments/assets/6521b8f8-67f1-4b48-863f-41afb943fbd3)
+![](./About_Protection_Lock/About_Protection_Lock_01.png)
 
 
 ## <a id="2"></a>AzureBackupProtectionLock が設定されるタイミング
@@ -64,11 +64,11 @@ Azure ファイル共有のバックアップでは、Azure ファイル共有�
 手順 :  
 1. 削除ロック 「AzureBackupProtectionLock」 を削除する  
 ストレージ アカウントの ``設定 > ロック`` へアクセスし、削除ロック 「AzureBackupProtectionLock」 を削除します  
-![](https://github.com/user-attachments/assets/5b358e3c-edfc-4a9c-90c4-71a540581f69)
+![](./About_Protection_Lock/About_Protection_Lock_02.png)
 
 1. (不要なファイル削除などの作業完了後) 削除ロック 「AzureBackupProtectionLock」 を再設定する  
    - ストレージ アカウントの ``設定 > ロック`` へアクセスし、削除ロックを追加します  
-     ![](https://github.com/user-attachments/assets/a736e344-22d9-4009-86be-c357f3392602)  
+     ![](./About_Protection_Lock/About_Protection_Lock_03.png)  
    - もしくは、Azure ファイル共有のオンデマンド バックアップを手動で実行します (自動的に、削除ロック 「AzureBackupProtectionLock」 が設定されます)  
      詳細な手順につきましては、下記ドキュメントをご確認ください。  
      - オンデマンド バックアップの実行手順 :  
@@ -86,18 +86,18 @@ Azure ファイル共有のバックアップ構成時に、ストレージ ア�
 手順 :  
 - Recovery Services コンテナーからバックアップを構成する場合  
   Recovery Services コンテナーの ``はじめに > バックアップ > Azure ファイル共有のバックアップ構成`` にアクセスします。  
-  ![](https://github.com/user-attachments/assets/d0ab1a1b-fa35-4c44-b371-1bde80209c07)  
+  ![](./About_Protection_Lock/About_Protection_Lock_04.png)  
   バックアップの構成画面のストレージ アカウントの選択時に、**「ストレージ アカウントのロックを有効にする」のチェックを外してください**。  
-  ![](https://github.com/user-attachments/assets/65a4c4c8-c800-4d04-ab2a-ce8512be102a)
+  ![](./About_Protection_Lock/About_Protection_Lock_05.png)
 
 - Azure ファイル共有からバックアップを構成する場合  
   Azure ファイル共有の ``操作 > バックアップ`` へアクセスし、**「Storage account lock」のトグル ボタンを無効にしてください**。
-  ![](https://github.com/user-attachments/assets/9535dd6e-f3b9-41c5-bfc6-a6fc4cfe0d45)
+  ![](./About_Protection_Lock/About_Protection_Lock_06.png)
 
 > [!WARNING]  
 > Azure ファイル共有を新規作成する際に表示される Azure Backup 構成画面では、ストレージ アカウントのロックを無効化させる設定は行えません。  
 > もしストレージ アカウントのロックを無効化させたい場合には、**バックアップを構成せずに** Azure ファイル共有を作成し、その後に Azure Backup を構成してください。  
-> ![](https://github.com/user-attachments/assets/7df7d32c-6273-4e1f-9529-62e6afd16609)
+> ![](./About_Protection_Lock/About_Protection_Lock_07.png)
 
 > [!WARNING]  
 > 同じストレージ アカウントにデプロイされている、他の Azure ファイル共有で既に Azure Backup を構成している場合には、ストレージ アカウントが Recovery Services コンテナーのバックアップ インフラストラクチャとして既に登録されているため、ストレージ アカウントのロック無効化設定が行えません。  
