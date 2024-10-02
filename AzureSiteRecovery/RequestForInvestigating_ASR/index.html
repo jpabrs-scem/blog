@@ -13,16 +13,16 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="皆様こんにちは、Azure Site Recovery サポートです。Azure Site Recovery (以下、ASR ) に関する調査をスムーズに進める為に、お客様側で確認して頂く箇所と、調査に必要な環境情報とログ情報を取得して頂き、サポートへ送付して頂く場合がございます。今回は、ASR の障害調査に必要な 環境情報 と ログ情報 について、ご案内いたします。 目次 1. 調査に必要な環">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://github.com/user-attachments/assets/74f7a3aa-a3e9-41c9-b85f-a82c903fc74e">
-<meta property="og:image" content="https://github.com/user-attachments/assets/a0c74364-8566-49a2-b8a7-be6efe9cf247">
-<meta property="og:image" content="https://github.com/user-attachments/assets/50ab3587-7945-4d7a-8465-60183c850a4b">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/RequestForInvestigating_ASR_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/RequestForInvestigating_ASR_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/RequestForInvestigating_ASR_03.png">
 <meta property="article:published_time" content="2024-08-13T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.743Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.305Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure Site Recovery">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/user-attachments/assets/74f7a3aa-a3e9-41c9-b85f-a82c903fc74e">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/RequestForInvestigating_ASR_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -107,7 +107,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+4e1fe235-d2a8-51a5-95f9-6eafa38d40c7%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BASR+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2FRequestForInvestigating_ASR%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2FRequestForInvestigating_ASR.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2FRequestForInvestigating_ASR.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/" data-id="cm0osyy5g005w0nqz3ba9hhb1" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/" data-id="cm1r6kzce005z0nqoe0tddh1e" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -132,8 +132,7 @@
 </ol>
 <h3 id="「モダン化」と「クラシック」を見分ける方法"><a href="#「モダン化」と「クラシック」を見分ける方法" class="headerlink" title="「モダン化」と「クラシック」を見分ける方法"></a>「モダン化」と「クラシック」を見分ける方法</h3><p>ASR の VMware to Azure シナリオ / 物理マシン to Azure シナリオ では 「モダン化」 と 「クラシック」 の 2 つの構成があります。<br>「モダン化」 と 「クラシック」 のどちらを利用しているかは、以下の画面から確認いただけます。</p>
 <p>Azure Portal にて Recovery Services コンテナーを開き &gt; はじめに - Site Recovery &gt; 「VMware マシンを Azure に」 の下にある 1. の末尾に <code>(従来)</code> が、<br>付与されている場合は、<strong>「クラシック」の Recovery Services コンテナー</strong> となります。<br>付与されて<strong>いない</strong>場合は、<strong>「モダン化」の Recovery Services コンテナー</strong> となります。</p>
-<img src="https://github.com/user-attachments/assets/74f7a3aa-a3e9-41c9-b85f-a82c903fc74e">
-
+<p><img src="/blog/AzureSiteRecovery/RequestForInvestigating_ASR/RequestForInvestigating_ASR_01.png"></p>
 <h2 id="2-ログの取得方法"><a href="#2-ログの取得方法" class="headerlink" title=" 2. ログの取得方法"></a><a id="2"></a> 2. ログの取得方法</h2><h3 id="2-1-Azure-to-Azure-シナリオの障害調査に必要なログ"><a href="#2-1-Azure-to-Azure-シナリオの障害調査に必要なログ" class="headerlink" title=" 2-1. Azure to Azure シナリオの障害調査に必要なログ"></a><a id="2-1"></a> 2-1. Azure to Azure シナリオの障害調査に必要なログ</h3><p>本シナリオではログを収集する方法が 2 つありますので、下記いずれかの方法にてログを収集ください。  </p>
 <ul>
 <li>方法 1 : ツールを使用してログを収集する</li>
@@ -269,7 +268,7 @@
 <li>次のコマンドで ASRDiagnosticTool  の配置先に移動します。<br> ※ <code>&lt;ASRDiagnosticToolのインストール先&gt;</code> はインストール先のディレクトリに書き換えてください。　   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &quot;&lt;ASRDiagnosticToolのインストール先&gt;\ASRDiagnosticTool&quot;</span><br></pre></td></tr></table></figure></li>
 <li>次のコマンドで ASRDiagnosticTool  を実行します。 (完了まで5 ~ 30 分 かかります。また、かかる時間は実行している環境によって異なります) <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ASRDiagnosticTool.exe</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>(実行例)<br><img src="https://github.com/user-attachments/assets/a0c74364-8566-49a2-b8a7-be6efe9cf247"></p>
+<p>(実行例)<br><img src="/blog/AzureSiteRecovery/RequestForInvestigating_ASR/RequestForInvestigating_ASR_02.png"></p>
 <h4 id="ステップ-5"><a href="#ステップ-5" class="headerlink" title="ステップ 5 :"></a>ステップ 5 :</h4><p>コマンド プロンプトに下記のようなメッセージが表示されていれば、ログの収集成功となります。<br><code>Please collect the archive at</code> に圧縮されたログが生成されますので、本ログをご提供いただけますと幸いです。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Log collection completed successfully.</span><br><span class="line">Please collect the archive at C:\Users\Administrator\AppData\Roaming\ASRDiagnosticLogs-WIN-C381N1BJK2T-25-07-15-14-57.zip.</span><br></pre></td></tr></table></figure>
 
@@ -506,7 +505,7 @@
 <h4 id="ステップ-1-1"><a href="#ステップ-1-1" class="headerlink" title="ステップ 1 :"></a>ステップ 1 :</h4><p>対象の VM にサインインします。</p>
 <h4 id="ステップ-2-1"><a href="#ステップ-2-1" class="headerlink" title="ステップ 2 :"></a>ステップ 2 :</h4><p>スクリプト <code>/usr/local/ASR/Vx/bin/collect_support_materials.sh</code> を管理者権限で実行します</p>
 <h4 id="ステップ-3-1"><a href="#ステップ-3-1" class="headerlink" title="ステップ 3 :"></a>ステップ 3 :</h4><p>以下のように出力されますので、<code>support store location</code> の <code>free space</code> が十分であることをご確認いただき、<code>Y</code> または <code>y</code> を入力してください。  </p>
-<p>(出力例)<br><img src="https://github.com/user-attachments/assets/50ab3587-7945-4d7a-8465-60183c850a4b"></p>
+<p>(出力例)<br><img src="/blog/AzureSiteRecovery/RequestForInvestigating_ASR/RequestForInvestigating_ASR_03.png"></p>
 <h4 id="ステップ-4-1"><a href="#ステップ-4-1" class="headerlink" title="ステップ 4 :"></a>ステップ 4 :</h4><p>上記 <code>support store location</code> に圧縮されたログが生成されますので、本ログをご提供いただけますと幸いです。</p>
 <h4 id="ツール利用時の影響について-1"><a href="#ツール利用時の影響について-1" class="headerlink" title="ツール利用時の影響について"></a>ツール利用時の影響について</h4><p>当ツールは、単純なログ収集ツールとなっております。これまで「高負荷となった」、「サーバーのリブート」や「特定のサービスが再起動する」といった事例の報告はございません。<br>出力されるログファイルの量は環境毎、およびシナリオ毎で異なりますが、弊社検証環境での動作確認ではログ ファイルのサイズは 700 KB 程度でございました。</p>
 <p>実際に CPU/メモリがどれくらい消費されるかは、お客様の環境に依存しますので明確な指標をお出しすることは難しくございますが、弊社検証環境 (Azure 仮想マシン (Standard D8as v5 (8 vcpu 数、32 GiB メモリ))) で当該スクリプトを実行した場合、<span style="color: green; "><strong>スクリプト実行～終了までのおよそ 20 秒間</strong></span>では下記結果となり、「非常に大きな負荷がかかった」 等の数値は確認しておりません。<br>しかしながら、こちらの結果はあくまでも弊社環境での検証となりますため、必要に応じてお客様ご自身の環境にて検証いただきますようお願い申し上げます。</p>

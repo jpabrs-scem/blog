@@ -13,16 +13,16 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="皆様こんにちは、Microsoft Azure Backup ＆ Recovery Services サポートです。DPM (Data Protection Manager) や MABS (Microsoft Azure Backup Server) を使用し、ファイルサーバーなどサイズの大きい保護対象をバックアップすることはよくあることです。今回は、データサイズが 16 TB 前後の保護対象">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/202888559-f4e44492-53ff-4b2c-930b-a2af9c15480e.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/202888596-0a507b94-2a66-4956-b6b2-cbe7dd2e0a0b.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/202888754-c88a83bf-1fda-4461-b249-a06e58be7792.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/Error_58_NoDiskSpace_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/Error_58_NoDiskSpace_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/Error_58_NoDiskSpace_03.png">
 <meta property="article:published_time" content="2022-11-21T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.795Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.404Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="TROUBLE SHOOTING">
 <meta property="article:tag" content="DPM &#x2F; MABS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/96324317/202888559-f4e44492-53ff-4b2c-930b-a2af9c15480e.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/Error_58_NoDiskSpace_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -107,18 +107,18 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+15dbe737-db02-5474-a8ee-fdd44156ae87%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E7%A9%BA%E3%81%8D%E9%A0%98%E5%9F%9F%E3%81%8C%E3%81%82%E3%82%8B%E3%81%AE%E3%81%AB%E3%80%81ID+58%E3%80%8C%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%81%AB%E5%8D%81%E5%88%86%E3%81%AA%E7%A9%BA%E3%81%8D%E9%A0%98%E5%9F%9F%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93%E3%80%8D%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%A7%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%82%B8%E3%83%A7%E3%83%96%E3%81%8C%E5%A4%B1%E6%95%97%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88%E3%81%AE%E5%AF%BE%E5%87%A6%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FDPM%26MABS%2FError_58_NoDiskSpace%2F%29%0A*+Content+Source%3A+%5Barticles%2FDPM%26MABS%2FError_58_NoDiskSpace.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FDPM%26MABS%2FError_58_NoDiskSpace.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/" data-id="cm0osyy4m002p0nqzd1l89n0z" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/" data-id="cm1r6kzbi002s0nqoda9wcur7" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
 <p>皆様こんにちは、Microsoft Azure Backup ＆ Recovery Services サポートです。<br>DPM (Data Protection Manager) や MABS (Microsoft Azure Backup Server) を使用し、ファイルサーバーなどサイズの大きい保護対象をバックアップすることはよくあることです。<br>今回は、データサイズが 16 TB 前後の保護対象をバックアップした際に、ID 58「ディスクに十分な空き領域がありません」のエラーでバックアップジョブが失敗する事象が発生する場合の、その原因と対処方法についてお伝えします。 </p>
-<p>&lt;エラーの抜粋&gt;<br><img src="https://user-images.githubusercontent.com/96324317/202888559-f4e44492-53ff-4b2c-930b-a2af9c15480e.png" alt="エラーの抜粋"></p>
+<p>&lt;エラーの抜粋&gt;<br><img src="/blog/DPM&MABS/Error_58_NoDiskSpace/Error_58_NoDiskSpace_01.png" alt="エラーの抜粋"></p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
 <p><a href="#1">1. 【原因】</a><br><a href="#2">2. 【対処方法】</a></p>
 <hr>
-<h2 id="1-【原因】"><a href="#1-【原因】" class="headerlink" title="1. 【原因】"></a>1. 【原因】<a id="1"></a></h2><p>データ保存先のディスク記憶域ボリュームの空き領域を確認したところ、十分な「未使用領域」があるのに、なぜ ID 58 にて「ディスクに十分な空き領域がありません」のエラーが発生することがあるのでしょうか。<br><img src="https://user-images.githubusercontent.com/96324317/202888596-0a507b94-2a66-4956-b6b2-cbe7dd2e0a0b.png" alt="画面サンプル"></p>
+<h2 id="1-【原因】"><a href="#1-【原因】" class="headerlink" title="1. 【原因】"></a>1. 【原因】<a id="1"></a></h2><p>データ保存先のディスク記憶域ボリュームの空き領域を確認したところ、十分な「未使用領域」があるのに、なぜ ID 58 にて「ディスクに十分な空き領域がありません」のエラーが発生することがあるのでしょうか。<br><img src="/blog/DPM&MABS/Error_58_NoDiskSpace/Error_58_NoDiskSpace_02.png" alt="画面サンプル"></p>
 <p>【原因】<br>原因として、DPM/MABS が作成するレプリカのサイズは、デフォルトで 16 TB までしか拡張することができないためです。<br>保護対象のデータサイズが約 16 TB に達すると、DPM/MABS はバックアップするためにレプリカのサイズを 16 TB 以上に拡張します。<br>しかし、NTFS ファイルシステムのデフォルトのレプリカクラスターサイズは 4 K 、サポートされる最大ボリュームのサイズは 16 TB となっています。<br>そのため拡張が失敗し、「ディスクに十分な空き領域がありません」のエラーでバックアップ失敗します。 </p>
 <p>＜NTFSのクラスター サイズと最大ボリューム一覧表＞<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/ntfs-overview#support-for-large-volumes">https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/ntfs-overview#support-for-large-volumes</a></p>
 <p>上記エラーを解消するためには、まず下記をお試しください。</p>
@@ -127,7 +127,7 @@
 <blockquote>
 <p>Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Configuration\DiskStorage<br>ReplicaVolumeClusterSize REG_DWORD<br>REG_DWORD<br>0x00004000(16384) </p>
 </blockquote>
-<p>＜設定サンプル＞<br><img src="https://user-images.githubusercontent.com/96324317/202888754-c88a83bf-1fda-4461-b249-a06e58be7792.png" alt="設定サンプル"></p>
+<p>＜設定サンプル＞<br><img src="/blog/DPM&MABS/Error_58_NoDiskSpace/Error_58_NoDiskSpace_03.png" alt="設定サンプル"></p>
 <p>0x00002000 (8192) に設定する場合、最大ボリュームのサイズ上限は 32 TB になります。<br>0x00004000 (16384) に設定する場合、最大ボリュームのサイズ上限は 64 TB になります。 </p>
 <p>もし、すでにデフォルトのレプリカクラスターサイズが 4 K の環境で、保護グループを作成している場合、レプリカのサイズを 16 TB 以上に拡張するためには、下記手順で保護グループをいったん削除してから、再作成していただく必要があります。 </p>
 <p>１．問題が発生したバックアップの保護グループを削除する (バックアップ データも削除)<br>２．DPM サーバーにて、デフォルトのレプリカクラスターサイズを変更<br>３．新しい保護グループを作成し、バックアップ実施する </p>

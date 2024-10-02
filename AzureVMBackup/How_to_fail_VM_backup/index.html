@@ -13,32 +13,32 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。アラートのテスト等のため “Azure VM Backup を失敗させたい” というお問い合わせをよくいただきます。今回は、Azure VM Backup を意図的に失敗させる方法について、ご案内いたします。 (その他ブログで公開している Azure Backup の失敗方法)・Azure VM Backup のデータ転送フェーズを意図的に">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736316-5995d329-63d1-4b63-acd5-7f3da9f90cf9.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736495-97875c34-577f-483d-a46e-c1f7c53d5133.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736485-37260305-e959-4d30-ab6d-d2167dc8096c.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736544-cc800afd-14c5-400d-9b9c-74d535fdf1f4.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736548-c5cc94e5-4343-4c81-9b8b-52ef8c46f4d8.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/158552820-74147994-3072-4ee8-ae17-c6b92f9b7e36.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/158552815-e3b99fb6-78ec-4c3e-ba4e-616777a25e03.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736815-a24dfbd6-e29c-4a08-8c90-604a8fdbae81.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736817-6a1fee8c-7bd2-4d5b-9bc5-c9e8ffda6f7b.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736834-94f46a91-f554-4de5-b6ea-7089b9607ff5.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736825-0e6032e3-f26f-4760-9f0b-5772d4a02168.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736877-fd3190e0-596a-4a51-b0d2-f682b2a34a3e.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736924-8e033f57-60aa-449e-bb34-2fb5c410d633.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/142736923-43d72bbc-e3cb-46a4-825b-a4b71fe61d9a.png">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/cc0c7196-64d1-482d-9c7d-c8b4d959eedf">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/81a8a957-edca-4ef5-9858-ea29cacd4df5">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/7d5e8fc1-7f76-4be0-9839-a1bd8c4ec62b">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/682e85d2-1814-4ce8-84a4-6fc45dc98dcb">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/464d5257-728b-4411-ac76-559b9b07c93a">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_03.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_04.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_05.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_06.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_07.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_08.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_09.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_10.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_11.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_12.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_13.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_14.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_15.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_16.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_17.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_18.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_19.png">
 <meta property="article:published_time" content="2024-08-08T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.747Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.386Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/142736316-5995d329-63d1-4b63-acd5-7f3da9f90cf9.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -123,7 +123,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6160a371-98be-5571-99d1-e75116e8544e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%82%92%E6%84%8F%E5%9B%B3%E7%9A%84%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHow_to_fail_VM_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHow_to_fail_VM_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHow_to_fail_VM_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="cm0osyy4a001w0nqz241mbh8u" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="cm1r6kzb6001y0nqoeyhfaqq7" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -136,7 +136,7 @@
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
 <p><a href="#1">1. Azure Guest Agent を停止して意図的にAzure VM Backup エラーを発生させる仕組み</a><br><a href="#2">2. Azure Guest Agent を停止してバックアップを故意に失敗させる方法 (手順概略) </a><br><a href="#3">3. バックアップを故意に失敗させる方法 (Windows VM の場合)</a><br>  <a href="#3-1">【補足】 Windows Firewall を用いた方法</a><br><a href="#4">4. バックアップを故意に失敗させる方法 (Linux VM の場合)</a><br><a href="#5">5. バックアップを故意に失敗させる方法 (共有ディスクをアタッチする)</a></p>
 <hr>
-<h2 id="1-Azure-Guest-Agent-を停止して意図的にAzure-VM-Backup-エラーを発生させる仕組み"><a href="#1-Azure-Guest-Agent-を停止して意図的にAzure-VM-Backup-エラーを発生させる仕組み" class="headerlink" title="1. Azure Guest Agent を停止して意図的にAzure VM Backup エラーを発生させる仕組み "></a>1. Azure Guest Agent を停止して意図的にAzure VM Backup エラーを発生させる仕組み <a id="1"></a></h2><p>VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Recovery Services コンテナー (Azure Backup service) との通信ができない状態を作ります。<br>この状態で Backup 取得をしようとすると、VM agent と通信できないためにエラー (Error Code ”UserErrorGuestAgentStatusUnavailable”) が発生し、Backup が失敗となります。<br><img src="https://user-images.githubusercontent.com/71251920/142736316-5995d329-63d1-4b63-acd5-7f3da9f90cf9.png" alt="How_to_Backup_Fail"></p>
+<h2 id="1-Azure-Guest-Agent-を停止して意図的にAzure-VM-Backup-エラーを発生させる仕組み"><a href="#1-Azure-Guest-Agent-を停止して意図的にAzure-VM-Backup-エラーを発生させる仕組み" class="headerlink" title="1. Azure Guest Agent を停止して意図的にAzure VM Backup エラーを発生させる仕組み "></a>1. Azure Guest Agent を停止して意図的にAzure VM Backup エラーを発生させる仕組み <a id="1"></a></h2><p>VM 内の Windows Azure Guest Agent (VM agent) が停止させ、Azure 側の Recovery Services コンテナー (Azure Backup service) との通信ができない状態を作ります。<br>この状態で Backup 取得をしようとすると、VM agent と通信できないためにエラー (Error Code ”UserErrorGuestAgentStatusUnavailable”) が発生し、Backup が失敗となります。<br><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_01.png" alt="How_to_Backup_Fail"></p>
 <p>*VM 電源状態 がオンライン状態でなければこの方法は使えません。オフライン状態では成功してしまいます。そのため、必ずオンライン (電源起動) 状態でご実施ください。<br>下記ご参考になれば幸いです。<br>・Azure VM Backup では オフライン バックアップができるのか<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</a></p>
 <div class="alert is-warning"><p class="alert-title">警告</p><p>VM agent を停止させる方法は標準 (Standard) ポリシーでバックアップ保護されている VM のみ有効となります。</p><p>もし拡張 (Enhanced) ポリシーで保護されている VM で意図的に VM バックアップを失敗させる場合は <a href="#5">5. バックアップを故意に失敗させる方法 (共有ディスクをアタッチする)</a>をご参照ください。</p></div>
 <h2 id="2-Azure-Guest-Agent-を停止してバックアップを故意に失敗させる方法-手順概略"><a href="#2-Azure-Guest-Agent-を停止してバックアップを故意に失敗させる方法-手順概略" class="headerlink" title="2. Azure Guest Agent を停止してバックアップを故意に失敗させる方法 (手順概略) "></a>2. Azure Guest Agent を停止してバックアップを故意に失敗させる方法 (手順概略) <a id="2"></a></h2><p>・「バックアップを故意に失敗させる方法 (Windows VM の場合) 」</p>
@@ -159,21 +159,21 @@
 </blockquote>
 <h3 id="3-3-詳細手順"><a href="#3-3-詳細手順" class="headerlink" title="3.3.詳細手順"></a>3.3.詳細手順</h3><p>Backup 対象の VM : Azure portal上で作成した、Backup 対象の VM<br>Backup 対象の VM にリモートログインし、Services を開き、下記 2 つのサービスに対し設定を行います。</p>
 <h4 id="RdAgent"><a href="#RdAgent" class="headerlink" title="RdAgent"></a>RdAgent</h4><p>最初に “RdAgent” を停止、スタートアップ無効にします。<br>・Sercives 一覧の画面で “RdAgent” を右クリック → “Properties” を選択します。<br>・Startup type で “Disabled” を選択 → Service status で Stop を選択 → Service 停止プロセスが完了した後、”OK” を選択します。<br>・Services 一覧の画面にて、 RbAgent の Status の Running が消えており、Startup Type が Disabled 場合、 RbAgent の停止が完了となります。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/142736495-97875c34-577f-483d-a46e-c1f7c53d5133.png" alt="RdAgent"></p>
+<p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_02.png" alt="RdAgent"></p>
 <h4 id="Windows-Azure-Guest-Agent"><a href="#Windows-Azure-Guest-Agent" class="headerlink" title="Windows Azure Guest Agent"></a>Windows Azure Guest Agent</h4><p>次に “Windows Azure Guest Agent” を停止、スタートアップ無効にします。<br>・Sercives 一覧の画面で “Windows Azure Guest Agent” を右クリック → “Properties” を選択します。<br>・Startup type で “Disabled” を選択 → Service status で Stop を選択 → Service 停止プロセスが完了した後、 “OK” を選択します。<br>・Services 一覧の画面にて、 Windows Azure Guest Agent の Status の Running が消えており、Startup Type が Disabled 場合、 Windows Azure Guest Agent の停止が完了となります。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/142736485-37260305-e959-4d30-ab6d-d2167dc8096c.png" alt="WindowsAzureGuestAgent"></p>
+<p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_03.png" alt="WindowsAzureGuestAgent"></p>
 <p>以上で、VM 側の設定は完了となります。</p>
 <h4 id="Backup-を実施し、エラーの確認"><a href="#Backup-を実施し、エラーの確認" class="headerlink" title="Backup を実施し、エラーの確認"></a>Backup を実施し、エラーの確認</h4><p>・Azure portal を開いていただき、VM のページに移動 → “バックアップ” を選択 → “今すぐパックアップ” を選択。<br>この操作により、バックアップが開始されます。<br>・ 次に Backup の状態を確認します。<br>　Recovery Services コンテナーのページへ移動 → “バックアップ ジョブ” を選択後、最新の Backup の “View details” を選択します。<br>このページで Backup の状態を確認することができます。<br>結果が表示されるまで数時間掛かりますので、 定期的に (1 時間おきなど) 更新して確認することをお勧めいたします。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/142736544-cc800afd-14c5-400d-9b9c-74d535fdf1f4.png" alt="FailCheck_01"></p>
+<p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_04.png" alt="FailCheck_01"></p>
 <p>・Take Snapshot の Status が Failed 、Error Code <strong>”UserErrorGuestAgentStatusUnavailable”</strong> となり、失敗し完了となります。本環境では 5 時間 25 分かかりました。　</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/142736548-c5cc94e5-4343-4c81-9b8b-52ef8c46f4d8.png" alt="FailCheck_02"></p>
+<p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_05.png" alt="FailCheck_02"></p>
 <h4 id="Agentの再起動"><a href="#Agentの再起動" class="headerlink" title="Agentの再起動"></a>Agentの再起動</h4><p>・エラーの発生確認完了後は、 VM に再度ログインして頂き、各 Agent の Service properties 画面で、Start up type を <strong>“Automatic”</strong> に、Service Status で <strong>“Start”</strong> を選択し、 Agent を再度起動させてください。</p>
 <h2 id="【補足】-Windows-Firewall-を用いた方法"><a href="#【補足】-Windows-Firewall-を用いた方法" class="headerlink" title="【補足】 Windows Firewall を用いた方法 "></a>【補足】 Windows Firewall を用いた方法 <a id="3-1"></a></h2><p>なお、Windows 内部 のローカルファイアウォールから 宛先 168.63.129.16 宛の通信をブロックしていただくことでも同様にエラーを発生させることが可能です。</p>
 <blockquote>
 <p>リモートアドレス (宛先 IP) :  168.63.129.16<br>操作 : ブロック<br>上記以外はすべて 任意 </p>
 </blockquote>
-<p>Windows Server　2016 をご利用の場合は虫眼鏡窓から “Firewall” と検索いただくことで設定可能です。<br><img src="https://user-images.githubusercontent.com/71251920/158552820-74147994-3072-4ee8-ae17-c6b92f9b7e36.png" alt="WindowsFW_01"></p>
-<p>下記例ではすでに、”Block 168.63.129.16” という規則を作成した後の画面ショットです。<br>設定内容は上述の通りでございます。送信の規則 → 新しい規則 から設定ください。<br><img src="https://user-images.githubusercontent.com/71251920/158552815-e3b99fb6-78ec-4c3e-ba4e-616777a25e03.png" alt="WindowsFW_02"></p>
+<p>Windows Server　2016 をご利用の場合は虫眼鏡窓から “Firewall” と検索いただくことで設定可能です。<br><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_06.png" alt="WindowsFW_01"></p>
+<p>下記例ではすでに、”Block 168.63.129.16” という規則を作成した後の画面ショットです。<br>設定内容は上述の通りでございます。送信の規則 → 新しい規則 から設定ください。<br><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_07.png" alt="WindowsFW_02"></p>
 <p>なお、 168.63.129.16 への通信は特殊な通信のため、NSG では制御することができません。<br>下記ご参考にしてくだされば幸いです。<br>・1. Azure VM Backup の 通信要件について - Azure VM Backup の通信要件や処理の流れについて<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1">https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#1</a></p>
 <h2 id="4．バックアップを故意に失敗させる方法-Linux-VM-の場合-所要時間-2時間～6時間"><a href="#4．バックアップを故意に失敗させる方法-Linux-VM-の場合-所要時間-2時間～6時間" class="headerlink" title="4．バックアップを故意に失敗させる方法 (Linux VM の場合) (所要時間 : 2時間～6時間) "></a>4．バックアップを故意に失敗させる方法 (Linux VM の場合) (所要時間 : 2時間～6時間) <a id="4"></a></h2><h3 id="4-1-環境"><a href="#4-1-環境" class="headerlink" title="4.1. 環境"></a>4.1. 環境</h3><p>本項目では以下の環境で検証を実施しております。</p>
 <h4 id="OS"><a href="#OS" class="headerlink" title="OS"></a>OS</h4><blockquote>
@@ -216,24 +216,24 @@
 <blockquote>
 <p>・以下のコマンドで、 Agent の Service の状態を確認できます。<br>（Ubuntu の場合）systemctl status walinuxagent<br>（Ubuntu 以外の場合）systemctl status waagent</p>
 </blockquote>
-<h4 id="Ubuntu-環境の実行例"><a href="#Ubuntu-環境の実行例" class="headerlink" title="Ubuntu 環境の実行例"></a>Ubuntu 環境の実行例</h4><p><img src="https://user-images.githubusercontent.com/71251920/142736815-a24dfbd6-e29c-4a08-8c90-604a8fdbae81.png" alt="Ubuntu_agent_stop_01"></p>
-<p><img src="https://user-images.githubusercontent.com/71251920/142736817-6a1fee8c-7bd2-4d5b-9bc5-c9e8ffda6f7b.png" alt="Ubuntu_agent_stop_02"><br>RHEL 環境の実行例<br><img src="https://user-images.githubusercontent.com/71251920/142736834-94f46a91-f554-4de5-b6ea-7089b9607ff5.png" alt="RHEL_agent_stop_01"></p>
-<p><img src="https://user-images.githubusercontent.com/71251920/142736825-0e6032e3-f26f-4760-9f0b-5772d4a02168.png" alt="RHEL_agent_stop_02"></p>
+<h4 id="Ubuntu-環境の実行例"><a href="#Ubuntu-環境の実行例" class="headerlink" title="Ubuntu 環境の実行例"></a>Ubuntu 環境の実行例</h4><p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_08.png" alt="Ubuntu_agent_stop_01"></p>
+<p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_09.png" alt="Ubuntu_agent_stop_02"><br>RHEL 環境の実行例<br><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_10.png" alt="RHEL_agent_stop_01"></p>
+<p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_11.png" alt="RHEL_agent_stop_02"></p>
 <h4 id="バックアップの実行-amp-失敗確認"><a href="#バックアップの実行-amp-失敗確認" class="headerlink" title="バックアップの実行 &amp; 失敗確認"></a>バックアップの実行 &amp; 失敗確認</h4><p>バックアップを実行し、バックアップ ジョブ が失敗したことを確認します。<br>*バックアップの実行から失敗まで数時間かかる場合がございます。<br>Status が Failed 、Error Code <strong>”UserErrorGuestAgentStatusUnavailable”</strong> となり、失敗し完了となります。本環境では 4 時間 20 分かかりました。　</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/142736877-fd3190e0-596a-4a51-b0d2-f682b2a34a3e.png" alt="FailCheck_03"></p>
+<p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_12.png" alt="FailCheck_03"></p>
 <h4 id="Agent-の再起動-1"><a href="#Agent-の再起動-1" class="headerlink" title="Agent の再起動"></a>Agent の再起動</h4><p>バックアップ エラーの検証後は、以下コマンドで waagent を再開します。</p>
 <blockquote>
 <p>（Ubuntu の場合）<br>   sudo systemctl start walinuxagent<br>   sudo systemctl enable walinuxagent<br>   systemctl status walinuxagent<br>（Ubuntu 以外の場合）<br>   sudo systemctl start waagent<br>   sudo systemctl enable waagent<br>   systemctl status waagent</p>
 </blockquote>
-<h4 id="Ubuntu-環境の実行例-1"><a href="#Ubuntu-環境の実行例-1" class="headerlink" title="Ubuntu 環境の実行例"></a>Ubuntu 環境の実行例</h4><p><img src="https://user-images.githubusercontent.com/71251920/142736924-8e033f57-60aa-449e-bb34-2fb5c410d633.png" alt="Ubuntu_agent_start"></p>
-<h4 id="RHEL-環境の実行例"><a href="#RHEL-環境の実行例" class="headerlink" title="RHEL 環境の実行例"></a>RHEL 環境の実行例</h4><p><img src="https://user-images.githubusercontent.com/71251920/142736923-43d72bbc-e3cb-46a4-825b-a4b71fe61d9a.png" alt="RHEL_agent_start"></p>
+<h4 id="Ubuntu-環境の実行例-1"><a href="#Ubuntu-環境の実行例-1" class="headerlink" title="Ubuntu 環境の実行例"></a>Ubuntu 環境の実行例</h4><p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_13.png" alt="Ubuntu_agent_start"></p>
+<h4 id="RHEL-環境の実行例"><a href="#RHEL-環境の実行例" class="headerlink" title="RHEL 環境の実行例"></a>RHEL 環境の実行例</h4><p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_14.png" alt="RHEL_agent_start"></p>
 <h2 id="5-バックアップを故意に失敗させる方法-共有ディスクをアタッチする"><a href="#5-バックアップを故意に失敗させる方法-共有ディスクをアタッチする" class="headerlink" title="5. バックアップを故意に失敗させる方法 (共有ディスクをアタッチする)"></a>5. バックアップを故意に失敗させる方法 (共有ディスクをアタッチする)<a id="5"></a></h2><p>Guest Agent を手動で停止させる方法以外に「共有ディスクを一時的にアタッチしてバックアップ ジョブを失敗させる」方法もご紹介します。<br>こちらはバックアップ ジョブ開始直後 ～ 30 分程度で「UserErrorSharedDiskBackupNotSupported」エラーで失敗する見込みです。</p>
 <h3 id="5-1-詳細手順"><a href="#5-1-詳細手順" class="headerlink" title="5.1.詳細手順"></a>5.1.詳細手順</h3><p>バックアップ 対象の VM に、Azure ポータル画面上で一時的に共有ディスクを追加アタッチします。<br>・Azure マネージド ディスクに対して共有ディスクを有効にする - Azure Virtual Machines | Microsoft Learn<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/virtual-machines/disks-shared-enable?tabs=azure-portal">https://learn.microsoft.com/ja-jp/azure/virtual-machines/disks-shared-enable?tabs=azure-portal</a></p>
-<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/cc0c7196-64d1-482d-9c7d-c8b4d959eedf" alt="image01"></p>
-<p>(「SharedDisk02」は、共有ディスクリソースになっています)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/81a8a957-edca-4ef5-9858-ea29cacd4df5" alt="image02"></p>
-<p>「今すぐバックアップ」をトリガーします。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/7d5e8fc1-7f76-4be0-9839-a1bd8c4ec62b" alt="image03"></p>
-<p>バックアップ ジョブ開始直後 ～ 30 分程度でバックアップ ジョブが「UserErrorSharedDiskBackupNotSupported」エラーにて失敗する見込みです。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/682e85d2-1814-4ce8-84a4-6fc45dc98dcb" alt="image04"></p>
-<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/464d5257-728b-4411-ac76-559b9b07c93a" alt="image05"></p>
+<p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_15.png" alt="image01"></p>
+<p>(「SharedDisk02」は、共有ディスクリソースになっています)<br><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_16.png" alt="image02"></p>
+<p>「今すぐバックアップ」をトリガーします。<br><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_17.png" alt="image03"></p>
+<p>バックアップ ジョブ開始直後 ～ 30 分程度でバックアップ ジョブが「UserErrorSharedDiskBackupNotSupported」エラーにて失敗する見込みです。<br><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_18.png" alt="image04"></p>
+<p><img src="/blog/AzureVMBackup/How_to_fail_VM_backup/How_to_fail_VM_backup_19.png" alt="image05"></p>
 <p>バックアップ ジョブ エラーを確認した後は、一時的にアタッチしていた共有ディスクをデタッチします。</p>
 <p>Azure VM Backup を意図的に失敗させる方法について、ご案内は以上となります。</p>
 

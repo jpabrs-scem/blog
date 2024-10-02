@@ -13,14 +13,14 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="みなさんこんにちは、Azure Backup サポートです。今回は、Active Directory ( 以下、AD ) のドメインに参加している Azure 仮想マシンを、Azure VM Backup にて保護する場合に、よくお問い合わせいただく内容についてご案内いたします。 前提Azure VM Backupにて保護することを前提とすると、「ドメインに参加している Azure 仮想マシンを">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/204124178-ccfee87e-1cf2-4de9-8cb9-4a1053847bf9.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/ActiveDirectory_backup_01.png">
 <meta property="article:published_time" content="2023-08-04T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.743Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.312Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/96324317/204124178-ccfee87e-1cf2-4de9-8cb9-4a1053847bf9.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/ActiveDirectory_backup_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -105,7 +105,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8177be42-263a-5b17-b018-c24caceb0c02%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AB%E5%8F%82%E5%8A%A0%E3%81%97%E3%81%A6%E3%81%84%E3%82%8BVM%E3%81%AEAzure+VM+Backup%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FActiveDirectory_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FActiveDirectory_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FActiveDirectory_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/" data-id="cm0osyy3z00160nqz6f370gzd" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/" data-id="cm1r6kzaw00160nqofyflfadg" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -126,7 +126,7 @@
 <h5 id="「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した-Azure-仮想マシンはネットワーク的に元の環境と疎通ができない場合"><a href="#「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した-Azure-仮想マシンはネットワーク的に元の環境と疎通ができない場合" class="headerlink" title="「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した Azure 仮想マシンはネットワーク的に元の環境と疎通ができない場合"></a>「復元の種類：新しい仮想マシンの作成」にて復元、かつ、復元した Azure 仮想マシンはネットワーク的に元の環境と疎通ができない場合</h5><p>既存ドメインのドメインアカウントを有した状態にて復元されますが、ネットワークが異なることによってドメイン コントローラーとの疎通ができないため、同じドメイン上には戻されません。</p>
 <h5 id="「復元の種類：ディスクの置換」の場合"><a href="#「復元の種類：ディスクの置換」の場合" class="headerlink" title="「復元の種類：ディスクの置換」の場合"></a>「復元の種類：ディスクの置換」の場合</h5><p>IP アドレスや NSG の設定は、「復元」ジョブ指示前と同じものを利用できます。<br>また、可用性セットを設定していた場合も、再び可用性セットの構成を利用することが可能です。</p>
 <h2 id="Q2-「復元」ジョブ完了後は、ドメインの再参加は必要ですか？"><a href="#Q2-「復元」ジョブ完了後は、ドメインの再参加は必要ですか？" class="headerlink" title="Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？"></a><a id="Q2"></a>Q2. 「復元」ジョブ完了後は、ドメインの再参加は必要ですか？</h2><p><strong>A2</strong>  下記ドキュメントの通り、復元によってセキュア チャネルが破損する可能性もございますので、基本的には再度ドメイン参加を実施ください。<br>・ドメインにログオンできない ～ セキュア チャネルの破損 ～ | Microsoft Docs<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/archive/blogs/jpntsblog/256">https://learn.microsoft.com/en-us/archive/blogs/jpntsblog/256</a></p>
-<h2 id="Q3-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合、「復元」後は-ドメイン-ID-は変わってしまいますか？"><a href="#Q3-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合、「復元」後は-ドメイン-ID-は変わってしまいますか？" class="headerlink" title="Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？"></a><a id="Q3"></a>Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？</h2><p><strong>A3</strong> 「復元」を指示する際に、ユーザーにて選択した「復元ポイント」時点のドメイン ID にて復元されます。<br><img src="https://user-images.githubusercontent.com/96324317/204124178-ccfee87e-1cf2-4de9-8cb9-4a1053847bf9.png" alt="RestoreVM"></p>
+<h2 id="Q3-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合、「復元」後は-ドメイン-ID-は変わってしまいますか？"><a href="#Q3-ドメインに参加している-Azure-仮想マシンを、Azure-VM-Backup-にてバックアップ・リストアする場合、「復元」後は-ドメイン-ID-は変わってしまいますか？" class="headerlink" title="Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？"></a><a id="Q3"></a>Q3. ドメインに参加している Azure 仮想マシンを、Azure VM Backup にてバックアップ・リストアする場合、「復元」後は ドメイン ID は変わってしまいますか？</h2><p><strong>A3</strong> 「復元」を指示する際に、ユーザーにて選択した「復元ポイント」時点のドメイン ID にて復元されます。<br><img src="/blog/AzureVMBackup/ActiveDirectory_backup/ActiveDirectory_backup_01.png" alt="RestoreVM"></p>
 <h2 id="Q4-ドメイン-コントローラー-DC-自体の-Azure-VM-Backup-におけるバックアップ・復元について詳細を教えてください"><a href="#Q4-ドメイン-コントローラー-DC-自体の-Azure-VM-Backup-におけるバックアップ・復元について詳細を教えてください" class="headerlink" title="Q4. ドメイン コントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください"></a><a id="Q4"></a>Q4. ドメイン コントローラー ( = DC ) 自体の Azure VM Backup におけるバックアップ・復元について詳細を教えてください</h2><p><strong>A4</strong> 詳細は下記公開ドキュメントに取りまとめていますので、こちらをご参照ください。<br>・Active Directory ドメイン コントローラーのバックアップおよび復元<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/active-directory-backup-restore">https://learn.microsoft.com/ja-jp/azure/backup/active-directory-backup-restore</a></p>
 <h2 id="Q5-ドメイン内のひとつの-ドメイン-コントローラーを復元する場合、何らかの考慮が必要になりますか？"><a href="#Q5-ドメイン内のひとつの-ドメイン-コントローラーを復元する場合、何らかの考慮が必要になりますか？" class="headerlink" title="Q5. ドメイン内のひとつの ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？"></a><a id="Q5"></a>Q5. ドメイン内のひとつの ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？</h2><p><strong>A5</strong> ドメイン内に生存している DC が存在している場合、ひとつの DC を復元する方法に配慮は不要です。<br>例えば同一ドメイン内に DC が 2 台存在する構成の場合には、片方の DC だけ障害が発生する分には Azure Portal からの復元を実施できます。</p>
 <h2 id="Q6-ドメイン内のすべての-ドメイン-コントローラーを復元する場合、何らかの考慮が必要になりますか？"><a href="#Q6-ドメイン内のすべての-ドメイン-コントローラーを復元する場合、何らかの考慮が必要になりますか？" class="headerlink" title="Q6. ドメイン内のすべての ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？"></a><a id="Q6"></a>Q6. ドメイン内のすべての ドメイン コントローラーを復元する場合、何らかの考慮が必要になりますか？</h2><p><strong>A6</strong> 考慮が必要です。<br>下記は必要な作業として記載しておりますが、その他に必要な作業は、お客様の環境によって異なってまいりますので、お手数をおかけしますが Azure サポートではなく、Windows OS - Active Directory 向けへお問い合わせを起票いただきますよう、よろしくお願い申し上げます。<br>===<br>すべての DC を復元する場合、グループ ポリシー オブジェクトに関する情報が格納されている SYSVOL 共有の複製において、SYSVOL 共有の　“親” を定義する必要がございます。<br>生存した DC が存在する場合は、生存した DC が自動的に “親” となりますが、すべての DC を復元した場合は、すべての DC が “子” として復元されるため、明示的に “親” を定義する作業が必要になります。<br>簡単ではございますが、手順を作成いたしましたので、ご案内させていただきます。</p>

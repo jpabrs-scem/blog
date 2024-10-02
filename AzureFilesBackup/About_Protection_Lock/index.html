@@ -13,19 +13,19 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。Azure ファイル共有のバックアップを構成すると、バックアップ データやストレージ アカウントが誤って削除されないように、削除ロック 「AzureBackupProtectionLock」 がストレージ アカウントに設定されます。今回は、Azure ファイル共有のバックアップによって、ストレージ アカウントに設定される削除ロック 「Azu">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://github.com/user-attachments/assets/6521b8f8-67f1-4b48-863f-41afb943fbd3">
-<meta property="og:image" content="https://github.com/user-attachments/assets/5b358e3c-edfc-4a9c-90c4-71a540581f69">
-<meta property="og:image" content="https://github.com/user-attachments/assets/a736e344-22d9-4009-86be-c357f3392602">
-<meta property="og:image" content="https://github.com/user-attachments/assets/d0ab1a1b-fa35-4c44-b371-1bde80209c07">
-<meta property="og:image" content="https://github.com/user-attachments/assets/65a4c4c8-c800-4d04-ab2a-ce8512be102a">
-<meta property="og:image" content="https://github.com/user-attachments/assets/9535dd6e-f3b9-41c5-bfc6-a6fc4cfe0d45">
-<meta property="og:image" content="https://github.com/user-attachments/assets/7df7d32c-6273-4e1f-9529-62e6afd16609">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_03.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_04.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_05.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_06.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_07.png">
 <meta property="article:published_time" content="2024-08-27T15:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.727Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.198Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Files Backup">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/user-attachments/assets/6521b8f8-67f1-4b48-863f-41afb943fbd3">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -110,7 +110,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+e914ce26-daca-5952-a40c-a582b6c67f01%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzureBackupProtectionLock+%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureFilesBackup%2FAbout_Protection_Lock%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureFilesBackup%2FAbout_Protection_Lock.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureFilesBackup%2FAbout_Protection_Lock.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/" data-id="cm0osyy3o000g0nqz1jl8528v" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/" data-id="cm1r6kzal000g0nqoh1rohqwx" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -132,7 +132,7 @@
 <li>ロック名 : <code>AzureBackupProtectionLock</code>  </li>
 <li>ロックの種類 : 削除  </li>
 <li>スコープ : ストレージ アカウント  </li>
-<li>メモ : <code>Auto-created by Azure Backup for storage accounts registered with a Recovery Services Vault. This lock is intended to guard against deletion of backups due to accidental deletion of the storage account. (Recovery Services Vaultに登録されているストレージアカウントに対してAzure Backupによって自動的に作成されます。このロックは、ストレージアカウントの誤った削除によるバックアップの削除を防ぐことを目的としています。)</code><br><img src="https://github.com/user-attachments/assets/6521b8f8-67f1-4b48-863f-41afb943fbd3"></li>
+<li>メモ : <code>Auto-created by Azure Backup for storage accounts registered with a Recovery Services Vault. This lock is intended to guard against deletion of backups due to accidental deletion of the storage account. (Recovery Services Vaultに登録されているストレージアカウントに対してAzure Backupによって自動的に作成されます。このロックは、ストレージアカウントの誤った削除によるバックアップの削除を防ぐことを目的としています。)</code><br><img src="/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_01.png"></li>
 </ul>
 <h2 id="AzureBackupProtectionLock-が設定されるタイミング"><a href="#AzureBackupProtectionLock-が設定されるタイミング" class="headerlink" title="AzureBackupProtectionLock が設定されるタイミング"></a><a id="2"></a>AzureBackupProtectionLock が設定されるタイミング</h2><p>削除ロック 「AzureBackupProtectionLock」 は、主に下記のタイミングで設定されます。  </p>
 <ul>
@@ -150,11 +150,11 @@
 </blockquote>
 <p>手順 :  </p>
 <ol>
-<li><p>削除ロック 「AzureBackupProtectionLock」 を削除する<br>ストレージ アカウントの <code>設定 &gt; ロック</code> へアクセスし、削除ロック 「AzureBackupProtectionLock」 を削除します<br><img src="https://github.com/user-attachments/assets/5b358e3c-edfc-4a9c-90c4-71a540581f69"></p>
+<li><p>削除ロック 「AzureBackupProtectionLock」 を削除する<br>ストレージ アカウントの <code>設定 &gt; ロック</code> へアクセスし、削除ロック 「AzureBackupProtectionLock」 を削除します<br><img src="/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_02.png"></p>
 </li>
 <li><p>(不要なファイル削除などの作業完了後) 削除ロック 「AzureBackupProtectionLock」 を再設定する  </p>
 <ul>
-<li>ストレージ アカウントの <code>設定 &gt; ロック</code> へアクセスし、削除ロックを追加します<br><img src="https://github.com/user-attachments/assets/a736e344-22d9-4009-86be-c357f3392602">  </li>
+<li>ストレージ アカウントの <code>設定 &gt; ロック</code> へアクセスし、削除ロックを追加します<br><img src="/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_03.png">  </li>
 <li>もしくは、Azure ファイル共有のオンデマンド バックアップを手動で実行します (自動的に、削除ロック 「AzureBackupProtectionLock」 が設定されます)<br>詳細な手順につきましては、下記ドキュメントをご確認ください。  <ul>
 <li>オンデマンド バックアップの実行手順 :<br>オンデマンド バックアップ ジョブを実行する / Azure portal で Azure ファイル共有をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files?tabs=backup-center#run-an-on-demand-backup-job">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-files?tabs=backup-center#run-an-on-demand-backup-job</a>  </li>
 </ul>
@@ -166,12 +166,12 @@
 <div class="alert is-important"><p class="alert-title">重要</p><p>Azure Backup サービスといたしましては、<strong>削除ロック 「AzureBackupProtectionLock」 を有効化していただくことを推奨</strong>いたします。</p><p>もし削除ロック 「AzureBackupProtectionLock」 を設定せずにバックアップを構成し、意図せずスナップショットが消失したとしても、基本的には弊社側での復旧対応は致しかねますこと、予めご了承ください。  </p></div>
 <p>手順 :  </p>
 <ul>
-<li><p>Recovery Services コンテナーからバックアップを構成する場合<br>Recovery Services コンテナーの <code>はじめに &gt; バックアップ &gt; Azure ファイル共有のバックアップ構成</code> にアクセスします。<br><img src="https://github.com/user-attachments/assets/d0ab1a1b-fa35-4c44-b371-1bde80209c07"><br>バックアップの構成画面のストレージ アカウントの選択時に、<strong>「ストレージ アカウントのロックを有効にする」のチェックを外してください</strong>。<br><img src="https://github.com/user-attachments/assets/65a4c4c8-c800-4d04-ab2a-ce8512be102a"></p>
+<li><p>Recovery Services コンテナーからバックアップを構成する場合<br>Recovery Services コンテナーの <code>はじめに &gt; バックアップ &gt; Azure ファイル共有のバックアップ構成</code> にアクセスします。<br><img src="/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_04.png"><br>バックアップの構成画面のストレージ アカウントの選択時に、<strong>「ストレージ アカウントのロックを有効にする」のチェックを外してください</strong>。<br><img src="/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_05.png"></p>
 </li>
-<li><p>Azure ファイル共有からバックアップを構成する場合<br>Azure ファイル共有の <code>操作 &gt; バックアップ</code> へアクセスし、<strong>「Storage account lock」のトグル ボタンを無効にしてください</strong>。<br><img src="https://github.com/user-attachments/assets/9535dd6e-f3b9-41c5-bfc6-a6fc4cfe0d45"></p>
+<li><p>Azure ファイル共有からバックアップを構成する場合<br>Azure ファイル共有の <code>操作 &gt; バックアップ</code> へアクセスし、<strong>「Storage account lock」のトグル ボタンを無効にしてください</strong>。<br><img src="/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_06.png"></p>
 </li>
 </ul>
-<div class="alert is-warning"><p class="alert-title">警告</p><p>Azure ファイル共有を新規作成する際に表示される Azure Backup 構成画面では、ストレージ アカウントのロックを無効化させる設定は行えません。</p><p>もしストレージ アカウントのロックを無効化させたい場合には、<strong>バックアップを構成せずに</strong> Azure ファイル共有を作成し、その後に Azure Backup を構成してください。</p><p><img src="https://github.com/user-attachments/assets/7df7d32c-6273-4e1f-9529-62e6afd16609"></p></div>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>Azure ファイル共有を新規作成する際に表示される Azure Backup 構成画面では、ストレージ アカウントのロックを無効化させる設定は行えません。</p><p>もしストレージ アカウントのロックを無効化させたい場合には、<strong>バックアップを構成せずに</strong> Azure ファイル共有を作成し、その後に Azure Backup を構成してください。</p><p><img src="/blog/AzureFilesBackup/About_Protection_Lock/About_Protection_Lock_07.png"></p></div>
 <div class="alert is-warning"><p class="alert-title">警告</p><p>同じストレージ アカウントにデプロイされている、他の Azure ファイル共有で既に Azure Backup を構成している場合には、ストレージ アカウントが Recovery Services コンテナーのバックアップ インフラストラクチャとして既に登録されているため、ストレージ アカウントのロック無効化設定が行えません。</p><p>ストレージ アカウントのロック無効化設定が行えるのは、Recovery Services コンテナーのバックアップ インフラストラクチャに登録されていないストレージ アカウントにデプロイされている Azure ファイル共有のバックアップを構成する時のみ (ストレージ アカウント配下の Azure ファイル共有全てにおいて、Azure Backup が構成されていないとき) であることにご注意ください。  </p></div>
 
       

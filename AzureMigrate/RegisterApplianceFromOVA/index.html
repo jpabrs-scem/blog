@@ -13,27 +13,27 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="こんにちは! ABRS チームの 朴 です。今回は VMware VM を Azure に移行する (エージェントレス型方式) 際、既にパブリック エンドポイントを利用する Azure Migrate プロジェクトに登録されているAzure Migrate アプライアンスをプライベート エンドポイント接続を利用する他の Azure Migrate プロジェクトに再登録する方法についてご説明させて">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872769-21b6ce08-c80e-46b1-836b-229f2b7b4c4b.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872774-607827ea-0021-4727-b0bf-3eb4fd74b0ef.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872777-8eed04ff-cb7a-4b48-9467-8d23de5b0192.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872782-439979cc-d4b9-4a1f-8b3c-f3d00a28927f.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872732-3d2fc9ec-812f-4d86-a2e5-0587ece25875.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872742-e1eb0069-9776-42e9-9dcb-d884ba943019.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872748-7feab4d1-4067-48de-9a70-16a336a8fa3d.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872749-267f9bc4-15fb-45aa-aca0-03405074d0a9.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872751-ddc0bf98-e560-4dfc-b745-67a3076a9f12.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872756-d446ea96-38e5-4fec-abbe-ee2acb833e76.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872760-e94e88e6-7f75-4db3-808b-545a0459194f.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872762-5fd9e062-2f81-4938-b83c-da04eec2fd72.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872766-4e725e3d-2d74-4de0-975b-0e3d6a089ce8.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/183872768-06315655-ce47-432d-b3e7-9aa08fe683bf.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_03.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_04.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_05.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_06.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_07.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_08.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_09.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_10.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_11.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_12.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_13.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_14.png">
 <meta property="article:published_time" content="2022-08-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.735Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.205Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure Migrate">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/183872769-21b6ce08-c80e-46b1-836b-229f2b7b4c4b.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -118,7 +118,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+b5cafcdf-8b0a-5d2c-b4a4-5e75ace7192f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Migrate+%E3%81%A7+PE+%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AB+ova+%E3%81%8B%E3%82%89%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%97%E3%81%9F%E3%82%A2%E3%83%97%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%82%B9%E3%82%92%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8B%E6%89%8B%E9%A0%86%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureMigrate%2FRegisterApplianceFromOVA%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureMigrate%2FRegisterApplianceFromOVA.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureMigrate%2FRegisterApplianceFromOVA.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/" data-id="cm0osyy3q000l0nqz9jm9asaa" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/" data-id="cm1r6kzan000l0nqohza52wjq" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -129,9 +129,9 @@
 <p><a href="#1">1. 接続方法ごとの Azure Migrate アプライアンスのデプロイ方法について</a><br>   <a href="#1-1">  1.1 パブリック エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法</a><br>   <a href="#1-2">  1.2 プライベート エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法</a><br><a href="#2">2. OVA ファイルから Azure Migrate アプライアンスをデプロイした後、プライベート エンドポイント接続を利用する他の Azure Migrate プロジェクトに再登録する手順</a></p>
 <hr>
 <h2 id="1-接続方法ごとの-Azure-Migrate-アプライアンスのデプロイ方法について"><a href="#1-接続方法ごとの-Azure-Migrate-アプライアンスのデプロイ方法について" class="headerlink" title=" 1. 接続方法ごとの Azure Migrate アプライアンスのデプロイ方法について"></a><a id="1"></a> 1. 接続方法ごとの Azure Migrate アプライアンスのデプロイ方法について</h2><h3 id="1-1-パブリック-エンドポイントを使用する-Azure-Migrate-を使用する時-V2A-エージェントレス型方式-の-Azure-Migrate-アプライアンスのデプロイ方法"><a href="#1-1-パブリック-エンドポイントを使用する-Azure-Migrate-を使用する時-V2A-エージェントレス型方式-の-Azure-Migrate-アプライアンスのデプロイ方法" class="headerlink" title=" 1-1 パブリック エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法"></a><a id="1-1"></a> 1-1 パブリック エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法</h3><p> パブリック エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) :<br> この場合は、Azure Portal から OVA ファイル および ZIP ファイルがダウンロードできます。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/183872769-21b6ce08-c80e-46b1-836b-229f2b7b4c4b.png"></p>
+<p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_01.png"></p>
 <h3 id="1-2-プライベート-エンドポイントを使用する-Azure-Migrate-を使用する時-V2A-エージェントレス型方式-の-Azure-Migrate-アプライアンスのデプロイ方法"><a href="#1-2-プライベート-エンドポイントを使用する-Azure-Migrate-を使用する時-V2A-エージェントレス型方式-の-Azure-Migrate-アプライアンスのデプロイ方法" class="headerlink" title="1-2 プライベート エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法"></a><a id="1-2"></a>1-2 プライベート エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) の Azure Migrate アプライアンスのデプロイ方法</h3><p> プライベート エンドポイントを使用する Azure Migrate を使用する時 (V2A エージェントレス型方式) : この際は、Azure Portal から Zip ファイルのみがダウンロードできます。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/183872774-607827ea-0021-4727-b0bf-3eb4fd74b0ef.png"></p>
+<p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_02.png"></p>
 <p>Azure Migrate アプライアンスのデプロイ方法については、公開情報をご参照いただければ幸いです。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/migrate-appliance">https://docs.microsoft.com/ja-jp/azure/migrate/migrate-appliance</a></p>
 <p>上記の画面によりますと、ダウンロードするファイル (OVA ファイルと ZIP ファイル) が異なるため、パブリック エンドポイントを使用する Azure Migrate プロジェクトに登録した Azure Migrate アプライアンスは、<br>プライベート エンドポイントを使用する Azure Migrate プロジェクトに再登録できないのではないかと読み取れますが、実際そうではありません。<br><a href="#2">2. の手順</a> にて Azure Migrate アプライアンスを切り替えて登録する方法を紹介します。
 　</p>
@@ -139,29 +139,29 @@
 <p>(注: <strong>既に Azure Migrate アプライアンスが存在するサーバーで実施する場合、既存の構成がクリーンアップされますのでご注意ください。</strong>)</p>
 </blockquote>
 <h3 id="2-1-Azure-Migrate-Project-を-2-つ作成します。"><a href="#2-1-Azure-Migrate-Project-を-2-つ作成します。" class="headerlink" title=" 2-1. Azure Migrate Project を 2 つ作成します。"></a><a id="2-1"></a> 2-1. Azure Migrate Project を 2 つ作成します。</h3><p>  a. Azure Migrate Project 1 : (プロジェクト名 : PublicEndpoint, V2A エージェントレス、パブリックエンドポイント接続)<br>  b. Azure Migrate Project 2 : (プロジェクト名 : PrivateEP, V2A エージェントレス、プライベートエンドポイント接続)                                </p>
-<p><img src="https://user-images.githubusercontent.com/71251920/183872777-8eed04ff-cb7a-4b48-9467-8d23de5b0192.png"></p>
-<p><img src="https://user-images.githubusercontent.com/71251920/183872782-439979cc-d4b9-4a1f-8b3c-f3d00a28927f.png"></p>
+<p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_03.png"></p>
+<p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_04.png"></p>
 <h3 id="2-2-Azure-Migrate-Project-1-PublicEndpoint-から-OVA-ファイルをダウンロードし、Azure-Migrate-アプライアンスをデプロイします。"><a href="#2-2-Azure-Migrate-Project-1-PublicEndpoint-から-OVA-ファイルをダウンロードし、Azure-Migrate-アプライアンスをデプロイします。" class="headerlink" title=" 2-2. Azure Migrate Project 1 (PublicEndpoint) から OVA ファイルをダウンロードし、Azure Migrate アプライアンスをデプロイします。"></a><a id="2-2"></a> 2-2. Azure Migrate Project 1 (PublicEndpoint) から OVA ファイルをダウンロードし、Azure Migrate アプライアンスをデプロイします。</h3><p>a. ova ファイルは、Azure Portal もしくは 公開情報からダウンロードいただいても問題ございません。<br>・アプライアンス - Vmware  - Azure Migrate アプライアンス<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/migrate-appliance#appliance---vmware">https://docs.microsoft.com/ja-jp/azure/migrate/migrate-appliance#appliance---vmware</a>                        </p>
-<p><img src="https://user-images.githubusercontent.com/71251920/183872732-3d2fc9ec-812f-4d86-a2e5-0587ece25875.png"><br><img src="https://user-images.githubusercontent.com/71251920/183872742-e1eb0069-9776-42e9-9dcb-d884ba943019.png"></p>
+<p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_05.png"><br><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_06.png"></p>
 <h3 id="2-3-検証環境は、ova-ファイルからデプロイした-Azure-Migrate-アプライアンスを-Azure-Migrate-Project-1-PublicEndpoint-に登録している状態を前提としています。"><a href="#2-3-検証環境は、ova-ファイルからデプロイした-Azure-Migrate-アプライアンスを-Azure-Migrate-Project-1-PublicEndpoint-に登録している状態を前提としています。" class="headerlink" title=" 2-3. 検証環境は、ova ファイルからデプロイした Azure Migrate アプライアンスを Azure Migrate Project 1 (PublicEndpoint) に登録している状態を前提としています。"></a><a id="2-3"></a> 2-3. 検証環境は、ova ファイルからデプロイした Azure Migrate アプライアンスを Azure Migrate Project 1 (PublicEndpoint) に登録している状態を前提としています。</h3><p>ova ファイルからデプロイした Azure Migrate アプライアンスを Azure Migrate Project 1 (PublicEndpoint) に登録する手順は、割愛させていただきます。                </p>
 <h3 id="2-4-アプライアンスをホストするサーバー上のフォルダーに-インストーラー-スクリプトを含んだ-ZIP-ファイル-AzureMigrateInstaller-zip-を抽出します。"><a href="#2-4-アプライアンスをホストするサーバー上のフォルダーに-インストーラー-スクリプトを含んだ-ZIP-ファイル-AzureMigrateInstaller-zip-を抽出します。" class="headerlink" title=" 2-4. アプライアンスをホストするサーバー上のフォルダーに インストーラー スクリプトを含んだ ZIP ファイル (AzureMigrateInstaller.zip) を抽出します。"></a><a id="2-4"></a> 2-4. アプライアンスをホストするサーバー上のフォルダーに インストーラー スクリプトを含んだ ZIP ファイル (AzureMigrateInstaller.zip) を抽出します。</h3><p>a. インストーラー スクリプトを含んだ ZIP ファイル (AzureMigrateInstaller.zip) 、Azure Portal もしくは公開情報からダウンロードいただいても問題ございません。<br>・スクリプトを使用してアプライアンスを設定する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/deploy-appliance-script?msclkid=1eb571a2a5ca11eca56137c5033e85e4">https://docs.microsoft.com/ja-jp/azure/migrate/deploy-appliance-script?msclkid=1eb571a2a5ca11eca56137c5033e85e4</a></p>
-<p><img src="https://user-images.githubusercontent.com/71251920/183872748-7feab4d1-4067-48de-9a70-16a336a8fa3d.png"></p>
+<p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_07.png"></p>
 <h3 id="2-5-PowerShell-スクリプトファイルを実行するため、下記のコマンドを実行します。"><a href="#2-5-PowerShell-スクリプトファイルを実行するため、下記のコマンドを実行します。" class="headerlink" title=" 2-5. PowerShell スクリプトファイルを実行するため、下記のコマンドを実行します。"></a><a id="2-5"></a> 2-5. PowerShell スクリプトファイルを実行するため、下記のコマンドを実行します。</h3><pre><code> # Set-Executionpolicy Allsigned
 </code></pre>
-<p><img src="https://user-images.githubusercontent.com/71251920/183872749-267f9bc4-15fb-45aa-aca0-03405074d0a9.png"></p>
+<p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_08.png"></p>
 <h3 id="2-6-PowerShell-ディレクトリを、ダウンロードした-ZIP-ファイルの内容が抽出されたフォルダーに変更し、下記のコマンドを実行します。"><a href="#2-6-PowerShell-ディレクトリを、ダウンロードした-ZIP-ファイルの内容が抽出されたフォルダーに変更し、下記のコマンドを実行します。" class="headerlink" title=" 2-6. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更し、下記のコマンドを実行します。"></a><a id="2-6"></a> 2-6. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更し、下記のコマンドを実行します。</h3><pre><code># PS C:\Users\administrator\Desktop\AzureMigrateInstaller&gt; .\AzureMigrateInstaller.ps1    
 </code></pre>
 <p> a. 下記の公開情報の技術の通り、Azure Migrate アプライアンスがすでに設定されているサーバーでスクリプト実行する場合、既存の構成がクリーンアップし、必要な構成の新しいアプライアンスが設定される仕組みとなっています。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/183872751-ddc0bf98-e560-4dfc-b745-67a3076a9f12.png"></p>
-<p><img src="https://user-images.githubusercontent.com/71251920/183872756-d446ea96-38e5-4fec-abbe-ee2acb833e76.png"></p>
-<h3 id="2-7-ova-ファイルをデプロイした時と同様に、ApplianceConfigurationManager-が自動に起動されます。"><a href="#2-7-ova-ファイルをデプロイした時と同様に、ApplianceConfigurationManager-が自動に起動されます。" class="headerlink" title=" 2-7. ova ファイルをデプロイした時と同様に、ApplianceConfigurationManager が自動に起動されます。"></a><a id="2-7"></a> 2-7. ova ファイルをデプロイした時と同様に、ApplianceConfigurationManager が自動に起動されます。</h3><p><img src="https://user-images.githubusercontent.com/71251920/183872760-e94e88e6-7f75-4db3-808b-545a0459194f.png"></p>
+<p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_09.png"></p>
+<p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_10.png"></p>
+<h3 id="2-7-ova-ファイルをデプロイした時と同様に、ApplianceConfigurationManager-が自動に起動されます。"><a href="#2-7-ova-ファイルをデプロイした時と同様に、ApplianceConfigurationManager-が自動に起動されます。" class="headerlink" title=" 2-7. ova ファイルをデプロイした時と同様に、ApplianceConfigurationManager が自動に起動されます。"></a><a id="2-7"></a> 2-7. ova ファイルをデプロイした時と同様に、ApplianceConfigurationManager が自動に起動されます。</h3><p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_11.png"></p>
 <h3 id="2-8-ApplianceConfigurationManager-が起動されたら、お客様の環境に合わせて-Azure-Migrate-アプライアンスを-Azure-Migrate-Project-2-PrivateEndpoint-に登録して頂ければと思います。"><a href="#2-8-ApplianceConfigurationManager-が起動されたら、お客様の環境に合わせて-Azure-Migrate-アプライアンスを-Azure-Migrate-Project-2-PrivateEndpoint-に登録して頂ければと思います。" class="headerlink" title=" 2-8. ApplianceConfigurationManager が起動されたら、お客様の環境に合わせて Azure Migrate アプライアンスを Azure Migrate Project 2 (PrivateEndpoint) に登録して頂ければと思います。"></a><a id="2-8"></a> 2-8. ApplianceConfigurationManager が起動されたら、お客様の環境に合わせて Azure Migrate アプライアンスを Azure Migrate Project 2 (PrivateEndpoint) に登録して頂ければと思います。</h3><p>a. Azure Migrate アプライアンスは、インターネットに接続する必要がありますので Azure Migrate アプライアンスのサーバーに Proxy が設定されている場合は、<br>下記の設定を改めてご確認頂ければと思います。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/183872762-5fd9e062-2f81-4938-b83c-da04eec2fd72.png"></p>
+<p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_12.png"></p>
 <p>b. ソース環境からプライベート エンドポイントのプライベート IP アドレスを解決するために、追加の DNS 設定が必要になる場合があります。<br>プライベート IP アドレスが使用できるよう、Azure Migrate プロジェクトの評価ツールのプロパティーから DNS 設定をダウンロードして頂き、<br>ダウンロードした DNS 設定をオンプレミスの DNS サーバーもしくはアプライアンスの Hosts ファイルへ設定し、プライベート エンドポイントの FQDN の名前解決できるように設定する必要があります。</p>
-<p><img src="https://user-images.githubusercontent.com/71251920/183872766-4e725e3d-2d74-4de0-975b-0e3d6a089ce8.png"></p>
+<p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_13.png"></p>
 <p>c. VM Ware から Azure へ移行する際、エージェント レスやエージェント ベースの方式に関係なく、vCenter Server のアクセス許可が必要となります。</p>
 <p>d. プライベート エンドポイントを使用した Azure Migrate の設定手順は下記の公開情報をご参照ください。<br>・サポート要件と考慮事項 - プライベート エンドポイントで Azure Migrate を使用する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/how-to-use-azure-migrate-with-private-endpoints">https://docs.microsoft.com/ja-jp/azure/migrate/how-to-use-azure-migrate-with-private-endpoints</a><br>・パブリック エンドポイント接続を使用して Azure Migrate プロジェクトのデータを ExpressRoute 経由でレプリケートする<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/replicate-using-expressroute">https://docs.microsoft.com/ja-jp/azure/migrate/replicate-using-expressroute</a><br>・ネットワーク接続に関する問題のトラブルシューティング - Azure Migrate<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/migrate/troubleshoot-network-connectivity#possible-causes-1">https://docs.microsoft.com/ja-jp/azure/migrate/troubleshoot-network-connectivity#possible-causes-1</a></p>
-<h3 id="2-9-下記の画面になると、登録完了を意味します。"><a href="#2-9-下記の画面になると、登録完了を意味します。" class="headerlink" title=" 2-9. 下記の画面になると、登録完了を意味します。"></a><a id="2-9"></a> 2-9. 下記の画面になると、登録完了を意味します。</h3><p><img src="https://user-images.githubusercontent.com/71251920/183872768-06315655-ce47-432d-b3e7-9aa08fe683bf.png"></p>
+<h3 id="2-9-下記の画面になると、登録完了を意味します。"><a href="#2-9-下記の画面になると、登録完了を意味します。" class="headerlink" title=" 2-9. 下記の画面になると、登録完了を意味します。"></a><a id="2-9"></a> 2-9. 下記の画面になると、登録完了を意味します。</h3><p><img src="/blog/AzureMigrate/RegisterApplianceFromOVA/RegisterApplianceFromOVA_14.png"></p>
 <p>本記事の内容は以上となります。</p>
 
       

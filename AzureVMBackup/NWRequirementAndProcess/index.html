@@ -13,14 +13,14 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure VM Backup における通信要件や処理の流れに関して、具体的なお問い合わせ例を交えて公式ドキュメントを補足する形でご説明させていただきます。 目次 1. Azure VM Backup の 通信要件について 1-1.参考 URL2. Azure VM Backup の処理の流れ 2-1. Take Snapsh">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/71251920/154117538-c4961564-fd9e-4e77-91ee-bff235da3704.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/NWRequirementAndProcess_01.png">
 <meta property="article:published_time" content="2022-02-16T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.747Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.395Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/71251920/154117538-c4961564-fd9e-4e77-91ee-bff235da3704.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/NWRequirementAndProcess_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -105,7 +105,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ce87fa62-2335-565e-be9d-1e6db5c9e263%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AE%E9%80%9A%E4%BF%A1%E8%A6%81%E4%BB%B6%E3%82%84%E5%87%A6%E7%90%86%E3%81%AE%E6%B5%81%E3%82%8C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FNWRequirementAndProcess%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FNWRequirementAndProcess.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FNWRequirementAndProcess.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="cm0osyy4c00230nqz6t59740p" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="cm1r6kzb900260nqo39fc7j48" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -152,7 +152,7 @@
 <h2 id="2-Azure-VM-Backup-の処理の流れ"><a href="#2-Azure-VM-Backup-の処理の流れ" class="headerlink" title="2. Azure VM Backup の処理の流れ"></a><a id="2"></a>2. Azure VM Backup の処理の流れ</h2><p>まず、下記の公式ドキュメントをご覧ください。<br>・Azure VM バックアップの概要 - バックアップ プロセス<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process</a></p>
 <p><strong>上記公式ドキュメントをご覧いただいた前提で記載させていただきます。</strong><br>オンライン (VM 起動中) の Azure VM Backup では VM agent の機能の拡張機能としてバックアップ拡張機能を利用します。<br>オフラインの場合は VM 内部と連携しないため、VM agent が対応していないような VM でもバックアップをクラッシュ整合性で取得することが可能です。<br>なお、オフライン状態 とは VM が <strong>“状態 : 停止済み (割り当て解除)”</strong> である状態を指します。</p>
 <p>ご参考にまでに下記も併せてご覧ください。<br>参考ブログ記事<br>・Azure VM Backup では オフライン バックアップができるのか<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</a><br>・クラッシュ整合性 - Azure VM Backupにおける整合性について<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3">https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#3</a></p>
-<p>Azure VM Backupでは バックアップ ジョブの画面で確認できるように、順番に Take Snapshot と Transfer data to vault の 2 つの大きなフェーズ  (Sub Task) がございます。これら 2 つのフェーズが完了して初めてバックアップ ジョブとして完了となります。<br><img src="https://user-images.githubusercontent.com/71251920/154117538-c4961564-fd9e-4e77-91ee-bff235da3704.png"></p>
+<p>Azure VM Backupでは バックアップ ジョブの画面で確認できるように、順番に Take Snapshot と Transfer data to vault の 2 つの大きなフェーズ  (Sub Task) がございます。これら 2 つのフェーズが完了して初めてバックアップ ジョブとして完了となります。<br><img src="/blog/AzureVMBackup/NWRequirementAndProcess/NWRequirementAndProcess_01.png"></p>
 <h3 id="2-1-Take-Snapshot-フェーズ"><a href="#2-1-Take-Snapshot-フェーズ" class="headerlink" title="2.1 Take Snapshot フェーズ"></a><a id="2-1"></a>2.1 Take Snapshot フェーズ</h3><p>まず、オンライン バックアップの場合、バックアップ拡張機能によって OS 内部と連携し静止点をとり、スナップショット データを取得します。その際のスナップショット データはユーザーからは見えない (マネージドな) ローカル物理ホスト上で取得します。<br>次に、オフライン バックアップの場合 は OS 内部と連携せずスナップショットを取得します。<br>Azure VM Backup において VM と連携する処理は Take Snapshot フェーズのみでございます。<br>そのため、Take Snapshot フェーズが完了すれば VM の再起動や運用によってはアップデートや DB の再開などを行っていただいてもかまいません。<br>Azure VM Backup はオンラインでもオフラインでもバックアップすることが可能ですが、<strong>Take Snapshot フェーズ</strong> に電源操作をされた場合には対象のバックアップが失敗する可能性がございます。<br> Transfer data to vault フェーズが終わっていなくても Take Snapshot フェーズが終わっていれば有事の際にはインスタントリストア機能を用いてリストアすることも可能です。<br>・Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability">https://docs.microsoft.com/ja-jp/azure/backup/backup-instant-restore-capability</a></p>
 <p>なお、前回のバックアップ ジョブが Take Snapshot フェーズの場合、後続のバックアップ ジョブは失敗する仕様となっております。</p>
 <p>その他 以下参考になれば幸いです。<br>・Azure Backup は、アプリケーションのパフォーマンスに影響を与えますか?<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#azure-backup----------------------------">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#azure-backup----------------------------</a><br>抜粋 : “VM スナップショットの作成には数分かかります。この段階では、アプリケーションのパフォーマンスに対する影響はほとんどありません。”</p>

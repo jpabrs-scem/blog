@@ -13,23 +13,23 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法についてお伝えします。 ヒントSQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しております。">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/4baf88bf-216c-42ad-aef4-aca75108afb1">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/e3f1e1d4-f3eb-41db-a07f-59a7c8e59399">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/cd475c7f-a266-475d-a76a-47da64b1b7e4">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/451d67c3-07df-44e0-9521-165773004f78">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/3992f893-17fa-4629-bd3d-e87713c61db5">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/cdad2f29-f7aa-4e07-a8c9-0a10b57a2e64">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/66d6c303-da57-403c-a2d6-1db766ff2c03">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/93c32f74-2bcc-42ee-a57c-8c142d7dfa04">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/898d1c2e-7c84-48a6-9818-d159883e64ae">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/23248c75-35d3-4453-84f6-dab43917f7d8">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_03.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_04.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_05.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_06.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_07.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_08.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_09.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_10.png">
 <meta property="article:published_time" content="2023-10-01T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.743Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.253Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure SQL Backup">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/124880886/4baf88bf-216c-42ad-aef4-aca75108afb1">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -114,7 +114,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ac54bbf9-1798-52e5-927f-d3fffcc94774%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BProxy+Server+%E3%82%92%E7%B5%8C%E7%94%B1%E3%81%97%E3%81%9F%E3%80%81SQL+Server+DB+%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B+Azure+Backup+%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSQLBackup%2FHow_To_SQL_Backup_Via_Proxy%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSQLBackup%2FHow_To_SQL_Backup_Via_Proxy.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSQLBackup%2FHow_To_SQL_Backup_Via_Proxy.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/" data-id="cm0osyy3s000q0nqz5rut5bdo" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/" data-id="cm1r6kzap000q0nqo15hkcs97" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -139,22 +139,23 @@
 <li>(実行コマンド)<br><code>psexec -i -s &quot;c:\Program Files\Internet Explorer\iexplore.exe&quot;​</code></li>
 </ul>
 </li>
-<li><p>以下の画面が出た場合には、<code>Agree</code> を選択します。<br> <img src="https://github.com/jpabrs-scem/blog/assets/124880886/4baf88bf-216c-42ad-aef4-aca75108afb1" alt="PsExec License Agreement"></p>
+<li><p>以下の画面が出た場合には、<code>Agree</code> を選択します。<br> <img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_01.png" alt="PsExec License Agreement"></p>
 </li>
-<li><p>Internet Explorer が起動されるため、<code>[Tools] &gt; [Internet Options] &gt; [Connections] &gt; [LAN settings]</code>の順に移動します。  </p>
- <img src="https://github.com/jpabrs-scem/blog/assets/124880886/e3f1e1d4-f3eb-41db-a07f-59a7c8e59399" width="400"></li>
-<li><p><code>Proxy Server</code> 欄の以下項目のチェックを有効化し、Proxy Server の IP およびポート番号を入力します。<br><code>Use a proxy server for your LAN …</code></p>
- <img src="https://github.com/jpabrs-scem/blog/assets/124880886/cd475c7f-a266-475d-a76a-47da64b1b7e4" width="400"></li>
+<li><p>Internet Explorer が起動されるため、<code>[Tools] &gt; [Internet Options] &gt; [Connections] &gt; [LAN settings]</code>の順に移動します。<br> <img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_02.png"></p>
+</li>
+<li><p><code>Proxy Server</code> 欄の以下項目のチェックを有効化し、Proxy Server の IP およびポート番号を入力します。<br><code>Use a proxy server for your LAN …</code><br> <img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_03.png"></p>
+</li>
 <li><p><code>Proxy Server</code> 欄の以下項目のチェックを有効化します。<br> <code>Bypass proxy server for local addresses</code></p>
 <div class="alert is-info"><p class="alert-title">Note</p><p>VM 内の localhost 通信はプロキシから除外します。  </p></div>
- <img src="https://github.com/jpabrs-scem/blog/assets/124880886/451d67c3-07df-44e0-9521-165773004f78" width="400"></li>
-<li><p><code>Proxy Server</code> 欄の <code>[Advanced]</code> を選択します。</p>
- <img src="https://github.com/jpabrs-scem/blog/assets/124880886/3992f893-17fa-4629-bd3d-e87713c61db5" width="400"></li>
+<p> <img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_04.png"></p>
+</li>
+<li><p><code>Proxy Server</code> 欄の <code>[Advanced]</code> を選択します。<br> <img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_05.png"></p>
+</li>
 <li><p><code>Exceptions</code> 欄に、プロキシから除外する IP アドレスおよび FQDN を入力します。<br> Azure VM においては、以下の 3 項目を入力ください。  </p>
 <ul>
 <li>localhost</li>
 <li>168.63.129.16 (Wire Server)</li>
-<li>169.254.169.254 (Azure Instance Metadata Service)<img src="https://github.com/jpabrs-scem/blog/assets/124880886/cdad2f29-f7aa-4e07-a8c9-0a10b57a2e64" width="400"></li>
+<li>169.254.169.254 (Azure Instance Metadata Service)<br><img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_06.png"></li>
 </ul>
 </li>
 <li><p>各設定を <code>OK</code> ボタンを押下して保存してください。プロキシ設定は完了です。</p>
@@ -171,13 +172,11 @@
 <h2 id="4-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対して、プロキシを設定する"><a href="#4-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対して、プロキシを設定する" class="headerlink" title=" 4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、プロキシを設定する"></a><a id="4"></a> 4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、プロキシを設定する</h2><p>項目 3 にて実施した「データベースの検出」によって、VM 上にサービス アカウント ( NT Service\AzureWLBackupPluginSvc ) が作成されるため、このサービス アカウントに対してもプロキシ設定を行います。  </p>
 <div class="alert is-info"><p class="alert-title">Note</p><p>サービス アカウントのプロキシ設定は、サービス アカウントのレジストリ キーを編集することで設定しますが、</p><p>設定する一部の値の型が “REG_BINARY” となり、バイナリ データを登録する必要がございます。</p><p>設定の簡易化のため、本手順では、現在ログインしているユーザー (カレント ユーザー) のプロキシ設定を継承する PowerShell コマンド (スクリプト) を用いて、サービス アカウントのプロキシ設定を行います。  </p></div>
 <h3 id="サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対するプロキシ設定手順の詳細"><a href="#サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対するプロキシ設定手順の詳細" class="headerlink" title="サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシ設定手順の詳細"></a>サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシ設定手順の詳細</h3><ol>
-<li><p>レジストリ エディターを開き、以下パスに遷移し、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) が作成されていることを確認します。<br><code>HKEY_USERS\S-1-5-80-1631947889-4033244730-3205203906-53534054-4184208151</code>  </p>
-<img src="https://github.com/jpabrs-scem/blog/assets/124880886/66d6c303-da57-403c-a2d6-1db766ff2c03" width="500">
-
+<li><p>レジストリ エディターを開き、以下パスに遷移し、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) が作成されていることを確認します。<br><code>HKEY_USERS\S-1-5-80-1631947889-4033244730-3205203906-53534054-4184208151</code><br><img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_07.png"></p>
 <div class="alert is-warning"><p class="alert-title">警告</p><p>もし上記レジストリ キーが存在していない場合、上記項目 3 の「データベースの検出」「バックアップの有効化」が正常に完了していない可能性がございます。</p><p>あらためて、「データベースの検出」「バックアップの有効化」操作が成功していることをご確認ください。</p></div>
 </li>
-<li><p>現在ログインしているユーザー (カレント ユーザー) で、<code>[設定] &gt; [ネットワークとインターネット] &gt; [プロキシ]</code> を開き、一時的に Proxy Server を設定します。<br>上記項目 2 と同じプロキシ設定を行ってください。  </p>
- <img src="https://github.com/jpabrs-scem/blog/assets/124880886/93c32f74-2bcc-42ee-a57c-8c142d7dfa04" width="500"></li>
+<li><p>現在ログインしているユーザー (カレント ユーザー) で、<code>[設定] &gt; [ネットワークとインターネット] &gt; [プロキシ]</code> を開き、一時的に Proxy Server を設定します。<br>上記項目 2 と同じプロキシ設定を行ってください。<br> <img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_08.png"></p>
+</li>
 <li><p>下記リンク先から、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシを設定するスクリプトをダウンロードします。  </p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/12788965/SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip">SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip</a></li>
@@ -193,8 +192,7 @@
 <li>(実行コマンド)<br><code>.\SetProxyforAzureWLBackupPluginSvcfromCurrentUser.ps1</code>  </li>
 <li>スクリプトを実行すると、以下ログファイルが作成されます。<br><code>&lt;スクリプトを実行したフォルダ&gt;/AzureBackup_Set_Proxy_For_AzureWLBackup_PluginSvc_yyyyMMdd_HHmmss.log</code></li>
 </ul>
- <img src="https://github.com/jpabrs-scem/blog/assets/124880886/898d1c2e-7c84-48a6-9818-d159883e64ae" width="900">
-
+<p> <img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_09.png"></p>
 <div class="alert is-warning"><p class="alert-title">警告</p><p>本手順でご案内しているスクリプトについては、お客様の責任のもと、ご利用いただきますようお願い申し上げます。</p><p>スクリプト実行時のエラーや、想定外の問題について、当社は責任を負いかねますのでご了承ください。</p></div>
 </li>
 <li><p>現在ログインしているユーザー (カレント ユーザー) で、<code>[設定] &gt; [ネットワークとインターネット] &gt; [プロキシ]</code> を開き、Proxy Server の設定を元に戻します。</p>
@@ -232,7 +230,8 @@
 </ul>
 </li>
 </ul>
- <img src="https://github.com/jpabrs-scem/blog/assets/124880886/23248c75-35d3-4453-84f6-dab43917f7d8" width="800"></li>
+<p> <img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_10.png"></p>
+</li>
 </ol>
 <h2 id="5-SQL-Server-DB-に対する-Azure-Backup「今すぐバックアップ」を実行"><a href="#5-SQL-Server-DB-に対する-Azure-Backup「今すぐバックアップ」を実行" class="headerlink" title=" 5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行"></a><a id="5"></a> 5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行</h2><p>Azure ポータル画面上で設定した、バックアップ ポリシーに従った次回の スケジュールバックアップが成功することを確認いただく、もしくは「今すぐバックアップ」を実行してオンデマンド バックアップが成功することをご確認ください。  </p>
 <ul>

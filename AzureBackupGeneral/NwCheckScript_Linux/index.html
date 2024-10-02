@@ -13,15 +13,15 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、下記ブログにてご案内している「2. Linux VM における Azure Backup 疎通確認」スクリプトの実行結果について、実行結果の見方・Azure Backup において確認にすべきポイントなどをご紹介いたします。 ・2. Linux VM における Azure Backup 疎通確認　https:&#x2F;&#x2F;jpabrs-sce">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/9f9b597d-6a5f-4180-9d8e-141d11eb5e34">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/f4a0cdbc-8d19-497e-93cd-3d5872f68534">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/NwCheckScript_Linux/NwCheckScript_Linux_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/NwCheckScript_Linux/NwCheckScript_Linux_02.png">
 <meta property="article:published_time" content="2024-01-10T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.715Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.178Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="how to">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/9f9b597d-6a5f-4180-9d8e-141d11eb5e34">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/NwCheckScript_Linux/NwCheckScript_Linux_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -106,7 +106,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+3d5e7453-67c9-52b1-a55d-4f88ef85a348%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E7%96%8E%E9%80%9A%E7%A2%BA%E8%AA%8D%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C%E7%B5%90%E6%9E%9C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+%28Linux%29%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FNwCheckScript_Linux%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FNwCheckScript_Linux.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FNwCheckScript_Linux.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/NwCheckScript_Linux/" data-id="cm0osyy3h00050nqzfxid8g3w" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/NwCheckScript_Linux/" data-id="cm1r6kzaf00050nqo8fblhgk5" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -122,8 +122,8 @@
 <p>・2. Linux VM における Azure Backup 疎通確認<br>　<a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/#2">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/#2</a></p>
 <p>(1) 疎通確認スクリプトを実行したマシン情報の出力<br>(2) プロキシ設定の確認<br>(3) 「ファイルの回復」時に必要な宛先への「nslookup」「nc」コマンド結果<br>(4) Azure Backup への「nslookup」「nc」「curl」コマンド結果<br>(5) Azure Storage への「nslookup」「nc」「curl」コマンド結果<br>(6) Microsoft Entra ID への「nslookup」「nc」「curl」コマンド結果</p>
 <p>それでは疎通確認スクリプト結果ログ (CheckNWResult_(ホスト名)_(YYYYMMDDHHMM).log) 上で確認すべきポイントを説明します。</p>
-<h2 id="2-プロキシ設定の確認"><a href="#2-プロキシ設定の確認" class="headerlink" title=" 2. プロキシ設定の確認"></a><a id="2"></a> 2. プロキシ設定の確認</h2><p>Linux OS のマシン上で、プロキシ サーバーを経由するよう設定しているかどうかを確認しています。<br>下図のように、空白行の場合は「http_proxy」「https_proxy」のプロキシ設定は無いと判断します。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/9f9b597d-6a5f-4180-9d8e-141d11eb5e34"></p>
-<p>いっぽう 下図のように出力されている場合は、プロキシ設定を行っていると判断します。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/f4a0cdbc-8d19-497e-93cd-3d5872f68534"></p>
+<h2 id="2-プロキシ設定の確認"><a href="#2-プロキシ設定の確認" class="headerlink" title=" 2. プロキシ設定の確認"></a><a id="2"></a> 2. プロキシ設定の確認</h2><p>Linux OS のマシン上で、プロキシ サーバーを経由するよう設定しているかどうかを確認しています。<br>下図のように、空白行の場合は「http_proxy」「https_proxy」のプロキシ設定は無いと判断します。<br><img src="/blog/AzureBackupGeneral/NwCheckScript_Linux/NwCheckScript_Linux_01.png"></p>
+<p>いっぽう 下図のように出力されている場合は、プロキシ設定を行っていると判断します。<br><img src="/blog/AzureBackupGeneral/NwCheckScript_Linux/NwCheckScript_Linux_02.png"></p>
 <h2 id="3-疎通確認スクリプト結果を確認する際のポイント"><a href="#3-疎通確認スクリプト結果を確認する際のポイント" class="headerlink" title=" 3. 疎通確認スクリプト結果を確認する際のポイント"></a><a id="3"></a> 3. 疎通確認スクリプト結果を確認する際のポイント</h2><p>プロキシ設定情報を出力した後は<br>Azure Backup 処理時に、シナリオによっては必要となる 下記 3 つの Azure サービスとの通信を、おもに「nslookup」「nc」「curl」コマンドで確認していきます。<br>　・Azure Backup サービス<br>　・Azure Storage サービス<br>　・Microsoft Entra ID サービス</p>
 <h4 id="ポイント-リージョンによって確認すべき-FQDN-が変わる可能性があります"><a href="#ポイント-リージョンによって確認すべき-FQDN-が変わる可能性があります" class="headerlink" title="(ポイント) リージョンによって確認すべき FQDN が変わる可能性があります"></a>(ポイント) リージョンによって確認すべき FQDN が変わる可能性があります</h4><p>疎通確認スクリプト上の FQDN (例：pod01-rec2.<font color="DeepPink">jpw</font>.backup.windowsazure.com) はあくまで、Azure Backup サービスで使用される FQDN のうちの 1 つです。<br>「jpw」と記載されている通り、疎通確認スクリプトでは、例として西日本リージョンや東日本リージョンで使用されている Azure Backup サービスとの通信を確認しています。<br>お客様が利用するリージョンによって、通信確立が必要な FQDN は変更されます。<br>これは Azure Storage サービスにおいても同様です。</p>
 <p>(参考) MARSエージェントを使ったバックアップで必要な通信要件<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent#url-and-ip-access">https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-mars-agent#url-and-ip-access</a></p>

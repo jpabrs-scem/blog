@@ -13,21 +13,21 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="こんにちは、Azure Backup サポートです。今回は Azure Backup での異なる可用性ゾーンへの復元 ( &#x3D; クロス ゾーン リストア &#x2F; CZR ) についてご紹介します。今回ご紹介する内容は、それぞれの公開情報に掲載されておりますが、一つのページに集約されておりません。よくお問い合わせいただく内容ですので、本記事では情報を集約化してお伝えします。 目次 1. CZR を行うた">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/4a433214-3f04-4212-994c-c21851896d71">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/63cfa831-c538-456c-8804-cf8bc24edaec">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/014f7a8d-8c30-4721-a339-be3856f4059b">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/98ef24ee-50eb-4fc4-8c7b-af5035a18a7d">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/0d293ccf-94ac-4553-b938-3712bd2703a0">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/5979f86a-2f54-49ff-b783-3590e52fe4ea">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/c3448a33-c9de-4aa3-86f3-90600f6aa8a5">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/c9b22d52-6058-4b94-b498-e67892d7150f">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/CZR_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/CZR_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/CZR_03.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/CZR_04.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/CZR_05.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/CZR_06.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/CZR_07.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/CZR_08.png">
 <meta property="article:published_time" content="2024-05-31T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.743Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.340Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/109163295/4a433214-3f04-4212-994c-c21851896d71">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/CZR_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -112,7 +112,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+c78e928b-f85e-58cd-bdc9-83594fd11dc9%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%82%AF%E3%83%AD%E3%82%B9+%E3%82%BE%E3%83%BC%E3%83%B3+%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2+%28CZR%29+%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FCZR%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FCZR.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FCZR.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/" data-id="cm0osyy43001g0nqz4u822d4a" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CZR/" data-id="cm1r6kzb0001g0nqo4fl7gw8i" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -129,8 +129,8 @@
 <li>クロス リージョン リストア (CRR) を行う場合、ゾーン固定 VM であること</li>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#encryption-of-azure-vm-backups">暗号化された Azure VM</a> ではないこと</li>
 </ul>
-<h4 id="Azure-VM-が特定の可用性ゾーンに固定されているかどうかを確認する方法"><a href="#Azure-VM-が特定の可用性ゾーンに固定されているかどうかを確認する方法" class="headerlink" title="Azure VM が特定の可用性ゾーンに固定されているかどうかを確認する方法"></a>Azure VM が特定の可用性ゾーンに固定されているかどうかを確認する方法</h4><p>ご参考までに、Azure VM が可用性ゾーンに固定されているかどうかの、Azure ポータル画面での確認方法を説明いたします。<br>VMの概要欄に「可用性ゾーン xxx」 と表示されていれば、表示されているゾーンに固定されており、「可用性ゾーン xxx」 といった表示がない場合はゾーン固定されていないと判断できます。<br>たとえば、下記画像の VM 「CZR-stand-z1」は可用性ゾーン「ゾーン1」に固定されている状態です。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/4a433214-3f04-4212-994c-c21851896d71" width="600px"></p>
-<p>一方で下記画像の VM 「CZR-standard」はどのゾーンにも固定されていない状態となります。<br>(この場合は可用性ゾーンは空欄になります。)<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/63cfa831-c538-456c-8804-cf8bc24edaec" width="600px"></p>
+<h4 id="Azure-VM-が特定の可用性ゾーンに固定されているかどうかを確認する方法"><a href="#Azure-VM-が特定の可用性ゾーンに固定されているかどうかを確認する方法" class="headerlink" title="Azure VM が特定の可用性ゾーンに固定されているかどうかを確認する方法"></a>Azure VM が特定の可用性ゾーンに固定されているかどうかを確認する方法</h4><p>ご参考までに、Azure VM が可用性ゾーンに固定されているかどうかの、Azure ポータル画面での確認方法を説明いたします。<br>VMの概要欄に「可用性ゾーン xxx」 と表示されていれば、表示されているゾーンに固定されており、「可用性ゾーン xxx」 といった表示がない場合はゾーン固定されていないと判断できます。<br>たとえば、下記画像の VM 「CZR-stand-z1」は可用性ゾーン「ゾーン1」に固定されている状態です。<br><img src="/blog/AzureVMBackup/CZR/CZR_01.png"></p>
+<p>一方で下記画像の VM 「CZR-standard」はどのゾーンにも固定されていない状態となります。<br>(この場合は可用性ゾーンは空欄になります。)<br><img src="/blog/AzureVMBackup/CZR/CZR_02.png"></p>
 <h3 id="1-2-Recovery-Services-コンテナーの条件"><a href="#1-2-Recovery-Services-コンテナーの条件" class="headerlink" title="1-2. Recovery Services コンテナーの条件"></a><a id="1-2"></a>1-2. Recovery Services コンテナーの条件</h3><p>CZR は以下の条件を満たす Recovery Services コンテナーで行うことができます。  </p>
 <ul>
 <li>Recovery Services コンテナーのストレージ レプリケーションの種類が「ゾーン冗長」、または「geo 冗長」かつ <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-cross-region-restore">CRR</a> が有効になっていること  </li>
@@ -140,12 +140,12 @@
 <div class="alert is-success"><p class="alert-title">ヒント</p><p>CRR については下記の弊社ブログにて紹介しております。</p><p>・ Azure VM Backup におけるクロス リージョン リストア (CRR) について | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)</p><p>　 <a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/">https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/</a>  </p>
 <hr>
 <p>セカンダリ リージョン (ペア リージョン) について、および可用性ゾーンをサポートしているリージョンについては下記ドキュメントをご覧ください。</p><p>・ Azure のリージョン間レプリケーション | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/reliability/cross-region-replication-azure#azure-paired-regions">https://learn.microsoft.com/ja-jp/azure/reliability/cross-region-replication-azure#azure-paired-regions</a></p><p>・ Availability Zones をサポートする Azure サービス | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support">https://learn.microsoft.com/ja-jp/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support</a>  </p></div>
-<h4 id="Azure-Portal-で-Recovery-Services-コンテナー-の「ストレージ-レプリケーションの種類」を確認する方法"><a href="#Azure-Portal-で-Recovery-Services-コンテナー-の「ストレージ-レプリケーションの種類」を確認する方法" class="headerlink" title="Azure Portal で Recovery Services コンテナー の「ストレージ レプリケーションの種類」を確認する方法"></a>Azure Portal で Recovery Services コンテナー の「ストレージ レプリケーションの種類」を確認する方法</h4><p>ご参考までに、「ストレージ レプリケーションの種類」が「ゾーン冗長」に設定している場合の Azure ポータル画面上の見え方を説明いたします。<br>該当の Recovery Services コンテナー &gt; 設定 - プロパティ &gt; バックアップ構成 - 更新 ボタン から「ストレージ レプリケーションの種類」が確認できます。<br>たとえば、下記画像の Recovery Services コンテナーでは「ゾーン冗長」が設定されています。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/014f7a8d-8c30-4721-a339-be3856f4059b" width="800px">  </p>
+<h4 id="Azure-Portal-で-Recovery-Services-コンテナー-の「ストレージ-レプリケーションの種類」を確認する方法"><a href="#Azure-Portal-で-Recovery-Services-コンテナー-の「ストレージ-レプリケーションの種類」を確認する方法" class="headerlink" title="Azure Portal で Recovery Services コンテナー の「ストレージ レプリケーションの種類」を確認する方法"></a>Azure Portal で Recovery Services コンテナー の「ストレージ レプリケーションの種類」を確認する方法</h4><p>ご参考までに、「ストレージ レプリケーションの種類」が「ゾーン冗長」に設定している場合の Azure ポータル画面上の見え方を説明いたします。<br>該当の Recovery Services コンテナー &gt; 設定 - プロパティ &gt; バックアップ構成 - 更新 ボタン から「ストレージ レプリケーションの種類」が確認できます。<br>たとえば、下記画像の Recovery Services コンテナーでは「ゾーン冗長」が設定されています。<br><img src="/blog/AzureVMBackup/CZR/CZR_03.png">  </p>
 <div class="alert is-success"><p class="alert-title">ヒント</p><p>Recovery Services コンテナーで既にバックアップを構成している場合は「ストレージ レプリケーションの種類」を変更することができません。</p><p>「ストレージ レプリケーションの種類」の変更が必要な場合は下記ドキュメントをご参照ください。</p><p>・ Recovery Services コンテナーを作成して構成する - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy">https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy</a></p></div>
 <h4 id="Azure-Portal-で-復旧ポイントの「回復の種類」を確認する方法"><a href="#Azure-Portal-で-復旧ポイントの「回復の種類」を確認する方法" class="headerlink" title="Azure Portal で 復旧ポイントの「回復の種類」を確認する方法"></a>Azure Portal で 復旧ポイントの「回復の種類」を確認する方法</h4><p>ご参考までに、復旧ポイントの「回復の種類」を Azure ポータル画面にて確認する方法を説明いたします。  </p>
-<p>まずは該当の Recovery Services コンテナー &gt; 保護されたアイテム - バックアップ アイテム &gt; Azure Virtual Machine ボタンを選択します。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/98ef24ee-50eb-4fc4-8c7b-af5035a18a7d" width="800px">  </p>
-<p>続いて確認したい VM の行にて、詳細 - View details ボタンを選択します。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/0d293ccf-94ac-4553-b938-3712bd2703a0"> </p>
-<p>すると選択した VM の復旧ポイント一覧が表示され、ここから「回復の種類」を確認できます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/5979f86a-2f54-49ff-b783-3590e52fe4ea"> </p>
+<p>まずは該当の Recovery Services コンテナー &gt; 保護されたアイテム - バックアップ アイテム &gt; Azure Virtual Machine ボタンを選択します。<br><img src="/blog/AzureVMBackup/CZR/CZR_04.png">  </p>
+<p>続いて確認したい VM の行にて、詳細 - View details ボタンを選択します。<br><img src="/blog/AzureVMBackup/CZR/CZR_05.png"> </p>
+<p>すると選択した VM の復旧ポイント一覧が表示され、ここから「回復の種類」を確認できます。<br><img src="/blog/AzureVMBackup/CZR/CZR_06.png"> </p>
 <div class="alert is-success"><p class="alert-title">ヒント</p><p>「スナップショット」「Vault-Standard」についての説明は下記ドキュメントをご参照ください。</p><p>・ レベル | Azure Backup 用語集 - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#tier">https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#tier</a></p></div>
 <h3 id="1-3-利用できる復元オプション"><a href="#1-3-利用できる復元オプション" class="headerlink" title=" 1-3. 利用できる復元オプション"></a><a id="1-3"></a> 1-3. 利用できる復元オプション</h3><p>CZR は次の復元を行う場合にのみ利用できます。</p>
 <ul>
@@ -153,12 +153,12 @@
 <li>ディスクの復元</li>
 </ul>
 <p>なお、<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#replace-existing-disks">既存のディスクの置き換え</a> はサポートされていません。</p>
-<h4 id="VM-の作成"><a href="#VM-の作成" class="headerlink" title="VM の作成"></a>VM の作成</h4><p>復旧ポイントから VM の新規作成を行う際、前述の条件を満たしている場合に、復元先の可用性ゾーンを指定することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/c3448a33-c9de-4aa3-86f3-90600f6aa8a5" width="600px"> </p>
+<h4 id="VM-の作成"><a href="#VM-の作成" class="headerlink" title="VM の作成"></a>VM の作成</h4><p>復旧ポイントから VM の新規作成を行う際、前述の条件を満たしている場合に、復元先の可用性ゾーンを指定することができます。<br><img src="/blog/AzureVMBackup/CZR/CZR_07.png"> </p>
 <p>具体的な復元の手順は下記の公開情報をご覧ください。  </p>
 <ul>
 <li>VM の作成 | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#create-a-vm">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#create-a-vm</a></li>
 </ul>
-<h4 id="ディスクの復元"><a href="#ディスクの復元" class="headerlink" title="ディスクの復元"></a>ディスクの復元</h4><p>復旧ポイントから ディスクの復元を行う際、前述の条件を満たしている場合に、復元先の可用性ゾーンを指定することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/109163295/c9b22d52-6058-4b94-b498-e67892d7150f" width="600px">  </p>
+<h4 id="ディスクの復元"><a href="#ディスクの復元" class="headerlink" title="ディスクの復元"></a>ディスクの復元</h4><p>復旧ポイントから ディスクの復元を行う際、前述の条件を満たしている場合に、復元先の可用性ゾーンを指定することができます。<br><img src="/blog/AzureVMBackup/CZR/CZR_08.png">  </p>
 <p>具体的な復元の手順は下記の公開情報をご覧ください。  </p>
 <ul>
 <li>ディスクを復元する | Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks</a></li>

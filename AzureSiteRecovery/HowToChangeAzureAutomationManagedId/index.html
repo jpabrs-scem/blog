@@ -13,37 +13,37 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="みなさんこんにちは、Azure Site Recovery サポートです。今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。 ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874128-5a6427e3-6899-4cf8-bfbd-024334f58aaf.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874595-4ed973c2-4611-4548-8591-da9a1cb087e6.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874725-db03352c-829b-449a-ba34-88303a551f6d.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874882-b6ccc582-13c4-4553-9d1f-9b9e4425b6db.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874916-5df9c1cb-92c0-4263-9f9c-16ece1912dd9.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224874986-a883cb50-8fe5-4f05-b0c4-4c72cdc8d2f4.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875166-74a13c8e-d825-4bf7-97a5-18dd1855a576.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875187-021d493c-8ef9-4370-af8d-3aaedb04b611.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875252-a24fbdc4-2e71-4c89-9890-7b75530eb754.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875281-150ab88d-36b1-4b95-a9a2-c4a17cbc116b.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875348-6f138351-c0af-43ac-bd3c-8ef25d3372f0.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875466-44010fb0-2420-4753-b804-7130434a902a.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875619-9e10064b-923a-4fdc-a6d9-5d641a04f188.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875673-cd3d487c-21bf-448c-9536-3cfecf19f2cb.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875714-04847fc0-45fc-4aae-9d61-584fbe1a9768.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875759-fb94ba3e-061d-4ffe-b2b3-1407ad881b8d.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875812-93a0ec82-db28-4b82-b5c5-dc930d084dde.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224875967-f561d126-42e6-4c70-9889-39f4e94793f8.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876010-8b07de47-3926-4233-8e3f-c188552281bc.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876087-d5649f14-4b30-441b-8bb6-6e2b73c4b1cd.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876152-99f45670-ee44-4220-8127-a976ab9fe546.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876230-77381459-a13e-45d2-a89f-16d85f54d8b8.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876291-5fab5687-0573-484c-b369-d26907b94b0d.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/224876315-d42595ed-2813-4fd4-99c0-163c6b9d4705.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_03.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_04.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_05.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_06.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_07.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_08.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_09.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_10.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_11.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_12.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_13.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_14.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_15.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_16.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_17.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_18.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_19.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_20.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_21.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_22.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_23.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_24.png">
 <meta property="article:published_time" content="2023-03-14T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.743Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.280Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure Site Recovery">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/96324317/224874128-5a6427e3-6899-4cf8-bfbd-024334f58aaf.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -128,7 +128,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+97d1ecda-bd59-59b1-8c11-36f90389aad7%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BASR+%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0%E3%81%AB%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B+Automation+%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AE+Managed+ID+%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" data-id="cm0osyy3u000u0nqz0h26hijz" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" data-id="cm1r6kzar000u0nqo78u06260" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -141,75 +141,75 @@
 <h3 id="作業手順"><a href="#作業手順" class="headerlink" title="作業手順"></a>作業手順</h3><ol>
 <li>Azure Portal から Recovery Services コンテナーに移動し、[概要] の JSON ビューをクリックし、ID の行に表示される /subscriptions/ から始まるリソース ID をメモします。<br>※ 手順 8 で利用します。</li>
 </ol>
-<p><img src="https://user-images.githubusercontent.com/96324317/224874128-5a6427e3-6899-4cf8-bfbd-024334f58aaf.png" alt="image1"></p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224874595-4ed973c2-4611-4548-8591-da9a1cb087e6.png" alt="image2"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_01.png" alt="image1"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_02.png" alt="image2"></p>
 <ol start="2">
 <li>Recovery Services コンテナーの [Site Recovery インフラストラクチャ] - [拡張機能の更新の設定] 画面ご利用の Automation アカウント名をご確認ください。</li>
 </ol>
-<p><img src="https://user-images.githubusercontent.com/96324317/224874725-db03352c-829b-449a-ba34-88303a551f6d.png" alt="image3"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_03.png" alt="image3"></p>
 <ol start="3">
 <li>手順 2 で確認した Automation アカウントに移動し、  JSON ビューをクリックし、ID の行に表示される /subscriptions/ から始まるリソース ID をメモします。<br>※ 手順 9 で利用します。</li>
 </ol>
-<p><img src="https://user-images.githubusercontent.com/96324317/224874882-b6ccc582-13c4-4553-9d1f-9b9e4425b6db.png" alt="image4"></p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224874916-5df9c1cb-92c0-4263-9f9c-16ece1912dd9.png" alt="image5"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_04.png" alt="image4"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_05.png" alt="image5"></p>
 <ol start="4">
 <li>Automation アカウントの [ID] - [システム割り当て済み] 画面から状態が [オン] に選択されていない場合には、[オン] を選択し、[保存] をクリックします。</li>
 </ol>
-<p><img src="https://user-images.githubusercontent.com/96324317/224874986-a883cb50-8fe5-4f05-b0c4-4c72cdc8d2f4.png" alt="image6"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_06.png" alt="image6"></p>
 <ol start="5">
 <li>Recovery Services コンテナーに戻り、[アクセス制御 (IAM)] から、Automation アカウントのマネージド ID に対して共同作成者ロールを付与します。</li>
 </ol>
 <p>・ロール : 共同作成者<br>・アクセスの割り当て先 : マネージド ID<br>・メンバー :Automation アカウント</p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875166-74a13c8e-d825-4bf7-97a5-18dd1855a576.png" alt="image7"></p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875187-021d493c-8ef9-4370-af8d-3aaedb04b611.png" alt="image8"></p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875252-a24fbdc4-2e71-4c89-9890-7b75530eb754.png" alt="image9"></p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875281-150ab88d-36b1-4b95-a9a2-c4a17cbc116b.png" alt="image10"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_07.png" alt="image7"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_08.png" alt="image8"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_09.png" alt="image9"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_10.png" alt="image10"></p>
 <ol start="6">
 <li>Automation アカウントに戻り、[Runbook] - [Runbook の作成] から新しい Runbook を作成します。</li>
 </ol>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875348-6f138351-c0af-43ac-bd3c-8ef25d3372f0.png" alt="image11"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_11.png" alt="image11"></p>
 <p>・Runbook 名 : &lt;任意&gt;<br>・Runbook の種類 : PowerShell<br>・ランタイムのバージョン : 5.1</p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875466-44010fb0-2420-4753-b804-7130434a902a.png" alt="image12"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_12.png" alt="image12"></p>
 <ol start="7">
 <li>作成された Runbook に、下記 Github に公開されている UpdateAutomationAccount.ps1 の PowerShell スクリプトをコピーして貼り付け [保存] します。</li>
 </ol>
 <p>・PowerShell スクリプト<br>　<a target="_blank" rel="noopener" href="https://github.com/AsrOneSdk/published-scripts/blob/master/automationAccount/UpdateAutomationAccount.ps1">https://github.com/AsrOneSdk/published-scripts/blob/master/automationAccount/UpdateAutomationAccount.ps1</a></p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875619-9e10064b-923a-4fdc-a6d9-5d641a04f188.png" alt="image13"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_13.png" alt="image13"></p>
 <ol start="8">
 <li>上部 [テスト ウィンドウ] からテスト画面に移動し、パラメーターを入力し [開始] をクリックします。</li>
 </ol>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875673-cd3d487c-21bf-448c-9536-3cfecf19f2cb.png" alt="image14"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_14.png" alt="image14"></p>
 <p>・VAULTRESOURCEID : 手順 1 で確認した Recovery Services コンテナーのリソース ID<br>・AUTOUPDATEACTION : Disabled<br>・AUTOMATIONACCOUNTARMID : 入力なし</p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875714-04847fc0-45fc-4aae-9d61-584fbe1a9768.png" alt="image15"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_15.png" alt="image15"></p>
 <p>完了と表示されるとテスト成功です。</p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875759-fb94ba3e-061d-4ffe-b2b3-1407ad881b8d.png" alt="image16"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_16.png" alt="image16"></p>
 <ol start="9">
 <li>パラメータ AUTOUPDATEACTION を Enabled に変更し、AUTOMATIONACCOUNTARMID にリソース ID を入力し、再度 [開始] をクリックします。</li>
 </ol>
 <p>・VAULTRESOURCEID : 手順 1 で確認した Recovery Services コンテナーのリソース ID<br>・AUTOUPDATEACTION : Enabled<br>・AUTOMATIONACCOUNTARMID : 手順 3 で確認した Automation アカウントのリソース ID</p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875812-93a0ec82-db28-4b82-b5c5-dc930d084dde.png" alt="image17"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_17.png" alt="image17"></p>
 <p>完了と表示されるとテスト成功です。</p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224875967-f561d126-42e6-4c70-9889-39f4e94793f8.png" alt="image"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_18.png" alt="image"></p>
 <ol start="10">
 <li>画面右上の [X] から画面を一度閉じ、Runbook に戻り [公開] をクリックします。</li>
 </ol>
-<p><img src="https://user-images.githubusercontent.com/96324317/224876010-8b07de47-3926-4233-8e3f-c188552281bc.png" alt="image"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_19.png" alt="image"></p>
 <ol start="11">
 <li>Runbook のステータスが “発行済み” になっていることを確認し、[スケジュールへのリンク] をクリックし、スケジュールを設定します。</li>
 </ol>
-<p><img src="https://user-images.githubusercontent.com/96324317/224876087-d5649f14-4b30-441b-8bb6-6e2b73c4b1cd.png" alt="image"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_20.png" alt="image"></p>
 <ol start="12">
 <li>[スケジュール] をクリックし、既存のスケジュールを利用するか新規スケジュールを作成します。<br>※ 既定では 0:00 に毎日ジョブが実行され、最新バージョンでない保護されたアイテムがある場合に ASR モビリティ サービス エージェントを更新する処理がトリガーされます。</li>
 </ol>
-<p><img src="https://user-images.githubusercontent.com/96324317/224876152-99f45670-ee44-4220-8127-a976ab9fe546.png" alt="image"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_21.png" alt="image"></p>
 <p>新規スケジュールを作成する場合には、任意のスケジュールを設定します。<br>例えば、日本時刻 0:00 に毎日ジョブを実行する場合、下記のように入力します。</p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224876230-77381459-a13e-45d2-a89f-16d85f54d8b8.png" alt="image"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_22.png" alt="image"></p>
 <ol start="13">
 <li>[パラメーターと実行設定] をクリックし、手順 9 で入力したパラメータを以下の通り再度入力し [OK] をクリックします。</li>
 </ol>
 <p>・VAULTRESOURCEID : 手順 1 で確認した Recovery Services コンテナーのリソース ID<br>・AUTOUPDATEACTION : Enabled<br>・AUTOMATIONACCOUNTARMID : 手順 3 で確認した Automation アカウントのリソース ID</p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224876291-5fab5687-0573-484c-b369-d26907b94b0d.png" alt="image"></p>
-<p><img src="https://user-images.githubusercontent.com/96324317/224876315-d42595ed-2813-4fd4-99c0-163c6b9d4705.png" alt="image"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_23.png" alt="image"></p>
+<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_24.png" alt="image"></p>
 <p>上記作業が完了したら、次のスケジュール日時からマネージド ID を使用した Runbook にて更新ジョブが実行されます。</p>
 <p>ASR にて使用される、マネージド ID 設定の案内は、以上となります。</p>
 

@@ -13,21 +13,21 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="皆様こんにちは、Azure Backup サポートの 山本 です。アラートのテスト等のため “Azure MARS Backup エージェントを利用したバックアップ (以下 MARS バックアップ) を失敗させたい” というお問い合わせをよくいただきます。今回は、MARS バックアップ を意図的に失敗させる方法について、ご案内いたします。 意図的に MARS バックアップ エラーを発生させる仕組">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/7d411329-6157-496b-8e20-f4c4d6d405e7">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/637e0e84-bb2f-4c06-b5a0-fb121e1d51bc">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/541354a9-8367-44d3-8672-7cec4c8a7b6c">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/9c74ce5b-b778-4976-a07c-0c917e10f939">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/1b09c4c6-3a9d-460f-abfd-f330215e834d">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/c079b915-e93d-46a9-8e55-3d49773e76cf">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/b2200f28-5b70-42ce-9dd8-12072a03261f">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/69860bc1-ec96-4e26-b2e2-72a000b81e8b">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_03.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_04.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_05.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_06.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_07.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_08.png">
 <meta property="article:published_time" content="2023-06-30T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.795Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.411Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="MARS Backup">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/7d411329-6157-496b-8e20-f4c4d6d405e7">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -112,7 +112,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+bbe19446-12b0-5d57-b201-2113cf728ad6%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMARS+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%E3%82%92%E6%84%8F%E5%9B%B3%E7%9A%84%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FMARSBackup%2FHow_to_fail_MARS_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FMARSBackup%2FHow_to_fail_MARS_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FMARSBackup%2FHow_to_fail_MARS_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/" data-id="cm0osyy4o002u0nqzcz9f0v9g" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/" data-id="cm1r6kzbk002x0nqog09d7zzy" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -123,17 +123,17 @@
 <h3 id="MARS-バックアップ-を失敗させる方法-手順"><a href="#MARS-バックアップ-を失敗させる方法-手順" class="headerlink" title="MARS バックアップ を失敗させる方法(手順)"></a>MARS バックアップ を失敗させる方法(手順)</h3><ul>
 <li>以下は MARS エージェントがインストールされているマシン上での作業となります。</li>
 </ul>
-<h4 id="1-MARSエージェントのスケジュール-バックアップ設定よりテスト用のフォルダをバックアップ対象として選択し、設定します。"><a href="#1-MARSエージェントのスケジュール-バックアップ設定よりテスト用のフォルダをバックアップ対象として選択し、設定します。" class="headerlink" title="1. MARSエージェントのスケジュール バックアップ設定よりテスト用のフォルダをバックアップ対象として選択し、設定します。"></a>1. MARSエージェントのスケジュール バックアップ設定よりテスト用のフォルダをバックアップ対象として選択し、設定します。</h4><p>その他の設定は任意の設定で問題ございません。<br>(画像では Test1 フォルダを対象として選択しています)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/7d411329-6157-496b-8e20-f4c4d6d405e7"></p>
-<h4 id="2-上記でバックアップ対象としたフォルダ名を変更します。"><a href="#2-上記でバックアップ対象としたフォルダ名を変更します。" class="headerlink" title="2. 上記でバックアップ対象としたフォルダ名を変更します。"></a>2. 上記でバックアップ対象としたフォルダ名を変更します。</h4><p>(画像では Test1 フォルダを Test1<span style="color: red; ">Test1</span> フォルダと変更しました)<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/637e0e84-bb2f-4c06-b5a0-fb121e1d51bc"></p>
+<h4 id="1-MARSエージェントのスケジュール-バックアップ設定よりテスト用のフォルダをバックアップ対象として選択し、設定します。"><a href="#1-MARSエージェントのスケジュール-バックアップ設定よりテスト用のフォルダをバックアップ対象として選択し、設定します。" class="headerlink" title="1. MARSエージェントのスケジュール バックアップ設定よりテスト用のフォルダをバックアップ対象として選択し、設定します。"></a>1. MARSエージェントのスケジュール バックアップ設定よりテスト用のフォルダをバックアップ対象として選択し、設定します。</h4><p>その他の設定は任意の設定で問題ございません。<br>(画像では Test1 フォルダを対象として選択しています)<br><img src="/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_01.png"></p>
+<h4 id="2-上記でバックアップ対象としたフォルダ名を変更します。"><a href="#2-上記でバックアップ対象としたフォルダ名を変更します。" class="headerlink" title="2. 上記でバックアップ対象としたフォルダ名を変更します。"></a>2. 上記でバックアップ対象としたフォルダ名を変更します。</h4><p>(画像では Test1 フォルダを Test1<span style="color: red; ">Test1</span> フォルダと変更しました)<br><img src="/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_02.png"></p>
 <h4 id="3-今すぐバックアップを実行します。"><a href="#3-今すぐバックアップを実行します。" class="headerlink" title="3. 今すぐバックアップを実行します。"></a>3. 今すぐバックアップを実行します。</h4><p>バックアップ期間は任意の期間で問題ありません。<br>確認画面にて、手順 1 で設定した名前変更前のフォルダが指定されてることを確認し、バックアップを実施してください。</p>
-<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/541354a9-8367-44d3-8672-7cec4c8a7b6c"></p>
-<h4 id="4-バックアップの失敗のメッセージが現れることを確認してください。"><a href="#4-バックアップの失敗のメッセージが現れることを確認してください。" class="headerlink" title="4. バックアップの失敗のメッセージが現れることを確認してください。"></a>4. バックアップの失敗のメッセージが現れることを確認してください。</h4><p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/9c74ce5b-b778-4976-a07c-0c917e10f939"></p>
-<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/1b09c4c6-3a9d-460f-abfd-f330215e834d"></p>
-<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/c079b915-e93d-46a9-8e55-3d49773e76cf"></p>
+<p><img src="/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_03.png"></p>
+<h4 id="4-バックアップの失敗のメッセージが現れることを確認してください。"><a href="#4-バックアップの失敗のメッセージが現れることを確認してください。" class="headerlink" title="4. バックアップの失敗のメッセージが現れることを確認してください。"></a>4. バックアップの失敗のメッセージが現れることを確認してください。</h4><p><img src="/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_04.png"></p>
+<p><img src="/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_05.png"></p>
+<p><img src="/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_06.png"></p>
 <h3 id="Azure-Monitor-を使用した組み込みのアラート-メール通知例"><a href="#Azure-Monitor-を使用した組み込みのアラート-メール通知例" class="headerlink" title="Azure Monitor を使用した組み込みのアラート メール通知例"></a>Azure Monitor を使用した組み込みのアラート メール通知例</h3><p>MARS バックアップを構成している Recovery Services コンテナーをスコープに含めた Azure Monitor を使用した組み込みのアラートを構成している場合、下図のようなメール通知が発報されます。</p>
 <p>・ジョブの失敗のシナリオに対して Azure Monitor のアラートを有効にする<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#turning-on-azure-monitor-alerts-for-job-failure-scenarios">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#turning-on-azure-monitor-alerts-for-job-failure-scenarios</a></p>
-<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/b2200f28-5b70-42ce-9dd8-12072a03261f"></p>
-<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/69860bc1-ec96-4e26-b2e2-72a000b81e8b"></p>
+<p><img src="/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_07.png"></p>
+<p><img src="/blog/MARSBackup/How_to_fail_MARS_backup/How_to_fail_MARS_backup_08.png"></p>
 <p>以上で MARS バックアップ を意図的に失敗させる方法に関しましてのご説明は終了となります。<br>ぜひお試しいただければと思います。</p>
 <p> （補足）その他の Azure Backup を意図的に失敗させる手順は下記にてご紹介しております。</p>
 <p>・Azure VM Backup を意図的に失敗させる方法 | Japan CSS ABRS Support Blog !! (jpabrs-scem.github.io)<br>　<a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/</a></p>

@@ -13,15 +13,15 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、 Azure Backup を利用する際のウイルス検知の除外設定  について、Azure VM Backup と MARS バックアップの場合それぞれについてご説明させていただきます。 目次 1. Azure VM Backup の場合のウイルス検知除外設定 1-1. Windows OS の場">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/141192952/c6390ca3-00d5-413b-af1a-cd1f3dda6c42">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/141192952/0b8cb085-71f5-432c-a10c-5f0ba94c8f3f">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/AV_ExcludeSetting_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/AV_ExcludeSetting_02.png">
 <meta property="article:published_time" content="2024-06-19T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.743Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.311Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://github.com/jpabrs-scem/blog/assets/141192952/c6390ca3-00d5-413b-af1a-cd1f3dda6c42">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/AV_ExcludeSetting_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -106,7 +106,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8f49b82f-baf6-51f6-a18f-40c3c4feda94%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%82%A6%E3%82%A4%E3%83%AB%E3%82%B9%E9%99%A4%E5%A4%96%E8%A8%AD%E5%AE%9A%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FAV_ExcludeSetting%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FAV_ExcludeSetting.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FAV_ExcludeSetting.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/" data-id="cm0osyy3w00110nqz11nu6aab" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/" data-id="cm1r6kzat00110nqo4h7cf46y" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -134,12 +134,12 @@
 <blockquote>
 <p>C:\Program Files\Microsoft Azure Recovery Services Agent</p>
 </blockquote>
-<p>もし MARS のインストール時に以下のように “インストール フォルダ” とは異なるフォルダに “キャッシュの場所” を指定していた場合は、指定した “キャッシュの場所” のフォルダもスキャン除外対象に別途ご指定ください。<br><img src="https://github.com/jpabrs-scem/blog/assets/141192952/c6390ca3-00d5-413b-af1a-cd1f3dda6c42" alt="MARS インストール画面"></p>
+<p>もし MARS のインストール時に以下のように “インストール フォルダ” とは異なるフォルダに “キャッシュの場所” を指定していた場合は、指定した “キャッシュの場所” のフォルダもスキャン除外対象に別途ご指定ください。<br><img src="/blog/AzureVMBackup/AV_ExcludeSetting/AV_ExcludeSetting_01.png" alt="MARS インストール画面"></p>
 <p>また、上記に加えて MARS のインストール フォルダ配下の以下プロセスもスキャン除外の対象としてご設定ください。</p>
 <blockquote>
 <p>[Install Path]\bin\cbengine.exe</p>
 </blockquote>
-<p>参考までに弊社検証環境にて Windows Defender で除外設定を行った場合のサンプル イメージを以下に記載いたします。<br>※ 指定しているフォルダ パスは前述の MARS インストール画面での設定例をベースにしております。<br><img src="https://github.com/jpabrs-scem/blog/assets/141192952/0b8cb085-71f5-432c-a10c-5f0ba94c8f3f" alt="除外設定例"><br>あくまで参考イメージでございますので、実際に指定する除外パスや指定方法については、お客様のご要件あるいはアンチウイルス ソフトの仕様に依存いたしますことにご留意ください。</p>
+<p>参考までに弊社検証環境にて Windows Defender で除外設定を行った場合のサンプル イメージを以下に記載いたします。<br>※ 指定しているフォルダ パスは前述の MARS インストール画面での設定例をベースにしております。<br><img src="/blog/AzureVMBackup/AV_ExcludeSetting/AV_ExcludeSetting_02.png" alt="除外設定例"><br>あくまで参考イメージでございますので、実際に指定する除外パスや指定方法については、お客様のご要件あるいはアンチウイルス ソフトの仕様に依存いたしますことにご留意ください。</p>
 <p>なお、上記 MARS のウイルス スキャン除外設定は下記の公式ドキュメントにも記載されております。<br>・Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング - 原因: Azure Backup の妨げになっている別のプロセスまたはウイルス対策ソフトウェア<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup</a></p>
 
       

@@ -13,19 +13,19 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="皆様こんにちは。Azure Backup サポートです。今回は、よくお問い合わせをうける「保持期限」について、取りまとめてお伝えします。公開ドキュメント上では、下記のように「最大保有期間：バックアップ頻度次第」と記載が書かれており、実際に「毎日」「毎週」のバックアップを構成した場合の最大保有期間は、ポリシー作成画面で確認するのみとなっております。 ・保有の制限　https:&#x2F;&#x2F;learn.mic">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/197381027-dcf0c231-950e-4b50-a14f-4f2d991c9616.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/197453814-73c643d9-ad3f-458c-b729-4fb7a409aab6.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/96324317/197448093-5b532557-b4e6-44de-b837-01993756862a.png">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/f5b8eb75-5796-4f5f-8658-964f44d88159">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/fff5ac05-c0e1-4b3b-b5f2-7f442aaf4bfa">
-<meta property="og:image" content="https://github.com/jpabrs-scem/blog/assets/96324317/409bcd0f-66b7-414d-9e0b-a451f6cb73d1">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_03.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_04.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_05.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_06.png">
 <meta property="article:published_time" content="2023-08-24T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-05T04:44:12.715Z">
+<meta property="article:modified_time" content="2024-10-02T01:20:29.143Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="how to">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/96324317/197381027-dcf0c231-950e-4b50-a14f-4f2d991c9616.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -110,7 +110,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f68e4eba-43a5-511f-aec3-7f34b267db34%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE+%E4%BF%9D%E6%8C%81%E6%9C%9F%E9%96%93%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FBackup_RetentionPeriod%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FBackup_RetentionPeriod.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FBackup_RetentionPeriod.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/" data-id="cm0osyy3d00010nqz6xop44pf" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/" data-id="cm1r6kzab00010nqoc4785exc" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -118,8 +118,8 @@
         <span id="more"></span>
 <p>皆様こんにちは。Azure Backup サポートです。<br>今回は、よくお問い合わせをうける「保持期限」について、取りまとめてお伝えします。<br>公開ドキュメント上では、下記のように「最大保有期間：バックアップ頻度次第」と記載が書かれており、実際に「毎日」「毎週」のバックアップを構成した場合の最大保有期間は、ポリシー作成画面で確認するのみとなっております。</p>
 <p>・保有の制限<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits">https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits</a></p>
-<p><img src="https://user-images.githubusercontent.com/96324317/197381027-dcf0c231-950e-4b50-a14f-4f2d991c9616.png"></p>
-<p>（図例：Azure VM Backup の場合）<br><img src="https://user-images.githubusercontent.com/96324317/197453814-73c643d9-ad3f-458c-b729-4fb7a409aab6.png"></p>
+<p><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_01.png"></p>
+<p>（図例：Azure VM Backup の場合）<br><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_02.png"></p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
 <p><a href="#1">1. Azure VM Backup の場合</a><br><a href="#2">2. Azure ファイル共有に対する Azure Backup の場合</a><br><a href="#3">3. SQL Server DB に対する Azure Backup の場合</a><br><a href="#4">4. SAP HANA DB に対する Azure Backup の場合</a><br><a href="#5">5. Microsoft Azure Recovery Services (MARS) の場合</a><br><a href="#6">6. Azure ディスク バックアップの場合</a><br><a href="#7">7. Azure BLOB バックアップ の場合</a><br><a href="#8">8. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合</a></p>
 <hr>
@@ -243,7 +243,7 @@
 <p>・拡張ポリシーを使用して Azure VM をバックアップする - Azure Backup | Microsoft Learn<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal#create-an-enhanced-policy-and-configure-vm-backup">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal#create-an-enhanced-policy-and-configure-vm-backup</a><br>　“毎時間のバックアップの場合、その日の最後のバックアップがコンテナーに転送されます。 バックアップが失敗すると、次の日の最初のバックアップがコンテナーに転送されます。”</p>
 <p>(Enhanced バックアップ ポリシー の設定例)<br>開始時刻：JST 16時<br>スケジュール：4時間ごと<br>バックアップ期間：24時間</p>
 <p>スナップショット① = JST 6/27 16:00 ごろ取得 → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット② = JST 6/27 20:00 ごろ取得 → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット③ = JST 6/28 0:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット④ = JST 6/28 4:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット⑤ = JST 6/28 8:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット⑥ = JST 6/28 12:00 ごろ取得  → <font color="OrangeRed">Recovery Services コンテナーへ転送される</font></p>
-<p>（補足）オンデマンド バックアップの場合、最大 99 年まで保持期間を指定可能です。<br><img src="https://user-images.githubusercontent.com/96324317/197448093-5b532557-b4e6-44de-b837-01993756862a.png"></p>
+<p>（補足）オンデマンド バックアップの場合、最大 99 年まで保持期間を指定可能です。<br><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_03.png"></p>
 <h2 id="2-Azure-ファイル共有に対する-Azure-Backup-の場合"><a href="#2-Azure-ファイル共有に対する-Azure-Backup-の場合" class="headerlink" title=" 2. Azure ファイル共有に対する Azure Backup の場合"></a><a id="2"></a> 2. Azure ファイル共有に対する Azure Backup の場合</h2><table>
 <thead>
 <tr>
@@ -477,7 +477,7 @@
 <p>(補足 1 )<br>Azure ディスク バックアップでは、ディスクあたりのスナップショット合計数が 500 までとなるよう、バックアップ ポリシー上で制限されています。<br>・ディスク バックアップのスケジュールと保持期間はどのように機能しますか?<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-does-the-disk-backup-scheduling-and-retention-period-work">https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-does-the-disk-backup-scheduling-and-retention-period-work</a><br>　“スナップショットの保持期間は、ディスクのスナップショット制限によって制御されます。”</p>
 <p>(補足 2 )<br>バックアップ ポリシー作成時、「保持規則の追加」をクリックすることで、<br>「毎日」もしくは「毎週」作成される、特定のバックアップについては、追加で保持期間を設定することができます。</p>
 <p>・バックアップ ポリシーを作成する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks#create-backup-policy">https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks#create-backup-policy</a><br>　“最初に正常に作成された日単位または週単位のバックアップを選択して、特定のバックアップが削除される前に保持されるリテンション期間を指定できます。<br>　 このオプションは、日または週の特定のバックアップを長期間保持するのに便利です。<br>　 その他のバックアップについては、保持期間を短くすることができます。”</p>
-<p><img src="https://github.com/jpabrs-scem/blog/assets/96324317/f5b8eb75-5796-4f5f-8658-964f44d88159" alt="image"></p>
+<p><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_04.png" alt="image"></p>
 <h2 id="7-Azure-BLOB-バックアップ-の場合"><a href="#7-Azure-BLOB-バックアップ-の場合" class="headerlink" title=" 7. Azure BLOB バックアップ の場合"></a><a id="7"></a> 7. Azure BLOB バックアップ の場合</h2><h3 id="運用バックアップの場合"><a href="#運用バックアップの場合" class="headerlink" title="運用バックアップの場合"></a>運用バックアップの場合</h3><p>バックアップ対象ストレージ アカウント上にのみバックアップ データを保管します。<br>「1 日に 1 回のバックアップ」などではなく、継続的なバックアップ取得となるため、「バックアップ頻度」というものはございません。<br>最小保持期間は 1 日、最大保持期間は 360 日、またはそれに相当する数の週 (51) または月 (11) です。</p>
 <h3 id="保管済みバックアップの場合"><a href="#保管済みバックアップの場合" class="headerlink" title="保管済みバックアップの場合"></a>保管済みバックアップの場合</h3><p>バックアップ対象ストレージ アカウント上および バックアップ コンテナー上にバックアップ データを保管します。</p>
 <table>
@@ -499,8 +499,8 @@
 <td>521 週</td>
 </tr>
 </tbody></table>
-<p>(補足)<br>保持期間は日、週、月、年 単位で設定することも可能です。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/fff5ac05-c0e1-4b3b-b5f2-7f442aaf4bfa" alt="image"></p>
-<p>「保持規則の追加」をクリックすることで、「毎週」、「毎月」もしくは「毎年」作成される、特定のバックアップについては、追加で保持期間を設定することができます。<br><img src="https://github.com/jpabrs-scem/blog/assets/96324317/409bcd0f-66b7-414d-9e0b-a451f6cb73d1" alt="image"></p>
+<p>(補足)<br>保持期間は日、週、月、年 単位で設定することも可能です。<br><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_05.png" alt="image"></p>
+<p>「保持規則の追加」をクリックすることで、「毎週」、「毎月」もしくは「毎年」作成される、特定のバックアップについては、追加で保持期間を設定することができます。<br><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_06.png" alt="image"></p>
 <h2 id="8-Microsoft-Azure-Backup-Server-MABS-または-System-Center-Data-Protection-Manager-DPM-の場合"><a href="#8-Microsoft-Azure-Backup-Server-MABS-または-System-Center-Data-Protection-Manager-DPM-の場合" class="headerlink" title=" 8. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合"></a><a id="8"></a> 8. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合</h2><h3 id="DPM-MABS-ローカルディスクへのバックアップ"><a href="#DPM-MABS-ローカルディスクへのバックアップ" class="headerlink" title="(DPM / MABS) ローカルディスクへのバックアップ"></a>(DPM / MABS) ローカルディスクへのバックアップ</h3><table>
 <thead>
 <tr>
