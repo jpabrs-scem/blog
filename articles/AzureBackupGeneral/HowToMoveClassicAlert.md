@@ -38,11 +38,11 @@ Recovery Services コンテナーでは、クラシック アラートが<span s
 ・監視とレポートのシナリオ
 　https://learn.microsoft.com/ja-jp/azure/backup/monitoring-and-alerts-overview#monitoring-and-reporting-scenarios
 
-![](https://user-images.githubusercontent.com/96324317/230756428-28f8085a-16bf-49ab-aa50-8659f342b81e.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_01.png)
 
-![](https://user-images.githubusercontent.com/96324317/230756444-3a95a6b5-dd4d-47e0-b3d1-ea3ffe54fa49.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_02.png)
 
-![](https://user-images.githubusercontent.com/96324317/230756450-5d78ebd9-19e0-455b-9ba6-6f079f9cf65d.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_03.png)
 
 ## <a id="Q2"></a>Q2.どの Recovery Services コンテナーが「クラシック アラート設定」になっていますか？ 
 **A2**
@@ -56,24 +56,24 @@ Recovery Services コンテナーでは、クラシック アラートが<span s
 
 この記述がある場合は、後述される [アクションを起こすには、ここをクリック] をクリックします。
 
-![](https://user-images.githubusercontent.com/96324317/230756521-74ec97f7-1147-4799-aa66-59b789ab3f69.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_04.png)
 
 Azure Monitor アラートのみの使用をオプトインの [アラートの管理] をクリックします。
 
-![](https://user-images.githubusercontent.com/96324317/230756529-fbb23335-c992-4b39-b4b9-071e280168f8.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_05.png)
 
 [Azure Monitor アラートのみの使用をオプトイン] 画面にて、リストされている Recovery Services コンテナーを確認します。
 
 > [!WARNING]
 > 項目 ``クラシック アラートのバックアップ`` が「はい」となっている Recovery Services コンテナーが対象となります。
 
-![](https://github.com/user-attachments/assets/319bf6c0-a39a-490a-86ab-a719b2abc0b3)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_06.png)
 
 
 #### 【どの Recovery Services コンテナーが、クラシック アラートの「通知の構成」を行っているのかを確認する方法】
 
 リストされた Recovery Services コンテナーが実際に通知の構成をしているかどうかは、上記でリストされた Recovery Services コンテナー ＞ [バックアップ アラート] ＞ ”通知の構成” ＞ 「メールの通知：オン」 となっているかどうかで確認可能です。
-![](https://user-images.githubusercontent.com/96324317/230756566-faba366c-1f68-4034-8f4e-bbc1f9e7bc2f.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_07.png)
 
 通知の構成をしている Recovery Services コンテナーがある場合、[Azure Monitor アラートのみの使用をオプトイン] 画面にて、アラートの設定の更新を行います。
 
@@ -81,15 +81,15 @@ Azure Monitor アラートのみの使用をオプトインの [アラートの�
 > ”通知の構成” ＞「メールの通知：オン」をしている Recovery Services コンテナーが無い場合、かつ、今後バックアップジョブの監視設定をする必要が無い場合は、下記対応は不要です。
 
 まず、対象 Recovery Services コンテナーを選択して、"アラートの設定" 列の "更新" を押下してください。
-![](https://github.com/user-attachments/assets/2534b4ea-f20e-4a75-b1c6-1a0c8944c33f)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_08.png)
 
 表示された [監視の設定] 画面にて "Backup 用の Azure Monitor アラートのみを使用" にチェックを入れてください。
 また "Backup のジョブ エラーに関する組み込みの Azure Monitor アラート" も有効化してください。
-![](https://github.com/user-attachments/assets/f1833b43-a0a2-4a41-9880-1b14d1f742cf)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_09.png)
 
 > [!WARNING]
 >  "ジョブ エラーに関する組み込みの Azure Monitor アラート" が無効化されていると、バックアップセンターの下記概要画面上ではクラシック アラートを使用しているコンテナーとしてカウントされたままとなりますのでご注意ください。
-![](https://github.com/jpabrs-scem/blog/assets/141192952/9518f95f-bbea-4edb-bb60-4410fa0441db)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_10.png)
 
 最後に画面下部の "更新" ボタンを押下していただければ、クラシック アラートの廃止は完了いたします。
 
@@ -107,14 +107,14 @@ Azure Monitor アラートのみの使用をオプトインの [アラートの�
 ・クラシック アラートから組み込みの Azure Monitor アラートに移行する
 　 https://learn.microsoft.com/ja-jp/azure/backup/move-to-azure-monitor-alerts#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts
 
-![](https://user-images.githubusercontent.com/96324317/230756632-22b2968e-d899-44f4-8472-c0c5db56f0c9.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_11.png)
 
 Free レベル (1 か月あたり 1,000 メール) を超える通知に対しては、下記の料金が発生します。
 
 ・価格 - Azure Monitor | Microsoft Azure
 https://azure.microsoft.com/ja-jp/pricing/details/monitor/
 “メール            1 か月あたりメール 1,000 通         メール 100,000 通につき $2”
-![](https://user-images.githubusercontent.com/96324317/234444128-ca0d6690-a6a8-4bcf-9e9e-7e63cf44ce49.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_12.png)
 
 
 ## <a id="Q4"></a>Q4.クラシック アラートの「通知の構成」をしているかどうかは 1 つ 1 つの Recovery Services コンテナーを確認する必要がありますか？ 
@@ -155,13 +155,13 @@ foreach ( $rsv in $RSVList ) {
 $results | Sort-Object isClassicAlertNotificationEnabled -Descending | ForEach-Object { Write-Output $_ | Format-Table }
 ```
 上記 REST API を発行した場合、「isClassicAlertNotificationEnabled：True」となっている Recovery Services コンテナーが「通知の構成：オン」となっているものとなります。
-![](https://user-images.githubusercontent.com/96324317/230820217-777e48c3-f704-4e83-9aeb-1a5b107633af.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_13.png)
 
-![](https://user-images.githubusercontent.com/96324317/230820265-bcb0a6df-eae6-4946-b0f9-c1f905a539d4.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_14.png)
 
-![](https://user-images.githubusercontent.com/96324317/230820287-06940bef-a423-4202-a016-e3ec7bd79489.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_15.png)
 
-![](https://user-images.githubusercontent.com/96324317/230820315-3f9dc117-bfac-4e73-b0aa-d37a12503390.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_16.png)
 
 ## <a id="Q5"></a>Q5. Azure Monitor を使用した組み込みのアラートで、クラシック アラートと同じ重要度のアラート メールを通知するには？
 **A5**  
@@ -216,17 +216,17 @@ Azure Monitor を使用した組み込みのアラートで、クラシック �
 #### クラシック アラートのメール通知設定を確認する
 Recovery Services コンテナーの ``監視 > バックアップ アラート > 通知の構成`` を表示し、項目「重要度」の設定内容を確認します。  
 
-![](https://github.com/user-attachments/assets/1f6da508-4c61-4639-b9d7-d9432c3089ef)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_17.png)
 
 #### Azure Backup 用のアラート処理ルールの設定を変更する
 バックアップ センターの ``監視とレポート > アラート > アラート処理ルール`` を表示し、Azure Monitor アラートへ切り替えるときに作成したアラート処理ルールを編集します。  
 
-![](https://github.com/user-attachments/assets/f4dddc70-d2ec-47cc-ba55-60400d1e1d32)
-![](https://github.com/user-attachments/assets/cdb94c4e-0192-4e46-a749-57930e2b3003)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_18.png)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_19.png)
 
 項目 フィルター に、「重要度」フィルターを追加し、値として "0 - 重大", "1 - エラー", "2 - 警告" のいずれかを選択し、設定を保存します。  
 (下記例においては、クラシック アラートの重要度設定が "クリティカル, 警告" となっていたため、"0 - 重大", "1 - エラー", "2 - 警告" の 3 点を選択しております。)  
-![](https://github.com/user-attachments/assets/f0161061-6b96-494a-93be-eff08d556e17)
+![](./HowToMoveClassicAlert/HowToMoveClassicAlert_20.png)
 
 以上で設定は完了です。  
 
@@ -239,12 +239,12 @@ Recovery Services コンテナーの ``監視 > バックアップ アラート 
 
 - バックアップ ジョブ失敗に関するアラート メール  
   - クラシック アラート  
-    ![](https://github.com/user-attachments/assets/3b3ec1a7-578b-4315-b62a-e322f853505b)  
+    ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_21.png)  
   - Azure Monitor を使用した組み込みのアラート  
-    ![](https://github.com/user-attachments/assets/2cb3f7df-5f3a-4199-b1cf-fc20ade47279)  
+    ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_22.png)  
 
 - セキュリティ アラート メール  
   - クラシック アラート  
-    ![](https://github.com/user-attachments/assets/a47cf52e-e42a-4030-9081-ff0c6e5c95e8)  
+    ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_23.png)  
   - Azure Monitor を使用した組み込みのアラート  
-    ![](https://github.com/user-attachments/assets/4dfd68e9-ce9c-46a0-8fae-c8c94e8645f6)  
+    ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_24.png)  

@@ -32,7 +32,7 @@ Azure VM Backup ではディスクの情報をバックアップしますが、N
 
 (手順2) に関しましては、 Azure Portal からの操作の場合、下記のような手順で可能でございます。
 NIC を指定できることが分かります。
-![DiskからのVM作成](https://user-images.githubusercontent.com/71251920/137943407-1dad9711-f799-4921-9365-17f1ac006f3b.png)
+![DiskからのVM作成](./VMRestoring_NIC_Configuration/VMRestoring_NIC_Configuration_01.png)
 
 
 ### <a id="2"></a> 2. 既存の NIC を設定する場合

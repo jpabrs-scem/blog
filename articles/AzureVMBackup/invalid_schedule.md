@@ -50,7 +50,7 @@ disableDisclaimer: false
 
 参考：Azure Poretal からバックアップ アイテムを選択し、[バックアップの停止] を行うことが出来ます。
 
-![Stop Azure VM Backup](https://user-images.githubusercontent.com/71251920/135618848-76248e66-8013-452e-a471-c4f7c8c37281.png)
+![Stop Azure VM Backup](./invalid_schedule/invalid_schedule_01.png)
 
 
 

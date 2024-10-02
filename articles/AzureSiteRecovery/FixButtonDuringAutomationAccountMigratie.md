@@ -28,7 +28,7 @@ https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationM
 この問題を解決するには、[修復] ボタンを押下後に対象 Automation アカウントの実行アカウントの画面に遷移しますので、遷移後の画面で [証明書の更新] ボタンを押下することで証明書を更新できます。
 なお、こちらマネージド ID へ移行済みである場合は、特段対応は不要になります。
 
-![Image](https://github.com/jpabrs-scem/blog/assets/140866391/7dec6094-e35e-4952-b1db-7ca64ea3e337)
+![Image](./FixButtonDuringAutomationAccountMigratie/FixButtonDuringAutomationAccountMigratie_01.png)
 
 ・一般的な問題とトラブルシューティング
 https://learn.microsoft.com/ja-jp/azure/site-recovery/azure-to-azure-autoupdate#common-issues-and-troubleshooting

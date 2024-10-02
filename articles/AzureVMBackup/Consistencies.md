@@ -13,15 +13,15 @@ disableDisclaimer: false
 
 まず、Azure VM Backup における整合性は下記の３種類ございます。
 ・アプリケーション整合性 (Application-consistent)
-![2022-02-11_00h49_03](https://user-images.githubusercontent.com/71251920/153444342-2ef78226-36af-42ec-b791-def280af289e.png)
+![2022-02-11_00h49_03](./Consistencies/Consistencies_01.png)
 
 
 ・ファイルシステム整合性 (File-system consistent)
-![2022-02-11_00h49_22](https://user-images.githubusercontent.com/71251920/153444335-2c65943d-8f13-4c6d-b2d0-7bf4283b6fc4.png)
+![2022-02-11_00h49_22](./Consistencies/Consistencies_02.png)
 
 
 ・クラッシュ整合性 (Crash-consistent)
-![2022-02-11_00h49_36](https://user-images.githubusercontent.com/71251920/153444341-0b61bf0e-5b58-4040-a0ef-c0d213a2187b.png)
+![2022-02-11_00h49_36](./Consistencies/Consistencies_03.png)
 
 なお、公開情報は下記にございますのでまず一度ご一読ください。
 その前提で説明させていただきます。

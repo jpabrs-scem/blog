@@ -27,7 +27,7 @@ disableDisclaimer: false
 ## <a id="1"></a> 1. CRR 機能を有効した場合の、冗長性オプションは「GRS」になるのか、「RA-GRS」になるのか？
 
 結論から申し上げますと、RA-GRS となります。
-![CRR_01](https://user-images.githubusercontent.com/71251920/153718070-4b865afe-f876-47e2-afd0-2484e7889235.gif)
+![CRR_01](./CRR/CRR_01.png)
 
 ・Azure Backup 用語集 - Azure Backup | Microsoft Docs
 https://docs.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#grs
@@ -36,16 +36,16 @@ https://docs.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#grs
 ご参考までに、CRR 機能を有効にした場合の Azure ポータル画面上の見え方を説明いたします。 
 下図の Recovery Services コンテナーは「ストレージ レプリケーションの種類：geo 冗長」かつ「クロス リージョン 復元：有効」となっております。
 これによって CRR 機能が有効 (=RA-GRS) となります。
-![](https://github.com/jpabrs-scem/blog/assets/96324317/6b7b2f75-b435-4d38-a760-e4cbe8fe169d)
+![](./CRR/CRR_02.png)
 
 
 CRR 機能が有効になっている場合、「バックアップ アイテム」画面上では「プライマリ リージョン」のほかに「セカンダリ リージョン」も選択できるよう、活性化されます。
-![](https://github.com/jpabrs-scem/blog/assets/96324317/3cd63704-557a-4754-a248-82b4e48e93a4)
+![](./CRR/CRR_03.png)
 
-![](https://github.com/jpabrs-scem/blog/assets/96324317/932d588b-8e7f-4fe8-be03-267bd984cd68)
+![](./CRR/CRR_04.png)
 
  一方でRecovery Services コンテナー上で「リージョンをまたがる復元：無効にする」を選択されている場合は、下図のように「プライマリ リージョン」がデフォルトで選択されており、かつ非活性表示となっているため「セカンダリ リージョン」への切り替えが不可能となっております。
- ![CRR_05](https://github.com/jpabrs-scem/blog/assets/141192952/a716e9db-a396-4ec8-9d22-60cf8afab3eb)
+ ![CRR_05](./CRR/CRR_05.png)
 
 >[!WARNING]
 > CRR 機能が有効にされてから上記「セカンダリ リージョン」の項目が活性化されるまで**最大で 48 時間**かかりますのでご注意ください。
@@ -86,38 +86,38 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#resto
 Recovery Services コンテナー ＞ バックアップ アイテム ＞ セカンダリ リージョン ＞ Azure Virtual Machine ＞ 対象の仮想マシンを選択し、「復元ポイント」欄に、対象の復元ポイントが表示されていれば、セカンダリ リージョンへのレプリケートは完了していると判断できます。
 
 作業例）プライマリ リージョンに配置されている仮想マシン「SAPHANA03」を「今すぐバックアップ」を実施し、取得された復元ポイントがセカンダリ リージョンに複製されているかを確認する
-![CRR_08](https://user-images.githubusercontent.com/71251920/153718060-4b01fca7-5815-4b8a-b2e8-3eb2f32ffa17.png)
+![CRR_08](./CRR/CRR_06.png)
 
 
 下図画面の黄色罫線部分が、「今すぐバックアップ」にてトリガーし、バックアップが完了したバックアップ ジョブです。
 ***2021/12/9 17:50 に「今すぐバックアップ」のバックアップ ジョブがトリガーされ、18:21 ごろにバックアップが完了しております。***
-![CRR_09](https://github.com/jpabrs-scem/blog/assets/141192952/088ad480-35c7-4706-bd1a-9891d27ddf6c)
+![CRR_09](./CRR/CRR_07.png)
 
 バックアップ アイテム ＞ プライマリ リージョン ＞ Azure Virtual Machine 画面上の「最新の復元ポイント」に表示されている時刻は、バックアップが実行開始された時刻となります。
-![CRR_10](https://user-images.githubusercontent.com/71251920/153718057-67e701d6-4f7b-44e7-bbfc-add77d52be00.jpg)
+![CRR_10](./CRR/CRR_08.png)
 
 「プライマリ リージョン」側のバックアップ項目画面では、「復元ポイント」欄に、取得済の復元ポイントが表示されています。
-![CRR_11](https://github.com/jpabrs-scem/blog/assets/141192952/5010fbae-bf29-4b86-a52c-c5f0b1a34e7d)
+![CRR_11](./CRR/CRR_09.png)
 
 一方で、バックアップ アイテム ＞ セカンダリ リージョン ＞ Azure Virtual Machine ＞ 対象の仮想マシンをクリックします。
 バックアップ項目画面では、***「復元ポイント」欄に、12/09 18:32 時点では、12/09 にプライマリ リージョン側にて取得済の復元ポイントはまだ表示されておらず、セカンダリ リージョン側に復元ポイントが複製されていないことが分かります。***
 （2021/12/09 24時ごろも確認しましたが、復元ポイントは表示されておりませんでした）
-![CRR_12](https://github.com/jpabrs-scem/blog/assets/141192952/a65099c1-2452-4090-b88a-d6b49161cece)
+![CRR_12](./CRR/CRR_10.png)
 
 
 同じく、「セカンダリ リージョンへの復元」をクリックし、「復元ポイントの選択」欄を表示しても、***12/09 17:50 に開始・取得済の復元ポイントは表示されていないことが確認できます。***
-![CRR_13](https://user-images.githubusercontent.com/71251920/153718054-b2f2fa69-cee7-4fb6-9997-46186c01f2b2.png)
+![CRR_13](./CRR/CRR_11.png)
 
 2021/12/09 17:50 Auzre VM Backup 開始後、 ***12 時間以上経過した 2021/12/10 8:09 時点では、「復元ポイントの選択」欄にて、セカンダリ リージョンのデータとして 17:50 のバックアップ開始分が表示されていることが確認できました。***
 
-![CRR_14](https://user-images.githubusercontent.com/71251920/153718052-24c17913-41e2-4936-bb36-39735f087e94.png)
+![CRR_14](./CRR/CRR_12.png)
 
 ### <a id="3-1"></a> 補足：セカンダリ リージョンのジョブについて
 Recovery Services コンテナー ＞ バックアップ ジョブ ＞「セカンダリ リージョンのジョブを表示する」をクリックすると、セカンダリ リージョンのリストア ジョブを確認可能です。
 しかし、プライマリ リージョンに配置されている仮想マシンのバックアップ ジョブは、 セカンダリ リージョンのバックアップ ジョブ上には表示されません。
-![CRR_15](https://github.com/jpabrs-scem/blog/assets/141192952/3d017558-fd4b-49e8-92c2-c43b2967a3a5)
+![CRR_15](./CRR/CRR_13.png)
 
-![CRR_16](https://github.com/jpabrs-scem/blog/assets/141192952/215c24ca-e692-4898-a41f-c713f0567b8a)
+![CRR_16](./CRR/CRR_14.png)
  
 ## <a id="4"></a> 災害復旧後のレプリケーションに関するFAQ
 >Q. プライマリリージョンが復旧したあとに プライマリリージョンに VM を復旧できるか

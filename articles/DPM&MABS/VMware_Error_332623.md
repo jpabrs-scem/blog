@@ -27,7 +27,7 @@ DPM と MABS を VMWare vCenter Server に初期接続する時に、下記の�
 >Internal error code 0x80990EF2 
 
 *** ＜DPMコンソールのエラー画面サンプル＞ ***
-![](https://user-images.githubusercontent.com/71251920/161022695-3e7da576-4708-442b-800a-45d94a32f307.png)
+![](./VMware_Error_332623/VMware_Error_332623_01.png)
 
 
 

@@ -15,10 +15,10 @@ disableDisclaimer: false
 ・保有の制限
 　https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits
 
-![](https://user-images.githubusercontent.com/96324317/197381027-dcf0c231-950e-4b50-a14f-4f2d991c9616.png)
+![](./Backup_RetentionPeriod/Backup_RetentionPeriod_01.png)
 
 （図例：Azure VM Backup の場合）
-![](https://user-images.githubusercontent.com/96324317/197453814-73c643d9-ad3f-458c-b729-4fb7a409aab6.png)
+![](./Backup_RetentionPeriod/Backup_RetentionPeriod_02.png)
 
 ## 目次
 -----------------------------------------------------------
@@ -87,7 +87,7 @@ disableDisclaimer: false
 スナップショット⑥ = JST 6/28 12:00 ごろ取得  → <font color="OrangeRed">Recovery Services コンテナーへ転送される</font>
 
 （補足）オンデマンド バックアップの場合、最大 99 年まで保持期間を指定可能です。
-![](https://user-images.githubusercontent.com/96324317/197448093-5b532557-b4e6-44de-b837-01993756862a.png)
+![](./Backup_RetentionPeriod/Backup_RetentionPeriod_03.png)
 
 ## <a id="2"></a> 2. Azure ファイル共有に対する Azure Backup の場合
 |  Azure ファイル共有 に対するバックアップの頻度  |  最小保持期間  |  最大保持期間  |
@@ -168,7 +168,7 @@ Azure ディスク バックアップでは、ディスクあたりのスナッ�
 　 このオプションは、日または週の特定のバックアップを長期間保持するのに便利です。
 　 その他のバックアップについては、保持期間を短くすることができます。"
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/f5b8eb75-5796-4f5f-8658-964f44d88159)
+![image](./Backup_RetentionPeriod/Backup_RetentionPeriod_04.png)
 
 ## <a id="7"></a> 7. Azure BLOB バックアップ の場合
 ### 運用バックアップの場合
@@ -187,10 +187,10 @@ Azure ディスク バックアップでは、ディスクあたりのスナッ�
 
 (補足)
 保持期間は日、週、月、年 単位で設定することも可能です。
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/fff5ac05-c0e1-4b3b-b5f2-7f442aaf4bfa)
+![image](./Backup_RetentionPeriod/Backup_RetentionPeriod_05.png)
 
 「保持規則の追加」をクリックすることで、「毎週」、「毎月」もしくは「毎年」作成される、特定のバックアップについては、追加で保持期間を設定することができます。
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/409bcd0f-66b7-414d-9e0b-a451f6cb73d1)
+![image](./Backup_RetentionPeriod/Backup_RetentionPeriod_06.png)
 
 ## <a id="8"></a> 8. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合
 ### (DPM / MABS) ローカルディスクへのバックアップ

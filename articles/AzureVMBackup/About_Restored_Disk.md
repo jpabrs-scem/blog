@@ -52,7 +52,7 @@ disableDisclaimer: false
 
  
 下記のように、ディスクのスナップショットからのディスクの作成の場合、任意の名前を指定することが可能です。
-![CreateDiskFromSnapshot](https://user-images.githubusercontent.com/71251920/140078998-fe56c03e-f230-4c17-85c6-da53d170172a.jpg)
+![CreateDiskFromSnapshot](./About_Restored_Disk/About_Restored_Disk_01.png)
 
 
 

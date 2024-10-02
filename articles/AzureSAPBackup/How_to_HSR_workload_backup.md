@@ -56,7 +56,7 @@ SAP HANA インスタンス番号： 90
 ## <a id="1"></a> 1. (Primary マシン上) SYSTEM ユーザーに対してキーを設定する
 (参考) 公開ドキュメント - 事前登録スクリプトで実行される処理
 https://learn.microsoft.com/ja-jp/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/45d9f60f-7f1d-4b16-83a2-dd234aed1a45)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_01.png)
 
 ※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してキーを作成してください。
 　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。
@@ -67,7 +67,7 @@ su <font color="Red">hxe</font>adm -
 HDB start
 hdbuserstore list
 この時点では何もキーはありません。
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/29659ca7-f81f-405e-8814-f116bbf83e81)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_02.png)
 
 (Primary マシン上で実行するコマンド 例)
 hdbuserstore Set <font color="Red">SYSTEM</font> <font color="MediumBlue">saphana23</font>:3<font color="Red">90</font>13 <font color="MediumBlue"><キー名></font> <font color="Red"><パスワード></font>
@@ -75,13 +75,13 @@ hdbuserstore list
 
 今回は、SYSTEM ユーザーに対して設定するキーの名前も「SYSTEM」としています。
 下図の通り、「SYSTEM」という名前のキーが作成されていることを確認します。
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/ee9d49f2-9d62-4bb3-9078-be1a472c4d4c)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_03.png)
 
 
 ## <a id="2"></a> 2. (Primary マシン上) カスタム バックアップ ユーザーを作成・パスワード管理・ロールなどの設定を行う
 ・(参考) 事前登録スクリプトを実行する
 　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/974231ad-cf09-45e5-8e37-ef96d3cb017d)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_04.png)
 
 カスタム バックアップ ユーザー名は、特に名前の制約はありません。
 今回は例として「OKTBK」という名前のカスタム バックアップ ユーザーを作成します。
@@ -91,10 +91,10 @@ hdbsql -t -U <font color="Red">SYSTEM</font> CREATE USER <font color="MediumBlue
 
 「-U」の引数として、前段で作成済のキー「SYSTEM」を渡すことで、新しいユーザーをキーを使って作成することができます。
 「NO FORCE_FIRST_PASSWORD_CHANGE」句は必須ではありませんが、設定することで、ユーザー「OKTBK」が初めてログインした際に、パスワード変更を求められることが無くなります。
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/7bd38d80-df7a-403a-bb9f-7cc65d684231)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_05.png)
 
 下図は念のため、「USERS」テーブル上にカスタム バックアップ ユーザー「OKTBK」が作成されたことを確認しています。
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/ef87b2da-d2b9-4c26-bc62-f445e3cdcbb6)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_06.png)
 
 付与すべきロールは公開ドキュメントに記載があるので、今回は SQL を使用してロールを付与していきます。
 
@@ -113,23 +113,23 @@ hdbsql -t -U <font color="Red">SYSTEM</font> "GRANT <font color="Green">DATABASE
 
 〇　カスタム バックアップ ユーザー「OKTBK」に対して「CATALOG READ（＝バックアップ カタログを読み取れる）」ロールを付与する
 hdbsql -t -U <font color="Red">SYSTEM</font> "GRANT <font color="Green">CATALOG READ</font> TO <font color="Red">OKTBK</font>"
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/b52f7628-7558-4d72-a09c-64db67794836)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_07.png)
 
 〇　カスタム バックアップ ユーザー「OKTBK」に対して「バックアップ管理者」ロールを付与する
 HANA の SPS バージョンが「05」以上であれば「バックアップ管理者」ロールの付与も必要です。
 今回の環境だと「SPS ：06」のため、「バックアップ管理者」ロールの付与も必要です。
 
 HDB version
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/14efaed5-afbf-4c04-acef-ad85e7eed4e3)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_08.png)
 
 ・(外部サイト 参考) GRANT Statement (Access Control) | SAP Help Portal
 　https://help.sap.com/docs/SAP_HANA_PLATFORM/4fe29514fd584807ac9f2a04f6754767/20f674e1751910148a8b990d33efbdc5.html 
 
 hdbsql -t -U <font color="Red">SYSTEM</font> "GRANT <font color="Green">BACKUP ADMIN</font> TO <font color="Red">OKTBK</font>"
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/65fe75f1-d9f8-4ae5-b26c-117603f154e2)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_09.png)
 
 念のためカスタム バックアップ ユーザー「OKTBK」に、現時点で付与されているロールを「GRANTED_PRIVILEGES」テーブルから確認してみます。
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/bd59f7c4-e1d3-4c2d-aa30-97da40675eff)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_10.png)
 
 
 ## <a id="3"></a> 3. (Primary マシン上) カスタム バックアップ ユーザーに対してキーを設定する
@@ -148,7 +148,7 @@ hdbuserstore Set <font color="Red">OKTBKKEY</font> <font color="MediumBlue">saph
 
 キーが作成されているかどうかを確認します。
 hdbuserstore list
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/5d2bd215-f82a-4d53-b6b3-78f31d202a9c)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_11.png)
 
 
 ## <a id="4"></a> 4. (Secondary マシン上) SYSTEM ユーザーに対してキーを設定する
@@ -160,7 +160,7 @@ Primary マシン上で、SYSTEM ユーザーに対して設定したものと�
 (Secondary マシン上で実行するコマンド 例)
 hdbuserstore Set <font color="Red">SYSTEM</font> <font color="MediumBlue">saphana24</font>:3<font color="Red">90</font>13 SYSTEM <font color="MediumBlue"><パスワード></font>
 hdbuserstore list
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/93a9a515-bcc4-4081-8c01-1ef1c9f54e19)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_12.png)
 
 
 ## <a id="5"></a> 5. (Secondary マシン上) カスタム バックアップ ユーザーに対してキーを設定する
@@ -178,7 +178,7 @@ hdbuserstore Set <作成するキー名> <作成先HANA DB のホスト名>:3<�
 (Secondary マシン上で実行するコマンド 例)
 hdbuserstore Set <font color="Red">OKTBKKEY</font> <font color="MediumBlue">saphana24</font>:3<font color="Red">90</font>13 <font color="MediumBlue">OKTBK</font> <font color="Red"><パスワード></font>
 hdbuserstore list
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/0de489dd-2806-41b0-9b74-22426fe82993)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_13.png)
 
 
 ## <a id="6"></a> 6. (これまで Azure Backup 構成していた場合)「バックアップの停止」を行う
@@ -219,22 +219,22 @@ hdbuserstore list
 (Primary マシン上で実行するコマンド 例)
 sudo su -
 chmod 755 msawb-plugin-config-com-sap-hana.sh
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/8be08d61-6df3-48b3-9fdc-dc37402af1e5)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_14.png)
 
 ./msawb-plugin-config-com-sap-hana.sh -sn -bk <font color="Red">OKTBKKEY</font> -hn <font color="Red">Hana2324LC</font>
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/e57524ee-f9b2-4e47-8e57-1f9760fb2a7b)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_15.png)
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/e2d81c4c-fbc9-4cd2-a80f-9e425a3f7ecb)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_16.png)
 
 事前登録スクリプト実行完了後、下記 ファイル上で、Azure Backup 構成における HSR ID やカスタム バックアップ ユーザーの設定値を確認できます。
 
 (Primary マシン上で実行するコマンド 例)
 cat /opt/msawb/etc/config/SAPHana/config.json
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/25d5e330-8e88-492c-a9ae-f77eeda8f497)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_17.png)
 
 Primary 側で事前登録スクリプトを実行後、カスタム バックアップ ユーザーに対して、「INIFILE ADMIN」ロールなどが追加付与されていることが分かります。
 (事前登録スクリプトにて追加付与されました)
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/bd501b56-4d45-452e-8008-a8314e711c5a)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_18.png)
 
 
 ## <a id="8"></a> 8. (Secondary マシン上) 事前登録スクリプトをダウンロード・実行する
@@ -245,17 +245,17 @@ Primary 側で事前登録スクリプトを実行後、カスタム バック�
 
 ・(参考) 事前登録スクリプトを実行する
 　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/c445fc40-5f3a-4c44-8c73-ac7767c3fada)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_19.png)
 
 (Secondary マシン上で実行するコマンド 例)
 sudo su -
 ./msawb-plugin-config-com-sap-hana.sh -sn -bk <font color="Red">OKTBKKEY</font> -hn <font color="MediumBlue">Hana2324LC</font> -p 3<font color="Red">90</font>13 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/f5d3b4f3-8d3e-40e3-82a7-592a2f8dfead)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_20.png)
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/2bf1b252-b022-450f-adf1-61017a25bf15)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_21.png)
 
 cat /opt/msawb/etc/config/SAPHana/config.json
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/f724da83-be23-480c-9e2a-4340f8523bda)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_22.png)
 
 
 ## <a id="9"></a> 9. Recovery Services コンテナー上で「データベースを検出」「バックアップの有効化」「今すぐバックアップ」を行う
@@ -265,20 +265,20 @@ cat /opt/msawb/etc/config/SAPHana/config.json
 　https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#discover-the-databases
 
 (英語版となり恐縮ですが) Azure ポータル画面上の作業例です
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/89d246f6-aac6-4661-87d4-5116106dcbab)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_23.png)
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/4e1b441f-7332-4acd-b270-a4684ce6ca4e)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_24.png)
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/cc0c270e-7e33-472d-b45c-a200b80c73dc)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_25.png)
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/1150d3f1-9cc6-479d-90f0-ef7c6f3ef27e)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_26.png)
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/e2871c2f-6764-4eba-b746-1090a7a32130)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_27.png)
 
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/2f1e1dd0-d9af-4b3c-b07c-33948640c43e)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_28.png)
 
 (バックアップ取得後)
-![image](https://github.com/jpabrs-scem/blog/assets/96324317/9140d011-8bf5-45ef-838a-49c1dfed10ce)
+![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_29.png)
 
 
 ## <a id="10"></a> 10. FAQ

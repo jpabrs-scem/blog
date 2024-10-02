@@ -66,7 +66,7 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#stor
  VM 名：VM-RHEL-PE という Azure VM (OS ディスク 1 つ、データディスク 2 つ) を (2) の既存の置換えにてリストアしたあとのストレージ アカウントです。
  
 
- ![](https://user-images.githubusercontent.com/71251920/198330594-30a09f02-cb39-41c8-ae39-1ab9a21779ac.png)
+ ![](./RestoreStagingStorageAccount/RestoreStagingStorageAccount_01.png)
 
  >コンテナー名：
  vmrhelpe-51f2bd236a2e479a95cfc2bdd53b986c

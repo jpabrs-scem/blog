@@ -55,7 +55,7 @@ Azure Portal にて Recovery Services コンテナーを開き > はじめに - 
 付与されている場合は、**「クラシック」の Recovery Services コンテナー** となります。  
 付与されて**いない**場合は、**「モダン化」の Recovery Services コンテナー** となります。
 
-<img src="https://github.com/user-attachments/assets/74f7a3aa-a3e9-41c9-b85f-a82c903fc74e">
+![](./RequestForInvestigating_ASR/RequestForInvestigating_ASR_01.png)
 
 ## <a id="2"></a> 2. ログの取得方法
 
@@ -348,7 +348,7 @@ https://learn.microsoft.com/ja-jp/dotnet/framework/migration-guide/how-to-determ
     ``` 
 
 (実行例)
-<img src="https://github.com/user-attachments/assets/a0c74364-8566-49a2-b8a7-be6efe9cf247">
+![](./RequestForInvestigating_ASR/RequestForInvestigating_ASR_02.png)
 
 #### ステップ 5 :
 
@@ -408,7 +408,7 @@ Please collect the archive at C:\Users\Administrator\AppData\Roaming\ASRDiagnost
 以下のように出力されますので、`support store location` の `free space` が十分であることをご確認いただき、`Y` または `y` を入力してください。  
 
 (出力例)
-<img src="https://github.com/user-attachments/assets/50ab3587-7945-4d7a-8465-60183c850a4b">
+![](./RequestForInvestigating_ASR/RequestForInvestigating_ASR_03.png)
 
 #### ステップ 4 : 
 上記 `support store location` に圧縮されたログが生成されますので、本ログをご提供いただけますと幸いです。

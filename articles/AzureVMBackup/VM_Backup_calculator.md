@@ -20,7 +20,7 @@ Azure VM Backup ではバックアップ ジョブのスケジュールを日時
 https://azure.microsoft.com/ja-jp/pricing/calculator/
 
 下記の赤枠部分が必須となっております。
-![vm_backup_calculator](https://user-images.githubusercontent.com/71251920/146237377-08217f47-4afa-45d5-a112-7c572e5187cc.png)
+![vm_backup_calculator](./VM_Backup_calculator/VM_Backup_calculator_01.png)
 
 現在、週次シナリオも課金ツールにて見積もりができるよう弊社開発部門へのフィードバックが複数行われております。
 お客様側では以下のサイトを通じてステータスを確認することが可能です。

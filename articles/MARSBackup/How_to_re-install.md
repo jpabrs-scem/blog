@@ -39,19 +39,19 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/#4
 >（コピーする対象のフォルダー）Microsoft Azure Recovery Services Agent
 
 ### <a id="1-2"></a> 1-2. windows ボタン + r を押し、”appwiz.cpl” と入力し、「OK」＞「プログラムのアンインストールまたは変更」画面を開きます
-![](https://user-images.githubusercontent.com/71251920/183884809-a24326c5-9e6c-4650-98df-f354c90bb8e6.gif)
+![](./How_to_re-install/How_to_re-install_01.png)
 
  
 ### <a id="1-3"></a> 1-3.「Microsoft Azure Recovery Services Agent」を右クリックし、「アンインストールと変更」をクリックします
 
-![](https://user-images.githubusercontent.com/71251920/183884818-da800c52-0679-4bcd-9c28-ccce17395789.gif)
+![](./How_to_re-install/How_to_re-install_02.png)
  
 ### <a id="1-4"></a> 1-4. MARSアプリケーション のアンインストール ウィザードが開くため、「アンインストール」をクリックします
-![](https://user-images.githubusercontent.com/71251920/183884819-28da14c8-ab0b-40c3-834a-904022cc5b29.gif)
+![](./How_to_re-install/How_to_re-install_03.png)
 
  
 ### <a id="1-5"></a> 1-5. アンインストールされたことを確認してください。
-![](https://user-images.githubusercontent.com/71251920/183884823-5425bdb1-c90c-462e-b0a3-00d6c4501677.gif)
+![](./How_to_re-install/How_to_re-install_04.png)
 
 
 
@@ -60,32 +60,32 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/#4
 > ワークロードはどこで実行されていますか？：オンプレミス
 > 何をバックアップしますか？：ファイルとフォルダー
 
-![](https://user-images.githubusercontent.com/71251920/183884826-21eb4c46-5e1e-411f-897b-40d044239f08.png)
+![](./How_to_re-install/How_to_re-install_05.png)
 
 
 ### <a id="2-2"></a> 2-2. “Windows Server または Windows クライアント用エージェントのダウンロード” をクリックしてください。
   *最新版のMARS エージェントインストーラーがダウンロードされます。
 
-![](https://user-images.githubusercontent.com/71251920/183884831-69713e5d-6082-447b-8538-5a19a93f2b8c.png)
+![](./How_to_re-install/How_to_re-install_06.png)
 
 
 ### <a id="2-3"></a> 2-3. ダウンロードしたインストーラーを該当のサーバーにて実行してください。
-![](https://user-images.githubusercontent.com/71251920/183884834-9ed43c8f-220e-4d78-97f0-cb35513ffa7b.png)
+![](./How_to_re-install/How_to_re-install_07.png)
 
 
 
 ### <a id="2-4"></a> 2-4. セットアップ ウィザードが開きますので、ウィザードの案内に従い、MARS エージェントをインストールしてください。
-![](https://user-images.githubusercontent.com/71251920/183884835-58440b1a-3878-417c-8d96-9549f16569ed.png)
+![](./How_to_re-install/How_to_re-install_08.png)
 
 
 
 ### <a id="2-5"></a> 2-5. インストール完了後、”登録処理を続行” をクリックしてください。
-![](https://user-images.githubusercontent.com/71251920/183884838-494e0293-35f4-4a8d-b3e8-00397d7fcb07.png)
+![](./How_to_re-install/How_to_re-install_09.png)
 
 
 
 ### <a id="2-6"></a> 2-6. サーバーの登録ウィザードが開きますので、次の手順に進んでください。
-![](https://user-images.githubusercontent.com/71251920/183884839-22e5fb59-1277-489d-8562-d8a44f44806b.png)
+![](./How_to_re-install/How_to_re-install_10.png)
 
 
 
@@ -94,21 +94,21 @@ https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/#4
 ### <a id="3-1"></a> 3-1. 手順 2-2 の画面にて ”最新のRecovery Services Agent を既にダウンロードしたか、使用している” にチェックし、ダウンロードをクリックしてください。
 *Recovery Services コンテナーの資格情報がダウンロードされます。
 
-![](https://user-images.githubusercontent.com/71251920/183884840-b8b63d4d-a62c-46fc-8540-f1b6d74175ad.png)
+![](./How_to_re-install/How_to_re-install_11.png)
 
 
 ### <a id="3-2"></a>3-2. ダウンロードした資格情報を該当のサーバーに配置してください。
-![](https://user-images.githubusercontent.com/71251920/183884842-e0613cd2-97fa-4fc9-85fe-02c9077d400e.png)
+![](./How_to_re-install/How_to_re-install_12.png)
 
 
 
 ### <a id="3-3"></a>3-3. 手順2-6の画面にて手順3-2でダウンロードした資格情報を選択し、”次へ” をクリックしてください。
-![](https://user-images.githubusercontent.com/71251920/183884843-f63375af-7ca7-48d7-a69b-3f63078a5882.png)
+![](./How_to_re-install/How_to_re-install_13.png)
 
 
 
 ### <a id="3-4"></a>3-4. 以前登録したパスフレーズを入力し、パスフレーズを保存する任意の場所を選択して、”登録” をクリックして登録を完了してください。
-![](https://user-images.githubusercontent.com/71251920/183884846-073e873b-b194-4efa-9ab0-7cbbcd6a33a9.png)
+![](./How_to_re-install/How_to_re-install_14.png)
 
 
 ## <a id="4"></a>4. 関連公開情報

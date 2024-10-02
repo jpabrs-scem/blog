@@ -65,7 +65,7 @@ CSV を利用している、もしくは CSV ライターが有効である状�
   >    Writer Instance ID: {a2c1fb45-4c7e-43dc-b4e1-6f4660f40ce4}  
   >    Command Line: C:\Windows\Cluster\clussvc.exe -s  
   >    Process ID: 4004</Data>  
-  <img src="https://github.com/user-attachments/assets/4fb89115-7c88-448c-9e43-cc2829623fff" width="700">  
+  ![](./CSV_not_Supported/CSV_not_Supported_01.png)  
 - システム ログ  
   > ログの名前: System  
   > ソース: Microsoft-Windows-FailoverClustering  
@@ -78,7 +78,7 @@ CSV を利用している、もしくは CSV ライターが有効である状�
   > コンピューター: <コンピューター名>  
   > 説明:  
   > クラスター構成データのバックアップ操作が取り消されました。クラスターのボリューム シャドウ コピー サービス (VSS) ライターが中止要求を受信しました。  
-  <img src="https://github.com/user-attachments/assets/3b9793c8-7684-4761-877e-cca8dcf5fd06" width="700">  
+  ![](./CSV_not_Supported/CSV_not_Supported_02.png)  
 
 
 ## <a id="2"></a> 2. WSFC を利用している場合について  
@@ -115,9 +115,9 @@ Get-ClusterSharedVolume
 
 **実行結果例**  
 - CSV を利用している場合  
-  <img src="https://github.com/user-attachments/assets/e9a620ee-b3e2-4d2a-b5d3-2503428982ed" width="700">  
+  ![](./CSV_not_Supported/CSV_not_Supported_03.png)  
 - CSV を利用していない場合  
-  <img src="https://github.com/user-attachments/assets/645149c9-9869-4d22-86ee-b8d96bd18566" width="700">  
+  ![](./CSV_not_Supported/CSV_not_Supported_04.png)  
 
 
 ### <a id="3.2"></a> 3.2 CSV ライターの動作状況を確認する方法  
@@ -134,7 +134,7 @@ vssadmin list writers
 ```  
 
 **実行結果例**  
-<img src="https://github.com/user-attachments/assets/227b1082-ec2c-4ff0-b68c-3478fd8ef274" width="900">  
+![](./CSV_not_Supported/CSV_not_Supported_05.png)  
 
 
 ## <a id="4"></a> 4. CSV ライターを無効化する方法  
@@ -148,27 +148,27 @@ WSFC を構成しているが CSV を利用していない場合には、この�
 ### <a id="4.1"></a> 4.1 CSV ライターの無効化手順  
 - 0. 各クラスター ノードそれぞれで下記手順を実施します  
 - 1. 「ファイル名を指定して実行」 に ``regedit`` と入力して実行し、 レジストリ エディターを起動します  
-    <img src="https://github.com/user-attachments/assets/de876918-4051-462a-b7bc-f872c48e659c" width="400">  
+    ![](./CSV_not_Supported/CSV_not_Supported_06.png)  
 
 - 2. 下記のキーを右クリックし、「アクセス許可」 を選択して、「Failover Clusters のアクセス許可」 の画面を開きます  
     ```text  
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Failover Clusters
     ```  
-    <img src="https://github.com/user-attachments/assets/a3cf11a7-b6c4-414f-8965-3142fc6ce009" width="700">  
+    ![](./CSV_not_Supported/CSV_not_Supported_07.png)  
 
 - 3. 「詳細設定」 を押下し、「Failover Clusters のセキュリティの詳細設定」 の画面を開きます  
-    <img src="https://github.com/user-attachments/assets/3c2d0f12-e475-48c5-a4c8-313293877729" width="400">  
+    ![](./CSV_not_Supported/CSV_not_Supported_08.png)  
 
 - 4. 「所有者」 の隣の 「変更」 を選択し、「選択するオブジェクトを入力してください」 に ``管理者アカウント (下記の例では、azureadmin)`` を入力して、「名前の確認」 > 「OK」 を選択します  
   ※ 「場所の指定」には、サーバーが参加しているドメインが選択されている状態で問題ございません  
-    <img src="https://github.com/user-attachments/assets/691cbdf6-da21-4ed2-a62d-a9871256ad2b" width="700">  
-    <img src="https://github.com/user-attachments/assets/0b8769b4-2838-4baf-a80e-5113cef6562e" width="500">  
+    ![](./CSV_not_Supported/CSV_not_Supported_09.png)  
+    ![](./CSV_not_Supported/CSV_not_Supported_10.png)  
 
 - 5. 「所有者」 が 管理者アカウント (下記の例では、azureadmin) に変更されたことを確認し、「OK」 を押下して、「Failover Clusters のセキュリティの詳細設定」 の画面を閉じます  
-    <img src="https://github.com/user-attachments/assets/f9e6b493-39f2-4bfe-8b34-49d05efdd88d" width="700">  
+    ![](./CSV_not_Supported/CSV_not_Supported_11.png)  
 
 - 6. 手順 2 で開いた 「Failover Clusters のアクセス許可」 画面に戻り、管理者アカウント または Administrators のフル コントロールにチェックを入れ、「OK」 を選択して画面を閉じます  
-    <img src="https://github.com/user-attachments/assets/e79ae654-e002-4e06-80a5-a94cd4b9addb" width="400">  
+    ![](./CSV_not_Supported/CSV_not_Supported_12.png)  
 
 - 7. 手順 1 で起動したレジストリ エディターで Failover Clusters のキーを右クリックし、「新規」 > 「DWORD (32 ビット) 値」 を選択して、下記のレジストリを作成します  
   ```text  
@@ -177,8 +177,8 @@ WSFC を構成しているが CSV を利用していない場合には、この�
   種類 : REG_DWORD
   データ : 0
   ```  
-    <img src="https://github.com/user-attachments/assets/579af712-e021-4070-989e-f2e3989b90d7" width="700">  
-    <img src="https://github.com/user-attachments/assets/880c78b3-e1aa-452a-a1d4-4d9d68f017a4" width="700">  
+    ![](./CSV_not_Supported/CSV_not_Supported_13.png)  
+    ![](./CSV_not_Supported/CSV_not_Supported_14.png)  
 
 - 8. OS の再起動を実施します  
 
@@ -190,36 +190,36 @@ WSFC を構成しているが CSV を利用していない場合には、この�
 
 - 0. 各クラスター ノードそれぞれで下記手順を実施します  
 - 1. 「ファイル名を指定して実行」 に ``regedit`` と入力して実行し、 レジストリ エディターを起動します  
-    <img src="https://github.com/user-attachments/assets/de876918-4051-462a-b7bc-f872c48e659c" width="400">  
+    ![](./CSV_not_Supported/CSV_not_Supported_15.png)  
 
 - 2. 下記のキーを表示し、レジストリ 「EnableCsvVssWriter」 を右クリックし、「削除」を選択します  
     ```text  
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Failover Clusters
     ```  
-    <img src="https://github.com/user-attachments/assets/d3435117-680e-43b6-a4bd-38562987b256" width="700">  
+    ![](./CSV_not_Supported/CSV_not_Supported_16.png)  
     - 「一部のレジストリ値を削除するとシステムが不安定になる場合があります。この値を完全に削除しますか？」というメッセージを含むポップアップが表示されますが、「はい」を選択してください  
-      <img src="https://github.com/user-attachments/assets/66602084-60f0-4f81-9716-33e486fd3c30" width="700">  
+      ![](./CSV_not_Supported/CSV_not_Supported_17.png)  
 
 - 3. 下記のキーを右クリックし、「アクセス許可」 を選択して、「Failover Clusters のアクセス許可」 の画面を開きます  
     ```text  
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Failover Clusters
     ```  
-    <img src="https://github.com/user-attachments/assets/a3cf11a7-b6c4-414f-8965-3142fc6ce009" width="700">  
+    ![](./CSV_not_Supported/CSV_not_Supported_18.png)  
 
 - 4. 「Failover Clusters のアクセス許可」 画面で 管理者アカウント または Administrators のフル コントロールのチェックを外し、「適用」 を選択します  
-    <img src="https://github.com/user-attachments/assets/db167b78-1802-4150-9285-0518b840af58" width="400">  
+    ![](./CSV_not_Supported/CSV_not_Supported_19.png)  
 
 - 5. 「Failover Clusters のアクセス許可」 画面で 「詳細設定」 を押下し、「Failover Clusters のセキュリティの詳細設定」 の画面を開きます  
-    <img src="https://github.com/user-attachments/assets/3c2d0f12-e475-48c5-a4c8-313293877729" width="400">  
+    ![](./CSV_not_Supported/CSV_not_Supported_20.png)  
 
 - 6. 「所有者」 の隣の 「変更」 を選択し、「選択するオブジェクトを入力してください」 に  
   ``NT Service\TrustedInstaller`` と入力して、「名前の確認」 > 「OK」 を選択します  
   ※ 「場所の指定」には、ローカル マシン名を指定してください  
-    <img src="https://github.com/user-attachments/assets/73d1251d-fe6d-44de-8d58-ea6e7d2ea5ee" width="700">  
-    <img src="https://github.com/user-attachments/assets/7918ce9d-3f4e-4523-904e-4dc0237281d2" width="500">  
+    ![](./CSV_not_Supported/CSV_not_Supported_21.png)  
+    ![](./CSV_not_Supported/CSV_not_Supported_22.png)  
 
 - 7. 「所有者」 が TrustedInstaller アカウントに変更されたことを確認し、「OK」 を押下して、「Failover Clusters のセキュリティの詳細設定」 および 「Failover Clusters のアクセス許可」 の画面を閉じます  
-    <img src="https://github.com/user-attachments/assets/e8cc43a1-52b8-41c9-954b-fbe5ce4a3599" width="700">  
+    ![](./CSV_not_Supported/CSV_not_Supported_23.png)  
 
 以上で CSV ライターの無効化の戻し作業は完了です。  
 
