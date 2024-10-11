@@ -206,7 +206,7 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 
 
 ### 4.4.1 個人 ＞ 証明書<a id="4-4-1"></a>
->・CB_<MARSのバックアップを実施する予定のRecovery Services コンテナー名 → -x-x-xxxx-vaultcredentials
+>・CB_<MARSのバックアップを実施する予定のRecovery Services コンテナー名>-xx-xx-xxxx-vaultcredentials
 >・CB_<ホスト名>._xxxxxxxxxxxxxxxxxx
 ※　上記 2 が存在していることを確認の上、その画面スクリーンショットをご提供ください
 （存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）
