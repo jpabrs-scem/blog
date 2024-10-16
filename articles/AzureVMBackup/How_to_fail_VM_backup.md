@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup を意図的に失敗させる方法
-date: 2024-10-15 12:00:00
+date: 2024-10-16 12:00:00
 tags:
   - Azure VM Backup
   - how to

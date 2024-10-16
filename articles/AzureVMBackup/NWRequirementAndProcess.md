@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup の通信要件や処理の流れについて
-date: 2022-02-16 12:00:00
+date: 2024-10-16 12:00:00
 tags:
   - Azure VM Backup
   - how to

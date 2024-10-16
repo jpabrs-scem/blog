@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup と Azure Site Recovery による DR 要件について
-date: 2024-10-11 12:00:00
+date: 2024-10-16 12:00:00
 tags:
   - Azure Backup General
   - how to
