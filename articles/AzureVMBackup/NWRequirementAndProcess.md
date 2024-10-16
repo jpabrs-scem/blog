@@ -8,7 +8,7 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-皆様こんにちは。Azure Backup サポートの山本です。
+皆様こんにちは。Azure Backup サポートです。
 今回は Azure VM Backup における通信要件や処理の流れに関して、具体的なお問い合わせ例を交えて公式ドキュメントを補足する形でご説明させていただきます。
 
 ## 目次
@@ -40,6 +40,25 @@ https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-windows
 ・IP アドレス 168.63.129.16 とは
  https://docs.microsoft.com/ja-jp/azure/virtual-network/what-is-ip-address-168-63-129-16
 >VM エージェントでは、ポート 80/tcp と 32526/tcp を介した WireServer (168.63.129.16) とのアウトバウンド通信が必要です。 これらは、VM 上のローカル ファイアウォールでは開いている必要があります。 これらのポート上での 168.63.129.16 との通信は、構成されたネットワーク セキュリティ グループの対象ではありません。
+
+また、Azure VM Backup では必要な通信やデータ転送はすべて Azure バックボーン ネットワーク上でのみ行われるため、仮想ネットワーク (インターネット) にアクセスする必要はありません。  
+したがって IP や FQDN へのアクセスを許可するも必要がありません。
+  
+・Azure VM バックアップにはインターネット接続は不要 | セキュリティ機能の概要 - Azure Backup | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/security-overview#internet-connectivity-not-required-for-azure-vm-backup  
+>Azure VM のバックアップを行うには、お使いの仮想マシンのディスクから Recovery Services コンテナーにデータを移動する必要があります。 ただし、必要な通信やデータ転送はすべて Azure バックボーン ネットワーク上でのみ行われ、仮想ネットワークにアクセスする必要はありません。 そのため、セキュリティで保護されたネットワーク内に配置された Azure VM のバックアップでは、IP や FQDN へのアクセスを許可する必要がありません。
+
+・推奨されるシナリオとサポートされるシナリオ | Azure Backup のプライベート エンドポイント - 概要 - Azure Backup | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-private-endpoints-concept#recommended-and-supported-scenarios  
+>VM バックアップでは、どの IP または FQDN へのアクセスも許可する必要はありません。
+
+・スナップショットをストレージ アカウントからコンテナーに移動した場合、転送中の暗号化はどのように管理されますか? | FAQ-Azure VM をバックアップする - Azure Backup | Microsoft Learn
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vm-backup-faq#-------------------------------------------------------
+>Azure VM バックアップでは、転送中の暗号化に HTTPS 通信を使用します。 データ転送では、VM のバックアップにインターネット アクセスを必要としない Azure ファブリック (パブリック エンドポイントではなく) を使用します。
+
+・インターネット接続 | ガイダンスとベスト プラクティス - Azure Backup | Microsoft Learn
+https://learn.microsoft.com/ja-jp/azure/backup/guidance-best-practices#internet-connectivity
+>Azure VM バックアップ: ストレージと Azure Backup サービス間の必要な通信やデータ転送はすべて Azure ネットワーク内で行われ、仮想ネットワークにアクセスする必要はありません。 そのため、セキュリティで保護されたネットワーク内に配置された Azure VM のバックアップでは、IP や FQDN へのアクセスを許可する必要がありません。
 
 ####  1.1 参考 URL<a id="1-1"></a>
 合わせて下記の公式ドキュメントもご覧ください。
@@ -159,7 +178,7 @@ https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/#2-1
 >Q.  Recovery Services コンテナーにプライベート エンドポイントを設定した際の Azure VM バックアップをとるための NSG の設定を知りたい
 >>A. Azure VM Backup では1.Take Snapshotフェーズで Wire Server (168.63.129.16) と通信し、2.  Transfer data to vault フェーズで Azure 基盤内でバックアップデータ(取得したスナップショット) を Recovery Services コンテナーへ転送します。
 そのため、 Azure VM と Recovery Services コンテナーは直接通信しないので、プライベート エンドポイント観点での 対象 VM に対する NSG の考慮は Azure VM Backup では不要です。
-また Wire Server (Wire Server) への通信もプライベート エンドポイントの影響を受けません。
+また Wire Server (168.63.129.16) への通信もプライベート エンドポイントの影響を受けません。
 プライベート エンドポイント を設定していても設定していなくても、その前後で Azure VM Backup は設定変更することなく取得することが可能です。
 参考
 ・Azure VM Backup の 通信要件について - Azure VM Backup の 通信要件(本ページ)
