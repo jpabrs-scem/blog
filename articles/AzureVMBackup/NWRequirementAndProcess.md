@@ -48,6 +48,10 @@ https://docs.microsoft.com/ja-jp/azure/virtual-machines/extensions/agent-windows
 https://learn.microsoft.com/ja-jp/azure/backup/security-overview#internet-connectivity-not-required-for-azure-vm-backup  
 >Azure VM のバックアップを行うには、お使いの仮想マシンのディスクから Recovery Services コンテナーにデータを移動する必要があります。 ただし、必要な通信やデータ転送はすべて Azure バックボーン ネットワーク上でのみ行われ、仮想ネットワークにアクセスする必要はありません。 そのため、セキュリティで保護されたネットワーク内に配置された Azure VM のバックアップでは、IP や FQDN へのアクセスを許可する必要がありません。
 
+・FAQ - Azure Backup を使用してランサムウェアからバックアップを保護する - Azure Backup | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/backup/protect-backups-from-ransomware-faq#----------------------azure-backup----------------------------  
+>Azure VM の場合、転送中のデータは Azure のバックボーン ネットワークに残りますが、仮想ネットワークにアクセスする必要はありません。 そのため、セキュリティで保護されたネットワーク内に配置された Azure VM のバックアップでは、IP や FQDN へのアクセスを許可する必要がありません。
+
 ・推奨されるシナリオとサポートされるシナリオ | Azure Backup のプライベート エンドポイント - 概要 - Azure Backup | Microsoft Learn  
 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-private-endpoints-concept#recommended-and-supported-scenarios  
 >VM バックアップでは、どの IP または FQDN へのアクセスも許可する必要はありません。

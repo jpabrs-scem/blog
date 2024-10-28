@@ -28,7 +28,7 @@ Poxyを経由させてSQL Server DB に対する Azure Backupを行いたい場�
 　https://docs.microsoft.com/ja-jp/azure/backup/private-endpoints#set-up-proxy-server-for-recovery-services-vault-with-private-endpoint 
 
 ##### ( ポイントその 2 )
-本ブログ記事作成時点 (2022/10) では、Microsoft Entra ID はプライベート エンドポイントに対応していませんので、Microsoft Entra ID は PE 以外の疎通ルートを確立させる必要があります。
+本ブログ記事作成時点 (2024/10) では、Microsoft Entra ID はプライベート エンドポイントに対応していませんので、Microsoft Entra ID は PE 以外の疎通ルートを確立させる必要があります。
 
 ## 目次 - 手順概略
 -----------------------------------------------------------
