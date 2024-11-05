@@ -23,8 +23,13 @@ disableDisclaimer: false
 　https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/
 
 ## 1. バックアップを故意に失敗させる方法 (共有ディスクをアタッチする)<a id="1"></a>
-「共有ディスクを一時的にアタッチしてバックアップ ジョブを失敗させる」方法をご紹介します。
-こちらはバックアップ ジョブ開始直後 ～ 30 分程度で「UserErrorSharedDiskBackupNotSupported」エラーで失敗する見込みです。
+「共有ディスクを一時的にアタッチしてバックアップ ジョブを失敗させる」 方法をご紹介します。  
+Azure VM Backup において、共有ディスクのバックアップはサポートされていません。  
+この仕様を利用して、共有ディスクを対象の VM にアタッチすることでバックアップの失敗を意図的に発生させることが可能です。  
+この方法では、バックアップ ジョブ開始直後 ～ 30 分程度で 「UserErrorSharedDiskBackupNotSupported」 エラーで失敗する見込みです。
+
+・VM ストレージのサポート | Azure VM バックアップのサポート マトリックス - Azure Backup | Microsoft Learn  
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix-iaas#vm-storage-support
 
 ### 1.1.詳細手順
 バックアップ 対象の VM に、Azure ポータル画面上で一時的に共有ディスクを追加アタッチします。
