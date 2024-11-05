@@ -1,6 +1,6 @@
 ---
 title:  Azure Backup の障害調査に必要な情報
-date: 2024-10-16 12:00:00
+date: 2024-11-5 12:00:00
 tags:
   - Azure Backup General
   - 情報採取

@@ -1,6 +1,6 @@
 ---
 title: SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定
-date: 2024-10-16 12:00:00
+date: 2024-11-5 12:00:00
 tags:
   - Azure SQL Backup
   - how to
