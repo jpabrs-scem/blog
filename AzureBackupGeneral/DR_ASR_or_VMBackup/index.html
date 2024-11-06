@@ -13,8 +13,8 @@
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
 <meta property="og:description" content="こんにちは。Azure Backup 、Azure Site Recovery 担当です。今回は Azure のリージョン障害などを想定した Azure VM の Disaster Recovery (DR) 対策を検討中のお客様よりお問合せをいただきます「Azure VM Backup と Azure Site Recovery どちらを利用すればいいのか？」について解説させていただきます。">
 <meta property="og:locale" content="ja_JP">
-<meta property="article:published_time" content="2023-08-04T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-10-02T01:20:29.148Z">
+<meta property="article:published_time" content="2024-11-05T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-06T00:59:52.642Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="how to">
@@ -97,13 +97,13 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2023-08-04T03:00:00.000Z" itemprop="datePublished">2023-08-04</time>
+  <time datetime="2024-11-05T03:00:00.000Z" itemprop="datePublished">2024-11-05</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+a8be3968-73a4-5f38-ab4a-7a552b18d47d%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup+%E3%81%A8+Azure+Site+Recovery+%E3%81%AB%E3%82%88%E3%82%8B+DR+%E8%A6%81%E4%BB%B6%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FDR_ASR_or_VMBackup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FDR_ASR_or_VMBackup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FDR_ASR_or_VMBackup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/" data-id="cm1r6kzae00030nqohwa63ymq" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/" data-id="cm35699qm00030nqtbemr81re" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -126,7 +126,7 @@
 <li>データ損失の許容時間は直前 12 時間以内。など</li>
 </ul>
 <p>・RPO (復旧ポイントの目標)<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#rpo-recovery-point-objective">https://learn.microsoft.com/ja-jp/azure/backup/azure-backup-glossary#rpo-recovery-point-objective</a></p>
-<h2 id="2-Azure-VM-Backup-と-Azure-Site-Recovery-の比較"><a href="#2-Azure-VM-Backup-と-Azure-Site-Recovery-の比較" class="headerlink" title=" 2. Azure VM Backup と Azure Site Recovery の比較"></a><a id="2"></a> 2. Azure VM Backup と Azure Site Recovery の比較</h2><p>以下は Azure VM Backup と Azure Site Recovery の比較表です。<br>2 時間以上のダウンタイム (RTO) が許容されない場合や、24 時間以上のデータ損失が許容されない場合など Azure VM Backup で対応できない場合には Azure Site Recovery の採用をご検討いただければと存じます。</p>
+<h2 id="2-Azure-VM-Backup-と-Azure-Site-Recovery-の比較"><a href="#2-Azure-VM-Backup-と-Azure-Site-Recovery-の比較" class="headerlink" title=" 2. Azure VM Backup と Azure Site Recovery の比較"></a><a id="2"></a> 2. Azure VM Backup と Azure Site Recovery の比較</h2><p>以下は Azure VM Backup と Azure Site Recovery の比較表です。<br>1 時間以上のダウンタイム (RTO) が許容されない場合や、24 時間以上のデータ損失が許容されない場合など Azure VM Backup で対応できない場合には Azure Site Recovery の採用をご検討いただければと存じます。</p>
 <table>
 <thead>
 <tr>
@@ -148,12 +148,12 @@
 <tr>
 <td align="left">RTO に関する SLA</td>
 <td align="left">RTO について SLA はありません。</td>
-<td align="left">SLA で 2 時間以内の RTO を保証します。<br> [ご参考] ・Azure Site Recovery の SLA<br><a target="_blank" rel="noopener" href="https://azure.microsoft.com/ja-jp/support/legal/sla/site-recovery/v1_2/">https://azure.microsoft.com/ja-jp/support/legal/sla/site-recovery/v1_2/</a><br>&gt;オンプレミスと Azure 間の計画上および計画外のフェールオーバー用に構成された保護された各インスタンスにつき、マイクロソフトは、2 時間の目標復旧時間を保証します。</td>
+<td align="left">SLA で 1 時間以内の RTO を保証します。<br> [ご参考] ・Azure Site Recovery の SLA<br><a target="_blank" rel="noopener" href="https://azure.microsoft.com/ja-jp/support/legal/sla/site-recovery/v1_2/">https://azure.microsoft.com/ja-jp/support/legal/sla/site-recovery/v1_2/</a><br>&gt;オンプレミスと Azure 間の計画上および計画外のフェールオーバー用に構成された保護された各インスタンスにつき、マイクロソフトは、1 時間の目標復旧時間を保証します。</td>
 </tr>
 <tr>
 <td align="left">Recovery Time Objective (RTO)</td>
 <td align="left">明確には定めておりません。<br> <strong>大容量の VM では復元に 24 時間以上かかる場合がございます。</strong><br>[ご参考] ・1.1 Azure VM Backup のバックアップ時間について<br>Azure Backup の バックアップ / リストア 所要時間について　<br><a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/#1-1">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/#1-1</a></td>
-<td align="left">2 時間以内の RTO を提供します。</td>
+<td align="left">1 時間以内の RTO を提供します。</td>
 </tr>
 <tr>
 <td align="left">Recovery Point Objective (RPO)</td>
@@ -191,19 +191,10 @@
     
 <nav id="article-nav">
   
-    <a href="../Backup_RetentionPeriod/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Azure Backup の 保持期間について
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureVMBackup/ActiveDirectory_backup/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/How_to_fail_VM_backup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">ドメインに参加しているVMのAzure VM Backupリストアについて</div>
+      <div class="article-nav-title">Azure VM Backup を意図的に失敗させる方法</div>
     </a>
   
 </nav>
@@ -222,23 +213,23 @@
       <ul>
         
           <li>
-            <a href="../../AzureVMBackup/RestoreStagingStorageAccount/">Azure VM Backup でリストアする際に利用するステージングの場所として利用するストレージ アカウントについて</a>
+            <a href="">Azure VM Backup と Azure Site Recovery による DR 要件について</a>
           </li>
         
           <li>
-            <a href="../../AzureVMBackup/CSV_not_Supported/">Azure VM Backup における CSV のサポートについて</a>
+            <a href="../../AzureVMBackup/How_to_fail_VM_backup/">Azure VM Backup を意図的に失敗させる方法</a>
           </li>
         
           <li>
-            <a href="../../AzureFilesBackup/About_Protection_Lock/">AzureBackupProtectionLock について</a>
+            <a href="../RequestForInvestigating/">Azure Backup の障害調査に必要な情報</a>
           </li>
         
           <li>
-            <a href="../../AzureVMBackup/VM_Backup_billing/">Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</a>
+            <a href="../../AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/">SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定</a>
           </li>
         
           <li>
-            <a href="../HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+            <a href="../../AzureVMBackup/NWRequirementAndProcess/">Azure VM Backup の通信要件や処理の流れについて</a>
           </li>
         
       </ul>
@@ -261,7 +252,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
