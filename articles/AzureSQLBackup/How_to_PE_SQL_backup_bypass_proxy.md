@@ -1,6 +1,6 @@
 ---
 title: SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定
-date: 2023-10-01 12:00:00
+date: 2024-11-5 12:00:00
 tags:
   - Azure SQL Backup
   - how to
@@ -22,13 +22,13 @@ Poxyを経由させてSQL Server DB に対する Azure Backupを行いたい場�
 
 上記２つのアカウントに対してProxyを設定している、かつ　Proxy を経由せずに、プライベート エンドポイント（PE）経由でSQL Backupをさせたい場合、下記をバイパスさせる必要があります。
 （例外リスト/バイパスリスト）
-	　LocalHost 、Wire Server （168.63.129.16）、169.254.169.254、以下ドキュメント記載のAzure Backup、Azure Storage、Azure Active Directory
+	　LocalHost 、Wire Server （168.63.129.16）、169.254.169.254、以下ドキュメント記載のAzure Backup、Azure Storage、Microsoft Entra ID
 	
 ・プライベート エンドポイントを使用して Recovery Services コンテナー用のプロキシ サーバーを設定する
 　https://docs.microsoft.com/ja-jp/azure/backup/private-endpoints#set-up-proxy-server-for-recovery-services-vault-with-private-endpoint 
 
 ##### ( ポイントその 2 )
-本ブログ記事作成時点 (2022/10) では、Azure Active Directory ( =AAD ) はプライベート エンドポイントに対応していませんので、AAD は PE 以外の疎通ルートを確立させる必要があります。
+本ブログ記事作成時点 (2024/10) では、Microsoft Entra ID はプライベート エンドポイントに対応していませんので、Microsoft Entra ID は PE 以外の疎通ルートを確立させる必要があります。
 
 ## 目次 - 手順概略
 -----------------------------------------------------------
@@ -66,7 +66,7 @@ Proxy の IP アドレスとポートを設定します。​
 
 ・下図一番右側の「Proxy Settings」ウィンドウ ＞ 「Exceptions」欄に記入すべきものが、SQL Server DB に対する Azure Backup 実行時 (= Local Sysytem アカウントが利用される際) に、Proxy Server を経由させずに通信したい場合のアドレスを入力する欄です。
 　ここに、以下を記入することで、SQL Server DB に対する Azure Backup 実行時はプロキシをバイパスさせることができます。
-　LocalHost 、Wire Server （168.63.129.16）、169.254.169.254、上記ドキュメント記載のAzure Backup、Azure Storage、AAD
+　LocalHost 、Wire Server （168.63.129.16）、169.254.169.254、上記ドキュメント記載のAzure Backup、Azure Storage、Microsoft Entra ID
 
 (実際の入力値)
 ```
@@ -127,7 +127,7 @@ Azure ポータル画面上から、対象の SQL Server DB に対して「デ�
 
 ・下図一番右側 黄色罫線箇所が、Proxy Server を経由させずに通信したい場合のアドレスを入力する欄です。
 　ここに、以下を記入することで、SQL Server DB に対する Azure Backup 実行時はプロキシをバイパスさせることができます。
-　LocalHost 、Wire Server （168.63.129.16）、169.254.169.254、上記ドキュメント記載のAzure Backup、Azure Storage、AAD
+　LocalHost 、Wire Server （168.63.129.16）、169.254.169.254、上記ドキュメント記載のAzure Backup、Azure Storage、Microsoft Entra ID
 
 (実際の入力値)
 ```
