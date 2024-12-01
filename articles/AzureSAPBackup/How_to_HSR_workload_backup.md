@@ -1,6 +1,6 @@
 ---
 title: HSR に対する Azure Workload Backup
-date: 2023-09-13 12:00:00
+date: 2024-12-04 12:00:00
 tags:
   - Azure SAPHANA Backup
   - how to
@@ -57,9 +57,6 @@ SAP HANA インスタンス番号： 90
 (参考) 公開ドキュメント - 事前登録スクリプトで実行される処理
 https://learn.microsoft.com/ja-jp/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does
 ![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_01.png)
-
-※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してキーを作成してください。
-　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。
 
 HANA DB を立ち上げ、設定します。
 (Primary マシン上で実行するコマンド 例)
@@ -140,8 +137,7 @@ hdbsql -t -U <font color="Red">SYSTEM</font> "GRANT <font color="Green">BACKUP A
 (実行するコマンド)
 hdbuserstore Set <作成するキー名> <作成先HANA DB のホスト名>:3<インスタンス番号>13 <カスタム バックアップ ユーザー名> <カスタム バックアップ ユーザーのパスワード>
 
-※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください。
-　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。
+※ 下記は、仮想 IP は使用していない前提のコマンド例を記載しています。
 
 (Primary マシン上で実行するコマンド 例)
 hdbuserstore Set <font color="Red">OKTBKKEY</font> <font color="MediumBlue">saphana23</font>:3<font color="Red">90</font>13 <font color="MediumBlue">OKTBK</font> <font color="Red"><パスワード></font>
@@ -150,12 +146,20 @@ hdbuserstore Set <font color="Red">OKTBKKEY</font> <font color="MediumBlue">saph
 hdbuserstore list
 ![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_11.png)
 
+> [!NOTE]
+> ※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください
+> ・(参考) 事前登録スクリプトを実行する
+> https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script
+> ![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_30.png)
+>
+> 例えば「10.1.0.13」をクラスタ構成時の仮想 IP としている場合、カスタム バックアップ ユーザーに対するキー作成時には、この仮想 IP アドレスを用いて作成します
+> ![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_31.png)
+> ![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_32.png)
+> ![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_33.png)
+
 
 ## <a id="4"></a> 4. (Secondary マシン上) SYSTEM ユーザーに対してキーを設定する
 Primary マシン上で、SYSTEM ユーザーに対して設定したものと同じキー名のキーを作成・設定します。
-
-※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してキーを作成してください。
-　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。
 
 (Secondary マシン上で実行するコマンド 例)
 hdbuserstore Set <font color="Red">SYSTEM</font> <font color="MediumBlue">saphana24</font>:3<font color="Red">90</font>13 SYSTEM <font color="MediumBlue"><パスワード></font>
@@ -169,8 +173,7 @@ Primary マシン上で作成したカスタム バックアップ ユーザー�
 このためすでに HSR 設定済であれば Secondary マシン上では再度「カスタム バックアップ ユーザーの作成」を行う必要はありませんが、この段階でもし HSR 設定が完了しておらず、レプリケートしていない場合は、ユーザーにて Secondary マシン上にも再度「カスタム バックアップ ユーザーの作成」から作業ください。
 ここでは、すでに HSR 機能にてカスタム バックアップ ユーザーはレプリケートされている前提で、Secondary マシン上での「カスタム バックアップ ユーザーの作成」部分はスキップします。
 
-※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください。
-　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。
+※ 下記は、仮想 IP は使用していない前提のコマンド例を記載しています。
 
 (実行するコマンド)
 hdbuserstore Set <作成するキー名> <作成先HANA DB のホスト名>:3<インスタンス番号>13 <カスタム バックアップ ユーザー名> <カスタム バックアップ ユーザーのパスワード>
@@ -179,6 +182,11 @@ hdbuserstore Set <作成するキー名> <作成先HANA DB のホスト名>:3<�
 hdbuserstore Set <font color="Red">OKTBKKEY</font> <font color="MediumBlue">saphana24</font>:3<font color="Red">90</font>13 <font color="MediumBlue">OKTBK</font> <font color="Red"><パスワード></font>
 hdbuserstore list
 ![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_13.png)
+
+> [!NOTE]
+> ※ Primary マシン側と同様、仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください
+> 例えば「10.1.0.13」をクラスタ構成時の仮想 IP としている場合、カスタム バックアップ ユーザーに対するキー作成時には、この仮想 IP アドレスを用いて作成します
+> ![image](./How_to_HSR_workload_backup/How_to_HSR_workload_backup_34.png)
 
 
 ## <a id="6"></a> 6. (これまで Azure Backup 構成していた場合)「バックアップの停止」を行う
