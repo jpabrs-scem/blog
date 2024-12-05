@@ -24,8 +24,13 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_09.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_10.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_11.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_30.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_31.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_32.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_33.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_12.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_13.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_34.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_14.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_15.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_16.png">
@@ -42,8 +47,8 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_27.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_28.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_29.png">
-<meta property="article:published_time" content="2023-09-13T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-06T00:59:52.710Z">
+<meta property="article:published_time" content="2024-12-04T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-04T23:59:55.569Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure SAPHANA Backup">
@@ -127,13 +132,13 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2023-09-13T03:00:00.000Z" itemprop="datePublished">2023-09-13</time>
+  <time datetime="2024-12-04T03:00:00.000Z" itemprop="datePublished">2024-12-04</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+9a9528b6-73e9-5fb7-908e-ed68bc06d216%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BHSR+%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B+Azure+Workload+Backup%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSAPBackup%2FHow_to_HSR_workload_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSAPBackup%2FHow_to_HSR_workload_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSAPBackup%2FHow_to_HSR_workload_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/" data-id="cm35699sn005r0nqtfljl6fbm" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/" data-id="cm4ajvvva005r0nm87yj06zdy" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -187,7 +192,6 @@
 <hr>
 <p>※　SAP HANA 自体の環境構築・HSR の設定は、Azure Backup とは関りが無いため、すでに HSR 設定が完了している前提で本記事では説明を開始します。<br>　　記事内の<font color="Red">赤文字</font>・<font color="MediumBlue">青文字</font>などは、ユーザーの環境に依って異なります。</p>
 <h2 id="1-Primary-マシン上-SYSTEM-ユーザーに対してキーを設定する"><a href="#1-Primary-マシン上-SYSTEM-ユーザーに対してキーを設定する" class="headerlink" title=" 1. (Primary マシン上) SYSTEM ユーザーに対してキーを設定する"></a><a id="1"></a> 1. (Primary マシン上) SYSTEM ユーザーに対してキーを設定する</h2><p>(参考) 公開ドキュメント - 事前登録スクリプトで実行される処理<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does">https://learn.microsoft.com/ja-jp/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does</a><br><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_01.png" alt="image"></p>
-<p>※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してキーを作成してください。<br>　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。</p>
 <p>HANA DB を立ち上げ、設定します。<br>(Primary マシン上で実行するコマンド 例)<br>su <font color="Red">hxe</font>adm -<br>HDB start<br>hdbuserstore list<br>この時点では何もキーはありません。<br><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_02.png" alt="image"></p>
 <p>(Primary マシン上で実行するコマンド 例)<br>hdbuserstore Set <font color="Red">SYSTEM</font> <font color="MediumBlue">saphana23</font>:3<font color="Red">90</font>13 <font color="MediumBlue">&lt;キー名&gt;</font> <font color="Red">&lt;パスワード&gt;</font><br>hdbuserstore list</p>
 <p>今回は、SYSTEM ユーザーに対して設定するキーの名前も「SYSTEM」としています。<br>下図の通り、「SYSTEM」という名前のキーが作成されていることを確認します。<br><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_03.png" alt="image"></p>
@@ -209,16 +213,18 @@
 <p>念のためカスタム バックアップ ユーザー「OKTBK」に、現時点で付与されているロールを「GRANTED_PRIVILEGES」テーブルから確認してみます。<br><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_10.png" alt="image"></p>
 <h2 id="3-Primary-マシン上-カスタム-バックアップ-ユーザーに対してキーを設定する"><a href="#3-Primary-マシン上-カスタム-バックアップ-ユーザーに対してキーを設定する" class="headerlink" title=" 3. (Primary マシン上) カスタム バックアップ ユーザーに対してキーを設定する"></a><a id="3"></a> 3. (Primary マシン上) カスタム バックアップ ユーザーに対してキーを設定する</h2><p>・(参考) 事前登録スクリプトを実行する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script</a><br>　“カスタム バックアップ ユーザーの hdbuserstore にキーを追加します。これにより、HANA バックアップ プラグインですべての操作 (データベース クエリ、復元操作、構成、バックアップの実行) を管理できるようになります。”</p>
 <p>(実行するコマンド)<br>hdbuserstore Set &lt;作成するキー名&gt; &lt;作成先HANA DB のホスト名&gt;:3&lt;インスタンス番号&gt;13 &lt;カスタム バックアップ ユーザー名&gt; &lt;カスタム バックアップ ユーザーのパスワード&gt;</p>
-<p>※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください。<br>　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。</p>
+<p>※ 下記は、仮想 IP は使用していない前提のコマンド例を記載しています。</p>
 <p>(Primary マシン上で実行するコマンド 例)<br>hdbuserstore Set <font color="Red">OKTBKKEY</font> <font color="MediumBlue">saphana23</font>:3<font color="Red">90</font>13 <font color="MediumBlue">OKTBK</font> <font color="Red">&lt;パスワード&gt;</font></p>
 <p>キーが作成されているかどうかを確認します。<br>hdbuserstore list<br><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_11.png" alt="image"></p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください</p><p>・(参考) 事前登録スクリプトを実行する</p><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#run-the-preregistration-script</a></p><p><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_30.png" alt="image"></p>
+<p>例えば「10.1.0.13」をクラスタ構成時の仮想 IP としている場合、カスタム バックアップ ユーザーに対するキー作成時には、この仮想 IP アドレスを用いて作成します</p><p><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_31.png" alt="image"></p><p><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_32.png" alt="image"></p><p><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_33.png" alt="image"></p></div>
 <h2 id="4-Secondary-マシン上-SYSTEM-ユーザーに対してキーを設定する"><a href="#4-Secondary-マシン上-SYSTEM-ユーザーに対してキーを設定する" class="headerlink" title=" 4. (Secondary マシン上) SYSTEM ユーザーに対してキーを設定する"></a><a id="4"></a> 4. (Secondary マシン上) SYSTEM ユーザーに対してキーを設定する</h2><p>Primary マシン上で、SYSTEM ユーザーに対して設定したものと同じキー名のキーを作成・設定します。</p>
-<p>※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してキーを作成してください。<br>　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。</p>
 <p>(Secondary マシン上で実行するコマンド 例)<br>hdbuserstore Set <font color="Red">SYSTEM</font> <font color="MediumBlue">saphana24</font>:3<font color="Red">90</font>13 SYSTEM <font color="MediumBlue">&lt;パスワード&gt;</font><br>hdbuserstore list<br><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_12.png" alt="image"></p>
 <h2 id="5-Secondary-マシン上-カスタム-バックアップ-ユーザーに対してキーを設定する"><a href="#5-Secondary-マシン上-カスタム-バックアップ-ユーザーに対してキーを設定する" class="headerlink" title=" 5. (Secondary マシン上) カスタム バックアップ ユーザーに対してキーを設定する"></a><a id="5"></a> 5. (Secondary マシン上) カスタム バックアップ ユーザーに対してキーを設定する</h2><p>（補足）<br>Primary マシン上で作成したカスタム バックアップ ユーザーとそのパスワードは、HSR の機能によって、自動的に Secondary マシンへレプリケートされます。<br>このためすでに HSR 設定済であれば Secondary マシン上では再度「カスタム バックアップ ユーザーの作成」を行う必要はありませんが、この段階でもし HSR 設定が完了しておらず、レプリケートしていない場合は、ユーザーにて Secondary マシン上にも再度「カスタム バックアップ ユーザーの作成」から作業ください。<br>ここでは、すでに HSR 機能にてカスタム バックアップ ユーザーはレプリケートされている前提で、Secondary マシン上での「カスタム バックアップ ユーザーの作成」部分はスキップします。</p>
-<p>※ 仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください。<br>　　今回は、仮想 IP は使用していない前提のコマンド例を記載しています。</p>
+<p>※ 下記は、仮想 IP は使用していない前提のコマンド例を記載しています。</p>
 <p>(実行するコマンド)<br>hdbuserstore Set &lt;作成するキー名&gt; &lt;作成先HANA DB のホスト名&gt;:3&lt;インスタンス番号&gt;13 &lt;カスタム バックアップ ユーザー名&gt; &lt;カスタム バックアップ ユーザーのパスワード&gt;</p>
 <p>(Secondary マシン上で実行するコマンド 例)<br>hdbuserstore Set <font color="Red">OKTBKKEY</font> <font color="MediumBlue">saphana24</font>:3<font color="Red">90</font>13 <font color="MediumBlue">OKTBK</font> <font color="Red">&lt;パスワード&gt;</font><br>hdbuserstore list<br><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_13.png" alt="image"></p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>※ Primary マシン側と同様、仮想 IP を使用して クラスタ構成・HSR 構成を行っている場合、公開ドキュメントのとおりローカル ホストではなくロード バランサーのホスト/IP を使用してカスタム バックアップ キーを作成してください</p><p>例えば「10.1.0.13」をクラスタ構成時の仮想 IP としている場合、カスタム バックアップ ユーザーに対するキー作成時には、この仮想 IP アドレスを用いて作成します</p><p><img src="/blog/AzureSAPBackup/How_to_HSR_workload_backup/How_to_HSR_workload_backup_34.png" alt="image"></p></div>
 <h2 id="6-これまで-Azure-Backup-構成していた場合-「バックアップの停止」を行う"><a href="#6-これまで-Azure-Backup-構成していた場合-「バックアップの停止」を行う" class="headerlink" title=" 6. (これまで Azure Backup 構成していた場合)「バックアップの停止」を行う"></a><a id="6"></a> 6. (これまで Azure Backup 構成していた場合)「バックアップの停止」を行う</h2><p>『これまで スタンドアロンの SAP HANA DB として、Azure workload Backup を構成していた』<br>という場合、対象の SAP HANA DB は今後「HSR に対する Azure Workload Backup」としてバックアップ構成しなおすことになります。<br>このため、一度、これまでバックアップ取得していたスタンドアロンの SAP HANA DB に対しては<br>「バックアップ データの保持」・「バックアップの停止」を行ってください。</p>
 <p>・(参考 「バックアップの停止」部分まで) 2 つのスタンドアロン VM/1 つのスタンドアロン VM が Azure VM 上の SAP HANA Database バックアップを使用して既に保護されている<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#two-standalone-vms-one-standalone-vm-already-protected-using-sap-hana-database-backup-on-azure-vm">https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-with-hana-system-replication-backup#two-standalone-vms-one-standalone-vm-already-protected-using-sap-hana-database-backup-on-azure-vm</a></p>
 <p>『これまで一度も、対象 DB に対して Azure Workload Backup を構成したことが無い』<br>『今回初めて HSR 構成・HSR に対する Azure Workload Backup を行う』<br>という場合は、「6」手順はスキップし、「7. (Primary マシン上) 事前登録スクリプトをダウンロード・実行する」より作業を再開ください。</p>
@@ -279,19 +285,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureVMBackup/ClassicVm_to_ARM/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          バックアップしているクラシック VM を ARM VM へ移行する際の注意点
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureBackupGeneral/DR_ASR_or_VMBackup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure Backup の 保持期間について</div>
+      <div class="article-nav-title">Azure VM Backup と Azure Site Recovery による DR 要件について</div>
     </a>
   
 </nav>
@@ -310,6 +307,10 @@
       <ul>
         
           <li>
+            <a href="">HSR に対する Azure Workload Backup</a>
+          </li>
+        
+          <li>
             <a href="../../AzureBackupGeneral/DR_ASR_or_VMBackup/">Azure VM Backup と Azure Site Recovery による DR 要件について</a>
           </li>
         
@@ -323,10 +324,6 @@
         
           <li>
             <a href="../../AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/">SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureVMBackup/NWRequirementAndProcess/">Azure VM Backup の通信要件や処理の流れについて</a>
           </li>
         
       </ul>
@@ -349,7 +346,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
