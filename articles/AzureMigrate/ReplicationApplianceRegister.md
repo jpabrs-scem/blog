@@ -28,7 +28,7 @@ Azure Migrate オンプレミス VMWare VM →　Azure への移行 エージェ
 
 ・(参考) レプリケーション アプライアンス
 　https://learn.microsoft.com/ja-jp/azure/migrate/migrate-replication-appliance
-![]({./ReplicationApplianceRegister/01.png})
+![](./ReplicationApplianceRegister/01.png)
 
 上記公開情報では、オペレーティング システムを [Windows Server 2016 または Windows Server 2012 R2] と記載しておりますが
 「Windows Server 2012 R2」は、オンプレミス上のマシンに対する OS サポートは終了しており
@@ -63,7 +63,7 @@ Azure Migrate オンプレミス VMWare VM →　Azure への移行 エージェ
 Microsoft Azure Site Recovery Unified Setup is unable to proceed as the Operating System locale selected on this computer is not English.
 Recommended Action : Run setup on a computer with Operating system locale selected as English.
 ```
-![]({./ReplicationApplianceRegister/02.png})
+![](./ReplicationApplianceRegister/02.png)
 
 また、NIC の情報に日本語が含まれている場合も、「MicrosoftAzureSiteRecoveryUnifiedSetup.exe」に実行には成功したものの
 後続のレプリケーション アプライアンスのセットアップ作業中に、問題が発生するケースがあります。
