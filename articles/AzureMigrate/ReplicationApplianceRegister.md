@@ -9,7 +9,7 @@ disableDisclaimer: false
 
 <!-- more -->
 皆様こんにちは、Azure Migrate サポートです。
-今回は Azure Migrate のエージェントベース シナリオにおける、レプリケーション アプライアンスをデプロイする際の注意事項についてご説明させていただきます。
+今回は Azure Migrate のエージェントベース シナリオにおける、レプリケーション アプライアンスをデプロイする際の注意事項について説明いたします。
 
 **該当シナリオ**
 - Azure Migrate オンプレミス 物理マシン →　Azure への移行 エージェントベース
@@ -34,7 +34,6 @@ https://learn.microsoft.com/ja-jp/azure/migrate/vmware/tutorial-migrate-vmware-a
 
 ・(参考) レプリケーション アプライアンス
 　https://learn.microsoft.com/ja-jp/azure/migrate/migrate-replication-appliance
-![](./ReplicationApplianceRegister/01.png)
 
 上記公開情報では、オペレーティング システムを [Windows Server 2016 または Windows Server 2012 R2] と記載しておりますが
 「Windows Server 2012 R2」は、オンプレミス上のマシンに対する OS サポートは終了しており
@@ -46,7 +45,7 @@ https://learn.microsoft.com/ja-jp/azure/migrate/vmware/tutorial-migrate-vmware-a
 
 
 なお、公開情報のレプリケーション アプライアンスの要件は最小要件となっております。
-そのため、用意いただいたレプリケーション アプライアンスのサーバーが、公開情報に記載しているすべての要件を満たしていない場合、Azure Migrate としてサポートできかねますことをご了承ください。。
+そのため、用意いただいたレプリケーション アプライアンスのサーバーが、公開情報に記載しているすべての要件を満たしていない場合、Azure Migrate としてサポートできかねますことをご了承ください。
 
 ## <a id="2"></a> 2. 「日本語」で構成されたレプリケーション アプライアンスについて
 レプリケーション アプライアンス用のマシンを用意する際に
@@ -69,7 +68,7 @@ https://learn.microsoft.com/ja-jp/azure/migrate/vmware/tutorial-migrate-vmware-a
 Microsoft Azure Site Recovery Unified Setup is unable to proceed as the Operating System locale selected on this computer is not English.
 Recommended Action : Run setup on a computer with Operating system locale selected as English.
 ```
-![](./ReplicationApplianceRegister/02.png)
+![](./ReplicationApplianceRegister/01.png)
 
 また、NIC の情報に日本語が含まれている場合も、「MicrosoftAzureSiteRecoveryUnifiedSetup.exe」に実行には成功したものの
 後続のレプリケーション アプライアンスのセットアップ作業中に、問題が発生するケースがあります。
