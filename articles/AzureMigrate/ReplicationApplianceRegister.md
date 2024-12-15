@@ -12,8 +12,14 @@ disableDisclaimer: false
 今回は Azure Migrate のエージェントベース シナリオにおける、レプリケーション アプライアンスをデプロイする際の注意事項についてご説明させていただきます。
 
 **該当シナリオ**
-Azure Migrate オンプレミス 物理マシン →　Azure への移行 エージェントベース
-Azure Migrate オンプレミス VMWare VM →　Azure への移行 エージェントベース
+- Azure Migrate オンプレミス 物理マシン →　Azure への移行 エージェントベース
+・(参考) マシンを物理サーバーとして Azure に移行する
+　https://learn.microsoft.com/ja-jp/azure/migrate/tutorial-migrate-physical-virtual-machines
+
+- Azure Migrate オンプレミス VMWare VM →　Azure への移行 エージェントベース
+・(参考) VMware vSphere VM を Azure (エージェントベース) に移行する
+https://learn.microsoft.com/ja-jp/azure/migrate/vmware/tutorial-migrate-vmware-agent?context=%2Fazure%2Fmigrate%2Fcontext%2Fmigrate-context
+
 
 ## 目次
 -----------------------------------------------------------
