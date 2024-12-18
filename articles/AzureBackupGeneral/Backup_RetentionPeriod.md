@@ -153,7 +153,7 @@ disableDisclaimer: false
 |  毎日  |  1 日  |  365 日  |
 
 (補足 1 )
-Azure ディスク バックアップでは、ディスクあたりのスナップショット合計数が 500 までとなるよう、バックアップ ポリシー上で制限されています。
+Azure ディスク バックアップでは、ディスクあたりのスナップショット合計数が、スケジュール バックアップ 450 個 + オンデマンド バックアップ 50 個の合計 500 個までとなるよう、バックアップ ポリシー上で制限されています。
 ・ディスク バックアップのスケジュールと保持期間はどのように機能しますか?
 　https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-does-the-disk-backup-scheduling-and-retention-period-work
 　"スナップショットの保持期間は、ディスクのスナップショット制限によって制御されます。"
