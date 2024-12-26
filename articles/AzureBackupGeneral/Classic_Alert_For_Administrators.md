@@ -48,10 +48,10 @@ Azure Backup のクラシック アラートでは、**アラートの通知設�
 
 
 ## <a id="2.1"></a> 2.1 組み込みの Azure Monitor アラート機能を有効化する手順  
-- 1. ご利用環境にて、Azure Backup のクラシック アラートを無効化しても問題の無いことを確認します  
-- 2. ご利用の Recovery Services コンテナーの、"プロパティ > 監視の設定 : 更新" を選択します  
+1. ご利用環境にて、Azure Backup のクラシック アラートを無効化しても問題の無いことを確認します  
+2. ご利用の Recovery Services コンテナーの、"プロパティ > 監視の設定 : 更新" を選択します  
      ![](./Classic_Alert_For_Administrators/Classic_Alert_For_Administrators_02.png)  
-- 3. 監視の設定画面にて、"バックアップ用の Azure Monitor アラートのみを使用" オプションのチェックを入れ、設定を保存します  
+3. 監視の設定画面にて、"バックアップ用の Azure Monitor アラートのみを使用" オプションのチェックを入れ、設定を保存します  
      ![](./Classic_Alert_For_Administrators/Classic_Alert_For_Administrators_03.png)  
 
 > [!NOTE]  
