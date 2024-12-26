@@ -1,6 +1,6 @@
 ---
 title: Azure Backup の自動的に通知されるクラシック アラートについて  
-date: 2024-12-27 00:00:00
+date: 2024-12-26 13:00:00
 tags:
   - Azure Backup General
   - how to
