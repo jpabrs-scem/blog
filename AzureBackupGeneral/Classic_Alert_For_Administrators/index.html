@@ -4,23 +4,25 @@
   <meta charset="utf-8">
   
   
-  <title>Azure VM のリストアの際 NIC の設定が消えてしまう | Japan CSS ABRS  Support Blog !!</title>
+  <title>Azure Backup の自動的に通知されるクラシック アラートについて | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、Azure VM のリストアの際 NIC の設定が消えてしまうというお問い合わせについて解説させていただきます。 こちら結論から申し上げますと、Azure VM Backupのリストアメニューにて、[新規VMの作成] を選んだ際、デフォルトで NIC が新たに作成され (設定できない) アタッチ">
+  <meta name="description" content="皆様こんにちは。Azure Backup サポートです。お客様より、Azure Backup のアラート設定を行っていないのに、アラート メールが通知されるとのお問い合わせをいただくことがございます。このようなシナリオの場合に通知されているのは、Azure Backup のクラシック アラート機能によるアラート メールであることが大半でございます。 そのため今回は、アラートの通知設定有無に関わら">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Azure VM のリストアの際 NIC の設定が消えてしまう">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/index.html">
+<meta property="og:title" content="Azure Backup の自動的に通知されるクラシック アラートについて">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Classic_Alert_For_Administrators/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回はお問い合わせをいただくことが多い、Azure VM のリストアの際 NIC の設定が消えてしまうというお問い合わせについて解説させていただきます。 こちら結論から申し上げますと、Azure VM Backupのリストアメニューにて、[新規VMの作成] を選んだ際、デフォルトで NIC が新たに作成され (設定できない) アタッチ">
+<meta property="og:description" content="皆様こんにちは。Azure Backup サポートです。お客様より、Azure Backup のアラート設定を行っていないのに、アラート メールが通知されるとのお問い合わせをいただくことがございます。このようなシナリオの場合に通知されているのは、Azure Backup のクラシック アラート機能によるアラート メールであることが大半でございます。 そのため今回は、アラートの通知設定有無に関わら">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/VMRestoring_NIC_Configuration_01.png">
-<meta property="article:published_time" content="2021-10-20T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-26T03:16:03.194Z">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Classic_Alert_For_Administrators/Classic_Alert_For_Administrators_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Classic_Alert_For_Administrators/Classic_Alert_For_Administrators_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Classic_Alert_For_Administrators/Classic_Alert_For_Administrators_03.png">
+<meta property="article:published_time" content="2024-12-26T04:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-26T03:16:02.926Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="how to">
-<meta property="article:tag" content="Azure VM Backup">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/VMRestoring_NIC_Configuration_01.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Classic_Alert_For_Administrators/Classic_Alert_For_Administrators_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -82,7 +84,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureVMBackup/VMRestoring_NIC_Configuration" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureBackupGeneral/Classic_Alert_For_Administrators" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -91,7 +93,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Azure VM のリストアの際 NIC の設定が消えてしまう
+      Azure Backup の自動的に通知されるクラシック アラートについて
     </h1>
   
 
@@ -99,37 +101,42 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2021-10-20T03:00:00.000Z" itemprop="datePublished">2021-10-20</time>
+  <time datetime="2024-12-26T04:00:00.000Z" itemprop="datePublished">2024-12-26</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+07d2e452-f715-5391-9089-d7da2b3afd58%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+%E3%81%AE%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2%E3%81%AE%E9%9A%9B+NIC+%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%8C%E6%B6%88%E3%81%88%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FVMRestoring_NIC_Configuration%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FVMRestoring_NIC_Configuration.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FVMRestoring_NIC_Configuration.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+b27af51d-b8f9-552d-be9b-9e185d8f6d2b%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E8%87%AA%E5%8B%95%E7%9A%84%E3%81%AB%E9%80%9A%E7%9F%A5%E3%81%95%E3%82%8C%E3%82%8B%E3%82%AF%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF+%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FClassic_Alert_For_Administrators%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FClassic_Alert_For_Administrators.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FClassic_Alert_For_Administrators.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/" data-id="cm54r50em002k0nmedauze4zr" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Classic_Alert_For_Administrators/" data-id="cm54r50dj00030nme591tho07" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回はお問い合わせをいただくことが多い、Azure VM のリストアの際 NIC の設定が消えてしまうというお問い合わせについて解説させていただきます。</p>
-<p>こちら結論から申し上げますと、<strong>Azure VM Backupのリストアメニューにて、[新規VMの作成] を選んだ際、デフォルトで NIC が新たに作成され (設定できない) アタッチされるため、復元時に NIC の情報が消えてしまうのは仕様</strong>となっております。<br>Azure VM Backup ではディスクの情報をバックアップしますが、NIC の情報はバックアップいたしません。<br>なお、リストアメニューにて [既存の置き換え] を選択された場合は VM のディスクのみを入れ替え (スワップ) 、NIC はそのまま利用されるため、NIC の設定が消えるようなことは起こりません。<br>以下の代替案をお伝えさせいただきます。</p>
-<h2 id="代替案"><a href="#代替案" class="headerlink" title="代替案"></a>代替案</h2><hr>
-<p><a href="#1">1. 既存のパブリック IP を設定する場合</a><br><a href="#2">2. 既存の NIC を設定する場合</a></p>
+<p>皆様こんにちは。Azure Backup サポートです。<br>お客様より、Azure Backup のアラート設定を行っていないのに、アラート メールが通知されるとのお問い合わせをいただくことがございます。<br>このようなシナリオの場合に通知されているのは、Azure Backup のクラシック アラート機能によるアラート メールであることが大半でございます。</p>
+<p>そのため今回は、アラートの通知設定有無に関わらず、特定ユーザーに通知される Azure Backup のクラシック アラート メールの概要、ならびに停止方法についてご案内いたします。  </p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>本記事は、Azure Backup のクラシック アラートの仕様に関する記事となります。</p><p>Azure Backup の組み込みの Azure Monitor アラート<strong>のみ</strong>を利用している環境には、本記事でご説明するアラート メールは通知されません。  </p></div>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. Azure Backup からのアラート メールについて</a><br><a href="#2">2. アラート メールの通知を止める方法について</a>  </p>
 <hr>
-<h3 id="1-既存のパブリック-IP-を設定する場合"><a href="#1-既存のパブリック-IP-を設定する場合" class="headerlink" title=" 1. 既存のパブリック IP を設定する場合"></a><a id="1"></a> 1. 既存のパブリック IP を設定する場合</h3><p>既存のパブリック IP を設定する場合には次のような代替案がございます。<br>(手順1) Azure VM バックアップのリストア メニューからディスクとして一旦復元する。<br>(手順2) ディスクから VM を作成する。<br>      その際に既存のパブリック IP を選択する。<br>    　データディスクがある場合は復元したディスクを選択しアタッチする。(LUN 番号が入れ替わらないようにご注意ください)</p>
-<p>(手順2) に関しましては、 Azure Portal からの操作の場合、下記のような手順で可能でございます。<br>NIC を指定できることが分かります。<br><img src="/blog/AzureVMBackup/VMRestoring_NIC_Configuration/VMRestoring_NIC_Configuration_01.png" alt="DiskからのVM作成"></p>
-<h3 id="2-既存の-NIC-を設定する場合"><a href="#2-既存の-NIC-を設定する場合" class="headerlink" title=" 2. 既存の NIC を設定する場合"></a><a id="2"></a> 2. 既存の NIC を設定する場合</h3><p>(手順1) Azure VM バックアップのリストア メニューからディスクとして一旦復元する。<br>(手順2) Azure PowerShellを用いてディスクからの VM 作成時に利用する既存の NIC を指定して作成する。<br>・既存の “ディスク” リソースを使用し、仮想マシンを作成する。<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/archive/blogs/jpaztech/convertvhdtomanageddiskdeployvm#2">https://docs.microsoft.com/ja-jp/archive/blogs/jpaztech/convertvhdtomanageddiskdeployvm#2</a></p>
-<p>※上記リンクのコマンドは <strong>AzureRm</strong> で記載されてますが、Azモジュールをご利用の場合は 以下の例のように <strong>Az</strong> に変換して実行ください。<br>※また可用性セット(VMSS) の設定もAzure VM Backupのリストアメニューでは設定できないので、この場合も本手順を参考に一度ディスクとして復元していただき、 VM を作成する際に可用性セットの設定をしていただければと思います。
-　　　</p>
+<h2 id="1-Azure-Backup-からのアラート-メールについて"><a href="#1-Azure-Backup-からのアラート-メールについて" class="headerlink" title=" 1. Azure Backup からのアラート メールについて"></a><a id="1"></a> 1. Azure Backup からのアラート メールについて</h2><p>Azure Backup のクラシック アラートでは、<strong>アラートの通知設定に関わらず</strong>、下記ユーザーに破壊的な操作 (論理的な削除設定の無効化や、データを削除して保護を停止など) に関するアラート メールが自動的に通知される仕様となっております。  </p>
+<ul>
+<li>Recovery Services コンテナーが配置されているサブスクリプションの所有者 (Azure RBAC)  </li>
+<li>Recovery Services コンテナーが配置されているサブスクリプションの管理者 (従来の管理者)  </li>
+<li>Recovery Services コンテナーが配置されているサブスクリプションの共同管理者  (従来の管理者)  </li>
+</ul>
+<p>通知されるアラート メールは、例えば下記の様なメールとなります。<br><img src="/blog/AzureBackupGeneral/Classic_Alert_For_Administrators/Classic_Alert_For_Administrators_01.png">  </p>
+<p>詳細につきましては、下記ドキュメントでもご説明しております。<br>・ Azure Backup を使用してクラシック アラートをバックアップする - Azure Backup | Microsoft Learn<br>   <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/move-to-azure-monitor-alerts#notification-for-backup-alerts">https://learn.microsoft.com/ja-jp/azure/backup/move-to-azure-monitor-alerts#notification-for-backup-alerts</a><br>   抜粋 :  </p>
 <blockquote>
-<p>#ログインとサブスクリプション指定<br>Login-<strong>AzureRm</strong>Account →　Login-<strong>Az</strong>Account<br>Select-<strong>AzureRm</strong>Subscription -SubscriptionId $SubscriptionId　→　Select-<strong>Az</strong>Subscription -SubscriptionId $SubscriptionId</p>
+<p>破壊的な操作 (データを削除して保護を停止など) が実行されると、アラートが生成され、<strong>Recovery Services コンテナー用に通知が構成されていない場合でも、サブスクリプションの所有者、管理者、共同管理者にメールが送信されます</strong>。  </p>
 </blockquote>
-<p>上記の URL 先の $NIC = New-AzNetworkInterface ($NIC = New-AzureRmNetworkInterface) にて新規 VM を作成する際の NIC を指定することができます。<br>既存の NIC を追加するには下記コマンドをご利用ください。</p>
-<blockquote>
-<p>#既存の NIC を追加<br>$Nic = Get-AzNetworkInterface -ResourceGroupName $ResourceGroupName -Name $NicName<br>$Vm = Add-AzVMNetworkInterface -VM $Vm -NetworkInterface $Nic</p>
-</blockquote>
-<p>*リストアされるディスクの命名規則については参考情報のリンク先をご覧ください。</p>
-<h3 id="参考情報"><a href="#参考情報" class="headerlink" title="参考情報"></a>参考情報</h3><p>・Azure VM Backupでリストアされるディスク名に関して<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/">https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</a><br>・Azure portal で Azure VM データを復元する方法 - ディスクを復元する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks</a></p>
+<h2 id="2-アラート-メールの通知を止める方法について"><a href="#2-アラート-メールの通知を止める方法について" class="headerlink" title=" 2. アラート メールの通知を止める方法について"></a><a id="2"></a> 2. アラート メールの通知を止める方法について</h2><p>クラシック アラートの破壊的な操作に関するアラート メールの通知を止めるには、Azure Backup の組み込みの Azure Monitor アラート機能のみを有効化し、クラシック アラートの機能を無効化してください。<br>設定手順を以下にご案内いたします。  </p>
+<h2 id="2-1-組み込みの-Azure-Monitor-アラート機能を有効化する手順"><a href="#2-1-組み込みの-Azure-Monitor-アラート機能を有効化する手順" class="headerlink" title=" 2.1 組み込みの Azure Monitor アラート機能を有効化する手順"></a><a id="2.1"></a> 2.1 組み込みの Azure Monitor アラート機能を有効化する手順</h2><ol>
+<li>ご利用環境にて、Azure Backup のクラシック アラートを無効化しても問題の無いことを確認します  </li>
+<li>ご利用の Recovery Services コンテナーの、”プロパティ &gt; 監視の設定 : 更新” を選択します<br>  <img src="/blog/AzureBackupGeneral/Classic_Alert_For_Administrators/Classic_Alert_For_Administrators_02.png">  </li>
+<li>監視の設定画面にて、”バックアップ用の Azure Monitor アラートのみを使用” オプションのチェックを入れ、設定を保存します<br>  <img src="/blog/AzureBackupGeneral/Classic_Alert_For_Administrators/Classic_Alert_For_Administrators_03.png">  </li>
+</ol>
+<div class="alert is-info"><p class="alert-title">Note</p><p>Azure Backup のクラシック アラートは、2026 年 3 月 31 日をもって廃止される予定となっております。</p><p>もし現時点で Azure Backup のクラシック アラートをご利用である場合には、下記ブログ記事にて組み込みの Azure Monitor アラートへの移行方法をご案内しておりますので、適宜ご確認ください。</p><p>・ QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について | Japan CSS ABRS Support Blog !!</p><p>  <a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/</a>  </p></div>
 
       
       
@@ -143,10 +150,10 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/VMRestoring_NIC_Configuration.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureBackupGeneral/Classic_Alert_For_Administrators.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -154,19 +161,10 @@
     
 <nav id="article-nav">
   
-    <a href="../Azure_VM_Offline_backup/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Azure VM Backup では オフライン バックアップができるのか
-        
-      </div>
-    </a>
   
-  
-    <a href="../GAC/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureSAPBackup/How_to_HSR_workload_backup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">グローバル アセンブリ キャッシュの警告イベントについて</div>
+      <div class="article-nav-title">HSR に対する Azure Workload Backup</div>
     </a>
   
 </nav>
@@ -185,7 +183,7 @@
       <ul>
         
           <li>
-            <a href="../../AzureBackupGeneral/Classic_Alert_For_Administrators/">Azure Backup の自動的に通知されるクラシック アラートについて</a>
+            <a href="">Azure Backup の自動的に通知されるクラシック アラートについて</a>
           </li>
         
           <li>
@@ -193,15 +191,15 @@
           </li>
         
           <li>
-            <a href="../../AzureBackupGeneral/HowToMoveToBCFromABCC/">ビジネス継続性センターからバックアップ センターに移動する方法</a>
+            <a href="../HowToMoveToBCFromABCC/">ビジネス継続性センターからバックアップ センターに移動する方法</a>
           </li>
         
           <li>
-            <a href="../../AzureBackupGeneral/DR_ASR_or_VMBackup/">Azure VM Backup と Azure Site Recovery による DR 要件について</a>
+            <a href="../DR_ASR_or_VMBackup/">Azure VM Backup と Azure Site Recovery による DR 要件について</a>
           </li>
         
           <li>
-            <a href="../How_to_fail_VM_backup/">Azure VM Backup を意図的に失敗させる方法</a>
+            <a href="../../AzureVMBackup/How_to_fail_VM_backup/">Azure VM Backup を意図的に失敗させる方法</a>
           </li>
         
       </ul>
