@@ -4,23 +4,23 @@
   <meta charset="utf-8">
   
   
-  <title>グローバル アセンブリ キャッシュの警告イベントについて | Japan CSS ABRS  Support Blog !!</title>
+  <title>Azure Migrate レプリケーション アプライアンスのデプロイについて | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは。Azure Backup サポートの柴田です。今回はお問い合わせをいただくことが多い、 Windows VM の Azure VM バックアップ取得時に発現するイベントログについて解説させていただきます。 バックアップを取得した際に、『グローバル アセンブリ キャッシュからのアセンブリの削除に失敗しました』の警告が表示される。 こちらの警告は、グローバルアセンブリキャッシュ (G">
+  <meta name="description" content="皆様こんにちは、Azure Migrate サポートです。今回は Azure Migrate のエージェントベース シナリオにおける、レプリケーション アプライアンスをデプロイする際の注意事項について説明いたします。 該当シナリオ(シナリオ 1 ) Azure Migrate オンプレミス 物理マシン → Azure への移行 エージェントベース  マシンを物理サーバーとして Azure に移行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="グローバル アセンブリ キャッシュの警告イベントについて">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/index.html">
+<meta property="og:title" content="Azure Migrate レプリケーション アプライアンスのデプロイについて">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureMigrate/ReplicationApplianceRegister/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは。Azure Backup サポートの柴田です。今回はお問い合わせをいただくことが多い、 Windows VM の Azure VM バックアップ取得時に発現するイベントログについて解説させていただきます。 バックアップを取得した際に、『グローバル アセンブリ キャッシュからのアセンブリの削除に失敗しました』の警告が表示される。 こちらの警告は、グローバルアセンブリキャッシュ (G">
+<meta property="og:description" content="皆様こんにちは、Azure Migrate サポートです。今回は Azure Migrate のエージェントベース シナリオにおける、レプリケーション アプライアンスをデプロイする際の注意事項について説明いたします。 該当シナリオ(シナリオ 1 ) Azure Migrate オンプレミス 物理マシン → Azure への移行 エージェントベース  マシンを物理サーバーとして Azure に移行">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/GAC_01.png">
-<meta property="article:published_time" content="2021-10-01T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-12-29T05:21:45.740Z">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/ReplicationApplianceRegister/01.png">
+<meta property="article:published_time" content="2024-12-25T03:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-29T05:21:45.584Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
-<meta property="article:tag" content="Azure VM Backup">
-<meta property="article:tag" content="TROUBLE SHOOTING">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Azure Migrate">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/GAC_01.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/ReplicationApplianceRegister/01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -82,7 +82,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureVMBackup/GAC" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureMigrate/ReplicationApplianceRegister" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -91,7 +91,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      グローバル アセンブリ キャッシュの警告イベントについて
+      Azure Migrate レプリケーション アプライアンスのデプロイについて
     </h1>
   
 
@@ -99,28 +99,65 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2021-10-01T03:00:00.000Z" itemprop="datePublished">2021-10-01</time>
+  <time datetime="2024-12-25T03:00:00.000Z" itemprop="datePublished">2024-12-25</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+fdb5d11d-55e6-58fc-909f-1f780085abc7%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB+%E3%82%A2%E3%82%BB%E3%83%B3%E3%83%96%E3%83%AA+%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%AE%E8%AD%A6%E5%91%8A%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FGAC%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FGAC.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FGAC.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+6093a937-9b24-5380-b6ed-066b3b29ff15%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Migrate+%E3%83%AC%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3+%E3%82%A2%E3%83%97%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%82%B9%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureMigrate%2FReplicationApplianceRegister%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureMigrate%2FReplicationApplianceRegister.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureMigrate%2FReplicationApplianceRegister.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/" data-id="cm595y789001v0op5171vfpae" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureMigrate/ReplicationApplianceRegister/" data-id="cm595y77r000s0op50a0hdeb8" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは。Azure Backup サポートの柴田です。<br>今回はお問い合わせをいただくことが多い、 Windows VM の Azure VM バックアップ取得時に発現するイベントログについて解説させていただきます。</p>
-<p>バックアップを取得した際に、<strong>『グローバル アセンブリ キャッシュからのアセンブリの削除に失敗しました』</strong>の警告が表示される。</p>
-<p>こちらの警告は、グローバルアセンブリキャッシュ (GAC) からファイルの削除に失敗した際に出力されます。<br>※ グローバルアセンブリキャッシュとは<br>コンピュータ上の多数のアプリケーション間で共有するためにインストールされたアセンブリを格納するマシン全体のコード キャッシュ。</p>
-<p>Azure Backup では、 Azure VM のバックアップを取得する際に、以下の2つのファイルを削除、インストールする場合があります。このメッセージが発現した際は、GAC 上からその削除、インストールに失敗しています。<br>・iaasvmazurestorage.dll<br>・iaasvmsnapshotmessage.dll</p>
-<p>このエラーが出る要因として、以前のファイルが存在しない場合や、以前のファイルがロックされている場合が考えられます。しかしながらファイルの削除やインストールはリトライが行われリトライにより成功する場合も多くなっております。<br>従って、正常に Azure Backup によるバックアップが取得できている場合、GAC 上のファイルは正常に参照できている状態であり、無視可能なエラーメッセージです。</p>
-<p>以下の画面のようなイベントログが発現します。</p>
-<blockquote>
-<p>&lt;イベントログ例 &gt;<br>ソース : COM+ SOAP Services<br>EventID : 0<br>Message : グローバル アセンブリ キャッシュからのアセンブリの削除に失敗しました :  C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\1.0.70.0\iaasvmsnapshotmessage.dll iaasvmsnapshotmessage,Version=3.0.0.0</p>
-</blockquote>
-<p><img src="/blog/AzureVMBackup/GAC/GAC_01.png" alt="グローバル アセンブリ キャッシュのエラー"><br>このエラーメッセージが発現することを抑止する方法はありませんが、正常にバックアップが取得できていましたら、上記の通り無視可能なエラーメッセージです。</p>
+<p>皆様こんにちは、Azure Migrate サポートです。<br>今回は Azure Migrate のエージェントベース シナリオにおける、レプリケーション アプライアンスをデプロイする際の注意事項について説明いたします。</p>
+<p><strong>該当シナリオ</strong><br>(シナリオ 1 ) Azure Migrate オンプレミス 物理マシン → Azure への移行 エージェントベース</p>
+<ul>
+<li>マシンを物理サーバーとして Azure に移行する | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/migrate/tutorial-migrate-physical-virtual-machines">https://learn.microsoft.com/ja-jp/azure/migrate/tutorial-migrate-physical-virtual-machines</a></li>
+</ul>
+<p>(シナリオ 2 ) Azure Migrate オンプレミス VMWare VM → Azure への移行 エージェントベース</p>
+<ul>
+<li>VMware vSphere VM を Azure (エージェントベース) に移行する | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/migrate/vmware/tutorial-migrate-vmware-agent?context=/azure/migrate/context/migrate-context">https://learn.microsoft.com/ja-jp/azure/migrate/vmware/tutorial-migrate-vmware-agent?context=%2Fazure%2Fmigrate%2Fcontext%2Fmigrate-context</a></li>
+</ul>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. レプリケーション アプライアンスの OS について</a><br><a href="#2">2. 「日本語」で構成されたレプリケーション アプライアンスについて</a><br><a href="#3">3. その他 - よくある質問</a></p>
+<hr>
+<h2 id="1-レプリケーション-アプライアンスの-OS-について"><a href="#1-レプリケーション-アプライアンスの-OS-について" class="headerlink" title=" 1. レプリケーション アプライアンスの OS について"></a><a id="1"></a> 1. レプリケーション アプライアンスの OS について</h2><p>前提として、エージェントベースによる Azure Migrate 移行の場合、「レプリケーション アプライアンス」の役割を果たすマシンをユーザー側で用意・構成いただく必要があります。<br>「レプリケーション アプライアンス」用のマシンを用意する際の、要件・サポート マトリックスは下記にまとめられております。</p>
+<ul>
+<li>レプリケーション アプライアンス | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/migrate/migrate-replication-appliance">https://learn.microsoft.com/ja-jp/azure/migrate/migrate-replication-appliance</a></li>
+</ul>
+<p>上記公開情報では、オペレーティング システムを [Windows Server 2016 または Windows Server 2012 R2] と記載しておりますが<br>「Windows Server 2012 R2」は、オンプレミス上のマシンに対する OS サポートは終了しており<br>万一、OS 観点で何らかの問題が発生して、Azure Migrate 機能が動作しないといった場合に、OS 観点での調査がサポートできない可能性があります。<br>このため、レプリケーション アプライアンスを新しく用意される際には「Windows Server 2016」にてご用意いただけますと幸いです。</p>
+<ul>
+<li>Windows Server 2012 および 2012 R2 のサポート終了 | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/lifecycle/announcements/windows-server-2012-r2-end-of-support">https://learn.microsoft.com/ja-jp/lifecycle/announcements/windows-server-2012-r2-end-of-support</a></li>
+</ul>
+<p>なお、公開情報のレプリケーション アプライアンスの要件は最小要件となっております。<br>そのため、用意いただいたレプリケーション アプライアンスのサーバーが、公開情報に記載しているすべての要件を満たしていない場合、Azure Migrate としてサポートできかねますことをご了承ください。</p>
+<h2 id="2-「日本語」で構成されたレプリケーション-アプライアンスについて"><a href="#2-「日本語」で構成されたレプリケーション-アプライアンスについて" class="headerlink" title=" 2. 「日本語」で構成されたレプリケーション アプライアンスについて"></a><a id="2"></a> 2. 「日本語」で構成されたレプリケーション アプライアンスについて</h2><p>レプリケーション アプライアンス用のマシンを用意する際に</p>
+<ul>
+<li>Windows OS をインストールする時点 (OS のイメージ) で、「日本語」のイメージからセットアップした</li>
+<li>OS をインストールする時点で、システム ロケールを「日本語」で設定していた</li>
+<li>マシンの NIC に日本語を使用していた</li>
+</ul>
+<p>ようなケースの場合、レプリケーション アプライアンスの後続の設定に失敗する可能性が高くなります。</p>
+<p>レプリケーション アプライアンスの要件として、オペレーティング システムのロケールは <strong>英語 (en-us)</strong> となります。<br>このため、上記のようなケースにおいては、必ず「英語」にて OS イメージの取得・システムロケールの設定・ NIC 情報の設定を行っていただきますようお願いいたします。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>Windows OS をインストールする際に、システム ロケールを「日本語」選択してインストールを完了後に、ロケールやリージョンをあとから英語 (en-us) に変更しているケースがあります。</p><p>このようなケースも、後続のレプリケーション アプライアンスの設定 (MicrosoftAzureSiteRecoveryUnifiedSetup.exe 実行時) にて下記のようなエラー メッセージが発生し、レプリケーション アプライアンスの設定が進まない状況となってしまいます。</p><p>お手数をおかけしますが、OS をインストールする段階から「英語」を選択する必要がありますので、再インストールをお願いいたします。</p></div>
+<p>(エラー メッセージの例)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Microsoft Azure Site Recovery Unified Setup is unable to proceed as the Operating System locale selected on this computer is not English.</span><br><span class="line">Recommended Action : Run setup on a computer with Operating system locale selected as English.</span><br></pre></td></tr></table></figure>
+<p><img src="/blog/AzureMigrate/ReplicationApplianceRegister/01.png"></p>
+<p>また、NIC の情報に日本語が含まれている場合も、「MicrosoftAzureSiteRecoveryUnifiedSetup.exe」に実行には成功したものの<br>後続のレプリケーション アプライアンスのセットアップ作業中に、問題が発生するケースがあります。<br>例えば、レプリケーション アプライアンスは Azure Migrate の「プロセス サーバー」としての役割も果たしますが、プロキシ サーバーの登録処理が失敗するといった事例があります。</p>
+<p>NIC 情報についても「英語」にて設定いただきますようお願いいたします。<br>ご利用のレプリケーション アプライアンス上で NIC 情報を確認する際には以下のコマンドをご利用ください。</p>
+<p>(管理者権限にて PowerShell を立ち上げ、コマンド実行)<br><code>Get-NetAdapter | Format-List -Property *</code></p>
+<ul>
+<li>Get-NetAdapter | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/powershell/module/netadapter/get-netadapter?view=windowsserver2022-ps">https://learn.microsoft.com/ja-jp/powershell/module/netadapter/get-netadapter?view=windowsserver2022-ps</a></li>
+</ul>
+<p>弊社開発部門では、レプリケーション アプライアンスの開発 ~ 一連の動作確認時には、OS インストール時点からシステム ロケール / NIC を「英語」 としている環境上でのみ動作確認を実施しております。<br>このため、レプリケーション アプライアンスの役割を果たすマシンにおいて <strong>「英語」以外の言語でセットアップされたマシンのシステム ロケールやリージョンを後から「英語」に変更する操作は、弊社開発部門の検証時には想定がされていない操作</strong> となります。</p>
+<h2 id="3-その他-よくある質問"><a href="#3-その他-よくある質問" class="headerlink" title=" 3. その他 - よくある質問"></a><a id="3"></a> 3. その他 - よくある質問</h2><h3 id="Q1-Azure-上にレプリケーション-アプライアンスを構築してもよいか？"><a href="#Q1-Azure-上にレプリケーション-アプライアンスを構築してもよいか？" class="headerlink" title=" Q1. Azure 上にレプリケーション アプライアンスを構築してもよいか？"></a><a id="3-1"></a> Q1. Azure 上にレプリケーション アプライアンスを構築してもよいか？</h3><p>A1. 技術的には、Azure 上にレプリケーション アプライアンスを構成して、利用することは可能です。<br>しかし、これまでの事例ですと、「Azure 上にレプリケーション アプライアンスを配置して、オンプレミス上のマシンを Azure Migrate で移行したい」というケースにて</p>
+<ul>
+<li>レプリケーションが非常に遅い</li>
+<li>Azure Migrate の一連の処理がタイムアウトする、非常に時間がかかる</li>
+</ul>
+<p>といったお問い合わせを多数いただいております。<br>このようなトラブルシューティングの際には、弊社からは最終的に 改めてオンプレミス上にレプリケーション アプライアンスを再構築いただくようご依頼することが多くありますので、ご留意ください。</p>
+<p>また、何らかの理由で レプリケーション アプライアンスを Azure 上に構成することをご検討の場合、必ず PoC など動作検証をお客様にて実施し、充分に検討いただくますようお願いいたします。</p>
 
       
       
@@ -134,10 +171,10 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/GAC.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureMigrate/ReplicationApplianceRegister.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -145,19 +182,19 @@
     
 <nav id="article-nav">
   
-    <a href="../VMRestoring_NIC_Configuration/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureBackupGeneral/Classic_Alert_For_Administrators/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          Azure VM のリストアの際 NIC の設定が消えてしまう
+          Azure Backup の自動的に通知されるクラシック アラートについて
         
       </div>
     </a>
   
   
-    <a href="../invalid_schedule/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureSAPBackup/How_to_HSR_workload_backup/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure VM バックアップを任意のタイミングのみで取得したい</div>
+      <div class="article-nav-title">HSR に対する Azure Workload Backup</div>
     </a>
   
 </nav>
@@ -180,7 +217,7 @@
           </li>
         
           <li>
-            <a href="../../AzureMigrate/ReplicationApplianceRegister/">Azure Migrate レプリケーション アプライアンスのデプロイについて</a>
+            <a href="">Azure Migrate レプリケーション アプライアンスのデプロイについて</a>
           </li>
         
           <li>
