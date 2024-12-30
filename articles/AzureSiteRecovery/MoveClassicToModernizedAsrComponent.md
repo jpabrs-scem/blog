@@ -67,7 +67,6 @@ https://learn.microsoft.com/ja-jp/azure/site-recovery/vmware-physical-azure-clas
 Azure Portal にて Recovery Services コンテナーを開き > はじめに - Site Recovery > 「VMware マシンを Azure に」 の下にある 1. の末尾に `(従来)` が、  
 付与されている場合は、**クラシック エクスペリエンス** となります。  
 付与されて**いない**場合は、**モダン化 エクスペリエンス** となります。
-
-![](./RequestForInvestigating_ASR/RequestForInvestigating_ASR_01.png)
+![](./MoveClassicToModernizedAsrComponent/003.png)
 
 本ブログ記事のご案内は以上です。
