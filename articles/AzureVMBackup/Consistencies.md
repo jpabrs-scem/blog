@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backupにおける整合性について
-date: 2022-02-11 12:00:00
+date: 2025-01-10 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -8,7 +8,7 @@ disableDisclaimer: false
 ---
 
 <!-- more -->
-皆様こんにちは。Azure Backup サポートの山本です。
+皆様こんにちは。Azure Backup サポートです。
 今回は Azure VM Backup における整合性に関して具体例も踏まえつつご説明させていただきます。
 
 まず、Azure VM Backup における整合性は下記の３種類ございます。
@@ -26,11 +26,8 @@ disableDisclaimer: false
 なお、公開情報は下記にございますのでまず一度ご一読ください。
 その前提で説明させていただきます。
 
-- 参考
-・Azure VM バックアップの概要 スナップショットの整合性
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency
-
-
+- (参考) Azure VM バックアップの概要 スナップショットの整合性
+  https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency
 
 ## 目次
 -----------------------------------------------------------
@@ -55,10 +52,9 @@ Azure Portal 上の表示では、Windows OS の場合は VSS (VSS ライター)
 
 また、**ご利用のアプリケーション整合性が VSS に対応しているかは各アプリケーションの提供元ベンダーまでお問い合わせいただきますようお願いします。**
 
-- 参考
-・ボリューム シャドウ コピー サービスの仕組み
-https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shadow-copy-service#how-volume-shadow-copy-service-work
- >Microsoft 以外の VSS ライターは、バックアップ中のデータの整合性を保証する必要がある Windows 用の多くのアプリケーションに含まれています。
+- (参考) ボリューム シャドウ コピー サービスの仕組み
+  https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shadow-copy-service#how-volume-shadow-copy-service-work
+  >Microsoft 以外の VSS ライターは、バックアップ中のデータの整合性を保証する必要がある Windows 用の多くのアプリケーションに含まれています。
 
 ### 1.1 VSS 観点での調査について<a id="1-1"></a>
 まず、Azure Backup チームでは VSS 関連の障害調査に関しては VSS および 特定の VSS ライターに不調があるというところまでが調査可能です。
@@ -81,29 +77,25 @@ https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shado
 
 事象の改善方法としては下記 URL 記載の **VSS の再起動、および VM の再起動を行うことで改善することがほとんどでございます。**
 
-・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssServiceInBadState - VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state
-
+- (参考) Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssServiceInBadState - VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました
+  https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state
 
  VSS 観点で、なぜ VSS が bad state になったか、に関する根本原因の調査のためには下記 URL 先のログの採取をお願いします。
  **可能な限り "[A]"が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。**
-・VSS エラーが発生している事象の調査 
-https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
+- (参考) VSS エラーが発生している事象の調査 
+  https://jpwinsup.github.io/mslog/storage/vss/vss-error.html
 
 
 #### ・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている
 こちら根本原因の特定には VSS および VSS ライター観点での調査が必要となります。
- Azure Backup チームでは どうして VSS ライター が失敗したのか、に関する根本原因の特定については可能な範囲での調査をさせていただきます。
-　一次調査の結果、VSS ライターのエラーを出しているアプリケーションが 弊社 SQL Server 等弊社製品の場合は担当チーム (SQL Server 等) で対応が可能でございますが、お客様の契約次第では有償対応が必要となることがございます。
+Azure Backup チームでは どうして VSS ライター が失敗したのか、に関する根本原因の特定については可能な範囲での調査をさせていただきます。
+一次調査の結果、VSS ライターのエラーを出しているアプリケーションが 弊社 SQL Server 等弊社製品の場合は担当チーム (SQL Server 等) で対応が可能でございますが、お客様の契約次第では有償対応が必要となることがございます。
 　一方、VSS ライターのエラーを出しているアプリケーションが他社製品の場合、ご利用のアプリケーション提供ベンダーまでお問い合わせいただくようお願い申し上げます。
 
 
-
 改善策としては、下記の URL をご参考にして**VSS の再起動、および VM の再起動の対応いただければと存じます。**
-・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssWriterInBadState - VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state
-
-
+- (参考) Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssWriterInBadState - VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました
+  https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state
 
 
 ###　1.2  SQL Server のインストールされた Windows OS のバックアップについて<a id="1-2"></a>
@@ -115,59 +107,56 @@ https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#exte
 Microsoft SQL Server では SQL ライターがございますので、SQL データベースの整合性を保った VM 全体のバックアップを取得することが可能です。
 
 考慮点としましては下記 URL をご覧ください。
-- 参考
-・Azure VM バックアップの概要 - スナップショットの作成
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-creation
-> 既定の Azure Backup では、VSS の完全バックアップが作成されます (アプリケーション レベルで整合性のあるバックアップを取得するため、バックアップ時に、SQL Server などのアプリケーションのログは切り捨てられます)。 Azure VM バックアップで SQL Server データベースを使用している場合は、(ログを保持するため) VSS コピー バックアップを作成するように設定を変更できます。 詳細については、 こちらの記事を参照してください。
+- (参考) Azure VM バックアップの概要 - スナップショットの作成
+  https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-creation
+  > 既定の Azure Backup では、VSS の完全バックアップが作成されます (アプリケーション レベルで整合性のあるバックアップを取得するため、バックアップ時に、SQL Server などのアプリケーションのログは切り捨てられます)。 Azure VM バックアップで SQL Server データベースを使用している場合は、(ログを保持するために) VSS コピー バックアップを作成するように設定を変更できます。
 
-・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - VM スナップショットに関する問題のトラブルシューティング
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues
-> 既定では、VM バックアップによって Windows VM 上に VSS フル バックアップが作成されます。 SQL Server を実行していて SQL Server のバックアップを構成されている VM では、スナップショットの遅延が発生する可能性がありますナップショットの遅延が原因でバックアップが失敗する場合は、次のレジストリ キーを設定します。
-[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
-"USEVSSCOPYBACKUP"="TRUE"
+- (参考) Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - VM スナップショットに関する問題のトラブルシューティング
+  https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues
+  > 既定では、VM バックアップによって Windows VM 上に VSS フル バックアップが作成されます。 SQL Server を実行していて SQL Server のバックアップを構成されている VM では、スナップショットの遅延が発生する可能性があります。 スナップショットの遅延が原因でバックアップが失敗する場合は、次のレジストリ キーを設定します。[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
+  "USEVSSCOPYBACKUP"="TRUE"
 
 上記レジストリ設定にあたって OS 再起動は必要ございません。
 
 #### 1.2.1 上記に関するご参考ページ <a id="1-2-1"></a>
-・コピーのみのバックアップ - SQL Server
-https://docs.microsoft.com/ja-jp/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver16
-> コピーのみのバックアップは、従来の SQL Server バックアップのシーケンスから独立した SQL Server バックアップです。 通常、バックアップを行うとデータベースが変更され、その後のバックアップの復元方法に影響します。 ただし、データベース全体のバックアップや復元の手順に影響を与えない、特殊な目的にバックアップを行うと役に立つ場合があります。 このため、コピーのみのバックアップが導入されました。
-
-
+- コピーのみのバックアップ - SQL Server
+  https://docs.microsoft.com/ja-jp/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver16
+  > コピーのみのバックアップは、従来の SQL Server バックアップのシーケンスから独立した SQL Server バックアップです。 通常、バックアップを行うとデータベースが変更され、その後のバックアップの復元方法に影響します。 ただし、データベース全体のバックアップや復元の手順に影響を与えない、特殊な目的にバックアップを行うと役に立つ場合があります。 このため、コピーのみのバックアップが導入されました。
 
 また、下記は**弊社外のブログ**ではございますが、本件に関する参考になればと存じ、ご案内させていただきます。
 ※社外の情報のため内容につきましては当社は、下記外部のリンク先ウェブサイトの内容に関していかなる責任も負うものではありません。
-・Azure Backup で SQL Server がインストールされている仮想マシンをバックアップする際に意識しておきたいこと
-https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%82%92/
+- Azure Backup で SQL Server がインストールされている仮想マシンをバックアップする際に意識しておきたいこと
+  https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%82%92/
 
 ### 1.3  Oracle DB for Windows VM の Azure VM Backup について<a id="1-3"></a>
 よくお問い合わせをいただく例としましては Oracle DB が搭載された Windows OS に関してお問い合わせをいただくことがございます。
 弊社では Windows OS 向けの Oracle DB すべてが VSS に対応しているかわかりかねますが、少なくとも実績はございます。
 ご利用の Oracle DB が VSS に対応しているかが不明な場合は別途 Oracle 社にお問い合わせいただければと存じます。
 
-* 下記情報は弊社外のサイトでございますが、ご参考になれば幸いです。弊社情報ではございませんのでその点ご留意ください。
-・Oracleがインストールされているシステムで Exit Code -311が発生する
-https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B
+*下記情報は弊社外のサイトでございますが、ご参考になれば幸いです。弊社情報ではございませんのでその点ご留意ください。
+
+- Oracleがインストールされているシステムで Exit Code -311が発生する
+  https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B
  
-・(Oracle社) VSSを使用したデータベースのバックアップおよびリカバリの目的
+- (Oracle社) VSSを使用したデータベースのバックアップおよびリカバリの目的
   ※Oracle DB すべてが VSS に対応しているかはわかりかねます
-https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B
+  https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B
 
 ### 1.4 事前事後スクリプトについて<a id="1-4"></a>
 Linux VM 事前事後スクリプトに関しましては、お客様自身で対象のアプリケーション (DBなど) の I/O を停止 / 再開する処理を記載いただく必要がございます。
 そのため、対象のアプリケーションに対してそのようなコマンド制御ができない場合は、残念ながら事前事後スクリプトを用いることはできません。そのようなコマンド制御が可能かはアプリケーション提供ベンダーまでお問い合わせをいただきますようお願いします。
 
-- 参考
-・Azure Linux VM のアプリケーション整合性バックアップ
-https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent
-・git hub 上のサンプル事前事後スクリプト (Oracle や MySQLがございます。)
-https://github.com/MicrosoftAzureBackup
-
+- (参考) Azure Linux VM のアプリケーション整合性バックアップ
+  https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent
+- (参考) データベース整合性スナップショットのための拡張事前/事後スクリプト
+  https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-linux-database-consistent-enhanced-pre-post
+- (参考) GitHub 上のサンプル事前事後スクリプト (Oracle や MySQLがございます。)
+  https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts
 
 
 ## 2.ファイルシステム整合性<a id="2"></a>
-Windows OS のオンライン バックアップを取得した際に一部の VSSライターが失敗した場合や Linux OS でオンライン バックアップを取得した場合 (または 事前事後スクリプトが失敗した場合) にファイルシステム整合性となります。
-こちらは OS の起動を保証した整合性ですが、アプリケーションレベルでの整合性は担保されておりません。
+Windows OS のオンライン バックアップを取得した際に一部の VSS ライターが失敗した場合や Linux OS でオンライン バックアップを取得した場合 (または 事前事後スクリプトが失敗した場合) にファイルシステム整合性となります。
+こちらは OS の起動を保証した整合性ですが、アプリケーション レベルでの整合性は担保されておりません。
 
 
 ## 3.クラッシュ整合性<a id="3"></a>
@@ -176,24 +165,22 @@ Windows OS のオンライン バックアップを取得した際に一部の V
 そのため、オフライン状態の VM をバックアップした際にはクラッシュ整合性となります。
 OS の起動を保証しない整合性ではございますが、**正常に電源が落とされた状態の VM であればメモリ上の情報や I/O の発生はなく、ディスクにしか情報はないため整合性の懸念は全くございません。**
 
-- 参考 (関連するブログ記事です。)
-・Azure VM Backup では オフライン バックアップができるのか
-https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
+- 参考ブログ Azure VM Backup では オフライン バックアップができるのか
+  https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/
 
 一方、Azure Disk Backup やマネージドディスクのスナップショットなどは、起動中の VM にアタッチされているディスクのスナップショットを取得することが可能ですが、この際のオンライン状態でのスナップショットの整合性は Azure VM Backupとは異なり、クラッシュ整合性となります。
 整合性は劣るものの、後述の通り DB のない VM であればクラッシュ整合性でも基本的には問題ございません。
 
-- 参考
-・Azure ディスク バックアップの概要
-https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview
-・仮想ハード ディスクのスナップショットを作成する
-https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal
+- (参考) Azure ディスク バックアップの概要
+  https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview- 
+- (参考) 仮想ハード ディスクのスナップショットを作成する
+  https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal
 
 クラッシュ整合性に関しましては次の公開情報にございますようなイメージをしていただけるとわかりやすいかと存じます。
  (Azure Site Recovery のドキュメントではございますが、考え方は同じです。)
-・Azure Site Recovery に関する一般的な質問 - クラッシュ整合性復旧ポイントとは何ですか?
-https://docs.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------
+- (参考) Azure Site Recovery に関する一般的な質問 - クラッシュ整合性復旧ポイントとは何ですか?
+  https://docs.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------
+  >クラッシュ整合性復旧ポイントには、スナップショットの作成中にサーバーから電源コードが引き抜かれたときのディスク上のデータが含まれます。 クラッシュ整合性復旧ポイントには、スナップショットの作成時にメモリに入っていたものは一切含まれません。
+  >現在、ほとんどのアプリケーションは、クラッシュ整合性のスナップショットから十分に復旧できます。 データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションの場合は、クラッシュ整合性復旧ポイントで十分です。
 
->クラッシュ整合性復旧ポイントには、スナップショットの作成中にサーバーから電源コードが引き抜かれたときのディスク上のデータが含まれます。 クラッシュ整合性復旧ポイントには、スナップショットの作成時にメモリに入っていたものは一切含まれません。
->クラッシュ整合性復旧ポイントは通常、データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションにとっては十分です。
-
+本記事の説明は以上です。
