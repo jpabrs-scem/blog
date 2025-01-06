@@ -6,18 +6,18 @@
   
   <title>Azure VM Backupにおける整合性について | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure VM Backup における整合性に関して具体例も踏まえつつご説明させていただきます。 まず、Azure VM Backup における整合性は下記の３種類ございます。・アプリケーション整合性 (Application-consistent) ・ファイルシステム整合性 (File-system consistent)">
+  <meta name="description" content="皆様こんにちは。Azure Backup サポートです。今回は Azure VM Backup における整合性に関して具体例も踏まえつつご説明させていただきます。 まず、Azure VM Backup における整合性は下記の３種類ございます。・アプリケーション整合性 (Application-consistent) ・ファイルシステム整合性 (File-system consistent) ・ク">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure VM Backupにおける整合性について">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure VM Backup における整合性に関して具体例も踏まえつつご説明させていただきます。 まず、Azure VM Backup における整合性は下記の３種類ございます。・アプリケーション整合性 (Application-consistent) ・ファイルシステム整合性 (File-system consistent)">
+<meta property="og:description" content="皆様こんにちは。Azure Backup サポートです。今回は Azure VM Backup における整合性に関して具体例も踏まえつつご説明させていただきます。 まず、Azure VM Backup における整合性は下記の３種類ございます。・アプリケーション整合性 (Application-consistent) ・ファイルシステム整合性 (File-system consistent) ・ク">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/Consistencies_01.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/Consistencies_02.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/Consistencies_03.png">
-<meta property="article:published_time" content="2022-02-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-06T06:27:18.663Z">
+<meta property="article:published_time" content="2025-01-10T03:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-06T23:50:51.774Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
@@ -101,25 +101,25 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-02-11T03:00:00.000Z" itemprop="datePublished">2022-02-11</time>
+  <time datetime="2025-01-10T03:00:00.000Z" itemprop="datePublished">2025-01-10</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f861e6f5-56df-57ae-804b-37d8fc5ea69e%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+VM+Backup%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%95%B4%E5%90%88%E6%80%A7%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FConsistencies%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FConsistencies.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FConsistencies.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="cm5kntbbp00690nprgh598zj4" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/" data-id="cm5lp3byz00690nsz4im6exr3" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回は Azure VM Backup における整合性に関して具体例も踏まえつつご説明させていただきます。</p>
+<p>皆様こんにちは。Azure Backup サポートです。<br>今回は Azure VM Backup における整合性に関して具体例も踏まえつつご説明させていただきます。</p>
 <p>まず、Azure VM Backup における整合性は下記の３種類ございます。<br>・アプリケーション整合性 (Application-consistent)<br><img src="/blog/AzureVMBackup/Consistencies/Consistencies_01.png" alt="2022-02-11_00h49_03"></p>
 <p>・ファイルシステム整合性 (File-system consistent)<br><img src="/blog/AzureVMBackup/Consistencies/Consistencies_02.png" alt="2022-02-11_00h49_22"></p>
 <p>・クラッシュ整合性 (Crash-consistent)<br><img src="/blog/AzureVMBackup/Consistencies/Consistencies_03.png" alt="2022-02-11_00h49_36"></p>
 <p>なお、公開情報は下記にございますのでまず一度ご一読ください。<br>その前提で説明させていただきます。</p>
 <ul>
-<li>参考<br>・Azure VM バックアップの概要 スナップショットの整合性<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency</a></li>
+<li>(参考) Azure VM バックアップの概要 スナップショットの整合性<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-consistency</a></li>
 </ul>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
 <p><a href="#1">1. アプリケーション整合性</a><br><a href="#1-1">  1.1 VSS 観点での調査について</a><br><a href="#1-2">  1.2  SQL Server のインストールされた Windows OS のバックアップについて</a><br><a href="#1-2-1">   1.2.1  ご参考ページ</a><br><a href="#1-3">  1.3  Oracle DB for Windows VM の Azure VM Backup について</a><br><a href="#1-4">  1.4  事前事後スクリプトについて</a><br><a href="#2">2. ファイルシステム整合性</a><br><a href="#3">3. クラッシュ整合性</a></p>
@@ -128,8 +128,8 @@
 <p>Azure Portal 上の表示では、Windows OS の場合は VSS (VSS ライター) が正常に稼働すればアプリケーション整合性となり、Linux VM の場合は事前事後スクリプトが正常に完了すればアプリケーション整合性となります。<br>つまり、VSS に対応していないアプリケーションをご利用の場合は該当アプリケーションに対する整合性はございませんが、Azure Portal (Azure Backup) では VSS ライターが提供されていない対象のアプリケーションを検知することが出来ないため Azure Portal 上の表示はアプリケーション整合性となります。</p>
 <p>また、<strong>ご利用のアプリケーション整合性が VSS に対応しているかは各アプリケーションの提供元ベンダーまでお問い合わせいただきますようお願いします。</strong></p>
 <ul>
-<li>参考<br>・ボリューム シャドウ コピー サービスの仕組み<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shadow-copy-service#how-volume-shadow-copy-service-work">https://docs.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shadow-copy-service#how-volume-shadow-copy-service-work</a><blockquote>
-<p>Microsoft 以外の VSS ライターは、バックアップ中のデータの整合性を保証する必要がある Windows 用の多くのアプリケーションに含まれています。</p>
+<li>(参考) VSS のしくみ<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shadow-copy-service#how-volume-shadow-copy-service-work">https://learn.microsoft.com/ja-jp/windows-server/storage/file-server/volume-shadow-copy-service#how-volume-shadow-copy-service-work</a><blockquote>
+<p>Microsoft 以外の VSS ライターは、バックアップ中にデータの一貫性を保証する必要がある Windows 用の多くのアプリケーションに含まれています。</p>
 </blockquote>
 </li>
 </ul>
@@ -144,10 +144,18 @@
 <p>Error Code ：ExtensionFailedVssWriterInBadState<br>Error Message ：Snapshot operation failed due to VSS Writers in bad state.</p>
 </blockquote>
 <p>事象の改善方法としては下記 URL 記載の <strong>VSS の再起動、および VM の再起動を行うことで改善することがほとんどでございます。</strong></p>
-<p>・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssServiceInBadState - VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state</a></p>
-<p> VSS 観点で、なぜ VSS が bad state になったか、に関する根本原因の調査のためには下記 URL 先のログの採取をお願いします。<br> <strong>可能な限り “[A]”が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。</strong><br>・VSS エラーが発生している事象の調査<br><a target="_blank" rel="noopener" href="https://jpwinsup.github.io/mslog/storage/vss/vss-error.html">https://jpwinsup.github.io/mslog/storage/vss/vss-error.html</a></p>
-<h4 id="・VSS-ライターのエラーにより警告付き完了となる-アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている"><a href="#・VSS-ライターのエラーにより警告付き完了となる-アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている" class="headerlink" title="・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている"></a>・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている</h4><p>こちら根本原因の特定には VSS および VSS ライター観点での調査が必要となります。<br> Azure Backup チームでは どうして VSS ライター が失敗したのか、に関する根本原因の特定については可能な範囲での調査をさせていただきます。<br>　一次調査の結果、VSS ライターのエラーを出しているアプリケーションが 弊社 SQL Server 等弊社製品の場合は担当チーム (SQL Server 等) で対応が可能でございますが、お客様の契約次第では有償対応が必要となることがございます。<br>　一方、VSS ライターのエラーを出しているアプリケーションが他社製品の場合、ご利用のアプリケーション提供ベンダーまでお問い合わせいただくようお願い申し上げます。</p>
-<p>改善策としては、下記の URL をご参考にして<strong>VSS の再起動、および VM の再起動の対応いただければと存じます。</strong><br>・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssWriterInBadState - VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state</a></p>
+<ul>
+<li>(参考) Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssServiceInBadState - VSS (ボリューム シャドウ コピー) サービスが正しくない状態にあるため、スナップショット操作に失敗しました<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvssserviceinbadstate---snapshot-operation-failed-due-to-vss-volume-shadow-copy-service-in-bad-state</a></li>
+</ul>
+<p> VSS 観点で、なぜ VSS が bad state になったか、に関する根本原因の調査のためには下記 URL 先のログの採取をお願いします。<br> <strong>可能な限り “[A]”が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。</strong></p>
+<ul>
+<li>(参考) VSS エラーが発生している事象の調査<br><a target="_blank" rel="noopener" href="https://jpwinsup.github.io/mslog/storage/vss/vss-error/">https://jpwinsup.github.io/mslog/storage/vss/vss-error/</a></li>
+</ul>
+<h4 id="・VSS-ライターのエラーにより警告付き完了となる-アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている"><a href="#・VSS-ライターのエラーにより警告付き完了となる-アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている" class="headerlink" title="・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている"></a>・VSS ライターのエラーにより警告付き完了となる / アプリケーション整合性ではなくファイルシステム整合性となって復旧ポイントが取得されている</h4><p>こちら根本原因の特定には VSS および VSS ライター観点での調査が必要となります。<br>Azure Backup チームでは どうして VSS ライター が失敗したのか、に関する根本原因の特定については可能な範囲での調査をさせていただきます。<br>一次調査の結果、VSS ライターのエラーを出しているアプリケーションが 弊社 SQL Server 等弊社製品の場合は担当チーム (SQL Server 等) で対応が可能でございますが、お客様の契約次第では有償対応が必要となることがございます。<br>　一方、VSS ライターのエラーを出しているアプリケーションが他社製品の場合、ご利用のアプリケーション提供ベンダーまでお問い合わせいただくようお願い申し上げます。</p>
+<p>改善策としては、下記の URL をご参考にして<strong>VSS の再起動、および VM の再起動の対応いただければと存じます。</strong></p>
+<ul>
+<li>(参考) Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - ExtensionFailedVssWriterInBadState - VSS ライターが正しくない状態にあるため、スナップショット操作に失敗しました<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state</a></li>
+</ul>
 <h3 id="1-2-SQL-Server-のインストールされた-Windows-OS-のバックアップについて"><a href="#1-2-SQL-Server-のインストールされた-Windows-OS-のバックアップについて" class="headerlink" title="1.2  SQL Server のインストールされた Windows OS のバックアップについて"></a>1.2  SQL Server のインストールされた Windows OS のバックアップについて<a id="1-2"></a></h3><p>こちらよくいただくお問い合わせとして次の通りお伝えします。</p>
 <blockquote>
 <p>・SQL Server のインストールされた Windows OS をAzure VM Backup でバックアップすることは可能か、また何か考慮点があるか？<br>*ここで SQL Server とは Microsoft SQL Server を指します。</p>
@@ -155,43 +163,54 @@
 <p><strong>こちら結論から申し上げますと、可能です。</strong><br>Microsoft SQL Server では SQL ライターがございますので、SQL データベースの整合性を保った VM 全体のバックアップを取得することが可能です。</p>
 <p>考慮点としましては下記 URL をご覧ください。</p>
 <ul>
-<li>参考<br>・Azure VM バックアップの概要 - スナップショットの作成<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-creation">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-creation</a><blockquote>
-<p>既定の Azure Backup では、VSS の完全バックアップが作成されます (アプリケーション レベルで整合性のあるバックアップを取得するため、バックアップ時に、SQL Server などのアプリケーションのログは切り捨てられます)。 Azure VM バックアップで SQL Server データベースを使用している場合は、(ログを保持するため) VSS コピー バックアップを作成するように設定を変更できます。 詳細については、 こちらの記事を参照してください。</p>
+<li><p>(参考) Azure VM バックアップの概要 - スナップショットの作成<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-creation">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#snapshot-creation</a></p>
+<blockquote>
+<p>既定の Azure Backup では、VSS の完全バックアップが作成されます (アプリケーション レベルで整合性のあるバックアップを取得するため、バックアップ時に、SQL Server などのアプリケーションのログは切り捨てられます)。 Azure VM バックアップで SQL Server データベースを使用している場合は、(ログを保持するために) VSS コピー バックアップを作成するように設定を変更できます。</p>
+</blockquote>
+</li>
+<li><p>(参考) Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - VM スナップショットに関する問題のトラブルシューティング<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues</a></p>
+<blockquote>
+<p>既定では、VM バックアップによって Windows VM 上に VSS フル バックアップが作成されます。 SQL Server を実行していて SQL Server のバックアップを構成されている VM では、スナップショットの遅延が発生する可能性があります。 スナップショットの遅延が原因でバックアップが失敗する場合は、次のレジストリ キーを設定します。[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]<br>“USEVSSCOPYBACKUP”=”TRUE”</p>
 </blockquote>
 </li>
 </ul>
-<p>・Azure 仮想マシンでのバックアップ エラーのトラブルシューティング - VM スナップショットに関する問題のトラブルシューティング<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues</a></p>
-<blockquote>
-<p>既定では、VM バックアップによって Windows VM 上に VSS フル バックアップが作成されます。 SQL Server を実行していて SQL Server のバックアップを構成されている VM では、スナップショットの遅延が発生する可能性がありますナップショットの遅延が原因でバックアップが失敗する場合は、次のレジストリ キーを設定します。<br>[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]<br>“USEVSSCOPYBACKUP”=”TRUE”</p>
-</blockquote>
 <p>上記レジストリ設定にあたって OS 再起動は必要ございません。</p>
-<h4 id="1-2-1-上記に関するご参考ページ"><a href="#1-2-1-上記に関するご参考ページ" class="headerlink" title="1.2.1 上記に関するご参考ページ "></a>1.2.1 上記に関するご参考ページ <a id="1-2-1"></a></h4><p>・コピーのみのバックアップ - SQL Server<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver16">https://docs.microsoft.com/ja-jp/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver16</a></p>
-<blockquote>
-<p>コピーのみのバックアップは、従来の SQL Server バックアップのシーケンスから独立した SQL Server バックアップです。 通常、バックアップを行うとデータベースが変更され、その後のバックアップの復元方法に影響します。 ただし、データベース全体のバックアップや復元の手順に影響を与えない、特殊な目的にバックアップを行うと役に立つ場合があります。 このため、コピーのみのバックアップが導入されました。</p>
+<h4 id="1-2-1-上記に関するご参考ページ"><a href="#1-2-1-上記に関するご参考ページ" class="headerlink" title="1.2.1 上記に関するご参考ページ "></a>1.2.1 上記に関するご参考ページ <a id="1-2-1"></a></h4><ul>
+<li>コピーのみのバックアップ - SQL Server<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver16">https://learn.microsoft.com/ja-jp/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver16</a><blockquote>
+<p>コピーのみのバックアップとは、定期的に実行される一連の SQL Server バックアップとは別の SQL Server バックアップです。 通常、バックアップを行うとデータベースが変更され、その後のバックアップの復元方法に影響します。 ただし、データベース全体のバックアップや復元の手順に影響を与えない特殊な目的で、バックアップを行うと役に立つ場合があります。 このため、コピーのみのバックアップが導入されました。</p>
 </blockquote>
-<p>また、下記は<strong>弊社外のブログ</strong>ではございますが、本件に関する参考になればと存じ、ご案内させていただきます。<br>※社外の情報のため内容につきましては当社は、下記外部のリンク先ウェブサイトの内容に関していかなる責任も負うものではありません。<br>・Azure Backup で SQL Server がインストールされている仮想マシンをバックアップする際に意識しておきたいこと<br><a target="_blank" rel="noopener" href="https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%82%92/">https://blog.engineer-memo.com/2018/03/17/azure-backup-%E3%81%A7-sql-server-%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%82%92/</a></p>
-<h3 id="1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について"><a href="#1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について" class="headerlink" title="1.3  Oracle DB for Windows VM の Azure VM Backup について"></a>1.3  Oracle DB for Windows VM の Azure VM Backup について<a id="1-3"></a></h3><p>よくお問い合わせをいただく例としましては Oracle DB が搭載された Windows OS に関してお問い合わせをいただくことがございます。<br>弊社では Windows OS 向けの Oracle DB すべてが VSS に対応しているかわかりかねますが、少なくとも実績はございます。<br>ご利用の Oracle DB が VSS に対応しているかが不明な場合は別途 Oracle 社にお問い合わせいただければと存じます。</p>
-<ul>
-<li>下記情報は弊社外のサイトでございますが、ご参考になれば幸いです。弊社情報ではございませんのでその点ご留意ください。<br>・Oracleがインストールされているシステムで Exit Code -311が発生する<br><a target="_blank" rel="noopener" href="https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B">https://jpkb.actiphy.com/?epkb_post_type_1=old-kb-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B</a></li>
+</li>
 </ul>
-<p>・(Oracle社) VSSを使用したデータベースのバックアップおよびリカバリの目的<br>  ※Oracle DB すべてが VSS に対応しているかはわかりかねます<br><a target="_blank" rel="noopener" href="https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B">https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B</a></p>
+<h3 id="1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について"><a href="#1-3-Oracle-DB-for-Windows-VM-の-Azure-VM-Backup-について" class="headerlink" title="1.3  Oracle DB for Windows VM の Azure VM Backup について"></a>1.3  Oracle DB for Windows VM の Azure VM Backup について<a id="1-3"></a></h3><p>よくお問い合わせをいただく例としましては Oracle DB が搭載された Windows OS に関してお問い合わせをいただくことがございます。<br>弊社では Windows OS 向けの Oracle DB すべてが VSS に対応しているかわかりかねますが、少なくとも実績はございます。<br>ご利用の Oracle DB が VSS に対応しているかが不明な場合は別途 Oracle 社にお問い合わせいただければと存じます。</p>
+<p>*下記情報は弊社外のサイトでございますが、ご参考になれば幸いです。弊社情報ではございませんのでその点ご留意ください。</p>
+<ul>
+<li>Oracleがインストールされているシステムで Exit Code -311が発生する<br><a target="_blank" rel="noopener" href="https://actiphyhelp.zendesk.com/hc/ja/articles/13451077456153-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B">https://actiphyhelp.zendesk.com/hc/ja/articles/13451077456153-Oracle%E3%81%8C%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%A7-Exit-Code-311%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B</a></li>
+<li>(Oracle社) VSSを使用したデータベースのバックアップおよびリカバリの目的<br>※Oracle DB すべてが VSS に対応しているかはわかりかねます<br><a target="_blank" rel="noopener" href="https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B">https://docs.oracle.com/cd/F19136_01/ntqrf/purpose-of-database-backup-and-recovery-with-vss.html#GUID-6A44D80C-0427-4DB8-AD3C-BD5426AECC2B</a></li>
+</ul>
 <h3 id="1-4-事前事後スクリプトについて"><a href="#1-4-事前事後スクリプトについて" class="headerlink" title="1.4 事前事後スクリプトについて"></a>1.4 事前事後スクリプトについて<a id="1-4"></a></h3><p>Linux VM 事前事後スクリプトに関しましては、お客様自身で対象のアプリケーション (DBなど) の I/O を停止 / 再開する処理を記載いただく必要がございます。<br>そのため、対象のアプリケーションに対してそのようなコマンド制御ができない場合は、残念ながら事前事後スクリプトを用いることはできません。そのようなコマンド制御が可能かはアプリケーション提供ベンダーまでお問い合わせをいただきますようお願いします。</p>
 <ul>
-<li>参考<br>・Azure Linux VM のアプリケーション整合性バックアップ<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent</a><br>・git hub 上のサンプル事前事後スクリプト (Oracle や MySQLがございます。)<br><a target="_blank" rel="noopener" href="https://github.com/MicrosoftAzureBackup">https://github.com/MicrosoftAzureBackup</a></li>
+<li>(参考) Azure Backup を使用した Azure Linux VM のアプリケーション整合性バックアップ<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-linux-app-consistent</a></li>
+<li>(参考) データベース整合性スナップショットのための拡張事前/事後スクリプト<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-linux-database-consistent-enhanced-pre-post">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-linux-database-consistent-enhanced-pre-post</a></li>
+<li>(参考) GitHub 上のサンプル事前事後スクリプト (Oracle や MySQLがございます。)<br><a target="_blank" rel="noopener" href="https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts">https://github.com/Azure/azure-linux-extensions/tree/master/VMBackup/main/workloadPatch/DefaultScripts</a></li>
 </ul>
-<h2 id="2-ファイルシステム整合性"><a href="#2-ファイルシステム整合性" class="headerlink" title="2.ファイルシステム整合性"></a>2.ファイルシステム整合性<a id="2"></a></h2><p>Windows OS のオンライン バックアップを取得した際に一部の VSSライターが失敗した場合や Linux OS でオンライン バックアップを取得した場合 (または 事前事後スクリプトが失敗した場合) にファイルシステム整合性となります。<br>こちらは OS の起動を保証した整合性ですが、アプリケーションレベルでの整合性は担保されておりません。</p>
+<h2 id="2-ファイルシステム整合性"><a href="#2-ファイルシステム整合性" class="headerlink" title="2.ファイルシステム整合性"></a>2.ファイルシステム整合性<a id="2"></a></h2><p>Windows OS のオンライン バックアップを取得した際に一部の VSS ライターが失敗した場合や Linux OS でオンライン バックアップを取得した場合 (または 事前事後スクリプトが失敗した場合) にファイルシステム整合性となります。<br>こちらは OS の起動を保証した整合性ですが、アプリケーション レベルでの整合性は担保されておりません。</p>
 <h2 id="3-クラッシュ整合性"><a href="#3-クラッシュ整合性" class="headerlink" title="3.クラッシュ整合性"></a>3.クラッシュ整合性<a id="3"></a></h2><p>スナップショット作成実行時のディスクのデータのみを保存します。<br>アプリケーション整合性やファイルシステム整合性とは異なり、OS 内部とは連携せずスナップショットを取得します。<br>そのため、オフライン状態の VM をバックアップした際にはクラッシュ整合性となります。<br>OS の起動を保証しない整合性ではございますが、<strong>正常に電源が落とされた状態の VM であればメモリ上の情報や I/O の発生はなく、ディスクにしか情報はないため整合性の懸念は全くございません。</strong></p>
 <ul>
-<li>参考 (関連するブログ記事です。)<br>・Azure VM Backup では オフライン バックアップができるのか<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</a></li>
+<li>参考ブログ Azure VM Backup では オフライン バックアップができるのか<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</a></li>
 </ul>
-<p>一方、Azure Disk Backup やマネージドディスクのスナップショットなどは、起動中の VM にアタッチされているディスクのスナップショットを取得することが可能ですが、この際のオンライン状態でのスナップショットの整合性は Azure VM Backupとは異なり、クラッシュ整合性となります。<br>整合性は劣るものの、後述の通り DB のない VM であればクラッシュ整合性でも基本的には問題ございません。</p>
+<p>一方、Azure Disk Backup やマネージド ディスクのスナップショットなどは、起動中の VM にアタッチされているディスクのスナップショットを取得することが可能ですが、この際のオンライン状態でのスナップショットの整合性は Azure VM Backupとは異なり、クラッシュ整合性となります。<br>整合性は劣るものの、後述の通り DB のない VM であればクラッシュ整合性でも基本的には問題ございません。</p>
 <ul>
-<li>参考<br>・Azure ディスク バックアップの概要<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview">https://docs.microsoft.com/ja-jp/azure/backup/disk-backup-overview</a><br>・仮想ハード ディスクのスナップショットを作成する<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal">https://docs.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal</a></li>
+<li>(参考) Azure ディスク バックアップの概要<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview">https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview</a> </li>
+<li>(参考) 仮想ハード ディスクのスナップショットを作成する<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal">https://learn.microsoft.com/ja-jp/azure/virtual-machines/snapshot-copy-managed-disk?tabs=portal</a></li>
 </ul>
-<p>クラッシュ整合性に関しましては次の公開情報にございますようなイメージをしていただけるとわかりやすいかと存じます。<br> (Azure Site Recovery のドキュメントではございますが、考え方は同じです。)<br>・Azure Site Recovery に関する一般的な質問 - クラッシュ整合性復旧ポイントとは何ですか?<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------">https://docs.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------</a></p>
-<blockquote>
-<p>クラッシュ整合性復旧ポイントには、スナップショットの作成中にサーバーから電源コードが引き抜かれたときのディスク上のデータが含まれます。 クラッシュ整合性復旧ポイントには、スナップショットの作成時にメモリに入っていたものは一切含まれません。<br>クラッシュ整合性復旧ポイントは通常、データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションにとっては十分です。</p>
+<p>クラッシュ整合性に関しましては次の公開情報にございますようなイメージをしていただけるとわかりやすいかと存じます。<br> (Azure Site Recovery のドキュメントではございますが、考え方は同じです。)</p>
+<ul>
+<li>(参考) Azure Site Recovery に関する一般的な質問 - クラッシュ整合性復旧ポイントとは何ですか?<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------">https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-faq#---------------------</a><blockquote>
+<p>クラッシュ整合性復旧ポイントには、スナップショットの作成中にサーバーから電源コードが引き抜かれたときのディスク上のデータが含まれます。 クラッシュ整合性復旧ポイントには、スナップショットの作成時にメモリに入っていたものは一切含まれません。<br>現在、ほとんどのアプリケーションは、クラッシュ整合性のスナップショットから十分に復旧できます。 データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションの場合は、クラッシュ整合性復旧ポイントで十分です。</p>
 </blockquote>
+</li>
+</ul>
+<p>本記事の説明は以上です。</p>
 
       
       
@@ -216,19 +235,19 @@
     
 <nav id="article-nav">
   
-    <a href="../NVA_backup/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../MARSBackup/How_to_re-install/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          NVA のバックアップについて
+          MARS エージェントの再インストール手順
         
       </div>
     </a>
   
   
-    <a href="../../MARSBackup/MARS_Proxy_Setting/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">プロキシを利用した MARS エージェントによるバックアップについて</div>
+      <div class="article-nav-title">Azure Backup の 保持期間について</div>
     </a>
   
 </nav>
@@ -247,23 +266,23 @@
       <ul>
         
           <li>
+            <a href="../../AzureBackupGeneral/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
+          </li>
+        
+          <li>
+            <a href="../../MARSBackup/How_to_re-install/">MARS エージェントの再インストール手順</a>
+          </li>
+        
+          <li>
+            <a href="">Azure VM Backupにおける整合性について</a>
+          </li>
+        
+          <li>
             <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/">Azure Backup の 保持期間について</a>
           </li>
         
           <li>
             <a href="../HowToCheckRetentionPeriodForVMBackup/">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</a>
-          </li>
-        
-          <li>
-            <a href="../HowToExtendVMRetentionPeriod/">Azure VM Backup で取得した復旧ポイントの保持期間の延長について</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureBackupGeneral/Classic_Alert_For_Administrators/">Azure Backup の自動的に通知されるクラシック アラートについて</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureMigrate/ReplicationApplianceRegister/">Azure Migrate レプリケーション アプライアンスのデプロイについて</a>
           </li>
         
       </ul>
@@ -286,7 +305,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 

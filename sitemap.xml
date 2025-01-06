@@ -65,6 +65,20 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
+    
+    <lastmod>2025-01-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/</loc>
+    
+    <lastmod>2025-01-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
     
     <lastmod>2025-01-06</lastmod>
@@ -72,7 +86,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/</loc>
     
     <lastmod>2025-01-06</lastmod>
     
@@ -100,28 +114,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/</loc>
-    
-    <lastmod>2025-01-06</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/</loc>
-    
-    <lastmod>2025-01-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/</loc>
-    
-    <lastmod>2025-01-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/</loc>
     
     <lastmod>2025-01-06</lastmod>
     
@@ -135,7 +128,21 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/</loc>
+    
+    <lastmod>2025-01-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/</loc>
+    
+    <lastmod>2025-01-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/</loc>
     
     <lastmod>2025-01-06</lastmod>
     
@@ -156,20 +163,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/</loc>
-    
-    <lastmod>2025-01-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/</loc>
-    
-    <lastmod>2025-01-06</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/</loc>
     
     <lastmod>2025-01-06</lastmod>
@@ -178,6 +171,13 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
+    
+    <lastmod>2025-01-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/</loc>
     
     <lastmod>2025-01-06</lastmod>
     
@@ -219,13 +219,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
-    
-    <lastmod>2025-01-06</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/CRR/</loc>
     
     <lastmod>2025-01-06</lastmod>
@@ -254,7 +247,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
     
     <lastmod>2025-01-06</lastmod>
     
@@ -268,6 +261,13 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/</loc>
+    
+    <lastmod>2025-01-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/How_to_fail_ASR/</loc>
     
     <lastmod>2025-01-06</lastmod>
@@ -275,14 +275,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</loc>
     
     <lastmod>2025-01-06</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/</loc>
     
     <lastmod>2025-01-06</lastmod>
     
@@ -310,14 +310,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureMigrate/ReplicationApplianceRegister/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/</loc>
     
     <lastmod>2025-01-06</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureMigrate/ReplicationApplianceRegister/</loc>
     
     <lastmod>2025-01-06</lastmod>
     
@@ -359,14 +359,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/</loc>
     
     <lastmod>2025-01-06</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/</loc>
     
     <lastmod>2025-01-06</lastmod>
     
@@ -401,13 +401,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Classic_Alert_For_Administrators/</loc>
-    
-    <lastmod>2025-01-06</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/</loc>
     
     <lastmod>2025-01-06</lastmod>
@@ -416,6 +409,13 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/</loc>
+    
+    <lastmod>2025-01-06</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Classic_Alert_For_Administrators/</loc>
     
     <lastmod>2025-01-06</lastmod>
     

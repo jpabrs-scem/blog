@@ -6,12 +6,12 @@
   
   <title>MARS エージェントの再インストール手順 | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、Azure Backup サポートの 山本 です。今回は MARS エージェントの再インストール手順をお伝えさせていただきます。 なお、なんらかの不具合が発生している場合の MARS エージェントの再インストールは 上書きインストールではなく、必ず 一度アンインストールした上で実施いただくようお願いいたします。例えば、ネットワーク構成などを変えていないのに、MARS コンソールが">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は MARS エージェントの再インストール手順をお伝えさせていただきます。 なお、なんらかの不具合が発生している場合の MARS エージェントの再インストールは 上書きインストールではなく、必ず 一度アンインストールした上で実施いただくようお願いいたします。例えば、ネットワーク構成などを変えていないのに、MARS コンソールが立ち上がら">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MARS エージェントの再インストール手順">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、Azure Backup サポートの 山本 です。今回は MARS エージェントの再インストール手順をお伝えさせていただきます。 なお、なんらかの不具合が発生している場合の MARS エージェントの再インストールは 上書きインストールではなく、必ず 一度アンインストールした上で実施いただくようお願いいたします。例えば、ネットワーク構成などを変えていないのに、MARS コンソールが">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は MARS エージェントの再インストール手順をお伝えさせていただきます。 なお、なんらかの不具合が発生している場合の MARS エージェントの再インストールは 上書きインストールではなく、必ず 一度アンインストールした上で実施いただくようお願いいたします。例えば、ネットワーク構成などを変えていないのに、MARS コンソールが立ち上がら">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/How_to_re-install_01.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/How_to_re-install_02.png">
@@ -27,8 +27,8 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/How_to_re-install_12.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/How_to_re-install_13.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/How_to_re-install_14.png">
-<meta property="article:published_time" content="2022-08-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-06T06:27:18.723Z">
+<meta property="article:published_time" content="2025-01-10T03:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-06T23:50:51.834Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="MARS Backup">
@@ -112,53 +112,59 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2022-08-11T03:00:00.000Z" itemprop="datePublished">2022-08-11</time>
+  <time datetime="2025-01-10T03:00:00.000Z" itemprop="datePublished">2025-01-10</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+4857d5d1-7792-5279-bced-6cf0c307255a%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMARS+%E3%82%A8%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%81%AE%E5%86%8D%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FMARSBackup%2FHow_to_re-install%2F%29%0A*+Content+Source%3A+%5Barticles%2FMARSBackup%2FHow_to_re-install.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FMARSBackup%2FHow_to_re-install.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/" data-id="cm5kntbav00380npraflh83ff" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/" data-id="cm5lp3by800380nszcwon04zt" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは、Azure Backup サポートの 山本 です。<br>今回は MARS エージェントの再インストール手順をお伝えさせていただきます。</p>
+<p>皆様こんにちは、Azure Backup サポートです。<br>今回は MARS エージェントの再インストール手順をお伝えさせていただきます。</p>
 <p>なお、なんらかの不具合が発生している場合の MARS エージェントの再インストールは <strong>上書きインストールではなく、必ず 一度アンインストールした上</strong>で実施いただくようお願いいたします。<br>例えば、ネットワーク構成などを変えていないのに、MARS コンソールが立ち上がらなくなった (正常に動作しなくなった) 場合やバックアップ が失敗するようになった等の場合は再インストールが有効な対処策であることが多くございます。</p>
-<p>特に証明書関連のエラーの場合再インストールの前後で証明書に変化があったかご確認いただけますと幸いです。<br>その際は下記記事を参考にして作業前後で証明書をご確認ください。<br> ・4.4 各種証明書の確認証跡 - 4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ<br><a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/#4-4">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/#4-4</a></p>
-<blockquote>
-<p>【注意】MARS エージェントの再インストール後も以前のスケジュールバックアップ設定や復元ポイントを利用可能ですが、その際には以前 MARS エージェントのサーバー登録時に利用したパスフレーズが必要となりますので、再インストール時は <strong>パスフレーズがお手元にあることを確認の上</strong>、作業を実行してください。</p>
-</blockquote>
+<p>特に証明書関連のエラーの場合再インストールの前後で証明書に変化があったかご確認いただけますと幸いです。<br>その際は下記記事を参考にして作業前後で証明書をご確認ください。</p>
+<ul>
+<li>4.4 各種証明書の確認証跡 - 4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ<br><a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/#4-4">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/#4-4</a></li>
+</ul>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>MARS エージェントの再インストール後も以前のスケジュール バックアップ設定や復元ポイントを利用可能ですが、その際には以前 MARS エージェントのサーバー登録時に利用したパスフレーズが必要となりますので、再インストール時は <strong>パスフレーズがお手元にあることを確認の上</strong>、作業を実行してください。</p></div>
 <hr>
 <p><a href="#1">1. MARS エージェントのアンインストール</a><br><a href="#2">2. MARS エージェントの(再)インストール</a><br><a href="#3">3. サーバーの登録</a><br><a href="#4">4. 関連公開情報</a></p>
 <hr>
-<h2 id="1-MARS-エージェントのアンインストール"><a href="#1-MARS-エージェントのアンインストール" class="headerlink" title=" 1.MARS エージェントのアンインストール"></a><a id="1"></a> 1.MARS エージェントのアンインストール</h2><h3 id="1-1-MARSバックアップ対象のマシンにログインします"><a href="#1-1-MARSバックアップ対象のマシンにログインします" class="headerlink" title=" 1-1. MARSバックアップ対象のマシンにログインします"></a><a id="1-1"></a> 1-1. MARSバックアップ対象のマシンにログインします</h3><p> 下記のフォルダーをコピーして任意の別の場所に退避しておきます。<br> 正常に再インストールが完了した際にはこの退避したフォルダは不要です。</p>
+<h2 id="1-MARS-エージェントのアンインストール"><a href="#1-MARS-エージェントのアンインストール" class="headerlink" title=" 1.MARS エージェントのアンインストール"></a><a id="1"></a> 1.MARS エージェントのアンインストール</h2><h3 id="1-1-MARS-バックアップ対象のマシンにログインします"><a href="#1-1-MARS-バックアップ対象のマシンにログインします" class="headerlink" title=" 1-1. MARS バックアップ対象のマシンにログインします"></a><a id="1-1"></a> 1-1. MARS バックアップ対象のマシンにログインします</h3><p>下記のフォルダーをコピーして任意の別の場所に退避しておきます。<br>正常に再インストールが完了した際にはこの退避したフォルダは不要です。</p>
 <blockquote>
 <p>（対象パス）C:\Program Files<br>（コピーする対象のフォルダー）Microsoft Azure Recovery Services Agent</p>
 </blockquote>
 <h3 id="1-2-windows-ボタン-r-を押し、”appwiz-cpl”-と入力し、「OK」＞「プログラムのアンインストールまたは変更」画面を開きます"><a href="#1-2-windows-ボタン-r-を押し、”appwiz-cpl”-と入力し、「OK」＞「プログラムのアンインストールまたは変更」画面を開きます" class="headerlink" title=" 1-2. windows ボタン + r を押し、”appwiz.cpl” と入力し、「OK」＞「プログラムのアンインストールまたは変更」画面を開きます"></a><a id="1-2"></a> 1-2. windows ボタン + r を押し、”appwiz.cpl” と入力し、「OK」＞「プログラムのアンインストールまたは変更」画面を開きます</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_01.png"></p>
 <h3 id="1-3-「Microsoft-Azure-Recovery-Services-Agent」を右クリックし、「アンインストールと変更」をクリックします"><a href="#1-3-「Microsoft-Azure-Recovery-Services-Agent」を右クリックし、「アンインストールと変更」をクリックします" class="headerlink" title=" 1-3.「Microsoft Azure Recovery Services Agent」を右クリックし、「アンインストールと変更」をクリックします"></a><a id="1-3"></a> 1-3.「Microsoft Azure Recovery Services Agent」を右クリックし、「アンインストールと変更」をクリックします</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_02.png"></p>
-<h3 id="1-4-MARSアプリケーション-のアンインストール-ウィザードが開くため、「アンインストール」をクリックします"><a href="#1-4-MARSアプリケーション-のアンインストール-ウィザードが開くため、「アンインストール」をクリックします" class="headerlink" title=" 1-4. MARSアプリケーション のアンインストール ウィザードが開くため、「アンインストール」をクリックします"></a><a id="1-4"></a> 1-4. MARSアプリケーション のアンインストール ウィザードが開くため、「アンインストール」をクリックします</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_03.png"></p>
-<h3 id="1-5-アンインストールされたことを確認してください。"><a href="#1-5-アンインストールされたことを確認してください。" class="headerlink" title=" 1-5. アンインストールされたことを確認してください。"></a><a id="1-5"></a> 1-5. アンインストールされたことを確認してください。</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_04.png"></p>
-<h2 id="2-MARS-エージェントの-再-インストール"><a href="#2-MARS-エージェントの-再-インストール" class="headerlink" title=" 2. MARS エージェントの(再)インストール"></a><a id="2"></a> 2. MARS エージェントの(再)インストール</h2><h3 id="2-1-Azure-Portal-gt-該当のRecovery-Services-コンテナー-gt-設定-–-バックアップ-より以下を選択し、”インフラストラクチャの準備”-をクリックしてください。"><a href="#2-1-Azure-Portal-gt-該当のRecovery-Services-コンテナー-gt-設定-–-バックアップ-より以下を選択し、”インフラストラクチャの準備”-をクリックしてください。" class="headerlink" title=" 2-1. Azure Portal &gt; 該当のRecovery Services コンテナー &gt; 設定 – バックアップ より以下を選択し、”インフラストラクチャの準備” をクリックしてください。"></a><a id="2-1"></a> 2-1. Azure Portal &gt; 該当のRecovery Services コンテナー &gt; 設定 – バックアップ より以下を選択し、”インフラストラクチャの準備” をクリックしてください。</h3><blockquote>
+<h3 id="1-4-MARS-アプリケーション-のアンインストール-ウィザードが開くため、「アンインストール」をクリックします"><a href="#1-4-MARS-アプリケーション-のアンインストール-ウィザードが開くため、「アンインストール」をクリックします" class="headerlink" title=" 1-4. MARS アプリケーション のアンインストール ウィザードが開くため、「アンインストール」をクリックします"></a><a id="1-4"></a> 1-4. MARS アプリケーション のアンインストール ウィザードが開くため、「アンインストール」をクリックします</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_03.png"></p>
+<h3 id="1-5-アンインストールされたことを確認してください"><a href="#1-5-アンインストールされたことを確認してください" class="headerlink" title=" 1-5. アンインストールされたことを確認してください"></a><a id="1-5"></a> 1-5. アンインストールされたことを確認してください</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_04.png"></p>
+<p>ご調整がつくようであれば、このタイミングで一度 OS 再起動をすることお勧めします。</p>
+<h2 id="2-MARS-エージェントの-再-インストール"><a href="#2-MARS-エージェントの-再-インストール" class="headerlink" title=" 2. MARS エージェントの(再)インストール"></a><a id="2"></a> 2. MARS エージェントの(再)インストール</h2><h3 id="2-1-Azure-Portal-gt-該当のRecovery-Services-コンテナー-gt-設定-–-バックアップ-より以下を選択し、”インフラストラクチャの準備”-をクリックしてください"><a href="#2-1-Azure-Portal-gt-該当のRecovery-Services-コンテナー-gt-設定-–-バックアップ-より以下を選択し、”インフラストラクチャの準備”-をクリックしてください" class="headerlink" title=" 2-1. Azure Portal &gt; 該当のRecovery Services コンテナー &gt; 設定 – バックアップ より以下を選択し、”インフラストラクチャの準備” をクリックしてください"></a><a id="2-1"></a> 2-1. Azure Portal &gt; 該当のRecovery Services コンテナー &gt; 設定 – バックアップ より以下を選択し、”インフラストラクチャの準備” をクリックしてください</h3><blockquote>
 <p>ワークロードはどこで実行されていますか？：オンプレミス<br>何をバックアップしますか？：ファイルとフォルダー</p>
 </blockquote>
 <p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_05.png"></p>
-<h3 id="2-2-“Windows-Server-または-Windows-クライアント用エージェントのダウンロード”-をクリックしてください。"><a href="#2-2-“Windows-Server-または-Windows-クライアント用エージェントのダウンロード”-をクリックしてください。" class="headerlink" title=" 2-2. “Windows Server または Windows クライアント用エージェントのダウンロード” をクリックしてください。"></a><a id="2-2"></a> 2-2. “Windows Server または Windows クライアント用エージェントのダウンロード” をクリックしてください。</h3><p>  *最新版のMARS エージェントインストーラーがダウンロードされます。</p>
-<p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_06.png"></p>
-<h3 id="2-3-ダウンロードしたインストーラーを該当のサーバーにて実行してください。"><a href="#2-3-ダウンロードしたインストーラーを該当のサーバーにて実行してください。" class="headerlink" title=" 2-3. ダウンロードしたインストーラーを該当のサーバーにて実行してください。"></a><a id="2-3"></a> 2-3. ダウンロードしたインストーラーを該当のサーバーにて実行してください。</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_07.png"></p>
-<h3 id="2-4-セットアップ-ウィザードが開きますので、ウィザードの案内に従い、MARS-エージェントをインストールしてください。"><a href="#2-4-セットアップ-ウィザードが開きますので、ウィザードの案内に従い、MARS-エージェントをインストールしてください。" class="headerlink" title=" 2-4. セットアップ ウィザードが開きますので、ウィザードの案内に従い、MARS エージェントをインストールしてください。"></a><a id="2-4"></a> 2-4. セットアップ ウィザードが開きますので、ウィザードの案内に従い、MARS エージェントをインストールしてください。</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_08.png"></p>
-<h3 id="2-5-インストール完了後、”登録処理を続行”-をクリックしてください。"><a href="#2-5-インストール完了後、”登録処理を続行”-をクリックしてください。" class="headerlink" title=" 2-5. インストール完了後、”登録処理を続行” をクリックしてください。"></a><a id="2-5"></a> 2-5. インストール完了後、”登録処理を続行” をクリックしてください。</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_09.png"></p>
-<h3 id="2-6-サーバーの登録ウィザードが開きますので、次の手順に進んでください。"><a href="#2-6-サーバーの登録ウィザードが開きますので、次の手順に進んでください。" class="headerlink" title=" 2-6. サーバーの登録ウィザードが開きますので、次の手順に進んでください。"></a><a id="2-6"></a> 2-6. サーバーの登録ウィザードが開きますので、次の手順に進んでください。</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_10.png"></p>
-<h2 id="3-サーバーの登録"><a href="#3-サーバーの登録" class="headerlink" title=" 3. サーバーの登録"></a><a id="3"></a> 3. サーバーの登録</h2><h3 id="3-1-手順-2-2-の画面にて-”最新のRecovery-Services-Agent-を既にダウンロードしたか、使用している”-にチェックし、ダウンロードをクリックしてください。"><a href="#3-1-手順-2-2-の画面にて-”最新のRecovery-Services-Agent-を既にダウンロードしたか、使用している”-にチェックし、ダウンロードをクリックしてください。" class="headerlink" title=" 3-1. 手順 2-2 の画面にて ”最新のRecovery Services Agent を既にダウンロードしたか、使用している” にチェックし、ダウンロードをクリックしてください。"></a><a id="3-1"></a> 3-1. 手順 2-2 の画面にて ”最新のRecovery Services Agent を既にダウンロードしたか、使用している” にチェックし、ダウンロードをクリックしてください。</h3><p>*Recovery Services コンテナーの資格情報がダウンロードされます。</p>
+<h3 id="2-2-“Windows-Server-または-Windows-クライアント用エージェントのダウンロード”-をクリックしてください"><a href="#2-2-“Windows-Server-または-Windows-クライアント用エージェントのダウンロード”-をクリックしてください" class="headerlink" title=" 2-2. “Windows Server または Windows クライアント用エージェントのダウンロード” をクリックしてください"></a><a id="2-2"></a> 2-2. “Windows Server または Windows クライアント用エージェントのダウンロード” をクリックしてください</h3><p>*最新版のMARS エージェントインストーラーがダウンロードされます。<br><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_06.png"></p>
+<h3 id="2-3-ダウンロードしたインストーラーを該当のサーバーにて実行してください"><a href="#2-3-ダウンロードしたインストーラーを該当のサーバーにて実行してください" class="headerlink" title=" 2-3. ダウンロードしたインストーラーを該当のサーバーにて実行してください"></a><a id="2-3"></a> 2-3. ダウンロードしたインストーラーを該当のサーバーにて実行してください</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_07.png"></p>
+<h3 id="2-4-セットアップ-ウィザードが開きますので、ウィザードの案内に従い、MARS-エージェントをインストールしてください"><a href="#2-4-セットアップ-ウィザードが開きますので、ウィザードの案内に従い、MARS-エージェントをインストールしてください" class="headerlink" title=" 2-4. セットアップ ウィザードが開きますので、ウィザードの案内に従い、MARS エージェントをインストールしてください"></a><a id="2-4"></a> 2-4. セットアップ ウィザードが開きますので、ウィザードの案内に従い、MARS エージェントをインストールしてください</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_08.png"></p>
+<h3 id="2-5-インストール完了後、”登録処理を続行”-をクリックしてください"><a href="#2-5-インストール完了後、”登録処理を続行”-をクリックしてください" class="headerlink" title=" 2-5. インストール完了後、”登録処理を続行” をクリックしてください"></a><a id="2-5"></a> 2-5. インストール完了後、”登録処理を続行” をクリックしてください</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_09.png"></p>
+<h3 id="2-6-サーバーの登録ウィザードが開きますので、次の手順に進んでください"><a href="#2-6-サーバーの登録ウィザードが開きますので、次の手順に進んでください" class="headerlink" title=" 2-6. サーバーの登録ウィザードが開きますので、次の手順に進んでください"></a><a id="2-6"></a> 2-6. サーバーの登録ウィザードが開きますので、次の手順に進んでください</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_10.png"></p>
+<h2 id="3-サーバーの登録"><a href="#3-サーバーの登録" class="headerlink" title=" 3. サーバーの登録"></a><a id="3"></a> 3. サーバーの登録</h2><h3 id="3-1-手順-2-2-の画面にて-”最新のRecovery-Services-Agent-を既にダウンロードしたか、使用している”-にチェックし、ダウンロードをクリックしてください"><a href="#3-1-手順-2-2-の画面にて-”最新のRecovery-Services-Agent-を既にダウンロードしたか、使用している”-にチェックし、ダウンロードをクリックしてください" class="headerlink" title=" 3-1. 手順 2-2 の画面にて ”最新のRecovery Services Agent を既にダウンロードしたか、使用している” にチェックし、ダウンロードをクリックしてください"></a><a id="3-1"></a> 3-1. 手順 2-2 の画面にて ”最新のRecovery Services Agent を既にダウンロードしたか、使用している” にチェックし、ダウンロードをクリックしてください</h3><p>*Recovery Services コンテナーの資格情報がダウンロードされます。</p>
 <p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_11.png"></p>
-<h3 id="3-2-ダウンロードした資格情報を該当のサーバーに配置してください。"><a href="#3-2-ダウンロードした資格情報を該当のサーバーに配置してください。" class="headerlink" title="3-2. ダウンロードした資格情報を該当のサーバーに配置してください。"></a><a id="3-2"></a>3-2. ダウンロードした資格情報を該当のサーバーに配置してください。</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_12.png"></p>
-<h3 id="3-3-手順2-6の画面にて手順3-2でダウンロードした資格情報を選択し、”次へ”-をクリックしてください。"><a href="#3-3-手順2-6の画面にて手順3-2でダウンロードした資格情報を選択し、”次へ”-をクリックしてください。" class="headerlink" title="3-3. 手順2-6の画面にて手順3-2でダウンロードした資格情報を選択し、”次へ” をクリックしてください。"></a><a id="3-3"></a>3-3. 手順2-6の画面にて手順3-2でダウンロードした資格情報を選択し、”次へ” をクリックしてください。</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_13.png"></p>
-<h3 id="3-4-以前登録したパスフレーズを入力し、パスフレーズを保存する任意の場所を選択して、”登録”-をクリックして登録を完了してください。"><a href="#3-4-以前登録したパスフレーズを入力し、パスフレーズを保存する任意の場所を選択して、”登録”-をクリックして登録を完了してください。" class="headerlink" title="3-4. 以前登録したパスフレーズを入力し、パスフレーズを保存する任意の場所を選択して、”登録” をクリックして登録を完了してください。"></a><a id="3-4"></a>3-4. 以前登録したパスフレーズを入力し、パスフレーズを保存する任意の場所を選択して、”登録” をクリックして登録を完了してください。</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_14.png"></p>
-<h2 id="4-関連公開情報"><a href="#4-関連公開情報" class="headerlink" title="4. 関連公開情報"></a><a id="4"></a>4. 関連公開情報</h2><p>・MARS エージェントのダウンロード<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/install-mars-agent#download-the-mars-agent">https://docs.microsoft.com/ja-jp/azure/backup/install-mars-agent#download-the-mars-agent</a></p>
-<p>・サーバーにインストールされている MARS エージェントの更新<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/upgrade-mars-agent#update-the-mars-agent-installation-on-the-server">https://docs.microsoft.com/ja-jp/azure/backup/upgrade-mars-agent#update-the-mars-agent-installation-on-the-server</a></p>
-<p>・パスフレーズを忘れた場合、復旧できますか?<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-file-folder-backup-faq#%E5%BE%A9%E5%85%83">https://docs.microsoft.com/ja-jp/azure/backup/backup-azure-file-folder-backup-faq#%E5%BE%A9%E5%85%83</a></p>
+<h3 id="3-2-ダウンロードした資格情報を該当のサーバーに配置してください"><a href="#3-2-ダウンロードした資格情報を該当のサーバーに配置してください" class="headerlink" title="3-2. ダウンロードした資格情報を該当のサーバーに配置してください"></a><a id="3-2"></a>3-2. ダウンロードした資格情報を該当のサーバーに配置してください</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_12.png"></p>
+<h3 id="3-3-手順2-6の画面にて手順3-2でダウンロードした資格情報を選択し、”次へ”-をクリックしてください"><a href="#3-3-手順2-6の画面にて手順3-2でダウンロードした資格情報を選択し、”次へ”-をクリックしてください" class="headerlink" title="3-3. 手順2-6の画面にて手順3-2でダウンロードした資格情報を選択し、”次へ” をクリックしてください"></a><a id="3-3"></a>3-3. 手順2-6の画面にて手順3-2でダウンロードした資格情報を選択し、”次へ” をクリックしてください</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_13.png"></p>
+<h3 id="3-4-以前登録したパスフレーズを入力し、パスフレーズを保存する任意の場所を選択して、”登録”-をクリックして登録を完了してください"><a href="#3-4-以前登録したパスフレーズを入力し、パスフレーズを保存する任意の場所を選択して、”登録”-をクリックして登録を完了してください" class="headerlink" title="3-4. 以前登録したパスフレーズを入力し、パスフレーズを保存する任意の場所を選択して、”登録” をクリックして登録を完了してください"></a><a id="3-4"></a>3-4. 以前登録したパスフレーズを入力し、パスフレーズを保存する任意の場所を選択して、”登録” をクリックして登録を完了してください</h3><p><img src="/blog/MARSBackup/How_to_re-install/How_to_re-install_14.png"></p>
+<h2 id="4-関連公開情報"><a href="#4-関連公開情報" class="headerlink" title="4. 関連公開情報"></a><a id="4"></a>4. 関連公開情報</h2><ul>
+<li><p>MARS エージェントのダウンロード<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/install-mars-agent#download-the-mars-agent">https://learn.microsoft.com/ja-jp/azure/backup/install-mars-agent#download-the-mars-agent</a></p>
+</li>
+<li><p>サーバーにインストールされている MARS エージェントの更新<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/upgrade-mars-agent#update-the-mars-agent-installation-on-the-server">https://learn.microsoft.com/ja-jp/azure/backup/upgrade-mars-agent#update-the-mars-agent-installation-on-the-server</a></p>
+</li>
+<li><p>パスフレーズを忘れた場合、復旧できますか?<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-file-folder-backup-faq#---------------------">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-file-folder-backup-faq#---------------------</a></p>
+</li>
+</ul>
 <p>本記事の内容は以上となります。</p>
 
       
@@ -184,19 +190,19 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureMigrate/RegisterApplianceFromOVA/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureBackupGeneral/RSV_BV/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          Azure Migrate で PE プロジェクトに ova からデプロイしたアプライアンスを登録する手順
+          Recovery Services コンテナーとバックアップ コンテナーについて
         
       </div>
     </a>
   
   
-    <a href="../../AzureBackupGeneral/Backup_RecoveryTIme/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/Consistencies/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure Backup の バックアップ / リストア 所要時間について</div>
+      <div class="article-nav-title">Azure VM Backupにおける整合性について</div>
     </a>
   
 </nav>
@@ -215,23 +221,23 @@
       <ul>
         
           <li>
+            <a href="../../AzureBackupGeneral/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
+          </li>
+        
+          <li>
+            <a href="">MARS エージェントの再インストール手順</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/Consistencies/">Azure VM Backupにおける整合性について</a>
+          </li>
+        
+          <li>
             <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/">Azure Backup の 保持期間について</a>
           </li>
         
           <li>
             <a href="../../AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureVMBackup/HowToExtendVMRetentionPeriod/">Azure VM Backup で取得した復旧ポイントの保持期間の延長について</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureBackupGeneral/Classic_Alert_For_Administrators/">Azure Backup の自動的に通知されるクラシック アラートについて</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureMigrate/ReplicationApplianceRegister/">Azure Migrate レプリケーション アプライアンスのデプロイについて</a>
           </li>
         
       </ul>
@@ -254,7 +260,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 

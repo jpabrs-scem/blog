@@ -97,6 +97,108 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-AzureVMBackup/Change_RSV_for_VM" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../AzureVMBackup/Change_RSV_for_VM/" class="article-date">
+  <time datetime="2023-06-08T03:00:00.000Z" itemprop="datePublished">2023-06-08</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../AzureVMBackup/Change_RSV_for_VM/">Azure VM BackupにおけるRecovery Services コンテナーの変更について</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+皆様こんにちは。Azure Backup サポートです。今回はお問い合わせをいただくことが多い、Azure VM Backup を取得している Recovery Services コンテナーを変更することは可能か？について説明させていただきます。
+なんらかのバックアップ構成を行ったあとは、Recovery Services コンテナー上の冗長性の変更をいただくことが出来ないため、 Recovery Services コンテナー自体を変更いただく必要がございます。ただし、CRR の「無効化」→「有効化」への切り替えのみは、バックアップ アイテムを保護した後でも変更が可能です。
+・ストレージ冗長性の設定　https://learn.microsoft.com/ja-jp/azure/backup/backup-create-recovery-services-vault#set-storag...
+        <p class="article-readmore">
+          <a href="../../AzureVMBackup/Change_RSV_for_VM/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="cm5lp3bxq001r0nszg9itck62" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-AzureSiteRecovery/HowToChangeAzureAutomationManagedId" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" class="article-date">
+  <time datetime="2023-03-14T03:00:00.000Z" itemprop="datePublished">2023-03-14</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../AzureSiteRecovery/HowToChangeAzureAutomationManagedId/">ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+みなさんこんにちは、Azure Site Recovery サポートです。今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。
+ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが決まっており、マネージド ID へ移行する必要がございます。2023/3/14 時点では ASR の自動更新に利用する Azure Automation を手動でマネージド ID へ移行する必要がございますので、その移行手順についてご案内いたします。
+なお、今後は ASR 有効化時に自動でマネージド ID の Azure Automation が作成されるように開発部門と対応を継続しておりますので...
+        <p class="article-readmore">
+          <a href="../../AzureSiteRecovery/HowToChangeAzureAutomationManagedId/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" data-id="cm5lp3bxg00120nsz2fsxatab" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-AzureDiskBackup/How_to_fail_Asure_Disk_backup" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -139,7 +241,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/" data-id="cm5kntb9q000i0nprceje85jr" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/" data-id="cm5lp3bx9000i0nszaah9fc86" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li></ul>
@@ -191,7 +293,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToConfigureOptionalProcess/" data-id="cm5kntbag00200npr0p421q3o" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToConfigureOptionalProcess/" data-id="cm5lp3bxt00200nszcg454p8z" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -241,7 +343,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/" data-id="cm5kntbai00270npreku6gouq" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/" data-id="cm5lp3bxv00270nszayrndv4g" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -295,7 +397,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/" data-id="cm5kntbas00310npr4xth125g" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/" data-id="cm5lp3by500310nszdvc7173k" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
@@ -346,61 +448,10 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/" data-id="cm5kntb9t000q0nprfnah4qm5" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureMigrate/RegisterApplianceFromOVA/" data-id="cm5lp3bxc000q0nsz59kq0xcn" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-MARSBackup/How_to_re-install" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../MARSBackup/How_to_re-install/" class="article-date">
-  <time datetime="2022-08-11T03:00:00.000Z" itemprop="datePublished">2022-08-11</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../MARSBackup/How_to_re-install/">MARS エージェントの再インストール手順</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-皆様こんにちは、Azure Backup サポートの 山本 です。今回は MARS エージェントの再インストール手順をお伝えさせていただきます。
-なお、なんらかの不具合が発生している場合の MARS エージェントの再インストールは 上書きインストールではなく、必ず 一度アンインストールした上で実施いただくようお願いいたします。例えば、ネットワーク構成などを変えていないのに、MARS コンソールが立ち上がらなくなった (正常に動作しなくなった) 場合やバックアップ が失敗するようになった等の場合は再インストールが有効な対処策であることが多くございます。
-特に証明書関連のエラーの場合再インストールの前後で証明書に変化があったかご確認いただけますと幸いです。その際は下記記事を参考にして作業前後で証明書をご確認ください。 ・4.4 各種証明書の確認証跡 - 4. MARS Backup エージェ...
-        <p class="article-readmore">
-          <a href="../../MARSBackup/How_to_re-install/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/" data-id="cm5kntbav00380npraflh83ff" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
     </footer>
   </div>
@@ -450,7 +501,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/" data-id="cm5kntb9b00000npr91ge05fy" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RecoveryTIme/" data-id="cm5lp3bwu00000nszgfow57l6" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -507,7 +558,7 @@ Error ID 33623Internal error code 0x80990EF2
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/" data-id="cm5kntbat00330nprauyh06hz" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/" data-id="cm5lp3by600330nszdbjian8j" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
@@ -557,63 +608,10 @@ Error ID 33623Internal error code 0x80990EF2
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/" data-id="cm5kntbak002c0nprc1m45hai" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/" data-id="cm5lp3bxx002c0nszherob1aq" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-information/team-introduction_2" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../information/team-introduction_2/" class="article-date">
-  <time datetime="2022-03-04T03:00:00.000Z" itemprop="datePublished">2022-03-04</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../information/team-introduction_2/">ABRS チームについて ~リモートワークでの働きかた~</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-こんにちは！ABRS チームの山本です。今日は、私たちのチームがどのように働いているのか、少しでも皆さんにイメージしていただき、興味をもっていただけるよう、普段の働き方や仕事環境について紹介いたします。現在は全メンバーがリモートワークをしており、首都圏以外にも北海道や大阪在住、またUS在住のメンバーまで在籍しております。
-目次
-1. よくある仕事の流れ2. とある日の一日3. デスク ツアー！4. リモート ワークの魅力5. 関連記事
-
-1. よくある仕事の流れMicrosoft のサポート エンジニアはお客様から起票いただいたサポート リクエストを通してお客様の抱える問題を解決するための技術支援を行います。案件の受付からクローズまで基本的には担当するメンバーがオーナーシップを持って対応します。基本的な案件対応の流れとしては、案件の受付 → 調査方針の決定 → 発生している問題の調査 →...
-        <p class="article-readmore">
-          <a href="../../information/team-introduction_2/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/information/team-introduction_2/" data-id="cm5kntbay003g0npr9i1b8901" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li></ul>
 
     </footer>
   </div>
@@ -639,23 +637,23 @@ Error ID 33623Internal error code 0x80990EF2
       <ul>
         
           <li>
+            <a href="../../AzureBackupGeneral/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
+          </li>
+        
+          <li>
+            <a href="../../MARSBackup/How_to_re-install/">MARS エージェントの再インストール手順</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureVMBackup/Consistencies/">Azure VM Backupにおける整合性について</a>
+          </li>
+        
+          <li>
             <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/">Azure Backup の 保持期間について</a>
           </li>
         
           <li>
             <a href="../../AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureVMBackup/HowToExtendVMRetentionPeriod/">Azure VM Backup で取得した復旧ポイントの保持期間の延長について</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureBackupGeneral/Classic_Alert_For_Administrators/">Azure Backup の自動的に通知されるクラシック アラートについて</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureMigrate/ReplicationApplianceRegister/">Azure Migrate レプリケーション アプライアンスのデプロイについて</a>
           </li>
         
       </ul>
@@ -678,7 +676,7 @@ Error ID 33623Internal error code 0x80990EF2
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/04/">2024 / 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/07/">2023 / 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
