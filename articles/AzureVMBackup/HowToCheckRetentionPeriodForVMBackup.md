@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法
-date: 2024-12-2 12:00:00
+date: 2025-01-06 12:00:00
 tags:
   - Azure VM Backup
   - how to

@@ -1,6 +1,6 @@
 ---
 title: Azure Backup の 保持期間について
-date: 2024-12-2 12:00:00
+date: 2025-01-06 12:00:00
 tags:
   - Azure Backup General
   - how to
