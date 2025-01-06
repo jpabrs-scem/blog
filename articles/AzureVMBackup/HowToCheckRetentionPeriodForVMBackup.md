@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法
-date: 2024-05-08 12:00:00
+date: 2025-01-06 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -18,7 +18,6 @@ disableDisclaimer: false
 [2. 「今すぐバックアップ」にて取得した復元ポイントの保持期限を確認されたい場合](#2)
  [ 2-1. Azure ポータル画面から確認する](#2-1)
  [ 2-2. Azure ポータル画面より、定期的に csv へエクスポートする](#2-2)
-[3. 参考 - 改善リクエストについて](#3)
 -----------------------------------------------------------
 
 ## 1. スケジュール バックアップにて取得した復元ポイントの保持期限を確認されたい場合<a id="1"></a>
@@ -67,18 +66,3 @@ https://docs.microsoft.com/ja-jp/azure/backup/manage-recovery-points#frequently-
  ![HowToCheckRetentionPeriodForVMBackup_05](./HowToCheckRetentionPeriodForVMBackup/HowToCheckRetentionPeriodForVMBackup_06.png)
  ![HowToCheckRetentionPeriodForVMBackup_07](./HowToCheckRetentionPeriodForVMBackup/HowToCheckRetentionPeriodForVMBackup_07.png)
  ![HowToCheckRetentionPeriodForVMBackup_08](./HowToCheckRetentionPeriodForVMBackup/HowToCheckRetentionPeriodForVMBackup_08.png)
-
-## 3. 参考 - 改善リクエストについて<a id="3"></a>
-・現状は「今すぐバックアップ」で取得した復元ポイントの保持期限は、Azure ポータル画面＞バックアップ ジョブからのみ確認可能
-・Azure ポータル画面＞バックアップ ジョブ は、6 か月で表示が切れる仕様のため、すべての情報を保持したい場合は、最低 6 か月ごとにAzure ポータル画面からCSVエクスポートを手動で行う必要がある
-（Azure PowerShell 、Azure CLI 、REST API にて「保持期限」を含めたバックアップ ジョブの確認やExportは不可な状況）
-上記の仕様については、お客様よりコマンド実行で保持期限を取得できるようにするなど、利便性を向上してほしいとのこと、ご要望をいただいております。
-そのため下記サイトにて、弊社開発部門へ機能の改善リクエストを投稿しております。
-下記サイトは、お客様が希望する機能がない場合にお客様から、弊社開発部門へ機能のリクエストを上げることができるサイトとなっております。
-https://feedback.azure.com/d365community/idea/fb238a80-2954-ec11-a81a-6045bd78b970
- 
-当サイトは多数の要望がリクエストされ、投票数が多いものから機能改修の検討がなされますため、現状仕様の改善をご要望の場合は、可能であれば下図「投票数」のボタンをクリックいただけますと幸いです。
-（「投票」時はマイクロソフト アカウントが必須となります）
-![HowToCheckRetentionPeriodForVMBackup_09](./HowToCheckRetentionPeriodForVMBackup/HowToCheckRetentionPeriodForVMBackup_09.png)
-
-Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法について、ご案内は以上となります。

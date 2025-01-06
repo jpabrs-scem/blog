@@ -1,6 +1,6 @@
 ---
 title: Azure Backup の 保持期間について
-date: 2023-08-24 12:00:00
+date: 2025-01-06 12:00:00
 tags:
   - Azure Backup General
   - how to
@@ -150,10 +150,10 @@ disableDisclaimer: false
 |  6 時間ごと  |  1 日  |  112 日  |
 |  8 時間ごと  |  1 日  |  150 日  |
 |  12 時間ごと  |  1 日  |  225 日  |
-|  毎日  |  1 日  |  450 日  |
+|  毎日  |  1 日  |  365 日  |
 
 (補足 1 )
-Azure ディスク バックアップでは、ディスクあたりのスナップショット合計数が 500 までとなるよう、バックアップ ポリシー上で制限されています。
+Azure ディスク バックアップでは、ディスクあたりのスナップショット合計数が、スケジュール バックアップ 450 個 + オンデマンド バックアップ 50 個の合計 500 個までとなるよう、バックアップ ポリシー上で制限されています。
 ・ディスク バックアップのスケジュールと保持期間はどのように機能しますか?
 　https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-does-the-disk-backup-scheduling-and-retention-period-work
 　"スナップショットの保持期間は、ディスクのスナップショット制限によって制御されます。"
