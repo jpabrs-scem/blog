@@ -119,50 +119,40 @@ https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#rest
 
 ## <a id="2"></a>2. 代替案
 
-CZR を利用するためには前述している要件を満たしている必要があります。
-前述している要件を満たしていない場合は残念ならが Azure VM バックアップでは CZR を利用することができません。
+CZR を利用するためには前述している条件を満たしている必要があります。
+前述している条件を満たしていない場合は残念ながら Azure VM バックアップでは CZR を利用することができません。
 しかし、下記の代替案を実施いただくことで、復元した VM を任意の可用性ゾーンへ移動させることが可能となります。
 * (代替案その 1) ディスクのスナップショットを利用して再作成する方法
 * (代替案その 2) 可用性ゾーン移動を利用する方法
 
 ### <a id="2-1"></a>2-1. (代替案その 1) ディスクのスナップショットを利用して再作成する方法
-ディスクのスナップショット機能を利用した下記手順を実施いただくことで、復旧ポイントがスナップショット層と Vault-Standard 層の両方に存在するときにおいても、任意の可用性ゾーンへ VM を復元することが可能でございます。  
+ディスクのスナップショット機能を利用した下記手順を実施いただくことで、任意の可用性ゾーンへ VM を復元することが可能です。  
  
 #### 手順
 
 1. ディスクを復元する    
-1. 手順 1 で復元したディスクのスナップショットを作成する  
-1. 手順 2 で作成したディスクのスナップショットから新規ディスクを作成する  
+2. 手順 1 で復元したディスクのスナップショットを作成する  
+3. 手順 2 で作成したディスクのスナップショットから新規ディスクを作成する  
 　　 ※ このタイミングで、ディスクを任意の可用性ゾーンへ再作成できます  
-1. 手順 3 で作成した新規ディスクから VM を作成する  
-1. 作成したディスクのスナップショットや不要なリソースを削除する  
+4. 手順 3 で作成した新規ディスクから VM を作成する  
+5. 作成したディスクのスナップショットや不要なリソースを削除する  
 
 #### ■ 1. ディスクを復元する  
 
-Azure Portal より当該の Recovery Services コンテナーを開きます。  
-左メニューより [保護されたアイテム] > [バックアップ アイテム] > を選択し、[Azure Virtual Machine] をクリックします。
-![](./CZR/CZR_09.png) 
+下記ドキュメントを参考に他のゾーンに復元したい VM の復旧ポイントを利用して、ディスクを復元します。
+* Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#restore-disks
 
-ディスクを復元したい VM のコンテキスト メニューを開き、[VM の復元] をクリックします
-![](./CZR/CZR_10.png) 
-
-「復元の種類」 は 「ディスクの復元」を選択します。  
-他の必要項目を適宜入力し、[復元] をクリックします。
-![](./CZR/CZR_11.png)
-
-復元完了後、Azure Portal より復元時に指定したリソース グループを開き、ディスクが復元されていることを確認します。  
-![](./CZR/CZR_12.png)
-
-#### 手順 2 以降
+#### ■ 手順 2 以降
 
 復元によって作成されたディスクを利用して、下記ドキュメントを参考に任意の可用性ゾーンに VM を作成します。
-・ VM の再作成により可用性ゾーンを変更する (Azure ポータル編) | Japan Azure IaaS Core Support Blog  
-　 https://jpaztech.github.io/blog/vm/change-availability-zone-from-portal/
+* VM の再作成により可用性ゾーンを変更する (Azure ポータル編) | Japan Azure IaaS Core Support Blog  
+https://jpaztech.github.io/blog/vm/change-availability-zone-from-portal/
 
 ### <a id="2-2"></a>2-2. (代替案その 2) 可用性ゾーン移動を利用する方法
 
 **※ バックアップ元の VM が可用性ゾーンに属していない場合のみ利用可能です**  
-VM の可用性ゾーンの移動機能を利用した下記手順を実施いただくことで、Azure VM バックアップから復元した VM を、任意の可用性ゾーンへ移動することが可能でございます。
+VM の可用性ゾーンの移動機能を利用した下記手順を実施いただくことで、Azure VM バックアップから復元した VM を、任意の可用性ゾーンへ移動することが可能です。
  
 #### 前提条件
 
@@ -172,30 +162,20 @@ VM の可用性ゾーンの移動機能を利用した下記手順を実施い�
 #### 手順
 
 1. VM を復元する  
-1. 手順 1 で復元した VM を可用性ゾーンへ移動する  
+2. 手順 1 で復元した VM を可用性ゾーンへ移動する  
 
 #### ■ 1. VM を復元する 
 
-Azure Portal より当該の Recovery Services コンテナーを開きます。  
-左メニューより [保護されたアイテム] > [バックアップ アイテム] > を選択し、[Azure Virtual Machine] をクリックします。
-![](./CZR/CZR_09.png) 
-
-復元したい VM のコンテキスト メニューを開き、[VM の復元] をクリックします
-![](./CZR/CZR_10.png) 
-
-[復元の種類] は [新しい仮想マシンの作成] を選択します。  
-他の必要項目を適宜入力し、[復元] をクリックします。
-![](./CZR/CZR_13.png)
-
-完了後、Azure ポータルより [Virtual Machines] を検索し、VM が復元されていることを確認します。
-![](./CZR/CZR_14.png)
+下記ドキュメントを参考に他のゾーンに復元したい VM の復旧ポイントを利用して、新しい VM を作成します。
+* Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn
+https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms#create-a-vm
 
 #### ■ 2. 手順 1 で復元した VM を可用性ゾーンへ移動する 
 
-下記ドキュメントを参考に復元した VM の可用性ゾーンを指定します。
+下記ドキュメントを参考に新規作成した VM の可用性ゾーンを指定します。
 
-・ チュートリアル - Azure の単一インスタンス仮想マシンをリージョンからゾーンの可用性ゾーンに移動する - Azure Virtual Machines | Microsoft Learn  
-　 https://learn.microsoft.com/ja-jp/azure/virtual-machines/move-virtual-machines-regional-zonal-portal
+* チュートリアル - Azure の単一インスタンス仮想マシンをリージョンからゾーンの可用性ゾーンに移動する - Azure Virtual Machines | Microsoft Learn  
+https://learn.microsoft.com/ja-jp/azure/virtual-machines/move-virtual-machines-regional-zonal-portal
 
 
 ## <a id="3"></a>3. 参考情報
