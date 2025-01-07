@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup におけるクロス ゾーン リストア (CZR) について
-date: 2024-12-9 12:00:00
+date: 2025-01-07 12:00:00
 tags:
   - Azure VM Backup
   - how to
