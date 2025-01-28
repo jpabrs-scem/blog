@@ -66,8 +66,8 @@ Azure Migrate にて「レプリケート」構成を行う際に「Windows Serv
   "[Azure ハイブリッド特典] で、
   Azure ハイブリッド特典を適用しない場合は、 [いいえ] を選択します。 [次へ] を選択します。
   アクティブなソフトウェア アシュアランスまたは Windows Server のサブスクリプションの対象となっている Windows Server マシンがあり、移行中のマシンにその特典を適用する場合は、 [はい] を選択します。 [次へ] を選択します。"
-
 ![](./licenseaftermigrate/005.png)
+
 - (参考) Azure ハイブリッド特典には何が含まれていますか?
   https://learn.microsoft.com/ja-jp/windows-server/get-started/azure-hybrid-benefit?tabs=azure#whats-included-in-azure-hybrid-benefit
 
@@ -153,7 +153,7 @@ Azure VM 上のライセンス認証、Azure ハイブリッド特典に関わ�
 お手数をおかけしますが、対象の OS を提供するベンダー企業へと、お客様にてお問い合わせを行っていただきますようお願いいたします。
 
 ### Azure VM のライセンスが PAYG であり、かつ OS が Linux の場合
-OS に関わるお問泡についても Azure VM としてサポートが可能です。
+OS に関わるお問い合わせについても Azure VM としてサポートが可能です。
 ご質問の際には Azure VM 製品宛てへとお問い合わせチケットを起票いただけますと幸いです。
 
 
