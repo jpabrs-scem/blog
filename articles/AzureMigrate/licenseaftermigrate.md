@@ -1,6 +1,6 @@
 ---
 title: Azure Migrate にて移行した Azure VM のライセンスについて
-date: 2025-01-29 12:00:00
+date: 2025-02-03 12:00:00
 tags:
   - Azure Migrate
   - how to
@@ -27,10 +27,10 @@ disableDisclaimer: false
 **従量課金制 (PAYG-Pay As You Go) とは**
 使用するリソースに対して時間単位または月単位で支払う価格オプションです。 
 使用した分だけ料金を支払い、必要に応じてスケールアップまたはダウンできます。
-これには OS ライセンス料金も含まれており、OS ライセンスを購入することとなります。
+これには OS ライセンス料金も含まれております。
 
 **サブスクリプション持ち込み (BYOS-Bring Your Own Subscription) とは**
-Azure 仮想マシン上の特定のソフトウェア (RHEL と SLES) に対して、ユーザー側で所有している Red Hat Enterprise Linux (RHEL) サブスクリプション、または SUSE Linux Enterprise Server (SLES) サブスクリプションを Azure に直接持ち込みます。
+Azure VM 上の特定のソフトウェア (RHEL と SLES) に対して、ユーザー側で所有している Red Hat Enterprise Linux (RHEL) サブスクリプション、または SUSE Linux Enterprise Server (SLES) サブスクリプションを Azure に直接持ち込みます。
 費用は Azure 上の VM のインフラストラクチャ コストに対してのみ発生します。 
 
 ![](./licenseaftermigrate/002.png)
@@ -51,7 +51,7 @@ VM のベース コンピューティング レートのみの支払いで済み
 
 ## <a id="2"></a> 2. Azure Migrate による移行時の「ハイブリッド特典」について
 ### オンプレミス マシンの OS が Windows の場合
-Azure Migrate にて「レプリケート」構成を行う際に「Windows Server のライセンスをお持ちの場合」項目を選択することによって変わってきます。
+Azure Migrate にて「レプリケート」構成を行う際に、「Windows Server のライセンスをお持ちの場合」項目の選択肢によって、「ハイブリッド特典」の適用有無が変わります。
 
 **「Windows Server のライセンスをお持ちの場合：チェック ON」の場合**
 →　「テスト移行 VM」「本移行 VM」どちらにおいても Azure ハイブリッド特典が適用されます。
@@ -75,7 +75,7 @@ Azure Migrate にて「レプリケート」構成を行う際に「Windows Serv
 ### オンプレミス マシンの OS が Linux の場合
 Azure Migrate 機能、もしくは Azure Site Recovery 機能を使って、オンプレミスから Azure へと移行した Linux OS は、**全て既定で BYOS となります**。
 お客様側で作業をしない限り、PAYG は適用されません。
-BYOS から PAYG への変換方法は、下記ドキュメントをご参考下さい。
+BYOS から PAYG への変換方法は、下記ドキュメントをご参考になさってください。
 
 - (参考) BYOS から PAYG への変換
   https://learn.microsoft.com/ja-jp/azure/virtual-machines/linux/azure-hybrid-benefit-linux?tabs=ahbNewPortal%2CahbExistingPortal%2Clicenseazcli%2CrhelAzcliByosConv%2Crhelazclipaygconv%2Crhelpaygconversion%2Crhelcompliance#byos-to-payg-conversions
@@ -104,7 +104,7 @@ Azure Migrate の機能を使って Linux OS (RHEL/SLES) のマシンを Azure �
 　　Azure ハイブリッド特典拡張機能がインストールされた Azure VM が作成されます。
 　　
 **「Enterprise Linux ライセンスを持っています：チェック OFF」の場合**
-→　「テスト移行 VM」「本移行 VM」どちらにおいても BYOS ライセンスとなります 
+→　「テスト移行 VM」「本移行 VM」どちらにおいても BYOS ライセンスとなります ＆ Azure ハイブリッド特典は適用されません。
 
 ![](./licenseaftermigrate/003.png)
 
@@ -114,7 +114,7 @@ ESU は、Azure Site Recovery もしくは Azure Migrate を使って、オン�
 また、ESU に追加料金はかかりません。
 
 Windows Server 2008/2008 R2 および Windows Server 2012/2012 R2 は、以下のようにライフサイクルが遷移しております。
-メインストリーム サポート > 延長サポート > 拡張セキュリティ更新プログラム (ESU) (* 1)
+メインストリーム サポート > 延長サポート > 拡張セキュリティ更新プログラム (ESU)
 ![](./licenseaftermigrate/004.png)
 
 - (参考) Windows Server 用の拡張セキュリティ更新プログラムの概要
@@ -140,7 +140,7 @@ ESU は、2026 年 10 月 13 日 に提供を終了します。
 「移行した Azure VM に対してどのようなライセンスが含まれているのか」
 「OS ライセンスを変更したいが、手順を教えて欲しい」
 といったお問い合わせについては、「Azure Migrate 製品」宛てへとサポート チケットを起票いただきましても、Azure Migrate 製品観点ではご支援が難しい場合が多くあります。
-以下、ご参考までにお問い合わせチケット起票先を例として説明しますので、適切な窓口までお問い合わせチケットを起票いただきますようお願いいたします。
+以下、参考までにお問い合わせチケット起票先を例として説明しますので、適切な窓口までお問い合わせチケットを起票いただきますようお願いいたします。
 
 ### Windows OS の場合
 Azure VM 上のライセンス認証、Azure ハイブリッド特典に関わるお問い合わせであれば、Azure VM 製品宛てへとお問い合わせチケットを起票いただけますと幸いです。
