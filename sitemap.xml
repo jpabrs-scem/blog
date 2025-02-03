@@ -44,6 +44,13 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/</loc>
+    
+    <lastmod>2025-02-03</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</loc>
     
     <lastmod>2025-02-03</lastmod>
@@ -58,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
     
     <lastmod>2025-02-03</lastmod>
     
@@ -66,13 +73,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Restorefail_invalid_protection/</loc>
-    
-    <lastmod>2025-02-03</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
     
     <lastmod>2025-02-03</lastmod>
     
@@ -142,13 +142,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToConfigureOptionalProcess/</loc>
-    
-    <lastmod>2025-02-03</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToExtendVMRetentionPeriod/</loc>
     
     <lastmod>2025-02-03</lastmod>
@@ -157,6 +150,13 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/</loc>
+    
+    <lastmod>2025-02-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToConfigureOptionalProcess/</loc>
     
     <lastmod>2025-02-03</lastmod>
     
@@ -177,14 +177,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/</loc>
     
     <lastmod>2025-02-03</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
     
     <lastmod>2025-02-03</lastmod>
     
@@ -226,13 +226,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
-    
-    <lastmod>2025-02-03</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
     
     <lastmod>2025-02-03</lastmod>
@@ -241,6 +234,13 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/</loc>
+    
+    <lastmod>2025-02-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
     
     <lastmod>2025-02-03</lastmod>
     
@@ -318,6 +318,13 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureSAPBackup/How_to_HSR_workload_backup/</loc>
+    
+    <lastmod>2025-02-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureMigrate/licenseaftermigrate/</loc>
     
     <lastmod>2025-02-03</lastmod>
     
@@ -522,7 +529,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/tags/Azure-VM-Backup/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/tags/DPM-MABS/</loc>
     <lastmod>2025-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -536,7 +543,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/tags/DPM-MABS/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/tags/Azure-VM-Backup/</loc>
     <lastmod>2025-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
