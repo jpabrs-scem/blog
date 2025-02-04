@@ -1,6 +1,6 @@
 ---
 title: Migrate 移行後の関連リソース削除時のチェックポイント
-date: 2025-02-03 12:00:00
+date: 2025-02-04 12:00:00
 tags:
   - Azure Migrate
   - how to
@@ -33,7 +33,7 @@ Azure Migrate 機能を使って Azure へとマシンを移行後、Azure Migra
 なお、Azure Migrate 関連の Azure リソースを確認する際には、Azure Migrate プロジェクトのリソース グループ > <font color="Red">[非表示の型の表示] </font>をクリックすることで、関連するすべてのリソースが表示されるようになります。
 ![](./howtodeleteRSV/003.png)
 
-上記の通り、各種リソースの削除が必要となるため、Azure Migrate プロジェクト用にリソース グループを作成することもご検討下さい。
+上記のとおり、各種リソースの削除が必要となるため、Azure Migrate プロジェクト用にリソース グループを作成することもご検討ください。
 Azure Migrate プロジェクト用にリソース グループを作成することで、Azure Migrate プロジェクトが不要になった際に、各種リソースをリソース グループごと削除できるようになります。
 
 ## <a id="2"></a> ポイント 2 : Recovery Services コンテナー上の削除作業について
@@ -66,7 +66,7 @@ Azure Migrate プロジェクトに紐づいている Recovery Services コン�
 ![](./howtodeleteRSV/002.png)
 
 
-Azure Migrate 観点では、移行が完了しており、かつ対象の Recovery Services コンテナーが現在その他のレプリケーション等で使用されていない場合、対象の Recovery Services コンテナーの削除を行っても **移行元VM ・移行先 Azure VM・ネットワークには影響致しません。**
+Azure Migrate 観点では、移行が完了しており、かつ対象の Recovery Services コンテナーが現在その他のレプリケーション等で使用されていない場合、対象の Recovery Services コンテナーの削除を行っても **移行元VM ・移行先 Azure VM・ネットワークには影響いたしません。**
 対象の Recovery Services コンテナーが使用されているかどうかの確認 (現在バックアップもしくはレプリケーションが行われているかどうかの確認) は、お客様にてご確認の上、削除の判断をお願いいたします。
 
 本記事の内容は以上となります。
