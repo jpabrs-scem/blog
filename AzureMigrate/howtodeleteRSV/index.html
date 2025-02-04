@@ -4,29 +4,25 @@
   <meta charset="utf-8">
   
   
-  <title>Azure Disk Backup を意図的に失敗させる方法 | Japan CSS ABRS  Support Blog !!</title>
+  <title>Migrate 移行後の関連リソース削除時のチェックポイント | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。アラートのテスト等のため “Azure Disk Backup を失敗させたい” というお問い合わせをよくいただきます。今回は、Azure Disk Backup を意図的に失敗させる方法として、Azure Disk Backup 構成したディスクを削除して、バックアップ ジョブを失敗させる方法をご紹介いたします。 ・Azure ディスク">
+  <meta name="description" content="みなさんこんにちは、Azure Migrate サポートです。今回は Azure Migrate 機能を使って Azure へとマシンを移行後、不要となった Recovery Services コンテナーや、関連する Azure リソースを削除するときのポイントを説明します。 目次 ポイント 1 : 削除可能な Azure リソースについてポイント 2 : Recovery Services コ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Azure Disk Backup を意図的に失敗させる方法">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/index.html">
+<meta property="og:title" content="Migrate 移行後の関連リソース削除時のチェックポイント">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureMigrate/howtodeleteRSV/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。アラートのテスト等のため “Azure Disk Backup を失敗させたい” というお問い合わせをよくいただきます。今回は、Azure Disk Backup を意図的に失敗させる方法として、Azure Disk Backup 構成したディスクを削除して、バックアップ ジョブを失敗させる方法をご紹介いたします。 ・Azure ディスク">
+<meta property="og:description" content="みなさんこんにちは、Azure Migrate サポートです。今回は Azure Migrate 機能を使って Azure へとマシンを移行後、不要となった Recovery Services コンテナーや、関連する Azure リソースを削除するときのポイントを説明します。 目次 ポイント 1 : 削除可能な Azure リソースについてポイント 2 : Recovery Services コ">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_01.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_02.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_03.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_04.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_05.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_06.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_07.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_08.png">
-<meta property="article:published_time" content="2023-01-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2025-02-04T10:44:36.777Z">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/howtodeleteRSV/003.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/howtodeleteRSV/001.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/howtodeleteRSV/002.png">
+<meta property="article:published_time" content="2025-02-04T03:00:00.000Z">
+<meta property="article:modified_time" content="2025-02-04T10:44:36.796Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
-<meta property="article:tag" content="Azure Disk Backup">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Azure Migrate">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_01.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureMigrate/howtodeleteRSV/003.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -88,7 +84,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureDiskBackup/How_to_fail_Asure_Disk_backup" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureMigrate/howtodeleteRSV" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -97,7 +93,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Azure Disk Backup を意図的に失敗させる方法
+      Migrate 移行後の関連リソース削除時のチェックポイント
     </h1>
   
 
@@ -105,41 +101,55 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2023-01-11T03:00:00.000Z" itemprop="datePublished">2023-01-11</time>
+  <time datetime="2025-02-04T03:00:00.000Z" itemprop="datePublished">2025-02-04</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ccb22066-cb02-5d18-b2a1-2b31b4ae3a6d%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Disk+Backup+%E3%82%92%E6%84%8F%E5%9B%B3%E7%9A%84%E3%81%AB%E5%A4%B1%E6%95%97%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureDiskBackup%2FHow_to_fail_Asure_Disk_backup%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureDiskBackup%2FHow_to_fail_Asure_Disk_backup.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureDiskBackup%2FHow_to_fail_Asure_Disk_backup.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+551b2045-8f70-52a5-90d5-cad6cc7b47b3%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BMigrate+%E7%A7%BB%E8%A1%8C%E5%BE%8C%E3%81%AE%E9%96%A2%E9%80%A3%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E5%89%8A%E9%99%A4%E6%99%82%E3%81%AE%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureMigrate%2FhowtodeleteRSV%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureMigrate%2FhowtodeleteRSV.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureMigrate%2FhowtodeleteRSV.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/" data-id="cm6qcrxl6000i0ns248sj75mg" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureMigrate/howtodeleteRSV/" data-id="cm6qcrxla000v0ns28m20e3lt" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは、Azure Backup サポートです。<br>アラートのテスト等のため “Azure Disk Backup を失敗させたい” というお問い合わせをよくいただきます。<br>今回は、Azure Disk Backup を意図的に失敗させる方法として、Azure Disk Backup 構成したディスクを削除して、バックアップ ジョブを失敗させる方法をご紹介いたします。</p>
-<p>・Azure ディスク バックアップの概要<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview">https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview</a></p>
+<p>みなさんこんにちは、Azure Migrate サポートです。<br>今回は Azure Migrate 機能を使って Azure へとマシンを移行後、不要となった Recovery Services コンテナーや、関連する Azure リソースを削除するときのポイントを説明します。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. Azure Disk Backup を意図的に失敗させる方法</a><br><a href="#2">2. その他ブログで公開している Azure Backup の失敗方法</a></p>
+<p><a href="#1">ポイント 1 : 削除可能な Azure リソースについて</a><br><a href="#2">ポイント 2 : Recovery Services コンテナー上の削除作業について</a></p>
 <hr>
-<h3 id="1-Azure-Disk-Backup-を意図的に失敗させる方法"><a href="#1-Azure-Disk-Backup-を意図的に失敗させる方法" class="headerlink" title=" 1. Azure Disk Backup を意図的に失敗させる方法"></a><a id="1"></a> 1. Azure Disk Backup を意図的に失敗させる方法</h3><p>(1) とある Azure Managed Disk に対して、Azure Disk Backup を構成し、バックアップ取得しておきます。</p>
-<p>・Azure Managed Disks のバックアップ<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks">https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks</a></p>
-<p>下図は例として、Azure Managed Disk「tmpDiskforAzureDiskBackup01」を Azure Disk Backup にてバックアップ構成している状態です。<br><img src="/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_01.png" alt="バックアップ構成済"></p>
-<p>アラートが生成されることを確認するため、今回は「Azure Monitor を使用した組み込みのアラート」を、「スコープ：Azure Disk Backup を構成しているバックアップ コンテナー」にて構成しています。</p>
-<p>・Azure Backup の Azure Monitor アラート<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#azure-monitor-alerts-for-azure-backup">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-built-in-monitor?tabs=recovery-services-vaults#azure-monitor-alerts-for-azure-backup</a></p>
-<p>・「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例<br>　<a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/</a></p>
-<p><img src="/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_02.png" alt="アラート 処理ルール"></p>
-<p>(2) バックアップ構成した Azure Managed Disk リソースを削除します。<br><img src="/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_03.png" alt="ディスク削除01"></p>
-<p><img src="/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_04.png" alt="ディスク削除02"></p>
-<p>(3) Azure Disk Backup の「今すぐバックアップ」を実行します。</p>
-<p><img src="/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_05.png" alt="今すぐバックアップ"></p>
-<p>(4) 約 1 - 2 分後に、バックアップ ジョブが「UserErrorManagedDiskNotFound」エラーにて失敗します。<br><img src="/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_06.png" alt="バックアップ ジョブ01"></p>
-<p><img src="/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_07.png" alt="バックアップ ジョブ02"></p>
-<p>(5) 「Azure Monitor を使用した組み込みのアラート」などのアラートにて、アラートを構成/メール通知構成をしていれば、下図のようなメールにてアラートが通知されます。<br><img src="/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/How_to_fail_Asure_Disk_backup_08.png" alt="アラート メール"></p>
-<h3 id="2-その他ブログで公開している-Azure-Backup-の失敗方法"><a href="#2-その他ブログで公開している-Azure-Backup-の失敗方法" class="headerlink" title=" 2. その他ブログで公開している Azure Backup の失敗方法"></a><a id="2"></a> 2. その他ブログで公開している Azure Backup の失敗方法</h3><p>・Azure VM Backup を意図的に失敗させる方法<br>　<a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/</a></p>
-<p>・Azure VM Backup のデータ転送フェーズを意図的に失敗させる方法<br>　<a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/">https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_ttv/</a></p>
-<p>・MARS バックアップ を意図的に失敗させる方法<br>　<a href="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/">https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</a></p>
-<p>・Azure Files Backup を意図的に失敗させる方法<br>　<a href="https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/">https://jpabrs-scem.github.io/blog/AzureFilesBackup/How_to_fail_AFS_backup/</a></p>
+<h2 id="ポイント-1-削除可能な-Azure-リソースについて"><a href="#ポイント-1-削除可能な-Azure-リソースについて" class="headerlink" title=" ポイント 1 : 削除可能な Azure リソースについて"></a><a id="1"></a> ポイント 1 : 削除可能な Azure リソースについて</h2><p>Azure Migrate 機能を使って Azure へとマシンを移行後、Azure Migrate 関連のリソースを削除したいという場合には<br>削除すべき Azure リソースは「Recovery Services コンテナー」リソース以外にも複数あります。<br>また、以下に挙げるシナリオ例によって、削除対象となる Azure リソースが異なってまいります。</p>
+<ul>
+<li>プライベート エンドポイント経由で Azure へと移行したのか</li>
+<li>物理マシンを Azure へと移行したのか</li>
+<li>VMWare VM をエージェントレス方式で移行したのか</li>
+</ul>
+<p>どのシナリオで、どの Azure リソースが削除対象になるのかは下記ドキュメントにまとめておりますので、シナリオ毎に確認ください。</p>
+<ul>
+<li>(参考) Azure Migrate プロジェクトの削除<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/migrate/how-to-delete-project">https://learn.microsoft.com/ja-jp/azure/migrate/how-to-delete-project</a></li>
+</ul>
+<p>なお、Azure Migrate 関連の Azure リソースを確認する際には、Azure Migrate プロジェクトのリソース グループ &gt; <font color="Red">[非表示の型の表示] </font>をクリックすることで、関連するすべてのリソースが表示されるようになります。<br><img src="/blog/AzureMigrate/howtodeleteRSV/003.png"></p>
+<p>上記のとおり、各種リソースの削除が必要となるため、Azure Migrate プロジェクト用にリソース グループを作成することもご検討ください。<br>Azure Migrate プロジェクト用にリソース グループを作成することで、Azure Migrate プロジェクトが不要になった際に、各種リソースをリソース グループごと削除できるようになります。</p>
+<h2 id="ポイント-2-Recovery-Services-コンテナー上の削除作業について"><a href="#ポイント-2-Recovery-Services-コンテナー上の削除作業について" class="headerlink" title=" ポイント 2 : Recovery Services コンテナー上の削除作業について"></a><a id="2"></a> ポイント 2 : Recovery Services コンテナー上の削除作業について</h2><p>Azure Migrate プロジェクトに紐づいている Recovery Services コンテナーを削除する前には、Recovery Services コンテナー上に存在している複数項目の登録解除や削除作業が必要となります。<br>(先に削除しておかなければ、多くの場合 Recovery Services コンテナーの削除を指示してもエラーとなって Recovery Services コンテナーを削除できません。)<br><img src="/blog/AzureMigrate/howtodeleteRSV/001.png"></p>
+<p>例えば下記作業などが事前に必要となります。</p>
+<ul>
+<li>Recovery Services コンテナーに登録されているレプリケーション ポリシーの削除</li>
+<li>Recovery Services コンテナーに登録されている Hyper-V サイトの削除</li>
+<li>Recovery Services コンテナーに紐づくプライベート エンドポイントの削除</li>
+</ul>
+<p>ただし、[PowerShell スクリプトを使用して削除する] をご利用いただく場合は、スクリプトによって<br>「Recovery Services コンテナー上の関連付け項目の削除」から「Recovery Services コンテナーの削除」まで自動的に行われ、より簡単に削除できます。 </p>
+<ul>
+<li><p>(参考) Site Recovery Services コンテナーを削除する<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/delete-vault">https://learn.microsoft.com/ja-jp/azure/site-recovery/delete-vault</a></p>
+</li>
+<li><p>(参考) ポリシーを編集する | レプリケーション ポリシーの関連付け解除と削除<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/vmware-azure-set-up-replication#edit-a-policy">https://learn.microsoft.com/ja-jp/azure/site-recovery/vmware-azure-set-up-replication#edit-a-policy</a></p>
+</li>
+<li><p>(参考) VMM サーバーの登録解除<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-manage-registration-and-protection#unregister-a-vmm-server">https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-manage-registration-and-protection#unregister-a-vmm-server</a></p>
+</li>
+<li><p>(参考) Hyper-V サイト上の Hyper-V ホストの登録解除<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-manage-registration-and-protection#unregister-a-hyper-v-host-in-a-hyper-v-site">https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-manage-registration-and-protection#unregister-a-hyper-v-host-in-a-hyper-v-site</a></p>
+</li>
+</ul>
+<p>また、Recovery Services コンテナーと関連するリソースに対し、削除のロックがかかっている場合、ロックを解除してから削除する必要があります。<br>ロックについては、ご利用の Azure Migrate プロジェクトのリソース グループ &gt; ロックからロックされているリソースが確認できます。<br><img src="/blog/AzureMigrate/howtodeleteRSV/002.png"></p>
+<p>Azure Migrate 観点では、移行が完了しており、かつ対象の Recovery Services コンテナーが現在その他のレプリケーション等で使用されていない場合、対象の Recovery Services コンテナーの削除を行っても <strong>移行元VM ・移行先 Azure VM・ネットワークには影響いたしません。</strong><br>対象の Recovery Services コンテナーが使用されているかどうかの確認 (現在バックアップもしくはレプリケーションが行われているかどうかの確認) は、お客様にてご確認の上、削除の判断をお願いいたします。</p>
+<p>本記事の内容は以上となります。</p>
 
       
       
@@ -153,10 +163,10 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureDiskBackup/How_to_fail_Asure_Disk_backup.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureMigrate/howtodeleteRSV.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -164,19 +174,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureVMBackup/HowToConfigureOptionalProcess/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureBackupGeneral/RSV_BV/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure VM Backup のジョブ前後で任意の処理を行いたい</div>
+      <div class="article-nav-title">Recovery Services コンテナーとバックアップ コンテナーについて</div>
     </a>
   
 </nav>
@@ -195,7 +196,7 @@
       <ul>
         
           <li>
-            <a href="../../AzureMigrate/howtodeleteRSV/">Migrate 移行後の関連リソース削除時のチェックポイント</a>
+            <a href="">Migrate 移行後の関連リソース削除時のチェックポイント</a>
           </li>
         
           <li>
