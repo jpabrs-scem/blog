@@ -1,6 +1,6 @@
 ---
 title: Azure Migrate にて移行した Azure VM のライセンスについて
-date: 2025-02-03 12:00:00
+date: 2025-02-19 12:00:00
 tags:
   - Azure Migrate
   - how to
@@ -38,7 +38,7 @@ Azure VM 上の特定のソフトウェア (RHEL と SLES) に対して、ユー
   https://learn.microsoft.com/ja-jp/azure/virtual-machines/linux/azure-hybrid-benefit-linux?tabs=ahbRhelPayg%2CahbNewPortal%2CahbExistingPortal%2Clicenseazcli%2CrhelAzcliByosConv%2Crhelazclipaygconv%2Crhelpaygconversion%2Crhelcompliance
 
 **Azure ハイブリッド特典 (Azure Hybrid Benefit) とは**
-オンプレミスの OS ライセンスを使用して、Azure 上で Windows/RHEL/SLES 仮想マシン (VM) を割引価格で利用できるという特典です。
+オンプレミスの OS ライセンスを使用して、Azure 上で Windows 仮想マシン (VM) を割引価格で利用できるという特典です。
 例えば、オンプレミスサーバー (OS : Windows) を Azure Migrate 機能を使って移行する場合、Azure ハイブリッド特典を適用することによって、移行された Azure VM の OS のライセンス料金は、 Azure 料金に含まれないようになります。
 VM のベース コンピューティング レートのみの支払いで済みます。
 
@@ -140,10 +140,11 @@ ESU は、2026 年 10 月 13 日 に提供を終了します。
 「移行した Azure VM に対してどのようなライセンスが含まれているのか」
 「OS ライセンスを変更したいが、手順を教えて欲しい」
 といったお問い合わせについては、「Azure Migrate 製品」宛てへとサポート チケットを起票いただきましても、Azure Migrate 製品観点ではご支援が難しい場合が多くあります。
+「ライセンス」に関するお問い合わせについては、質問内容によっては ライセンス購入元へ確認いただくよう依頼したり、弊社 Microsoft の営業担当へと確認いただくよう依頼する場合もあります。
 以下、参考までにお問い合わせチケット起票先を例として説明しますので、適切な窓口までお問い合わせチケットを起票いただきますようお願いいたします。
 
 ### Windows OS の場合
-Azure VM 上のライセンス認証、Azure ハイブリッド特典に関わるお問い合わせであれば、Azure VM 製品宛てへとお問い合わせチケットを起票いただけますと幸いです。
+「Azure VM 上のライセンス認証」、「Azure ハイブリッド特典」に関わるお問い合わせであれば、Azure VM 製品宛てへとお問い合わせチケットを起票いただけますと幸いです。
 なお、お問い合わせ内容によっては「Azure サポート」からのお問い合わせチケット起票では無く
 別途、改めて「Windows オンプレミス サポート」からのお問い合わせチケット起票をご依頼する場合もありますので、ご了承ください。
 
