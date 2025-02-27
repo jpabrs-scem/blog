@@ -37,7 +37,7 @@ Azure VM 上の特定のソフトウェア (RHEL と SLES) に対して、ユー
 - (参考) Red Hat Enterprise Linux (RHEL) および SUSE Linux Enterprise Server (SLES) 仮想マシンの Azure ハイブリッド特典
   https://learn.microsoft.com/ja-jp/azure/virtual-machines/linux/azure-hybrid-benefit-linux?tabs=ahbRhelPayg%2CahbNewPortal%2CahbExistingPortal%2Clicenseazcli%2CrhelAzcliByosConv%2Crhelazclipaygconv%2Crhelpaygconversion%2Crhelcompliance
 
-**Azure ハイブリッド特典 (Azure Hybrid Benefit) とは**
+**Windows OS の Azure VM における Azure ハイブリッド特典 (Azure Hybrid Benefit) とは**
 オンプレミスの OS ライセンスを使用して、Azure 上で Windows 仮想マシン (VM) を割引価格で利用できるという特典です。
 例えば、オンプレミスサーバー (OS : Windows) を Azure Migrate 機能を使って移行する場合、Azure ハイブリッド特典を適用することによって、移行された Azure VM の OS のライセンス料金は、 Azure 料金に含まれないようになります。
 VM のベース コンピューティング レートのみの支払いで済みます。
@@ -47,6 +47,10 @@ VM のベース コンピューティング レートのみの支払いで済み
 
 - (参考) Windows Server 向け Azure ハイブリッド特典 | Microsoft Learn
   https://learn.microsoft.com/ja-jp/windows-server/get-started/azure-hybrid-benefit?tabs=azure
+
+**Linux OS の Azure VM における Azure ハイブリッド特典とは**
+Azure VM に対して、所定のディストリビューション ( RHEL / SLES ) をお使いの場合、
+サブスクリプションモデル ( ライセンス持ち込みと従量課金モデル ) を切り替えることが可能となる特典です。
 
 
 ## <a id="2"></a> 2. Azure Migrate による移行時の「ハイブリッド特典」について
@@ -59,6 +63,8 @@ Azure Migrate にて「レプリケート」構成を行う際に、「Windows S
 **「Windows Server のライセンスをお持ちの場合：チェック OFF」の場合**
 →　「テスト移行 VM」「本移行 VM」どちらにおいても Azure ハイブリッド特典は適用されません。
 　　このため移行された Azure VM は PAYG として、Windows OS ラインセンス料金も課金対象となります。
+
+なお、Windows OS の Azure VM における「ハイブリッド特典」に関するお問い合わせについては、後述の項番 4 に記載しております通り、Azure Migrate 製品観点ではご支援が難しい場合が多くあります。
 
 ![](./licenseaftermigrate/001.png)
 - (参考) Azure Migrate マシンを物理サーバーとして Azure に移行する
