@@ -34,16 +34,18 @@ Recovery Services コンテナーとバックアップ コンテナーはバッ�
 | 3 | [MABS バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-microsoft-azure-backup) |   Recovery Services コンテナー|する|
 | 4 | [SQL in Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database) |   Recovery Services コンテナー|する|
 | 5 | [SAP HANA DB in Azure VM バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-about) |   Recovery Services コンテナー|する|
-| 6 | [Azure ファイル共有バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview) |   Recovery Services コンテナー|「スナップショット レベル」のバックアップ：しない<br>「Vault-Standard レベル」のバックアップ：する (注1)|
+| 6 | [Azure ファイル共有バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview) |   Recovery Services コンテナー|「スナップショット レベル」のバックアップ：しない<br>「Vault-Standard レベル」のバックアップ：する (注 1)|
 | 7 | [Azure Blob バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview)  |   バックアップ コンテナー|運用バックアップ：しない<br>保管済みバックアップ：する|
 | 8 | [Azure ディスク バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview)  |   バックアップ コンテナー|**しない**|
 | 9 | [Azure PosgreSQL バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview)  |   バックアップ コンテナー|する|
-| 10 | [Azure Kubernetes Service バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview)  |   バックアップ コンテナー|する|
+| 10 | [Azure Kubernetes Service バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview)  |   バックアップ コンテナー|運用層のバックアップ : しない<br>コンテナー層のバックアップ : する (注 2)  |
 
-(注1) 2025 年 1 月現在  Azure ファイル共有バックアップ のコンテナー層へのバックアップ機能は Public Preview となっています
-- Public Preview: Azure Backup enables vaulted backups for Azure Files for comprehensive data protection. | Azure updates | Microsoft Azure
-  https://azure.microsoft.com/en-US/updates/azurefiles-vaultedbackups/
+(注 1) 2025 年 3 月現在、Azure Premium ファイル共有のコンテナー層へのバックアップ機能は Public Preview となっております  
+一方、Azure Standard ファイル共有のコンテナー層へのバックアップ機能は Generally Available となっております  
+- Generally Available: Vaulted Backup Support for Azure Files Standard Shares | Azure updates | Microsoft Azure
+  https://azure.microsoft.com/en-US/updates?id=482659
 
+(注 2) AKS のバックアップにおいて、運用層のバックアップは必須で取得いただく必要がございますが、コンテナー層のバックアップは任意での取得が可能となっております  
 
 ### <a id="2"></a>2.コンテナーにバックアップ データが保存されないもの
 上述のとおり、現在 一般公開されている (プレビュー機能ではない) Azure ファイル共有バックアップ (スナップショット レベル) 、Azure Blob バックアップ (運用バックアップ)、Azure ディスク バックアップは各コンテナーにはバックアップ データは転送されません。
