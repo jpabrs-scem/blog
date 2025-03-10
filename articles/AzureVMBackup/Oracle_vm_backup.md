@@ -1,6 +1,6 @@
 ---
 title: Oracle DB の Azure VM Backup について
-date: 2023-10-26 12:00:00
+date: 2025-03-14 12:00:00
 tags:
   - Azure VM Backup
   - how to
