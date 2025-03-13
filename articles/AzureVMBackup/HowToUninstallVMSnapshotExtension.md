@@ -1,6 +1,6 @@
 ---
 title: 「VMSnapshot」拡張機能のアンインストール手順 (Windows)
-date: 2025-03-21 12:00:00
+date: 2025-03-14 12:00:00
 tags:
   - Azure VM Backup
   - how to
