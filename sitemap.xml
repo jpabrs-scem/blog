@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
@@ -226,20 +226,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
-    
-    <lastmod>2025-03-17</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/</loc>
-    
-    <lastmod>2025-03-17</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
     
     <lastmod>2025-03-17</lastmod>
@@ -248,6 +234,20 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
+    
+    <lastmod>2025-03-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
+    
+    <lastmod>2025-03-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
@@ -366,14 +366,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
