@@ -30,6 +30,13 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/</loc>
+    
+    <lastmod>2025-03-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</loc>
     
     <lastmod>2025-03-17</lastmod>
@@ -37,7 +44,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
@@ -58,13 +65,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</loc>
-    
-    <lastmod>2025-03-17</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
     
     <lastmod>2025-03-17</lastmod>
@@ -79,21 +79,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
-    
-    <lastmod>2025-03-17</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/</loc>
-    
-    <lastmod>2025-03-17</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Oracle_vm_backup/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
@@ -107,7 +93,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
@@ -115,6 +101,20 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/</loc>
+    
+    <lastmod>2025-03-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Oracle_vm_backup/</loc>
+    
+    <lastmod>2025-03-17</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
@@ -226,6 +226,13 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/</loc>
+    
+    <lastmod>2025-03-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
     
     <lastmod>2025-03-17</lastmod>
@@ -241,13 +248,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
-    
-    <lastmod>2025-03-17</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
@@ -282,14 +282,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
@@ -331,14 +331,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureMigrate/howtodeleteRSV/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureMigrate/ReplicationApplianceRegister/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureMigrate/ReplicationApplianceRegister/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureMigrate/howtodeleteRSV/</loc>
     
     <lastmod>2025-03-17</lastmod>
     
