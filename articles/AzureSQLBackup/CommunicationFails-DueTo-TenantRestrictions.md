@@ -1,6 +1,6 @@
 ---
 title: テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する
-date: 2025-03-14 12:00:00
+date: 2025-03-17 12:00:00
 tags:
   - Azure SQL Backup
   - how to
