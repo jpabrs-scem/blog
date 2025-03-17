@@ -4,25 +4,26 @@
   <meta charset="utf-8">
   
   
-  <title>PT31-HR0 ASR クラシック エクスペリエンスからモダン化 エクスペリエンスへの移行について | Japan CSS ABRS  Support Blog !!</title>
+  <title>ログ バックアップのジョブを確認する方法 | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、Azure Site Recovery サポートです。今回は「PT31-HR0」アラートなどで対象のユーザーへ通知している、Azure Site Recovery (以下、ASR ) の「クラシック エクスペリエンス」から「モダン化 エクスペリエンス」へ移行する旨の通知について説明いたします。 該当シナリオ  Azure Site Recovery | 物理マシン ⇒ Azure">
+  <meta name="description" content="皆様こんにちは。Azure Backup サポートです。 今回はお問合せをいただくことが多い、Azure Backup による SQL Server DB や SAP HANA DB のログ バックアップのジョブを確認する方法をご案内いたします。   目次 1. 概要2. 設定方法3. ログ バックアップのジョブの確認方法     1. 概要Azure Backup による SQL Server">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PT31-HR0 ASR クラシック エクスペリエンスからモダン化 エクスペリエンスへの移行について">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/MoveClassicToModernizedAsrComponent/index.html">
+<meta property="og:title" content="ログ バックアップのジョブを確認する方法">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、Azure Site Recovery サポートです。今回は「PT31-HR0」アラートなどで対象のユーザーへ通知している、Azure Site Recovery (以下、ASR ) の「クラシック エクスペリエンス」から「モダン化 エクスペリエンス」へ移行する旨の通知について説明いたします。 該当シナリオ  Azure Site Recovery | 物理マシン ⇒ Azure">
+<meta property="og:description" content="皆様こんにちは。Azure Backup サポートです。 今回はお問合せをいただくことが多い、Azure Backup による SQL Server DB や SAP HANA DB のログ バックアップのジョブを確認する方法をご案内いたします。   目次 1. 概要2. 設定方法3. ログ バックアップのジョブの確認方法     1. 概要Azure Backup による SQL Server">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/MoveClassicToModernizedAsrComponent/001.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/MoveClassicToModernizedAsrComponent/002.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/MoveClassicToModernizedAsrComponent/003.png">
-<meta property="article:published_time" content="2025-01-06T03:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-17T23:55:15.656Z">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/Setting_Rsv_diagnostics_01.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/Setting_Rsv_diagnostics_02.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/Result_LA.png">
+<meta property="article:published_time" content="2025-03-21T03:00:00.000Z">
+<meta property="article:modified_time" content="2025-03-17T23:55:15.520Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="Azure Backup General">
+<meta property="article:tag" content="how to">
 <meta property="article:tag" content="Information">
-<meta property="article:tag" content="Azure Site Recovery">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/MoveClassicToModernizedAsrComponent/001.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/Setting_Rsv_diagnostics_01.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -84,7 +85,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureSiteRecovery/MoveClassicToModernizedAsrComponent" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureBackupGeneral/How_To_Check_Log_Backup_Jobs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -93,7 +94,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      PT31-HR0 ASR クラシック エクスペリエンスからモダン化 エクスペリエンスへの移行について
+      ログ バックアップのジョブを確認する方法
     </h1>
   
 
@@ -101,50 +102,62 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2025-01-06T03:00:00.000Z" itemprop="datePublished">2025-01-06</time>
+  <time datetime="2025-03-21T03:00:00.000Z" itemprop="datePublished">2025-03-21</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+651fb28b-2112-5c96-ae69-a5217781db88%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BPT31-HR0+ASR+%E3%82%AF%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF+%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9A%E3%83%AA%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%8B%E3%82%89%E3%83%A2%E3%83%80%E3%83%B3%E5%8C%96+%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%9A%E3%83%AA%E3%82%A8%E3%83%B3%E3%82%B9%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2FMoveClassicToModernizedAsrComponent%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2FMoveClassicToModernizedAsrComponent.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2FMoveClassicToModernizedAsrComponent.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+0577cfce-997f-59b7-8690-c724bee48312%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%83%AD%E3%82%B0+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%AE%E3%82%B8%E3%83%A7%E3%83%96%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FHow_To_Check_Log_Backup_Jobs%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FHow_To_Check_Log_Backup_Jobs.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FHow_To_Check_Log_Backup_Jobs.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/MoveClassicToModernizedAsrComponent/" data-id="cm8dq2m34001e0nmx3j892lvp" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/" data-id="cm8dq2m2i00070nmxcfxk9mw4" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは、Azure Site Recovery サポートです。<br>今回は「PT31-HR0」アラートなどで対象のユーザーへ通知している、<br>Azure Site Recovery (以下、ASR ) の「クラシック エクスペリエンス」から「モダン化 エクスペリエンス」へ移行する旨の通知について説明いたします。</p>
-<p><strong>該当シナリオ</strong></p>
-<ul>
-<li>Azure Site Recovery | 物理マシン ⇒ Azure へのレプリケーション</li>
-<li>Azure Site Recovery | VMWare VM ⇒ Azure へのレプリケーション</li>
-</ul>
+<p>皆様こんにちは。Azure Backup サポートです。<br> 今回はお問合せをいただくことが多い、Azure Backup による SQL Server DB や SAP HANA DB のログ バックアップのジョブを確認する方法をご案内いたします。  </p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. このアラートが通知される理由</a><br><a href="#2">2. ユーザー側で必要な作業</a><br><a href="#3">3. クラシック エクスペリエンスかどうかの見分け方</a> </p>
+<p><a href="#1">1. 概要</a><br><a href="#2">2. 設定方法</a><br><a href="#3">3. ログ バックアップのジョブの確認方法</a>  </p>
 <hr>
-<h2 id="1-このアラートが通知される理由"><a href="#1-このアラートが通知される理由" class="headerlink" title=" 1. このアラートが通知される理由"></a><a id="1"></a> 1. このアラートが通知される理由</h2><p>一部のユーザーには、下図のような正常性の勧告やメールが届いていることと存じます。</p>
-<p>メール件名：<br>Classic experience to protect VMware machines using Azure Site Recovery will be retired on 30 March 2026<br><img src="/blog/AzureSiteRecovery/MoveClassicToModernizedAsrComponent/001.png"></p>
-<p><img src="/blog/AzureSiteRecovery/MoveClassicToModernizedAsrComponent/002.png"></p>
-<p>このアラートが通知される理由は、対象のサブスクリプション上にて「ASR クラシック エクスペリエンス構成」の Recovery Services コンテナーが存在しているためです。</p>
-<p>ASR ではこれまで、下記公開ドキュメントで説明している「クラシック エクスペリエンス構成」による、物理マシン または VMWare VM のレプリケート構成が可能でした。</p>
+<h2 id="1-概要"><a href="#1-概要" class="headerlink" title=" 1. 概要"></a><a id="1"></a> 1. 概要</h2><p>Azure Backup による SQL Server DB や SAP HANA DB のログ バックアップのジョブは、実行回数が比較的多くなる傾向にあるため、<strong>Azure Portal の Recovery Services コンテナーやビジネス継続センターのバックアップ ジョブ一覧には表示されません</strong>。  </p>
+<p>ログ バックアップのジョブをご確認いただくには、Recovery Services コンテナーの診断設定を構成し、Recovery Services コンテナーの診断イベントを Log Analytics ワークスペースへ送信していただく必要がございます。  </p>
+<h2 id="2-設定方法"><a href="#2-設定方法" class="headerlink" title=" 2. 設定方法"></a><a id="2"></a> 2. 設定方法</h2><p>ご利用の Recovery Services コンテナーの診断設定を構成する方法をご案内いたします。  </p>
 <ul>
-<li>(参考) VMware から Azure へのディザスター リカバリー アーキテクチャ - クラシック<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/vmware-azure-architecture">https://learn.microsoft.com/ja-jp/azure/site-recovery/vmware-azure-architecture</a></li>
-</ul>
-<p>しかし、上記の「クラシック エクスペリエンス」は古い構成となりますので、今後は「モダン化 エクスペリエンス構成」にて、物理マシン または VMWare VM のレプリケートを構成いただく必要があります。<br>「クラシック エクスペリエンス」は 2026 年 3 月に廃止される予定です。<br>2026 年 3 月 30 日までに最新化されたエクスペリエンスへ移行しなかった場合、マシンのレプリケーションの健全性が失われ、「クラシック エクスペリエンス」に関わる機能のサポートも行われなくなります。</p>
-<h2 id="2-ユーザー側で必要な作業"><a href="#2-ユーザー側で必要な作業" class="headerlink" title=" 2. ユーザー側で必要な作業"></a><a id="2"></a> 2. ユーザー側で必要な作業</h2><p>「VMware や物理マシンの ASR レプリケーションを<font color="Blue">有効化していない</font>」場合、<font color="Blue">対処は不要</font>です。</p>
-<p>「VMware や物理マシンの ASR レプリケーションを<font color="Blue">有効化しているが、モダン化 エクスペリエンス 構成である</font>」場合、<font color="Blue">対処は不要</font>です。</p>
-<p>「VMware や物理マシンの ASR レプリケーションを<font color="Red">有効化しており、クラシック エクスペリエンス 構成である</font>」場合、<font color="Red">対処が必要</font>です。</p>
-<p>下記公開ドキュメントに従って、クラシック エクスペリエンスからモダン化 エクスペリエンスへと移行ください。</p>
+<li><ol>
+<li>Azure Portal にてご利用の Recovery Services コンテナーを表示します  </li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Recovery Services コンテナーの [監視] &gt; [診断設定] &gt; [診断設定を追加する]  を選択します<br><img src="/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/Setting_Rsv_diagnostics_01.png"></li>
+</ol>
+</li>
+<li><ol start="3">
+<li>診断設定画面にて、まず [診断設定の名前] に任意の値を入力します  </li>
+</ol>
+</li>
+<li><ol start="4">
+<li>次に、[ログ] にて取得したいログのカテゴリを選択します  </li>
+</ol>
 <ul>
-<li><p>(参考) クラシックから、最新化された VMware ディザスター リカバリーに移行する<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/move-from-classic-to-modernized-vmware-disaster-recovery">https://learn.microsoft.com/ja-jp/azure/site-recovery/move-from-classic-to-modernized-vmware-disaster-recovery</a></p>
+<li>ログ バックアップ ジョブのデータが含まれるカテゴリ <code>Addon Azure Backup Job Data</code> は必ずチェックを入れてください  </li>
+</ul>
 </li>
-<li><p>(参考) クラシックから最新化された VMware ディザスター リカバリーに移行する方法<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/how-to-move-from-classic-to-modernized-vmware-disaster-recovery">https://learn.microsoft.com/ja-jp/azure/site-recovery/how-to-move-from-classic-to-modernized-vmware-disaster-recovery</a></p>
-</li>
-<li><p>(参考) Azure Site Recovery を使って VMware と物理マシンを保護するためのクラシック エクスペリエンスの非推奨<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/vmware-physical-azure-classic-deprecation#what-changes-should-you-expect">https://learn.microsoft.com/ja-jp/azure/site-recovery/vmware-physical-azure-classic-deprecation#what-changes-should-you-expect</a></p>
+<li><ol start="5">
+<li>最後に [宛先の詳細] に診断イベントの送信先となる Log Analytics ワークスペースを設定します  </li>
+</ol>
+<ul>
+<li>項目 [ターゲット テーブル] には、<code>リソース固有</code> を選択します<br><img src="/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/Setting_Rsv_diagnostics_02.png"></li>
+</ul>
 </li>
 </ul>
-<h2 id="3-クラシック-エクスペリエンスかどうかの見分け方"><a href="#3-クラシック-エクスペリエンスかどうかの見分け方" class="headerlink" title=" 3. クラシック エクスペリエンスかどうかの見分け方"></a><a id="3"></a> 3. クラシック エクスペリエンスかどうかの見分け方</h2><p>Azure Portal にて Recovery Services コンテナーを開き &gt; はじめに - Site Recovery &gt; 「VMware マシンを Azure に」 の下にある 1. の末尾に <code>(従来)</code> が、<br>表示されている場合は、<strong>クラシック エクスペリエンス</strong> となります。<br>表示されて<strong>いない</strong>場合は、<strong>モダン化 エクスペリエンス</strong> となります。<br><img src="/blog/AzureSiteRecovery/MoveClassicToModernizedAsrComponent/003.png"></p>
-<p>本ブログ記事のご案内は以上です。</p>
+<p>診断設定の詳細につきましては、下記公式ドキュメントにも説明がございますので適宜ご確認ください。<br>・ Azure Backup ユーザー向けの診断イベント - Azure Backup | Microsoft Learn<br>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-diagnostic-events?tabs=recovery-services-vaults">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-diagnostic-events?tabs=recovery-services-vaults</a><br>・ AddonAzureBackupJobs / リソース固有の診断イベントのデータ モデル - Azure Backup | Microsoft Learn<br>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-reports-data-model?tabs=recovery-services-vaults#addonazurebackupjobs">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-reports-data-model?tabs=recovery-services-vaults#addonazurebackupjobs</a>  </p>
+<h2 id="3-ログ-バックアップのジョブの確認方法"><a href="#3-ログ-バックアップのジョブの確認方法" class="headerlink" title=" 3. ログ バックアップのジョブの確認方法"></a><a id="3"></a> 3. ログ バックアップのジョブの確認方法</h2><p>Recovery Services コンテナーの診断イベント (特にカテゴリ <code>Addon Azure Backup Job Data</code> を含む) を Log Analytics ワークスペースへ送信する診断設定を行われている場合には、Log Analytics ワークスペースに保持されているテーブル <code>AddonAzureBackupJobs</code> から SQL Server DB や SAP HANA DB のログ バックアップ ジョブをご確認いただくことが可能でございます。<br>以下に、ログ バックアップ ジョブを確認するサンプル クエリ、および実行結果をご紹介いたします。  </p>
+<div class="alert is-important"><p class="alert-title">重要</p><p>SQL Server DB や SAP HANA DB の完了したログ バックアップ ジョブの情報は、6 時間毎のバッチ処理にて、Log Analytics ワークスペースへ送信されます。</p><p>そのため、Log Analytics ワークスペースにてログ バックアップ ジョブの情報が確認できるようになるまで、最大 6 時間の遅延が発生する可能性がございますので、あらかじめご留意ください。</p><p>・ 監視とレポートに関する FAQ - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitor-alert-faq#log-analytics-------------------------------">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitor-alert-faq#log-analytics-------------------------------</a></p><p>　 抜粋 : <code>SQL バックアップでは、15 分ごとにログ バックアップを行うことができるため、完了したすべてのスケジュール済みバックアップ ジョブの情報は、ログも含めて 6 時間ごとにバッチ処理されてプッシュされます。</code></p></div>
+<ul>
+<li>サンプル クエリ<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AddonAzureBackupJobs</span><br><span class="line">| where BackupManagementType == &quot;AzureWorkload&quot;</span><br><span class="line">| where JobOperationSubType == &quot;Log&quot;</span><br><span class="line">| project JobStartDateTime, BackupItemUniqueId, OperationName, JobOperation, JobOperationSubType, JobStatus, JobFailureCode</span><br><span class="line">| sort by JobStartDateTime asc</span><br></pre></td></tr></table></figure></li>
+<li>実行結果例<br><img src="/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/Result_LA.png"></li>
+</ul>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>本記事でご案内しているクエリについては、お客様の責任のもと、ご利用いただきますようお願い申し上げます。</p><p>クエリ実行時のエラーや、想定外の問題について、当社は責任を負いかねますのでご了承ください。  </p></div>
+<p>そのほか、サンプル クエリを下記公式ドキュメントにてご案内しておりますので必要に応じてご活用ください。<br>・ Recovery Services コンテナーのワークロードに固有のクエリ / Azure Backup の Azure Monitor ログ - Azure Backup | Microsoft Learn<br>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-use-azuremonitor#queries-specific-to-recovery-services-vault-workloads">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-use-azuremonitor#queries-specific-to-recovery-services-vault-workloads</a>  </p>
 
       
       
@@ -158,10 +171,10 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSiteRecovery/MoveClassicToModernizedAsrComponent.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -169,19 +182,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureBackupGeneral/Backup_RetentionPeriod/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Azure Backup の 保持期間について
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureVMBackup/HowToCheckRetentionPeriodForVMBackup/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../RSV_BV/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure VM Backup にて取得した復元ポイントの保持期限を確認する方法</div>
+      <div class="article-nav-title">Recovery Services コンテナーとバックアップ コンテナーについて</div>
     </a>
   
 </nav>
@@ -200,11 +204,11 @@
       <ul>
         
           <li>
-            <a href="../../AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/">ログ バックアップのジョブを確認する方法</a>
+            <a href="">ログ バックアップのジョブを確認する方法</a>
           </li>
         
           <li>
-            <a href="../../AzureBackupGeneral/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
+            <a href="../RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
           </li>
         
           <li>
