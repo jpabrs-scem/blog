@@ -36,6 +36,7 @@ Azure Backup による SQL Server DB や SAP HANA DB のログ バックアッ�
 - 4. 次に、[ログ] にて取得したいログのカテゴリを選択します  
   - ログ バックアップ ジョブのデータが含まれるカテゴリ ``Addon Azure Backup Job Data`` は必ずチェックを入れてください  
 - 5. 最後に [宛先の詳細] に診断イベントの送信先となる Log Analytics ワークスペースを設定します  
+  - 項目 [ターゲット テーブル] には、``リソース固有`` を選択します
   ![](./How_To_Check_Log_Backup_Jobs/Setting_Rsv_diagnostics_02.png)
 
 
