@@ -1,6 +1,6 @@
 ---
 title: テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する
-date: 2024-05-08 12:00:00
+date: 2025-03-17 12:00:00
 tags:
   - Azure SQL Backup
   - how to
@@ -97,7 +97,7 @@ IDMServiceAADTenant<リージョン>pod01.onmicrosoft.com
 テナント ID : 6e92595a-0b9c-49e4-a1e9-884d0ab4f4f0
  
 #### ＜西日本リージョンの Azure Backup のテナント情報＞
-テナント名 : IDMAADTenantjpwpod01.onmicrosoft.com
+テナント名 : IDMServiceAADTenantjpwpod01.onmicrosoft.com
 テナント ID : 4617fbbe-e76e-4071-90cd-6f5e7f5d5244
 
 >備考：
