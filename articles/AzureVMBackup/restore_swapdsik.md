@@ -1,6 +1,6 @@
 ---
 title: Azure VM Backup [既存を置換] リストア について
-date: 2025-03-14 12:00:00
+date: 2025-03-17 12:00:00
 tags:
   - Azure VM Backup
   - how to
