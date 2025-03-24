@@ -97,6 +97,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-AzureSQLBackup/How_To_SQL_Backup_Via_Proxy" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/" class="article-date">
+  <time datetime="2023-10-01T03:00:00.000Z" itemprop="datePublished">2023-10-01</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/">Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        皆様こんにちは、Azure Backup サポートです。今回は、Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法についてお伝えします。
+ヒントSQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しております。
+
+・ SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定　 https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/
+目次 - 手順概略
+1. 認証なしの Proxy Server を用意する2....
+        <p class="article-readmore">
+          <a href="../../AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/" data-id="cm8mt3lhb00140ns1377obk17" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-AzureVMBackup/ClassicVm_to_ARM" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -138,7 +191,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/" data-id="cm8dq77v900220nqo74k7g0u8" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/" data-id="cm8mt3lhm00220ns1au2v0pxb" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -188,65 +241,10 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/" data-id="cm8dq77v4001n0nqo8uzjdhss" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/ActiveDirectory_backup/" data-id="cm8mt3lhh001n0ns19j0sfxwe" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-AzureBackupGeneral/How_to_set_Backup_Alert" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../AzureBackupGeneral/How_to_set_Backup_Alert/" class="article-date">
-  <time datetime="2023-06-30T03:00:00.000Z" itemprop="datePublished">2023-06-30</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../AzureBackupGeneral/How_to_set_Backup_Alert/">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-皆様こんにちは、Azure Backup サポートです。今回は、「Azure Monitor を使用した組み込みのアラート」を利用して、Recovery Services コンテナーにてバックアップ構成済のバックアップ ジョブが失敗した際にメール通知を出すよう、アラート処理ルールを作成する例 をご紹介します。
-概要
-Azure Backup にてこれまで存在していた「クラシック アラート」は、今後廃止される見込みです
-
-お客様にて「バックアップ ジョブ失敗のアラートを発生させたい」「発生したアラートをメール通知したい」といった場合　今後は「クラシック アラート」ではなく　「Azure Monitor を使用した組み込みのアラート」を利用してアラートを構成いただく必要があります
-
-作成概要は公開ドキュメントでも説明しております　・ジョブの失敗のシナリオに対して Azure Monitor ...
-        <p class="article-readmore">
-          <a href="../../AzureBackupGeneral/How_to_set_Backup_Alert/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/How_to_set_Backup_Alert/" data-id="cm8dq77ug00080nqo15q3c7ji" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
     </footer>
   </div>
@@ -297,7 +295,7 @@ MARS バックアップ を失敗させる方法(手順)
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/" data-id="cm8dq77vr003g0nqoeq5g1kf8" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/" data-id="cm8mt3li3003g0ns10gq5atvg" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -348,7 +346,7 @@ MARS バックアップ を失敗させる方法(手順)
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="cm8dq77v800200nqo0h035d2z" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/Change_RSV_for_VM/" data-id="cm8mt3lhl00200ns19ri9h2lv" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -399,7 +397,7 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" data-id="cm8dq77uz00190nqo9eejfczj" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" data-id="cm8mt3lhd00190ns145gsbdts" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -453,7 +451,7 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/" data-id="cm8dq77uo000k0nqo158vh859" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureDiskBackup/How_to_fail_Asure_Disk_backup/" data-id="cm8mt3lh1000k0ns109xa5dno" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li></ul>
@@ -505,7 +503,7 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToConfigureOptionalProcess/" data-id="cm8dq77vc002a0nqo4dd6d7c7" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToConfigureOptionalProcess/" data-id="cm8mt3lhp002a0ns141n87j0c" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -555,7 +553,7 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/" data-id="cm8dq77ve002h0nqo1dpm8koq" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_check_VM_backup_Subtask/" data-id="cm8mt3lhr002h0ns10beagvob" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -609,7 +607,7 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/" data-id="cm8dq77vp003b0nqo694yesow" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/" data-id="cm8mt3li1003b0ns16g4panqw" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li></ul>
@@ -638,6 +636,14 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
       <ul>
         
           <li>
+            <a href="../../AzureBackupGeneral/How_to_set_Backup_Alert/">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+          </li>
+        
+          <li>
             <a href="../../AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/">ログ バックアップのジョブを確認する方法</a>
           </li>
         
@@ -647,14 +653,6 @@ ASR 自動更新には Azure Automation の実行アカウントが利用され�
         
           <li>
             <a href="../../AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/">テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureVMBackup/Oracle_vm_backup/">Oracle DB の Azure VM Backup について</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureVMBackup/restore_swapdsik/">Azure VM Backup [既存を置換] リストア について</a>
           </li>
         
       </ul>
