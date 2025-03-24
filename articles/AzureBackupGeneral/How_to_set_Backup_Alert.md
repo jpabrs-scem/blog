@@ -1,6 +1,6 @@
 ---
 title: 「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例
-date: 2025-03-28 12:00:00
+date: 2025-03-24 12:00:00
 tags:
   - Azure Backup General
   - how to
