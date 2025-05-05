@@ -10,7 +10,7 @@ disableDisclaimer: false
 <!-- more -->
 皆様こんにちは。Azure Site Recovery サポートです。
 今回は Azure Site Recovery (以下、ASR ) にて「レプリケーションの有効化 が失敗する」「レプリケートが失敗している」といった場合に調査をするにあたり、ネットワーク観点で提供いただきたい情報をお伝えいたします。
-ネットワーク観点以外の情報採集提供依頼については下記をご覧ください
+ネットワーク観点以外で、サポートにて調査時に必要なログは下記をご覧ください
 - ASR の障害調査に必要な情報
   https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/
 
@@ -28,9 +28,12 @@ disableDisclaimer: false
 [1. Azure Site Recovery の A2A・H2A シナリオにおける通信要件](#1)
 [2. Windows OS における ASR 疎通確認スクリプト](#2)
 [3. Linux OS における ASR 疎通確認スクリプト](#3)
-[4. 手動でキャッシュ用ストレージ アカウントへの疎通を確認する方法](#4)
-[4-1. オプション 1 コマンドを使った疎通確認 - 手順](#4-1)
-[4-2. オプション 2 Azure Storage Explorer を使った確認 - 手順](#4-2)
+[4. 疎通確認スクリプトの構成](#4)
+[4-1. Windows OS 向けの疎通確認スクリプト内の構成](#4-1)
+[4-2. Linux OS 向けの疎通確認スクリプト内の構成](#4-2)
+[5. 手動でキャッシュ用ストレージ アカウントへの疎通を確認する方法](#5)
+[5-1. オプション 1 コマンドを使った疎通確認 - 手順](#5-1)
+[5-2. オプション 2 Azure Storage Explorer を使った確認 - 手順](#5-2)
 -----------------------------------------------------------
 
 ## 1. Azure Site Recovery の A2A・H2A シナリオにおける通信要件<a id="1"></a>
@@ -99,17 +102,39 @@ A2A シナリオにおいて、Azure 仮想マシンのレプリケートを構�
    (実行例 2)
    `Check_ASR_NW_Linux_A2A_ver1.0.sh`
    ※　引数にキャッシュ用ストレージ アカウント名を渡さない場合、キャッシュ用ストレージ アカウントへの通信確認は行われません。
-   (実行画面例 1)
+   (実行画面例)
+   ![](./RequestForInvestigatingNWASR/020.png)
 
-   (実行画面例 2)
 1. “Script Completed” が出力されれば、スクリプトは終了です。
    ※　スクリプト実行完了までには、環境によっては 20 分ほど要する場合がございます。20 分経っても完了しない場合は、control + c を押下して強制終了してください。
 1. スクリプト実行が完了すると、スクリプトと同じフォルダ内に以下のようなログファイルが出力されますので、弊社までご提供ください。
    ログファイル名: CheckNWResult_<ホスト名>_yyyymmddhhmm.log
+   ![](./RequestForInvestigatingNWASR/021.png)
    ※ control + c にて強制終了した場合においても該当のログファイルが出力されますので、弊社までご提供ください。
 
 
-## 4. 手動でキャッシュ用ストレージ アカウントへの疎通を確認する方法<a id="4"></a>
+## 4. 疎通確認スクリプトの構成<a id="4"></a>
+### 4-1. Windows OS 向けの疎通確認スクリプト内の構成<a id="4-1"></a>
+Windows OS 向けの疎通確認スクリプト (Check_ASR_NW_Windows_A2A_H2A_ver1.0.ps1) では、下記を実施しています。
+
+(1) 「HOSTNAME.EXE」「ipconfig.exe」実行によるマシン情報の出力
+(2) プロキシ設定の確認
+(3) Azure Site Recovery サービス (hypervrecoverymanager.windowsazure.com) への「tnc」「Invoke-webRequest」コマンド実行
+(4) (ストレージ アカウントを引数に渡している場合) Azure ストレージ アカウント (XXX.blob.core.windows.net) への「tnc」「Invoke-webRequest」コマンド実行
+(5) Microsoft Entra ID (login.microsoftonline.com) への「tnc」「Invoke-webRequest」コマンド実行
+(6) TLS 設定 情報の出力
+
+### 4-2. Linux OS 向けの疎通確認スクリプト内の構成<a id="4-2"></a>
+Linux OS 向けの疎通確認スクリプト (Check_ASR_NW_Linux_A2A_ver1.0.sh) では、下記を実施しています。
+
+(1) 「ip a」「hostnamectl」コマンドによるマシン情報の出力
+(2) プロキシ設定の確認
+(3) Microsoft Entra ID (login.microsoftonline.com) への「nslookup」「nc」「curl」コマンド結果
+(4) Azure Site Recovery サービス (hypervrecoverymanager.windowsazure.com) への「nslookup」「nc」「curl」コマンド結果
+(5) (ストレージ アカウントを引数に渡している場合) Azure ストレージ アカウント (XXX.blob.core.windows.net) への「nslookup」「nc」「curl」コマンド結果
+
+
+## 5. 手動でキャッシュ用ストレージ アカウントへの疎通を確認する方法<a id="5"></a>
 前段で説明している疎通確認スクリプトを使わず、手動でストレージ アカウントへの接続を確認したい場合は、下記手順にて確認可能です。
 
 【確認オプション】
@@ -120,7 +145,7 @@ A2A シナリオにおいて、Azure 仮想マシンのレプリケートを構�
 ![](./RequestForInvestigatingNWASR/002.png)
 
 
-### 4-1. オプション 1 コマンドを使った疎通確認 - 手順<a id="4-1"></a>
+### 5-1. オプション 1 コマンドを使った疎通確認 - 手順<a id="5-1"></a>
 OS 別に、下記コマンドを全て実行ください。
 弊社サポートへのお問い合わせを希望される場合は、「実行コマンド」と「実行結果」が分かる内容をテキストファイル形式にて、弊社までご提供ください。
 
@@ -139,7 +164,7 @@ OS 別に、下記コマンドを全て実行ください。
 ![](./RequestForInvestigatingNWASR/019.png)
 
 
-### 4-2. オプション 2 Azure Storage Explorer を使った確認 - 手順<a id="4-2"></a>
+### 5-2. オプション 2 Azure Storage Explorer を使った確認 - 手順<a id="5-2"></a>
 1. 対象マシン上で、次の URL から Azure Storage Explorer をインストールします。
    https://azure.microsoft.com/ja-jp/products/storage/storage-explorer/#overview
 1. Azure ポータル画面 > ストレージ アカウント > [セキュリティとネットワーク] > [アクセス キー] > [ストレージ アカウント名] と [key] を確認しておきます。
@@ -168,4 +193,5 @@ OS 別に、下記コマンドを全て実行ください。
 1. 各コンテナーへのアップロードが正常終了することを確認します。
    ![](./RequestForInvestigatingNWASR/017.png)
  
+
 ご案内は以上となります。
