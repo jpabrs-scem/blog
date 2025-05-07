@@ -1,6 +1,6 @@
 ---
 title:  Recovery Services コンテナーとバックアップ コンテナーについて
-date: 2025-03-17 12:00:00
+date: 2025-05-08 12:00:00
 tags:
   - Azure Backup General
   - how to
@@ -37,7 +37,7 @@ Recovery Services コンテナーとバックアップ コンテナーはバッ�
 | 6 | [Azure ファイル共有バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview) |   Recovery Services コンテナー|「スナップショット レベル」のバックアップ：しない<br>「Vault-Standard レベル」のバックアップ：する (注 1)|
 | 7 | [Azure Blob バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview)  |   バックアップ コンテナー|運用バックアップ：しない<br>保管済みバックアップ：する|
 | 8 | [Azure ディスク バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview)  |   バックアップ コンテナー|**しない**|
-| 9 | [Azure PosgreSQL バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview)  |   バックアップ コンテナー|する|
+| 9 | [Azure PostgreSQL バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview)  |   バックアップ コンテナー|する|
 | 10 | [Azure Kubernetes Service バックアップ](https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview)  |   バックアップ コンテナー|運用層のバックアップ : しない<br>コンテナー層のバックアップ : する (注 2)  |
 
 (注 1) 2025 年 3 月現在、Azure Premium ファイル共有のコンテナー層へのバックアップ機能は Public Preview となっております  
