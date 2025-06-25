@@ -27,9 +27,9 @@ disableDisclaimer: false
 &emsp;[4-2. システム情報](#4-2)
 &emsp;[4-3. イベント ログ](#4-3)
 &emsp;[4-4. 各種証明書の確認証跡およびインポート](#4-4)
-&emsp;&emsp;[4-4-1. 個人 ＞ 証明書](#4-4-1)
-&emsp;&emsp;[4-4-2. 信頼されたルート証明書 ＞ 証明書](#4-4-2)
-&emsp;&emsp;[4-4-3. 中間証明機関 ＞ 証明書](#4-4-3)
+&emsp;&emsp;[4-4-1. 個人 > 証明書](#4-4-1)
+&emsp;&emsp;[4-4-2. 信頼されたルート証明書 > 証明書](#4-4-2)
+&emsp;&emsp;[4-4-3. 中間証明機関 > 証明書](#4-4-3)
 &emsp;&emsp;[4-4-4. 証明書インポート手順](#4-4-4)
 -----------------------------------------------------------
 
@@ -209,66 +209,48 @@ b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Applicati
 下記詳細手順のもと、証明書をご確認いただき、その画面キャプチャを zip などにおまとめの上ご提供お願いいたします。
 
 対象マシン上の [スタート] ボタンを右クリック > [ファイル名を指定して実行] > "certlm.msc" と入力して [OK] を選択し、以下すべての証明書が存在するかご確認ください。
-**（※ Windows Server 2012 以前の OS の場合は、MMC スナップインより証明書スナップインを起動してください）**
+※ Windows Server 2012 以前の OS の場合は、MMC スナップインより証明書スナップインを起動してください。
+※ 該当の証明書がない場合は、以下の各項目に記載の URL からダウンロードしインポートしてください。
+　 これによりMARS エージェントが立ち上がらないなどの場合の場合改善することがございます。
 
 ![](./RequestForInvestigating/RequestForInvestigating_09.png)
 
 ![](./RequestForInvestigating/RequestForInvestigating_10.png)
 
 
-### 4.4.1 個人 ＞ 証明書<a id="4-4-1"></a>
->・CB_<MARSのバックアップを実施する予定のRecovery Services コンテナー名>-xx-xx-xxxx-vaultcredentials
->・CB_<ホスト名>._xxxxxxxxxxxxxxxxxx
-※ 上記 2 が存在していることを確認の上、その画面スクリーンショットをご提供ください
+### 4.4.1 個人 > 証明書<a id="4-4-1"></a>
+下記 2 つの証明書が存在することを確認してください。
+
+> ・ CB_<MARS のバックアップを実施する予定の Recovery Services コンテナー名>-xx-xx-xxxx-vaultcredentials
+> ・ CB_<ホスト名>._xxxxxxxxxxxxxxxxxx
+
+※ 上記 2 点が存在していることを確認の上、その画面スクリーンショットをご提供ください
 （存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）
 ![](./RequestForInvestigating/RequestForInvestigating_11.png)
 
-"**・CB_<ホスト名>._xxxxxxxxxxxxxxxxxx** の期限がきれている場合は正常に MARS エージェントが正常に起動しないことがあります。
-下記を参考に再インストール をご実施ください。それにより証明書がインストールされます。
-・MARS エージェントの再インストール手順
-https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/
+"**・CB_<ホスト名>._xxxxxxxxxxxxxxxxxx**" の期限がきれている場合には、MARS エージェントが正常に起動しないことがあります。
+その際には、下記を参考に MARS エージェントの再インストールを実施してください。それにより証明書も再インストールされます。
+・ MARS エージェントの再インストール手順
+　 https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/
 
 
-### 4.4.2 信頼されたルート証明書 ＞ 証明書 <a id="4-4-2"></a>
-[参考]
-・Azure TLS 証明書の変更
-https://learn.microsoft.com/ja-jp/azure/security/fundamentals/tls-certificate-changes#what-changed
+### 4.4.2 信頼されたルート証明書 > 証明書 <a id="4-4-2"></a>
+下記ドキュメントに記載されているルート証明書が存在することを確認してください。
 
-[証明書zipダウンロード先]
-[root certificate.zip](https://github.com/jpabrs-scem/blog/files/9615338/root.certificate.zip)
+・ ルート証明機関 / Azure 証明機関の詳細 | Microsoft Learn
+　 https://learn.microsoft.com/ja-jp/azure/security/fundamentals/azure-CA-details?tabs=root-and-subordinate-cas-list#root-certificate-authorities
 
->ルート証明書名	証明書の拇印
->[DigiCert Global Root G2	: df3c24f9bfd666761b268073fe06d1cc8d4f82a4](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt)
->[DigiCert Global Root CA	: a8985d3a65e5e5c4b2d7d66d40c6dd2fb19c5436](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
->[Baltimore CyberTrust Root	: d4de20d05e66fc53fe1a50882c78db2852cae474](https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt)
->[D-TRUST Root Class 3 CA 2 2009	: 58e8abb0361533fb80f79b1b6d29d3ff8d5f00f0](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)
->[Microsoft RSA Root Certificate Authority2017	: 73a5e64a3bff8316ff0edccc618a906e4eae4d74](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
->[Microsoft ECC Root Certificate Authority 2017	: 999a64c37ff47d9fab95f14769891460eec4c3c5](https://www.microsoft.com/pkiops/certs/Microsoft%20ECC%20Root%20Certificate%20Authority%202017.crt)
+また、ドキュメントに記載されているルート証明書の "Thumbprint" の値と、対象のマシンにて証明書をダブル クリックし、[詳細] > [拇印] で表示されている値が一致していることも確認していただき、その画面キャプチャをご提供ください。
+※ ドキュメントに記載されている証明書が一部存在していない場合もございますので、その場合は、その点ご連絡いただけますと幸いです。
 
 ![](./RequestForInvestigating/RequestForInvestigating_12.png)
 
-※ 上記 6 つすべての証明書が存在していること (存在していない場合もございます) 
-・証明書をダブルクリックし、「詳細」タブ ＞ スクロールして下の方に「拇印」がありますので、値が上記と同一であることが確認し、その画面ショットをご提供ください。
-（存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）
+
+### 4.4.3 中間証明機関 > 証明書 <a id="4-4-3"></a>
+中間証明書の画面キャプチャをご提供ください。
+※ 特にご確認は不要でございます。
 
 ![](./RequestForInvestigating/RequestForInvestigating_13.png)
-
-### 4.4.3 中間証明機関 ＞ 証明書 <a id="4-4-3"></a>
-[参考]
-・Azure Storage TLS: Changes are coming! (…and why you care)
-https://techcommunity.microsoft.com/t5/azure-storage-blog/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518
-
-[証明書zipダウンロード先]
-[intermediate certificate.zip](https://github.com/jpabrs-scem/blog/files/9615291/intermediate.certificate.zip)
-
->中間証明書名	証明書の拇印
->[Microsoft RSA TLS CA 01	: 703d7a8f0ebf55aaa59f98eaf4a206004eb2516a](http://www.microsoft.com/pki/mscorp/Microsoft%20RSA%20TLS%20CA%2001.crt)
->[Microsoft RSA TLS CA 02	: b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75](http://www.microsoft.com/pki/mscorp/Microsoft%20RSA%20TLS%20CA%2002.crt)
-
-※ 上記 2 つすべての証明書が存在していること
-・証明書をダブルクリックし、「詳細」タブ ＞ スクロールして下の方に「拇印」がありますので、値が上記と同一であることが確認できる画面スクリーンショットをご提供ください。
-
-![](./RequestForInvestigating/RequestForInvestigating_14.png)
 
 ### 4.4.4 証明書インポート手順 <a id="4-4-4"></a>
 
