@@ -6,12 +6,12 @@
   
   <title>Azure Backup の障害調査に必要な情報 | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。なお、 Azure Backup の障害調査にあたり NW 観点で取得いただきたいログに関しては下記をご覧ください・Azure Backup の障害調査に必要な情報 (疎通確認)https:&#x2F;&#x2F;jpabr">
+  <meta name="description" content="みなさんこんにちは、Azure Backup サポートです。今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。なお、 Azure Backup の NW 観点の障害調査に必要なログに関しては、下記をご覧ください。・ Azure Backup の障害調査に必要な情報 (疎通確認)　 https:&#x2F;&#x2F;jpabrs-sc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Azure Backup の障害調査に必要な情報">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは。Azure Backup サポートの山本です。今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。なお、 Azure Backup の障害調査にあたり NW 観点で取得いただきたいログに関しては下記をご覧ください・Azure Backup の障害調査に必要な情報 (疎通確認)https:&#x2F;&#x2F;jpabr">
+<meta property="og:description" content="みなさんこんにちは、Azure Backup サポートです。今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。なお、 Azure Backup の NW 観点の障害調査に必要なログに関しては、下記をご覧ください。・ Azure Backup の障害調査に必要な情報 (疎通確認)　 https:&#x2F;&#x2F;jpabrs-sc">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_01.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_02.png">
@@ -25,10 +25,8 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_10.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_11.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_12.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_13.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_14.png">
-<meta property="article:published_time" content="2024-11-05T03:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-26T08:24:27.902Z">
+<meta property="article:published_time" content="2025-06-30T03:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-30T02:29:54.343Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="情報採取">
@@ -112,26 +110,26 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2024-11-05T03:00:00.000Z" itemprop="datePublished">2024-11-05</time>
+  <time datetime="2025-06-30T03:00:00.000Z" itemprop="datePublished">2025-06-30</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+15f2109c-51a4-528d-96f3-e49aeae52b9f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FRequestForInvestigating%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FRequestForInvestigating.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FRequestForInvestigating.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/" data-id="cmcd4ank100660no98b993ufk" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/" data-id="cmcihe4g700660npl6e7ze7p5" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは。Azure Backup サポートの山本です。<br>今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。<br>なお、 Azure Backup の障害調査にあたり NW 観点で取得いただきたいログに関しては下記をご覧ください<br>・Azure Backup の障害調査に必要な情報 (疎通確認)<br><a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/</a></p>
+<p>みなさんこんにちは、Azure Backup サポートです。<br>今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。<br>なお、 Azure Backup の NW 観点の障害調査に必要なログに関しては、下記をご覧ください。<br>・ Azure Backup の障害調査に必要な情報 (疎通確認)<br>　 <a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/</a></p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a><br>  <a href="#1-1">  1-1. Azure VM Backup の VSS 障害調査に追加で必要なログ</a><br><a href="#2">2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ</a><br><a href="#3">3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ</a><br><a href="#4">4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ</a><br>  <a href="#4-1">4-1. Microsoft Azure Backup Agent のログ</a><br>  <a href="#4-2">4-2. システム情報</a><br>  <a href="#4-3">4-3. イベント ログ</a><br>  <a href="#4-4">4-4. 各種証明書の確認証跡およびインポート</a><br>   <a href="#4-4-1">4-4-1. 個人 ＞ 証明書</a><br>   <a href="#4-4-2">4-4-2. 信頼されたルート証明書 ＞ 証明書</a><br>   <a href="#4-4-3">4-4-3. 中間証明機関 ＞ 証明書</a><br>   <a href="#4-4-4">4-4-4. 証明書インポート手順</a></p>
+<p><a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a><br>&emsp;<a href="#1-1">1-1. Azure VM バックアップ の VSS 障害調査に追加で必要なログ</a><br><a href="#2">2. Azure VM バックアップ の ファイル レベル リストア (ILR) 失敗調査に必要なログ</a><br><a href="#3">3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ</a><br>&emsp;<a href="#3-1">3-1. SAP HANA の backup.log 及び backint.log</a><br>&emsp;<a href="#3-2">3-2. opt 配下の log</a><br><a href="#4">4. MARS (Microsoft Azure Recovery Services) エージェントを利用したバックアップ の障害調査に必要なログ</a><br>&emsp;<a href="#4-1">4-1. MARS (Microsoft Azure Recovery Services) エージェントのログ</a><br>&emsp;<a href="#4-2">4-2. システム情報</a><br>&emsp;<a href="#4-3">4-3. イベント ログ</a><br>&emsp;<a href="#4-4">4-4. 各種証明書の確認およびインポート</a><br>&emsp;&emsp;<a href="#4-4-1">4-4-1. 個人 &gt; 証明書</a><br>&emsp;&emsp;<a href="#4-4-2">4-4-2. 信頼されたルート証明書 &gt; 証明書</a><br>&emsp;&emsp;<a href="#4-4-3">4-4-3. 証明書インポート手順</a></p>
 <hr>
-<h2 id="1-Azure-VM-バックアップの障害調査に必要なログ"><a href="#1-Azure-VM-バックアップの障害調査に必要なログ" class="headerlink" title="1. Azure VM バックアップの障害調査に必要なログ"></a>1. Azure VM バックアップの障害調査に必要なログ<a id="1"></a></h2><p>　*Azure VM Backup ではないですが  Azure Backup for SQL Server in Azure VM や Azure Backup for SAP HANA in Azure VM など Azure VM 上の DB のバックアップに関するものでも同様に必要です。<br>下記の <strong>環境情報</strong>と<strong>ログ情報</strong>の収集をお願いいたします。</p>
-<p>*NVA などの場合、OS が対応していない可能性もございます。<br>(参考) 詳細は下記をご覧ください<br>・NVA のバックアップについて<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/</a></p>
-<h3 id="環境情報"><a href="#環境情報" class="headerlink" title="環境情報"></a>環境情報</h3><p>・Subscription ID<br>・Recovery Services コンテナー名、およびそのリソースグループ名<br>・バックアップ対象 VM 名、およびそのリソースグループ名<br>・OS およびバージョン情報</p>
-<h4 id="ログ情報"><a href="#ログ情報" class="headerlink" title="ログ情報"></a>ログ情報</h4><p>下記を参考に zip などにまとめてご提供いただけますと幸いです。</p>
+<h2 id="1-Azure-VM-バックアップの障害調査に必要なログ"><a href="#1-Azure-VM-バックアップの障害調査に必要なログ" class="headerlink" title="1. Azure VM バックアップの障害調査に必要なログ"></a>1. Azure VM バックアップの障害調査に必要なログ<a id="1"></a></h2><p>下記の <strong>環境情報</strong> と <strong>ログ情報</strong> の収集をお願いいたします。</p>
+<div class="alert is-info"><p class="alert-title">Note</p><p>Azure Backup for SQL Server in Azure VM や Azure Backup for SAP HANA in Azure VM など Azure VM 上の DB のバックアップの障害調査においても、本ログが同様に必要でございます。</p></div>
+<h3 id="環境情報"><a href="#環境情報" class="headerlink" title="環境情報"></a>環境情報</h3><p>・ Subscription ID<br>・ Recovery Services コンテナー名、およびそのリソースグループ名<br>・ バックアップ対象 VM 名、およびそのリソースグループ名<br>・ OS およびバージョン情報</p>
+<h3 id="ログ情報"><a href="#ログ情報" class="headerlink" title="ログ情報"></a>ログ情報</h3><p>下記を参考に zip などにまとめてご提供いただけますと幸いです。</p>
 <h4 id="・Windows-の場合"><a href="#・Windows-の場合" class="headerlink" title="・Windows の場合"></a>・Windows の場合</h4><blockquote>
 <p>C:\Windows\System32\winevt\Logs<br>C:\WindowsAzure\</p>
 </blockquote>
@@ -142,24 +140,31 @@
 <blockquote>
 <p>/var/log/azure/*<br>/var/log/syslog*<br>/var/log/waagent.*</p>
 </blockquote>
-<h3 id="1-1-Azure-VM-Backup-の-VSS-障害調査に追加で必要なログ"><a href="#1-1-Azure-VM-Backup-の-VSS-障害調査に追加で必要なログ" class="headerlink" title="1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ"></a>1-1 . Azure VM Backup の VSS 障害調査に追加で必要なログ<a id="1-1"></a></h3><p>Azure VM Backupの下記のようなエラーが出ることがございます。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>NVA 等をご利用である場合には、Azure VM バックアップがサポートされていない可能性がございます。</p><p>詳細は下記をご覧ください。</p><p>・ NVA のバックアップについて</p><p>　 <a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/</a></p></div>
+<h3 id="1-1-Azure-VM-バックアップ-の-VSS-障害調査に追加で必要なログ"><a href="#1-1-Azure-VM-バックアップ-の-VSS-障害調査に追加で必要なログ" class="headerlink" title="1-1. Azure VM バックアップ の VSS 障害調査に追加で必要なログ"></a>1-1. Azure VM バックアップ の VSS 障害調査に追加で必要なログ<a id="1-1"></a></h3><p>Azure VM バックアップの下記のようなエラーが出ることがございます。</p>
 <blockquote>
-<p>Error Code ：Snapshot operation failed due to VSS Writers in bad state.<br>Error Message ：ExtensionFailedVssWriterInBadState</p>
+<p>Error Code  : Snapshot operation failed due to VSS Writers in bad state.<br>Error Message  : ExtensionFailedVssWriterInBadState</p>
 </blockquote>
-<p>その場合には VSS 観点での調査が必要であるため、上記 <a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> に加えて下記 URL 先のログの採取をお願いします。<br> <strong>可能な限り “[A]”が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。</strong><br>・VSS エラーが発生している事象の調査<br><a target="_blank" rel="noopener" href="https://jpwinsup.github.io/mslog/storage/vss/vss-error/">https://jpwinsup.github.io/mslog/storage/vss/vss-error/</a></p>
-<p>また合わせて下記も関連するブログでございます。<br>・Azure VM Backupにおける整合性について<br><a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-1-VSS-%E8%A6%B3%E7%82%B9%E3%81%A7%E3%81%AE%E8%AA%BF%E6%9F%BB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/#1-1-VSS-%E8%A6%B3%E7%82%B9%E3%81%A7%E3%81%AE%E8%AA%BF%E6%9F%BB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6</a></p>
-<h2 id="2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調査に必要なログ"><a href="#2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調査に必要なログ" class="headerlink" title="2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ"></a>2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ<a id="2"></a></h2><p>下記の <strong>環境情報</strong>と<strong>ログ情報</strong>の収集をお願いいたします。</p>
-<h3 id="環境情報-1"><a href="#環境情報-1" class="headerlink" title="環境情報"></a>環境情報</h3><p>・Subscription ID<br>・Recovery Services コンテナー名、およびそのリソースグループ名<br>・バックアップ対象 VM 名、およびそのリソースグループ名、OS 名<br>・リストア先の VM 名、およびそのリソースグループ名、OS 名</p>
+<p>その場合には VSS 観点での調査が必要であるため、上記 <a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> に加えて下記 URL 先のログの採取をお願いいたします。<br> <strong>可能な限り “[A]”が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。</strong><br>・ VSS エラーが発生している事象の調査<br>　 <a target="_blank" rel="noopener" href="https://jpwinsup.github.io/mslog/storage/vss/vss-error/">https://jpwinsup.github.io/mslog/storage/vss/vss-error/</a></p>
+<hr>
+<h2 id="2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調査に必要なログ"><a href="#2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調査に必要なログ" class="headerlink" title="2. Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ"></a>2. Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ<a id="2"></a></h2><p>下記の <strong>環境情報</strong> と <strong>ログ情報</strong> の収集をお願いいたします。</p>
+<h3 id="環境情報-1"><a href="#環境情報-1" class="headerlink" title="環境情報"></a>環境情報</h3><p>・ Subscription ID<br>・ Recovery Services コンテナー名、およびそのリソースグループ名<br>・ バックアップ対象 VM 名、およびそのリソースグループ名、OS 名<br>・ リストア先の VM 名、およびそのリソースグループ名、OS 名</p>
 <h3 id="ログ情報-1"><a href="#ログ情報-1" class="headerlink" title="ログ情報"></a>ログ情報</h3><p>zip などにまとめてご提供いただけますと幸いです。</p>
-<h4 id="・-Windows-の場合-“ディスクの管理”-の画面の画面ショット"><a href="#・-Windows-の場合-“ディスクの管理”-の画面の画面ショット" class="headerlink" title="・(Windows の場合) “ディスクの管理” の画面の画面ショット"></a>・(Windows の場合) “ディスクの管理” の画面の画面ショット</h4><p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_01.png" alt="参考画像"></p>
-<h4 id="・実行したスクリプト、および実行後に作成されたフォルダ一式"><a href="#・実行したスクリプト、および実行後に作成されたフォルダ一式" class="headerlink" title="・実行したスクリプト、および実行後に作成されたフォルダ一式"></a>・実行したスクリプト、および実行後に作成されたフォルダ一式</h4><ul>
-<li><strong>Windowsの場合</strong><br>・スクリプトファイル：IaaSVMILRExeForWindows.exe<br>・スクリプト実行後に作成されるフォルダー：”仮想マシン名(小文字)”+”スクリプトファイル実行日時”</li>
-</ul>
-<p>　下記例では “okt-temp-win-20220212145642” が作成されています。<br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_02.png"></p>
-<p>“okt-temp-win-20220212145642”の中身<br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_03.png" alt="&quot;okt-temp-win-20220212145642&quot;の中身"></p>
 <ul>
-<li><strong>Linux の場合</strong><br>・ILRのスクリプトファイル：例)　<strong>vm02kensho(小文字VM名)_1_jpe_6591639015130036692_802427195716_899298aac7c04bf094ad68bfc5b9584ed206b94b62d965.py</strong><br>・作成されたディレクトリの <strong>Scripts ディレクトリ一式</strong>：例） <strong>vm02kensho-20220212151619/Script</strong><br>スクリプトを実行後、「<strong>vm02kensho-20220212151619</strong>」ディレクトリが自動生成されていることがわかる。<br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_04.png"></li>
-</ul>
+<li><p><strong>(Windows の場合) “ディスクの管理” の画面の画面ショット</strong><br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_01.png"></p>
+</li>
+<li><p><strong>実行したスクリプト、および実行後に作成されたフォルダ一式</strong></p>
+<ul>
+<li><p><strong>Windowsの場合</strong><br>・ スクリプトファイル : IaaSVMILRExeForWindows.exe<br>・ スクリプト実行後に作成されるフォルダー : <code>仮想マシン名(小文字)+スクリプトファイル実行日時</code></p>
+<p>下記例では “okt-temp-win-20220212145642” が作成されています。<br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_02.png"></p>
+<p>“okt-temp-win-20220212145642”の中身<br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_03.png"></p>
+</li>
+<li><p><strong>Linux の場合</strong><br>・ スクリプトファイル : </p>
+<blockquote>
+<p>例) <strong>vm02kensho_1_jpe_6591639015130036692_802427195716_899298aac7c04bf094ad68bfc5b9584ed206b94b62d965.py</strong><br>※ 上記「vm02kensho」の箇所に、小文字の仮想マシン名が含まれます</p>
+</blockquote>
+<p>・ スクリプト実行後に作成されるフォルダー : <code>仮想マシン名(小文字)+スクリプトファイル実行日時/Script</code></p>
+<p>スクリプトを実行後、「<strong>vm02kensho-20220212151619</strong>」ディレクトリが自動生成されていることがわかる。<br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_04.png"></p>
 <blockquote>
 <p>ls -all</p>
 </blockquote>
@@ -169,90 +174,94 @@
 <p>ls -allR</p>
 </blockquote>
 <p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_06.png" alt="「vm02kensho-20220212151619」ディレクトリの中身,および作成されたディレクトリの Scripts ディレクトリの中身"></p>
-<h2 id="3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の障害調査に必要なログ"><a href="#3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の障害調査に必要なログ" class="headerlink" title="3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ"></a>3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ<a id="3"></a></h2><p><span style="color: red; "> <a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> の <strong>環境情報</strong> ならびに <strong>ログ情報 - Linuxの場合</strong> に加えて</span>下記もご対応お願いします。</p>
-<p>*お手数ですが、全ての DB の backup.log 及び backint.log の採取をお願いします。</p>
-<h3 id="SAP-HANAのbackup-log-及び-backint-log"><a href="#SAP-HANAのbackup-log-及び-backint-log" class="headerlink" title="SAP HANAのbackup.log 及び backint.log"></a>SAP HANAのbackup.log 及び backint.log</h3><blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の障害調査に必要なログ"><a href="#3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の障害調査に必要なログ" class="headerlink" title="3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ"></a>3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ<a id="3"></a></h2><h3 id="3-0-環境情報とログ"><a href="#3-0-環境情報とログ" class="headerlink" title="3.0 環境情報とログ"></a>3.0 環境情報とログ</h3><p><span style="color: red; "> <strong><a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> の 環境情報 ならびに ログ情報 - Linuxの場合</strong> </span> の取得をお願いいたします。</p>
+<h3 id="3-1-SAP-HANA-の-backup-log-及び-backint-log"><a href="#3-1-SAP-HANA-の-backup-log-及び-backint-log" class="headerlink" title="3.1 SAP HANA の backup.log 及び backint.log "></a>3.1 SAP HANA の backup.log 及び backint.log <a id="3-1"></a></h3><blockquote>
 <ul>
-<li>xxにはインスタンスナンバーが入ります。<br>  ・/hana/shared/HXE/HDBxx/(hostname)/trace/backup.log<br>  ・/hana/shared/HXE/HDBxx/(hostname)/trace/DB_&lt;DB名&gt;/backup.log<br>  ・/hana/shared/HXE/HDBxx/(hostname)/trace/backint.log<br>  ・/hana/shared/HXE/HDBxx/(hostname)/trace/DB_&lt;DB名&gt;/backint.log</li>
+<li>xx にはインスタンスナンバーが入ります。<ul>
+<li>/hana/shared/HXE/HDBxx/(hostname)/trace/backup.log</li>
+<li>/hana/shared/HXE/HDBxx/(hostname)/trace/DB_&lt;DB名&gt;/backup.log</li>
+<li>/hana/shared/HXE/HDBxx/(hostname)/trace/backint.log</li>
+<li>/hana/shared/HXE/HDBxx/(hostname)/trace/DB_&lt;DB名&gt;/backint.log</li>
+</ul>
+</li>
 </ul>
 </blockquote>
-<p>*上記パスに該当のログが無い場合は以下を試し、コマンド実行結果に表示されるディレクトリの場所の log をアップロードしてください。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo -i (rootユーザーに切り替えます)</span><br><span class="line">cd / (ディレクトリの最上層に移動します)</span><br><span class="line">find ./ -name &quot;backup.log&quot; (findコマンドにより該当のログの場所を特定します)</span><br><span class="line">find ./ -name &quot;backint.log&quot; (findコマンドにより該当のログの場所を特定します)</span><br></pre></td></tr></table></figure>
+<p>※ お手数ですが、全ての DB の backup.log 及び backint.log の採取をお願いいたします。<br>※ 上記パスに該当のログが無い場合は以下を試し、コマンド実行結果に表示されるディレクトリの場所のログをアップロードしてください。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo -i # rootユーザーに切り替えます</span><br><span class="line">cd /    # ディレクトリの最上層に移動します</span><br><span class="line">find ./ -name &quot;backup.log&quot;  # findコマンドにより該当のログの場所を特定します</span><br><span class="line">find ./ -name &quot;backint.log&quot; # findコマンドにより該当のログの場所を特定します</span><br></pre></td></tr></table></figure>
 
-<h3 id="opt-配下の-log"><a href="#opt-配下の-log" class="headerlink" title="opt 配下の log"></a>opt 配下の log</h3><p>・/opt/msawb/var/log ディレクトリ配下のファイルを zip 等におまとめのうえで、アップロードしてください。</p>
-<h2 id="4-MARS-Backup-エージェントを利用したバックアップ-の障害調査に必要なログ"><a href="#4-MARS-Backup-エージェントを利用したバックアップ-の障害調査に必要なログ" class="headerlink" title="4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ"></a>4. MARS Backup エージェントを利用したバックアップ の障害調査に必要なログ<a id="4"></a></h2><h2 id="4-0-環境情報とWindowsログ"><a href="#4-0-環境情報とWindowsログ" class="headerlink" title="4.0 環境情報とWindowsログ"></a>4.0 環境情報とWindowsログ</h2><p><a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> の <strong>環境情報</strong> ならびに <strong>ログ情報 - Windows の場合</strong> の取得をお願いします。<br>*MARS バックアップ のバックアップ対象の環境が Azure VM でない場合は Azure VM 名 / VM リソース グループ名は不要です。</p>
-<p>上記に加えて下記もご対応お願いします。</p>
-<h3 id="4-1-Microsoft-Azure-Backup-Agent-のログ"><a href="#4-1-Microsoft-Azure-Backup-Agent-のログ" class="headerlink" title="4.1 Microsoft Azure Backup Agent のログ　"></a>4.1 Microsoft Azure Backup Agent のログ　<a id="4-1"></a></h3><p> まず、下記 リンク先から調査用スクリプトのダウンロードをお願いします。<br><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/10148102/WABDiag.zip">WABDiag.zip</a></p>
+<h3 id="3-2-opt-配下の-log"><a href="#3-2-opt-配下の-log" class="headerlink" title="3.2 opt 配下の log "></a>3.2 opt 配下の log <a id="3-2"></a></h3><p>/opt/msawb/var/log ディレクトリ配下のファイルを zip 等におまとめのうえで、アップロードしてください。</p>
+<hr>
+<h2 id="4-MARS-Microsoft-Azure-Recovery-Services-エージェントを利用したバックアップ-の障害調査に必要なログ"><a href="#4-MARS-Microsoft-Azure-Recovery-Services-エージェントを利用したバックアップ-の障害調査に必要なログ" class="headerlink" title="4. MARS (Microsoft Azure Recovery Services) エージェントを利用したバックアップ の障害調査に必要なログ"></a>4. MARS (Microsoft Azure Recovery Services) エージェントを利用したバックアップ の障害調査に必要なログ<a id="4"></a></h2><h3 id="4-0-環境情報と-Windows-ログ"><a href="#4-0-環境情報と-Windows-ログ" class="headerlink" title="4.0 環境情報と Windows ログ"></a>4.0 環境情報と Windows ログ</h3><p><span style="color: red; "> <strong><a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> の 環境情報 ならびに ログ情報 - Windows の場合</strong> </span> の取得をお願いいたします。<br>※ MARS バックアップ のバックアップ対象の環境が Azure VM でない場合は Azure VM 名 / VM リソース グループ名は不要です。</p>
+<p>上記に加えて下記もご対応お願いいたします。</p>
+<h3 id="4-1-MARS-Microsoft-Azure-Recovery-Services-エージェントのログ"><a href="#4-1-MARS-Microsoft-Azure-Recovery-Services-エージェントのログ" class="headerlink" title="4.1 MARS (Microsoft Azure Recovery Services) エージェントのログ "></a>4.1 MARS (Microsoft Azure Recovery Services) エージェントのログ <a id="4-1"></a></h3><p>まず、下記 リンク先から調査用スクリプトをダウンロードしてください。<br><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/10148102/WABDiag.zip">WABDiag.zip</a></p>
 <p>ダウンロードいただきました WABDiag.tx を .ps1 に変更して使用し、問題が発生しているマシンより Azure Backup ログの収集をお願いいたします。<br>※ ファイルの解凍パスワードは “AzureBackup” となります。</p>
 <ol>
 <li>WABDiag.ps1 を管理者権限の PowerShell で実行します。</li>
 </ol>
 <blockquote>
-<p>実行コマンド: &lt;スクリプトのパス&gt;\WABDiag.ps1 &lt;パス\保存するフォルダ名&gt;<br>   実行例: C:\WABDiag\WABDiag.ps1 C:\Logs</p>
+<p>実行コマンド : &lt;スクリプトのパス&gt;\WABDiag.ps1 &lt;パス\保存するフォルダ名&gt;<br>実行例 : C:\WABDiag\WABDiag.ps1 C:\Logs</p>
 </blockquote>
 <p>   実行結果にファイル パスが無い旨のメッセージが表示される可能性がございますが、対象のファイル自体が無い事を示すメッセージとなりますので、無視していただいて問題ございません。</p>
 <p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_07.png" alt="WABDiag.ps1出力ファイル"></p>
 <h4 id="PowerShell-の実行ポリシーの制限によりスクリプトが実行できない場合"><a href="#PowerShell-の実行ポリシーの制限によりスクリプトが実行できない場合" class="headerlink" title="PowerShell の実行ポリシーの制限によりスクリプトが実行できない場合"></a>PowerShell の実行ポリシーの制限によりスクリプトが実行できない場合</h4><p>PowerShellを管理者権限で起動し、下記コマンドを実行し実行ポリシーを変更後、再度実行していただけますでしょうか。</p>
 <blockquote>
-<p>コマンド：Set-ExecutionPolicy Unrestricted</p>
+<p>コマンド : Set-ExecutionPolicy Unrestricted</p>
 </blockquote>
 <p>また現在の実行ポリシーを後ほど元に戻す場合は、変更前に下記コマンドを実行し、設定されているポリシーを確認、メモし、スクリプト実行後に同様の手順で変更していただきますようお願いいたします。</p>
 <blockquote>
-<p>コマンド：Get-ExecutionPolicy </p>
+<p>コマンド : Get-ExecutionPolicy </p>
 </blockquote>
 <ul>
-<li>参考<br>・実行ポリシーについて - PowerShell<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2">https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2</a></li>
+<li>参考<br>実行ポリシーについて - PowerShell<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2">https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2</a></li>
 </ul>
 <h3 id="4-2-システム情報"><a href="#4-2-システム情報" class="headerlink" title="4.2 システム情報 "></a>4.2 システム情報 <a id="4-2"></a></h3><ol>
 <li>対象のマシンに管理者権限を保持するユーザーでログオンします。</li>
 <li>管理者権限でコマンド プロンプトを起動し、以下のコマンドで取得します。<blockquote>
-<p>msinfo32 /nfo &lt;出力ファイル名&gt;<br>実行例)  &gt; msinfo32 /nfo SVR_msinfo32.nfo</p>
+<p>msinfo32 /nfo &lt;出力ファイル名&gt;<br>実行例) msinfo32 /nfo SVR_msinfo32.nfo</p>
 </blockquote>
 </li>
 <li>生成されたファイルをご提供ください。<br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_08.png" alt="システム情報"></li>
 </ol>
 <h3 id="4-3-イベント-ログ"><a href="#4-3-イベント-ログ" class="headerlink" title="4.3 イベント ログ"></a>4.3 イベント ログ<a id="4-3"></a></h3><ol>
 <li>対象のマシンに管理者権限を保持するユーザーでログオンします。</li>
-<li>[スタート] - [管理ツール] - [イベント ビューアー] を開きます。</li>
-<li>左側ペインの以下のイベントに対して、右クリックをし、[すべてのイベントを名前をつけて保存] を選択し、ファイルの種類が “イベント ファイル (<em>.evtx)” であることを確認し、任意の名前を付けて、[保存] をクリックします。<br>(ファイルの種類が “イベント ファイル (</em>.csv)” も併せて取得をお願いいたします)<br>a) [イベント ビューアー (ローカル)] - [Windows ログ] - [システム]<br>b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Application]</li>
+<li>[スタート] &gt; [管理ツール] &gt; [イベント ビューアー] を開きます。</li>
+<li>左側ペインの以下のイベントに対して、右クリックをし、[すべてのイベントを名前をつけて保存] を選択し、ファイルの種類が “イベント ファイル (<em>.evtx)” であることを確認し、任意の名前を付けて、[保存] をクリックします。<br>※ ファイルの種類が “イベント ファイル (</em>.csv)” も併せて取得をお願いいたします。<br>a) [イベント ビューアー (ローカル)] - [Windows ログ] - [システム]<br>b) [イベント ビューアー (ローカル)] - [Windows ログ] - [Application]</li>
 <li>保存したイベント ログ ファイルをご提供ください。</li>
 </ol>
-<h3 id="4-4-各種証明書の確認証跡およびインポート"><a href="#4-4-各種証明書の確認証跡およびインポート" class="headerlink" title="4.4 各種証明書の確認証跡およびインポート"></a>4.4 各種証明書の確認証跡およびインポート<a id="4-4"></a></h3><p>下記詳細手順のもと、証明書 および 権限の確認を確認のうえ、画面ショットを zip などにおまとめの上ご提供お願いいたします。</p>
-<p>*該当の証明書がない場合は下記 URL よりダウンロードしインポートをお願いします。<br>これによりMARS エージェントが立ち上がらないなどの場合の場合改善することがございます。</p>
-<p>対象マシン上の「スタート」ボタンを右クリック＞「ファイル名を指定して実行」＞「certlm.msc」と入力して「OK」し、以下すべての証明書が存在するかご確認ください。<br><strong>（※ Windows Server 2012 以前の OS の場合は、MMC スナップインより証明書スナップインを起動してください）</strong></p>
-<p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_09.png"></p>
-<p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_10.png"></p>
-<h3 id="4-4-1-個人-＞-証明書"><a href="#4-4-1-個人-＞-証明書" class="headerlink" title="4.4.1 個人 ＞ 証明書"></a>4.4.1 個人 ＞ 証明書<a id="4-4-1"></a></h3><blockquote>
-<p>・CB_&lt;MARSのバックアップを実施する予定のRecovery Services コンテナー名&gt;-xx-xx-xxxx-vaultcredentials<br>・CB_&lt;ホスト名&gt;._xxxxxxxxxxxxxxxxxx<br>※　上記 2 が存在していることを確認の上、その画面スクリーンショットをご提供ください<br>（存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）<br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_11.png"></p>
-</blockquote>
-<p>“<strong>・CB_&lt;ホスト名&gt;._xxxxxxxxxxxxxxxxxx</strong> の期限がきれている場合は正常に MARS エージェントが正常に起動しないことがあります。<br>下記を参考に再インストール をご実施ください。それにより証明書がインストールされます。<br>・MARS エージェントの再インストール手順<br><a href="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/">https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/</a></p>
-<h3 id="4-4-2-信頼されたルート証明書-＞-証明書"><a href="#4-4-2-信頼されたルート証明書-＞-証明書" class="headerlink" title="4.4.2 信頼されたルート証明書 ＞ 証明書 "></a>4.4.2 信頼されたルート証明書 ＞ 証明書 <a id="4-4-2"></a></h3><p>[参考]<br>・Azure TLS 証明書の変更<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/security/fundamentals/tls-certificate-changes#what-changed">https://learn.microsoft.com/ja-jp/azure/security/fundamentals/tls-certificate-changes#what-changed</a></p>
-<p>[証明書zipダウンロード先]<br><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/9615338/root.certificate.zip">root certificate.zip</a></p>
+<h3 id="4-4-各種証明書の確認およびインポート"><a href="#4-4-各種証明書の確認およびインポート" class="headerlink" title="4.4 各種証明書の確認およびインポート"></a>4.4 各種証明書の確認およびインポート<a id="4-4"></a></h3><p>下記詳細手順のもと、証明書をご確認いただき、その画面キャプチャを zip などにおまとめの上ご提供お願いいたします。</p>
+<h4 id="証明書の確認方法"><a href="#証明書の確認方法" class="headerlink" title="証明書の確認方法"></a>証明書の確認方法</h4><p>対象マシン上で [スタート] &gt; [ファイル名を指定して実行] &gt; “certlm.msc” と入力して [OK] を選択し、以下項目 4.4.1, 4.4.2 の証明書が存在するかご確認ください。<br>※ Windows Server 2012 以前の OS の場合は、MMC スナップインより証明書スナップインを起動してください。</p>
+<p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_09.png"><br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_10.png"></p>
+<h3 id="4-4-1-個人-gt-証明書"><a href="#4-4-1-個人-gt-証明書" class="headerlink" title="4.4.1 個人 &gt; 証明書"></a>4.4.1 個人 &gt; 証明書<a id="4-4-1"></a></h3><p>[個人] &gt; [証明書] にて、下記 2 つの証明書が存在することを確認し、その画面キャプチャをご提供ください。<br>※ もし下記証明書が存在していなかった場合には、その点ご返信いただけますと幸いです。</p>
 <blockquote>
-<p>ルート証明書名    証明書の拇印<br><a target="_blank" rel="noopener" href="https://cacerts.digicert.com/DigiCertGlobalRootG2.crt">DigiCert Global Root G2    : df3c24f9bfd666761b268073fe06d1cc8d4f82a4</a><br><a target="_blank" rel="noopener" href="https://cacerts.digicert.com/DigiCertGlobalRootCA.crt">DigiCert Global Root CA    : a8985d3a65e5e5c4b2d7d66d40c6dd2fb19c5436</a><br><a target="_blank" rel="noopener" href="https://cacerts.digicert.com/BaltimoreCyberTrustRoot.crt">Baltimore CyberTrust Root    : d4de20d05e66fc53fe1a50882c78db2852cae474</a><br><a target="_blank" rel="noopener" href="https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt">D-TRUST Root Class 3 CA 2 2009    : 58e8abb0361533fb80f79b1b6d29d3ff8d5f00f0</a><br><a target="_blank" rel="noopener" href="https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt">Microsoft RSA Root Certificate Authority2017    : 73a5e64a3bff8316ff0edccc618a906e4eae4d74</a><br><a target="_blank" rel="noopener" href="https://www.microsoft.com/pkiops/certs/Microsoft%20ECC%20Root%20Certificate%20Authority%202017.crt">Microsoft ECC Root Certificate Authority 2017    : 999a64c37ff47d9fab95f14769891460eec4c3c5</a></p>
+<p>・ CB_&lt;MARS のバックアップを実施する予定の Recovery Services コンテナー名&gt;-xx-xx-xxxx-vaultcredentials<br>・ CB_&lt;ホスト名&gt;._xxxxxxxxxxxxxxxxxx</p>
 </blockquote>
+<p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_11.png"></p>
+<p>もし「CB_&lt;ホスト名&gt;._xxxxxxxxxxxxxxxxxx」の証明書の期限がきれている場合には、MARS エージェントが正常に起動しない可能性があります。<br>その際には、下記を参考に MARS エージェントの再インストールを実施してください。それにより証明書も再インストールされます。<br>・ MARS エージェントの再インストール手順<br>　 <a href="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/">https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/</a></p>
+<h3 id="4-4-2-信頼されたルート証明書-gt-証明書"><a href="#4-4-2-信頼されたルート証明書-gt-証明書" class="headerlink" title="4.4.2 信頼されたルート証明書 &gt; 証明書 "></a>4.4.2 信頼されたルート証明書 &gt; 証明書 <a id="4-4-2"></a></h3><p>[信頼されたルート証明機関] &gt; [証明書] にて、下記ドキュメントに記載されているルート証明書がすべて存在することを確認し、その画面キャプチャをご提供ください。</p>
+<p>・ ルート証明機関 / Azure 証明機関の詳細 | Microsoft Learn<br>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/security/fundamentals/azure-CA-details?tabs=root-and-subordinate-cas-list#root-certificate-authorities">https://learn.microsoft.com/ja-jp/azure/security/fundamentals/azure-CA-details?tabs=root-and-subordinate-cas-list#root-certificate-authorities</a></p>
+<p>また、ドキュメントに記載されているルート証明書の “Thumbprint” の値と、対象のマシンにて証明書をダブル クリックし、[詳細] &gt; [拇印] で表示されている値が一致していることを確認し、その画面キャプチャを併せてご提供ください。</p>
 <p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_12.png"></p>
-<p>※　上記 6 つすべての証明書が存在していること (存在していない場合もございます)<br>・証明書をダブルクリックし、「詳細」タブ ＞ スクロールして下の方に「拇印」がありますので、値が上記と同一であることが確認し、その画面ショットをご提供ください。<br>（存在していない場合もございますので、その場合は、その点ご返信いただけますと幸いです。）</p>
-<p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_13.png"></p>
-<h3 id="4-4-3-中間証明機関-＞-証明書"><a href="#4-4-3-中間証明機関-＞-証明書" class="headerlink" title="4.4.3 中間証明機関 ＞ 証明書 "></a>4.4.3 中間証明機関 ＞ 証明書 <a id="4-4-3"></a></h3><p>[参考]<br>・Azure Storage TLS: Changes are coming! (…and why you care)<br><a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/azure-storage-blog/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518">https://techcommunity.microsoft.com/t5/azure-storage-blog/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518</a></p>
-<p>[証明書zipダウンロード先]<br><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/9615291/intermediate.certificate.zip">intermediate certificate.zip</a></p>
-<blockquote>
-<p>中間証明書名    証明書の拇印<br><a target="_blank" rel="noopener" href="http://www.microsoft.com/pki/mscorp/Microsoft%20RSA%20TLS%20CA%2001.crt">Microsoft RSA TLS CA 01    : 703d7a8f0ebf55aaa59f98eaf4a206004eb2516a</a><br><a target="_blank" rel="noopener" href="http://www.microsoft.com/pki/mscorp/Microsoft%20RSA%20TLS%20CA%2002.crt">Microsoft RSA TLS CA 02    : b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75</a></p>
-</blockquote>
-<p>※　上記 2 つすべての証明書が存在していること<br>・証明書をダブルクリックし、「詳細」タブ ＞ スクロールして下の方に「拇印」がありますので、値が上記と同一であることが確認できる画面スクリーンショットをご提供ください。</p>
-<p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_14.png"></p>
-<h3 id="4-4-4-証明書インポート手順"><a href="#4-4-4-証明書インポート手順" class="headerlink" title="4.4.4 証明書インポート手順 "></a>4.4.4 証明書インポート手順 <a id="4-4-4"></a></h3><ol>
-<li>証明書をエクスポートしたいマシンに、管理者権限でログインします。</li>
-<li>[スタート] - [ファイル名を指定して実行] から、certlm.msc と入力して、[Enter]キーを押します。<strong>（※ Windows Server 2012 以前の OS の場合は、MMC スナップインより証明書スナップインを起動してください）</strong></li>
-<li>ユーザーアカウント制御 が起動する場合は管理者権限での実行を許可します。</li>
-<li>左側の [証明書 (ローカル コンピューター)]を展開して、 [信頼されたルート証明機関] - [証明書] を開きます。</li>
-<li>[証明書] を右クリックし [すべてのタスク] – [インポート] と選択します。</li>
-<li>証明書のインポートウィザードが起動しますので以下の様に進めます。<br>・ 「証明書のインポート ウィザードの開始」画面で [次へ] をクリック。<br>・ インポートする証明書のファイル  -&gt;  (上記公開情報よりダウンロードした各証明書を保存したパス)<br>・ 証明書ストア -&gt; (“信頼されたルート証明機関” となっていることを確認)</li>
-<li>「信頼されたルート証明機関」証明書ストアに証明書がインポートされた事を確認します。</li>
-</ol>
-<ul>
-<li>中間証明書のインポート手順は、上記の「信頼されたルート証明機関」の箇所を「中間証明機関」にお読み替えいただけますようお願いいたします。</li>
+<p>もし上記ドキュメントに記載されているルート証明書が一部存在していない場合には、MARS エージェントが正常に起動しない可能性があります。<br>その際には、下記 <a href="#4-4-3">4-4-3. 証明書インポート手順</a> を参考に、証明書のインポートを実施してください。</p>
+<h3 id="4-4-3-証明書インポート手順"><a href="#4-4-3-証明書インポート手順" class="headerlink" title="4.4.3 証明書インポート手順 "></a>4.4.3 証明書インポート手順 <a id="4-4-3"></a></h3><ol>
+<li>証明書をインポートしたいマシンに、管理者権限でログインします。</li>
+<li>[スタート] &gt; [ファイル名を指定して実行] &gt; “certlm.msc” と入力して [OK] を選択します。<br>※ Windows Server 2012 以前の OS の場合は、MMC スナップインより証明書スナップインを起動してください。</li>
+<li>ユーザーアカウント制御が起動する場合は管理者権限での実行を許可します。</li>
+<li>左側の [証明書 (ローカル コンピューター)] を展開し、[信頼されたルート証明機関] &gt; [証明書] を開きます。</li>
+<li>[証明書] を右クリックし [すべてのタスク] &gt; [インポート] を選択します。</li>
+<li>証明書のインポート ウィザードが起動しますので、下記の様に進めます。<ul>
+<li>「証明書のインポート ウィザードの開始」画面で [次へ] をクリック。</li>
+<li>「インポートする証明書のファイル」にて、上記ドキュメントよりダウンロードした証明書を選択します。</li>
+<li>「証明書ストア」にて、[証明書をすべて次のストアに配置する] &gt; [信頼されたルート証明機関] を選択します。</li>
+<li>「証明書のインポート ウィザードの完了」にて、[完了] を選択します。</li>
 </ul>
+</li>
+<li>[信頼されたルート証明機関] &gt; [証明書] ストアに証明書がインポートされた事を確認します。</li>
+</ol>
 
       
       
@@ -277,19 +286,10 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureVMBackup/How_to_fail_VM_backup/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Azure VM Backup を意図的に失敗させる方法
-        
-      </div>
-    </a>
   
-  
-    <a href="../../AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../RSV_BV/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定</div>
+      <div class="article-nav-title">Recovery Services コンテナーとバックアップ コンテナーについて</div>
     </a>
   
 </nav>
@@ -308,6 +308,10 @@
       <ul>
         
           <li>
+            <a href="">Azure Backup の障害調査に必要な情報</a>
+          </li>
+        
+          <li>
             <a href="../RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
           </li>
         
@@ -321,10 +325,6 @@
         
           <li>
             <a href="../How_To_Check_Log_Backup_Jobs/">ログ バックアップのジョブを確認する方法</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/">テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する</a>
           </li>
         
       </ul>
@@ -347,7 +347,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/05/">2025 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/03/">2025 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/02/">2025 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/06/">2025 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/05/">2025 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/03/">2025 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/02/">2025 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 

@@ -97,6 +97,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-AzureBackupGeneral/DR_ASR_or_VMBackup" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    <!-- post date -->
+    <div class="article-meta">
+      <a href="../../AzureBackupGeneral/DR_ASR_or_VMBackup/" class="article-date">
+  <time datetime="2024-11-05T03:00:00.000Z" itemprop="datePublished">2024-11-05</time>
+</a>
+      
+    </div>
+
+    
+    <!-- post title -->
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../AzureBackupGeneral/DR_ASR_or_VMBackup/">Azure VM Backup と Azure Site Recovery による DR 要件について</a>
+    </h1>
+  
+
+      </header>
+    
+
+    <!-- post caption -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+こんにちは。Azure Backup 、Azure Site Recovery 担当です。今回は Azure のリージョン障害などを想定した Azure VM の Disaster Recovery (DR) 対策を検討中のお客様よりお問合せをいただきます「Azure VM Backup と Azure Site Recovery どちらを利用すればいいのか？」について解説させていただきます。
+結論としては、お客様の DR 要件である RTO, RPO をクリアにしていただく必要があり、ここがクリアになれば Azure VM Backup と Azure Site Recovery どちらを選択すればいいか判断できるようになると存じます。
+目次
+1. DR, RTO, RPO について     1.1 Disaster Recovery (DR)     1.2 Recovery Tim...
+        <p class="article-readmore">
+          <a href="../../AzureBackupGeneral/DR_ASR_or_VMBackup/">Read more</a>
+        </p>
+      
+    </div>
+
+    <footer class="article-footer">
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/DR_ASR_or_VMBackup/" data-id="cmcihe4e100040npl2e13bj8j" class="article-share-link">共有</a-->
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-AzureVMBackup/How_to_fail_VM_backup" class="article article-type-post" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -137,61 +189,10 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="cmcd4anix002h0no9bvxbea5e" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/How_to_fail_VM_backup/" data-id="cmcihe4f4002h0npldash3khc" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-AzureBackupGeneral/RequestForInvestigating" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    <!-- post date -->
-    <div class="article-meta">
-      <a href="../../AzureBackupGeneral/RequestForInvestigating/" class="article-date">
-  <time datetime="2024-11-05T03:00:00.000Z" itemprop="datePublished">2024-11-05</time>
-</a>
-      
-    </div>
-
-    
-    <!-- post title -->
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../AzureBackupGeneral/RequestForInvestigating/">Azure Backup の障害調査に必要な情報</a>
-    </h1>
-  
-
-      </header>
-    
-
-    <!-- post caption -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-皆様こんにちは。Azure Backup サポートの山本です。今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。なお、 Azure Backup の障害調査にあたり NW 観点で取得いただきたいログに関しては下記をご覧ください・Azure Backup の障害調査に必要な情報 (疎通確認)https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/
-目次
-1. Azure VM バックアップの障害調査に必要なログ    1-1. Azure VM Backup の VSS 障害調査に追加で必要なログ2.   Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ...
-        <p class="article-readmore">
-          <a href="../../AzureBackupGeneral/RequestForInvestigating/">Read more</a>
-        </p>
-      
-    </div>
-
-    <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/" data-id="cmcd4ank100660no98b993ufk" class="article-share-link">共有</a-->
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>
 
     </footer>
   </div>
@@ -239,7 +240,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/" data-id="cmcd4ank2006a0no9de8jf4b5" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/" data-id="cmcihe4g8006a0npldz3pcjcg" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -292,7 +293,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="cmcd4ank5006j0no909zc38z8" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/" data-id="cmcihe4gb006j0nplf7lp7dh6" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -347,7 +348,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/" data-id="cmcd4anj1002r0no9aedz42q5" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/" data-id="cmcihe4f8002r0npl2qiy4m4l" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -400,7 +401,7 @@
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CSV_not_Supported/" data-id="cmcd4ank4006f0no97b4245ax" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/CSV_not_Supported/" data-id="cmcihe4ga006f0nplhcfm3tq8" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -453,7 +454,7 @@ AzureBackupProtect...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/" data-id="cmcd4ani9000m0no9f1hb5l6g" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureFilesBackup/About_Protection_Lock/" data-id="cmcihe4ed000m0npl9r3iazba" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li></ul>
@@ -505,7 +506,7 @@ AzureBackupProtect...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/" data-id="cmcd4anj2002w0no90xi579vi" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/" data-id="cmcihe4fa002w0npl0pdhgpti" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -556,7 +557,7 @@ AzureBackupProtect...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/" data-id="cmcd4ank3006d0no93cz3154v" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigating_ASR/" data-id="cmcihe4g9006d0npl5yvv5819" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -609,7 +610,7 @@ AzureBackupProtect...
     </div>
 
     <footer class="article-footer">
-      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/" data-id="cmcd4anil001g0no94zrua16j" class="article-share-link">共有</a-->
+      <!--a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/" data-id="cmcihe4ep001g0npldlzbban4" class="article-share-link">共有</a-->
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
@@ -638,6 +639,10 @@ AzureBackupProtect...
       <ul>
         
           <li>
+            <a href="../../AzureBackupGeneral/RequestForInvestigating/">Azure Backup の障害調査に必要な情報</a>
+          </li>
+        
+          <li>
             <a href="../../AzureBackupGeneral/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
           </li>
         
@@ -651,10 +656,6 @@ AzureBackupProtect...
         
           <li>
             <a href="../../AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/">ログ バックアップのジョブを確認する方法</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/">テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する</a>
           </li>
         
       </ul>
@@ -677,7 +678,7 @@ AzureBackupProtect...
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/05/">2025 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/03/">2025 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/02/">2025 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/06/">2025 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/05/">2025 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/03/">2025 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/02/">2025 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
