@@ -22,8 +22,8 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_07.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_08.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_09.png">
-<meta property="article:published_time" content="2024-08-19T03:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-30T02:34:52.160Z">
+<meta property="article:published_time" content="2025-06-30T03:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-30T02:46:13.787Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
@@ -107,13 +107,13 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2024-08-19T03:00:00.000Z" itemprop="datePublished">2024-08-19</time>
+  <time datetime="2025-06-30T03:00:00.000Z" itemprop="datePublished">2025-06-30</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+5a722954-09d1-510a-891f-cb46255f0370%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BStandard+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%A8+Enhanced+%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E6%96%99%E9%87%91%E3%81%AE%E9%81%95%E3%81%84%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FVM_Backup_billing%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FVM_Backup_billing.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FVM_Backup_billing.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/" data-id="cmcihkhgl002w0nohcinj7bdz" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/" data-id="cmcihz2y8002w0noxhx6z3x39" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -128,16 +128,15 @@
 <h2 id="2-Standard-バックアップ-ポリシーと-Enhanced-バックアップ-ポリシーの料金の違い"><a href="#2-Standard-バックアップ-ポリシーと-Enhanced-バックアップ-ポリシーの料金の違い" class="headerlink" title="2. Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い"></a>2. Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い<a id="2"></a></h2><h3 id="Azure-VM-Backup-の料金"><a href="#Azure-VM-Backup-の料金" class="headerlink" title="Azure VM Backup の料金"></a>Azure VM Backup の料金</h3><p>Azure VM Backup を利用する場合、その料金を見積もる際には以下 3 点が課金項目となります。<br>　(1) Azure 仮想マシンのインスタンスに対する課金<br>　(2) Recovery Services コンテナーに保管されるバックアップ データに対する課金<br>　(3) Azure VM Backup の機能で取得されるスナップショットに対する課金</p>
 <p>(1) と (2) の課金は、「Standard バックアップ ポリシー」でバックアップ取得しても、「Enhanced バックアップ ポリシー」でバックアップ取得しても、どちらも同じ料金計算方式となります。</p>
 <p>この 2 項目は、下記公開ドキュメント上で説明している「保護されたインスタンス サイズ (1) 」「バックアップ ストレージの課金 (2) 」箇所に相当します。</p>
-<p>(参考ドキュメント)<br>・バックアップのコスト<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-costs">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-costs</a><br>　引用： “保護されたインスタンス サイズの計算は、”実際の” VM のサイズに基づきます。”<br>　引用： “同様に、バックアップ ストレージの課金は、Azure Backup に格納されているデータ量 (各回復ポイントの実際のデータの合計) に基づきます。”</p>
+<p>(参考ドキュメント)<br>・バックアップのコスト<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-costs">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-costs</a><br>　引用 : “保護されたインスタンス サイズの計算は、”実際の” VM のサイズに基づきます。”<br>　引用 : “同様に、バックアップ ストレージの課金は、Azure Backup に格納されているデータ量 (各回復ポイントの実際のデータの合計) に基づきます。”</p>
 <p>いっぽう (3) の課金は、「Standard バックアップ ポリシー」でバックアップ取得する場合と、「Enhanced バックアップ ポリシー」でバックアップ取得する場合とで、料金の加算方法が変わってきます。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>Standard バックアップ ポリシーにてトラステッド起動 VM のバックアップを取得する場合にのみ、(3) の課金は「Enhanced バックアップ ポリシー」でバックアップを取得する場合と同じになります。</p><p>もし該当する場合には、以下説明は「Enhanced バックアップ ポリシー」の箇所をご確認ください。  </p></div>
 <h3 id="「Azure-VM-Backup-の機能で取得されるスナップショットに対する課金」の加算方法の違い"><a href="#「Azure-VM-Backup-の機能で取得されるスナップショットに対する課金」の加算方法の違い" class="headerlink" title="「Azure VM Backup の機能で取得されるスナップショットに対する課金」の加算方法の違い"></a>「Azure VM Backup の機能で取得されるスナップショットに対する課金」の加算方法の違い</h3><p>「Standard バックアップ ポリシー」では、初回のスナップショット取得時点では料金は発生しません。<br>「Enhanced バックアップ ポリシー」では、初回のスナップショット取得時点で、使用データ量分のスナップショットに対して料金が発生します。</p>
 <p>また、1 GB あたりの課金額は以下の通りそれぞれ違いがあります。</p>
-<p>標準ポリシー:  0.12 ドル/ 1 GB<br>拡張ポリシー:  0.05 ドル/ 1 GB</p>
-<ul>
-<li>リージョンにより料金が異なる場合がございます。(上記 および 以下の参考例は、USEast2 の価格となります。)</li>
-</ul>
-<p>下記の表は 100 GB の容量をもつ Azure 仮想マシンに対して、毎日 1 GB の増分が発生するケースにおいて、スナップショットを 4 日間保管した場合の比較表となります。<br>*表中の料金は前日からの増分により発生した課金の月額を示しており、実際の料金は保存期間によって変動する場合があります。<br>(参考例)<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_02.png"><br>※1 便宜上 100 GB と記載しておりますが、より正確には初回のスナップショット取得時点では 0 GB となります。<br>(その後の変更ブロック発生によりスナップショット サイズが増大いたします)</p>
-<p>上記サンプルケースでは Enhanced バックアップ ポリシー 利用時の方が費用は高くなりますが、初回のバックアップデータ量が減った場合や、翌日以降の増分データ量が増加する場合は、Standard バックアップ ポリシー利用時の方が割高となるシナリオも考えられます。</p>
+<p>Standard (標準) ポリシー : 0.12 ドル/ 1 GB<br>Enhanced (拡張) ポリシー : 0.05 ドル/ 1 GB</p>
+<p>※ リージョンにより料金が異なる場合がございます。(上記 および 以下の参考例は、USEast2 の価格となります。)</p>
+<p>下記の表は 100 GB の容量をもつ Azure 仮想マシンに対して、毎日 1 GB の増分が発生するケースにおいて、スナップショットを 4 日間保管した場合の比較表となります。<br>※ 表中の料金は前日からの増分により発生した課金の月額を示しており、実際の料金は保存期間によって変動する場合があります。<br>(参考例)<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_02.png"><br>※1 便宜上 100 GB と記載しておりますが、より正確には初回のスナップショット取得時点では 0 GB となります。<br>(その後の変更ブロック発生によりスナップショット サイズが増大いたします)</p>
+<p>上記サンプルケースでは Enhanced バックアップ ポリシー 利用時の方が費用は高くなりますが、初回のバックアップ データ量が減った場合や、翌日以降の増分データ量が増加する場合は、Standard バックアップ ポリシー利用時の方が割高となるシナリオも考えられます。</p>
 <p>「(3) Azure VM Backup の機能で取得されるスナップショットに対する課金」における<br>リージョン毎のスナップショット料金詳細は下記をご参照ください。</p>
 <h4 id="Standard-バックアップ-ポリシー-スナップショットに対する料金"><a href="#Standard-バックアップ-ポリシー-スナップショットに対する料金" class="headerlink" title="Standard バックアップ ポリシー - スナップショットに対する料金"></a>Standard バックアップ ポリシー - スナップショットに対する料金</h4><p>下記リンクから、リージョン・通貨をご希望のものへと設定変更いただければ、スナップショットに対する料金を確認できます。<br>・Azure ページ BLOB Storage の価格 | Microsoft Azure<br>　<a target="_blank" rel="noopener" href="https://azure.microsoft.com/ja-jp/pricing/details/storage/page-blobs/">https://azure.microsoft.com/ja-jp/pricing/details/storage/page-blobs/</a></p>
 <p><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_03.png"></p>
@@ -185,13 +184,13 @@
 </tr>
 </tbody></table>
 <p>　( <span style="color: red; ">赤文字</span>部分は、対象 Recovery Services コンテナーの「ストレージ レプリケーションの種類」によって変わります)</p>
-<p>ご参考までに、弊社検証環境にて確認した各項目の表示例を以下に示します。<br>画像 1：コスト分析画面にて確認した (1) および (2) の表示例（ストレージ レプリケーションの種類 ：ローカル冗長 (LRS)）<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_05.png" alt="画像 1"></p>
-<p> 画像 2：コスト分析画面にて確認した (3) の表示例 (Standard バックアップ ポリシー)<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_06.png" alt="画像 2"></p>
-<p>(参考) 画像 2 のバックアップ対象 の VM の Azure Managed Disk のリソース グループ名：rgsqlag<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_07.png" alt="参考"></p>
-<p>画像 3：コスト分析画面にて確認した (3) の表示例 (Enhanced バックアップ ポリシー)<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_08.png" alt="画像 3"></p>
-<p>(参考) 画像 3 の復元ポイント コレクションのリソース グループ名：azurebackuprg_eastus_1<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_09.png" alt="参考"></p>
-<p>(補足)<br>各バックアップ ポリシーにて取得されるスナップショットはそれぞれ以下のスナップショット層へ格納されます。<br>　・Standard バックアップ ポリシー： LRS のスナップショット層<br>　・Enhanced バックアップ ポリシー： ZRS のスナップショット層 </p>
-<p>(参考ドキュメント)<br>・拡張ポリシーを使用して Azure VM をバックアップする<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal</a><br>　引用： “インスタント復元層では、ゾーン冗長ストレージ (ZRS) の回復性を使用してゾーン冗長性が確保されています。”</p>
+<p>ご参考までに、弊社検証環境にて確認した各項目の表示例を以下に示します。<br>画像 1 : コスト分析画面にて確認した (1) および (2) の表示例（ストレージ レプリケーションの種類  : ローカル冗長 (LRS)）<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_05.png" alt="画像 1"></p>
+<p> 画像 2 : コスト分析画面にて確認した (3) の表示例 (Standard バックアップ ポリシー)<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_06.png" alt="画像 2"></p>
+<p>(参考) 画像 2 のバックアップ対象 の VM の Azure Managed Disk のリソース グループ名 : rgsqlag<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_07.png" alt="参考"></p>
+<p>画像 3 : コスト分析画面にて確認した (3) の表示例 (Enhanced バックアップ ポリシー)<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_08.png" alt="画像 3"></p>
+<p>(参考) 画像 3 の復元ポイント コレクションのリソース グループ名 : azurebackuprg_eastus_1<br><img src="/blog/AzureVMBackup/VM_Backup_billing/VM_Backup_billing_09.png" alt="参考"></p>
+<p>(補足)<br>各バックアップ ポリシーにて取得されるスナップショットはそれぞれ以下のスナップショット層へ格納されます。<br>　・Standard バックアップ ポリシー : LRS のスナップショット層<br>　・Enhanced バックアップ ポリシー : ZRS のスナップショット層 </p>
+<p>(参考ドキュメント)<br>・拡張ポリシーを使用して Azure VM をバックアップする<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal</a><br>　引用 : “インスタント復元層では、ゾーン冗長ストレージ (ZRS) の回復性を使用してゾーン冗長性が確保されています。”</p>
 <p>本記事の内容は以上となります。</p>
 
       
@@ -217,19 +216,19 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureFilesBackup/About_Protection_Lock/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../HowToUninstallVMSnapshotExtension/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          AzureBackupProtectionLock について
+          「VMSnapshot」拡張機能の再インストール手順 (Windows)
         
       </div>
     </a>
   
   
-    <a href="../../AzureSiteRecovery/RequestForInvestigating_ASR/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureBackupGeneral/RequestForInvestigating/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">ASR の障害調査に必要な情報</div>
+      <div class="article-nav-title">Azure Backup の障害調査に必要な情報</div>
     </a>
   
 </nav>
@@ -252,19 +251,19 @@
           </li>
         
           <li>
+            <a href="../CZR/">Azure VM Backup におけるクロス ゾーン リストア (CZR) について</a>
+          </li>
+        
+          <li>
+            <a href="../HowToUninstallVMSnapshotExtension/">「VMSnapshot」拡張機能の再インストール手順 (Windows)</a>
+          </li>
+        
+          <li>
+            <a href="">Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</a>
+          </li>
+        
+          <li>
             <a href="../../AzureBackupGeneral/RequestForInvestigating/">Azure Backup の障害調査に必要な情報</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureBackupGeneral/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureBackupGeneral/How_to_set_Backup_Alert/">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
           </li>
         
       </ul>

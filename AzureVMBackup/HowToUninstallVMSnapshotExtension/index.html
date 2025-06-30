@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   
   
-  <title>「VMSnapshot」拡張機能のアンインストール手順 (Windows) | Japan CSS ABRS  Support Blog !!</title>
+  <title>「VMSnapshot」拡張機能の再インストール手順 (Windows) | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、「VMSnapshot」拡張機能のアンインストール手順 (Windows OS の場合) についてご案内いたします。 目次 1. 概要2. 「VMSnapshot」拡張機能のアンインストール手順 (Windows)    1. 概要「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごと">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、「VMSnapshot」拡張機能の再インストール手順 (Windows OS の場合) についてご案内いたします。 目次 1. 概要2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)    1. 概要「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごとバッ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「VMSnapshot」拡張機能のアンインストール手順 (Windows)">
+<meta property="og:title" content="「VMSnapshot」拡張機能の再インストール手順 (Windows)">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、「VMSnapshot」拡張機能のアンインストール手順 (Windows OS の場合) についてご案内いたします。 目次 1. 概要2. 「VMSnapshot」拡張機能のアンインストール手順 (Windows)    1. 概要「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごと">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、「VMSnapshot」拡張機能の再インストール手順 (Windows OS の場合) についてご案内いたします。 目次 1. 概要2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)    1. 概要「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごとバッ">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_01.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_02.png">
@@ -27,8 +27,8 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_14.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_15.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_16.png">
-<meta property="article:published_time" content="2025-03-14T03:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-30T02:34:52.137Z">
+<meta property="article:published_time" content="2025-06-30T03:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-30T02:46:13.764Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
@@ -104,7 +104,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      「VMSnapshot」拡張機能のアンインストール手順 (Windows)
+      「VMSnapshot」拡張機能の再インストール手順 (Windows)
     </h1>
   
 
@@ -112,34 +112,34 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2025-03-14T03:00:00.000Z" itemprop="datePublished">2025-03-14</time>
+  <time datetime="2025-06-30T03:00:00.000Z" itemprop="datePublished">2025-06-30</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f61a32ac-fe72-527e-96e2-46d233ed3d05%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%80%8CVMSnapshot%E3%80%8D%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86+%28Windows%29%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHowToUninstallVMSnapshotExtension%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHowToUninstallVMSnapshotExtension.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHowToUninstallVMSnapshotExtension.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f61a32ac-fe72-527e-96e2-46d233ed3d05%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%80%8CVMSnapshot%E3%80%8D%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E5%86%8D%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86+%28Windows%29%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHowToUninstallVMSnapshotExtension%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHowToUninstallVMSnapshotExtension.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHowToUninstallVMSnapshotExtension.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/" data-id="cmcihkhge002c0noh0mu8e74t" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/" data-id="cmcihz2y2002c0nox9u173xw3" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>皆様こんにちは、Azure Backup サポートです。<br>今回は、「VMSnapshot」拡張機能のアンインストール手順 (Windows OS の場合) についてご案内いたします。</p>
+<p>皆様こんにちは、Azure Backup サポートです。<br>今回は、「VMSnapshot」拡張機能の再インストール手順 (Windows OS の場合) についてご案内いたします。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. 概要</a><br><a href="#2">2. 「VMSnapshot」拡張機能のアンインストール手順 (Windows)</a>  </p>
+<p><a href="#1">1. 概要</a><br><a href="#2">2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)</a>  </p>
 <hr>
-<h3 id="1-概要"><a href="#1-概要" class="headerlink" title="1. 概要"></a><a id="1"></a>1. 概要</h3><p>「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごとバックアップする機能) において、対象の Azure 仮想マシン上にインストールされる拡張機能です。<br>Azure VM Backup にて何らかのエラーが発生した場合、トラブルシューティングの一環として本記事の記載に従って「VMSnapshot」拡張機能を一度マシンからアンインストールしていただき、再度バックアップを実行させることで、エラーが解消されるかを依頼する場合がございます。</p>
+<h3 id="1-概要"><a href="#1-概要" class="headerlink" title="1. 概要"></a><a id="1"></a>1. 概要</h3><p>「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごとバックアップする機能) において、対象の Azure 仮想マシン上にインストールされる拡張機能です。<br>Azure VM Backup にて何らかのエラーが発生した場合、トラブルシューティングの一環として本記事の記載に従って「VMSnapshot」拡張機能を再インストールしていただき、再度バックアップを実行させることで、エラーが解消されるかを依頼する場合がございます。</p>
 <p>・(参考) Azure VM バックアップについて - Azure Backup | Microsoft Learn<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process</a><br>　“Windows VM の場合、VMSnapshot 拡張機能がインストールされます。<br>　 Linux VM の場合、VMSnapshotLinux 拡張機能がインストールされます。”</p>
 <p>・(参考) Azure Backup 用の VM スナップショットの Windows 拡張機能 - Azure Virtual Machines | Microsoft Learn<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/virtual-machines/extensions/vmsnapshot-windows">https://learn.microsoft.com/ja-jp/azure/virtual-machines/extensions/vmsnapshot-windows</a></p>
-<p>なお、下記公開ドキュメント上では、Azure ポータル画面 &gt; Azure 仮想マシン &gt; [拡張機能とアプリケーション] 画面から、アンインストールすることができるという説明を記載しておりますが<br>これは <strong>アンマネージド ディスクから作成している Azure 仮想マシンの場合のみ</strong> となります。<br>マネージド ディスク の Azure 仮想マシンの場合は、本記事に従って 「VMSnapshot」拡張機能のアンインストールをお試しください。</p>
+<p>なお、下記公開ドキュメント上では、Azure ポータル画面 &gt; Azure 仮想マシン &gt; [拡張機能とアプリケーション] 画面から、アンインストールすることができるという説明を記載しておりますが<br>これは <strong>アンマネージド ディスクから作成している Azure 仮想マシンの場合のみ</strong> となります。<br>マネージド ディスク の Azure 仮想マシンの場合は、本記事に従って 「VMSnapshot」拡張機能の再インストールをお試しください。</p>
 <p>・(参考) ExtensionStuckInDeletionState - 拡張機能の状態がバックアップ操作に対応していません<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionstuckindeletionstate---extension-state-is-not-supportive-to-the-backup-operation">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionstuckindeletionstate---extension-state-is-not-supportive-to-the-backup-operation</a><br>　“バックアップ拡張機能 [VmSnapshot] または [VmSnapshotLinux] を選択し、 [アンインストール] を選択します。”</p>
 <p>(画面例 : マネージド ディスク の Azure 仮想マシンの場合は、[拡張機能とアプリケーション] 画面上には「VMSnapshot」拡張機能は表示されません)<br><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_01.png"></p>
-<h3 id="2-「VMSnapshot」拡張機能のアンインストール手順-Windows"><a href="#2-「VMSnapshot」拡張機能のアンインストール手順-Windows" class="headerlink" title="2. 「VMSnapshot」拡張機能のアンインストール手順 (Windows)"></a><a id="2"></a>2. 「VMSnapshot」拡張機能のアンインストール手順 (Windows)</h3><ul>
+<h3 id="2-「VMSnapshot」拡張機能の再インストール手順-Windows"><a href="#2-「VMSnapshot」拡張機能の再インストール手順-Windows" class="headerlink" title="2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)"></a><a id="2"></a>2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)</h3><ul>
 <li><ol>
-<li><p>PowerShell にて Azure アカウントにログインし、下記コマンドを実行し、該当の Azure 仮想マシン上から「VMSnapshot」拡張機能をアンインストールしてください  </p>
+<li><p>PowerShell にて Azure アカウントにログインし、下記コマンドを実行し、該当の Azure 仮想マシン上から「VMSnapshot」拡張機能を削除してください  </p>
 <p>(実行コマンド)  </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Remove-AzVMExtension -ResourceGroupName &quot;&lt;Azure 仮想マシンのリソース グループ&gt;&quot; -VMName &quot;&lt;Azure 仮想マシン名&gt;&quot; -Name &quot;VMSnapshot&quot;</span><br></pre></td></tr></table></figure>
-<p>上記コマンド実行後、「Y」を入力してアンインストールを指示します<br><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_02.png"></p>
+<p>上記コマンド実行後、「Y」を入力して、拡張機能の削除を指示します<br><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_02.png"></p>
 <p>・(参考) Remove-AzVMExtension (Az.Compute) | Microsoft Learn<br> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/powershell/module/az.compute/remove-azvmextension?view=azps-11.0.0">https://learn.microsoft.com/ja-jp/powershell/module/az.compute/remove-azvmextension?view=azps-11.0.0</a></p>
 </li>
 </ol>
@@ -205,7 +205,9 @@
 </ul>
 <ul>
 <li><ol start="9">
-<li>次回の Azure VM Backup のスケジュール バックアップもしくは「今すぐバックアップ」より、バックアップをトリガーしてください<br> ・(参考) バックアップをすぐに実行する<br>  <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-first-look-arm#run-a-backup-immediately">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-first-look-arm#run-a-backup-immediately</a> </li>
+<li><p>Windows Azure Guest Agent が正常に開始した段階で、再度マシン上には「Microsoft.Azure.RecoveryServices.VMSnapshot_X.X.X.X」のレジストリ キーが自動追加される想定ですが、<br>念のため、次回の Azure VM Backup のスケジュール バックアップもしくは「今すぐバックアップ」より、バックアップをトリガーしてください  </p>
+<p>・(参考) バックアップをすぐに実行する<br>  <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-first-look-arm#run-a-backup-immediately">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-first-look-arm#run-a-backup-immediately</a> </p>
+</li>
 </ol>
 </li>
 </ul>
@@ -215,7 +217,7 @@
 </ol>
 </li>
 </ul>
-<p>「VMSnapshot」拡張機能のアンインストール手順 (Windows OS の場合) は以上となります。</p>
+<p>「VMSnapshot」拡張機能の再インストール手順 (Windows OS の場合) は以上となります。</p>
 
       
       
@@ -240,19 +242,19 @@
     
 <nav id="article-nav">
   
-    <a href="../restore_swapdsik/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../CZR/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          Azure VM Backup [既存を置換] リストア について
+          Azure VM Backup におけるクロス ゾーン リストア (CZR) について
         
       </div>
     </a>
   
   
-    <a href="../../AzureMigrate/howtodeleteRSV/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../VM_Backup_billing/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Migrate 移行後の関連リソース削除時のチェックポイント</div>
+      <div class="article-nav-title">Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</div>
     </a>
   
 </nav>
@@ -275,19 +277,19 @@
           </li>
         
           <li>
+            <a href="../CZR/">Azure VM Backup におけるクロス ゾーン リストア (CZR) について</a>
+          </li>
+        
+          <li>
+            <a href="">「VMSnapshot」拡張機能の再インストール手順 (Windows)</a>
+          </li>
+        
+          <li>
+            <a href="../VM_Backup_billing/">Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</a>
+          </li>
+        
+          <li>
             <a href="../../AzureBackupGeneral/RequestForInvestigating/">Azure Backup の障害調査に必要な情報</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureBackupGeneral/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureBackupGeneral/How_to_set_Backup_Alert/">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
           </li>
         
       </ul>

@@ -44,13 +44,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/</loc>
-    
-    <lastmod>2025-06-30</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/DPM&MABS/Error_58_NoDiskSpace/</loc>
     
     <lastmod>2025-06-30</lastmod>
@@ -72,14 +65,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/</loc>
-    
-    <lastmod>2025-06-30</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/restore_swapdsik/</loc>
     
     <lastmod>2025-06-30</lastmod>
     
@@ -93,7 +79,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/</loc>
     
     <lastmod>2025-06-30</lastmod>
     
@@ -107,7 +93,21 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/</loc>
+    
+    <lastmod>2025-06-30</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/</loc>
+    
+    <lastmod>2025-06-30</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/</loc>
     
     <lastmod>2025-06-30</lastmod>
     
@@ -163,14 +163,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
     
     <lastmod>2025-06-30</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/</loc>
     
     <lastmod>2025-06-30</lastmod>
     
