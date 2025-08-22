@@ -65,29 +65,29 @@ disableDisclaimer: false
 > また、ステージングの場所として使用したストレージ アカウントについても、復元が完了しましたら削除いただいて問題ございません。
 
 ### <a id="4"></a>4.参考画面ショット
- VM 名：VM-RHEL-PE という Azure VM (OS ディスク 1 つ、データディスク 2 つ) を (2) の既存の置換えにてリストアしたあとのストレージ アカウントです。
+ VM 名：vm-temp-01 という Azure VM (OS ディスク 1 つ、データディスク 2 つ) を (2) のディスクの復元にてリストアしたあとのストレージ アカウントです。
  
 
  ![](./RestoreStagingStorageAccount/RestoreStagingStorageAccount_01.png)
 
- >コンテナー名：
- vmrhelpe-51f2bd236a2e479a95cfc2bdd53b986c
- 上記の通り、Azure VM 名にランダムな文字列のコンテナー名のコンテナーが作成されます。
+> コンテナー名：
+> vmtemp01-d90848d6dcef467a9624f5c9cbfc1ad7
+> 上記の通り、Azure VM 名にランダムな文字列のコンテナー名のコンテナーが作成されます。
 
- >VHD：
- vmrhelpe-datadisk-000-20220319-233028.vhd
- vmrhelpe-datadisk-001-20220319-233028.vhd
- vmrhelpe-osdisk-20220319-233028.vhd
- 上記の通り、Azure VM 名にディスク種別および LUN 番号リストア日時 (UTC表記) が付加された vhd ファイルが作成されます。
+> VHD：
+> vmtemp01-osdisk-20250822-025019.vhd
+> vmtemp01-datadisk-001-20250822-025019.vhd
+> vvmtemp01-datadisk-000-20250822-025019.vhd
+> 上記の通り、Azure VM 名にディスク種別および LUN 番号リストア日時 (UTC表記) が付加された vhd ファイルが作成されます。
 
- >json：
- azuredeployf08911fe-654a-49e1-9baa-41ca15cbb272.json
- config-sqlvm13-f08911fe-654a-49e1-9baa-41ca15cbb272.json
- parameterf08911fe-654a-49e1-9baa-41ca15cbb272.json
- 上記の通り、
- 「azuredeploy<リストア ジョブで使用されるJob ID>」
- 「config-<VM 名>-<リストア ジョブで使用されるJob ID>」
- 「parameter<リストア ジョブで使用されるJob ID>」の名前から始まるファイルが 3 つ作成されます。
+> json：
+> azuredeployfe1ece11-f3b3-49cc-b7c4-04dc93f1afa2.json
+> config-vmtemp01-fe1ece11-f3b3-49cc-b7c4-04dc93f1afa2.json
+> parameterfe1ece11-f3b3-49cc-b7c4-04dc93f1afa2.json
+> 上記の通り、
+> 「azuredeploy<リストア ジョブで使用されるJob ID>」
+> 「config-<VM 名>-<リストア ジョブで使用されるJob ID>」
+> 「parameter<リストア ジョブで使用されるJob ID>」の名前から始まるファイルが 3 つ作成されます。
 
 「Job ID」は、コマンドからの確認や、Recovery Services コンテナー > バックアップ ジョブ > 「ジョブのエクスポート」より確認ができます。
 
