@@ -22,6 +22,9 @@ disableDisclaimer: false
    - Hyper-V から Azure へのディザスター リカバリー アーキテクチャ
  　  https://learn.microsoft.com/ja-jp/azure/site-recovery/hyper-v-azure-architecture
 
+<font color="MediumVioletRed">※　本ブログ記事は、「パブリック エンドポイント経由で ASR 構成する」場合の疎通確認スクリプトです。</font>
+　　プライベート エンドポイント経由で ASR 構成している場合のブログ記事ではありません。
+　　プライベート エンドポイント構成の場合、ユーザーの環境毎に作成されているプライベート FQDN へ接続確立できているかどうかを、ユーザー側にて確認いただく必要があります。
 
 ## 目次
 -----------------------------------------------------------
@@ -32,8 +35,8 @@ disableDisclaimer: false
 [4-1. Windows OS 向けの疎通確認スクリプト内の構成](#4-1)
 [4-2. Linux OS 向けの疎通確認スクリプト内の構成](#4-2)
 [5. 手動でキャッシュ用ストレージ アカウントへの疎通を確認する方法](#5)
-[5-1. オプション 1 コマンドを使った疎通確認 - 手順](#5-1)
-[5-2. オプション 2 Azure Storage Explorer を使った確認 - 手順](#5-2)
+[5-1. コマンドを使った疎通確認 - 手順](#5-1)
+[5-2. Azure Storage Explorer を使った確認 - 手順](#5-2)
 -----------------------------------------------------------
 
 ## 1. Azure Site Recovery の A2A・H2A シナリオにおける通信要件<a id="1"></a>
@@ -46,7 +49,7 @@ Azure 仮想マシンのレプリケートを構成したい場合には、レ�
 - H2A 接続の要件 (パブリック エンドポイント経由でレプリケート構成する場合)
   https://learn.microsoft.com/ja-jp/azure/site-recovery/hyper-v-azure-architecture#set-up-outbound-network-connectivity
 
-上図は、 A2A の通信要件ドキュメントの画像です。
+上図は、 A2A の通信要件ドキュメント (パブリック エンドポイント経由) の画像です。
 黄色罫線箇所のアドレスは、「A2A」「H2A」どちらのシナリオであっても同様に必要となる通信要件です。
 「Service Bus」は、「レプリケート処理」自体には必要はありませんが、Azure 仮想マシン上でのレプリケート状態などを、Azure へと送信し、Azure ポータル画面の「レプリケート ヘルス」欄にて正しいレプリケート状態を確認するために必要な通信先となります。
 レプリケート希望の Azure 仮想マシンが ADE 暗号化済なのであれば、「Key Vault」への通信確立も必要となります。
@@ -135,7 +138,7 @@ Linux OS 向けの疎通確認スクリプト (Check_ASR_NW_Linux_A2A_ver1.0.sh)
 
 
 ## 5. 手動でキャッシュ用ストレージ アカウントへの疎通を確認する方法<a id="5"></a>
-前段で説明している疎通確認スクリプトを使わず、手動でストレージ アカウントへの接続を確認したい場合は、下記手順にて確認可能です。
+手動でストレージ アカウントへの接続を確認する方法を紹介します。
 
 【確認オプション】
 - (オプション 1 ) コマンドを使った疎通確認
@@ -145,7 +148,7 @@ Linux OS 向けの疎通確認スクリプト (Check_ASR_NW_Linux_A2A_ver1.0.sh)
 ![](./RequestForInvestigatingNWASR/002.png)
 
 
-### 5-1. オプション 1 コマンドを使った疎通確認 - 手順<a id="5-1"></a>
+### 5-1. コマンドを使った疎通確認 - 手順<a id="5-1"></a>
 OS 別に、下記コマンドを全て実行ください。
 弊社サポートへのお問い合わせを希望される場合は、「実行コマンド」と「実行結果」が分かる内容をテキストファイル形式にて、弊社までご提供ください。
 
@@ -153,6 +156,10 @@ OS 別に、下記コマンドを全て実行ください。
 `nslookup <ストレージ アカウント名>.blob.core.windows.net`
 `tnc -port 443 <ストレージ アカウント名>.blob.core.windows.net`
 `Invoke-WebRequest https://<ストレージ アカウント名>.blob.core.windows.net`
+
+(※)プロキシを経由して、キャッシュ用ストレージ アカウントとの通信を行いたい場合は、追加で下記コマンドを実行ください。
+`Invoke-WebRequest https://<ストレージ アカウント名>.blob.core.windows.net -Proxy http://<プロキシ サーバーの IP アドレス>:<プロキシ ポート>`
+
 (実行結果例)
 ![](./RequestForInvestigatingNWASR/018.png)
 
@@ -160,11 +167,15 @@ OS 別に、下記コマンドを全て実行ください。
 `nslookup <ストレージ アカウント名>.blob.core.windows.net`
 `nc -vz <ストレージ アカウント名>.blob.core.windows.net 443`
 `curl -I https://<ストレージ アカウント名>.blob.core.windows.net`
+
+(※)プロキシを経由して、キャッシュ用ストレージ アカウントとの通信を行いたい場合は、追加で下記コマンドを実行ください。
+`curl -I --proxy http://<プロキシ サーバーの IP アドレス>:<プロキシ ポート> https://<ストレージ アカウント名>.blob.core.windows.net`
+
 (実行結果例)
 ![](./RequestForInvestigatingNWASR/019.png)
 
 
-### 5-2. オプション 2 Azure Storage Explorer を使った確認 - 手順<a id="5-2"></a>
+### 5-2. Azure Storage Explorer を使った確認 - 手順<a id="5-2"></a>
 1. 対象マシン上で、次の URL から Azure Storage Explorer をインストールします。
    https://azure.microsoft.com/ja-jp/products/storage/storage-explorer/#overview
 1. Azure ポータル画面 > ストレージ アカウント > [セキュリティとネットワーク] > [アクセス キー] > [ストレージ アカウント名] と [key] を確認しておきます。
@@ -192,6 +203,7 @@ OS 別に、下記コマンドを全て実行ください。
    ![](./RequestForInvestigatingNWASR/016.png)
 1. 各コンテナーへのアップロードが正常終了することを確認します。
    ![](./RequestForInvestigatingNWASR/017.png)
- 
+2. BLOB コンテナーへのアップロードが正常に行えることを確認した後は、テスト目的で任意に作成した BLOB コンテナーとファイルは削除ください。
+
 
 ご案内は以上となります。
