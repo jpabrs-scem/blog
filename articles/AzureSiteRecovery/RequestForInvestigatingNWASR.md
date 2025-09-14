@@ -1,6 +1,6 @@
 ---
 title: Azure Site Recovery の障害調査に必要な情報 (疎通確認)
-date: 2025-05-12 12:00:00
+date: 2025-09-16 12:00:00
 tags:
   - Azure Site Recovery
   - 情報採取
