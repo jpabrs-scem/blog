@@ -28,7 +28,7 @@ Azure VM Backup では、バックアップデータは**Recovery Services コ�
 
 
 ## <a id="2"></a>2. バックアップ データの合計量を確認する方法
-まずは、**Recovery Services コンテナーに保存されている VM のバックアップ データの合計量**を確認する方法をご紹介します。
+まずは、**Recovery Services コンテナーに保存されているバックアップ データの合計量**を確認する方法をご紹介します。
 
 この確認には、特別な設定や追加作業は不要です。
 Azure Portal で対象の **Recovery Services コンテナー**を開き、**［概要］** ページの **［バックアップ］** タブ下部に表示される情報から、**VM のバックアップ データの合計量**を簡単に確認できます。
@@ -47,6 +47,10 @@ Azure Portal で対象の **Recovery Services コンテナー**を開き、**［
 ![](./HowToCheckBackupDataSizePerVM/3_1_logAnalyticsWorkspace.png)
 ワークスペース名は任意で構いません。
 
+Log Analytics ワークスペースの作成方法の詳細につきましては、以下の公式ドキュメントをご覧ください。
+・Log Analytics ワークスペースの作成 - Azure Monitor | Microsoft Learn
+　https://learn.microsoft.com/ja-jp/azure/azure-monitor/logs/quick-create-workspace?tabs=azure-portal
+
 #### 2. Recovery Services コンテナーで診断設定を構成
 次に、Recovery Services コンテナーの **［監視］** → **［診断設定］** を開き **［診断設定を追加する］** をクリックして構成を追加します。
 ![](./HowToCheckBackupDataSizePerVM/3_1_diagnostics.png)
@@ -58,6 +62,10 @@ Azure Portal で対象の **Recovery Services コンテナー**を開き、**［
 送信先には、先ほど作成した Log Analytics ワークスペースを選択します。
 ターゲット テーブルの種類は**リソース固有**を選択してください。
 ![](./HowToCheckBackupDataSizePerVM/3_1_diagnosticsSetting.png)
+
+診断設定の詳細につきましては、以下の公式ドキュメントをご覧ください。
+・Azure Backup ユーザー向けの診断イベント - Azure Backup | Microsoft Learn
+　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-diagnostic-events?tabs=recovery-services-vaults
 
 Log Analytics をご利用いただく場合、Azure VM Backup の費用に加えて、**ログのインジェストおよびクエリに対して別途費用が発生します**。
 Log Analytics の費用に関する詳細は、以下の公式ドキュメントをご参照ください。
@@ -90,3 +98,7 @@ Azure Backup のレポート構成方法や、レポート表示までの時間�
 そのため、費用の算出につきましては、お客様ご自身で「Azure Backup の費用」に関する以下の公式サイトをご参照のうえ、VM ごとのバックアップ費用を計算いただく必要がございます。
 ・価格 – Azure Backup | Microsoft Azure
 　https://azure.microsoft.com/ja-jp/pricing/details/backup/
+もし、Recovery Services コンテナーごとの Azure VM Backup の合計費用でよろしければ、ご確認いただけます。
+Azure VM Backup の合計費用の詳細につきましては、以下の弊チームブログをご覧ください。
+・Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い | Japan CSS ABRS Support Blog !!
+　https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_billing/#2
