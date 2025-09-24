@@ -83,6 +83,8 @@ Recovery Services コンテナーの **［管理］** → **［バックアッ�
 ![](./HowToCheckBackupDataSizePerVM/3_2_backupData.png)
 
 ただし、Recovery Services コンテナーにて診断設定を構成した直後にバックアップ レポートを確認いただいても、**レポートのデータがすぐに表示されない場合があります**。
+そのため、**Log Analytics にデータ送信するように Recovery Services コンテナーの診断設定を構成した 2 日以上後からレポートを表示することを推奨**いたします。
+
 これは、診断設定後の初回データ送信に時間がかかるためであり、以下の点にご留意ください。
 > 診断を構成した後、最初のデータ プッシュが完了するまでに最大 24 時間かかることがあります。 Log Analytics ワークスペースへのデータの送信が開始された後、レポートのデータがすぐに表示されない場合があります。まだ終わっていない現在日のデータはレポートに表示されないためです。 詳細については、「バックアップ レポートで使用される規則」を参照してください。 Log Analytics にデータを送信するようにコンテナーを構成した 2 日後からレポートの表示を開始することをお勧めします。
 
@@ -90,7 +92,6 @@ Azure Backup のレポート構成方法や、レポート表示までの時間�
 ・Azure Backup のレポートを構成する - Azure Backup | Microsoft Learn
 　https://learn.microsoft.com/ja-jp/azure/backup/configure-reports?tabs=recovery-services-vaults
 
-そのため、**Log Analytics にデータ送信するように Recovery Services コンテナーの診断設定を構成した 2 日以上後からレポートの表示を開始することを推奨**いたします。
 
 ## <a id="4"></a>4. 現時点でできないこと
 上記にて VM ごとのバックアップ データ量の確認方法をご案内いたしました。
