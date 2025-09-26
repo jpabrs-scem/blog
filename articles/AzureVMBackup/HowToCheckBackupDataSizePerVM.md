@@ -1,6 +1,6 @@
 ---
 title: VM ごとのバックアップ データ量の確認方法
-date: 2025-09-19 12:00:00
+date: 2025-09-26 12:00:00
 tags:
   - Azure VM Backup
   - how to
