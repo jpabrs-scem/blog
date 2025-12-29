@@ -35,8 +35,8 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/HowToMoveClassicAlert_20.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/HowToMoveClassicAlert_21.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/HowToMoveClassicAlert_22.png">
-<meta property="article:published_time" content="2025-03-24T03:00:00.000Z">
-<meta property="article:modified_time" content="2025-09-26T01:40:12.793Z">
+<meta property="article:published_time" content="2025-12-29T07:00:00.000Z">
+<meta property="article:modified_time" content="2025-12-29T06:59:25.865Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="how to">
@@ -120,13 +120,13 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2025-03-24T03:00:00.000Z" itemprop="datePublished">2025-03-24</time>
+  <time datetime="2025-12-29T07:00:00.000Z" itemprop="datePublished">2025-12-29</time>
 </a>
         
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+66a9b93a-e7d6-5d59-935c-8e4d535b6993%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BQL4L-5D8+XNV5-HTZ+%E3%82%AF%E3%83%A9%E3%82%B7%E3%83%83%E3%82%AF+%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E3%81%8B%E3%82%89+Azure+Monitor+%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%B5%84%E3%81%BF%E8%BE%BC%E3%81%BF%E3%81%AE%E3%82%A2%E3%83%A9%E3%83%BC%E3%83%88%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FHowToMoveClassicAlert%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FHowToMoveClassicAlert.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FHowToMoveClassicAlert.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/" data-id="cmg06d6re00690nmo6b74hatt" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/" data-id="cmjqt5q0i00690nl72nj2a5kb" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -144,7 +144,7 @@
 <h2 id="Q2-どの-Recovery-Services-コンテナーが「クラシック-アラート設定」になっていますか？"><a href="#Q2-どの-Recovery-Services-コンテナーが「クラシック-アラート設定」になっていますか？" class="headerlink" title="Q2.どの Recovery Services コンテナーが「クラシック アラート設定」になっていますか？"></a><a id="Q2"></a>Q2.どの Recovery Services コンテナーが「クラシック アラート設定」になっていますか？</h2><p><strong>A2</strong><br>・ 既定ですべての Recovery Services コンテナーにおいて、「Azure Monitor を使用した組み込みのアラート」へと移行していない Recovery Services コンテナーは「クラシック アラート」が有効になっており、今回の正常性アラート対象となっております<br>・ 実際に「クラシック アラート」を用いてメールへの通知構成をしているかどうかは、お客様環境の設定次第です</p>
 <h4 id="【どの-Recovery-Services-コンテナーでクラシック-アラートが有効になっているのかを確認する方法】"><a href="#【どの-Recovery-Services-コンテナーでクラシック-アラートが有効になっているのかを確認する方法】" class="headerlink" title="【どの Recovery Services コンテナーでクラシック アラートが有効になっているのかを確認する方法】"></a>【どの Recovery Services コンテナーでクラシック アラートが有効になっているのかを確認する方法】</h4><ul>
 <li><ol>
-<li>Azure ポータルにてビジネス継続センターを開き、[監視とレポート] &gt; [警告] &gt; [アラートの管理] &gt; [リソースの組み込みのアラート設定の管理] を選択します<br><img src="/blog/AzureBackupGeneral/HowToMoveClassicAlert/HowToMoveClassicAlert_03.png"></li>
+<li>Azure ポータルにて回復性 (Resiliency) を開き、[監視とレポート] &gt; [警告] &gt; [アラートの管理] &gt; [リソースの組み込みのアラート設定の管理] を選択します<br><img src="/blog/AzureBackupGeneral/HowToMoveClassicAlert/HowToMoveClassicAlert_03.png"></li>
 </ol>
 </li>
 <li><ol start="2">
@@ -172,7 +172,7 @@
 </ul>
 <div class="alert is-warning"><p class="alert-title">警告</p><p>Recovery Services コンテナーの [監視の設定] の下記どちらかの設定が無効化されていると、[Azure Monitor アラートのみの使用をオプトイン] 画面ではクラシック アラートを使用しているコンテナーとしてカウントされたままとなりますのでご注意ください。</p><p>・ 「Backup 用の Azure Monitor アラートのみを使用」</p><p>・ 「Site Recovery 用の Azure Monitor アラートのみを使用」</p><p>例)</p><p><img src="/blog/AzureBackupGeneral/HowToMoveClassicAlert/HowToMoveClassicAlert_08.png">  </p></div>
 <p>なお、 [監視の設定] 画面に記載されているように、メールなどの通知が必要な場合は、別途設定していただく必要があります。<br>詳細は下記のドキュメントを参照いただければと存じます。</p>
-<p>・ 通知を構成する / チュートリアル - Azure ビジネス継続性センターの警告とメトリックスを監視する | Microsoft Learn<br>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/business-continuity-center/tutorial-monitor-alerts-metrics#configure-notifications">https://learn.microsoft.com/ja-jp/azure/business-continuity-center/tutorial-monitor-alerts-metrics#configure-notifications</a></p>
+<p>・ 通知の構成 / チュートリアル - 回復性でアラートとメトリックを監視する | Microsoft Learn<br>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/resiliency/tutorial-monitor-alerts-metrics#configure-notifications">https://learn.microsoft.com/ja-jp/azure/resiliency/tutorial-monitor-alerts-metrics#configure-notifications</a></p>
 <h2 id="Q3-クラシック-アラートから-Azure-Monitor-を使用した組み込みのアラートへと移行した場合のコストはどうなりますか？"><a href="#Q3-クラシック-アラートから-Azure-Monitor-を使用した組み込みのアラートへと移行した場合のコストはどうなりますか？" class="headerlink" title="Q3.クラシック アラートから Azure Monitor を使用した組み込みのアラートへと移行した場合のコストはどうなりますか？"></a><a id="Q3"></a>Q3.クラシック アラートから Azure Monitor を使用した組み込みのアラートへと移行した場合のコストはどうなりますか？</h2><p><strong>A3</strong> 「Azure Monitor を使用した組み込みのアラートが生成されること」自体に料金は発生しません。<br>一方、メールなどへアラートを通知させる場合は少額の料金が発生いたします。<br>詳細は下記ドキュメントをご参照ください。</p>
 <p>・ クラシック アラートから組み込みの Azure Monitor アラートに移行する / Azure Backup 用に Azure Monitor ベースのアラートを管理する - Azure Backup | Microsoft Learn<br>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-alerts?tabs=recovery-services-vaults#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-alerts?tabs=recovery-services-vaults#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts</a><br><img src="/blog/AzureBackupGeneral/HowToMoveClassicAlert/HowToMoveClassicAlert_09.png">  </p>
 <p>Free レベル (1 か月あたり 1,000 メール) を超える通知に対しては、下記の料金が発生します。</p>
@@ -220,12 +220,12 @@
 <li>クラシック アラートの 「警告」 ≒  Azure Monitor を利用した組み込みのアラートの 「警告」  </li>
 </ul>
 <h3 id="【Azure-Monitor-を使用した組み込みのアラートで、クラシック-アラートと同じ重要度のアラート-メールを通知する設定方法】"><a href="#【Azure-Monitor-を使用した組み込みのアラートで、クラシック-アラートと同じ重要度のアラート-メールを通知する設定方法】" class="headerlink" title="【Azure Monitor を使用した組み込みのアラートで、クラシック アラートと同じ重要度のアラート メールを通知する設定方法】"></a><a id="Q5.1"></a>【Azure Monitor を使用した組み込みのアラートで、クラシック アラートと同じ重要度のアラート メールを通知する設定方法】</h3><p>Azure Monitor を使用した組み込みのアラートで、クラシック アラートと同じ重要度のアラート メールを通知する設定方法を、以下にご案内いたします。</p>
-<div class="alert is-warning"><p class="alert-title">警告</p><p>下記ドキュメントに従って、クラシック アラートから組み込みの Azure Monnitor アラートへ移行する設定が完了していることが前提となります。</p><p>もし未設定である場合には、事前に下記ドキュメント 1 の手順 1 ~ 5 、ならびにドキュメント 2 の手順 1 ~ 9 を実行してください。</p><p>・ ドキュメント 1</p><p>　 クラシック アラートから組み込みの Azure Monitor アラートに移行する / Azure Backup 用に Azure Monitor ベースのアラートを管理する - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-alerts?tabs=recovery-services-vaults#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-alerts?tabs=recovery-services-vaults#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts</a></p><p>・ ドキュメント 2</p><p>　 通知を構成する / チュートリアル - Azure ビジネス継続性センターの警告とメトリックスを監視する | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/business-continuity-center/tutorial-monitor-alerts-metrics#configure-notifications">https://learn.microsoft.com/ja-jp/azure/business-continuity-center/tutorial-monitor-alerts-metrics#configure-notifications</a></p></div>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>下記ドキュメントに従って、クラシック アラートから組み込みの Azure Monnitor アラートへ移行する設定が完了していることが前提となります。</p><p>もし未設定である場合には、事前に下記ドキュメント 1 の手順 1 ~ 5 、ならびにドキュメント 2 の手順 1 ~ 9 を実行してください。</p><p>・ ドキュメント 1</p><p>　 クラシック アラートから組み込みの Azure Monitor アラートに移行する / Azure Backup 用に Azure Monitor ベースのアラートを管理する - Azure Backup | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-alerts?tabs=recovery-services-vaults#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-alerts?tabs=recovery-services-vaults#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts</a></p><p>・ ドキュメント 2</p><p>　 通知の構成 / チュートリアル - 回復性でアラートとメトリックを監視する | Microsoft Learn</p><p>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/resiliency/tutorial-monitor-alerts-metrics#configure-notifications">https://learn.microsoft.com/ja-jp/azure/resiliency/tutorial-monitor-alerts-metrics#configure-notifications</a></p></div>
 <h4 id="クラシック-アラートのメール通知設定を確認する"><a href="#クラシック-アラートのメール通知設定を確認する" class="headerlink" title="クラシック アラートのメール通知設定を確認する"></a>クラシック アラートのメール通知設定を確認する</h4><ul>
 <li>Recovery Services コンテナーの [監視] &gt; [バックアップ アラート] &gt; [通知の構成] を表示し、項目「重要度」の設定内容を確認します<br><img src="/blog/AzureBackupGeneral/HowToMoveClassicAlert/HowToMoveClassicAlert_15.png"></li>
 </ul>
 <h4 id="Azure-Backup-用のアラート処理ルールの設定を変更する"><a href="#Azure-Backup-用のアラート処理ルールの設定を変更する" class="headerlink" title="Azure Backup 用のアラート処理ルールの設定を変更する"></a>Azure Backup 用のアラート処理ルールの設定を変更する</h4><ul>
-<li><p>ビジネス継続センターの [監視とレポート] &gt; [警告] &gt; [アラートの管理] &gt; [アラート処理ルールの管理] を表示し、Azure Monitor アラートへ切り替えるときに作成したアラート処理ルールを編集します  </p>
+<li><p>回復性 (Resiliency) の [監視とレポート] &gt; [警告] &gt; [アラートの管理] &gt; [アラート処理ルールの管理] を表示し、Azure Monitor アラートへ切り替えるときに作成したアラート処理ルールを編集します  </p>
 <p><img src="/blog/AzureBackupGeneral/HowToMoveClassicAlert/HowToMoveClassicAlert_16.png"><br><img src="/blog/AzureBackupGeneral/HowToMoveClassicAlert/HowToMoveClassicAlert_17.png"></p>
 </li>
 <li><p>項目 フィルター に、「重要度」フィルターを追加し、値として “0 - 重大”, “1 - エラー”, “2 - 警告” のいずれかを選択し、設定を保存します<br>(下記例においては、クラシック アラートの重要度設定が “クリティカル, 警告” となっていたため、”0 - 重大”, “1 - エラー”, “2 - 警告” の 3 点を選択しております)<br><img src="/blog/AzureBackupGeneral/HowToMoveClassicAlert/HowToMoveClassicAlert_18.png"></p>
@@ -272,19 +272,19 @@
     
 <nav id="article-nav">
   
-    <a href="../How_to_set_Backup_Alert/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../RSV_BV/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例
+          Recovery Services コンテナーとバックアップ コンテナーについて
         
       </div>
     </a>
   
   
-    <a href="../How_To_Check_Log_Backup_Jobs/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/HowToCheckBackupDataSizePerVM/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">ログ バックアップのジョブを確認する方法</div>
+      <div class="article-nav-title">VM ごとのバックアップ データ量の確認方法</div>
     </a>
   
 </nav>
@@ -303,23 +303,23 @@
       <ul>
         
           <li>
+            <a href="../How_To_Check_Log_Backup_Jobs/">ログ バックアップのジョブを確認する方法</a>
+          </li>
+        
+          <li>
+            <a href="../How_to_set_Backup_Alert/">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
+          </li>
+        
+          <li>
+            <a href="../RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
+          </li>
+        
+          <li>
+            <a href="">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+          </li>
+        
+          <li>
             <a href="../../AzureVMBackup/HowToCheckBackupDataSizePerVM/">VM ごとのバックアップ データ量の確認方法</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureVMBackup/RestoreStagingStorageAccount/">Azure VM Backup でリストアする際にステージングの場所として利用するストレージ アカウントについて</a>
-          </li>
-        
-          <li>
-            <a href="../RequestForInvestigatingNW/">Azure Backup の障害調査に必要な情報 (疎通確認)</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureVMBackup/CZR/">Azure VM Backup におけるクロス ゾーン リストア (CZR) について</a>
-          </li>
-        
-          <li>
-            <a href="../../AzureVMBackup/HowToUninstallVMSnapshotExtension/">「VMSnapshot」拡張機能の再インストール手順 (Windows)</a>
           </li>
         
       </ul>
@@ -342,7 +342,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">アーカイブ</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/09/">2025 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/08/">2025 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/06/">2025 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/05/">2025 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/03/">2025 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/02/">2025 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/12/">2025 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/09/">2025 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/08/">2025 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/06/">2025 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/03/">2025 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/02/">2025 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
     </div>
   </div>
 
