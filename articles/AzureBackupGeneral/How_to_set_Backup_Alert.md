@@ -42,8 +42,8 @@ Azure Backup にて、バックアップ ジョブが失敗した際にアラー
 
 ・ 1. ジョブ失敗のシナリオに対して Azure Monitor のアラートを有効にする / Azure Backup 用に Azure Monitor ベースのアラートを管理する - Azure Backup | Microsoft Learn
 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-alerts?tabs=recovery-services-vaults#turn-on-azure-monitor-alerts-for-job-failure-scenarios
-・ 2. 通知を構成する / チュートリアル - Azure ビジネス継続性センターの警告とメトリックスを監視する | Microsoft Learn
-　 https://learn.microsoft.com/ja-jp/azure/business-continuity-center/tutorial-monitor-alerts-metrics#configure-notifications
+・ 2. 通知を構成する / チュートリアル - 回復性でアラートとメトリックを監視する | Microsoft Learn
+　 https://learn.microsoft.com/ja-jp/azure/resiliency/tutorial-monitor-alerts-metrics#configure-notifications
 
 ### <a id="2-1"></a>2-1. Azure Monitor を使用した組み込みのアラート構成　作業例
 
@@ -54,16 +54,16 @@ Azure Backup にて、バックアップ ジョブが失敗した際にアラー
        ![](./How_to_set_Backup_Alert/How_to_set_Backup_Alert_01.png)  
 
      「Backup のジョブ エラーに関する組み込みの Azure Monitor アラート」設定を有効化することで、バックアップ ジョブが失敗した場合などに、アラートが生成されます。  
-     ・ 監視アラート / チュートリアル - Azure ビジネス継続性センターの警告とメトリックスを監視する | Microsoft Learn  
-     　 https://learn.microsoft.com/ja-jp/azure/business-continuity-center/tutorial-monitor-alerts-metrics#monitor-alerts  
+     ・ 監視アラート / チュートリアル - 回復性でアラートとメトリックを監視する | Microsoft Learn
+     　 https://learn.microsoft.com/ja-jp/azure/resiliency/tutorial-monitor-alerts-metrics#monitor-alerts
      例)  
         ![](./How_to_set_Backup_Alert/How_to_set_Backup_Alert_03.png)  
 
-- 2. ビジネス継続センターの [監視とレポート] > [警告] > [アラートの管理] > [アラート処理ルールの管理] にて、新しいアラート処理ルールを作成します  
+- 2. 回復性 (Resiliency) の [監視とレポート] > [警告] > [アラートの管理] > [アラート処理ルールの管理] にて、新しいアラート処理ルールを作成します  
      ![](./How_to_set_Backup_Alert/How_to_set_Backup_Alert_04.png)  
      ![](./How_to_set_Backup_Alert/How_to_set_Backup_Alert_05.png)  
-     ・ 通知を構成する / チュートリアル - Azure ビジネス継続性センターの警告とメトリックスを監視する | Microsoft Learn  
-     　 https://learn.microsoft.com/ja-jp/azure/business-continuity-center/tutorial-monitor-alerts-metrics#configure-notifications  
+     ・ 通知の構成 / チュートリアル - 回復性でアラートとメトリックを監視する | Microsoft Learn
+     　 https://learn.microsoft.com/ja-jp/azure/resiliency/tutorial-monitor-alerts-metrics#configure-notifications
 
 - 3. アラート処理ルールの設定を行います  
      - 今回は、Recovery Services コンテナー「rsv-01」およびバックアップ コンテナー「bpv-01」にてバックアップ構成しているため、スコープを「Recovery Services コンテナー : rsv-01」と「バックアップ コンテナー : bpv-01」とします  
