@@ -21,7 +21,7 @@ disableDisclaimer: false
 
 ## <a id="1"></a> 1. 概要  
 
-Azure Backup による SQL Server DB や SAP HANA DB のログ バックアップのジョブは、実行回数が比較的多くなる傾向にあるため、**Azure Portal の Recovery Services コンテナーやビジネス継続センターのバックアップ ジョブ一覧には表示されません**。  
+Azure Backup による SQL Server DB や SAP HANA DB のログ バックアップのジョブは、実行回数が比較的多くなる傾向にあるため、**Azure Portal の Recovery Services コンテナーや回復性 (Resiliency, ビジネス継続センター) のバックアップ ジョブ一覧には表示されません**。  
 
 ログ バックアップのジョブをご確認いただくには、Recovery Services コンテナーの診断設定を構成し、Recovery Services コンテナーの診断イベントを Log Analytics ワークスペースへ送信していただく必要がございます。  
 
