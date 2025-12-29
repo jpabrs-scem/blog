@@ -45,7 +45,7 @@ QL4L-5D8」「XNV5-HTZ」アラートの例)
 ・ 実際に「クラシック アラート」を用いてメールへの通知構成をしているかどうかは、お客様環境の設定次第です
 
 #### 【どの Recovery Services コンテナーでクラシック アラートが有効になっているのかを確認する方法】  
-- 1. Azure ポータルにてビジネス継続センターを開き、[監視とレポート] > [警告] > [アラートの管理] > [リソースの組み込みのアラート設定の管理] を選択します  
+- 1. Azure ポータルにて回復性 (Resiliency) を開き、[監視とレポート] > [警告] > [アラートの管理] > [リソースの組み込みのアラート設定の管理] を選択します  
      ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_03.png)
 - 2. [Azure Monitor アラートのみの使用をオプトイン] 画面にて、リストされている Recovery Services コンテナーを確認します
      ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_04.png)
@@ -83,8 +83,8 @@ QL4L-5D8」「XNV5-HTZ」アラートの例)
 なお、 [監視の設定] 画面に記載されているように、メールなどの通知が必要な場合は、別途設定していただく必要があります。
 詳細は下記のドキュメントを参照いただければと存じます。
 
-・ 通知を構成する / チュートリアル - Azure ビジネス継続性センターの警告とメトリックスを監視する | Microsoft Learn
-　 https://learn.microsoft.com/ja-jp/azure/business-continuity-center/tutorial-monitor-alerts-metrics#configure-notifications
+・ 通知の構成 / チュートリアル - 回復性でアラートとメトリックを監視する | Microsoft Learn
+　 https://learn.microsoft.com/ja-jp/azure/resiliency/tutorial-monitor-alerts-metrics#configure-notifications
 
 
 ## <a id="Q3"></a>Q3.クラシック アラートから Azure Monitor を使用した組み込みのアラートへと移行した場合のコストはどうなりますか？ 
@@ -206,16 +206,15 @@ Azure Monitor を使用した組み込みのアラートで、クラシック �
 > 　 クラシック アラートから組み込みの Azure Monitor アラートに移行する / Azure Backup 用に Azure Monitor ベースのアラートを管理する - Azure Backup | Microsoft Learn
 > 　 https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-alerts?tabs=recovery-services-vaults#migrate-from-classic-alerts-to-built-in-azure-monitor-alerts
 > ・ ドキュメント 2
-> 　 通知を構成する / チュートリアル - Azure ビジネス継続性センターの警告とメトリックスを監視する | Microsoft Learn
-> 　 https://learn.microsoft.com/ja-jp/azure/business-continuity-center/tutorial-monitor-alerts-metrics#configure-notifications
-
+> 　 通知の構成 / チュートリアル - 回復性でアラートとメトリックを監視する | Microsoft Learn
+> 　 https://learn.microsoft.com/ja-jp/azure/resiliency/tutorial-monitor-alerts-metrics#configure-notifications
 
 #### クラシック アラートのメール通知設定を確認する
 - Recovery Services コンテナーの [監視] > [バックアップ アラート] > [通知の構成] を表示し、項目「重要度」の設定内容を確認します  
   ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_15.png)
 
 #### Azure Backup 用のアラート処理ルールの設定を変更する
-- ビジネス継続センターの [監視とレポート] > [警告] > [アラートの管理] > [アラート処理ルールの管理] を表示し、Azure Monitor アラートへ切り替えるときに作成したアラート処理ルールを編集します  
+- 回復性 (Resiliency) の [監視とレポート] > [警告] > [アラートの管理] > [アラート処理ルールの管理] を表示し、Azure Monitor アラートへ切り替えるときに作成したアラート処理ルールを編集します  
 
   ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_16.png)
   ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_17.png)
