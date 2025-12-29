@@ -1,6 +1,6 @@
 ---
 title:  Recovery Services コンテナーとバックアップ コンテナーについて
-date: 2025-05-08 12:00:00
+date: 2025-12-29 16:00:00
 tags:
   - Azure Backup General
   - how to

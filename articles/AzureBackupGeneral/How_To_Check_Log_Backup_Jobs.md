@@ -1,6 +1,6 @@
 ---
 title: ログ バックアップのジョブを確認する方法
-date: 2025-03-18 12:00:00
+date: 2025-12-29 16:00:00
 tags:
   - Information
   - Azure Backup General
