@@ -80,6 +80,10 @@ A2A シナリオにおいて、Azure 仮想マシンのレプリケートを構�
 
    ※　スクリプト実施時に実行ポリシーの制限によりスクリプトが実行できない場合は、下記コマンドを実行して実行ポリシーを変更後、再度スクリプト実効をお試しください。
    `Set-ExecutionPolicy Unrestricted`
+
+   (参考) Set-ExecutionPolicy
+   https://learn.microsoft.com/ja-jp/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.5
+
 1. “Script Completed” が出力されれば、スクリプトは終了です。
    ※　スクリプト実行完了までには、環境によっては 20 分ほど要する場合がございます。20 分経っても完了しない場合は、control + c を押下して強制終了してください。
    ![](./RequestForInvestigatingNWASR/004.png)
