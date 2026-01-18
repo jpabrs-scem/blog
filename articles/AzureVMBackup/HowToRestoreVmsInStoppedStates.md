@@ -1,6 +1,6 @@
 ---
 title: 停止状態で VM を復元する方法
-date: 2025-09-26 12:00:00
+date: 2026-01-20 12:00:00
 tags:
   - Azure VM Backup
   - how to
@@ -25,9 +25,9 @@ disableDisclaimer: false
 Azure VM Backup では、復元時に「新しい仮想マシンの作成」オプションを選択すると、復元された VM は自動的に実行状態になります。
 一方で、「復元後の VM は停止状態にしたい」というご要望をいただくことがあります。
 
-結論から申し上げますと、**元の VM に影響を与えることなく、同一仮想ネットワーク上に、停止状態で新規 VM を復元することはかないません**。
+結論から申し上げますと、**停止状態で新規 VM を復元することはかないません**。
 
-本記事では、「VM を停止状態で復元する方法」の 2 つの代替案をご紹介します。
+本記事では、代替案を 2 つご紹介します。
 
 
 ## <a id="2"></a>2. 「新しい仮想マシンの作成」で復元した際の挙動
@@ -37,7 +37,7 @@ Azure VM Backup では、復元時に「新しい仮想マシンの作成」オ�
 この方法では、新しい VM を作成できますが、VM は実行状態で復元されます。
 ![](./HowToRestoreVmsInStoppedStates/2_restoredVm.png)
 
-復元完了後に手動で停止することは可能ですが、「停止状態で復元する」ことは現時点 (2025 年 9 月 25 日現在) でかないません。
+復元完了後に手動で停止することは可能ですが、「停止状態で復元する」ことは現時点 (2026 年 1 月時点) ではかないません。
 
 ## <a id="3"></a>3. 停止状態で復元したい場合の代替策
 「VM を停止状態で復元したい場合」の 2 つの代替案をご紹介します。
@@ -47,25 +47,29 @@ Azure VM Backup では、復元時に「新しい仮想マシンの作成」オ�
 ### <a id="3-1"></a>3-1. 「既存の置換」オプションを利用する
 一つ目は、**「既存を置換」オプション**を選択して VM を復元する方法です。
 ![](./HowToRestoreVmsInStoppedStates/3_1_restore.png)
-ただし、「既存を置換」オプションを利用する場合、**VM は停止されている**必要がございます。
-
-この方法で復元すると、復元元の VM は上書きされますが、VM は停止状態で復元することができます。
-![](./HowToRestoreVmsInStoppedStates/3_1_restoredVm.png)
+この方法で復元すると、バックアップ元の VM は上書きされますが、VM は停止状態で復元することができます。
+なお「既存を置換」オプションを利用する場合、**バックアップ元の VM は事前に停止しておく**必要がございます。
 
 ### <a id="3-2"></a>3-2. 別ネットワークへ新規作成して影響を隔離する
 二つ目は、**別ネットワークに**新規 VM として復元する方法です。
-「VM を復元してバックアップ データを確かめたいが、本番環境に復元し、本番環境に影響が出るのを避けたい」といったニーズの場合、この代替案を推奨いたします。
+「VM を復元してバックアップ データを確かめたいが、バックアップ元であった VM 上に復元することによって、予期せぬ影響が出るのを避けたい」といったニーズの場合、この代替案を推奨いたします。
+
+[!WARNING]
+> この方法では、新規 VM を停止状態で復元することはできません。予めご注意ください。
 
 まず、「仮想ネットワーク」 → 「作成」より、新しく仮想ネットワークを作成してください。
-![](./HowToRestoreVmsInStoppedStates/3_2_virtualNetwork.png)
+
+仮想ネットワーク作成後、サブネットに対して、 ネットワーク セキュリティ グループを追加し、外部（Outbound）への接続を「拒否」するルールを付与しておきます。
+これによって、このサブネット上に配置されるVMは、サブネット上から外部への接続ができなくなります。
+- (参考) ネットワーク セキュリティ グループの作成
+  https://learn.microsoft.com/ja-jp/azure/virtual-network/manage-network-security-group?tabs=network-security-group-portal#create-a-network-security-group
 
 次に、VM の復元において、新しく作成した仮想ネットワークを選択したうえで、新規 VM の作成をしてください。
 ![](./HowToRestoreVmsInStoppedStates/3_2_restore.png)
 
 この方法で復元すると、作られる VM は実行状態となりますが、別の仮想ネットワークに作成されます。
-そのため、本番環境に極力影響を与えることなく、バックアップ データをご確認いただけます。
-![](./HowToRestoreVmsInStoppedStates/3_2_restoredVm.png)
+そのため、元々のバックアップ対象である VM に極力影響を与えることなく、バックアップ データをご確認いただけます。
 
 Azure VM のデータを復元する方法の詳細につきましては、以下の公式ドキュメントをご確認ください。
-・Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn
-　https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms
+- (参考) Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn
+  https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms
