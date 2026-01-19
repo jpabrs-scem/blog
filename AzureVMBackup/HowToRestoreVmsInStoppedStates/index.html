@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>停止状態で VM を復元する方法 | Japan CSS ABRS  Support Blog !!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポート チームです。今回は、Azure VM Backup において、停止状態で VM を復元する方法 についてご紹介します。 目次 1. 概要2. 「新しい仮想マシンの作成」で復元した際の挙動3. 停止状態で復元したい場合の代替策3-1. 「既存の置換」オプションを利用する3-2. 別ネットワークへ新規作成して影響を隔離する  1. 概要Azure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="停止状態で VM を復元する方法">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToRestoreVmsInStoppedStates/index.html">
+<meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポート チームです。今回は、Azure VM Backup において、停止状態で VM を復元する方法 についてご紹介します。 目次 1. 概要2. 「新しい仮想マシンの作成」で復元した際の挙動3. 停止状態で復元したい場合の代替策3-1. 「既存の置換」オプションを利用する3-2. 別ネットワークへ新規作成して影響を隔離する  1. 概要Azure">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToRestoreVmsInStoppedStates/2_restore.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToRestoreVmsInStoppedStates/2_restoredVm.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToRestoreVmsInStoppedStates/3_1_restore.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToRestoreVmsInStoppedStates/3_2_restore.png">
+<meta property="article:published_time" content="2026-01-20T03:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-19T08:43:28.683Z">
+<meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
+<meta property="article:tag" content="how to">
+<meta property="article:tag" content="Azure VM Backup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToRestoreVmsInStoppedStates/2_restore.png">
+  
+    <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
+  
+
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="../../css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="site-header-logo"></div>
+  <div id="site-header-blog-wrapper"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        <div id="ms-logo"></div>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="../../atom.xml" title="RSSフィード"></a>
+        
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.bing.com/search" method="get" accept-charset="UTF-8" name="bing-search" onsubmit="var f=this;if(f['q'].value){var searchUrl =  'https://www.bing.com/search?q=' +  encodeURIComponent(f['q'].value + ' site:' + f['sitesearch'].value) ;window.open(searchUrl, 'blank') };return false;" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" id="nav-search-btn" class="search-form-submit"></button><input type="hidden" name="sitesearch" value="https://jpabrs-scem.github.io/blog"></form>
+      </div>
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="../../index.html" id="logo">Japan CSS ABRS  Support Blog !!</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="../../index.html" id="subtitle">Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-AzureVMBackup/HowToRestoreVmsInStoppedStates" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+    
+      <header class="article-header-single">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      停止状態で VM を復元する方法
+    </h1>
+  
+
+      </header>
+      <div class="article-share">
+        Last Update: 
+        <a href="" class="article-date-single">
+  <time datetime="2026-01-20T03:00:00.000Z" itemprop="datePublished">2026-01-20</time>
+</a>
+        
+        
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+d403fb7f-84f8-52a5-8842-b642117e579b%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E5%81%9C%E6%AD%A2%E7%8A%B6%E6%85%8B%E3%81%A7+VM+%E3%82%92%E5%BE%A9%E5%85%83%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHowToRestoreVmsInStoppedStates%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHowToRestoreVmsInStoppedStates.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHowToRestoreVmsInStoppedStates.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToRestoreVmsInStoppedStates/" data-id="cmkkx4fzy002f0opgcx4q26ua" class="article-share-link">共有</a>
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+<p>皆様こんにちは、Azure Backup サポート チームです。<br>今回は、<strong>Azure VM Backup において、停止状態で VM を復元する方法</strong> についてご紹介します。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. 概要</a><br><a href="#2">2. 「新しい仮想マシンの作成」で復元した際の挙動</a><br><a href="#3">3. 停止状態で復元したい場合の代替策</a><br><a href="#3-1">3-1. 「既存の置換」オプションを利用する</a><br><a href="#3-2">3-2. 別ネットワークへ新規作成して影響を隔離する</a></p>
+<hr>
+<h2 id="1-概要"><a href="#1-概要" class="headerlink" title="1. 概要"></a><a id="1"></a>1. 概要</h2><p>Azure VM Backup では、復元時に「新しい仮想マシンの作成」オプションを選択すると、復元された VM は自動的に実行状態になります。<br>一方で、「復元後の VM は停止状態にしたい」というご要望をいただくことがあります。</p>
+<p>結論から申し上げますと、<strong>停止状態で新規 VM を復元することはかないません</strong>。</p>
+<p>本記事では、代替案を 2 つご紹介します。</p>
+<h2 id="2-「新しい仮想マシンの作成」で復元した際の挙動"><a href="#2-「新しい仮想マシンの作成」で復元した際の挙動" class="headerlink" title="2. 「新しい仮想マシンの作成」で復元した際の挙動"></a><a id="2"></a>2. 「新しい仮想マシンの作成」で復元した際の挙動</h2><p>はじめに、<strong>「新しい仮想マシンの作成」オプション</strong>を選択して VM を復元した場合の挙動を確認します。<br><img src="/blog/AzureVMBackup/HowToRestoreVmsInStoppedStates/2_restore.png"></p>
+<p>この方法では、新しい VM を作成できますが、VM は実行状態で復元されます。<br><img src="/blog/AzureVMBackup/HowToRestoreVmsInStoppedStates/2_restoredVm.png"></p>
+<p>復元完了後に手動で停止することは可能ですが、「停止状態で復元する」ことは現時点 (2026 年 1 月時点) ではかないません。</p>
+<h2 id="3-停止状態で復元したい場合の代替策"><a href="#3-停止状態で復元したい場合の代替策" class="headerlink" title="3. 停止状態で復元したい場合の代替策"></a><a id="3"></a>3. 停止状態で復元したい場合の代替策</h2><p>「VM を停止状態で復元したい場合」の 2 つの代替案をご紹介します。</p>
+<ol>
+<li>「既存の置換」オプションを利用する</li>
+<li>別ネットワークへ新規作成して影響を隔離する</li>
+</ol>
+<h3 id="3-1-「既存の置換」オプションを利用する"><a href="#3-1-「既存の置換」オプションを利用する" class="headerlink" title="3-1. 「既存の置換」オプションを利用する"></a><a id="3-1"></a>3-1. 「既存の置換」オプションを利用する</h3><p>一つ目は、<strong>「既存を置換」オプション</strong>を選択して VM を復元する方法です。<br><img src="/blog/AzureVMBackup/HowToRestoreVmsInStoppedStates/3_1_restore.png"><br>この方法で復元すると、バックアップ元の VM は上書きされますが、VM は停止状態で復元することができます。<br>なお「既存を置換」オプションを利用する場合、<strong>バックアップ元の VM は事前に停止しておく</strong>必要がございます。</p>
+<h3 id="3-2-別ネットワークへ新規作成して影響を隔離する"><a href="#3-2-別ネットワークへ新規作成して影響を隔離する" class="headerlink" title="3-2. 別ネットワークへ新規作成して影響を隔離する"></a><a id="3-2"></a>3-2. 別ネットワークへ新規作成して影響を隔離する</h3><p>二つ目は、<strong>別ネットワークに</strong>新規 VM として復元する方法です。<br>「VM を復元してバックアップ データを確かめたいが、バックアップ元であった VM 上に復元することによって、予期せぬ影響が出るのを避けたい」といったニーズの場合、この代替案を推奨いたします。</p>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>この方法では、新規 VM を停止状態で復元することはできません。予めご注意ください。</p></div>
+<p>まず、「仮想ネットワーク」 → 「作成」より、新しく仮想ネットワークを作成してください。</p>
+<p>仮想ネットワーク作成後、サブネットに対して、 ネットワーク セキュリティ グループを追加し、外部（Outbound）への接続を「拒否」するルールを付与しておきます。<br>これによって、このサブネット上に配置されるVMは、サブネット上から外部への接続ができなくなります。</p>
+<ul>
+<li>(参考) ネットワーク セキュリティ グループの作成<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/virtual-network/manage-network-security-group?tabs=network-security-group-portal#create-a-network-security-group">https://learn.microsoft.com/ja-jp/azure/virtual-network/manage-network-security-group?tabs=network-security-group-portal#create-a-network-security-group</a></li>
+</ul>
+<p>次に、VM の復元において、新しく作成した仮想ネットワークを選択したうえで、新規 VM の作成をしてください。<br><img src="/blog/AzureVMBackup/HowToRestoreVmsInStoppedStates/3_2_restore.png"></p>
+<p>この方法で復元すると、作られる VM は実行状態となりますが、別の仮想ネットワークに作成されます。<br>そのため、元々のバックアップ対象である VM に極力影響を与えることなく、バックアップ データをご確認いただけます。</p>
+<p>Azure VM のデータを復元する方法の詳細につきましては、以下の公式ドキュメントをご確認ください。</p>
+<ul>
+<li>(参考) Azure Backup を使用して Azure portal を使用して VM を復元する - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-arm-restore-vms</a></li>
+</ul>
+
+      
+      
+        <div class="article-disclaimer">
+        
+          <p>※本情報の内容（添付文書、リンク先などを含む）は、作成日時点でのものであり、予告なく変更される場合があります。</p>
+        
+        </div>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
+
+        
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureVMBackup/HowToRestoreVmsInStoppedStates.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="../../AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">ログ バックアップのジョブを確認する方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="">停止状態で VM を復元する方法</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/">ログ バックアップのジョブを確認する方法</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/How_to_set_Backup_Alert/">「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/RSV_BV/">Recovery Services コンテナーとバックアップ コンテナーについて</a>
+          </li>
+        
+          <li>
+            <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">14</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">12</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Site-Recovery">Azure Site Recovery</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">7</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">5</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">30</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">28</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2026/01/">2026 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/12/">2025 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/09/">2025 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/08/">2025 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/06/">2025 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/03/">2025 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/02/">2025 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2025/01/">2025 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/12/">2024 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/11/">2024 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/09/">2024 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/08/">2024 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/06/">2024 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/05/">2024 / 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2024/01/">2024 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/12/">2023 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/10/">2023 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/09/">2023 / 09</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">2023 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">2023 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">2023 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/01/">2023 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/11/">2022 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/08/">2022 / 08</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/06/">2022 / 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/03/">2022 / 03</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/02/">2022 / 02</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2022/01/">2022 / 01</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/12/">2021 / 12</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/11/">2021 / 11</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">2021 / 10</a></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/09/">2021 / 09</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="../../tags/Azure-Backup-General/" style="font-size: 17.5px;">Azure Backup General</a> <a href="../../tags/Azure-Disk-Backup/" style="font-size: 10px;">Azure Disk Backup</a> <a href="../../tags/Azure-Files-Backup/" style="font-size: 11.25px;">Azure Files Backup</a> <a href="../../tags/Azure-Migrate/" style="font-size: 12.5px;">Azure Migrate</a> <a href="../../tags/Azure-SAPHANA-Backup/" style="font-size: 10px;">Azure SAPHANA Backup</a> <a href="../../tags/Azure-SQL-Backup/" style="font-size: 12.5px;">Azure SQL Backup</a> <a href="../../tags/Azure-Site-Recovery/" style="font-size: 16.25px;">Azure Site Recovery</a> <a href="../../tags/Azure-VM-Backup/" style="font-size: 18.75px;">Azure VM Backup</a> <a href="../../tags/DPM-MABS/" style="font-size: 11.25px;">DPM / MABS</a> <a href="../../tags/Information/" style="font-size: 15px;">Information</a> <a href="../../tags/MARS-Backup/" style="font-size: 12.5px;">MARS Backup</a> <a href="../../tags/TROUBLE-SHOOTING/" style="font-size: 13.75px;">TROUBLE SHOOTING</a> <a href="../../tags/how-to/" style="font-size: 20px;">how to</a> <a href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" style="font-size: 12.5px;">情報採取</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2026 Japan CSS ABRS &amp; SCEM Support Team<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="../../index.html" class="mobile-nav-link">Home</a>
+  
+    <a href="../../archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<script src="../../js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
