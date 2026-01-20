@@ -123,9 +123,10 @@ Free レベル (1 か月あたり 1,000 メール) を超える通知に対し�
 $RSVList = Get-AzRecoveryServicesVault | Select-Object Name, ResourceGroupName, SubscriptionId
 
 # リクエスト ヘッダーを作成
+$accesstoken = Get-AzAccessToken
+$token = ConvertFrom-SecureString -SecureString $accesstoken.Token -AsPlainText
 $headers = @{
-    'Content-type'  = 'application/json'
-    'Authorization' = 'Bearer ' + (Get-AzAccessToken).Token
+   "Authorization" = "Bearer $token"; "Content-Type" = "application/json"
 }
 
 # 結果出力先のオブジェクトを作成
