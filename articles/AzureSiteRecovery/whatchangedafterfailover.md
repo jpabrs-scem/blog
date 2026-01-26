@@ -32,7 +32,7 @@ disableDisclaimer: false
 
 - **フェールオーバー前後で<font color="Blue">変わらない情報</font>**
   <font color="Blue">プライベート IP アドレス
-  一時ディスク以外の UUID (GUID)
+  一時ディスク以外のディスクの UUID (GUID)
   SID
   ホスト名
   Azure VM 名</font>
@@ -42,6 +42,8 @@ disableDisclaimer: false
   MAC アドレス
   一時ディスクの UUID (GUID)</font>
 
+SID や マシンのホスト名が変わらない理由は、 Azure Site Recovery (もしくは Azure Migrate) は、マシン固有の情報やアカウントを削除するプロセス (sysprep のような一般化のプロセス) は行わないためです。
+下記、それぞれの項目について補足します。
 
 ## <a id="2"></a> 2. IP アドレスについて
 - パブリック IPアドレス 
