@@ -4,46 +4,25 @@
   <meta charset="utf-8">
   
   
-  <title>ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について | Japan CSS ABRS  Support Blog !!</title>
+  <title>ASR フェールオーバー前後で変更されるマシン上の情報について | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="みなさんこんにちは、Azure Site Recovery サポートです。今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。 ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが">
+  <meta name="description" content="みなさんこんにちは、Azure Site Recovery サポートです。 今回は Azure Site Recovery (もしくは Azure Migrate) を利用して、マシンを Azure VM としてフェールオーバーした際に、マシン上で変更される情報と、そのまま変わらず引き継がれる情報を説明します。 目次 1. フェールオーバー前後で変更される情報2. IP アドレスについて3. U">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について">
-<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/index.html">
+<meta property="og:title" content="ASR フェールオーバー前後で変更されるマシン上の情報について">
+<meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/whatchangedafterfailover/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="みなさんこんにちは、Azure Site Recovery サポートです。今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。 ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが">
+<meta property="og:description" content="みなさんこんにちは、Azure Site Recovery サポートです。 今回は Azure Site Recovery (もしくは Azure Migrate) を利用して、マシンを Azure VM としてフェールオーバーした際に、マシン上で変更される情報と、そのまま変わらず引き継がれる情報を説明します。 目次 1. フェールオーバー前後で変更される情報2. IP アドレスについて3. U">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_01.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_02.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_03.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_04.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_05.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_06.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_07.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_08.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_09.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_10.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_11.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_12.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_13.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_14.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_15.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_16.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_17.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_18.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_19.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_20.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_21.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_22.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_23.png">
-<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_24.png">
-<meta property="article:published_time" content="2023-03-14T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-01-29T02:14:33.079Z">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/whatchangedafterfailover/001.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/whatchangedafterfailover/002.png">
+<meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/whatchangedafterfailover/003.png">
+<meta property="article:published_time" content="2026-01-19T03:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-29T02:14:33.128Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure Site Recovery">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_01.png">
+<meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/whatchangedafterfailover/001.png">
   
     <link rel="alternate" href="../../atom.xml" title="Japan CSS ABRS  Support Blog !!" type="application/atom+xml">
   
@@ -105,7 +84,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-AzureSiteRecovery/HowToChangeAzureAutomationManagedId" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-AzureSiteRecovery/whatchangedafterfailover" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -114,7 +93,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ASR 自動更新に利用する Automation アカウントの Managed ID への移行方法について
+      ASR フェールオーバー前後で変更されるマシン上の情報について
     </h1>
   
 
@@ -122,96 +101,79 @@
       <div class="article-share">
         Last Update: 
         <a href="" class="article-date-single">
-  <time datetime="2023-03-14T03:00:00.000Z" itemprop="datePublished">2023-03-14</time>
+  <time datetime="2026-01-19T03:00:00.000Z" itemprop="datePublished">2026-01-19</time>
 </a>
         
         
-        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+97d1ecda-bd59-59b1-8c11-36f90389aad7%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BASR+%E8%87%AA%E5%8B%95%E6%9B%B4%E6%96%B0%E3%81%AB%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B+Automation+%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%AE+Managed+ID+%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2FHowToChangeAzureAutomationManagedId.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
+        <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+7a1bb7b9-12e6-59c8-8fab-09efa47de6b6%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BASR+%E3%83%95%E3%82%A7%E3%83%BC%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E5%89%8D%E5%BE%8C%E3%81%A7%E5%A4%89%E6%9B%B4%E3%81%95%E3%82%8C%E3%82%8B%E3%83%9E%E3%82%B7%E3%83%B3%E4%B8%8A%E3%81%AE%E6%83%85%E5%A0%B1%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSiteRecovery%2Fwhatchangedafterfailover%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSiteRecovery%2Fwhatchangedafterfailover.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSiteRecovery%2Fwhatchangedafterfailover.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/" data-id="cmkytmsvy00160npfe75c6kpy" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSiteRecovery/whatchangedafterfailover/" data-id="cmkytmsw1001g0npfdlma9m4k" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
-<p>みなさんこんにちは、Azure Site Recovery サポートです。<br>今回は、Azure Site Recovery ( 以下、ASR ) にて使用される、マネージド ID の設定についてのご案内です。</p>
-<p>ASR 自動更新には Azure Automation の実行アカウントが利用されますが、Azure Automation 実行アカウントは 2023 年 9 月 30 日に廃止されることが決まっており、マネージド ID へ移行する必要がございます。<br>2023/3/14 時点では ASR の自動更新に利用する Azure Automation を手動でマネージド ID へ移行する必要がございますので、その移行手順についてご案内いたします。</p>
-<p>なお、今後は ASR 有効化時に自動でマネージド ID の Azure Automation が作成されるように開発部門と対応を継続しておりますので、進展がありましたら本ブログにて Update をお知らせいたします。</p>
-<p>・マネージド ID への移行に関する公開情報<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/automation/migrate-run-as-accounts-managed-identity?tabs=sa-managed-identity">https://learn.microsoft.com/ja-jp/azure/automation/migrate-run-as-accounts-managed-identity?tabs=sa-managed-identity</a></p>
-<h3 id="作業手順"><a href="#作業手順" class="headerlink" title="作業手順"></a>作業手順</h3><ol>
-<li>Azure Portal から Recovery Services コンテナーに移動し、[概要] の JSON ビューをクリックし、ID の行に表示される /subscriptions/ から始まるリソース ID をメモします。<br>※ 手順 8 で利用します。</li>
-</ol>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_01.png" alt="image1"></p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_02.png" alt="image2"></p>
-<ol start="2">
-<li>Recovery Services コンテナーの [Site Recovery インフラストラクチャ] - [拡張機能の更新の設定] 画面ご利用の Automation アカウント名をご確認ください。</li>
-</ol>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_03.png" alt="image3"></p>
-<ol start="3">
-<li>手順 2 で確認した Automation アカウントに移動し、  JSON ビューをクリックし、ID の行に表示される /subscriptions/ から始まるリソース ID をメモします。<br>※ 手順 9 で利用します。</li>
-</ol>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_04.png" alt="image4"></p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_05.png" alt="image5"></p>
-<ol start="4">
-<li>Automation アカウントの [ID] - [システム割り当て済み] 画面から状態が [オン] に選択されていない場合には、[オン] を選択し、[保存] をクリックします。</li>
-</ol>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_06.png" alt="image6"></p>
-<ol start="5">
-<li>Recovery Services コンテナーに戻り、[アクセス制御 (IAM)] から、Automation アカウントのマネージド ID に対して共同作成者ロールを付与します。</li>
-</ol>
-<p>・ロール : 共同作成者<br>・アクセスの割り当て先 : マネージド ID<br>・メンバー :Automation アカウント</p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_07.png" alt="image7"></p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_08.png" alt="image8"></p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_09.png" alt="image9"></p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_10.png" alt="image10"></p>
-<ol start="6">
-<li>Automation アカウントに戻り、[Runbook] - [Runbook の作成] から新しい Runbook を作成します。</li>
-</ol>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_11.png" alt="image11"></p>
-<p>・Runbook 名 : &lt;任意&gt;<br>・Runbook の種類 : PowerShell<br>・ランタイムのバージョン : 5.1</p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_12.png" alt="image12"></p>
-<ol start="7">
-<li>作成された Runbook に、下記 Github に公開されている UpdateAutomationAccount.ps1 の PowerShell スクリプトをコピーして貼り付け [保存] します。</li>
-</ol>
-<p>・PowerShell スクリプト<br>　<a target="_blank" rel="noopener" href="https://github.com/AsrOneSdk/published-scripts/blob/master/automationAccount/UpdateAutomationAccount.ps1">https://github.com/AsrOneSdk/published-scripts/blob/master/automationAccount/UpdateAutomationAccount.ps1</a></p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_13.png" alt="image13"></p>
-<ol start="8">
-<li>上部 [テスト ウィンドウ] からテスト画面に移動し、パラメーターを入力し [開始] をクリックします。</li>
-</ol>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_14.png" alt="image14"></p>
-<p>・VAULTRESOURCEID : 手順 1 で確認した Recovery Services コンテナーのリソース ID<br>・AUTOUPDATEACTION : Disabled<br>・AUTOMATIONACCOUNTARMID : 入力なし</p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_15.png" alt="image15"></p>
-<p>完了と表示されるとテスト成功です。</p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_16.png" alt="image16"></p>
-<ol start="9">
-<li>パラメータ AUTOUPDATEACTION を Enabled に変更し、AUTOMATIONACCOUNTARMID にリソース ID を入力し、再度 [開始] をクリックします。</li>
-</ol>
-<p>・VAULTRESOURCEID : 手順 1 で確認した Recovery Services コンテナーのリソース ID<br>・AUTOUPDATEACTION : Enabled<br>・AUTOMATIONACCOUNTARMID : 手順 3 で確認した Automation アカウントのリソース ID</p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_17.png" alt="image17"></p>
-<p>完了と表示されるとテスト成功です。</p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_18.png" alt="image"></p>
-<ol start="10">
-<li>画面右上の [X] から画面を一度閉じ、Runbook に戻り [公開] をクリックします。</li>
-</ol>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_19.png" alt="image"></p>
-<ol start="11">
-<li>Runbook のステータスが “発行済み” になっていることを確認し、[スケジュールへのリンク] をクリックし、スケジュールを設定します。</li>
-</ol>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_20.png" alt="image"></p>
-<ol start="12">
-<li>[スケジュール] をクリックし、既存のスケジュールを利用するか新規スケジュールを作成します。<br>※ 既定では 0:00 に毎日ジョブが実行され、最新バージョンでない保護されたアイテムがある場合に ASR モビリティ サービス エージェントを更新する処理がトリガーされます。</li>
-</ol>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_21.png" alt="image"></p>
-<p>新規スケジュールを作成する場合には、任意のスケジュールを設定します。<br>例えば、日本時刻 0:00 に毎日ジョブを実行する場合、下記のように入力します。</p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_22.png" alt="image"></p>
-<ol start="13">
-<li>[パラメーターと実行設定] をクリックし、手順 9 で入力したパラメータを以下の通り再度入力し [OK] をクリックします。</li>
-</ol>
-<p>・VAULTRESOURCEID : 手順 1 で確認した Recovery Services コンテナーのリソース ID<br>・AUTOUPDATEACTION : Enabled<br>・AUTOMATIONACCOUNTARMID : 手順 3 で確認した Automation アカウントのリソース ID</p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_23.png" alt="image"></p>
-<p><img src="/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/HowToChangeAzureAutomationManagedId_24.png" alt="image"></p>
-<p>上記作業が完了したら、次のスケジュール日時からマネージド ID を使用した Runbook にて更新ジョブが実行されます。</p>
-<p>ASR にて使用される、マネージド ID 設定の案内は、以上となります。</p>
+<p>みなさんこんにちは、Azure Site Recovery サポートです。</p>
+<p>今回は Azure Site Recovery (もしくは Azure Migrate) を利用して、マシンを Azure VM としてフェールオーバーした際に、マシン上で変更される情報と、そのまま変わらず引き継がれる情報を説明します。</p>
+<h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
+<p><a href="#1">1. フェールオーバー前後で変更される情報</a><br><a href="#2">2. IP アドレスについて</a><br><a href="#3">3. UUID (GUID) について</a><br><a href="#4">4. MAC アドレスについて</a><br><a href="#5">5. SID について</a><br><a href="#6">6. ホスト名、Azure VM 名について</a></p>
+<hr>
+<h2 id="1-フェールオーバー前後で変更される情報"><a href="#1-フェールオーバー前後で変更される情報" class="headerlink" title=" 1. フェールオーバー前後で変更される情報"></a><a id="1"></a> 1. フェールオーバー前後で変更される情報</h2><ul>
+<li>オンプレミス環境上のマシン</li>
+<li>VMWare VM 上のマシン</li>
+<li>Azure VM</li>
+</ul>
+<p>上記いずれかを、Azure VM としてフェールオーバーした際に、Azure VM 上で変わるものと、変わらずにそのままソース マシン上の情報を引き継ぐものをまとめました。</p>
+<ul>
+<li><p><strong>フェールオーバー前後で<font color="Blue">変わらない情報</font></strong><br><font color="Blue">プライベート IP アドレス<br>一時ディスク以外のディスクの UUID (GUID)<br>SID<br>ホスト名<br>Azure VM 名</font></p>
+</li>
+<li><p><strong>フェールオーバー済 Azure VM 上で<font color="DeepPink">変わる情報</font></strong><br><font color="DeepPink">パブリック IP アドレス<br>MAC アドレス<br>一時ディスクの UUID (GUID)</font></p>
+</li>
+</ul>
+<p>SID や マシンのホスト名が変わらない理由は、 Azure Site Recovery (もしくは Azure Migrate) は、マシン固有の情報やアカウントを削除するプロセス (sysprep のような一般化のプロセス) は行わないためです。<br>下記、それぞれの項目について補足します。</p>
+<h2 id="2-IP-アドレスについて"><a href="#2-IP-アドレスについて" class="headerlink" title=" 2. IP アドレスについて"></a><a id="2"></a> 2. IP アドレスについて</h2><ul>
+<li><p>パブリック IPアドレス<br>フェールオーバー元となる、レプリケート対象のソース マシンと比べて、フェールオーバーされる Azure VM 上のパブリック IPアドレスは変更されます。</p>
+</li>
+<li><p>プライベート IPアドレス<br>ソース マシンと同じアドレスをフェールオーバー VM 上でも維持することが可能です。<br>ただし、フェールオーバー先の Azure Vnet に同じ IP アドレス空間のサブネットを用意いただく必要があります。</p>
+</li>
+</ul>
+<p>なお、フェールオーバーされた Azure VM が、オンプレミスのソース マシンと同じ IP アドレス/サブネットを使用する場合は、アドレスが重複しているため、サイト間 VPN 接続または ExpressRoute を使用して、それらを接続することはできませんので、ご注意ください。</p>
+<p>フェールオーバー後も、同一のプライベート IP アドレスを設定する手順は、以下公開情報をご参照ください。</p>
+<ul>
+<li><p>(参考) 内部アドレスの割り当て<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/concepts-on-premises-to-azure-networking#assign-an-internal-address">https://learn.microsoft.com/ja-jp/azure/site-recovery/concepts-on-premises-to-azure-networking#assign-an-internal-address</a></p>
+</li>
+<li><p>(参考) Azure Site Recovery | Azure to Azure | サポート マトリックス | IP アドレス<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines-networking">https://learn.microsoft.com/ja-jp/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines-networking</a></p>
+</li>
+<li><p>(参考) フェールオーバー時に IP アドレスを保持する<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-retain-ip-azure-vm-failover">https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-retain-ip-azure-vm-failover</a></p>
+</li>
+</ul>
+<h2 id="3-UUID-GUID-について"><a href="#3-UUID-GUID-について" class="headerlink" title=" 3. UUID (GUID) について"></a><a id="3"></a> 3. UUID (GUID) について</h2><p>Linux OS / Windows OS どちらの環境においても、フェールオーバー前後でディスク・パーティションの UUID (GUID) は変わりません。<br>しかし、Azure VM にもともとアタッチされている「一時ディスク」については、フェールオーバーすると UUID (GUID) は変化します。<br>なお、Azure Site Recovery では Azure VM 上の一時ディスクに対しては、レプリケート対象ではなく、非サポートとなっております。<br>このため、レプリケートを希望する重要なデータを Azure VM の一時ディスク上には保管しないでください。</p>
+<ul>
+<li>(参考) Azure Site Recovery | Azure to Azure | サポート マトリックス | 一時ディスク<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines-storage">https://learn.microsoft.com/ja-jp/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines-storage</a><br><img src="/blog/AzureSiteRecovery/whatchangedafterfailover/001.png"></li>
+</ul>
+<div class="alert is-success"><p class="alert-title">ヒント</p><p>Linux OS (RHEL) の場合、RHEL では、/dev/disk/by-uuid 上で UUID / GUID を確認可能です。</p><p>Azure VM (Linux OS) の一時ディスクは、通常 /dev/sdb にマウントされています。</p><p></br></p><p>Windows OS の場合、mountvol コマンド使って UUID / GUID を確認可能です。</p><p>Azure VM (Windows OS) の一時ディスクは、既定で D: となります。</p></div>
+<h2 id="4-MAC-アドレスについて"><a href="#4-MAC-アドレスについて" class="headerlink" title=" 4. MAC アドレスについて"></a><a id="4"></a> 4. MAC アドレスについて</h2><p>Azure VM として、フェールオーバー VM が作成されるたびに、新しい Azure NIC が作成・付与されます。<br>この NIC の情報には MAC アドレスも含まれているため、MAC アドレスも変わることとなります。</p>
+<p>Windows OS の場合、ipconfig/all コマンドにて MAC アドレスを確認ができます。</p>
+<p>(例)<br><img src="/blog/AzureSiteRecovery/whatchangedafterfailover/002.png"></p>
+<h2 id="5-SID-について"><a href="#5-SID-について" class="headerlink" title=" 5. SID について"></a><a id="5"></a> 5. SID について</h2><p>Azure Site Recovery の仕様上、フェールオーバー前後の SID は同様となります。<br>予期せぬ問題が発生しないよう、Azure Site Recovery (Azure Migrate)  観点では、下記を推奨しています。</p>
+<ul>
+<li><span style="color: red; ">ソース マシンをシャットダウンした状態で、フェールオーバーすること</span></li>
+<li><span style="color: red; ">ソース マシンとフェールオーバー Azure VM が、それぞれ通信できないよう、ネットワークが分離された Vnet 上へまず「テスト フェールオーバー」して、動作確認すること</span></li>
+</ul>
+<ul>
+<li><p>(参考) テスト フェールオーバー用のネットワークの作成<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-test-failover-to-azure#create-a-network-for-test-failover">https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-test-failover-to-azure#create-a-network-for-test-failover</a></p>
+</li>
+<li><p>(参考) Active Directory と DNS のディザスター リカバリーを設定する | テスト フェールオーバーの考慮事項<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-active-directory#test-failover-considerations">https://learn.microsoft.com/ja-jp/azure/site-recovery/site-recovery-active-directory#test-failover-considerations</a></p>
+</li>
+</ul>
+<p>なお、sysprep を利用しない状態で、同じ Active Directory ネットワーク内で SID が重複するマシンが同時に起動している状態は、Windows OS としてはサポートされない構成となります。</p>
+<h2 id="6-ホスト名、Azure-VM-名について"><a href="#6-ホスト名、Azure-VM-名について" class="headerlink" title="6. ホスト名、Azure VM 名について"></a><a id="6"></a>6. ホスト名、Azure VM 名について</h2><p>ソース マシンと同じホスト名の Azure VM がフェールオーバー VM として新規作成されます。</p>
+<ul>
+<li>(参考) Azure VM のホスト名を表示する<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/virtual-network/virtual-networks-viewing-and-modifying-hostnames#view-hostnames">https://learn.microsoft.com/ja-jp/azure/virtual-network/virtual-networks-viewing-and-modifying-hostnames#view-hostnames</a></li>
+</ul>
+<p>※ 「Azure VM 名」と「ホスト名」は異なりますので、混同しないようにご注意ください。</p>
+<p>Azure VM 名は、レプリケートを構成する際に、ソース マシンと同名にすることも、異なる名前にすることも、どちらも可能です。<br><img src="/blog/AzureSiteRecovery/whatchangedafterfailover/003.png"></p>
+<p>本記事の内容は以上となります。</p>
 
       
       
@@ -228,7 +190,7 @@
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li></ul>
 
         
-        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSiteRecovery/HowToChangeAzureAutomationManagedId.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
+        <a href="https://jpabrs-scem.github.io/blog/edit/main/articles/AzureSiteRecovery/whatchangedafterfailover.md" class="article-github-edit-link" target="_blank" rel="noopener noreferrer">GitHub で編集</a>
         
     </footer>
   </div>
@@ -236,19 +198,19 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureVMBackup/Change_RSV_for_VM/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/HowToRestoreVmsInStoppedStates/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          Azure VM BackupにおけるRecovery Services コンテナーの変更について
+          停止状態で VM を復元する方法
         
       </div>
     </a>
   
   
-    <a href="../../AzureDiskBackup/How_to_fail_Asure_Disk_backup/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../../AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Azure Disk Backup を意図的に失敗させる方法</div>
+      <div class="article-nav-title">ログ バックアップのジョブを確認する方法</div>
     </a>
   
 </nav>
@@ -271,7 +233,7 @@
           </li>
         
           <li>
-            <a href="../whatchangedafterfailover/">ASR フェールオーバー前後で変更されるマシン上の情報について</a>
+            <a href="">ASR フェールオーバー前後で変更されるマシン上の情報について</a>
           </li>
         
           <li>
