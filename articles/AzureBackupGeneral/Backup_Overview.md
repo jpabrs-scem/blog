@@ -1,6 +1,6 @@
 ---
 title: Azure Backup の 概要
-date: 2024-05-31 12:00:00
+date: 2026-03-05 12:00:00
 tags:
   - Information
   - Azure Backup General
