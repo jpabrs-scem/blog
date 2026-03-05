@@ -48,7 +48,7 @@ QL4L-5D8」「XNV5-HTZ」アラートの例)
 ・ 実際に「クラシック アラート」を用いてメールへの通知構成をしているかどうかは、お客様環境の設定次第です
 
 #### <a id="Q2.1"></a>【どの Recovery Services コンテナーでクラシック アラートが有効になっているのかを確認する方法】  
-- 1. Azure ポータルにてビジネス継続センターを開き、[監視とレポート] > [警告] > [アラートの管理] > [リソースの組み込みのアラート設定の管理] を選択します  
+- 1. Azure ポータルにて回復性 (Resiliency) を開き、[監視とレポート] > [警告] > [アラートの管理] > [リソースの組み込みのアラート設定の管理] を選択します  
      ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_03.png)
 - 2. [Azure Monitor アラートのみの使用をオプトイン] 画面にて、リストされている Recovery Services コンテナーを確認します
      ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_04.png)
