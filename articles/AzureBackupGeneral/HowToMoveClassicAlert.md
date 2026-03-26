@@ -1,6 +1,6 @@
 ---
 title: QL4L-5D8 XNV5-HTZ 9QV8-4L8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について
-date: 2026-03-06 12:00:00
+date: 2026-03-26 18:00:00
 tags:
   - Azure Backup General
   - how to
