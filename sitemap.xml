@@ -65,15 +65,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
-    
-    <lastmod>2026-03-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/invalid_schedule/</loc>
     
     <lastmod>2026-03-26</lastmod>
@@ -92,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VM_Backup_calculator/</loc>
     
     <lastmod>2026-03-26</lastmod>
     
@@ -110,15 +101,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Oracle_vm_backup/</loc>
-    
-    <lastmod>2026-03-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/NWRequirementAndProcess/</loc>
     
     <lastmod>2026-03-26</lastmod>
@@ -128,7 +110,25 @@
   </url>
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Oracle_vm_backup/</loc>
+    
+    <lastmod>2026-03-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/</loc>
+    
+    <lastmod>2026-03-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
     
     <lastmod>2026-03-26</lastmod>
     
@@ -218,7 +218,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckBackupDataSizePerVM/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
     
     <lastmod>2026-03-26</lastmod>
     
@@ -227,7 +227,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/GAC/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToCheckBackupDataSizePerVM/</loc>
     
     <lastmod>2026-03-26</lastmod>
     
@@ -389,7 +389,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/</loc>
     
     <lastmod>2026-03-26</lastmod>
     
@@ -398,7 +398,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/FixButtonDuringAutomationAccountMigratie/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/HowToChangeAzureAutomationManagedId/</loc>
     
     <lastmod>2026-03-26</lastmod>
     
@@ -672,14 +672,14 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/tags/Azure-SAPHANA-Backup/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/tags/Azure-SQL-Backup/</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/tags/Azure-SQL-Backup/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/tags/Azure-SAPHANA-Backup/</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -693,7 +693,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/tags/Azure-VM-Backup/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/tags/DPM-MABS/</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -707,7 +707,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/tags/DPM-MABS/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/tags/Azure-VM-Backup/</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

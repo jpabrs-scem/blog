@@ -14,7 +14,7 @@
   </rights>
   <subtitle>Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</subtitle>
   <title>Japan CSS ABRS  Support Blog !!</title>
-  <updated>2026-03-26T08:07:49.327Z</updated>
+  <updated>2026-03-26T08:40:46.974Z</updated>
   <entry>
     <author>
       <name>
@@ -28,13 +28,13 @@
     </content>
     <id>https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/</id>
     <link href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/HowToMoveClassicAlert/"/>
-    <published>2026-03-06T03:00:00.000Z</published>
+    <published>2026-03-26T09:00:00.000Z</published>
     <summary>
       <![CDATA[<span id="more"></span>
 <p>こんにちは、Azure Backup サポートです。<br>今回は、2023 年 3 月末より弊社から発行されているアラート追跡 ID 「QL4L-5D8」、「XNV5-HTZ」、「9QV8-4L8」について説明いたします。<]]>
     </summary>
     <title>QL4L-5D8 XNV5-HTZ 9QV8-4L8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</title>
-    <updated>2026-03-26T08:07:49.327Z</updated>
+    <updated>2026-03-26T08:40:46.974Z</updated>
   </entry>
   <entry>
     <author>
@@ -56,7 +56,7 @@
 <h]]>
     </summary>
     <title>停止状態で VM を復元する方法</title>
-    <updated>2026-03-26T08:07:49.573Z</updated>
+    <updated>2026-03-26T08:40:47.215Z</updated>
   </entry>
   <entry>
     <author>
@@ -78,7 +78,7 @@
 <p>今回は Azure Site Recovery (もしくは Azure Migrate) を利用して、マシンを Azure VM として]]>
     </summary>
     <title>ASR フェールオーバー前後で変更されるマシン上の情報について</title>
-    <updated>2026-03-26T08:07:49.514Z</updated>
+    <updated>2026-03-26T08:40:47.157Z</updated>
   </entry>
   <entry>
     <author>
@@ -100,7 +100,7 @@
 <p>皆様こんにちは。Azure Backup サポートです。<br> 今回はお問合せをいただくことが多い、Azure Backup による SQL Server DB や SAP HANA DB のログ バックアップのジョブを確認]]>
     </summary>
     <title>ログ バックアップのジョブを確認する方法</title>
-    <updated>2026-03-26T08:07:49.352Z</updated>
+    <updated>2026-03-26T08:40:46.997Z</updated>
   </entry>
   <entry>
     <author>
@@ -121,7 +121,7 @@
 <p>皆様こんにちは、Azure Backup サポートです。<br>今回は、<strong>「Azure Monitor を使用した組み込みのアラート」を利用して、Recovery Services コンテナー &#x2F; バッ]]>
     </summary>
     <title>「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</title>
-    <updated>2026-03-26T08:07:49.353Z</updated>
+    <updated>2026-03-26T08:40:46.998Z</updated>
   </entry>
   <entry>
     <author>
@@ -142,7 +142,7 @@
 <p>こんにちは、Azure Backup サポートです。<br>今回は、 Azure バックアップ ソリューションで利用する Recovery Services コンテナーとバックアップ コンテナーのバックアップ対象の違いについて]]>
     </summary>
     <title>Recovery Services コンテナーとバックアップ コンテナーについて</title>
-    <updated>2026-03-26T08:07:49.364Z</updated>
+    <updated>2026-03-26T08:40:47.010Z</updated>
   </entry>
   <entry>
     <author>
@@ -163,7 +163,7 @@
 <p>皆様こんにちは、Azure Backup サポート チームです。<br>今回は、<strong>Azure VM Backup における VM ごとのバックアップ データ量の確認方法</strong> についてご紹介します。<]]>
     </summary>
     <title>VM ごとのバックアップ データ量の確認方法</title>
-    <updated>2026-03-26T08:07:49.559Z</updated>
+    <updated>2026-03-26T08:40:47.202Z</updated>
   </entry>
   <entry>
     <author>
@@ -184,7 +184,7 @@
 <p>皆様こんにちは。Azure Site Recovery サポートです。<br>今回は Azure Site Recovery (以下、ASR ) にて「レプリケーションの有効化 が失敗する」「レプリケートが失敗している」といっ]]>
     </summary>
     <title>Azure Site Recovery の障害調査に必要な情報 (疎通確認)</title>
-    <updated>2026-03-26T08:07:49.491Z</updated>
+    <updated>2026-03-26T08:40:47.134Z</updated>
   </entry>
   <entry>
     <author>
@@ -206,7 +206,7 @@
 <h2]]>
     </summary>
     <title>Azure VM Backup でリストアする際にステージングの場所として利用するストレージ アカウントについて</title>
-    <updated>2026-03-26T08:07:49.596Z</updated>
+    <updated>2026-03-26T08:40:47.239Z</updated>
   </entry>
   <entry>
     <author>
@@ -227,7 +227,7 @@
 <p>みなさんこんにちは、Azure Backup サポートです。<br>今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。<br>なお、 Azure]]>
     </summary>
     <title>Azure Backup の障害調査に必要な情報</title>
-    <updated>2026-03-26T08:07:49.365Z</updated>
+    <updated>2026-03-26T08:40:47.011Z</updated>
   </entry>
   <entry>
     <author>
@@ -248,7 +248,7 @@
 <p>皆様こんにちは。Azure Backup サポートです。<br>今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、NW 観点で提供いただきたい情報をお伝えいたします。<br>NW 観点]]>
     </summary>
     <title>Azure Backup の障害調査に必要な情報 (疎通確認)</title>
-    <updated>2026-03-26T08:07:49.372Z</updated>
+    <updated>2026-03-26T08:40:47.018Z</updated>
   </entry>
   <entry>
     <author>
@@ -269,7 +269,7 @@
 <p>こんにちは、Azure Backup サポートです。<br>今回は Azure Backup での異なる可用性ゾーンへの復元 ( &#x3D; クロス ゾーン リストア &#x2F; CZR ) についてご紹介します。<br>]]>
     </summary>
     <title>Azure VM Backup におけるクロス ゾーン リストア (CZR) について</title>
-    <updated>2026-03-26T08:07:49.543Z</updated>
+    <updated>2026-03-26T08:40:47.186Z</updated>
   </entry>
   <entry>
     <author>
@@ -291,7 +291,7 @@
 <h2 id="目次"><a]]>
     </summary>
     <title>「VMSnapshot」拡張機能の再インストール手順 (Windows)</title>
-    <updated>2026-03-26T08:07:49.574Z</updated>
+    <updated>2026-03-26T08:40:47.218Z</updated>
   </entry>
   <entry>
     <author>
@@ -312,7 +312,7 @@
 <p>皆様こんにちは、Azure Backup サポートです。<br>今回は、Azure VM Backup において、<br>「Standard バックアップ ポリシー (標準ポリシー) 」でバックアップを取得した場合と<br>「]]>
     </summary>
     <title>Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</title>
-    <updated>2026-03-26T08:07:49.597Z</updated>
+    <updated>2026-03-26T08:40:47.240Z</updated>
   </entry>
   <entry>
     <author>
@@ -334,7 +334,7 @@
 <p>MARS バックアップや SQL Server バックアップなどのバックアップにおいて、お客様によってはバックアップや復元で使用する通信がプロキシを経]]>
     </summary>
     <title>テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する</title>
-    <updated>2026-03-26T08:07:49.435Z</updated>
+    <updated>2026-03-26T08:40:47.081Z</updated>
   </entry>
   <entry>
     <author>
@@ -355,7 +355,7 @@
 <p>みなさんこんにちは、Azure Backup サポートです。<br>今回は、「Oracle DB を導入している Azure 仮想マシンを Azure VM Backup でバックアップ&#x2F;リストアすることは可能か」と]]>
     </summary>
     <title>Oracle DB の Azure VM Backup について</title>
-    <updated>2026-03-26T08:07:49.596Z</updated>
+    <updated>2026-03-26T08:40:47.239Z</updated>
   </entry>
   <entry>
     <author>
@@ -377,7 +377,7 @@
 <h2 id="目次"><a]]>
     </summary>
     <title>Azure VM Backup [既存を置換] リストア について</title>
-    <updated>2026-03-26T08:07:49.601Z</updated>
+    <updated>2026-03-26T08:40:47.244Z</updated>
   </entry>
   <entry>
     <author>
@@ -398,7 +398,7 @@
 <p>みなさんこんにちは、Azure Migrate サポートです。<br>今回は Azure Migrate 機能を使って Azure へとマシンを移行後、不要となった Recovery Services コンテナーや、関連する]]>
     </summary>
     <title>Migrate 移行後の関連リソース削除時のチェックポイント</title>
-    <updated>2026-03-26T08:07:49.392Z</updated>
+    <updated>2026-03-26T08:40:47.037Z</updated>
   </entry>
   <entry>
     <author>
@@ -420,7 +420,7 @@
 <p>まず、Azure VM Backup に]]>
     </summary>
     <title>Azure VM Backupにおける整合性について</title>
-    <updated>2026-03-26T08:07:49.558Z</updated>
+    <updated>2026-03-26T08:40:47.201Z</updated>
   </entry>
   <entry>
     <author>
@@ -442,6 +442,6 @@
 <p>なお、なんらかの不具合が発生している場合の MARS エージェントの]]>
     </summary>
     <title>MARS エージェントの再インストール手順</title>
-    <updated>2026-03-26T08:07:49.614Z</updated>
+    <updated>2026-03-26T08:40:47.257Z</updated>
   </entry>
 </feed>
