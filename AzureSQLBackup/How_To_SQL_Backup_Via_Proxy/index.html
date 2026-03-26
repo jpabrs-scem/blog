@@ -6,12 +6,12 @@
   
   <title>Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法 | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法についてお伝えします。 ヒントSQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しております。">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法についてお伝えします。  [!TIP]SQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しておりま">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法についてお伝えします。 ヒントSQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しております。">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法についてお伝えします。  [!TIP]SQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しておりま">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_01.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_02.png">
@@ -24,10 +24,10 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_09.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_10.png">
 <meta property="article:published_time" content="2023-10-01T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-06T08:09:17.434Z">
+<meta property="article:modified_time" content="2026-03-26T08:07:49.436Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
-<meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure SQL Backup">
+<meta property="article:tag" content="how to">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_01.png">
   
@@ -48,7 +48,7 @@
   
 <link rel="stylesheet" href="../../css/style.css">
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -66,7 +66,7 @@
         
           <a class="main-nav-link" href="/blog/archives">Archives</a>
         
-        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+        <a class="main-nav-link" href="https://cssjpn.github.io/">サポート情報</a>
       </nav>
       <nav id="sub-nav">
         
@@ -114,24 +114,22 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+ac54bbf9-1798-52e5-927f-d3fffcc94774%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BProxy+Server+%E3%82%92%E7%B5%8C%E7%94%B1%E3%81%97%E3%81%9F%E3%80%81SQL+Server+DB+%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B+Azure+Backup+%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureSQLBackup%2FHow_To_SQL_Backup_Via_Proxy%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureSQLBackup%2FHow_To_SQL_Backup_Via_Proxy.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureSQLBackup%2FHow_To_SQL_Backup_Via_Proxy.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/" data-id="cmmem5nla000z0njyhewz9vln" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/" data-id="cuidLfv3Cz99rSW_y1kXe_3Ih" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>皆様こんにちは、Azure Backup サポートです。<br>今回は、Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法についてお伝えします。</p>
-<div class="alert is-success"><p class="alert-title">ヒント</p><p>SQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しております。</p>
-<hr>
-<p>・ SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定</p><p>　 <a href="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/">https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/</a></p></div>
+<blockquote>
+<h2 id="TIP-SQL-Server-DB-に対する-Azure-Backupを、Proxy-Server-をバイパスし、PE-経由でバックアップする方法につきましては、以下の記事でご案内しております。"><a href="#TIP-SQL-Server-DB-に対する-Azure-Backupを、Proxy-Server-をバイパスし、PE-経由でバックアップする方法につきましては、以下の記事でご案内しております。" class="headerlink" title="[!TIP]SQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しております。"></a>[!TIP]<br>SQL Server DB に対する Azure Backupを、Proxy Server をバイパスし、PE 経由でバックアップする方法につきましては、以下の記事でご案内しております。</h2><p>・ SQL Server DB に対する Azure Backupを、Proxy Serverをバイパスして PE 経由でバックアップする場合の設定<br>　 <a href="https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/">https://jpabrs-scem.github.io/blog/AzureSQLBackup/How_to_PE_SQL_backup_bypass_proxy/</a></p>
+</blockquote>
 <h2 id="目次-手順概略"><a href="#目次-手順概略" class="headerlink" title="目次 - 手順概略"></a>目次 - 手順概略</h2><hr>
-<p><a href="#1">1. 認証なしの Proxy Server を用意する</a><br><a href="#2">2. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、Local System アカウントに対して、プロキシを設定する</a><br><a href="#3">3. 「データベースの検出」「バックアップの有効化」を実施する</a><br><a href="#4">4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、プロキシを設定する</a><br><a href="#5">5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行</a>  </p>
-<hr>
-<h2 id="1-認証なしの-Proxy-Server-を用意する"><a href="#1-認証なしの-Proxy-Server-を用意する" class="headerlink" title=" 1. 認証なしの Proxy Server を用意する"></a><a id="1"></a> 1. 認証なしの Proxy Server を用意する</h2><p>認証を要求しない Proxy Server をご用意ください。</p>
+<h2 id="1-認証なしの-Proxy-Server-を用意する2-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、Local-System-アカウントに対して、プロキシを設定する3-「データベースの検出」「バックアップの有効化」を実施する4-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対して、プロキシを設定する5-SQL-Server-DB-に対する-Azure-Backup「今すぐバックアップ」を実行"><a href="#1-認証なしの-Proxy-Server-を用意する2-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、Local-System-アカウントに対して、プロキシを設定する3-「データベースの検出」「バックアップの有効化」を実施する4-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対して、プロキシを設定する5-SQL-Server-DB-に対する-Azure-Backup「今すぐバックアップ」を実行" class="headerlink" title="1. 認証なしの Proxy Server を用意する2. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、Local System アカウントに対して、プロキシを設定する3. 「データベースの検出」「バックアップの有効化」を実施する4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、プロキシを設定する5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行  "></a><a href="#1">1. 認証なしの Proxy Server を用意する</a><br><a href="#2">2. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、Local System アカウントに対して、プロキシを設定する</a><br><a href="#3">3. 「データベースの検出」「バックアップの有効化」を実施する</a><br><a href="#4">4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、プロキシを設定する</a><br><a href="#5">5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行</a>  </h2><h2 id="1-認証なしの-Proxy-Server-を用意する"><a href="#1-認証なしの-Proxy-Server-を用意する" class="headerlink" title=" 1. 認証なしの Proxy Server を用意する"></a><a id="1"></a> 1. 認証なしの Proxy Server を用意する</h2><p>認証を要求しない Proxy Server をご用意ください。</p>
 <div class="alert is-warning"><p class="alert-title">警告</p><p>認証付きの Proxy Server はご利用いただけませんので、ご注意ください。</p></div>
 <h2 id="2-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、Local-System-アカウントに対して、プロキシを設定する"><a href="#2-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、Local-System-アカウントに対して、プロキシを設定する" class="headerlink" title=" 2. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、Local System アカウントに対して、プロキシを設定する"></a><a id="2"></a> 2. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、Local System アカウントに対して、プロキシを設定する</h2><h4 id="Local-System-アカウントに対するプロキシ設定手順の詳細"><a href="#Local-System-アカウントに対するプロキシ設定手順の詳細" class="headerlink" title="Local System アカウントに対するプロキシ設定手順の詳細"></a>Local System アカウントに対するプロキシ設定手順の詳細</h4><ol>
 <li><p>以下より PsExec をダウンロードします。​  </p>
 <ul>
-<li>PsExec v2.2<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/sysinternals/downloads/psexec">https://docs.microsoft.com/ja-jp/sysinternals/downloads/psexec</a>  </li>
+<li>PsExec v2.2<br><a href="https://docs.microsoft.com/ja-jp/sysinternals/downloads/psexec">https://docs.microsoft.com/ja-jp/sysinternals/downloads/psexec</a></li>
 </ul>
 </li>
 <li><p>管理者特権のコマンド プロンプトから、ダウンロードしたファイルを解凍したフォルダに移動し、次のコマンドを実行して Internet Explorer を開きます。​  </p>
@@ -155,18 +153,18 @@
 <ul>
 <li>localhost</li>
 <li>168.63.129.16 (Wire Server)</li>
-<li>169.254.169.254 (Azure Instance Metadata Service)<br><img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_06.png"></li>
+<li>169.254.169.254 (Azure Instance Metadata Service)<br> <img src="/blog/AzureSQLBackup/How_To_SQL_Backup_Via_Proxy/How_To_SQL_Backup_Via_Proxy_06.png"></li>
 </ul>
 </li>
 <li><p>各設定を <code>OK</code> ボタンを押下して保存してください。プロキシ設定は完了です。</p>
-<div class="alert is-warning"><p class="alert-title">警告</p><p>バックアップ対象の SQL Server DB が存在する Azure 仮想マシンで、</p><p>ネットワーク セキュリティ グループや Firewall によって、Proxy Server に対するアウトバウンド通信が制限されていないことを、あらかじめご確認ください。  </p></div>
+<div class="alert is-warning"><p class="alert-title">警告</p><p>バックアップ対象の SQL Server DB が存在する Azure 仮想マシンで、</p><p>ネットワーク セキュリティ グループや Firewall によって、Proxy Server に対するアウトバウンド通信が制限されていないことを、あらかじめご確認ください。</p></div>
 </li>
 </ol>
 <h2 id="3-「データベースの検出」「バックアップの有効化」を実施する"><a href="#3-「データベースの検出」「バックアップの有効化」を実施する" class="headerlink" title=" 3. 「データベースの検出」「バックアップの有効化」を実施する"></a><a id="3"></a> 3. 「データベースの検出」「バックアップの有効化」を実施する</h2><p>Azure ポータル上から、バックアップ対象の SQL Server DB に対して「データベースの検出」「バックアップの有効化」を行います。<br>以下手順に沿って実施してください。  </p>
 <ul>
-<li><p>SQL Server データベースを検出する<br>コンテナーから複数の SQL Server VM をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases">https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases</a></p>
+<li><p>SQL Server データベースを検出する<br>コンテナーから複数の SQL Server VM をバックアップする - Azure Backup | Microsoft Learn<br><a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases">https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases</a></p>
 </li>
-<li><p>バックアップの構成<br>コンテナーから複数の SQL Server VM をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#configure-backup">https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#configure-backup</a></p>
+<li><p>バックアップの構成<br>コンテナーから複数の SQL Server VM をバックアップする - Azure Backup | Microsoft Learn<br><a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#configure-backup">https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#configure-backup</a></p>
 </li>
 </ul>
 <h2 id="4-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対して、プロキシを設定する"><a href="#4-バックアップ対象の-SQL-Server-DB-が存在する-Azure-仮想マシン上で、サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対して、プロキシを設定する" class="headerlink" title=" 4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、プロキシを設定する"></a><a id="4"></a> 4. バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上で、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対して、プロキシを設定する</h2><p>項目 3 にて実施した「データベースの検出」によって、VM 上にサービス アカウント ( NT Service\AzureWLBackupPluginSvc ) が作成されるため、このサービス アカウントに対してもプロキシ設定を行います。  </p>
@@ -179,7 +177,7 @@
 </li>
 <li><p>下記リンク先から、サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシを設定するスクリプトをダウンロードします。  </p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/12788965/SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip">SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip</a></li>
+<li><a href="https://github.com/jpabrs-scem/blog/files/12788965/SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip">SetProxyforAzureWLBackupPluginSvcfromCurrentUser.zip</a></li>
 </ul>
 </li>
 <li><p>バックアップ対象の SQL Server DB が存在する Azure 仮想マシン上に、ダウンロードしたスクリプトを配置し、展開します。  </p>
@@ -201,12 +199,12 @@
 <h3 id="サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対するプロキシ設定の確認手順"><a href="#サービス-アカウント-NT-Service-AzureWLBackupPluginSvc-に対するプロキシ設定の確認手順" class="headerlink" title="サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシ設定の確認手順"></a>サービス アカウント ( NT Service\AzureWLBackupPluginSvc ) に対するプロキシ設定の確認手順</h3><ol>
 <li><p>以下ドキュメントにある「Azure Backup 接続テスト スクリプト (AzureBackupConnectivityTestScriptsForWindows.zip) 」を対象 Azure 仮想マシン上にダウンロードし、 zip ファイルを展開します。</p>
 <ul>
-<li>Azure Backup 接続テスト スクリプト<br>コンテナーから複数の SQL Server VM をバックアップする - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity">https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity</a></li>
+<li>Azure Backup 接続テスト スクリプト<br>コンテナーから複数の SQL Server VM をバックアップする - Azure Backup | Microsoft Learn<br><a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity">https://learn.microsoft.com/ja-jp/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity</a></li>
 </ul>
 </li>
 <li><p>展開した zip ファイル内の「Start-ConnectivityTests.ps1」を、対象 Azure 仮想マシン上で実行します。</p>
 <ul>
-<li>(実行コマンド)<br><code>.\Start-ConnectivityTests.ps1</code>  </li>
+<li>(実行コマンド)<br><code>.\Start-ConnectivityTests.ps1</code></li>
 </ul>
 </li>
 <li><p>「Start-ConnectivityTests.ps1」を実行した後、ターミナル上に出力された結果に問題が無いことを確認します。</p>
@@ -235,7 +233,7 @@
 </ol>
 <h2 id="5-SQL-Server-DB-に対する-Azure-Backup「今すぐバックアップ」を実行"><a href="#5-SQL-Server-DB-に対する-Azure-Backup「今すぐバックアップ」を実行" class="headerlink" title=" 5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行"></a><a id="5"></a> 5. SQL Server DB に対する Azure Backup「今すぐバックアップ」を実行</h2><p>Azure ポータル画面上で設定した、バックアップ ポリシーに従った次回の スケジュールバックアップが成功することを確認いただく、もしくは「今すぐバックアップ」を実行してオンデマンド バックアップが成功することをご確認ください。  </p>
 <ul>
-<li>オンデマンド バックアップを実行する<br>チュートリアル - Azure への SQL Server データベースのバックアップ - Azure Backup | Microsoft Learn<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/tutorial-sql-backup#run-an-on-demand-backup">https://learn.microsoft.com/ja-jp/azure/backup/tutorial-sql-backup#run-an-on-demand-backup</a></li>
+<li>オンデマンド バックアップを実行する<br>チュートリアル - Azure への SQL Server データベースのバックアップ - Azure Backup | Microsoft Learn<br><a href="https://learn.microsoft.com/ja-jp/azure/backup/tutorial-sql-backup#run-an-on-demand-backup">https://learn.microsoft.com/ja-jp/azure/backup/tutorial-sql-backup#run-an-on-demand-backup</a></li>
 </ul>
 <p>Proxy Server を経由した、SQL Server DB に対する Azure Backup を構成する方法は以上となります。</p>
 
@@ -293,7 +291,7 @@
       <ul>
         
           <li>
-            <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+            <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ 9QV8-4L8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
           </li>
         
           <li>
@@ -321,8 +319,8 @@
   <div class="widget-wrap">
     <h3 class="widget-title">タグ</h3>
     <div class="widget">
-      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">14</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">12</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Site-Recovery">Azure Site Recovery</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">30</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">28</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM &#x2F; MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Site-Recovery">Azure Site Recovery</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">14</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">12</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">30</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">28</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li></ul>
     </div>
   </div>
 

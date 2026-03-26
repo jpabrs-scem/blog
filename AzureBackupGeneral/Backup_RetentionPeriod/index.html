@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_05.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_06.png">
 <meta property="article:published_time" content="2025-01-06T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-06T08:09:17.320Z">
+<meta property="article:modified_time" content="2026-03-26T08:07:49.322Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="how to">
@@ -44,7 +44,7 @@
   
 <link rel="stylesheet" href="../../css/style.css">
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -62,7 +62,7 @@
         
           <a class="main-nav-link" href="/blog/archives">Archives</a>
         
-        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+        <a class="main-nav-link" href="https://cssjpn.github.io/">サポート情報</a>
       </nav>
       <nav id="sub-nav">
         
@@ -110,14 +110,14 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f68e4eba-43a5-511f-aec3-7f34b267db34%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE+%E4%BF%9D%E6%8C%81%E6%9C%9F%E9%96%93%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FBackup_RetentionPeriod%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FBackup_RetentionPeriod.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FBackup_RetentionPeriod.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/" data-id="cmmem5nkr00010njy7gxofjpb" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/Backup_RetentionPeriod/" data-id="cuidrsSUAK_SdiXJ5It4NJim3" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <span id="more"></span>
 <p>皆様こんにちは。Azure Backup サポートです。<br>今回は、よくお問い合わせをうける「保持期限」について、取りまとめてお伝えします。<br>公開ドキュメント上では、下記のように「最大保有期間：バックアップ頻度次第」と記載が書かれており、実際に「毎日」「毎週」のバックアップを構成した場合の最大保有期間は、ポリシー作成画面で確認するのみとなっております。</p>
-<p>・保有の制限<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits">https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits</a></p>
+<p>・保有の制限<br>　<a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits">https://learn.microsoft.com/ja-jp/azure/backup/backup-support-matrix#retention-limits</a></p>
 <p><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_01.png"></p>
 <p>（図例：Azure VM Backup の場合）<br><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_02.png"></p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
@@ -240,9 +240,9 @@
 </tr>
 </tbody></table>
 <p>（補足）Enhanced バックアップ ポリシーの場合、「〇時間ごと」というような頻度を選択可能です。<br>　1 日に複数回のバックアップ取得を設定した場合、バックアップ ポリシー上の周期から計算して「その日の最後のバックアップ」のみが Recovery Services コンテナー層に保管されます。</p>
-<p>・拡張ポリシーを使用して Azure VM をバックアップする - Azure Backup | Microsoft Learn<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal#create-an-enhanced-policy-and-configure-vm-backup">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal#create-an-enhanced-policy-and-configure-vm-backup</a><br>　“毎時間のバックアップの場合、その日の最後のバックアップがコンテナーに転送されます。 バックアップが失敗すると、次の日の最初のバックアップがコンテナーに転送されます。”</p>
+<p>・拡張ポリシーを使用して Azure VM をバックアップする - Azure Backup | Microsoft Learn<br>　<a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal#create-an-enhanced-policy-and-configure-vm-backup">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-enhanced-policy?tabs=azure-portal#create-an-enhanced-policy-and-configure-vm-backup</a><br>　“毎時間のバックアップの場合、その日の最後のバックアップがコンテナーに転送されます。 バックアップが失敗すると、次の日の最初のバックアップがコンテナーに転送されます。”</p>
 <p>(Enhanced バックアップ ポリシー の設定例)<br>開始時刻：JST 16時<br>スケジュール：4時間ごと<br>バックアップ期間：24時間</p>
-<p>スナップショット① = JST 6/27 16:00 ごろ取得 → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット② = JST 6/27 20:00 ごろ取得 → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット③ = JST 6/28 0:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット④ = JST 6/28 4:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット⑤ = JST 6/28 8:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット⑥ = JST 6/28 12:00 ごろ取得  → <font color="OrangeRed">Recovery Services コンテナーへ転送される</font></p>
+<p>スナップショット① &#x3D; JST 6&#x2F;27 16:00 ごろ取得 → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット② &#x3D; JST 6&#x2F;27 20:00 ごろ取得 → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット③ &#x3D; JST 6&#x2F;28 0:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット④ &#x3D; JST 6&#x2F;28 4:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット⑤ &#x3D; JST 6&#x2F;28 8:00 ごろ取得   → Recovery Services コンテナーには転送されず、スナップショット層にのみ保管される<br>スナップショット⑥ &#x3D; JST 6&#x2F;28 12:00 ごろ取得  → <font color="OrangeRed">Recovery Services コンテナーへ転送される</font></p>
 <p>（補足）オンデマンド バックアップの場合、最大 99 年まで保持期間を指定可能です。<br><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_03.png"></p>
 <h2 id="2-Azure-ファイル共有に対する-Azure-Backup-の場合"><a href="#2-Azure-ファイル共有に対する-Azure-Backup-の場合" class="headerlink" title=" 2. Azure ファイル共有に対する Azure Backup の場合"></a><a id="2"></a> 2. Azure ファイル共有に対する Azure Backup の場合</h2><table>
 <thead>
@@ -325,7 +325,7 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>毎分/毎時</td>
+<td>毎分&#x2F;毎時</td>
 <td>7 日</td>
 <td>35 日</td>
 </tr>
@@ -396,7 +396,7 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>毎分/毎時</td>
+<td>毎分&#x2F;毎時</td>
 <td>7 日</td>
 <td>35 日</td>
 </tr>
@@ -474,9 +474,9 @@
 <td>365 日</td>
 </tr>
 </tbody></table>
-<p>(補足 1 )<br>Azure ディスク バックアップでは、ディスクあたりのスナップショット合計数が、スケジュール バックアップ 450 個 + オンデマンド バックアップ 50 個の合計 500 個までとなるよう、バックアップ ポリシー上で制限されています。<br>・ディスク バックアップのスケジュールと保持期間はどのように機能しますか?<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-does-the-disk-backup-scheduling-and-retention-period-work">https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-does-the-disk-backup-scheduling-and-retention-period-work</a><br>　“スナップショットの保持期間は、ディスクのスナップショット制限によって制御されます。”</p>
+<p>(補足 1 )<br>Azure ディスク バックアップでは、ディスクあたりのスナップショット合計数が、スケジュール バックアップ 450 個 + オンデマンド バックアップ 50 個の合計 500 個までとなるよう、バックアップ ポリシー上で制限されています。<br>・ディスク バックアップのスケジュールと保持期間はどのように機能しますか?<br>　<a href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-does-the-disk-backup-scheduling-and-retention-period-work">https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-does-the-disk-backup-scheduling-and-retention-period-work</a><br>　“スナップショットの保持期間は、ディスクのスナップショット制限によって制御されます。”</p>
 <p>(補足 2 )<br>バックアップ ポリシー作成時、「保持規則の追加」をクリックすることで、<br>「毎日」もしくは「毎週」作成される、特定のバックアップについては、追加で保持期間を設定することができます。</p>
-<p>・バックアップ ポリシーを作成する<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks#create-backup-policy">https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks#create-backup-policy</a><br>　“最初に正常に作成された日単位または週単位のバックアップを選択して、特定のバックアップが削除される前に保持されるリテンション期間を指定できます。<br>　 このオプションは、日または週の特定のバックアップを長期間保持するのに便利です。<br>　 その他のバックアップについては、保持期間を短くすることができます。”</p>
+<p>・バックアップ ポリシーを作成する<br>　<a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks#create-backup-policy">https://learn.microsoft.com/ja-jp/azure/backup/backup-managed-disks#create-backup-policy</a><br>　“最初に正常に作成された日単位または週単位のバックアップを選択して、特定のバックアップが削除される前に保持されるリテンション期間を指定できます。<br>　 このオプションは、日または週の特定のバックアップを長期間保持するのに便利です。<br>　 その他のバックアップについては、保持期間を短くすることができます。”</p>
 <p><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_04.png" alt="image"></p>
 <h2 id="7-Azure-BLOB-バックアップ-の場合"><a href="#7-Azure-BLOB-バックアップ-の場合" class="headerlink" title=" 7. Azure BLOB バックアップ の場合"></a><a id="7"></a> 7. Azure BLOB バックアップ の場合</h2><h3 id="運用バックアップの場合"><a href="#運用バックアップの場合" class="headerlink" title="運用バックアップの場合"></a>運用バックアップの場合</h3><p>バックアップ対象ストレージ アカウント上にのみバックアップ データを保管します。<br>「1 日に 1 回のバックアップ」などではなく、継続的なバックアップ取得となるため、「バックアップ頻度」というものはございません。<br>最小保持期間は 1 日、最大保持期間は 360 日、またはそれに相当する数の週 (51) または月 (11) です。</p>
 <h3 id="保管済みバックアップの場合"><a href="#保管済みバックアップの場合" class="headerlink" title="保管済みバックアップの場合"></a>保管済みバックアップの場合</h3><p>バックアップ対象ストレージ アカウント上および バックアップ コンテナー上にバックアップ データを保管します。</p>
@@ -501,7 +501,7 @@
 </tbody></table>
 <p>(補足)<br>保持期間は日、週、月、年 単位で設定することも可能です。<br><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_05.png" alt="image"></p>
 <p>「保持規則の追加」をクリックすることで、「毎週」、「毎月」もしくは「毎年」作成される、特定のバックアップについては、追加で保持期間を設定することができます。<br><img src="/blog/AzureBackupGeneral/Backup_RetentionPeriod/Backup_RetentionPeriod_06.png" alt="image"></p>
-<h2 id="8-Microsoft-Azure-Backup-Server-MABS-または-System-Center-Data-Protection-Manager-DPM-の場合"><a href="#8-Microsoft-Azure-Backup-Server-MABS-または-System-Center-Data-Protection-Manager-DPM-の場合" class="headerlink" title=" 8. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合"></a><a id="8"></a> 8. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合</h2><h3 id="DPM-MABS-ローカルディスクへのバックアップ"><a href="#DPM-MABS-ローカルディスクへのバックアップ" class="headerlink" title="(DPM / MABS) ローカルディスクへのバックアップ"></a>(DPM / MABS) ローカルディスクへのバックアップ</h3><table>
+<h2 id="8-Microsoft-Azure-Backup-Server-MABS-または-System-Center-Data-Protection-Manager-DPM-の場合"><a href="#8-Microsoft-Azure-Backup-Server-MABS-または-System-Center-Data-Protection-Manager-DPM-の場合" class="headerlink" title=" 8. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合"></a><a id="8"></a> 8. Microsoft Azure Backup Server (MABS) または System Center Data Protection Manager (DPM) の場合</h2><h3 id="DPM-MABS-ローカルディスクへのバックアップ"><a href="#DPM-MABS-ローカルディスクへのバックアップ" class="headerlink" title="(DPM &#x2F; MABS) ローカルディスクへのバックアップ"></a>(DPM &#x2F; MABS) ローカルディスクへのバックアップ</h3><table>
 <thead>
 <tr>
 <th>バックアップの頻度</th>
@@ -516,7 +516,7 @@
 </tr>
 </tbody></table>
 <p>(*1) 保護対象のワークロードにより、指定可能な間隔が異なります。たとえば SQL Server の場合、最短 15 分間隔が指定できます。<br>また、保護対象がファイル データの場合、回復ポイントの最大数は 64 個、保護対象がアプリケーション データの場合は最大 448 個の制限がございます。</p>
-<p>(*2) DPM / MABS における保持期間の考え方は、カレンダー上の経過日数ではなく、正常に回復ポイントが取得された日数をカウントします。<br>たとえば、保持期間を 1 日に設定し、月曜日に回復ポイントを取得した場合、1 日分としてカウントされ、バックアップ データは火曜日以降も保持されます。<br>保持日数のカウント数を超えた場合 (たとえば次の月曜日に回復ポイントを作成)、メンテナンス ジョブ (毎日深夜 0 時に自動実行) によって、古いものから削除されます。</p>
+<p>(*2) DPM &#x2F; MABS における保持期間の考え方は、カレンダー上の経過日数ではなく、正常に回復ポイントが取得された日数をカウントします。<br>たとえば、保持期間を 1 日に設定し、月曜日に回復ポイントを取得した場合、1 日分としてカウントされ、バックアップ データは火曜日以降も保持されます。<br>保持日数のカウント数を超えた場合 (たとえば次の月曜日に回復ポイントを作成)、メンテナンス ジョブ (毎日深夜 0 時に自動実行) によって、古いものから削除されます。</p>
 <h3 id="DPM-Tape-への長期保護バックアップ-保護対象をディスクにバックアップしてからテープにバックアップ"><a href="#DPM-Tape-への長期保護バックアップ-保護対象をディスクにバックアップしてからテープにバックアップ" class="headerlink" title="(DPM)  Tape への長期保護バックアップ (保護対象をディスクにバックアップしてからテープにバックアップ)"></a>(DPM)  Tape への長期保護バックアップ (保護対象をディスクにバックアップしてからテープにバックアップ)</h3><table>
 <thead>
 <tr>
@@ -565,7 +565,7 @@
 <td>12 週</td>
 </tr>
 </tbody></table>
-<h3 id="DPM-MABS-オンライン-バックアップ-保護対象をディスクにバックアップしてから-Recovery-Services-コンテナーにバックアップ"><a href="#DPM-MABS-オンライン-バックアップ-保護対象をディスクにバックアップしてから-Recovery-Services-コンテナーにバックアップ" class="headerlink" title="(DPM / MABS) オンライン バックアップ (保護対象をディスクにバックアップしてから Recovery Services コンテナーにバックアップ)"></a>(DPM / MABS) オンライン バックアップ (保護対象をディスクにバックアップしてから Recovery Services コンテナーにバックアップ)</h3><table>
+<h3 id="DPM-MABS-オンライン-バックアップ-保護対象をディスクにバックアップしてから-Recovery-Services-コンテナーにバックアップ"><a href="#DPM-MABS-オンライン-バックアップ-保護対象をディスクにバックアップしてから-Recovery-Services-コンテナーにバックアップ" class="headerlink" title="(DPM &#x2F; MABS) オンライン バックアップ (保護対象をディスクにバックアップしてから Recovery Services コンテナーにバックアップ)"></a>(DPM &#x2F; MABS) オンライン バックアップ (保護対象をディスクにバックアップしてから Recovery Services コンテナーにバックアップ)</h3><table>
 <thead>
 <tr>
 <th>バックアップの頻度</th>
@@ -619,11 +619,11 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureVMBackup/Consistencies/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../MARSBackup/How_to_re-install/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          Azure VM Backupにおける整合性について
+          MARS エージェントの再インストール手順
         
       </div>
     </a>
@@ -650,7 +650,7 @@
       <ul>
         
           <li>
-            <a href="../HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+            <a href="../HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ 9QV8-4L8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
           </li>
         
           <li>
@@ -678,8 +678,8 @@
   <div class="widget-wrap">
     <h3 class="widget-title">タグ</h3>
     <div class="widget">
-      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">14</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">12</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Site-Recovery">Azure Site Recovery</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">30</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">28</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM &#x2F; MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Site-Recovery">Azure Site Recovery</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">14</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">12</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">30</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">28</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li></ul>
     </div>
   </div>
 

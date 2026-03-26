@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/RSV_BV_02.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/RSV_BV_03.png">
 <meta property="article:published_time" content="2025-12-29T07:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-06T08:09:17.362Z">
+<meta property="article:modified_time" content="2026-03-26T08:07:49.364Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="how to">
@@ -41,7 +41,7 @@
   
 <link rel="stylesheet" href="../../css/style.css">
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -59,7 +59,7 @@
         
           <a class="main-nav-link" href="/blog/archives">Archives</a>
         
-        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+        <a class="main-nav-link" href="https://cssjpn.github.io/">サポート情報</a>
       </nav>
       <nav id="sub-nav">
         
@@ -107,7 +107,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+8401064c-2df4-5d65-a9f1-fa3586b2b591%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BRecovery+Services+%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%BC%E3%81%A8%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97+%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%BC%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FRSV_BV%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FRSV_BV.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FRSV_BV.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/" data-id="cmmem5nl2000f0njy8e0r102f" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RSV_BV/" data-id="cuidsPQdiQnxqXCIfrNUuYnw0" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -115,9 +115,7 @@
         <span id="more"></span>
 <p>こんにちは、Azure Backup サポートです。<br>今回は、 Azure バックアップ ソリューションで利用する Recovery Services コンテナーとバックアップ コンテナーのバックアップ対象の違いについてご説明します。<br>Recovery Services コンテナーとバックアップ コンテナーはバックアップ対象 (バックアップ ソリューション) の違いにより使い分ける必要がございます。<br>また、<strong>回復性 (Resiliency)  は サブスクリプション内の Recovery Services コンテナーやバックアップ コンテナー (およびそれぞれのコンテナーでバックアップしているバックアップ アイテム) を統合管理するための管理画面です。</strong><br><img src="/blog/AzureBackupGeneral/RSV_BV/RSV_BV_01.png" alt=" Azure Backup 関連のリソース"></p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. バックアップ ソリューションとコンテナー、およびデータ保存先の比較表</a><br><a href="#2">2. コンテナーにバックアップ データが保存されないもの</a><br><a href="#2-1">2-1. Azure ファイル共有バックアップ (スナップショット レベル)</a><br><a href="#2-2">2-2. Azure Blob バックアップ (運用バックアップ)</a><br><a href="#2-3">2-3. Azure ディスク バックアップ</a></p>
-<hr>
-<h3 id="1-バックアップ-ソリューションとコンテナー、およびデータ保存先の比較表"><a href="#1-バックアップ-ソリューションとコンテナー、およびデータ保存先の比較表" class="headerlink" title="1. バックアップ ソリューションとコンテナー、およびデータ保存先の比較表"></a><a id="1"></a>1. バックアップ ソリューションとコンテナー、およびデータ保存先の比較表</h3><p> 各 Azure バックアップのソリューションがどのコンテナーを利用するか、またデータの保存先については下記の通りです。<br> また、各ソリューションには各公開ドキュメントへのリンクを付けています。</p>
+<h2 id="1-バックアップ-ソリューションとコンテナー、およびデータ保存先の比較表2-コンテナーにバックアップ-データが保存されないもの2-1-Azure-ファイル共有バックアップ-スナップショット-レベル-2-2-Azure-Blob-バックアップ-運用バックアップ-2-3-Azure-ディスク-バックアップ"><a href="#1-バックアップ-ソリューションとコンテナー、およびデータ保存先の比較表2-コンテナーにバックアップ-データが保存されないもの2-1-Azure-ファイル共有バックアップ-スナップショット-レベル-2-2-Azure-Blob-バックアップ-運用バックアップ-2-3-Azure-ディスク-バックアップ" class="headerlink" title="1. バックアップ ソリューションとコンテナー、およびデータ保存先の比較表2. コンテナーにバックアップ データが保存されないもの2-1. Azure ファイル共有バックアップ (スナップショット レベル)2-2. Azure Blob バックアップ (運用バックアップ)2-3. Azure ディスク バックアップ"></a><a href="#1">1. バックアップ ソリューションとコンテナー、およびデータ保存先の比較表</a><br><a href="#2">2. コンテナーにバックアップ データが保存されないもの</a><br><a href="#2-1">2-1. Azure ファイル共有バックアップ (スナップショット レベル)</a><br><a href="#2-2">2-2. Azure Blob バックアップ (運用バックアップ)</a><br><a href="#2-3">2-3. Azure ディスク バックアップ</a></h2><h3 id="1-バックアップ-ソリューションとコンテナー、およびデータ保存先の比較表"><a href="#1-バックアップ-ソリューションとコンテナー、およびデータ保存先の比較表" class="headerlink" title="1. バックアップ ソリューションとコンテナー、およびデータ保存先の比較表"></a><a id="1"></a>1. バックアップ ソリューションとコンテナー、およびデータ保存先の比較表</h3><p> 各 Azure バックアップのソリューションがどのコンテナーを利用するか、またデータの保存先については下記の通りです。<br> また、各ソリューションには各公開ドキュメントへのリンクを付けています。</p>
 <table>
 <thead>
 <tr>
@@ -129,102 +127,102 @@
 </thead>
 <tbody><tr>
 <td align="left">1</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction">Azure VM バックアップ</a></td>
+<td align="left"><a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction">Azure VM バックアップ</a></td>
 <td align="left">Recovery Services コンテナー</td>
 <td align="left">する</td>
 </tr>
 <tr>
 <td align="left">2</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-about-mars">MARS バックアップ</a></td>
+<td align="left"><a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-about-mars">MARS バックアップ</a></td>
 <td align="left">Recovery Services コンテナー</td>
 <td align="left">する</td>
 </tr>
 <tr>
 <td align="left">3</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-microsoft-azure-backup">MABS バックアップ</a></td>
+<td align="left"><a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-microsoft-azure-backup">MABS バックアップ</a></td>
 <td align="left">Recovery Services コンテナー</td>
 <td align="left">する</td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database">SQL in Azure VM バックアップ</a></td>
+<td align="left"><a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-sql-database">SQL in Azure VM バックアップ</a></td>
 <td align="left">Recovery Services コンテナー</td>
 <td align="left">する</td>
 </tr>
 <tr>
 <td align="left">5</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-about">SAP HANA DB in Azure VM バックアップ</a></td>
+<td align="left"><a href="https://learn.microsoft.com/ja-jp/azure/backup/sap-hana-database-about">SAP HANA DB in Azure VM バックアップ</a></td>
 <td align="left">Recovery Services コンテナー</td>
 <td align="left">する</td>
 </tr>
 <tr>
 <td align="left">6</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview">Azure ファイル共有バックアップ</a></td>
+<td align="left"><a href="https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview">Azure ファイル共有バックアップ</a></td>
 <td align="left">Recovery Services コンテナー</td>
 <td align="left">「スナップショット レベル」のバックアップ：しない<br>「Vault-Standard レベル」のバックアップ：する (注 1)</td>
 </tr>
 <tr>
 <td align="left">7</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview">Azure Blob バックアップ</a></td>
+<td align="left"><a href="https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview">Azure Blob バックアップ</a></td>
 <td align="left">バックアップ コンテナー</td>
 <td align="left">運用バックアップ：しない<br>保管済みバックアップ：する</td>
 </tr>
 <tr>
 <td align="left">8</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview">Azure ディスク バックアップ</a></td>
+<td align="left"><a href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview">Azure ディスク バックアップ</a></td>
 <td align="left">バックアップ コンテナー</td>
 <td align="left"><strong>しない</strong></td>
 </tr>
 <tr>
 <td align="left">9</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview">Azure PostgreSQL バックアップ</a></td>
+<td align="left"><a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-database-postgresql-overview">Azure PostgreSQL バックアップ</a></td>
 <td align="left">バックアップ コンテナー</td>
 <td align="left">する</td>
 </tr>
 <tr>
 <td align="left">10</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview">Azure Kubernetes Service バックアップ</a></td>
+<td align="left"><a href="https://learn.microsoft.com/ja-jp/azure/backup/azure-kubernetes-service-backup-overview">Azure Kubernetes Service バックアップ</a></td>
 <td align="left">バックアップ コンテナー</td>
 <td align="left">運用層のバックアップ : しない<br>コンテナー層のバックアップ : する (注 2)</td>
 </tr>
 </tbody></table>
 <p>(注 1) 2025 年 3 月現在、Azure Premium ファイル共有のコンテナー層へのバックアップ機能は Public Preview となっております<br>一方、Azure Standard ファイル共有のコンテナー層へのバックアップ機能は Generally Available となっております  </p>
 <ul>
-<li>Generally Available: Vaulted Backup Support for Azure Files Standard Shares | Azure updates | Microsoft Azure<br><a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-US/updates?id=482659">https://azure.microsoft.com/en-US/updates?id=482659</a></li>
+<li>Generally Available: Vaulted Backup Support for Azure Files Standard Shares | Azure updates | Microsoft Azure<br><a href="https://azure.microsoft.com/en-US/updates?id=482659">https://azure.microsoft.com/en-US/updates?id=482659</a></li>
 </ul>
 <p>(注 2) AKS のバックアップにおいて、運用層のバックアップは必須で取得いただく必要がございますが、コンテナー層のバックアップは任意での取得が可能となっております  </p>
 <h3 id="2-コンテナーにバックアップ-データが保存されないもの"><a href="#2-コンテナーにバックアップ-データが保存されないもの" class="headerlink" title="2.コンテナーにバックアップ データが保存されないもの"></a><a id="2"></a>2.コンテナーにバックアップ データが保存されないもの</h3><p>上述のとおり、現在 一般公開されている (プレビュー機能ではない) Azure ファイル共有バックアップ (スナップショット レベル) 、Azure Blob バックアップ (運用バックアップ)、Azure ディスク バックアップは各コンテナーにはバックアップ データは転送されません。<br>それぞれについて簡単にご説明させていただきます。<br>共通している点はそれぞれのソリューションはコアとなる別のソリューションをバックアップ サービス側からトリガーし実現している点でございます。</p>
 <h4 id="2-1-Azure-ファイル共有バックアップ-スナップショット-レベル"><a href="#2-1-Azure-ファイル共有バックアップ-スナップショット-レベル" class="headerlink" title="2-1. Azure ファイル共有バックアップ (スナップショット レベル)"></a><a id="2-1"></a>2-1. Azure ファイル共有バックアップ (スナップショット レベル)</h4><p>Azure ファイル共有 バックアップ (スナップショット レベル) は Azure Files の共有スナップショットの機能をバックアップ サービスと連携することによりスナップショット取得・削除の自動化を実現したバックアップ ソリューションです。</p>
 <p>そのため、バックアップ データ (スナップショット データ) の保存先は Azure Files の共有スナップショットと同じく、そのストレージ アカウント自身 (のスナップショット領域)となります。<br>そのため、 Recovery Services コンテナーには転送されません。<br>下記のように<strong>Azure ファイル共有のスナップショット リソースとして、Azure ファイル共有バックアップにて取得されたスナップショットも確認可能です</strong>。(“発信側” が “AzureBackup” となっているものです)<br><img src="/blog/AzureBackupGeneral/RSV_BV/RSV_BV_02.png"></p>
 <ul>
-<li><p>バックアップ プロセスのしくみ - Azure ファイル共有のバックアップについて<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview">https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview</a></p>
+<li><p>バックアップ プロセスのしくみ - Azure ファイル共有のバックアップについて<br><a href="https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview">https://learn.microsoft.com/ja-jp/azure/backup/azure-file-share-backup-overview</a></p>
 <blockquote>
 <p>抜粋：スナップショット レベル | ファイル共有 API を使ってファイル共有のスナップショットが作成されます。 スナップショットの URL は、メタデータ ストアだけに格納されます。</p>
 </blockquote>
 </li>
-<li><p>Azure Files の共有スナップショット<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/storage/files/storage-snapshots-files">https://learn.microsoft.com/ja-jp/azure/storage/files/storage-snapshots-files</a></p>
+<li><p>Azure Files の共有スナップショット<br><a href="https://learn.microsoft.com/ja-jp/azure/storage/files/storage-snapshots-files">https://learn.microsoft.com/ja-jp/azure/storage/files/storage-snapshots-files</a></p>
 </li>
 </ul>
 <h4 id="2-2-Azure-Blob-バックアップ-運用バックアップ"><a href="#2-2-Azure-Blob-バックアップ-運用バックアップ" class="headerlink" title="2-2. Azure Blob バックアップ (運用バックアップ)"></a><a id="2-2"></a>2-2. Azure Blob バックアップ (運用バックアップ)</h4><p>Azure Blob バックアップ (運用バックアップ) は Azure Blob のポイントインタイム リストアの機能をバックアップ サービスと連携することにより実現したバックアップ ソリューションです。</p>
 <p>バックアップ データ (リストアに必要なデータ) の保存先は Azure Blob のポイントインタイム リストアと同じく、そのストレージ アカウント自身となります。<br>バックアップ コンテナーには転送されません。</p>
 <ul>
-<li><p>運用バックアップのしくみ - Azure Blob の運用バックアップの概要<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview">https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview</a></p>
+<li><p>運用バックアップのしくみ - Azure Blob の運用バックアップの概要<br><a href="https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview">https://learn.microsoft.com/ja-jp/azure/backup/blob-backup-overview</a></p>
 <blockquote>
 <p>抜粋：継続的バックアップ: 運用バックアップ (マネージド ローカル データ保護ソリューション) を構成して、ブロック BLOB の偶発的な削除や破損から保護できます。 データはソース ストレージ アカウント内にローカルに格納され、バックアップ コンテナーには転送されません。</p>
 </blockquote>
 </li>
-<li><p>ブロック BLOB のポイントインタイム リストア<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/storage/blobs/point-in-time-restore-overview">https://learn.microsoft.com/ja-jp/azure/storage/blobs/point-in-time-restore-overview</a></p>
+<li><p>ブロック BLOB のポイントインタイム リストア<br><a href="https://learn.microsoft.com/ja-jp/azure/storage/blobs/point-in-time-restore-overview">https://learn.microsoft.com/ja-jp/azure/storage/blobs/point-in-time-restore-overview</a></p>
 </li>
 </ul>
 <h4 id="2-3-Azure-ディスク-バックアップ"><a href="#2-3-Azure-ディスク-バックアップ" class="headerlink" title="2-3. Azure ディスク バックアップ"></a><a id="2-3"></a>2-3. Azure ディスク バックアップ</h4><p>Azure ディスク バックアップ は マネージド ディスクの増分スナップショットの機能とバックアップ サービスを連携することによりスナップショット取得・削除の自動化を実現したバックアップ ソリューションです。</p>
 <p>そのため、バックアップ データ (スナップショット データ) の保存先は マネージド ディスクのスナップショットと同じく、マネージド ディスクのスナップショットの専用領域 (運用層) となります。<br>Recovery Services コンテナーには転送されません。<br>また、下記のように<strong>スナップショット リソースとして Azure ディスクのバックアップによって取得されたスナップショットも確認可能です</strong>。(タグが “CreatedBy：AzureBackup” となっているものです)<br><img src="/blog/AzureBackupGeneral/RSV_BV/RSV_BV_03.png"></p>
 <ul>
-<li><p>バックアップと復元のプロセスのしくみ - Azure ディスク バックアップの概要<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-the-backup-and-restore-process-works">https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-the-backup-and-restore-process-works</a></p>
+<li><p>バックアップと復元のプロセスのしくみ - Azure ディスク バックアップの概要<br><a href="https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-the-backup-and-restore-process-works">https://learn.microsoft.com/ja-jp/azure/backup/disk-backup-overview#how-the-backup-and-restore-process-works</a></p>
 <blockquote>
-<p>抜粋： Azure ディスク バックアップでは、運用層のバックアップのみがサポートされています。 コンテナー ストレージ層へのバックアップのコピーはサポートされていません。 そのため、バックアップ コンテナーのストレージ冗長設定 (LRS/GRS) は、運用層に格納されているバックアップには適用されません。</p>
+<p>抜粋： Azure ディスク バックアップでは、運用層のバックアップのみがサポートされています。 コンテナー ストレージ層へのバックアップのコピーはサポートされていません。 そのため、バックアップ コンテナーのストレージ冗長設定 (LRS&#x2F;GRS) は、運用層に格納されているバックアップには適用されません。</p>
 </blockquote>
 </li>
-<li><p>マネージド ディスクの増分スナップショットの作成<br><a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli">https://learn.microsoft.com/ja-jp/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli</a></p>
+<li><p>マネージド ディスクの増分スナップショットの作成<br><a href="https://learn.microsoft.com/ja-jp/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli">https://learn.microsoft.com/ja-jp/azure/virtual-machines/disks-incremental-snapshots?tabs=azure-cli</a></p>
 </li>
 </ul>
 <p>本ブログ記事の説明は以上です。</p>
@@ -283,7 +281,7 @@
       <ul>
         
           <li>
-            <a href="../HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+            <a href="../HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ 9QV8-4L8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
           </li>
         
           <li>
@@ -311,8 +309,8 @@
   <div class="widget-wrap">
     <h3 class="widget-title">タグ</h3>
     <div class="widget">
-      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">14</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">12</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Site-Recovery">Azure Site Recovery</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">30</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">28</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM &#x2F; MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Site-Recovery">Azure Site Recovery</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">14</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">12</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">30</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">28</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li></ul>
     </div>
   </div>
 

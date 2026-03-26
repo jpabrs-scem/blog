@@ -6,12 +6,12 @@
   
   <title>「VMSnapshot」拡張機能の再インストール手順 (Windows) | Japan CSS ABRS  Support Blog !!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、「VMSnapshot」拡張機能の再インストール手順 (Windows OS の場合) についてご案内いたします。 目次 1. 概要2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)    1. 概要「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごとバッ">
+  <meta name="description" content="皆様こんにちは、Azure Backup サポートです。今回は、「VMSnapshot」拡張機能の再インストール手順 (Windows OS の場合) についてご案内いたします。 目次 1. 概要2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)  1. 概要「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごとバックア">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「VMSnapshot」拡張機能の再インストール手順 (Windows)">
 <meta property="og:url" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/index.html">
 <meta property="og:site_name" content="Japan CSS ABRS  Support Blog !!">
-<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、「VMSnapshot」拡張機能の再インストール手順 (Windows OS の場合) についてご案内いたします。 目次 1. 概要2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)    1. 概要「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごとバッ">
+<meta property="og:description" content="皆様こんにちは、Azure Backup サポートです。今回は、「VMSnapshot」拡張機能の再インストール手順 (Windows OS の場合) についてご案内いたします。 目次 1. 概要2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)  1. 概要「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごとバックア">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_01.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_02.png">
@@ -28,10 +28,10 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_15.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_16.png">
 <meta property="article:published_time" content="2025-06-30T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-06T08:09:17.569Z">
+<meta property="article:modified_time" content="2026-03-26T08:07:49.574Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
-<meta property="article:tag" content="how to">
 <meta property="article:tag" content="Azure VM Backup">
+<meta property="article:tag" content="how to">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_01.png">
   
@@ -52,7 +52,7 @@
   
 <link rel="stylesheet" href="../../css/style.css">
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -70,7 +70,7 @@
         
           <a class="main-nav-link" href="/blog/archives">Archives</a>
         
-        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+        <a class="main-nav-link" href="https://cssjpn.github.io/">サポート情報</a>
       </nav>
       <nav id="sub-nav">
         
@@ -118,7 +118,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+f61a32ac-fe72-527e-96e2-46d233ed3d05%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5B%E3%80%8CVMSnapshot%E3%80%8D%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%81%AE%E5%86%8D%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%89%8B%E9%A0%86+%28Windows%29%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureVMBackup%2FHowToUninstallVMSnapshotExtension%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureVMBackup%2FHowToUninstallVMSnapshotExtension.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureVMBackup%2FHowToUninstallVMSnapshotExtension.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/" data-id="cmmem5nlt002h0njyevmbg2hq" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/" data-id="cuiduhbZ7IVkmORmfdx2YkgMu" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -126,13 +126,11 @@
         <span id="more"></span>
 <p>皆様こんにちは、Azure Backup サポートです。<br>今回は、「VMSnapshot」拡張機能の再インストール手順 (Windows OS の場合) についてご案内いたします。</p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. 概要</a><br><a href="#2">2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)</a>  </p>
-<hr>
-<h3 id="1-概要"><a href="#1-概要" class="headerlink" title="1. 概要"></a><a id="1"></a>1. 概要</h3><p>「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごとバックアップする機能) において、対象の Azure 仮想マシン上にインストールされる拡張機能です。<br>Azure VM Backup にて何らかのエラーが発生した場合、トラブルシューティングの一環として本記事の記載に従って「VMSnapshot」拡張機能を再インストールしていただき、再度バックアップを実行させることで、エラーが解消されるかを依頼する場合がございます。</p>
-<p>・(参考) Azure VM バックアップについて - Azure Backup | Microsoft Learn<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process</a><br>　“Windows VM の場合、VMSnapshot 拡張機能がインストールされます。<br>　 Linux VM の場合、VMSnapshotLinux 拡張機能がインストールされます。”</p>
-<p>・(参考) Azure Backup 用の VM スナップショットの Windows 拡張機能 - Azure Virtual Machines | Microsoft Learn<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/virtual-machines/extensions/vmsnapshot-windows">https://learn.microsoft.com/ja-jp/azure/virtual-machines/extensions/vmsnapshot-windows</a></p>
+<h2 id="1-概要2-「VMSnapshot」拡張機能の再インストール手順-Windows"><a href="#1-概要2-「VMSnapshot」拡張機能の再インストール手順-Windows" class="headerlink" title="1. 概要2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)  "></a><a href="#1">1. 概要</a><br><a href="#2">2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)</a>  </h2><h3 id="1-概要"><a href="#1-概要" class="headerlink" title="1. 概要"></a><a id="1"></a>1. 概要</h3><p>「VMSnapshot」拡張機能は、Azure VM Backup (Azure 仮想マシンをまるごとバックアップする機能) において、対象の Azure 仮想マシン上にインストールされる拡張機能です。<br>Azure VM Backup にて何らかのエラーが発生した場合、トラブルシューティングの一環として本記事の記載に従って「VMSnapshot」拡張機能を再インストールしていただき、再度バックアップを実行させることで、エラーが解消されるかを依頼する場合がございます。</p>
+<p>・(参考) Azure VM バックアップについて - Azure Backup | Microsoft Learn<br>　<a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-introduction#backup-process</a><br>　“Windows VM の場合、VMSnapshot 拡張機能がインストールされます。<br>　 Linux VM の場合、VMSnapshotLinux 拡張機能がインストールされます。”</p>
+<p>・(参考) Azure Backup 用の VM スナップショットの Windows 拡張機能 - Azure Virtual Machines | Microsoft Learn<br>　<a href="https://learn.microsoft.com/ja-jp/azure/virtual-machines/extensions/vmsnapshot-windows">https://learn.microsoft.com/ja-jp/azure/virtual-machines/extensions/vmsnapshot-windows</a></p>
 <p>なお、下記公開ドキュメント上では、Azure ポータル画面 &gt; Azure 仮想マシン &gt; [拡張機能とアプリケーション] 画面から、アンインストールすることができるという説明を記載しておりますが<br>これは <strong>アンマネージド ディスクから作成している Azure 仮想マシンの場合のみ</strong> となります。<br>マネージド ディスク の Azure 仮想マシンの場合は、本記事に従って 「VMSnapshot」拡張機能の再インストールをお試しください。</p>
-<p>・(参考) ExtensionStuckInDeletionState - 拡張機能の状態がバックアップ操作に対応していません<br>　<a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionstuckindeletionstate---extension-state-is-not-supportive-to-the-backup-operation">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionstuckindeletionstate---extension-state-is-not-supportive-to-the-backup-operation</a><br>　“バックアップ拡張機能 [VmSnapshot] または [VmSnapshotLinux] を選択し、 [アンインストール] を選択します。”</p>
+<p>・(参考) ExtensionStuckInDeletionState - 拡張機能の状態がバックアップ操作に対応していません<br>　<a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionstuckindeletionstate---extension-state-is-not-supportive-to-the-backup-operation">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-troubleshoot#extensionstuckindeletionstate---extension-state-is-not-supportive-to-the-backup-operation</a><br>　“バックアップ拡張機能 [VmSnapshot] または [VmSnapshotLinux] を選択し、 [アンインストール] を選択します。”</p>
 <p>(画面例 : マネージド ディスク の Azure 仮想マシンの場合は、[拡張機能とアプリケーション] 画面上には「VMSnapshot」拡張機能は表示されません)<br><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_01.png"></p>
 <h3 id="2-「VMSnapshot」拡張機能の再インストール手順-Windows"><a href="#2-「VMSnapshot」拡張機能の再インストール手順-Windows" class="headerlink" title="2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)"></a><a id="2"></a>2. 「VMSnapshot」拡張機能の再インストール手順 (Windows)</h3><ul>
 <li><ol>
@@ -140,18 +138,14 @@
 <p>(実行コマンド)  </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Remove-AzVMExtension -ResourceGroupName &quot;&lt;Azure 仮想マシンのリソース グループ&gt;&quot; -VMName &quot;&lt;Azure 仮想マシン名&gt;&quot; -Name &quot;VMSnapshot&quot;</span><br></pre></td></tr></table></figure>
 <p>上記コマンド実行後、「Y」を入力して、拡張機能の削除を指示します<br><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_02.png"></p>
-<p>・(参考) Remove-AzVMExtension (Az.Compute) | Microsoft Learn<br> <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/powershell/module/az.compute/remove-azvmextension?view=azps-11.0.0">https://learn.microsoft.com/ja-jp/powershell/module/az.compute/remove-azvmextension?view=azps-11.0.0</a></p>
+<p>・(参考) Remove-AzVMExtension (Az.Compute) | Microsoft Learn<br> <a href="https://learn.microsoft.com/ja-jp/powershell/module/az.compute/remove-azvmextension?view=azps-11.0.0">https://learn.microsoft.com/ja-jp/powershell/module/az.compute/remove-azvmextension?view=azps-11.0.0</a></p>
 </li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><ol start="2">
 <li>該当の Azure 仮想マシン にサインインし、Windows + r を押下して “ファイル名を指定して実行” を開き “services.msc” と入力して、サービスを開いてください<br><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_03.png"></li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><ol start="3">
 <li><p>“Windows Azure Guest Agent” を右クリックし、停止をクリックして、サービスを停止してください<br><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_04.png"></p>
 <p><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_05.png"></p>
@@ -159,14 +153,10 @@
 </li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><ol start="4">
 <li>Windows + r を押下して “ファイル名を指定して実行” を開き “regedit” と入力して、レジストリエディターを開いてください<br><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_09.png"></li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><ol start="5">
 <li><p>HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsAzure に移動し、これを安全な場所にエクスポートしてください</p>
 <p>(補足)<br>  レジストリ キーの値をあくまでバックアップ目的でエクスポート (退避) します<br>  「VMSnapshot」拡張機能が正常に再インストール完了すれば、こちらのエクスポートしたファイルは削除いただいて構いません</p>
@@ -175,16 +165,12 @@
 </li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><ol start="6">
 <li><p>HKEY_LOCAL_MACHINE\Software\Microsoft\WindowsAzure\HandlerState に移動し、Microsoft.Azure.RecoveryServices.VMSnapshot_X.X.X.X を削除してください<br>(X.X.X.X は、マシン上の数字と読み替えてください)<br><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_12.png"></p>
 <p><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_13.png"></p>
 </li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><ol start="7">
 <li><p>管理者権限にてコマンドプロンプトを開き以下のコマンド (2 つ) を実行してください  </p>
 <p>(実行コマンド)  </p>
@@ -194,24 +180,18 @@
 </li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><ol start="8">
 <li><p>サービスより “Windows Azure Guest Agent” を右クリックし、開始をクリックして、サービスを開始してください<br><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_15.png"></p>
 <p><img src="/blog/AzureVMBackup/HowToUninstallVMSnapshotExtension/HowToUninstallVMSnapshotExtension_16.png"></p>
 </li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><ol start="9">
 <li><p>Windows Azure Guest Agent が正常に開始した段階で、再度マシン上には「Microsoft.Azure.RecoveryServices.VMSnapshot_X.X.X.X」のレジストリ キーが自動追加される想定ですが、<br>念のため、次回の Azure VM Backup のスケジュール バックアップもしくは「今すぐバックアップ」より、バックアップをトリガーしてください  </p>
-<p>・(参考) バックアップをすぐに実行する<br>  <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-first-look-arm#run-a-backup-immediately">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-first-look-arm#run-a-backup-immediately</a> </p>
+<p>・(参考) バックアップをすぐに実行する<br>  <a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-first-look-arm#run-a-backup-immediately">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-vms-first-look-arm#run-a-backup-immediately</a></p>
 </li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><ol start="10">
 <li>Azure VM Backup ジョブが正常に完了することを確認してください<br>もしバックアップ ジョブが正常に完了した場合には、手順 5 でエクスポートした下記ファイルは削除いただいて構いません<br>・ エクスポートしていたレジストリ キーのファイル</li>
 </ol>
@@ -273,7 +253,7 @@
       <ul>
         
           <li>
-            <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+            <a href="../../AzureBackupGeneral/HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ 9QV8-4L8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
           </li>
         
           <li>
@@ -301,8 +281,8 @@
   <div class="widget-wrap">
     <h3 class="widget-title">タグ</h3>
     <div class="widget">
-      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">14</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">12</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Site-Recovery">Azure Site Recovery</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">30</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">28</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM &#x2F; MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Site-Recovery">Azure Site Recovery</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">14</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">12</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">30</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">28</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li></ul>
     </div>
   </div>
 

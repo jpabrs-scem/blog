@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_11.png">
 <meta property="og:image" content="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_12.png">
 <meta property="article:published_time" content="2025-06-30T03:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-06T08:09:17.364Z">
+<meta property="article:modified_time" content="2026-03-26T08:07:49.365Z">
 <meta property="article:author" content="Japan CSS ABRS &amp; SCEM Support Team">
 <meta property="article:tag" content="Azure Backup General">
 <meta property="article:tag" content="情報採取">
@@ -50,7 +50,7 @@
   
 <link rel="stylesheet" href="../../css/style.css">
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
   <div id="container">
@@ -68,7 +68,7 @@
         
           <a class="main-nav-link" href="/blog/archives">Archives</a>
         
-        <a class="main-nav-link" target="_blank" rel="noopener" href="https://cssjpn.github.io/">サポート情報</a>
+        <a class="main-nav-link" href="https://cssjpn.github.io/">サポート情報</a>
       </nav>
       <nav id="sub-nav">
         
@@ -116,7 +116,7 @@
         
         <a href="https://jpabrs-scem.github.io/blog/issues/new?title=&body=%0A%0A---%0A%0A%23%23%23%23+Document+Details%0A%0A%E2%9A%A0+*Do+not+edit+this+section.%0A%0A*+ID%3A+15f2109c-51a4-528d-96f3-e49aeae52b9f%0A*+%E5%AF%BE%E8%B1%A1%E8%A8%98%E4%BA%8B%3A+%5BAzure+Backup+%E3%81%AE%E9%9A%9C%E5%AE%B3%E8%AA%BF%E6%9F%BB%E3%81%AB%E5%BF%85%E8%A6%81%E3%81%AA%E6%83%85%E5%A0%B1%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2FAzureBackupGeneral%2FRequestForInvestigating%2F%29%0A*+Content+Source%3A+%5Barticles%2FAzureBackupGeneral%2FRequestForInvestigating.md%5D%28https%3A%2F%2Fjpabrs-scem.github.io%2Fblog%2Fblob%2Fmain%2Farticles%2FAzureBackupGeneral%2FRequestForInvestigating.md%29%0A*+Author%3A+" class="article-github-issue-link" target="_blank" rel="noopener noreferrer">feedback</a>
         
-        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/" data-id="cmmem5nmx006e0njy2o4h472c" class="article-share-link">共有</a>
+        <a data-url="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigating/" data-id="cuidnlEKBmZ0uQQZouBUaDm4r" class="article-share-link">共有</a>
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -124,9 +124,7 @@
         <span id="more"></span>
 <p>みなさんこんにちは、Azure Backup サポートです。<br>今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。<br>なお、 Azure Backup の NW 観点の障害調査に必要なログに関しては、下記をご覧ください。<br>・ Azure Backup の障害調査に必要な情報 (疎通確認)<br>　 <a href="https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/">https://jpabrs-scem.github.io/blog/AzureBackupGeneral/RequestForInvestigatingNW/</a></p>
 <h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr>
-<p><a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a><br>&emsp;<a href="#1-1">1-1. Azure VM バックアップ の VSS 障害調査に追加で必要なログ</a><br><a href="#2">2. Azure VM バックアップ の ファイル レベル リストア (ILR) 失敗調査に必要なログ</a><br><a href="#3">3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ</a><br>&emsp;<a href="#3-1">3-1. SAP HANA の backup.log 及び backint.log</a><br>&emsp;<a href="#3-2">3-2. opt 配下の log</a><br><a href="#4">4. MARS (Microsoft Azure Recovery Services) エージェントを利用したバックアップ の障害調査に必要なログ</a><br>&emsp;<a href="#4-1">4-1. MARS (Microsoft Azure Recovery Services) エージェントのログ</a><br>&emsp;<a href="#4-2">4-2. システム情報</a><br>&emsp;<a href="#4-3">4-3. イベント ログ</a><br>&emsp;<a href="#4-4">4-4. 各種証明書の確認およびインポート</a><br>&emsp;&emsp;<a href="#4-4-1">4-4-1. 個人 &gt; 証明書</a><br>&emsp;&emsp;<a href="#4-4-2">4-4-2. 信頼されたルート証明書 &gt; 証明書</a><br>&emsp;&emsp;<a href="#4-4-3">4-4-3. 証明書インポート手順</a></p>
-<hr>
-<h2 id="1-Azure-VM-バックアップの障害調査に必要なログ"><a href="#1-Azure-VM-バックアップの障害調査に必要なログ" class="headerlink" title="1. Azure VM バックアップの障害調査に必要なログ"></a>1. Azure VM バックアップの障害調査に必要なログ<a id="1"></a></h2><p>下記の <strong>環境情報</strong> と <strong>ログ情報</strong> の収集をお願いいたします。</p>
+<h2 id="1-Azure-VM-バックアップの障害調査に必要なログ-emsp-1-1-Azure-VM-バックアップ-の-VSS-障害調査に追加で必要なログ2-Azure-VM-バックアップ-の-ファイル-レベル-リストア-ILR-失敗調査に必要なログ3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の障害調査に必要なログ-emsp-3-1-SAP-HANA-の-backup-log-及び-backint-log-emsp-3-2-opt-配下の-log4-MARS-Microsoft-Azure-Recovery-Services-エージェントを利用したバックアップ-の障害調査に必要なログ-emsp-4-1-MARS-Microsoft-Azure-Recovery-Services-エージェントのログ-emsp-4-2-システム情報-emsp-4-3-イベント-ログ-emsp-4-4-各種証明書の確認およびインポート-emsp-emsp-4-4-1-個人-証明書-emsp-emsp-4-4-2-信頼されたルート証明書-証明書-emsp-emsp-4-4-3-証明書インポート手順"><a href="#1-Azure-VM-バックアップの障害調査に必要なログ-emsp-1-1-Azure-VM-バックアップ-の-VSS-障害調査に追加で必要なログ2-Azure-VM-バックアップ-の-ファイル-レベル-リストア-ILR-失敗調査に必要なログ3-Azure-Backup-for-SAP-HANA-in-Azure-VM-の障害調査に必要なログ-emsp-3-1-SAP-HANA-の-backup-log-及び-backint-log-emsp-3-2-opt-配下の-log4-MARS-Microsoft-Azure-Recovery-Services-エージェントを利用したバックアップ-の障害調査に必要なログ-emsp-4-1-MARS-Microsoft-Azure-Recovery-Services-エージェントのログ-emsp-4-2-システム情報-emsp-4-3-イベント-ログ-emsp-4-4-各種証明書の確認およびインポート-emsp-emsp-4-4-1-個人-証明書-emsp-emsp-4-4-2-信頼されたルート証明書-証明書-emsp-emsp-4-4-3-証明書インポート手順" class="headerlink" title="1. Azure VM バックアップの障害調査に必要なログ&emsp;1-1. Azure VM バックアップ の VSS 障害調査に追加で必要なログ2. Azure VM バックアップ の ファイル レベル リストア (ILR) 失敗調査に必要なログ3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ&emsp;3-1. SAP HANA の backup.log 及び backint.log&emsp;3-2. opt 配下の log4. MARS (Microsoft Azure Recovery Services) エージェントを利用したバックアップ の障害調査に必要なログ&emsp;4-1. MARS (Microsoft Azure Recovery Services) エージェントのログ&emsp;4-2. システム情報&emsp;4-3. イベント ログ&emsp;4-4. 各種証明書の確認およびインポート&emsp;&emsp;4-4-1. 個人 &gt; 証明書&emsp;&emsp;4-4-2. 信頼されたルート証明書 &gt; 証明書&emsp;&emsp;4-4-3. 証明書インポート手順"></a><a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a><br>&emsp;<a href="#1-1">1-1. Azure VM バックアップ の VSS 障害調査に追加で必要なログ</a><br><a href="#2">2. Azure VM バックアップ の ファイル レベル リストア (ILR) 失敗調査に必要なログ</a><br><a href="#3">3. Azure Backup for SAP HANA in Azure VM の障害調査に必要なログ</a><br>&emsp;<a href="#3-1">3-1. SAP HANA の backup.log 及び backint.log</a><br>&emsp;<a href="#3-2">3-2. opt 配下の log</a><br><a href="#4">4. MARS (Microsoft Azure Recovery Services) エージェントを利用したバックアップ の障害調査に必要なログ</a><br>&emsp;<a href="#4-1">4-1. MARS (Microsoft Azure Recovery Services) エージェントのログ</a><br>&emsp;<a href="#4-2">4-2. システム情報</a><br>&emsp;<a href="#4-3">4-3. イベント ログ</a><br>&emsp;<a href="#4-4">4-4. 各種証明書の確認およびインポート</a><br>&emsp;&emsp;<a href="#4-4-1">4-4-1. 個人 &gt; 証明書</a><br>&emsp;&emsp;<a href="#4-4-2">4-4-2. 信頼されたルート証明書 &gt; 証明書</a><br>&emsp;&emsp;<a href="#4-4-3">4-4-3. 証明書インポート手順</a></h2><h2 id="1-Azure-VM-バックアップの障害調査に必要なログ"><a href="#1-Azure-VM-バックアップの障害調査に必要なログ" class="headerlink" title="1. Azure VM バックアップの障害調査に必要なログ"></a>1. Azure VM バックアップの障害調査に必要なログ<a id="1"></a></h2><p>下記の <strong>環境情報</strong> と <strong>ログ情報</strong> の収集をお願いいたします。</p>
 <div class="alert is-info"><p class="alert-title">Note</p><p>Azure Backup for SQL Server in Azure VM や Azure Backup for SAP HANA in Azure VM など Azure VM 上の DB のバックアップの障害調査においても、本ログが同様に必要でございます。</p></div>
 <h3 id="環境情報"><a href="#環境情報" class="headerlink" title="環境情報"></a>環境情報</h3><p>・ Subscription ID<br>・ Recovery Services コンテナー名、およびそのリソースグループ名<br>・ バックアップ対象 VM 名、およびそのリソースグループ名<br>・ OS およびバージョン情報</p>
 <h3 id="ログ情報"><a href="#ログ情報" class="headerlink" title="ログ情報"></a>ログ情報</h3><p>下記を参考に zip などにまとめてご提供いただけますと幸いです。</p>
@@ -134,18 +132,18 @@
 <p>C:\Windows\System32\winevt\Logs<br>C:\WindowsAzure\</p>
 </blockquote>
 <h4 id="・Linuxの場合"><a href="#・Linuxの場合" class="headerlink" title="・Linuxの場合"></a>・Linuxの場合</h4><blockquote>
-<p>/var/log/</p>
+<p>&#x2F;var&#x2F;log&#x2F;</p>
 </blockquote>
 <p>全量いただけることが望ましいですが、全量が困難な場合は下記をご提供ください。</p>
 <blockquote>
-<p>/var/log/azure/*<br>/var/log/syslog*<br>/var/log/waagent.*</p>
+<p>&#x2F;var&#x2F;log&#x2F;azure&#x2F;*<br>&#x2F;var&#x2F;log&#x2F;syslog*<br>&#x2F;var&#x2F;log&#x2F;waagent.*</p>
 </blockquote>
 <div class="alert is-warning"><p class="alert-title">警告</p><p>NVA 等をご利用である場合には、Azure VM バックアップがサポートされていない可能性がございます。</p><p>詳細は下記をご覧ください。</p><p>・ NVA のバックアップについて</p><p>　 <a href="https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/">https://jpabrs-scem.github.io/blog/AzureVMBackup/NVA_backup/</a></p></div>
 <h3 id="1-1-Azure-VM-バックアップ-の-VSS-障害調査に追加で必要なログ"><a href="#1-1-Azure-VM-バックアップ-の-VSS-障害調査に追加で必要なログ" class="headerlink" title="1-1. Azure VM バックアップ の VSS 障害調査に追加で必要なログ"></a>1-1. Azure VM バックアップ の VSS 障害調査に追加で必要なログ<a id="1-1"></a></h3><p>Azure VM バックアップの下記のようなエラーが出ることがございます。</p>
 <blockquote>
 <p>Error Code  : Snapshot operation failed due to VSS Writers in bad state.<br>Error Message  : ExtensionFailedVssWriterInBadState</p>
 </blockquote>
-<p>その場合には VSS 観点での調査が必要であるため、上記 <a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> に加えて下記 URL 先のログの採取をお願いいたします。<br> <strong>可能な限り “[A]”が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。</strong><br>・ VSS エラーが発生している事象の調査<br>　 <a target="_blank" rel="noopener" href="https://jpwinsup.github.io/mslog/storage/vss/vss-error/">https://jpwinsup.github.io/mslog/storage/vss/vss-error/</a></p>
+<p>その場合には VSS 観点での調査が必要であるため、上記 <a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> に加えて下記 URL 先のログの採取をお願いいたします。<br> <strong>可能な限り “[A]”が望ましいですが、”[B]” の方法で採取いただいても、ある程度は調査が可能な場合がございます。</strong><br>・ VSS エラーが発生している事象の調査<br>　 <a href="https://jpwinsup.github.io/mslog/storage/vss/vss-error/">https://jpwinsup.github.io/mslog/storage/vss/vss-error/</a></p>
 <hr>
 <h2 id="2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調査に必要なログ"><a href="#2-Azure-VM-バックアップ-の-ファイルレベル-リストア-ILRリストア-失敗調査に必要なログ" class="headerlink" title="2. Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ"></a>2. Azure VM バックアップ の ファイルレベル リストア (ILRリストア) 失敗調査に必要なログ<a id="2"></a></h2><p>下記の <strong>環境情報</strong> と <strong>ログ情報</strong> の収集をお願いいたします。</p>
 <h3 id="環境情報-1"><a href="#環境情報-1" class="headerlink" title="環境情報"></a>環境情報</h3><p>・ Subscription ID<br>・ Recovery Services コンテナー名、およびそのリソースグループ名<br>・ バックアップ対象 VM 名、およびそのリソースグループ名、OS 名<br>・ リストア先の VM 名、およびそのリソースグループ名、OS 名</p>
@@ -183,10 +181,10 @@
 <h3 id="3-1-SAP-HANA-の-backup-log-及び-backint-log"><a href="#3-1-SAP-HANA-の-backup-log-及び-backint-log" class="headerlink" title="3.1 SAP HANA の backup.log 及び backint.log "></a>3.1 SAP HANA の backup.log 及び backint.log <a id="3-1"></a></h3><blockquote>
 <ul>
 <li>xx にはインスタンスナンバーが入ります。<ul>
-<li>/hana/shared/HXE/HDBxx/(hostname)/trace/backup.log</li>
-<li>/hana/shared/HXE/HDBxx/(hostname)/trace/DB_&lt;DB名&gt;/backup.log</li>
-<li>/hana/shared/HXE/HDBxx/(hostname)/trace/backint.log</li>
-<li>/hana/shared/HXE/HDBxx/(hostname)/trace/DB_&lt;DB名&gt;/backint.log</li>
+<li>&#x2F;hana&#x2F;shared&#x2F;HXE&#x2F;HDBxx&#x2F;(hostname)&#x2F;trace&#x2F;backup.log</li>
+<li>&#x2F;hana&#x2F;shared&#x2F;HXE&#x2F;HDBxx&#x2F;(hostname)&#x2F;trace&#x2F;DB_&lt;DB名&gt;&#x2F;backup.log</li>
+<li>&#x2F;hana&#x2F;shared&#x2F;HXE&#x2F;HDBxx&#x2F;(hostname)&#x2F;trace&#x2F;backint.log</li>
+<li>&#x2F;hana&#x2F;shared&#x2F;HXE&#x2F;HDBxx&#x2F;(hostname)&#x2F;trace&#x2F;DB_&lt;DB名&gt;&#x2F;backint.log</li>
 </ul>
 </li>
 </ul>
@@ -194,11 +192,11 @@
 <p>※ お手数ですが、全ての DB の backup.log 及び backint.log の採取をお願いいたします。<br>※ 上記パスに該当のログが無い場合は以下を試し、コマンド実行結果に表示されるディレクトリの場所のログをアップロードしてください。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo -i # rootユーザーに切り替えます</span><br><span class="line">cd /    # ディレクトリの最上層に移動します</span><br><span class="line">find ./ -name &quot;backup.log&quot;  # findコマンドにより該当のログの場所を特定します</span><br><span class="line">find ./ -name &quot;backint.log&quot; # findコマンドにより該当のログの場所を特定します</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-2-opt-配下の-log"><a href="#3-2-opt-配下の-log" class="headerlink" title="3.2 opt 配下の log "></a>3.2 opt 配下の log <a id="3-2"></a></h3><p>/opt/msawb/var/log ディレクトリ配下のファイルを zip 等におまとめのうえで、アップロードしてください。</p>
+<h3 id="3-2-opt-配下の-log"><a href="#3-2-opt-配下の-log" class="headerlink" title="3.2 opt 配下の log "></a>3.2 opt 配下の log <a id="3-2"></a></h3><p>&#x2F;opt&#x2F;msawb&#x2F;var&#x2F;log ディレクトリ配下のファイルを zip 等におまとめのうえで、アップロードしてください。</p>
 <hr>
-<h2 id="4-MARS-Microsoft-Azure-Recovery-Services-エージェントを利用したバックアップ-の障害調査に必要なログ"><a href="#4-MARS-Microsoft-Azure-Recovery-Services-エージェントを利用したバックアップ-の障害調査に必要なログ" class="headerlink" title="4. MARS (Microsoft Azure Recovery Services) エージェントを利用したバックアップ の障害調査に必要なログ"></a>4. MARS (Microsoft Azure Recovery Services) エージェントを利用したバックアップ の障害調査に必要なログ<a id="4"></a></h2><h3 id="4-0-環境情報と-Windows-ログ"><a href="#4-0-環境情報と-Windows-ログ" class="headerlink" title="4.0 環境情報と Windows ログ"></a>4.0 環境情報と Windows ログ</h3><p><span style="color: red; "> <strong><a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> の 環境情報 ならびに ログ情報 - Windows の場合</strong> </span> の取得をお願いいたします。<br>※ MARS バックアップ のバックアップ対象の環境が Azure VM でない場合は Azure VM 名 / VM リソース グループ名は不要です。</p>
+<h2 id="4-MARS-Microsoft-Azure-Recovery-Services-エージェントを利用したバックアップ-の障害調査に必要なログ"><a href="#4-MARS-Microsoft-Azure-Recovery-Services-エージェントを利用したバックアップ-の障害調査に必要なログ" class="headerlink" title="4. MARS (Microsoft Azure Recovery Services) エージェントを利用したバックアップ の障害調査に必要なログ"></a>4. MARS (Microsoft Azure Recovery Services) エージェントを利用したバックアップ の障害調査に必要なログ<a id="4"></a></h2><h3 id="4-0-環境情報と-Windows-ログ"><a href="#4-0-環境情報と-Windows-ログ" class="headerlink" title="4.0 環境情報と Windows ログ"></a>4.0 環境情報と Windows ログ</h3><p><span style="color: red; "> <strong><a href="#1">1. Azure VM バックアップの障害調査に必要なログ</a> の 環境情報 ならびに ログ情報 - Windows の場合</strong> </span> の取得をお願いいたします。<br>※ MARS バックアップ のバックアップ対象の環境が Azure VM でない場合は Azure VM 名 &#x2F; VM リソース グループ名は不要です。</p>
 <p>上記に加えて下記もご対応お願いいたします。</p>
-<h3 id="4-1-MARS-Microsoft-Azure-Recovery-Services-エージェントのログ"><a href="#4-1-MARS-Microsoft-Azure-Recovery-Services-エージェントのログ" class="headerlink" title="4.1 MARS (Microsoft Azure Recovery Services) エージェントのログ "></a>4.1 MARS (Microsoft Azure Recovery Services) エージェントのログ <a id="4-1"></a></h3><p>まず、下記 リンク先から調査用スクリプトをダウンロードしてください。<br><a target="_blank" rel="noopener" href="https://github.com/jpabrs-scem/blog/files/10148102/WABDiag.zip">WABDiag.zip</a></p>
+<h3 id="4-1-MARS-Microsoft-Azure-Recovery-Services-エージェントのログ"><a href="#4-1-MARS-Microsoft-Azure-Recovery-Services-エージェントのログ" class="headerlink" title="4.1 MARS (Microsoft Azure Recovery Services) エージェントのログ "></a>4.1 MARS (Microsoft Azure Recovery Services) エージェントのログ <a id="4-1"></a></h3><p>まず、下記 リンク先から調査用スクリプトをダウンロードしてください。<br><a href="https://github.com/jpabrs-scem/blog/files/10148102/WABDiag.zip">WABDiag.zip</a></p>
 <p>ダウンロードいただきました WABDiag.tx を .ps1 に変更して使用し、問題が発生しているマシンより Azure Backup ログの収集をお願いいたします。<br>※ ファイルの解凍パスワードは “AzureBackup” となります。</p>
 <ol>
 <li>WABDiag.ps1 を管理者権限の PowerShell で実行します。</li>
@@ -217,12 +215,12 @@
 <p>コマンド : Get-ExecutionPolicy </p>
 </blockquote>
 <ul>
-<li>参考<br>実行ポリシーについて - PowerShell<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2">https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2</a></li>
+<li>参考<br>実行ポリシーについて - PowerShell<br><a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2">https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2</a></li>
 </ul>
 <h3 id="4-2-システム情報"><a href="#4-2-システム情報" class="headerlink" title="4.2 システム情報 "></a>4.2 システム情報 <a id="4-2"></a></h3><ol>
 <li>対象のマシンに管理者権限を保持するユーザーでログオンします。</li>
 <li>管理者権限でコマンド プロンプトを起動し、以下のコマンドで取得します。<blockquote>
-<p>msinfo32 /nfo &lt;出力ファイル名&gt;<br>実行例) msinfo32 /nfo SVR_msinfo32.nfo</p>
+<p>msinfo32 &#x2F;nfo &lt;出力ファイル名&gt;<br>実行例) msinfo32 &#x2F;nfo SVR_msinfo32.nfo</p>
 </blockquote>
 </li>
 <li>生成されたファイルをご提供ください。<br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_08.png" alt="システム情報"></li>
@@ -236,14 +234,14 @@
 <h3 id="4-4-各種証明書の確認およびインポート"><a href="#4-4-各種証明書の確認およびインポート" class="headerlink" title="4.4 各種証明書の確認およびインポート"></a>4.4 各種証明書の確認およびインポート<a id="4-4"></a></h3><p>下記詳細手順のもと、証明書をご確認いただき、その画面キャプチャを zip などにおまとめの上ご提供お願いいたします。</p>
 <h4 id="証明書の確認方法"><a href="#証明書の確認方法" class="headerlink" title="証明書の確認方法"></a>証明書の確認方法</h4><p>対象マシン上で [スタート] &gt; [ファイル名を指定して実行] &gt; “certlm.msc” と入力して [OK] を選択し、以下項目 4.4.1, 4.4.2 の証明書が存在するかご確認ください。<br>※ Windows Server 2012 以前の OS の場合は、MMC スナップインより証明書スナップインを起動してください。</p>
 <p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_09.png"><br><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_10.png"></p>
-<h3 id="4-4-1-個人-gt-証明書"><a href="#4-4-1-個人-gt-証明書" class="headerlink" title="4.4.1 個人 &gt; 証明書"></a>4.4.1 個人 &gt; 証明書<a id="4-4-1"></a></h3><p>[個人] &gt; [証明書] にて、下記 2 つの証明書が存在することを確認し、その画面キャプチャをご提供ください。<br>※ もし下記証明書が存在していなかった場合には、その点ご返信いただけますと幸いです。</p>
+<h3 id="4-4-1-個人-証明書"><a href="#4-4-1-個人-証明書" class="headerlink" title="4.4.1 個人 &gt; 証明書"></a>4.4.1 個人 &gt; 証明書<a id="4-4-1"></a></h3><p>[個人] &gt; [証明書] にて、下記 2 つの証明書が存在することを確認し、その画面キャプチャをご提供ください。<br>※ もし下記証明書が存在していなかった場合には、その点ご返信いただけますと幸いです。</p>
 <blockquote>
 <p>・ CB_&lt;MARS のバックアップを実施する予定の Recovery Services コンテナー名&gt;-xx-xx-xxxx-vaultcredentials<br>・ CB_&lt;ホスト名&gt;._xxxxxxxxxxxxxxxxxx</p>
 </blockquote>
 <p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_11.png"></p>
 <p>もし「CB_&lt;ホスト名&gt;._xxxxxxxxxxxxxxxxxx」の証明書の期限がきれている場合には、MARS エージェントが正常に起動しない可能性があります。<br>その際には、下記を参考に MARS エージェントの再インストールを実施してください。それにより証明書も再インストールされます。<br>・ MARS エージェントの再インストール手順<br>　 <a href="https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/">https://jpabrs-scem.github.io/blog/MARSBackup/How_to_re-install/</a></p>
-<h3 id="4-4-2-信頼されたルート証明書-gt-証明書"><a href="#4-4-2-信頼されたルート証明書-gt-証明書" class="headerlink" title="4.4.2 信頼されたルート証明書 &gt; 証明書 "></a>4.4.2 信頼されたルート証明書 &gt; 証明書 <a id="4-4-2"></a></h3><p>[信頼されたルート証明機関] &gt; [証明書] にて、下記ドキュメントに記載されているルート証明書がすべて存在することを確認し、その画面キャプチャをご提供ください。</p>
-<p>・ ルート証明機関 / Azure 証明機関の詳細 | Microsoft Learn<br>　 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/ja-jp/azure/security/fundamentals/azure-CA-details?tabs=root-and-subordinate-cas-list#root-certificate-authorities">https://learn.microsoft.com/ja-jp/azure/security/fundamentals/azure-CA-details?tabs=root-and-subordinate-cas-list#root-certificate-authorities</a></p>
+<h3 id="4-4-2-信頼されたルート証明書-証明書"><a href="#4-4-2-信頼されたルート証明書-証明書" class="headerlink" title="4.4.2 信頼されたルート証明書 &gt; 証明書 "></a>4.4.2 信頼されたルート証明書 &gt; 証明書 <a id="4-4-2"></a></h3><p>[信頼されたルート証明機関] &gt; [証明書] にて、下記ドキュメントに記載されているルート証明書がすべて存在することを確認し、その画面キャプチャをご提供ください。</p>
+<p>・ ルート証明機関 &#x2F; Azure 証明機関の詳細 | Microsoft Learn<br>　 <a href="https://learn.microsoft.com/ja-jp/azure/security/fundamentals/azure-CA-details?tabs=root-and-subordinate-cas-list#root-certificate-authorities">https://learn.microsoft.com/ja-jp/azure/security/fundamentals/azure-CA-details?tabs=root-and-subordinate-cas-list#root-certificate-authorities</a></p>
 <p>また、ドキュメントに記載されているルート証明書の “Thumbprint” の値と、対象のマシンにて証明書をダブル クリックし、[詳細] &gt; [拇印] で表示されている値が一致していることを確認し、その画面キャプチャを併せてご提供ください。</p>
 <p><img src="/blog/AzureBackupGeneral/RequestForInvestigating/RequestForInvestigating_12.png"></p>
 <p>もし上記ドキュメントに記載されているルート証明書が一部存在していない場合には、MARS エージェントが正常に起動しない可能性があります。<br>その際には、下記 <a href="#4-4-3">4-4-3. 証明書インポート手順</a> を参考に、証明書のインポートを実施してください。</p>
@@ -286,19 +284,19 @@
     
 <nav id="article-nav">
   
-    <a href="../../AzureVMBackup/VM_Backup_billing/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="../../AzureVMBackup/RestoreStagingStorageAccount/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">次の記事</strong>
       <div class="article-nav-title">
         
-          Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い
+          Azure VM Backup でリストアする際にステージングの場所として利用するストレージ アカウントについて
         
       </div>
     </a>
   
   
-    <a href="../../AzureSQLBackup/CommunicationFails-DueTo-TenantRestrictions/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="../RequestForInvestigatingNW/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する</div>
+      <div class="article-nav-title">Azure Backup の障害調査に必要な情報 (疎通確認)</div>
     </a>
   
 </nav>
@@ -317,7 +315,7 @@
       <ul>
         
           <li>
-            <a href="../HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
+            <a href="../HowToMoveClassicAlert/">QL4L-5D8 XNV5-HTZ 9QV8-4L8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</a>
           </li>
         
           <li>
@@ -345,8 +343,8 @@
   <div class="widget-wrap">
     <h3 class="widget-title">タグ</h3>
     <div class="widget">
-      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM / MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">14</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">12</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Site-Recovery">Azure Site Recovery</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">30</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">28</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li></ul>
+      <!-- <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/" rel="tag">Azure Backup General</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/" rel="tag">Azure Disk Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/" rel="tag">Azure Files Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/" rel="tag">Azure Migrate</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/" rel="tag">Azure SAPHANA Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/" rel="tag">Azure SQL Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/" rel="tag">Azure Site Recovery</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/" rel="tag">Azure VM Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/" rel="tag">DPM &#x2F; MABS</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/" rel="tag">Information</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/" rel="tag">MARS Backup</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/TROUBLE-SHOOTING/" rel="tag">TROUBLE SHOOTING</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/how-to/" rel="tag">how to</a></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96/" rel="tag">情報採取</a></li></ul>  -->
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Information/">Information</a><span class="tag-list-count">5</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Backup-General">Azure Backup General</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/Azure-Site-Recovery">Azure Site Recovery</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Information/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Backup-General/">Azure Backup General</a><span class="tag-list-count">14</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/Information">Information</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/how-to">how to</a><span class="tag-list-count">12</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Backup-General/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Disk-Backup/">Azure Disk Backup</a><span class="tag-list-count">1</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Files-Backup/">Azure Files Backup</a><span class="tag-list-count">2</span><ul></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Migrate/">Azure Migrate</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Migrate/how-to">how to</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SAPHANA-Backup/">Azure SAPHANA Backup</a><span class="tag-list-count">1</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SAPHANA-Backup/how-to">how to</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-SQL-Backup/">Azure SQL Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-SQL-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-Site-Recovery/">Azure Site Recovery</a><span class="tag-list-count">8</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/Information">Information</a><span class="tag-list-count">1</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/how-to">how to</a><span class="tag-list-count">6</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-Site-Recovery/%E6%83%85%E5%A0%B1%E6%8E%A1%E5%8F%96">情報採取</a><span class="tag-list-count">1</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/Azure-VM-Backup/">Azure VM Backup</a><span class="tag-list-count">30</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/Azure-VM-Backup/how-to">how to</a><span class="tag-list-count">28</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/DPM-MABS/">DPM / MABS</a><span class="tag-list-count">2</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/DPM-MABS/TROUBLE-SHOOTING">TROUBLE SHOOTING</a><span class="tag-list-count">2</span></li></ul></li><li class="tag-list-item"><a class="tag-list-link" href="../../tags/MARS-Backup/">MARS Backup</a><span class="tag-list-count">3</span><ul><li class="tag-list-item tag-list-item-child-tag"><a class="tag-list-link tag-list-link-child" href="../../tags/MARS-Backup/how-to">how to</a><span class="tag-list-count">3</span></li></ul></li></ul>
     </div>
   </div>
 
