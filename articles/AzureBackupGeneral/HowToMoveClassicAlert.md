@@ -1,5 +1,5 @@
 ---
-title: QL4L-5D8 XNV5-HTZ クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について
+title: QL4L-5D8 XNV5-HTZ 9QV8-4L8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について
 date: 2026-03-06 12:00:00
 tags:
   - Azure Backup General
@@ -9,11 +9,11 @@ disableDisclaimer: false
 
 <!-- more -->
 こんにちは、Azure Backup サポートです。
-今回は、2023 年 3 月末より弊社から発行されているアラート追跡 ID 「QL4L-5D8」、「XNV5-HTZ」について説明いたします。
+今回は、2023 年 3 月末より弊社から発行されているアラート追跡 ID 「QL4L-5D8」、「XNV5-HTZ」、「9QV8-4L8」について説明いたします。
 
 ## 目次
 -----------------------------------------------------------
-[Q1. 「QL4L-5D8」「XNV5-HTZ」このアラートは何ですか？](#Q1)
+[Q1. 「QL4L-5D8」「XNV5-HTZ」「9QV8-4L8」このアラートは何ですか？](#Q1)
 [Q2. どの Recovery Services コンテナーが「クラシック アラート設定」になっていますか？](#Q2)
   [- どの Recovery Services コンテナーでクラシック アラートが有効になっているのかを確認する方法](#Q2.1)
   [- どの Recovery Services コンテナーがクラシック アラートの「通知の構成」を行っているのかを確認する方法](#Q2.2)
@@ -23,7 +23,7 @@ disableDisclaimer: false
 [Q5. Azure Monitor を使用した組み込みのアラートで、クラシック アラートと同じ重要度のアラート メールを通知するには？](#Q5)
 -----------------------------------------------------------
 
-## <a id="Q1"></a>Q1. 「QL4L-5D8」「XNV5-HTZ」このアラートは何ですか？
+## <a id="Q1"></a>Q1. 「QL4L-5D8」「XNV5-HTZ」「9QV8-4L8」このアラートは何ですか？
 **A1** クラシック アラートから Azure Monitor を使用した組み込みのアラートへと移行するよう、お知らせするためのものです。
 Recovery Services コンテナーでは、クラシック アラートが<span style="color: red; ">既定</span>で存在しており、利用可能な状態となっております。
 後述 「Q2. どの Recovery Services コンテナーが「クラシック アラート設定」になっていますか？」 をご参照いただき、クラシック アラートを利用した通知の設定有無をまずはご確認くださいますようお願いいたします。
@@ -38,7 +38,7 @@ Recovery Services コンテナーでは、クラシック アラートが<span s
 #### ・ クラシック アラート機能用いて、現在メールへのアラート通知を構成していない、かつ今後もバックアップ ジョブ失敗時にメール通知などのアラートをご希望でない場合
 <span style="color: red; ">特段お客様での追加作業は不要です。</span>
 
-QL4L-5D8」「XNV5-HTZ」アラートの例)
+「QL4L-5D8」「XNV5-HTZ」「9QV8-4L8」アラートの例)
 ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_01.png)
 ![](./HowToMoveClassicAlert/HowToMoveClassicAlert_02.png)
 
