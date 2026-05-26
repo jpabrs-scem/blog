@@ -14,7 +14,7 @@
   </rights>
   <subtitle>Azure Backup , Azure Site Recovery , Azure Migrate に関するサポート情報を発信します。</subtitle>
   <title>Japan CSS ABRS  Support Blog !!</title>
-  <updated>2026-05-26T07:27:33.852Z</updated>
+  <updated>2026-05-26T07:31:45.559Z</updated>
   <entry>
     <author>
       <name>
@@ -34,7 +34,7 @@
 <p>皆様こんにちは、Azure Site Recovery サポートです。<br>今回は、「組み込みの Azure Monitor アラート」を利用して、 Azure Site Recovery (以下、 ASR ) でエラーが発]]>
     </summary>
     <title>「組み込みの Azure Monitor アラート」を利用した ASR エラーのアラート構成例</title>
-    <updated>2026-05-26T07:27:33.852Z</updated>
+    <updated>2026-05-26T07:31:45.559Z</updated>
   </entry>
   <entry>
     <author>
@@ -55,7 +55,7 @@
 <p>こんにちは、Azure Backup サポートです。<br>今回は、2023 年 3 月末より弊社から発行されているアラート追跡 ID 「QL4L-5D8」、「XNV5-HTZ」、「9QV8-4L8」について説明いたします。<]]>
     </summary>
     <title>QL4L-5D8 XNV5-HTZ 9QV8-4L8 クラシック アラートから Azure Monitor を使用した組み込みのアラートへの移行について</title>
-    <updated>2026-05-26T07:27:33.706Z</updated>
+    <updated>2026-05-26T07:31:45.466Z</updated>
   </entry>
   <entry>
     <author>
@@ -77,7 +77,7 @@
 <h]]>
     </summary>
     <title>停止状態で VM を復元する方法</title>
-    <updated>2026-05-26T07:27:33.968Z</updated>
+    <updated>2026-05-26T07:31:45.634Z</updated>
   </entry>
   <entry>
     <author>
@@ -99,7 +99,7 @@
 <p>今回は Azure Site Recovery (もしくは Azure Migrate) を利用して、マシンを Azure VM として]]>
     </summary>
     <title>ASR フェールオーバー前後で変更されるマシン上の情報について</title>
-    <updated>2026-05-26T07:27:33.908Z</updated>
+    <updated>2026-05-26T07:31:45.595Z</updated>
   </entry>
   <entry>
     <author>
@@ -107,9 +107,9 @@
         <![CDATA[Japan CSS ABRS & SCEM Support Team]]>
       </name>
     </author>
+    <category term="Information" scheme="https://jpabrs-scem.github.io/blog/tags/Information/"/>
     <category term="Azure Backup General" scheme="https://jpabrs-scem.github.io/blog/tags/Azure-Backup-General/"/>
     <category term="how to" scheme="https://jpabrs-scem.github.io/blog/tags/how-to/"/>
-    <category term="Information" scheme="https://jpabrs-scem.github.io/blog/tags/Information/"/>
     <content>
       <![CDATA[<span id="more"></span><p>皆様こんにちは。Azure Backup サポートです。<br> 今回はお問合せをいただくことが多い、Azure Backup による SQL Server DB や SAP HANA DB のログ バックアップのジョブを確認する方法をご案内いたします。  </p><h2 id="目次"><a href="#目次" class="headerlink" title="目次"></a>目次</h2><hr><h2 id="1-概要2-設定方法3-ログ-バックアップのジョブの確認方法"><a href="#1-概要2-設定方法3-ログ-バックアップのジョブの確認方法" class="headerlink" title="1. 概要2. 設定方法3. ログ バックアップのジョブの確認方法  "></a><a href="#1">1. 概要</a><br><a href="#2">2. 設定方法</a><br><a href="#3">3. ログ バックアップのジョブの確認方法</a>  </h2><h2 id="1-概要"><a href="#1-概要" class="headerlink" title=" 1. 概要"></a><a id="1"></a> 1. 概要</h2><p>Azure Backup による SQL Server DB や SAP HANA DB のログ バックアップのジョブは、実行回数が比較的多くなる傾向にあるため、<strong>Azure Portal の Recovery Services コンテナーや回復性 (Resiliency, ビジネス継続センター) のバックアップ ジョブ一覧には表示されません</strong>。  </p><p>ログ バックアップのジョブをご確認いただくには、Recovery Services コンテナーの診断設定を構成し、Recovery Services コンテナーの診断イベントを Log Analytics ワークスペースへ送信していただく必要がございます。  </p><h2 id="2-設定方法"><a href="#2-設定方法" class="headerlink" title=" 2. 設定方法"></a><a id="2"></a> 2. 設定方法</h2><p>ご利用の Recovery Services コンテナーの診断設定を構成する方法をご案内いたします。  </p><ul><li><ol><li>Azure Portal にてご利用の Recovery Services コンテナーを表示します</li></ol></li><li><ol start="2"><li>Recovery Services コンテナーの [監視] &gt; [診断設定] &gt; [診断設定を追加する]  を選択します<br><img src="/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/Setting_Rsv_diagnostics_01.png"></li></ol></li><li><ol start="3"><li>診断設定画面にて、まず [診断設定の名前] に任意の値を入力します</li></ol></li><li><ol start="4"><li>次に、[ログ] にて取得したいログのカテゴリを選択します</li></ol><ul><li>ログ バックアップ ジョブのデータが含まれるカテゴリ <code>Addon Azure Backup Job Data</code> は必ずチェックを入れてください</li></ul></li><li><ol start="5"><li>最後に [宛先の詳細] に診断イベントの送信先となる Log Analytics ワークスペースを設定します</li></ol><ul><li>項目 [ターゲット テーブル] には、<code>リソース固有</code> を選択します<br><img src="/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/Setting_Rsv_diagnostics_02.png"></li></ul></li></ul><p>診断設定の詳細につきましては、下記公式ドキュメントにも説明がございますので適宜ご確認ください。<br>・ Azure Backup ユーザー向けの診断イベント - Azure Backup | Microsoft Learn<br>　 <a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-diagnostic-events?tabs=recovery-services-vaults">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-diagnostic-events?tabs=recovery-services-vaults</a><br>・ AddonAzureBackupJobs &#x2F; リソース固有の診断イベントのデータ モデル - Azure Backup | Microsoft Learn<br>　 <a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-reports-data-model?tabs=recovery-services-vaults#addonazurebackupjobs">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-reports-data-model?tabs=recovery-services-vaults#addonazurebackupjobs</a>  </p><h2 id="3-ログ-バックアップのジョブの確認方法"><a href="#3-ログ-バックアップのジョブの確認方法" class="headerlink" title=" 3. ログ バックアップのジョブの確認方法"></a><a id="3"></a> 3. ログ バックアップのジョブの確認方法</h2><p>Recovery Services コンテナーの診断イベント (特にカテゴリ <code>Addon Azure Backup Job Data</code> を含む) を Log Analytics ワークスペースへ送信する診断設定を行われている場合には、Log Analytics ワークスペースに保持されているテーブル <code>AddonAzureBackupJobs</code> から SQL Server DB や SAP HANA DB のログ バックアップ ジョブをご確認いただくことが可能でございます。<br>以下に、ログ バックアップ ジョブを確認するサンプル クエリ、および実行結果をご紹介いたします。  </p><div class="alert is-important"><p class="alert-title">重要</p><p>SQL Server DB や SAP HANA DB の完了したログ バックアップ ジョブの情報は、6 時間毎のバッチ処理にて、Log Analytics ワークスペースへ送信されます。</p><p>そのため、Log Analytics ワークスペースにてログ バックアップ ジョブの情報が確認できるようになるまで、最大 6 時間の遅延が発生する可能性がございますので、あらかじめご留意ください。</p><p>・ 監視とレポートに関する FAQ - Azure Backup | Microsoft Learn</p><p>　 <a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitor-alert-faq#log-analytics-------------------------------">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitor-alert-faq#log-analytics-------------------------------</a></p><p>　 抜粋 : <code>SQL バックアップでは、15 分ごとにログ バックアップを行うことができるため、完了したすべてのスケジュール済みバックアップ ジョブの情報は、ログも含めて 6 時間ごとにバッチ処理されてプッシュされます。</code></p></div><ul><li>サンプル クエリ</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AddonAzureBackupJobs</span><br><span class="line">| where BackupManagementType == &quot;AzureWorkload&quot;</span><br><span class="line">| where JobOperationSubType == &quot;Log&quot;</span><br><span class="line">| project JobStartDateTime, BackupItemUniqueId, OperationName, JobOperation, JobOperationSubType, JobStatus, JobFailureCode</span><br><span class="line">| sort by JobStartDateTime asc</span><br></pre></td></tr></table></figure><ul><li>実行結果例<br><img src="/blog/AzureBackupGeneral/How_To_Check_Log_Backup_Jobs/Result_LA.png"></li></ul><div class="alert is-warning"><p class="alert-title">警告</p><p>本記事でご案内しているクエリについては、お客様の責任のもと、ご利用いただきますようお願い申し上げます。</p><p>クエリ実行時のエラーや、想定外の問題について、当社は責任を負いかねますのでご了承ください。  </p></div><p>そのほか、サンプル クエリを下記公式ドキュメントにてご案内しておりますので必要に応じてご活用ください。<br>・ Recovery Services コンテナーのワークロードに固有のクエリ &#x2F; Azure Backup の Azure Monitor ログ - Azure Backup | Microsoft Learn<br>　 <a href="https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-use-azuremonitor#queries-specific-to-recovery-services-vault-workloads">https://learn.microsoft.com/ja-jp/azure/backup/backup-azure-monitoring-use-azuremonitor#queries-specific-to-recovery-services-vault-workloads</a>  </p>]]>
     </content>
@@ -121,7 +121,7 @@
 <p>皆様こんにちは。Azure Backup サポートです。<br> 今回はお問合せをいただくことが多い、Azure Backup による SQL Server DB や SAP HANA DB のログ バックアップのジョブを確認]]>
     </summary>
     <title>ログ バックアップのジョブを確認する方法</title>
-    <updated>2026-05-26T07:27:33.730Z</updated>
+    <updated>2026-05-26T07:31:45.482Z</updated>
   </entry>
   <entry>
     <author>
@@ -142,7 +142,7 @@
 <p>皆様こんにちは、Azure Backup サポートです。<br>今回は、<strong>「Azure Monitor を使用した組み込みのアラート」を利用して、Recovery Services コンテナー &#x2F; バッ]]>
     </summary>
     <title>「Azure Monitor を使用した組み込みのアラート」を利用したバックアップ ジョブ失敗のアラート通知作成例</title>
-    <updated>2026-05-26T07:27:33.731Z</updated>
+    <updated>2026-05-26T07:31:45.483Z</updated>
   </entry>
   <entry>
     <author>
@@ -163,7 +163,7 @@
 <p>こんにちは、Azure Backup サポートです。<br>今回は、 Azure バックアップ ソリューションで利用する Recovery Services コンテナーとバックアップ コンテナーのバックアップ対象の違いについて]]>
     </summary>
     <title>Recovery Services コンテナーとバックアップ コンテナーについて</title>
-    <updated>2026-05-26T07:27:33.743Z</updated>
+    <updated>2026-05-26T07:31:45.490Z</updated>
   </entry>
   <entry>
     <author>
@@ -184,7 +184,7 @@
 <p>皆様こんにちは、Azure Backup サポート チームです。<br>今回は、<strong>Azure VM Backup における VM ごとのバックアップ データ量の確認方法</strong> についてご紹介します。<]]>
     </summary>
     <title>VM ごとのバックアップ データ量の確認方法</title>
-    <updated>2026-05-26T07:27:33.954Z</updated>
+    <updated>2026-05-26T07:31:45.625Z</updated>
   </entry>
   <entry>
     <author>
@@ -205,7 +205,7 @@
 <p>皆様こんにちは。Azure Site Recovery サポートです。<br>今回は Azure Site Recovery (以下、ASR ) にて「レプリケーションの有効化 が失敗する」「レプリケートが失敗している」といっ]]>
     </summary>
     <title>Azure Site Recovery の障害調査に必要な情報 (疎通確認)</title>
-    <updated>2026-05-26T07:27:33.884Z</updated>
+    <updated>2026-05-26T07:31:45.580Z</updated>
   </entry>
   <entry>
     <author>
@@ -227,7 +227,7 @@
 <h2]]>
     </summary>
     <title>Azure VM Backup でリストアする際にステージングの場所として利用するストレージ アカウントについて</title>
-    <updated>2026-05-26T07:27:33.993Z</updated>
+    <updated>2026-05-26T07:31:45.649Z</updated>
   </entry>
   <entry>
     <author>
@@ -248,7 +248,7 @@
 <p>みなさんこんにちは、Azure Backup サポートです。<br>今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、提供いただきたい情報をお伝えいたします。<br>なお、 Azure]]>
     </summary>
     <title>Azure Backup の障害調査に必要な情報</title>
-    <updated>2026-05-26T07:27:33.744Z</updated>
+    <updated>2026-05-26T07:31:45.492Z</updated>
   </entry>
   <entry>
     <author>
@@ -269,7 +269,7 @@
 <p>皆様こんにちは。Azure Backup サポートです。<br>今回は Azure Backup のバックアップ失敗、リストア失敗の時の調査をするにあたり、NW 観点で提供いただきたい情報をお伝えいたします。<br>NW 観点]]>
     </summary>
     <title>Azure Backup の障害調査に必要な情報 (疎通確認)</title>
-    <updated>2026-05-26T07:27:33.751Z</updated>
+    <updated>2026-05-26T07:31:45.495Z</updated>
   </entry>
   <entry>
     <author>
@@ -290,7 +290,7 @@
 <p>こんにちは、Azure Backup サポートです。<br>今回は Azure Backup での異なる可用性ゾーンへの復元 ( &#x3D; クロス ゾーン リストア &#x2F; CZR ) についてご紹介します。<br>]]>
     </summary>
     <title>Azure VM Backup におけるクロス ゾーン リストア (CZR) について</title>
-    <updated>2026-05-26T07:27:33.938Z</updated>
+    <updated>2026-05-26T07:31:45.614Z</updated>
   </entry>
   <entry>
     <author>
@@ -312,7 +312,7 @@
 <h2 id="目次"><a]]>
     </summary>
     <title>「VMSnapshot」拡張機能の再インストール手順 (Windows)</title>
-    <updated>2026-05-26T07:27:33.970Z</updated>
+    <updated>2026-05-26T07:31:45.636Z</updated>
   </entry>
   <entry>
     <author>
@@ -333,7 +333,7 @@
 <p>皆様こんにちは、Azure Backup サポートです。<br>今回は、Azure VM Backup において、<br>「Standard バックアップ ポリシー (標準ポリシー) 」でバックアップを取得した場合と<br>「]]>
     </summary>
     <title>Standard バックアップ ポリシーと Enhanced バックアップ ポリシーの料金の違い</title>
-    <updated>2026-05-26T07:27:33.994Z</updated>
+    <updated>2026-05-26T07:31:45.650Z</updated>
   </entry>
   <entry>
     <author>
@@ -355,7 +355,7 @@
 <p>MARS バックアップや SQL Server バックアップなどのバックアップにおいて、お客様によってはバックアップや復元で使用する通信がプロキシを経]]>
     </summary>
     <title>テナント制限により Microsoft Entra ID (旧称 Azure Active Directory) 向けの通信に失敗する</title>
-    <updated>2026-05-26T07:27:33.817Z</updated>
+    <updated>2026-05-26T07:31:45.537Z</updated>
   </entry>
   <entry>
     <author>
@@ -376,7 +376,7 @@
 <p>みなさんこんにちは、Azure Backup サポートです。<br>今回は、「Oracle DB を導入している Azure 仮想マシンを Azure VM Backup でバックアップ&#x2F;リストアすることは可能か」と]]>
     </summary>
     <title>Oracle DB の Azure VM Backup について</title>
-    <updated>2026-05-26T07:27:33.992Z</updated>
+    <updated>2026-05-26T07:31:45.649Z</updated>
   </entry>
   <entry>
     <author>
@@ -398,7 +398,7 @@
 <h2 id="目次"><a]]>
     </summary>
     <title>Azure VM Backup [既存を置換] リストア について</title>
-    <updated>2026-05-26T07:27:33.998Z</updated>
+    <updated>2026-05-26T07:31:45.653Z</updated>
   </entry>
   <entry>
     <author>
@@ -419,7 +419,7 @@
 <p>みなさんこんにちは、Azure Migrate サポートです。<br>今回は Azure Migrate 機能を使って Azure へとマシンを移行後、不要となった Recovery Services コンテナーや、関連する]]>
     </summary>
     <title>Migrate 移行後の関連リソース削除時のチェックポイント</title>
-    <updated>2026-05-26T07:27:33.771Z</updated>
+    <updated>2026-05-26T07:31:45.508Z</updated>
   </entry>
   <entry>
     <author>
@@ -441,6 +441,6 @@
 <p>まず、Azure VM Backup に]]>
     </summary>
     <title>Azure VM Backupにおける整合性について</title>
-    <updated>2026-05-26T07:27:33.953Z</updated>
+    <updated>2026-05-26T07:31:45.624Z</updated>
   </entry>
 </feed>

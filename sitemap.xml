@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/information/team-introduction_2/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/information/team-introduction/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/information/team-introduction/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/information/team-introduction_2/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/MARSBackup/How_to_fail_MARS_backup/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/DPM&MABS/VMware_Error_332623/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -101,15 +101,6 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/</loc>
-    
-    <lastmod>2026-05-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/VMRestoring_NIC_Configuration/</loc>
     
     <lastmod>2026-05-26</lastmod>
@@ -138,6 +129,15 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Oracle_vm_backup/</loc>
+    
+    <lastmod>2026-05-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/RestoreStagingStorageAccount/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -236,7 +236,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -245,7 +245,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/ClassicVm_to_ARM/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Consistencies/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -299,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -317,7 +317,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/About_Restored_Disk/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -326,7 +326,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/AV_ExcludeSetting/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureVMBackup/Azure_VM_Offline_backup/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -353,7 +353,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigatingNWASR/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RemoveDiskASR/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -362,7 +362,7 @@
   </url>
   
   <url>
-    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RemoveDiskASR/</loc>
+    <loc>https://jpabrs-scem.github.io/blog/AzureSiteRecovery/RequestForInvestigatingNWASR/</loc>
     
     <lastmod>2026-05-26</lastmod>
     
@@ -632,6 +632,13 @@
 
   
   <url>
+    <loc>https://jpabrs-scem.github.io/blog/tags/Information/</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jpabrs-scem.github.io/blog/tags/Azure-Backup-General/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -640,13 +647,6 @@
   
   <url>
     <loc>https://jpabrs-scem.github.io/blog/tags/how-to/</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jpabrs-scem.github.io/blog/tags/Information/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
